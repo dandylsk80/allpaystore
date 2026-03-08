@@ -42,7 +42,7 @@ function getHTML() {
   /* NAV */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 0 40px; height: 68px;
+    padding: 0 40px; height: 88px;
     display: flex; align-items: center; justify-content: center;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(12px);
@@ -64,7 +64,7 @@ function getHTML() {
 
   /* HERO */
   .hero {
-    min-height: 100vh; padding: 68px 40px 0;
+    min-height: 100vh; padding: 88px 40px 0;
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
     background: linear-gradient(160deg, #F8FAFF 0%, #FFFFFF 50%, #F0F7FF 100%);
@@ -195,15 +195,23 @@ function getHTML() {
 
   /* TESTIMONIALS */
   .testimonials { background: var(--gray3); }
-  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-  .test-card { background: white; border-radius: 16px; padding: 32px; border: 1.5px solid var(--border); transition: all 0.25s; }
+  .slider-wrap { position: relative; overflow: hidden; margin-top: 48px; }
+  .slider-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .test-card { background: white; border-radius: 16px; padding: 32px; border: 1.5px solid var(--border); min-width: 360px; flex-shrink: 0; }
   .test-card:hover { border-color: var(--blue); box-shadow: 0 8px 30px rgba(26,107,255,0.08); }
   .test-stars { color: #FBBF24; font-size: 14px; margin-bottom: 16px; }
   .test-card p { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 24px; }
   .test-author { display: flex; align-items: center; gap: 12px; }
-  .test-ava { width: 40px; height: 40px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: white; }
+  .test-ava { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid var(--border); }
+  .test-ava img { width: 100%; height: 100%; object-fit: cover; }
   .test-name { font-size: 14px; font-weight: 700; }
   .test-role { font-size: 12px; color: var(--gray2); }
+  .slider-controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 32px; }
+  .slider-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border); background: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .slider-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .slider-dots { display: flex; gap: 8px; }
+  .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; }
+  .slider-dot.active { background: var(--blue); width: 24px; border-radius: 4px; }
 
   /* VENDING */
   .vending { background: white; }
@@ -303,7 +311,7 @@ function getHTML() {
     .feat-wrap { grid-template-columns: 1fr; }
     .feat-visual { height: 220px; }
     .cctv-wrap { grid-template-columns: 1fr; }
-    .test-grid { grid-template-columns: 1fr; }
+    .test-card { min-width: 280px; }
     .vend-wrap { grid-template-columns: 1fr; }
     .hero-stats { gap: 20px; flex-wrap: wrap; }
     footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; }
@@ -336,7 +344,7 @@ function getHTML() {
 <section class="hero">
   <div class="hero-dots"></div>
   <div class="hero-blob"></div>
-  <div class="sec-inner" style="display:flex;align-items:center;width:100%;gap:60px;">
+  <div class="sec-inner" style="width:100%;padding:80px 0;">
   <div class="hero-content">
     <div class="hero-badge">Smart Payment Solution</div>
     <h1>사장님의 매장을<br><span class="blue">완성하는</span><br>결제 파트너</h1>
@@ -350,12 +358,6 @@ function getHTML() {
       <div class="stat"><div class="stat-num">87</div><div class="stat-lbl">월평균 설치</div></div>
       <div class="stat"><div class="stat-num"><span>0</span>%</div><div class="stat-lbl">사고 발생률</div></div>
       <div class="stat"><div class="stat-num">28</div><div class="stat-lbl">협력 파트너사</div></div>
-    </div>
-  </div>
-  <div class="hero-img">
-    <div class="hero-img-inner">
-      <div>🖥️</div>
-      <div class="hero-img-tag">Smart POS System</div>
     </div>
   </div>
   </div>
@@ -459,10 +461,62 @@ function getHTML() {
   <div class="sec-tag">Reviews</div>
   <h2 class="sec-title">사장님들의 실제 후기</h2>
   <div class="blue-bar"></div>
-  <div class="test-grid">
-    <div class="test-card"><div class="test-stars">★★★★★</div><p>인터넷과 포스기를 함께 설치하니 훨씬 안정적이에요. 예약 시스템과 결제가 끊김 없이 운영되어 고객 응대가 훨씬 수월해졌습니다.</p><div class="test-author"><div class="test-ava">최</div><div><div class="test-name">최다은</div><div class="test-role">미용실 운영</div></div></div></div>
-    <div class="test-card"><div class="test-stars">★★★★★</div><p>24시간 운영 매장이라 안정성이 가장 중요한데 만족합니다. 문제 발생 시 빠른 대응이 큰 장점입니다. 사장님이 친절하시네요.</p><div class="test-author"><div class="test-ava">정</div><div><div class="test-name">정우성</div><div class="test-role">편의점 운영</div></div></div></div>
-    <div class="test-card"><div class="test-stars">★★★★★</div><p>포스기 설치 후 매장 운영이 훨씬 편해졌어요. 초보 사장도 쉽게 사용할 수 있어 만족합니다.</p><div class="test-author"><div class="test-ava">김</div><div><div class="test-name">김지훈</div><div class="test-role">카페 운영</div></div></div></div>
+  <div class="slider-wrap">
+    <div class="slider-track" id="sliderTrack">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p>인터넷과 포스기를 함께 설치하니 훨씬 안정적이에요. 예약 시스템과 결제가 끊김 없이 운영되어 고객 응대가 훨씬 수월해졌습니다. 설치 후 매출도 올라간 것 같아 정말 만족합니다.</p>
+        <div class="test-author">
+          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=choi&backgroundColor=b6e3f4" alt="최다은"></div>
+          <div><div class="test-name">최다은</div><div class="test-role">미용실 운영 · 서울 강남</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p>24시간 운영 매장이라 안정성이 가장 중요한데 만족합니다. 문제 발생 시 빠른 대응이 큰 장점입니다. 사장님이 친절하시고 설치도 깔끔하게 해주셨어요.</p>
+        <div class="test-author">
+          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=jung&backgroundColor=c0aede" alt="정우성"></div>
+          <div><div class="test-name">정우성</div><div class="test-role">편의점 운영 · 경기 수원</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p>포스기 설치 후 매장 운영이 훨씬 편해졌어요. 초보 사장도 쉽게 사용할 수 있어 만족합니다. 직원 교육도 따로 필요 없을 정도로 직관적이에요.</p>
+        <div class="test-author">
+          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=kim&backgroundColor=ffd5dc" alt="김지훈"></div>
+          <div><div class="test-name">김지훈</div><div class="test-role">카페 운영 · 부산 해운대</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p>키오스크 도입 후 주문 실수가 확 줄었어요. 손님들도 기다리지 않고 바로 주문하니까 회전율이 높아졌습니다. 투자 대비 효과가 정말 뛰어나요.</p>
+        <div class="test-author">
+          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=park&backgroundColor=d1f7c4" alt="박소연"></div>
+          <div><div class="test-name">박소연</div><div class="test-role">분식집 운영 · 인천 부평</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p>무선 카드단말기 덕분에 배달 결제가 너무 편해졌어요. 이전에는 단말기 들고 다니기 불편했는데 지금은 가볍고 배터리도 오래가서 아주 만족합니다.</p>
+        <div class="test-author">
+          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=lee&backgroundColor=ffecc7" alt="이민호"></div>
+          <div><div class="test-name">이민호</div><div class="test-role">치킨집 운영 · 대구 수성</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p>CCTV까지 함께 설치했는데 포스기와 연동되니까 의심 거래도 바로 확인할 수 있어요. 혼자 운영하는 매장인데 이제 집에서도 안심이 돼요.</p>
+        <div class="test-author">
+          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=han&backgroundColor=c9e8ff" alt="한지영"></div>
+          <div><div class="test-name">한지영</div><div class="test-role">네일샵 운영 · 서울 홍대</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slider-controls">
+    <button class="slider-btn" onclick="slideMove(-1)">←</button>
+    <div class="slider-dots" id="sliderDots"></div>
+    <button class="slider-btn" onclick="slideMove(1)">→</button>
   </div>
   </div>
 </section>
@@ -596,6 +650,44 @@ function getHTML() {
 </footer>
 
 <script>
+// 슬라이더
+let slideIndex = 0;
+const totalSlides = 6;
+const visibleSlides = 3;
+const maxIndex = totalSlides - visibleSlides;
+
+function initSlider() {
+  const dots = document.getElementById('sliderDots');
+  if (!dots) return;
+  dots.innerHTML = '';
+  for (let i = 0; i <= maxIndex; i++) {
+    const d = document.createElement('div');
+    d.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goToSlide(i);
+    dots.appendChild(d);
+  }
+}
+
+function goToSlide(idx) {
+  slideIndex = Math.max(0, Math.min(idx, maxIndex));
+  const track = document.getElementById('sliderTrack');
+  const cardWidth = 360 + 24;
+  track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
+  document.querySelectorAll('.slider-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === slideIndex);
+  });
+}
+
+function slideMove(dir) {
+  goToSlide(slideIndex + dir);
+}
+
+// 자동 슬라이드
+setInterval(() => slideMove(slideIndex < maxIndex ? 1 : -maxIndex), 4000);
+
+document.addEventListener('DOMContentLoaded', initSlider);
+if (document.readyState !== 'loading') initSlider();
+
 function toggleAcc(item) {
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.acc-item').forEach(i => {
