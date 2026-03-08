@@ -672,7 +672,7 @@ function goToSlide(idx) {
   slideIndex = Math.max(0, Math.min(idx, maxIndex));
   const track = document.getElementById('sliderTrack');
   const cardWidth = 360 + 24;
-  track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
+  track.style.transform = 'translateX(-' + (slideIndex * cardWidth) + 'px)';
   document.querySelectorAll('.slider-dot').forEach((d, i) => {
     d.classList.toggle('active', i === slideIndex);
   });
