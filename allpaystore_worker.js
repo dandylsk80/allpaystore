@@ -42,12 +42,13 @@ function getHTML() {
   /* NAV */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 0 80px; height: 68px;
-    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 68px;
+    display: flex; align-items: center; justify-content: center;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
+  .nav-inner { max-width: 1200px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
   .logo { font-size: 22px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
   .logo span { color: var(--blue); }
   .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -63,8 +64,8 @@ function getHTML() {
 
   /* HERO */
   .hero {
-    min-height: 100vh; padding: 68px 80px 0;
-    display: flex; align-items: center;
+    min-height: 100vh; padding: 68px 40px 0;
+    display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
     background: linear-gradient(160deg, #F8FAFF 0%, #FFFFFF 50%, #F0F7FF 100%);
   }
@@ -133,7 +134,8 @@ function getHTML() {
   }
 
   /* SECTIONS */
-  section { padding: 100px 80px; }
+  section { padding: 100px 40px; }
+  .sec-inner { max-width: 1200px; margin: 0 auto; }
   .sec-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
   h2.sec-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px; }
   .sec-desc { color: var(--gray); font-size: 16px; line-height: 1.7; }
@@ -284,7 +286,7 @@ function getHTML() {
   .contact-row a { color: white; text-decoration: none; font-weight: 600; }
 
   /* FOOTER */
-  footer { background: var(--dark); padding: 48px 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer { background: var(--dark); padding: 48px 40px; }
   .footer-logo { font-size: 20px; font-weight: 800; color: white; }
   .footer-logo span { color: var(--blue); }
   .footer-copy { font-size: 13px; color: #64748B; }
@@ -319,6 +321,7 @@ function getHTML() {
 <body>
 
 <nav>
+  <div class="nav-inner">
   <div class="logo">AllPay<span>Store</span></div>
   <ul class="nav-links">
     <li><a href="#products">제품</a></li>
@@ -327,11 +330,13 @@ function getHTML() {
     <li><a href="#cta">문의</a></li>
   </ul>
   <button class="nav-cta" onclick="location.href='#cta'">무료 견적 받기</button>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="hero-dots"></div>
   <div class="hero-blob"></div>
+  <div class="sec-inner" style="display:flex;align-items:center;width:100%;gap:60px;">
   <div class="hero-content">
     <div class="hero-badge">Smart Payment Solution</div>
     <h1>사장님의 매장을<br><span class="blue">완성하는</span><br>결제 파트너</h1>
@@ -353,9 +358,11 @@ function getHTML() {
       <div class="hero-img-tag">Smart POS System</div>
     </div>
   </div>
+  </div>
 </section>
 
 <section class="products" id="products">
+  <div class="sec-inner">
   <div class="prod-head">
     <div class="sec-tag">Product Lineup</div>
     <h2 class="sec-title">매장에 딱 맞는 스마트 결제 라인업</h2>
@@ -373,9 +380,11 @@ function getHTML() {
     <div class="prod-card"><div class="prod-icon">🖥</div><h3>공간절약형 미니키오스크</h3><p>카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</p><div class="prod-more">자세히 보기 →</div></div>
     <div class="prod-card"><div class="prod-icon">🤖</div><h3>스마트 무인결제 키오스크</h3><p>직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</p><div class="prod-more">자세히 보기 →</div></div>
   </div>
+  </div>
 </section>
 
 <section class="features" id="features">
+  <div class="sec-inner">
   <div class="feat-wrap">
     <div class="feat-visual">
       <div class="feat-visual-icon">💼</div>
@@ -394,9 +403,11 @@ function getHTML() {
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <section class="partners" id="partners">
+  <div class="sec-inner">
   <div class="sec-tag">Partnership</div>
   <h2 class="sec-title">결제 라인 파트너사</h2>
   <div class="blue-bar" style="margin:16px auto"></div>
@@ -413,9 +424,11 @@ function getHTML() {
     <div class="partner-logo">SK매직</div>
     <div class="partner-logo">KT올레</div>
   </div>
+  </div>
 </section>
 
 <section class="cctv">
+  <div class="sec-inner">
   <div class="sec-tag">Security</div>
   <h2 class="sec-title">스마트 매장 안심 CCTV</h2>
   <div class="blue-bar"></div>
@@ -438,9 +451,11 @@ function getHTML() {
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <section class="testimonials">
+  <div class="sec-inner">
   <div class="sec-tag">Reviews</div>
   <h2 class="sec-title">사장님들의 실제 후기</h2>
   <div class="blue-bar"></div>
@@ -449,9 +464,11 @@ function getHTML() {
     <div class="test-card"><div class="test-stars">★★★★★</div><p>24시간 운영 매장이라 안정성이 가장 중요한데 만족합니다. 문제 발생 시 빠른 대응이 큰 장점입니다. 사장님이 친절하시네요.</p><div class="test-author"><div class="test-ava">정</div><div><div class="test-name">정우성</div><div class="test-role">편의점 운영</div></div></div></div>
     <div class="test-card"><div class="test-stars">★★★★★</div><p>포스기 설치 후 매장 운영이 훨씬 편해졌어요. 초보 사장도 쉽게 사용할 수 있어 만족합니다.</p><div class="test-author"><div class="test-ava">김</div><div><div class="test-name">김지훈</div><div class="test-role">카페 운영</div></div></div></div>
   </div>
+  </div>
 </section>
 
 <section class="vending">
+  <div class="sec-inner">
   <div class="sec-tag">Vending Machine</div>
   <h2 class="sec-title">24시간 무인매장의 혁신<br>LK 광고형 홈타운 밴딩머신</h2>
   <div class="blue-bar"></div>
@@ -472,9 +489,11 @@ function getHTML() {
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <section class="demolition">
+  <div class="sec-inner">
   <div class="sec-tag">Demolition Solution</div>
   <h2 class="sec-title">AllPayStore 철거 솔루션</h2>
   <div class="blue-bar"></div>
@@ -534,9 +553,11 @@ function getHTML() {
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <section class="numbers">
+  <div class="sec-inner">
   <div class="sec-tag">Some Numbers</div>
   <h2 class="sec-title">숫자로 증명하는 신뢰</h2>
   <div class="blue-bar" style="margin:16px auto"></div>
@@ -547,9 +568,11 @@ function getHTML() {
     <div class="number-item"><div class="number-big">0%</div><div class="number-desc">사고<br>발생률</div></div>
     <div class="number-item"><div class="number-big">1,500</div><div class="number-desc">최근 1년간<br>1,500+건의 실적</div></div>
   </div>
+  </div>
 </section>
 
 <section class="cta" id="cta">
+  <div class="sec-inner">
   <div class="sec-tag">Get Started</div>
   <h2 class="sec-title">지금 바로 전문가의 추천을 받아보세요</h2>
   <div class="blue-bar" style="margin:16px auto 20px; background:rgba(255,255,255,0.4)"></div>
@@ -562,11 +585,14 @@ function getHTML() {
     <span>📧 <a href="mailto:dandylsk@naver.com">dandylsk@naver.com</a></span>
     <span>📞 <a href="tel:010-9876-8282">010-9876-8282</a></span>
   </div>
+  </div>
 </section>
 
 <footer>
+  <div class="sec-inner" style="display:flex;justify-content:space-between;align-items:center;">
   <div class="footer-logo">AllPay<span>Store</span></div>
   <div class="footer-copy">© 2025 AllPayStore. All rights reserved. | allpaystore.com</div>
+  </div>
 </footer>
 
 <script>
