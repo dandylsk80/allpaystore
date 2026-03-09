@@ -1,14 +1,11 @@
 export default {
   async fetch(request) {
     const url = new URL(request.url);
-
-    // 라우팅
     if (url.pathname === '/' || url.pathname === '/index.html') {
       return new Response(getHTML(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' },
       });
     }
-
     return new Response('Not Found', { status: 404 });
   },
 };
@@ -19,686 +16,647 @@ function getHTML() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AllPayStore - 포스기 카드단말기 전문</title>
-<meta name="description" content="포스기부터 카드단말기, 키오스크, CCTV까지. 매장 운영에 필요한 모든 솔루션을 한 곳에서. AllPayStore">
-<meta name="keywords" content="포스기,카드단말기,키오스크,CCTV,무인결제,테이블오더,올인원포스">
-<link rel="canonical" href="https://allpaystore.com/">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<title>AllPayStore | 포스기·카드단말기·키오스크 전문</title>
+<meta name="description" content="포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --blue: #1A6BFF;
-    --blue2: #0051CC;
-    --blue-light: #EEF4FF;
-    --dark: #0F172A;
-    --gray: #64748B;
-    --gray2: #94A3B8;
-    --gray3: #F1F5F9;
-    --white: #FFFFFF;
-    --border: #E2E8F0;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--white); color: var(--dark); font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; color:#111; background:#fff; }
+a { text-decoration:none; color:inherit; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 0 40px; height: 88px;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner { max-width: 1200px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-size: 22px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px; }
-  .logo span { color: var(--blue); }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--blue); }
-  .nav-cta {
-    background: var(--blue); color: white; border: none;
-    padding: 10px 24px; border-radius: 8px;
-    font-size: 14px; font-weight: 600; cursor: pointer;
-    transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif;
-  }
-  .nav-cta:hover { background: var(--blue2); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,107,255,0.3); }
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; width:100%; z-index:1000;
+  background:rgba(255,255,255,0.97); backdrop-filter:blur(10px);
+  border-bottom:1px solid #e8e8e8;
+  height:80px; display:flex; align-items:center;
+}
+.nav-inner {
+  max-width:1300px; margin:0 auto; width:100%; padding:0 40px;
+  display:flex; align-items:center; gap:48px;
+}
+.logo { font-size:26px; font-weight:900; color:#111; letter-spacing:-1px; flex-shrink:0; }
+.logo span { color:#1A6BFF; }
+.nav-links { display:flex; gap:32px; list-style:none; flex:1; }
+.nav-links a { font-size:15px; font-weight:500; color:#333; transition:color 0.2s; }
+.nav-links a:hover { color:#1A6BFF; }
+.nav-right { display:flex; align-items:center; gap:16px; margin-left:auto; }
+.nav-consult {
+  background:#1A6BFF; color:#fff; border:none; padding:10px 22px;
+  border-radius:6px; font-size:14px; font-weight:700; cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif; transition:background 0.2s;
+}
+.nav-consult:hover { background:#0052cc; }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh; padding: 88px 40px 0;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-    background: linear-gradient(160deg, #F8FAFF 0%, #FFFFFF 50%, #F0F7FF 100%);
-  }
-  .hero-dots {
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
-    background-size: 32px 32px; opacity: 0.4;
-  }
-  .hero-blob {
-    position: absolute; right: -100px; top: 50%; transform: translateY(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(ellipse, rgba(26,107,255,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 620px; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--blue-light); color: var(--blue);
-    padding: 6px 14px; border-radius: 100px;
-    font-size: 12px; font-weight: 600; margin-bottom: 32px;
-  }
-  .hero-badge::before { content: '●'; font-size: 8px; animation: blink 1.5s infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-  .hero h1 {
-    font-size: clamp(40px, 5.5vw, 68px); font-weight: 800;
-    line-height: 1.15; letter-spacing: -1.5px; margin-bottom: 20px;
-  }
-  .hero h1 .blue { color: var(--blue); }
-  .hero p {
-    font-size: 17px; color: var(--gray); line-height: 1.8;
-    margin-bottom: 40px; max-width: 500px;
-  }
-  .hero-btns { display: flex; gap: 12px; margin-bottom: 60px; }
-  .btn-primary {
-    background: var(--blue); color: white; border: none;
-    padding: 15px 32px; border-radius: 10px; font-size: 15px; font-weight: 700;
-    cursor: pointer; transition: all 0.25s; font-family: 'Noto Sans KR', sans-serif;
-    box-shadow: 0 4px 20px rgba(26,107,255,0.25);
-  }
-  .btn-primary:hover { background: var(--blue2); transform: translateY(-2px); }
-  .btn-secondary {
-    background: white; color: var(--dark); border: 1.5px solid var(--border);
-    padding: 15px 32px; border-radius: 10px; font-size: 15px; font-weight: 600;
-    cursor: pointer; transition: all 0.25s; font-family: 'Noto Sans KR', sans-serif;
-  }
-  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
-  .hero-stats { display: flex; gap: 40px; padding-top: 40px; border-top: 1px solid var(--border); }
-  .stat-num { font-size: 32px; font-weight: 800; color: var(--dark); letter-spacing: -1px; }
-  .stat-num span { color: var(--blue); }
-  .stat-lbl { font-size: 13px; color: var(--gray2); margin-top: 2px; }
-  .hero-img {
-    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
-    width: 480px; height: 380px; background: white; border-radius: 24px;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.1), 0 0 0 1px var(--border);
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
-  }
-  .hero-img-inner {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, var(--blue-light) 0%, white 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 80px; flex-direction: column; gap: 16px;
-  }
-  .hero-img-tag {
-    font-size: 14px; font-weight: 600; color: var(--blue);
-    background: var(--blue-light); padding: 8px 20px; border-radius: 100px;
-  }
+/* HERO SLIDER */
+.hero { position:relative; width:100%; height:100vh; min-height:600px; overflow:hidden; margin-top:80px; }
+.hero-slides { display:flex; height:100%; transition:transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.hero-slide {
+  min-width:100%; height:100%; position:relative;
+  display:flex; align-items:center;
+}
+.hero-slide-bg {
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+}
+.hero-slide-bg::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+.hero-content {
+  position:relative; z-index:2;
+  max-width:1300px; margin:0 auto; width:100%; padding:0 40px;
+}
+.hero-label {
+  display:inline-block; background:rgba(26,107,255,0.9); color:#fff;
+  font-size:13px; font-weight:700; padding:5px 14px; border-radius:4px;
+  margin-bottom:20px; letter-spacing:1px;
+}
+.hero-title {
+  font-size:clamp(36px,5vw,68px); font-weight:900; color:#fff;
+  line-height:1.15; margin-bottom:20px; letter-spacing:-2px;
+}
+.hero-desc {
+  font-size:clamp(15px,1.5vw,20px); color:rgba(255,255,255,0.88);
+  margin-bottom:36px; line-height:1.7;
+}
+.hero-btns { display:flex; gap:14px; }
+.btn-hero-primary {
+  background:#1A6BFF; color:#fff; border:none; padding:16px 32px;
+  border-radius:6px; font-size:16px; font-weight:700; cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif; transition:all 0.2s;
+}
+.btn-hero-primary:hover { background:#0052cc; }
+.btn-hero-secondary {
+  background:rgba(255,255,255,0.15); color:#fff;
+  border:2px solid rgba(255,255,255,0.7); padding:16px 32px;
+  border-radius:6px; font-size:16px; font-weight:600; cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif; transition:all 0.2s; backdrop-filter:blur(4px);
+}
+.btn-hero-secondary:hover { background:rgba(255,255,255,0.25); }
+.hero-dots {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+  display:flex; gap:10px; z-index:10;
+}
+.hero-dot {
+  width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.5);
+  cursor:pointer; transition:all 0.3s;
+}
+.hero-dot.active { background:#fff; width:28px; border-radius:4px; }
+.hero-arrow {
+  position:absolute; top:50%; transform:translateY(-50%); z-index:10;
+  width:52px; height:52px; background:rgba(255,255,255,0.15); border:none;
+  border-radius:50%; color:#fff; font-size:20px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  backdrop-filter:blur(4px); transition:background 0.2s;
+}
+.hero-arrow:hover { background:rgba(255,255,255,0.3); }
+.hero-arrow-left { left:32px; }
+.hero-arrow-right { right:32px; }
 
-  /* SECTIONS */
-  section { padding: 100px 40px; }
-  .sec-inner { max-width: 1200px; margin: 0 auto; }
-  .sec-tag { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
-  h2.sec-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px; }
-  .sec-desc { color: var(--gray); font-size: 16px; line-height: 1.7; }
-  .blue-bar { width: 48px; height: 4px; background: var(--blue); border-radius: 2px; margin: 16px 0; }
+/* SECTION COMMON */
+.sec { padding:100px 40px; }
+.sec-inner { max-width:1300px; margin:0 auto; }
+.sec-top { text-align:center; margin-bottom:60px; }
+.sec-top h2 { font-size:clamp(28px,3vw,42px); font-weight:900; letter-spacing:-1px; margin-bottom:12px; }
+.sec-top p { font-size:16px; color:#666; }
 
-  /* PRODUCTS */
-  .products { background: var(--gray3); }
-  .prod-head { text-align: center; margin-bottom: 60px; }
-  .prod-head .blue-bar { margin: 16px auto; }
-  .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .prod-card {
-    background: white; border-radius: 16px; padding: 32px;
-    border: 1.5px solid var(--border); transition: all 0.25s; cursor: pointer;
-    position: relative; overflow: hidden;
-  }
-  .prod-card::before {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 100%; height: 3px; background: var(--blue);
-    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-  }
-  .prod-card:hover { border-color: var(--blue); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(26,107,255,0.1); }
-  .prod-card:hover::before { transform: scaleX(1); }
-  .prod-icon { width: 52px; height: 52px; background: var(--blue-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
-  .prod-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
-  .prod-card p { color: var(--gray); font-size: 13px; line-height: 1.7; }
-  .prod-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 13px; font-weight: 600; color: var(--blue); }
+/* INDUSTRY */
+.industry { background:#f8f9fa; }
+.industry-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.industry-card-lg {
+  border-radius:16px; overflow:hidden; background:#fff;
+  border:1px solid #eee; cursor:pointer; transition:all 0.25s;
+}
+.industry-card-lg:hover { box-shadow:0 12px 40px rgba(0,0,0,0.1); transform:translateY(-3px); }
+.ind-img { width:100%; height:220px; display:flex; align-items:center; justify-content:center; font-size:72px; }
+.ind-body { padding:24px 28px; }
+.ind-title-bar { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.ind-bar { width:4px; height:22px; background:#1A6BFF; border-radius:2px; }
+.ind-title { font-size:20px; font-weight:800; }
+.ind-tags { display:flex; flex-wrap:wrap; gap:8px; }
+.ind-tag { background:#f0f5ff; color:#1A6BFF; font-size:13px; font-weight:600; padding:5px 12px; border-radius:20px; }
+.industry-grid-sm { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:20px; }
+.industry-card-sm {
+  border-radius:16px; overflow:hidden; background:#fff;
+  border:1px solid #eee; cursor:pointer; transition:all 0.25s;
+}
+.industry-card-sm:hover { box-shadow:0 8px 30px rgba(0,0,0,0.1); transform:translateY(-3px); }
+.ind-img-sm { width:100%; height:160px; display:flex; align-items:center; justify-content:center; font-size:48px; }
+.ind-body-sm { padding:16px 20px; }
+.ind-title-bar-sm { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.ind-title-sm { font-size:16px; font-weight:800; }
+.ind-tags-sm { display:flex; flex-wrap:wrap; gap:6px; }
+.ind-tag-sm { background:#f0f5ff; color:#1A6BFF; font-size:12px; font-weight:600; padding:3px 10px; border-radius:20px; }
 
-  /* FEATURES */
-  .features { background: white; }
-  .feat-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .feat-list { display: grid; gap: 20px; }
-  .feat-item { display: flex; gap: 20px; padding: 24px; border: 1.5px solid var(--border); border-radius: 14px; transition: all 0.25s; }
-  .feat-item:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(26,107,255,0.08); }
-  .feat-ico { width: 44px; height: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-  .feat-item h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .feat-item p { font-size: 13px; color: var(--gray); line-height: 1.6; }
-  .feat-visual { background: linear-gradient(135deg, var(--blue-light) 0%, #EEF2FF 100%); border-radius: 24px; height: 480px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px; border: 1px solid rgba(26,107,255,0.1); }
-  .feat-visual-icon { font-size: 80px; }
-  .feat-visual-txt { font-size: 16px; font-weight: 700; color: var(--blue); }
+/* PRODUCTS */
+.products { background:#fff; }
+.prod-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.prod-card {
+  border-radius:16px; border:1.5px solid #eee;
+  overflow:hidden; cursor:pointer; transition:all 0.25s;
+}
+.prod-card:hover { border-color:#1A6BFF; box-shadow:0 8px 32px rgba(26,107,255,0.1); transform:translateY(-4px); }
+.prod-img { width:100%; height:180px; display:flex; align-items:center; justify-content:center; font-size:56px; background:linear-gradient(135deg,#f8f9fa,#e9ecef); }
+.prod-body { padding:22px; }
+.prod-name { font-size:17px; font-weight:800; margin-bottom:8px; }
+.prod-desc { font-size:13px; color:#666; line-height:1.7; margin-bottom:14px; }
+.prod-more { color:#1A6BFF; font-size:13px; font-weight:700; }
 
-  /* PARTNERS */
-  .partners { background: var(--gray3); text-align: center; }
-  .partner-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 48px; }
-  .partner-logo { background: white; border: 1.5px solid var(--border); padding: 20px 36px; border-radius: 12px; font-size: 16px; font-weight: 700; color: var(--gray); transition: all 0.2s; }
-  .partner-logo:hover { border-color: var(--blue); color: var(--blue); box-shadow: 0 4px 16px rgba(26,107,255,0.1); }
+/* SERVICES */
+.services { background:#f8f9fa; }
+.serv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.serv-card {
+  border-radius:16px; overflow:hidden; position:relative; cursor:pointer;
+  aspect-ratio:4/3; transition:transform 0.25s;
+}
+.serv-card:hover { transform:translateY(-4px); }
+.serv-card:hover .serv-overlay { background:rgba(0,0,0,0.15); }
+.serv-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:56px; }
+.serv-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.35); transition:background 0.3s; }
+.serv-label {
+  position:absolute; top:20px; left:20px; z-index:2;
+  background:rgba(255,255,255,0.15); backdrop-filter:blur(8px);
+  color:#fff; font-size:14px; font-weight:700; padding:6px 14px;
+  border-radius:6px; border:1px solid rgba(255,255,255,0.2);
+}
 
-  /* CCTV */
-  .cctv { background: white; }
-  .cctv-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
-  .cctv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .cctv-card { background: var(--gray3); border-radius: 16px; padding: 28px 20px; text-align: center; border: 1.5px solid transparent; transition: all 0.25s; }
-  .cctv-card:hover { border-color: var(--blue); background: var(--blue-light); }
-  .cctv-card .ico { font-size: 32px; margin-bottom: 12px; }
-  .cctv-card p { font-size: 13px; color: var(--gray); line-height: 1.5; }
-  .cctv-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
-  .badge { padding: 8px 16px; background: var(--blue-light); color: var(--blue); border-radius: 100px; font-size: 13px; font-weight: 600; }
+/* CASES */
+.cases { background:#fff; }
+.cases-slider-wrap { overflow:hidden; }
+.cases-track { display:flex; gap:20px; transition:transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.case-card {
+  min-width:300px; border-radius:16px; overflow:hidden;
+  position:relative; cursor:pointer; aspect-ratio:3/4; flex-shrink:0; transition:transform 0.25s;
+}
+.case-card:hover { transform:translateY(-4px); }
+.case-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:64px; }
+.case-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+.case-badge {
+  position:absolute; top:20px; left:20px;
+  background:#FF6B35; color:#fff; font-size:12px; font-weight:700; padding:4px 12px; border-radius:4px;
+}
+.case-info { position:absolute; bottom:24px; left:24px; right:24px; z-index:2; color:#fff; }
+.case-type { font-size:22px; font-weight:900; margin-bottom:6px; }
+.case-place { font-size:13px; color:rgba(255,255,255,0.75); }
+.cases-nav { display:flex; justify-content:center; align-items:center; gap:16px; margin-top:32px; }
+.cases-btn {
+  width:44px; height:44px; border-radius:50%; border:1.5px solid #ddd;
+  background:#fff; font-size:18px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+}
+.cases-btn:hover { border-color:#1A6BFF; color:#1A6BFF; }
+.cases-dots { display:flex; gap:8px; }
+.cases-dot { width:8px; height:8px; border-radius:50%; background:#ddd; cursor:pointer; transition:all 0.2s; }
+.cases-dot.active { background:#1A6BFF; width:24px; border-radius:4px; }
+.more-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1.5px solid #ddd; background:#fff; color:#333;
+  padding:10px 22px; border-radius:24px; font-size:14px; font-weight:600;
+  cursor:pointer; font-family:'Noto Sans KR',sans-serif; transition:all 0.2s; margin-bottom:40px;
+}
+.more-btn:hover { border-color:#1A6BFF; color:#1A6BFF; }
 
-  /* TESTIMONIALS */
-  .testimonials { background: var(--gray3); }
-  .slider-wrap { position: relative; overflow: hidden; margin-top: 48px; }
-  .slider-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
-  .test-card { background: white; border-radius: 16px; padding: 32px; border: 1.5px solid var(--border); min-width: 360px; flex-shrink: 0; }
-  .test-card:hover { border-color: var(--blue); box-shadow: 0 8px 30px rgba(26,107,255,0.08); }
-  .test-stars { color: #FBBF24; font-size: 14px; margin-bottom: 16px; }
-  .test-card p { font-size: 14px; color: var(--gray); line-height: 1.8; margin-bottom: 24px; }
-  .test-author { display: flex; align-items: center; gap: 12px; }
-  .test-ava { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid var(--border); }
-  .test-ava img { width: 100%; height: 100%; object-fit: cover; }
-  .test-name { font-size: 14px; font-weight: 700; }
-  .test-role { font-size: 12px; color: var(--gray2); }
-  .slider-controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 32px; }
-  .slider-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border); background: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-  .slider-btn:hover { border-color: var(--blue); color: var(--blue); }
-  .slider-dots { display: flex; gap: 8px; }
-  .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; }
-  .slider-dot.active { background: var(--blue); width: 24px; border-radius: 4px; }
+/* REVIEWS */
+.reviews { background:#f8f9fa; }
+.review-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.review-card { background:#fff; border-radius:14px; padding:24px; border:1px solid #eee; }
+.rev-stars { color:#FBBF24; font-size:14px; margin-bottom:10px; }
+.rev-id { font-size:13px; color:#999; margin-bottom:10px; font-weight:600; }
+.rev-text { font-size:14px; color:#444; line-height:1.7; }
 
-  /* VENDING */
-  .vending { background: white; }
-  .vend-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
-  .vend-list { display: grid; gap: 16px; }
-  .vend-item { display: flex; gap: 16px; padding: 20px 24px; background: var(--gray3); border-radius: 14px; border: 1.5px solid transparent; transition: all 0.25s; }
-  .vend-item:hover { border-color: var(--blue); background: var(--blue-light); }
-  .vend-ico { font-size: 22px; }
-  .vend-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-  .vend-item p { font-size: 12px; color: var(--gray); }
-  .vend-spaces { background: var(--gray3); border-radius: 20px; padding: 36px; }
-  .vend-spaces h3 { font-size: 18px; font-weight: 800; margin-bottom: 20px; }
-  .spaces-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .space-item { background: white; border-radius: 10px; padding: 12px; text-align: center; font-size: 13px; color: var(--gray); border: 1.5px solid var(--border); font-weight: 500; transition: all 0.2s; }
-  .space-item:hover { border-color: var(--blue); color: var(--blue); }
+/* PARTNERS */
+.partners { background:#fff; padding:60px 0; overflow:hidden; }
+.partners-title { text-align:center; font-size:14px; font-weight:700; color:#999; letter-spacing:2px; margin-bottom:32px; }
+.partners-track-wrap { overflow:hidden; }
+.partners-track {
+  display:flex; gap:48px; align-items:center;
+  animation:scrollLeft 20s linear infinite; width:max-content;
+}
+.partners-track:hover { animation-play-state:paused; }
+@keyframes scrollLeft {
+  0% { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
+}
+.partner-item {
+  font-size:17px; font-weight:800; color:#555; white-space:nowrap;
+  padding:12px 28px; background:#f8f9fa; border-radius:8px;
+  border:1px solid #eee; flex-shrink:0; transition:all 0.2s;
+}
+.partner-item:hover { color:#1A6BFF; border-color:#1A6BFF; background:#f0f5ff; }
 
-  /* DEMOLITION */
-  .demolition { background: var(--gray3); }
-  .demo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
-  .demo-img {
-    border-radius: 20px; overflow: hidden; position: relative;
-    height: 480px; background: #1a1a1a;
-    display: flex; align-items: flex-end;
-  }
-  .demo-img-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
-  }
-  .demo-img-text {
-    position: relative; z-index: 2; padding: 32px;
-    color: white; font-size: 24px; font-weight: 800; line-height: 1.3;
-  }
-  .demo-img-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, #2d1b00, #1a0a00);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 100px;
-  }
-  .demo-right h3 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
-  .demo-right .demo-sub { color: var(--gray); font-size: 15px; line-height: 1.7; margin-bottom: 28px; }
-  .accordion { display: grid; gap: 10px; }
-  .acc-item { background: white; border-radius: 12px; border: 1.5px solid var(--border); overflow: hidden; transition: border-color 0.2s; }
-  .acc-item.open { border-color: var(--blue); }
-  .acc-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 24px; cursor: pointer; transition: background 0.2s;
-  }
-  .acc-header:hover { background: var(--blue-light); }
-  .acc-title { font-size: 15px; font-weight: 700; color: var(--dark); }
-  .acc-item.open .acc-title { color: var(--blue); }
-  .acc-icon {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--blue-light); color: var(--blue);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 700; flex-shrink: 0; transition: all 0.2s;
-  }
-  .acc-item.open .acc-icon { background: var(--blue); color: white; }
-  .acc-body { display: none; padding: 0 24px 20px; color: var(--gray); font-size: 14px; line-height: 1.7; }
-  .acc-item.open .acc-body { display: block; }
+/* NUMBERS */
+.numbers { background:#1A6BFF; padding:80px 40px; }
+.numbers-inner { max-width:1300px; margin:0 auto; }
+.numbers-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+.number-item { text-align:center; padding:40px 20px; border-right:1px solid rgba(255,255,255,0.2); }
+.number-item:last-child { border-right:none; }
+.number-big { font-size:clamp(40px,4vw,60px); font-weight:900; color:#fff; letter-spacing:-2px; margin-bottom:10px; }
+.number-big span { color:#7DD3FC; }
+.number-desc { font-size:15px; color:rgba(255,255,255,0.8); line-height:1.6; }
 
-  /* NUMBERS */
-  .numbers { background: var(--blue-light); text-align: center; }
-  .numbers-grid { display: flex; gap: 0; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
-  .number-item { padding: 40px 60px; border-right: 1px solid rgba(26,107,255,0.15); }
-  .number-item:last-child { border-right: none; }
-  .number-big { font-size: 52px; font-weight: 900; color: var(--blue); letter-spacing: -2px; line-height: 1; }
-  .number-desc { font-size: 13px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+/* CTA */
+.cta-banner { background:linear-gradient(135deg,#0f0c29,#302b63,#24243e); padding:100px 40px; text-align:center; }
+.cta-banner h2 { font-size:clamp(28px,3.5vw,48px); font-weight:900; color:#fff; letter-spacing:-1px; margin-bottom:16px; }
+.cta-banner p { font-size:18px; color:rgba(255,255,255,0.75); margin-bottom:40px; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-cta-yellow {
+  background:#FBBF24; color:#111; border:none; padding:18px 40px;
+  border-radius:8px; font-size:17px; font-weight:800; cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif; transition:all 0.2s;
+}
+.btn-cta-yellow:hover { background:#F59E0B; }
+.btn-cta-white {
+  background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.5);
+  padding:18px 40px; border-radius:8px; font-size:17px; font-weight:700;
+  cursor:pointer; font-family:'Noto Sans KR',sans-serif; transition:all 0.2s;
+}
+.btn-cta-white:hover { background:rgba(255,255,255,0.1); }
 
-  /* CTA */
-  .cta { background: linear-gradient(135deg, var(--blue) 0%, var(--blue2) 100%); text-align: center; color: white; }
-  .cta .sec-tag { color: rgba(255,255,255,0.7); }
-  .cta h2 { color: white; }
-  .cta .sec-desc { color: rgba(255,255,255,0.8); max-width: 480px; margin: 0 auto 40px; }
-  .cta-btns { display: flex; gap: 12px; justify-content: center; margin-bottom: 48px; }
-  .btn-white { background: white; color: var(--blue); border: none; padding: 15px 36px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.25s; font-family: 'Noto Sans KR', sans-serif; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-  .btn-wout { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); padding: 15px 36px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.25s; font-family: 'Noto Sans KR', sans-serif; }
-  .btn-wout:hover { border-color: white; }
-  .contact-row { display: flex; gap: 32px; justify-content: center; font-size: 14px; color: rgba(255,255,255,0.7); }
-  .contact-row a { color: white; text-decoration: none; font-weight: 600; }
+/* FIXED BAR */
+.consult-bar {
+  position:fixed; bottom:0; left:0; width:100%; z-index:999;
+  background:#E53935; padding:14px 40px;
+  display:flex; align-items:center; justify-content:center; gap:20px;
+}
+.consult-bar-text { color:#fff; font-size:16px; font-weight:700; }
+.consult-bar-phone {
+  background:#fff; color:#E53935; border:none; padding:10px 28px;
+  border-radius:24px; font-size:15px; font-weight:800; cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif; display:flex; align-items:center; gap:8px;
+}
+.consult-bar-phone:hover { background:#fff3f3; }
+.consult-bar-kakao {
+  background:#FEE500; color:#3C1E1E; border:none; padding:10px 24px;
+  border-radius:24px; font-size:15px; font-weight:800; cursor:pointer;
+  font-family:'Noto Sans KR',sans-serif; display:flex; align-items:center; gap:8px;
+}
+.consult-bar-kakao:hover { background:#FFD700; }
 
-  /* FOOTER */
-  footer { background: var(--dark); padding: 48px 40px; }
-  .footer-logo { font-size: 20px; font-weight: 800; color: white; }
-  .footer-logo span { color: var(--blue); }
-  .footer-copy { font-size: 13px; color: #64748B; }
+/* FOOTER */
+footer { background:#111; padding:60px 40px 100px; }
+.footer-inner { max-width:1300px; margin:0 auto; }
+.footer-logo { font-size:24px; font-weight:900; color:#fff; margin-bottom:16px; }
+.footer-logo span { color:#1A6BFF; }
+.footer-info { font-size:13px; color:#666; line-height:2; }
+.footer-copy { margin-top:32px; padding-top:24px; border-top:1px solid #222; font-size:13px; color:#444; }
 
-  /* MOBILE */
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    section { padding: 60px 20px; }
-    .hero { padding: 88px 20px 60px; }
-    .hero-img { display: none; }
-    .hero h1 { font-size: 36px; }
-    .prod-grid { grid-template-columns: 1fr; }
-    .feat-wrap { grid-template-columns: 1fr; }
-    .feat-visual { height: 220px; }
-    .cctv-wrap { grid-template-columns: 1fr; }
-    .test-card { min-width: 280px; }
-    .vend-wrap { grid-template-columns: 1fr; }
-    .hero-stats { gap: 20px; flex-wrap: wrap; }
-    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; }
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-  .hero-badge{animation:fadeUp .5s ease .1s both}
-  .hero h1{animation:fadeUp .5s ease .25s both}
-  .hero p{animation:fadeUp .5s ease .4s both}
-  .hero-btns{animation:fadeUp .5s ease .55s both}
-  .hero-stats{animation:fadeUp .5s ease .7s both}
+/* MOBILE */
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .nav-inner { padding:0 20px; }
+  .hero { height:70vh; }
+  .hero-content { padding:0 20px; }
+  .sec { padding:60px 20px; }
+  .industry-grid { grid-template-columns:1fr; }
+  .industry-grid-sm { grid-template-columns:repeat(2,1fr); }
+  .prod-grid { grid-template-columns:1fr; }
+  .serv-grid { grid-template-columns:1fr; }
+  .review-grid { grid-template-columns:repeat(2,1fr); }
+  .numbers-grid { grid-template-columns:repeat(2,1fr); }
+  .number-item { border-right:none; border-bottom:1px solid rgba(255,255,255,0.2); }
+  .consult-bar { padding:12px 20px; gap:10px; }
+  .consult-bar-text { display:none; }
+  footer { padding:40px 20px 100px; }
+}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-  <div class="logo">AllPay<span>Store</span></div>
-  <ul class="nav-links">
-    <li><a href="#products">제품</a></li>
-    <li><a href="#features">서비스</a></li>
-    <li><a href="#partners">파트너</a></li>
-    <li><a href="#cta">문의</a></li>
-  </ul>
-  <button class="nav-cta" onclick="location.href='#cta'">무료 견적 받기</button>
+    <div class="logo">AllPay<span>Store</span></div>
+    <ul class="nav-links">
+      <li><a href="#industry">업종별 추천</a></li>
+      <li><a href="#products">제품 라인업</a></li>
+      <li><a href="#services">매장관리솔루션</a></li>
+      <li><a href="#cases">설치 사례</a></li>
+      <li><a href="#cta">문의하기</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-consult" onclick="location.href='tel:010-9876-8282'">📞 무료 상담</button>
+    </div>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-dots"></div>
-  <div class="hero-blob"></div>
-  <div class="sec-inner" style="width:100%;padding:80px 0;">
-  <div class="hero-content">
-    <div class="hero-badge">Smart Payment Solution</div>
-    <h1>사장님의 매장을<br><span class="blue">완성하는</span><br>결제 파트너</h1>
-    <p>포스기부터 카드단말기, 키오스크, CCTV까지.<br>매장 운영에 필요한 모든 솔루션을 한 곳에서.</p>
-    <div class="hero-btns">
-      <button class="btn-primary" onclick="location.href='#cta'">무료 견적 받기</button>
-      <button class="btn-secondary" onclick="location.href='#products'">제품 둘러보기 →</button>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">1,499<span>+</span></div><div class="stat-lbl">누적 설치 실적</div></div>
-      <div class="stat"><div class="stat-num">87</div><div class="stat-lbl">월평균 설치</div></div>
-      <div class="stat"><div class="stat-num"><span>0</span>%</div><div class="stat-lbl">사고 발생률</div></div>
-      <div class="stat"><div class="stat-num">28</div><div class="stat-lbl">협력 파트너사</div></div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section class="products" id="products">
-  <div class="sec-inner">
-  <div class="prod-head">
-    <div class="sec-tag">Product Lineup</div>
-    <h2 class="sec-title">매장에 딱 맞는 스마트 결제 라인업</h2>
-    <div class="blue-bar"></div>
-    <p class="sec-desc">검증된 하드웨어로 더 쉽고 빠른 결제 환경을 경험하세요</p>
-  </div>
-  <div class="prod-grid">
-    <div class="prod-card"><div class="prod-icon">🖥️</div><h3>올인원 포스시스템</h3><p>어떤 업종도 OK. 실시간 매출 분석까지 한 번에 관리합니다.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">💳</div><h3>자동커팅 단말기</h3><p>빠른 영수증 출력과 자동 커팅 기능으로 매장 회전율을 높여줍니다.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">📱</div><h3>컴팩트 실속형 단말기</h3><p>좁은 카운터에서도 공간 활용이 뛰어난 소규모 매장 최적 모델.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">🤳</div><h3>고객 토스단말기</h3><p>고객이 직접 결제하고 포인트를 적립하는 스마트한 경험.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">📡</div><h3>무선 카드단말기</h3><p>배달, 야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">🔵</div><h3>초소형 블루투스 단말기</h3><p>스마트폰만 있으면 결제 준비 끝. 1인 창업자에게 최적.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">🍽️</div><h3>프리미엄 테이블 오더</h3><p>고객이 자리에서 직접 주문과 결제. 인건비 절감과 스마트한 운영.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">🖥</div><h3>공간절약형 미니키오스크</h3><p>카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</p><div class="prod-more">자세히 보기 →</div></div>
-    <div class="prod-card"><div class="prod-icon">🤖</div><h3>스마트 무인결제 키오스크</h3><p>직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</p><div class="prod-more">자세히 보기 →</div></div>
-  </div>
-  </div>
-</section>
-
-<section class="features" id="features">
-  <div class="sec-inner">
-  <div class="feat-wrap">
-    <div class="feat-visual">
-      <div class="feat-visual-icon">💼</div>
-      <div class="feat-visual-txt">Smart Business Solution</div>
-    </div>
-    <div>
-      <div class="sec-tag">Why AllPayStore</div>
-      <h2 class="sec-title">AllPayStore는<br>무엇을 도와드릴까요?</h2>
-      <div class="blue-bar"></div>
-      <div class="feat-list">
-        <div class="feat-item"><div class="feat-ico">⚙️</div><div><h3>맞춤형 UI 설정</h3><p>메뉴 배치와 결제 동선을 직접 설계하여 계산 시간을 단축하세요.</p></div></div>
-        <div class="feat-item"><div class="feat-ico">📊</div><div><h3>통합 매출 관리</h3><p>배달 앱, 오프라인 데이터를 하나로 모아 실시간 매출 추이를 파악합니다.</p></div></div>
-        <div class="feat-item"><div class="feat-ico">🤖</div><div><h3>AI 매출 분석 리포트</h3><p>요일·시간대별 패턴 분석으로 최적의 운영 시간을 제안합니다.</p></div></div>
-        <div class="feat-item"><div class="feat-ico">🔧</div><div><h3>즉시 원격 지원</h3><p>기기 장애 발생 시 즉시 원격 지원으로 문제를 해결합니다.</p></div></div>
-        <div class="feat-item"><div class="feat-ico">⭐</div><div><h3>스마트 리뷰 연동</h3><p>매장 리뷰와 SNS 피드백을 실시간으로 확인하며 고객 소통을 강화합니다.</p></div></div>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section class="partners" id="partners">
-  <div class="sec-inner">
-  <div class="sec-tag">Partnership</div>
-  <h2 class="sec-title">결제 라인 파트너사</h2>
-  <div class="blue-bar" style="margin:16px auto"></div>
-  <p class="sec-desc">대한민국 대표 브랜드와 함께 사장님의 매장 퀄리티를 높여드립니다</p>
-  <div class="partner-logos">
-    <div class="partner-logo">POSBANK</div>
-    <div class="partner-logo">toss place</div>
-    <div class="partner-logo">UNION</div>
-    <div class="partner-logo">KOVAN</div>
-    <div class="partner-logo">imu</div>
-    <div class="partner-logo">SK텔레콤</div>
-    <div class="partner-logo">coway</div>
-    <div class="partner-logo">LG전자</div>
-    <div class="partner-logo">SK매직</div>
-    <div class="partner-logo">KT올레</div>
-  </div>
-  </div>
-</section>
-
-<section class="cctv">
-  <div class="sec-inner">
-  <div class="sec-tag">Security</div>
-  <h2 class="sec-title">스마트 매장 안심 CCTV</h2>
-  <div class="blue-bar"></div>
-  <p class="sec-desc">24시간 고화질 녹화는 기본, 포스기와 연동되어 결제 시점의 영상을 즉시 확인하세요.</p>
-  <div class="cctv-wrap">
-    <div class="cctv-cards">
-      <div class="cctv-card"><div class="ico">📷</div><p>360° 회전형<br>실내 카메라</p></div>
-      <div class="cctv-card"><div class="ico">🔭</div><p>야외용<br>불릿 카메라</p></div>
-      <div class="cctv-card"><div class="ico">🎯</div><p>PTZ<br>고성능 카메라</p></div>
-      <div class="cctv-card"><div class="ico">🌐</div><p>컴팩트<br>돔 카메라</p></div>
-    </div>
-    <div>
-      <h3 style="font-size:24px;font-weight:800;margin-bottom:16px;">포스기와 완벽 연동</h3>
-      <p style="color:var(--gray);line-height:1.8;font-size:15px;margin-bottom:24px;">결제 시점을 자동으로 태깅하여 의심 거래를 즉시 확인할 수 있습니다. 실시간 원격 모니터링으로 어디서든 매장을 지킬 수 있어요.</p>
-      <div class="cctv-badges">
-        <span class="badge">24시간 녹화</span>
-        <span class="badge">실시간 모니터링</span>
-        <span class="badge">POS 연동</span>
-        <span class="badge">원격 접속</span>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section class="testimonials">
-  <div class="sec-inner">
-  <div class="sec-tag">Reviews</div>
-  <h2 class="sec-title">사장님들의 실제 후기</h2>
-  <div class="blue-bar"></div>
-  <div class="slider-wrap">
-    <div class="slider-track" id="sliderTrack">
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p>인터넷과 포스기를 함께 설치하니 훨씬 안정적이에요. 예약 시스템과 결제가 끊김 없이 운영되어 고객 응대가 훨씬 수월해졌습니다. 설치 후 매출도 올라간 것 같아 정말 만족합니다.</p>
-        <div class="test-author">
-          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=choi&backgroundColor=b6e3f4" alt="최다은"></div>
-          <div><div class="test-name">최다은</div><div class="test-role">미용실 운영 · 서울 강남</div></div>
+<div class="hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);"></div>
+      <div class="hero-content">
+        <div class="hero-label">AllPayStore 포스시스템</div>
+        <h1 class="hero-title">사장님 매장에<br>딱 맞는 포스기</h1>
+        <p class="hero-desc">업종·규모별 맞춤 컨설팅으로<br>최적의 결제 솔루션을 제안해드립니다</p>
+        <div class="hero-btns">
+          <button class="btn-hero-primary" onclick="location.href='#products'">제품 보기</button>
+          <button class="btn-hero-secondary" onclick="location.href='tel:010-9876-8282'">도입 문의하기</button>
         </div>
       </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p>24시간 운영 매장이라 안정성이 가장 중요한데 만족합니다. 문제 발생 시 빠른 대응이 큰 장점입니다. 사장님이 친절하시고 설치도 깔끔하게 해주셨어요.</p>
-        <div class="test-author">
-          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=jung&backgroundColor=c0aede" alt="정우성"></div>
-          <div><div class="test-name">정우성</div><div class="test-role">편의점 운영 · 경기 수원</div></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);"></div>
+      <div class="hero-content">
+        <div class="hero-label">AllPayStore 키오스크</div>
+        <h1 class="hero-title">인건비 절감의<br>스마트한 선택</h1>
+        <p class="hero-desc">직관적인 UI로 주문 실수를 줄이고<br>매장 회전율을 높여드립니다</p>
+        <div class="hero-btns">
+          <button class="btn-hero-primary" onclick="location.href='#products'">제품 보기</button>
+          <button class="btn-hero-secondary" onclick="location.href='tel:010-9876-8282'">도입 문의하기</button>
         </div>
       </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p>포스기 설치 후 매장 운영이 훨씬 편해졌어요. 초보 사장도 쉽게 사용할 수 있어 만족합니다. 직원 교육도 따로 필요 없을 정도로 직관적이에요.</p>
-        <div class="test-author">
-          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=kim&backgroundColor=ffd5dc" alt="김지훈"></div>
-          <div><div class="test-name">김지훈</div><div class="test-role">카페 운영 · 부산 해운대</div></div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p>키오스크 도입 후 주문 실수가 확 줄었어요. 손님들도 기다리지 않고 바로 주문하니까 회전율이 높아졌습니다. 투자 대비 효과가 정말 뛰어나요.</p>
-        <div class="test-author">
-          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=park&backgroundColor=d1f7c4" alt="박소연"></div>
-          <div><div class="test-name">박소연</div><div class="test-role">분식집 운영 · 인천 부평</div></div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p>무선 카드단말기 덕분에 배달 결제가 너무 편해졌어요. 이전에는 단말기 들고 다니기 불편했는데 지금은 가볍고 배터리도 오래가서 아주 만족합니다.</p>
-        <div class="test-author">
-          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=lee&backgroundColor=ffecc7" alt="이민호"></div>
-          <div><div class="test-name">이민호</div><div class="test-role">치킨집 운영 · 대구 수성</div></div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p>CCTV까지 함께 설치했는데 포스기와 연동되니까 의심 거래도 바로 확인할 수 있어요. 혼자 운영하는 매장인데 이제 집에서도 안심이 돼요.</p>
-        <div class="test-author">
-          <div class="test-ava"><img src="https://api.dicebear.com/7.x/personas/svg?seed=han&backgroundColor=c9e8ff" alt="한지영"></div>
-          <div><div class="test-name">한지영</div><div class="test-role">네일샵 운영 · 서울 홍대</div></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#1a0533,#2d1b69,#11043e);"></div>
+      <div class="hero-content">
+        <div class="hero-label">AllPayStore CCTV</div>
+        <h1 class="hero-title">포스기와 연동되는<br>스마트 CCTV</h1>
+        <p class="hero-desc">결제 시점 자동 태깅으로<br>어디서든 매장을 안심하고 지키세요</p>
+        <div class="hero-btns">
+          <button class="btn-hero-primary" onclick="location.href='#services'">서비스 보기</button>
+          <button class="btn-hero-secondary" onclick="location.href='tel:010-9876-8282'">도입 문의하기</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="slider-controls">
-    <button class="slider-btn" onclick="slideMove(-1)">←</button>
-    <div class="slider-dots" id="sliderDots"></div>
-    <button class="slider-btn" onclick="slideMove(1)">→</button>
+  <button class="hero-arrow hero-arrow-left" onclick="heroMove(-1)">&#8592;</button>
+  <button class="hero-arrow hero-arrow-right" onclick="heroMove(1)">&#8594;</button>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
   </div>
-  </div>
-</section>
+</div>
 
-<section class="vending">
+<section class="sec industry" id="industry">
   <div class="sec-inner">
-  <div class="sec-tag">Vending Machine</div>
-  <h2 class="sec-title">24시간 무인매장의 혁신<br>LK 광고형 홈타운 밴딩머신</h2>
-  <div class="blue-bar"></div>
-  <div class="vend-wrap">
-    <div class="vend-list">
-      <div class="vend-item"><div class="vend-ico">📺</div><div><h4>광고 수익 창출</h4><p>23.4인치 터치스크린으로 효과적인 광고 송출 가능</p></div></div>
-      <div class="vend-item"><div class="vend-ico">⚙️</div><div><h4>운영 편의성</h4><p>원하는 매장 공지사항을 손쉽게 송출하여 편의성 극대화</p></div></div>
-      <div class="vend-item"><div class="vend-ico">🎨</div><div><h4>커스터마이징</h4><p>어떤 공간에도 어울리는 화이트톤, 브랜드 로고 적용 가능</p></div></div>
-      <div class="vend-item"><div class="vend-ico">📊</div><div><h4>스마트 관리프로그램</h4><p>실시간 재고 파악 및 알림, 매출 데이터 리포트 제공</p></div></div>
-      <div class="vend-item"><div class="vend-ico">🔧</div><div><h4>원격 관리 & 유지보수</h4><p>문제 발생 시 즉시 원격 제어 가능</p></div></div>
+    <div class="sec-top">
+      <h2>업종별로 딱 맞게 추천해드려요</h2>
+      <p>매장에 맞는 최적 구성으로 컨설팅해드립니다</p>
     </div>
-    <div class="vend-spaces">
-      <h3>설치 가능 공간</h3>
-      <div class="spaces-grid">
-        <div class="space-item">병원</div><div class="space-item">PC방</div><div class="space-item">카페</div>
-        <div class="space-item">학교/학원</div><div class="space-item">아파트</div><div class="space-item">헬스장</div>
-        <div class="space-item">관공서</div><div class="space-item">오피스</div><div class="space-item">종교시설</div>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section class="demolition">
-  <div class="sec-inner">
-  <div class="sec-tag">Demolition Solution</div>
-  <h2 class="sec-title">AllPayStore 철거 솔루션</h2>
-  <div class="blue-bar"></div>
-  <p class="sec-desc">복잡한 철거부터 폐기물 처리, 원상복구까지 한 번에 해결하세요. 전문 엔지니어팀이 안전하고 신속하게 사장님의 다음 시작을 도와드립니다.</p>
-  <div class="demo-wrap">
-    <div class="demo-img">
-      <div class="demo-img-bg">🔨</div>
-      <div class="demo-img-overlay"></div>
-      <div class="demo-img-text">정확한 견적과 완벽한 시공으로<br>믿음을 드립니다.</div>
-    </div>
-    <div class="demo-right">
-      <h3>철거 솔루션 서비스</h3>
-      <p class="demo-sub">전문 엔지니어팀이 안전하고 신속하게 사장님의 다음 시작을 도와드립니다.</p>
-      <div class="accordion">
-        <div class="acc-item open" onclick="toggleAcc(this)">
-          <div class="acc-header">
-            <span class="acc-title">정밀 현장 분석</span>
-            <div class="acc-icon">−</div>
+    <div class="industry-grid">
+      <div class="industry-card-lg">
+        <div class="ind-img" style="background:linear-gradient(135deg,#e8f4f8,#d1ecf1);">☕</div>
+        <div class="ind-body">
+          <div class="ind-title-bar"><div class="ind-bar"></div><div class="ind-title">카페</div></div>
+          <div class="ind-tags">
+            <span class="ind-tag">포스기</span><span class="ind-tag">키오스크</span>
+            <span class="ind-tag">호출모니터</span><span class="ind-tag">주방모니터</span><span class="ind-tag">알림톡</span>
           </div>
-          <div class="acc-body">철거 전 구조물 진단 및 안전 계획 수립으로 사고를 방지합니다.</div>
         </div>
-        <div class="acc-item" onclick="toggleAcc(this)">
-          <div class="acc-header">
-            <span class="acc-title">원스톱 원상복구</span>
-            <div class="acc-icon">+</div>
+      </div>
+      <div class="industry-card-lg">
+        <div class="ind-img" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">🍽️</div>
+        <div class="ind-body">
+          <div class="ind-title-bar"><div class="ind-bar"></div><div class="ind-title">음식점</div></div>
+          <div class="ind-tags">
+            <span class="ind-tag">포스기</span><span class="ind-tag">테이블오더</span>
+            <span class="ind-tag">웨이팅</span><span class="ind-tag">주방모니터</span><span class="ind-tag">QR오더</span>
           </div>
-          <div class="acc-body">철거 후 다음 임차인을 위한 완벽한 원상복구 공사까지 통합 제공합니다.</div>
         </div>
-        <div class="acc-item" onclick="toggleAcc(this)">
-          <div class="acc-header">
-            <span class="acc-title">폐기물 적법 처리</span>
-            <div class="acc-icon">+</div>
-          </div>
-          <div class="acc-body">모든 폐기물은 관련 법규에 따라 투명하고 깔끔하게 처리 및 신고 대행합니다.</div>
+      </div>
+    </div>
+    <div class="industry-grid-sm">
+      <div class="industry-card-sm">
+        <div class="ind-img-sm" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">🥐</div>
+        <div class="ind-body-sm">
+          <div class="ind-title-bar-sm"><div class="ind-bar"></div><div class="ind-title-sm">베이커리</div></div>
+          <div class="ind-tags-sm"><span class="ind-tag-sm">포스기</span><span class="ind-tag-sm">키오스크</span></div>
         </div>
-        <div class="acc-item" onclick="toggleAcc(this)">
-          <div class="acc-header">
-            <span class="acc-title">실시간 공정 보고</span>
-            <div class="acc-icon">+</div>
-          </div>
-          <div class="acc-body">현장에 오지 않아도 카톡으로 철거 진행 상황을 사진과 영상으로 보고합니다.</div>
+      </div>
+      <div class="industry-card-sm">
+        <div class="ind-img-sm" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">💇</div>
+        <div class="ind-body-sm">
+          <div class="ind-title-bar-sm"><div class="ind-bar"></div><div class="ind-title-sm">헤어·뷰티</div></div>
+          <div class="ind-tags-sm"><span class="ind-tag-sm">포스기</span><span class="ind-tag-sm">예약관리</span></div>
         </div>
-        <div class="acc-item" onclick="toggleAcc(this)">
-          <div class="acc-header">
-            <span class="acc-title">합리적 정찰제</span>
-            <div class="acc-icon">+</div>
-          </div>
-          <div class="acc-body">숨은 추가 비용 없이, 면적과 난이도에 따른 투명한 견적 시스템을 운영합니다.</div>
+      </div>
+      <div class="industry-card-sm">
+        <div class="ind-img-sm" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb);">🏪</div>
+        <div class="ind-body-sm">
+          <div class="ind-title-bar-sm"><div class="ind-bar"></div><div class="ind-title-sm">편의점·마트</div></div>
+          <div class="ind-tags-sm"><span class="ind-tag-sm">포스기</span><span class="ind-tag-sm">바코드스캐너</span></div>
         </div>
-        <div class="acc-item" onclick="toggleAcc(this)">
-          <div class="acc-header">
-            <span class="acc-title">100% 사후 책임</span>
-            <div class="acc-icon">+</div>
-          </div>
-          <div class="acc-body">공사 중 발생할 수 있는 소음, 분쟁 해결 및 완벽한 마무리를 보장합니다.</div>
+      </div>
+      <div class="industry-card-sm">
+        <div class="ind-img-sm" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);">🏥</div>
+        <div class="ind-body-sm">
+          <div class="ind-title-bar-sm"><div class="ind-bar"></div><div class="ind-title-sm">병원·의원</div></div>
+          <div class="ind-tags-sm"><span class="ind-tag-sm">키오스크</span><span class="ind-tag-sm">번호표발행</span></div>
         </div>
       </div>
     </div>
   </div>
+</section>
+
+<section class="sec products" id="products">
+  <div class="sec-inner">
+    <div class="sec-top">
+      <h2>매장에 딱 맞는 스마트 결제 라인업</h2>
+      <p>검증된 하드웨어로 더 쉽고 빠른 결제 환경을 경험하세요</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-img">🖥️</div>
+        <div class="prod-body">
+          <div class="prod-name">올인원 포스시스템</div>
+          <div class="prod-desc">어떤 업종도 OK. 실시간 매출 분석부터 재고 관리까지 한 번에.</div>
+          <div class="prod-more">자세히 보기 →</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">💳</div>
+        <div class="prod-body">
+          <div class="prod-name">자동커팅 단말기</div>
+          <div class="prod-desc">빠른 영수증 출력과 자동 커팅으로 매장 회전율을 높여줍니다.</div>
+          <div class="prod-more">자세히 보기 →</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">🤖</div>
+        <div class="prod-body">
+          <div class="prod-name">스마트 무인키오스크</div>
+          <div class="prod-desc">직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</div>
+          <div class="prod-more">자세히 보기 →</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">🍽️</div>
+        <div class="prod-body">
+          <div class="prod-name">테이블 오더</div>
+          <div class="prod-desc">고객이 자리에서 직접 주문·결제. 인건비 절감과 스마트한 운영.</div>
+          <div class="prod-more">자세히 보기 →</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">📡</div>
+        <div class="prod-body">
+          <div class="prod-name">무선 카드단말기</div>
+          <div class="prod-desc">배달·야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</div>
+          <div class="prod-more">자세히 보기 →</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">📷</div>
+        <div class="prod-body">
+          <div class="prod-name">스마트 매장 CCTV</div>
+          <div class="prod-desc">포스기와 연동, 결제 시점 자동 태깅으로 24시간 매장 보안.</div>
+          <div class="prod-more">자세히 보기 →</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="numbers">
+<section class="sec services" id="services">
   <div class="sec-inner">
-  <div class="sec-tag">Some Numbers</div>
-  <h2 class="sec-title">숫자로 증명하는 신뢰</h2>
-  <div class="blue-bar" style="margin:16px auto"></div>
-  <p class="sec-desc">숫자 데이터 기반 신뢰 지표</p>
-  <div class="numbers-grid">
-    <div class="number-item"><div class="number-big">87</div><div class="number-desc">월평균 87곳의<br>현장 완료</div></div>
-    <div class="number-item"><div class="number-big">28</div><div class="number-desc">28개의<br>협력 파트너사</div></div>
-    <div class="number-item"><div class="number-big">0%</div><div class="number-desc">사고<br>발생률</div></div>
-    <div class="number-item"><div class="number-big">1,500</div><div class="number-desc">최근 1년간<br>1,500+건의 실적</div></div>
-  </div>
+    <div class="sec-top">
+      <h2>통합 매장관리 서비스</h2>
+      <p>매장 운영에 필요한 모든 기능을 한곳에서 편하게 이용하세요</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-card"><div class="serv-bg" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">🖥️</div><div class="serv-overlay"></div><div class="serv-label">포스 · 결제</div></div>
+      <div class="serv-card"><div class="serv-bg" style="background:linear-gradient(135deg,#0f2027,#203a43);">📱</div><div class="serv-overlay"></div><div class="serv-label">NFC · QR오더</div></div>
+      <div class="serv-card"><div class="serv-bg" style="background:linear-gradient(135deg,#141e30,#243b55);">📊</div><div class="serv-overlay"></div><div class="serv-label">주방모니터(KDS)</div></div>
+      <div class="serv-card"><div class="serv-bg" style="background:linear-gradient(135deg,#1a0533,#2d1b69);">🔔</div><div class="serv-overlay"></div><div class="serv-label">고객호출모니터</div></div>
+      <div class="serv-card"><div class="serv-bg" style="background:linear-gradient(135deg,#0d0d0d,#1a1a1a);">⏱️</div><div class="serv-overlay"></div><div class="serv-label">웨이팅 시스템</div></div>
+      <div class="serv-card"><div class="serv-bg" style="background:linear-gradient(135deg,#0f3460,#533483);">📈</div><div class="serv-overlay"></div><div class="serv-label">AI 매출분석</div></div>
+    </div>
   </div>
 </section>
 
-<section class="cta" id="cta">
+<section class="sec cases" id="cases">
   <div class="sec-inner">
-  <div class="sec-tag">Get Started</div>
-  <h2 class="sec-title">지금 바로 전문가의 추천을 받아보세요</h2>
-  <div class="blue-bar" style="margin:16px auto 20px; background:rgba(255,255,255,0.4)"></div>
-  <p class="sec-desc">매장 업종에 딱 맞는 장비가 궁금하신가요? 1분 안에 무료 견적을 받아보세요.</p>
+    <div class="sec-top">
+      <h2>고객과 함께 쌓아온 신뢰의 기록</h2>
+      <p>카페, 음식점, 전문점까지 업종별 설치 사례를 확인하세요</p>
+    </div>
+    <div style="text-align:center;">
+      <button class="more-btn">더 많은 설치사례 보기 →</button>
+    </div>
+    <div class="cases-slider-wrap">
+      <div class="cases-track" id="casesTrack">
+        <div class="case-card"><div class="case-bg" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">☕</div><div class="case-overlay"></div><div class="case-badge">Case Study</div><div class="case-info"><div class="case-type">POS + 키오스크</div><div class="case-place">🏪 카페 · 서울 강남</div></div></div>
+        <div class="case-card"><div class="case-bg" style="background:linear-gradient(135deg,#0f2027,#203a43);">🍜</div><div class="case-overlay"></div><div class="case-badge">Case Study</div><div class="case-info"><div class="case-type">POS + 테이블오더</div><div class="case-place">🏪 분식집 · 경기 수원</div></div></div>
+        <div class="case-card"><div class="case-bg" style="background:linear-gradient(135deg,#141e30,#243b55);">🥐</div><div class="case-overlay"></div><div class="case-badge">Case Study</div><div class="case-info"><div class="case-type">AI Scanner + 키오스크</div><div class="case-place">🏪 베이커리 · 부산</div></div></div>
+        <div class="case-card"><div class="case-bg" style="background:linear-gradient(135deg,#1a0533,#2d1b69);">💇</div><div class="case-overlay"></div><div class="case-badge">Case Study</div><div class="case-info"><div class="case-type">KIOSK &amp; POS</div><div class="case-place">🏪 헤어샵 · 인천</div></div></div>
+        <div class="case-card"><div class="case-bg" style="background:linear-gradient(135deg,#0d0d0d,#1a1a1a);">🍖</div><div class="case-overlay"></div><div class="case-badge">Case Study</div><div class="case-info"><div class="case-type">POS + 주방모니터</div><div class="case-place">🏪 고기집 · 대구</div></div></div>
+      </div>
+    </div>
+    <div class="cases-nav">
+      <button class="cases-btn" onclick="casesMove(-1)">&#8592;</button>
+      <div class="cases-dots" id="casesDots"></div>
+      <button class="cases-btn" onclick="casesMove(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec reviews" id="reviews">
+  <div class="sec-inner">
+    <div class="sec-top">
+      <h2>사장님이 직접 말하는 매장 운영 이야기</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card"><div class="rev-stars">★★★★★</div><div class="rev-id">choi****</div><div class="rev-text">"포스기 설치 후 계산이 훨씬 빨라졌어요. 직원들도 금방 익숙해져서 별도 교육이 거의 필요 없었어요"</div></div>
+      <div class="review-card"><div class="rev-stars">★★★★★</div><div class="rev-id">jung****</div><div class="rev-text">"빠른 결제 및 취소 처리가 가능해요. 24시간 운영 매장인데 한 번도 오류 없이 잘 돌아가고 있습니다"</div></div>
+      <div class="review-card"><div class="rev-stars">★★★★★</div><div class="rev-id">kim****</div><div class="rev-text">"업체에 따로 연락 없이 포스에서 직접 설정할 수 있어요. 직관적이라 혼자서도 다 할 수 있습니다"</div></div>
+      <div class="review-card"><div class="rev-stars">★★★★★</div><div class="rev-id">park****</div><div class="rev-text">"키오스크 도입 후 주문 실수가 확 줄었어요. 결제 인증 팝업도 없고 안정적으로 잘 운영되고 있어요"</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="partners">
+  <div class="partners-title">TRUSTED PARTNERS</div>
+  <div class="partners-track-wrap">
+    <div class="partners-track">
+      <div class="partner-item">POSBANK</div><div class="partner-item">toss place</div><div class="partner-item">UNION</div><div class="partner-item">KOVAN</div><div class="partner-item">imu</div><div class="partner-item">SK텔레콤</div><div class="partner-item">coway</div><div class="partner-item">LG전자</div><div class="partner-item">SK매직</div><div class="partner-item">KT올레</div>
+      <div class="partner-item">POSBANK</div><div class="partner-item">toss place</div><div class="partner-item">UNION</div><div class="partner-item">KOVAN</div><div class="partner-item">imu</div><div class="partner-item">SK텔레콤</div><div class="partner-item">coway</div><div class="partner-item">LG전자</div><div class="partner-item">SK매직</div><div class="partner-item">KT올레</div>
+    </div>
+  </div>
+</div>
+
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="numbers-grid">
+      <div class="number-item"><div class="number-big">1,500<span>+</span></div><div class="number-desc">누적 설치 실적</div></div>
+      <div class="number-item"><div class="number-big">87</div><div class="number-desc">월평균 설치 건수</div></div>
+      <div class="number-item"><div class="number-big">0<span>%</span></div><div class="number-desc">사고 발생률</div></div>
+      <div class="number-item"><div class="number-big">28</div><div class="number-desc">협력 파트너사</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-banner" id="cta">
+  <h2>지금 바로 전문가의 추천을 받아보세요</h2>
+  <p>매장 업종에 딱 맞는 장비가 궁금하신가요? 1분 안에 무료 견적을 받아보세요.</p>
   <div class="cta-btns">
-    <button class="btn-white" onclick="location.href='tel:010-9876-8282'">1분 견적 요청하기</button>
-    <button class="btn-wout" onclick="location.href='tel:010-9876-8282'">전화 상담</button>
+    <button class="btn-cta-yellow" onclick="location.href='tel:010-9876-8282'">📞 1분 견적 요청하기</button>
+    <button class="btn-cta-white" onclick="location.href='mailto:dandylsk@naver.com'">✉️ 이메일 문의</button>
   </div>
-  <div class="contact-row">
-    <span>📧 <a href="mailto:dandylsk@naver.com">dandylsk@naver.com</a></span>
-    <span>📞 <a href="tel:010-9876-8282">010-9876-8282</a></span>
-  </div>
-  </div>
-</section>
+</div>
 
 <footer>
-  <div class="sec-inner" style="display:flex;justify-content:space-between;align-items:center;">
-  <div class="footer-logo">AllPay<span>Store</span></div>
-  <div class="footer-copy">© 2025 AllPayStore. All rights reserved. | allpaystore.com</div>
+  <div class="footer-inner">
+    <div class="footer-logo">AllPay<span>Store</span></div>
+    <div class="footer-info">포스카드단말기 전문 올페이스토어<br>📞 010-9876-8282 &nbsp;|&nbsp; ✉️ dandylsk@naver.com<br>운영시간: 평일 09:00 ~ 18:00</div>
+    <div class="footer-copy">© 2025 AllPayStore. All rights reserved. | allpaystore.com</div>
   </div>
 </footer>
 
-<script>
-// 슬라이더
-let slideIndex = 0;
-const totalSlides = 6;
-const visibleSlides = 3;
-const maxIndex = totalSlides - visibleSlides;
+<div class="consult-bar">
+  <span class="consult-bar-text">상담이 필요하신가요?</span>
+  <button class="consult-bar-phone" onclick="location.href='tel:010-9876-8282'">💬 상담 신청 010-9876-8282</button>
+  <button class="consult-bar-kakao">🟡 카톡 상담</button>
+</div>
 
-function initSlider() {
-  const dots = document.getElementById('sliderDots');
+<script>
+var heroIdx = 0;
+var heroTotal = 3;
+function heroMove(dir) {
+  heroIdx = (heroIdx + dir + heroTotal) % heroTotal;
+  heroGoTo(heroIdx);
+}
+function heroGoTo(idx) {
+  heroIdx = idx;
+  document.getElementById('heroSlides').style.transform = 'translateX(-' + (idx * 100) + '%)';
+  document.querySelectorAll('.hero-dot').forEach(function(d, i) {
+    d.classList.toggle('active', i === idx);
+  });
+}
+document.querySelectorAll('.hero-dot').forEach(function(d, i) {
+  d.onclick = function() { heroGoTo(i); };
+});
+setInterval(function() { heroMove(1); }, 5000);
+
+var casesIdx = 0;
+var casesMax = 2;
+function initCasesDots() {
+  var dots = document.getElementById('casesDots');
   if (!dots) return;
   dots.innerHTML = '';
-  for (let i = 0; i <= maxIndex; i++) {
-    const d = document.createElement('div');
-    d.className = 'slider-dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => goToSlide(i);
-    dots.appendChild(d);
+  for (var i = 0; i <= casesMax; i++) {
+    (function(idx) {
+      var d = document.createElement('div');
+      d.className = 'cases-dot' + (idx === 0 ? ' active' : '');
+      d.onclick = function() { casesGoTo(idx); };
+      dots.appendChild(d);
+    })(i);
   }
 }
-
-function goToSlide(idx) {
-  slideIndex = Math.max(0, Math.min(idx, maxIndex));
-  const track = document.getElementById('sliderTrack');
-  const cardWidth = 360 + 24;
-  track.style.transform = 'translateX(-' + (slideIndex * cardWidth) + 'px)';
-  document.querySelectorAll('.slider-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === slideIndex);
+function casesGoTo(idx) {
+  casesIdx = Math.max(0, Math.min(idx, casesMax));
+  var cardW = 300 + 20;
+  document.getElementById('casesTrack').style.transform = 'translateX(-' + (casesIdx * cardW) + 'px)';
+  document.querySelectorAll('.cases-dot').forEach(function(d, i) {
+    d.classList.toggle('active', i === casesIdx);
   });
 }
-
-function slideMove(dir) {
-  goToSlide(slideIndex + dir);
-}
-
-// 자동 슬라이드
-setInterval(() => slideMove(slideIndex < maxIndex ? 1 : -maxIndex), 4000);
-
-document.addEventListener('DOMContentLoaded', initSlider);
-if (document.readyState !== 'loading') initSlider();
-
-function toggleAcc(item) {
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.acc-item').forEach(i => {
-    i.classList.remove('open');
-    i.querySelector('.acc-icon').textContent = '+';
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    item.querySelector('.acc-icon').textContent = '−';
-  }
-}
+function casesMove(dir) { casesGoTo(casesIdx + dir); }
+setInterval(function() { casesGoTo(casesIdx < casesMax ? casesIdx + 1 : 0); }, 4000);
+initCasesDots();
 </script>
 </body>
 </html>`;
