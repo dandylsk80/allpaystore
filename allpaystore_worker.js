@@ -6,9 +6,37 @@ export default {
         headers: { 'Content-Type': 'text/html; charset=utf-8' },
       });
     }
+    if (url.pathname === '/sitemap.xml') {
+      return new Response(getSitemap(), {
+        headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+      });
+    }
+    if (url.pathname === '/robots.txt') {
+      return new Response(getRobots(), {
+        headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+      });
+    }
     return new Response('Not Found', { status: 404 });
   },
 };
+
+function getRobots() {
+  return `User-agent: *
+Allow: /
+Sitemap: https://allpaystore.com/sitemap.xml`;
+}
+
+function getSitemap() {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://allpaystore.com/</loc>
+    <lastmod>2025-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`;
+}
 
 function getHTML() {
   return `<!DOCTYPE html>
