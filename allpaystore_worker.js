@@ -6,6 +6,11 @@ export default {
         headers: { 'Content-Type': 'text/html; charset=utf-8' },
       });
     }
+    if (url.pathname === '/rss.xml') {
+      return new Response(getRSS(), {
+        headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' },
+      });
+    }
     if (url.pathname === '/sitemap.xml') {
       return new Response(getSitemap(), {
         headers: { 'Content-Type': 'application/xml; charset=utf-8' },
@@ -19,6 +24,25 @@ export default {
     return new Response('Not Found', { status: 404 });
   },
 };
+
+function getRSS() {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>AllPayStore | 포스기·카드단말기·키오스크 전문</title>
+    <link>https://allpaystore.com</link>
+    <description>포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.</description>
+    <language>ko</language>
+    <lastBuildDate>Mon, 09 Mar 2025 00:00:00 +0900</lastBuildDate>
+    <item>
+      <title>AllPayStore - 포스기·카드단말기·키오스크 전문</title>
+      <link>https://allpaystore.com</link>
+      <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 1,500건 이상의 설치 실적.</description>
+      <pubDate>Mon, 09 Mar 2025 00:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>`;
+}
 
 function getRobots() {
   return `User-agent: *
