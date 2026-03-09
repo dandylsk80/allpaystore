@@ -18,6 +18,11 @@ function getHTML() {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AllPayStore | 포스기·카드단말기·키오스크 전문</title>
 <meta name="description" content="포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.">
+<meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac">
+<meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045">
+<meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
+<meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045" />
+<meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
