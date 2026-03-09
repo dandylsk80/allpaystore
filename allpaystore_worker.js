@@ -462,7 +462,7 @@ footer { background:#111; padding:60px 0 100px; }
     </div>
     <div class="prod-grid">
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%ED%8F%AC%EC%8A%A4%EA%B8%B0.png" alt="포스기"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/pos.png" alt="포스기"></div>
         <div class="prod-body">
           <div class="prod-name">올인원 포스시스템</div>
           <div class="prod-desc">어떤 업종도 OK. 실시간 매출 분석부터 재고 관리까지 한 번에.</div>
@@ -470,7 +470,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%EC%9E%90%EB%8F%99%EC%BB%A4%ED%8C%85%EB%8B%A8%EB%A7%90%EA%B8%B0.png" alt="자동커팅단말기"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/cutting.png" alt="자동커팅단말기"></div>
         <div class="prod-body">
           <div class="prod-name">자동커팅 단말기</div>
           <div class="prod-desc">빠른 영수증 출력과 자동 커팅으로 매장 회전율을 높여줍니다.</div>
@@ -478,7 +478,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%EC%B9%B4%EB%93%9C%EB%8B%A8%EB%A7%90%EA%B8%B0.png" alt="카드단말기"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/card.png" alt="카드단말기"></div>
         <div class="prod-body">
           <div class="prod-name">컴팩트 카드단말기</div>
           <div class="prod-desc">좁은 카운터에서도 공간 활용이 뛰어난 소규모 매장 최적 모델.</div>
@@ -486,7 +486,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%ED%86%A0%EC%8A%A4%EB%8B%A8%EB%A7%90%EA%B8%B0.png" alt="토스단말기"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/toss.png" alt="토스단말기"></div>
         <div class="prod-body">
           <div class="prod-name">토스 단말기</div>
           <div class="prod-desc">고객이 직접 결제하고 포인트를 적립하는 스마트한 경험.</div>
@@ -494,7 +494,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%EB%AC%B4%EC%84%A0%EB%8B%A8%EB%A7%90%EA%B8%B0.png" alt="무선단말기"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/wireless.png" alt="무선단말기"></div>
         <div class="prod-body">
           <div class="prod-name">무선 카드단말기</div>
           <div class="prod-desc">배달·야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</div>
@@ -502,7 +502,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4_%EB%8B%A8%EB%A7%90%EA%B8%B0.png" alt="블루투스단말기"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/bluetooth.png" alt="블루투스단말기"></div>
         <div class="prod-body">
           <div class="prod-name">블루투스 단말기</div>
           <div class="prod-desc">스마트폰만 있으면 결제 준비 끝. 1인 창업자에게 최적.</div>
@@ -510,7 +510,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%98%A4%EB%8D%94.png" alt="테이블오더"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/table.png" alt="테이블오더"></div>
         <div class="prod-body">
           <div class="prod-name">테이블 오더</div>
           <div class="prod-desc">고객이 자리에서 직접 주문·결제. 인건비 절감과 스마트한 운영.</div>
@@ -518,7 +518,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%EC%95%8C%EB%9C%B0%ED%82%A4%EC%98%A4%EC%8A%A4%ED%81%AC.png" alt="알뜰키오스크"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/mini-kiosk.png" alt="알뜰키오스크"></div>
         <div class="prod-body">
           <div class="prod-name">알뜰 미니키오스크</div>
           <div class="prod-desc">카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</div>
@@ -526,7 +526,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/%ED%82%A4%EC%98%A4%EC%8A%A4%ED%81%AC.png" alt="키오스크"></div>
+        <div class="prod-img"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/kiosk.png" alt="키오스크"></div>
         <div class="prod-body">
           <div class="prod-name">스마트 무인키오스크</div>
           <div class="prod-desc">직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</div>
