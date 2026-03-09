@@ -158,7 +158,7 @@ nav {
   overflow:hidden; cursor:pointer; transition:all 0.25s;
 }
 .prod-card:hover { border-color:#1A6BFF; box-shadow:0 8px 32px rgba(26,107,255,0.1); transform:translateY(-4px); }
-.prod-img { width:100%; height:200px; display:flex; align-items:center; justify-content:center; font-size:56px; background:#edeef0; overflow:hidden; }
+.prod-img { width:100%; height:200px; display:flex; align-items:center; justify-content:center; font-size:56px; background:#dedede; overflow:hidden; }
 .prod-img img { width:100%; height:100%; object-fit:contain; padding:16px; transition:transform 0.3s; }
 .prod-card:hover .prod-img img { transform:scale(1.05); }
 .prod-body { padding:22px; }
