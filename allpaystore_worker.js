@@ -33,7 +33,7 @@ nav {
   height:80px; display:flex; align-items:center;
 }
 .nav-inner {
-  max-width:1300px; margin:0 auto; width:100%; padding:0 48px;
+  max-width:1100px; margin:0 auto; width:100%; padding:0 48px;
   display:flex; align-items:center; gap:48px;
 }
 .logo { font-size:26px; font-weight:900; color:#111; letter-spacing:-1px; flex-shrink:0; }
@@ -66,7 +66,7 @@ nav {
 }
 .hero-content {
   position:relative; z-index:2;
-  max-width:1300px; margin:0 auto; width:100%; padding:0 48px;
+  max-width:1100px; margin:0 auto; width:100%; padding:0 48px;
 }
 .hero-label {
   display:inline-block; background:rgba(26,107,255,0.9); color:#fff;
@@ -116,8 +116,8 @@ nav {
 .hero-arrow-right { right:32px; }
 
 /* SECTION COMMON */
-.sec { padding:100px 48px; }
-.sec-inner { max-width:1300px; margin:0 auto; }
+.sec { padding:100px 0; }
+.sec-inner { max-width:1100px; margin:0 auto; padding:0 48px; }
 .sec-top { text-align:center; margin-bottom:60px; }
 .sec-top h2 { font-size:clamp(28px,3vw,42px); font-weight:900; letter-spacing:-1px; margin-bottom:12px; }
 .sec-top p { font-size:16px; color:#666; }
@@ -250,8 +250,8 @@ nav {
 .partner-item:hover { color:#1A6BFF; border-color:#1A6BFF; background:#f0f5ff; }
 
 /* NUMBERS */
-.numbers { background:#1A6BFF; padding:80px 48px; }
-.numbers-inner { max-width:1300px; margin:0 auto; }
+.numbers { background:#1A6BFF; padding:80px 0; }
+.numbers-inner { max-width:1100px; margin:0 auto; padding:0 48px; }
 .numbers-grid { display:grid; grid-template-columns:repeat(4,1fr); }
 .number-item { text-align:center; padding:40px 20px; border-right:1px solid rgba(255,255,255,0.2); }
 .number-item:last-child { border-right:none; }
@@ -260,7 +260,7 @@ nav {
 .number-desc { font-size:15px; color:rgba(255,255,255,0.8); line-height:1.6; }
 
 /* CTA */
-.cta-banner { background:linear-gradient(135deg,#0f0c29,#302b63,#24243e); padding:100px 48px; text-align:center; }
+.cta-banner { background:linear-gradient(135deg,#0f0c29,#302b63,#24243e); padding:100px 0; text-align:center; }
 .cta-banner h2 { font-size:clamp(28px,3.5vw,48px); font-weight:900; color:#fff; letter-spacing:-1px; margin-bottom:16px; }
 .cta-banner p { font-size:18px; color:rgba(255,255,255,0.75); margin-bottom:40px; }
 .cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
@@ -298,8 +298,8 @@ nav {
 .consult-bar-kakao:hover { background:#FFD700; }
 
 /* FOOTER */
-footer { background:#111; padding:60px 48px 100px; }
-.footer-inner { max-width:1300px; margin:0 auto; }
+footer { background:#111; padding:60px 0 100px; }
+.footer-inner { max-width:1100px; margin:0 auto; padding:0 48px; }
 .footer-logo { font-size:24px; font-weight:900; color:#fff; margin-bottom:16px; }
 .footer-logo span { color:#1A6BFF; }
 .footer-info { font-size:13px; color:#666; line-height:2; }
@@ -729,11 +729,13 @@ footer { background:#111; padding:60px 48px 100px; }
 </div>
 
 <div class="cta-banner" id="cta">
+  <div style="max-width:1100px;margin:0 auto;padding:0 48px;">
   <h2>지금 바로 전문가의 추천을 받아보세요</h2>
   <p>매장 업종에 딱 맞는 장비가 궁금하신가요? 1분 안에 무료 견적을 받아보세요.</p>
   <div class="cta-btns">
     <button class="btn-cta-yellow" onclick="location.href='tel:010-9876-8282'">📞 1분 견적 요청하기</button>
     <button class="btn-cta-white" onclick="location.href='mailto:dandylsk@naver.com'">✉️ 이메일 문의</button>
+  </div>
   </div>
 </div>
 
