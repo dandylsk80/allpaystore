@@ -568,6 +568,145 @@ footer { background:#111; padding:60px 40px 100px; }
   </div>
 </section>
 
+<!-- CCTV -->
+<section class="sec" id="cctv" style="background:#fff;">
+  <div class="sec-inner">
+    <div class="sec-top">
+      <h2>스마트 매장 안심 CCTV</h2>
+      <p>24시간 고화질 녹화는 기본, 포스기와 연동되어 결제 시점의 영상을 즉시 확인하세요</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#f8f9fa;border-radius:16px;padding:32px 20px;text-align:center;border:1.5px solid #eee;">
+          <div style="font-size:40px;margin-bottom:12px;">📷</div>
+          <div style="font-weight:700;font-size:14px;">360° 회전형<br>실내 카메라</div>
+        </div>
+        <div style="background:#f8f9fa;border-radius:16px;padding:32px 20px;text-align:center;border:1.5px solid #eee;">
+          <div style="font-size:40px;margin-bottom:12px;">🔭</div>
+          <div style="font-weight:700;font-size:14px;">야외용<br>불릿 카메라</div>
+        </div>
+        <div style="background:#f8f9fa;border-radius:16px;padding:32px 20px;text-align:center;border:1.5px solid #eee;">
+          <div style="font-size:40px;margin-bottom:12px;">🎯</div>
+          <div style="font-weight:700;font-size:14px;">PTZ<br>고성능 카메라</div>
+        </div>
+        <div style="background:#f8f9fa;border-radius:16px;padding:32px 20px;text-align:center;border:1.5px solid #eee;">
+          <div style="font-size:40px;margin-bottom:12px;">🌐</div>
+          <div style="font-weight:700;font-size:14px;">컴팩트<br>돔 카메라</div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:28px;font-weight:900;margin-bottom:16px;">포스기와 완벽 연동</h3>
+        <p style="color:#666;line-height:1.9;font-size:15px;margin-bottom:28px;">결제 시점을 자동으로 태깅하여 의심 거래를 즉시 확인할 수 있습니다. 실시간 원격 모니터링으로 어디서든 매장을 지킬 수 있어요.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span style="background:#f0f5ff;color:#1A6BFF;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;">24시간 녹화</span>
+          <span style="background:#f0f5ff;color:#1A6BFF;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;">실시간 모니터링</span>
+          <span style="background:#f0f5ff;color:#1A6BFF;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;">POS 연동</span>
+          <span style="background:#f0f5ff;color:#1A6BFF;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;">원격 접속</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 자동판매기 -->
+<section class="sec" id="vending" style="background:#f8f9fa;">
+  <div class="sec-inner">
+    <div class="sec-top">
+      <h2>24시간 무인매장의 혁신<br>LK 광고형 홈타운 밴딩머신</h2>
+      <p>광고 수익까지 창출하는 스마트 자동판매기</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:#fff;border-radius:14px;padding:22px 24px;border:1.5px solid #eee;display:flex;gap:18px;align-items:flex-start;">
+          <div style="font-size:28px;flex-shrink:0;">📺</div>
+          <div><div style="font-weight:800;margin-bottom:6px;">광고 수익 창출</div><div style="font-size:13px;color:#666;">23.4인치 터치스크린으로 효과적인 광고 송출 가능</div></div>
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:22px 24px;border:1.5px solid #eee;display:flex;gap:18px;align-items:flex-start;">
+          <div style="font-size:28px;flex-shrink:0;">⚙️</div>
+          <div><div style="font-weight:800;margin-bottom:6px;">운영 편의성</div><div style="font-size:13px;color:#666;">원하는 매장 공지사항을 손쉽게 송출하여 편의성 극대화</div></div>
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:22px 24px;border:1.5px solid #eee;display:flex;gap:18px;align-items:flex-start;">
+          <div style="font-size:28px;flex-shrink:0;">📊</div>
+          <div><div style="font-weight:800;margin-bottom:6px;">스마트 관리프로그램</div><div style="font-size:13px;color:#666;">실시간 재고 파악 및 알림, 매출 데이터 리포트 제공</div></div>
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:22px 24px;border:1.5px solid #eee;display:flex;gap:18px;align-items:flex-start;">
+          <div style="font-size:28px;flex-shrink:0;">🔧</div>
+          <div><div style="font-weight:800;margin-bottom:6px;">원격 관리 &amp; 유지보수</div><div style="font-size:13px;color:#666;">문제 발생 시 즉시 원격 제어 가능</div></div>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:20px;padding:36px;border:1.5px solid #eee;">
+        <h3 style="font-size:20px;font-weight:800;margin-bottom:20px;">설치 가능 공간</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">병원</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">PC방</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">카페</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">학교/학원</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">아파트</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">헬스장</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">관공서</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">오피스</div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;font-size:13px;font-weight:600;color:#444;border:1.5px solid #eee;">종교시설</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 철거솔루션 -->
+<section class="sec" id="demolition" style="background:#fff;">
+  <div class="sec-inner">
+    <div class="sec-top">
+      <h2>AllPayStore 철거 솔루션</h2>
+      <p>복잡한 철거부터 폐기물 처리, 원상복구까지 한 번에 해결하세요</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+      <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:20px;padding:48px 40px;display:flex;flex-direction:column;justify-content:flex-end;min-height:360px;position:relative;overflow:hidden;">
+        <div style="font-size:80px;position:absolute;top:40px;right:40px;opacity:0.3;">🔨</div>
+        <div style="font-size:22px;font-weight:900;color:#fff;line-height:1.5;position:relative;z-index:2;">정확한 견적과 완벽한 시공으로<br>믿음을 드립니다.</div>
+        <div style="margin-top:16px;color:rgba(255,255,255,0.6);font-size:14px;position:relative;z-index:2;">전문 엔지니어팀이 안전하고 신속하게 사장님의 다음 시작을 도와드립니다.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div class="demo-acc" style="border-bottom:1px solid #eee;padding:20px 0;">
+          <div style="font-weight:800;font-size:16px;display:flex;justify-content:space-between;cursor:pointer;" onclick="toggleDemo(this)">
+            <span>정밀 현장 분석</span><span>+</span>
+          </div>
+          <div style="display:none;font-size:14px;color:#666;line-height:1.8;margin-top:12px;">철거 전 구조물 진단 및 안전 계획 수립으로 사고를 방지합니다.</div>
+        </div>
+        <div class="demo-acc" style="border-bottom:1px solid #eee;padding:20px 0;">
+          <div style="font-weight:800;font-size:16px;display:flex;justify-content:space-between;cursor:pointer;" onclick="toggleDemo(this)">
+            <span>원스톱 원상복구</span><span>+</span>
+          </div>
+          <div style="display:none;font-size:14px;color:#666;line-height:1.8;margin-top:12px;">철거 후 다음 임차인을 위한 완벽한 원상복구 공사까지 통합 제공합니다.</div>
+        </div>
+        <div class="demo-acc" style="border-bottom:1px solid #eee;padding:20px 0;">
+          <div style="font-weight:800;font-size:16px;display:flex;justify-content:space-between;cursor:pointer;" onclick="toggleDemo(this)">
+            <span>폐기물 적법 처리</span><span>+</span>
+          </div>
+          <div style="display:none;font-size:14px;color:#666;line-height:1.8;margin-top:12px;">모든 폐기물은 관련 법규에 따라 투명하고 깔끔하게 처리 및 신고 대행합니다.</div>
+        </div>
+        <div class="demo-acc" style="border-bottom:1px solid #eee;padding:20px 0;">
+          <div style="font-weight:800;font-size:16px;display:flex;justify-content:space-between;cursor:pointer;" onclick="toggleDemo(this)">
+            <span>실시간 공정 보고</span><span>+</span>
+          </div>
+          <div style="display:none;font-size:14px;color:#666;line-height:1.8;margin-top:12px;">현장에 오지 않아도 카톡으로 철거 진행 상황을 사진과 영상으로 보고합니다.</div>
+        </div>
+        <div class="demo-acc" style="border-bottom:1px solid #eee;padding:20px 0;">
+          <div style="font-weight:800;font-size:16px;display:flex;justify-content:space-between;cursor:pointer;" onclick="toggleDemo(this)">
+            <span>합리적 정찰제</span><span>+</span>
+          </div>
+          <div style="display:none;font-size:14px;color:#666;line-height:1.8;margin-top:12px;">숨은 추가 비용 없이, 면적과 난이도에 따른 투명한 견적 시스템을 운영합니다.</div>
+        </div>
+        <div class="demo-acc" style="padding:20px 0;">
+          <div style="font-weight:800;font-size:16px;display:flex;justify-content:space-between;cursor:pointer;" onclick="toggleDemo(this)">
+            <span>100% 사후 책임</span><span>+</span>
+          </div>
+          <div style="display:none;font-size:14px;color:#666;line-height:1.8;margin-top:12px;">공사 중 발생할 수 있는 소음, 분쟁 해결 및 완벽한 마무리를 보장합니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="partners">
   <div class="partners-title">TRUSTED PARTNERS</div>
   <div class="partners-track-wrap">
@@ -613,6 +752,18 @@ footer { background:#111; padding:60px 40px 100px; }
 </div>
 
 <script>
+function toggleDemo(el) {
+  var body = el.nextElementSibling;
+  var icon = el.querySelector('span:last-child');
+  if (body.style.display === 'none') {
+    body.style.display = 'block';
+    icon.textContent = '-';
+  } else {
+    body.style.display = 'none';
+    icon.textContent = '+';
+  }
+}
+
 var heroIdx = 0;
 var heroTotal = 3;
 function heroMove(dir) {
