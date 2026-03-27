@@ -5085,11 +5085,10 @@ function getProfile(sido,sigungu,emd){
 
 function makeSVG(sido,sigungu,emd){
   const sub=`${sido} ${sigungu}`;
-  return `<svg xmlns="http:
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="#0D2E6E"/><text x="400" y="250" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="900" fill="white">${emd} 카드단말기</text></svg>`;
 }
 
-const CSS=`<link rel="preconnect" href="https:
-<link href="https:
+const CSS=`<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}
@@ -5168,7 +5167,7 @@ function makeBlog(sido,sigungu,emd,slug){
   const tags=p.biz.map(b=>`<span class="tag">${b}</span>`).join('');
   const today=new Date();
   const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
-  const canon=`https:
+  const canon=`https://allpaystore.com/blog/${slug}/`;
   const svgEnc=encodeURIComponent(makeSVG(sido,sigungu,emd));
   const iso=today.toISOString().split('T')[0];
   return `<!DOCTYPE html>
@@ -5180,7 +5179,7 @@ function makeBlog(sido,sigungu,emd,slug){
 <meta name="keywords" content="${emd} 카드단말기 설치,${emd} 포스기,${emd} 카드단말기,${sigungu} 카드단말기,${emd} 키오스크,${emd} CCTV,${sigungu} 포스기 설치">
 <meta property="og:title" content="${emd} 카드단말기 설치 | 올페이스토어">
 <meta property="og:description" content="${full} 카드단말기·포스기·키오스크·CCTV 전문. 무료 견적 010-9876-8282">
-<meta property="og:image" content="https:
+<meta property="og:image" content="https://allpaystore.com/og-image.png">
 <meta property="og:type" content="article"><meta property="og:url" content="${canon}">
 <link rel="canonical" href="${canon}">
 ${CSS}
@@ -5291,8 +5290,7 @@ ${CSS}
   </div>
 </div>
 
-<script type="application/ld+json">{"@context":"https:
-<script type="application/ld+json">{"@context":"https:
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어"}</script>
 </body></html>`;
 }
 
@@ -5303,7 +5301,7 @@ function makeBlogList(){
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>전국 카드단말기·포스기 설치 지역 | 올페이스토어</title>
 <meta name="description" content="전국 5,066개 읍면동 카드단말기·포스기·키오스크·CCTV 설치. 올페이스토어 ☎ 010-9876-8282">
-<link href="https:
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
 .gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700}
@@ -5323,10 +5321,8 @@ function makeBlogList(){
 }
 
 function makeSitemap(){
-  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http:
-<url><loc>https:
-<url><loc>https:
-${Object.keys(R).map(s=>`<url><loc>https:
+  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://allpaystore.com/</loc></url>
+${Object.keys(R).map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join("")}
 </urlset>`;
 }
 
@@ -5335,13 +5331,13 @@ function getRSS() {
 <rss version="2.0">
   <channel>
     <title>AllPayStore | 포스기·카드단말기·키오스크 전문</title>
-    <link>https:
+    <link>https://allpaystore.com/</link>
     <description>포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.</description>
     <language>ko</language>
     <lastBuildDate>Mon, 09 Mar 2025 00:00:00 +0900</lastBuildDate>
     <item>
       <title>AllPayStore - 포스기·카드단말기·키오스크 전문</title>
-      <link>https:
+      <link>https://allpaystore.com/</link>
       <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 1,500건 이상의 설치 실적.</description>
       <pubDate>Mon, 09 Mar 2025 00:00:00 +0900</pubDate>
     </item>
@@ -5352,7 +5348,7 @@ function getRSS() {
 function getRobots() {
   return `User-agent: *
 Allow: /
-Sitemap: https:
+Sitemap: https://allpaystore.com/sitemap.xml`;
 }
 
 function getHTML() {
@@ -5368,8 +5364,8 @@ function getHTML() {
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045" />
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
-<link rel="preconnect" href="https:
-<link href="https:
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Noto Sans KR',sans-serif; color:#111; background:#fff; }
@@ -6179,7 +6175,7 @@ footer { background:#111; padding:60px 0 100px; }
     </div>
     <div class="prod-grid">
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🖥️</div>
         <div class="prod-body">
           <div class="prod-name">올인원 포스시스템</div>
           <div class="prod-desc">어떤 업종도 OK. 실시간 매출 분석부터 재고 관리까지 한 번에.</div>
@@ -6187,7 +6183,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🧾</div>
         <div class="prod-body">
           <div class="prod-name">자동커팅 단말기</div>
           <div class="prod-desc">빠른 영수증 출력과 자동 커팅으로 매장 회전율을 높여줍니다.</div>
@@ -6195,7 +6191,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">💳</div>
         <div class="prod-body">
           <div class="prod-name">컴팩트 카드단말기</div>
           <div class="prod-desc">좁은 카운터에서도 공간 활용이 뛰어난 소규모 매장 최적 모델.</div>
@@ -6203,7 +6199,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📱</div>
         <div class="prod-body">
           <div class="prod-name">토스 단말기</div>
           <div class="prod-desc">고객이 직접 결제하고 포인트를 적립하는 스마트한 경험.</div>
@@ -6211,7 +6207,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📡</div>
         <div class="prod-body">
           <div class="prod-name">무선 카드단말기</div>
           <div class="prod-desc">배달·야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</div>
@@ -6219,7 +6215,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🔵</div>
         <div class="prod-body">
           <div class="prod-name">블루투스 단말기</div>
           <div class="prod-desc">스마트폰만 있으면 결제 준비 끝. 1인 창업자에게 최적.</div>
@@ -6227,7 +6223,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📋</div>
         <div class="prod-body">
           <div class="prod-name">테이블 오더</div>
           <div class="prod-desc">고객이 자리에서 직접 주문·결제. 인건비 절감과 스마트한 운영.</div>
@@ -6235,7 +6231,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🤖</div>
         <div class="prod-body">
           <div class="prod-name">알뜰 미니키오스크</div>
           <div class="prod-desc">카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</div>
@@ -6243,7 +6239,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🏧</div>
         <div class="prod-body">
           <div class="prod-name">스마트 무인키오스크</div>
           <div class="prod-desc">직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</div>
@@ -6822,7 +6818,7 @@ export default {
     }
 
     if(path==='/index.html')
-      return Response.redirect('https:
+      return Response.redirect('https://allpaystore.com/', 301);
 
     if(path==='/blog')
       return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
@@ -6845,7 +6841,7 @@ export default {
 
     if(path==='/sitemap.xml')return new Response(makeSitemap(),{headers:{'Content-Type':'application/xml;charset=utf-8'}});
     if(path.startsWith('/images/')){return Response.redirect('https://raw.githubusercontent.com/dandylsk80/allpaystore/main'+path,301);}
-    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https:
+    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n',{headers:{'Content-Type':'text/plain'}});
 
     return new Response('Not Found',{status:404});
   }
