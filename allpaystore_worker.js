@@ -145,6 +145,113 @@ function enUrl(sido,district,dong,grade,subject){
   return `/${s}/${d}/${g}/${sb}`;
 }
 
+const HEADER = `<header>
+  <div class="hw">
+    <a href="/" class="logo">
+      <div class="logo-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="logo-name">
+        <span class="logo-main"><em>올케어</em>스터디</span>
+        <span class="logo-sub">ALLCARE STUDY</span>
+      </div>
+    </a>
+    <div class="vpill">
+      <span class="vl">누적 방문자</span>
+      <span class="vc" id="vc">353,112명</span>
+    </div>
+    <nav class="gnb">
+      <div class="gi" id="gi-region">
+        <button class="gb" onclick="toggleMega('region')">지역별설치/상담<svg class="arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="mega-drop" id="mega-region">
+          <div class="mega-tabs">
+            <button class="mega-tab on" onclick="switchTab('region','local')">📍 지역별 설치</button>
+            <button class="mega-tab" onclick="switchTab('region','grade')">🎓 제품별 설치</button>
+            <button class="mega-tab" onclick="switchTab('region','school')">🏫 업종별 설치</button>
+          </div>
+          <div class="mega-panel on" id="region-local">
+            <div class="mega-btns">
+              <a class="mega-btn" href="/seoul">🏙 서울</a>
+              <a class="mega-btn" href="/gyeonggi">🌿 경기</a>
+              <a class="mega-btn" href="/incheon">🌊 인천</a>
+              <a class="mega-btn" href="/busan">🐟 부산</a>
+              <a class="mega-btn" href="/daegu">🍎 대구</a>
+              <a class="mega-btn" href="/daejeon">🌾 대전</a>
+              <a class="mega-btn" href="/gwangju">🌸 광주</a>
+              <a class="mega-btn" href="/ulsan">⚙️ 울산</a>
+              <a class="mega-btn" href="/sejong">🏛 세종</a>
+              <a class="mega-btn" href="/gangwon">🏔 강원</a>
+              <a class="mega-btn" href="/chungbuk">🌻 충북</a>
+              <a class="mega-btn" href="/chungnam">🌊 충남</a>
+              <a class="mega-btn" href="/jeonbuk">🌾 전북</a>
+              <a class="mega-btn" href="/jeonnam">🍵 전남</a>
+              <a class="mega-btn" href="/gyeongbuk">🍎 경북</a>
+              <a class="mega-btn" href="/gyeongnam">🌊 경남</a>
+              <a class="mega-btn" href="/jeju">🌺 제주</a>
+            </div>
+          </div>
+          <div class="mega-panel" id="region-grade">
+            <div class="mega-rt">🎒 소규모매장</div>
+            <div class="mega-btns">
+              <a class="mega-btn" href="/grade/elementary/1">소규모매장 1업종</a>
+              <a class="mega-btn" href="/grade/elementary/2">소규모매장 2업종</a>
+              <a class="mega-btn" href="/grade/elementary/3">소규모매장 3업종</a>
+              <a class="mega-btn" href="/grade/elementary/4">소규모매장 4업종</a>
+              <a class="mega-btn" href="/grade/elementary/5">소규모매장 5업종</a>
+              <a class="mega-btn" href="/grade/elementary/6">소규모매장 6업종</a>
+            </div>
+            <div class="mega-rt">📚 중형매장</div>
+            <div class="mega-btns">
+              <a class="mega-btn" href="/grade/middle/1">중형매장 1업종</a>
+              <a class="mega-btn" href="/grade/middle/2">중형매장 2업종</a>
+              <a class="mega-btn" href="/grade/middle/3">중형매장 3업종</a>
+            </div>
+            <div class="mega-rt">🎓 대형매장</div>
+            <div class="mega-btns">
+              <a class="mega-btn" href="/grade/high/1">대형매장 1업종</a>
+              <a class="mega-btn" href="/grade/high/2">대형매장 2업종</a>
+              <a class="mega-btn" href="/grade/high/3">대형매장 3업종</a>
+            </div>
+          </div>
+          <div class="mega-panel" id="region-school">
+            <div class="mega-rt">시도별 설치</div>
+            <div class="mega-btns">
+              <a class="mega-btn" href="/school/seoul">서울</a>
+              <a class="mega-btn" href="/school/gyeonggi">경기</a>
+              <a class="mega-btn" href="/school/incheon">인천</a>
+              <a class="mega-btn" href="/school/busan">부산</a>
+              <a class="mega-btn" href="/school/daegu">대구</a>
+              <a class="mega-btn" href="/school/gwangju">광주</a>
+              <a class="mega-btn" href="/school/daejeon">대전</a>
+              <a class="mega-btn" href="/school/ulsan">울산</a>
+              <a class="mega-btn" href="/school/sejong">세종</a>
+              <a class="mega-btn" href="/school/gangwon">강원</a>
+              <a class="mega-btn" href="/school/chungbuk">충북</a>
+              <a class="mega-btn" href="/school/chungnam">충남</a>
+              <a class="mega-btn" href="/school/jeonbuk">전북</a>
+              <a class="mega-btn" href="/school/jeonnam">전남</a>
+              <a class="mega-btn" href="/school/gyeongbuk">경북</a>
+              <a class="mega-btn" href="/school/gyeongnam">경남</a>
+              <a class="mega-btn" href="/school/jeju">제주</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gi">
+        <button class="gb">제품별설치<svg class="arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="drop"><a href="/subject/math">📐 카드단말기</a><a href="/subject/english">📖 포스기</a><a href="/subject/korean">✍️ 키오스크</a><a href="/subject/science">🔬 CCTV</a><a href="/subject/social">🌏 테이블오더</a><a href="/subject/coding">🤖 무인결제기</a><a href="/subject/essay">📱 배달주문기</a><a href="/subject/gsd">🔐 출입관리시스템</a></div>
+      </div>
+      <div class="gi">
+        <a href="/contact" class="gb" style="text-decoration:none;display:flex;align-items:center;color:#60A5FA;font-weight:800">문의하기</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="mob-overlay" onclick="closeMobNav()"></div>
+<div id="mob-nav"></div>
+<script>
 function openMobNav(){document.getElementById('mob-nav').classList.add('open');document.getElementById('mob-overlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeMobNav(){document.getElementById('mob-nav').classList.remove('open');document.getElementById('mob-overlay').classList.remove('open');document.body.style.overflow='';}
 </script>`;
@@ -2674,11 +2781,6 @@ function serveSitemap() {
     url('/', 'daily', '1.0'),
     url('/academy/intro', 'monthly', '0.8'),
     url('/academy/all', 'weekly', '0.7'),
-    // 매장별 페이지 - 각 센터의 초/중/고 매장별
-      ...(c.te||'').split(',').filter(s=>s.trim()).map(s=>url('/academy/school/e/'+makeSchoolSlug('E',s.trim()),'monthly','0.6')),
-      ...(c.tm||'').split(',').filter(s=>s.trim()).map(s=>url('/academy/school/m/'+makeSchoolSlug('M',s.trim()),'monthly','0.6')),
-      ...(c.th||'').split(',').filter(s=>s.trim()).map(s=>url('/academy/school/h/'+makeSchoolSlug('H',s.trim()),'monthly','0.6')),
-    ]),
     url('/contact', 'monthly', '0.6')];
 
   // 전국 REGIONS 동별 × 과목 (sitemap)
