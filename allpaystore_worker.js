@@ -5899,10 +5899,10 @@ footer { background:#111; padding:60px 0 100px; }
 
 <nav>
   <div class="nav-inner">
-    <div class="logo" style="display:flex;align-items:center;gap:10px;"><a href="/"><img src="/images/logo.png" alt="AllPayStore" style="height:44px;width:auto;display:block;"></a></div>
+    <div class="logo" style="display:flex;align-items:center;gap:10px;"><a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;"><img src="/images/logo.png" alt="AllPayStore" style="height:44px;width:auto;display:block;"><span style="font-size:20px;font-weight:900;color:#111;letter-spacing:-0.5px;">All<span style="color:#0D2E6E;">Pay</span>Store</span></a></div>
     <div style="flex:1;"></div>
     <ul class="nav-links" style="justify-content:flex-end;margin-right:24px;">
-      <li class="gi" id="gi-region" style="position:relative;list-style:none;" onmouseenter="openMegaRegion()" onmouseleave="closeMegaRegion()">
+      <li class="gi" id="gi-region" style="position:relative;list-style:none;cursor:pointer;z-index:500;" onmouseenter="openMegaRegion()" onmouseleave="closeMegaRegion()">
         <button class="gb" onclick="openMegaRegion()" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;background:none;font-size:15px;font-weight:500;color:#333;border-radius:8px;cursor:pointer;font-family:inherit;transition:color 0.2s;pointer-events:auto;">
           지역별 광고
           <svg style="width:14px;height:14px;color:rgba(0,0,0,0.4);transition:transform 0.2s;" id="mega-arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
