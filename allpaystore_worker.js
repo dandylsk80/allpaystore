@@ -1347,7 +1347,7 @@ function wrap(title, desc, canonical, body, breadcrumbs){
   let bcSchema = '';
   if(breadcrumbs && breadcrumbs.length) {
     const items = breadcrumbs.map((b,i) => `{"@type":"ListItem","position":${i+1},"name":"${b.name}","item":"https://allpaystore.com${b.url}"}`).join(',');
-    bcSchema = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[${items}]}</script>`;
+    bcSchema = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[${items}]}<\/script>`;
   }
 
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -1370,10 +1370,10 @@ function wrap(title, desc, canonical, body, breadcrumbs){
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="naver-site-verification" content="a1c57425042478220780bb530f8511e3eec2a1fd">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${descShort}","url":"${canonicalUrl}","publisher":{"@type":"Organization","name":"올페이스토어","url":"https://allpaystore.com","telephone":"010-9876-8282","logo":{"@type":"ImageObject","url":"https://allpaystore.com/logo.png","width":200,"height":60}},"datePublished":"${isoDate}","dateModified":"${isoDate}","inLanguage":"ko-KR"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${descShort}","url":"${canonicalUrl}","publisher":{"@type":"Organization","name":"올페이스토어","url":"https://allpaystore.com","telephone":"010-9876-8282","logo":{"@type":"ImageObject","url":"https://allpaystore.com/logo.png","width":200,"height":60}},"datePublished":"${isoDate}","dateModified":"${isoDate}","inLanguage":"ko-KR"}<\/script>
 ${bcSchema}<link rel="alternate" type="application/rss+xml" title="올페이스토어 RSS" href="https://allpaystore.com/rss.xml">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
-<style>${CSS}</style>
+<style>${CSS}<\/style>
 </head><body>${HEADER}${body}${FOOTER}</body></html>`;
 }
 
@@ -3431,7 +3431,7 @@ function makeAcademyPage() {
 #card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
 @media(max-width:767px){#card-grid{grid-template-columns:1fr!important;gap:10px!important}}
 @media(min-width:768px) and (max-width:1023px){#card-grid{grid-template-columns:repeat(2,1fr)!important}}
-</style>
+<\/style>
 <div id="card-grid"></div>
   </div>
 
@@ -3711,7 +3711,7 @@ function makeContactPage(type) {
       else{var el=document.getElementById('m-error');el.textContent='⚠️ 전송 중 오류가 발생했습니다.';el.style.display='block';}
     }).catch(()=>{var el=document.getElementById('m-error');el.textContent='⚠️ 네트워크 오류가 발생했습니다.';el.style.display='block';});
   }
-  </script>
+  <\/script>
 </div>`;
 
   return wrap(title, desc, canonical, body, [{name:'홈',url:'/'},{name:'무료 견적 문의',url:'/contact'}]);
@@ -3733,7 +3733,7 @@ function makeHomePage(){
   const body = `
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","telephone":"010-9876-8282","description":"카드단말기·포스기·키오스크·CCTV 설치 전문","areaServed":"대한민국"}
-</script>
+<\/script>
 <div class="wrap">
   <!-- 히어로 -->
   <div style="background:linear-gradient(135deg,#0D2E6E 0%,#1A6BFF 100%);border-radius:20px;padding:60px 48px;margin-bottom:48px;text-align:center;color:white">
@@ -3791,7 +3791,7 @@ function switchFind(tab){
   var cbtn = document.getElementById('ftab-contact');
   if(cbtn){ cbtn.style.background='white';cbtn.style.color='#1D4ED8';cbtn.style.borderColor='#1D4ED8'; }
 }
-</script>
+<\/script>
 
 <!-- REVIEWS -->
 
@@ -3912,7 +3912,7 @@ function switchFind(tab){
   var cbtn = document.getElementById('ftab-contact');
   if(cbtn){ cbtn.style.background='white';cbtn.style.color='#1D4ED8';cbtn.style.borderColor='#1D4ED8'; }
 }
-</script>
+<\/script>
 <script>
 (function(){
   var floats = document.getElementById('floats');
@@ -3934,7 +3934,7 @@ function switchFind(tab){
   window.addEventListener('resize', adjustFloats, {passive:true});
   adjustFloats();
 })();
-</script>
+<\/script>
 <script>
 function toggleMobileMenu(){
   const m=document.getElementById('mobMenu');
@@ -3968,7 +3968,7 @@ function switchTab(menu,tab){
     document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
   }catch(e){}
 })();
-</script>`;
+<\/script>`;
   return wrap('올페이스토어 | 전국 1:1 맞춤 설치·대리점 정보','전국 초·중·고 1:1 맞춤 설치 플랫폼. 검증된 전문가 빠르게 매칭. 카드단말기·포스기·키오스크·CCTV 방문설치. 무료상담 010-9876-8282','/',body,[]);
 }
 
@@ -4388,7 +4388,7 @@ export default {
       if (page) return new Response(page, { headers: h });
     }
     // 404
-    return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>404 - 올페이스토어</title><style>${CSS}</style></head><body>
+    return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>404 - 올페이스토어</title><style>${CSS}<\/style></head><body>
 ${HEADER}<div class="wrap" style="text-align:center;padding-top:80px">
 <div style="font-size:64px;margin-bottom:20px">🔍</div>
 <h1 class="art-title">페이지를 찾을 수 없습니다</h1>
