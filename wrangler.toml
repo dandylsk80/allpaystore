@@ -1,4 +1,12 @@
-name = "allpaystore"
-main = "allpaystore_worker.js"
+name = "allpaystore-worker"
+main = "allpaystore-worker.js"
 compatibility_date = "2024-01-01"
-no_bundle = true
+workers_dev = true
+
+[route]
+pattern = "allpaystore.com/*"
+zone_name = "allpaystore.com"
+
+[[routes]]
+pattern = "www.allpaystore.com/*"
+zone_name = "allpaystore.com"
