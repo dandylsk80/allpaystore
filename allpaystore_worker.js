@@ -5906,7 +5906,7 @@ footer { background:#111; padding:60px 0 100px; }
     <div style="flex:1;"></div>
     <ul class="nav-links" style="justify-content:flex-end;margin-right:24px;">
       <li class="gi" id="gi-region" style="position:relative;list-style:none;" onmouseenter="openMegaRegion()" onmouseleave="closeMegaRegion()">
-        <button class="gb" onclick="toggleMegaRegion(event)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;background:none;font-size:15px;font-weight:500;color:#333;border-radius:8px;cursor:pointer;font-family:inherit;transition:color 0.2s;">
+        <button class="gb" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;background:none;font-size:15px;font-weight:500;color:#333;border-radius:8px;cursor:pointer;font-family:inherit;transition:color 0.2s;">
           지역별 광고
           <svg style="width:14px;height:14px;color:rgba(0,0,0,0.4);transition:transform 0.2s;" id="mega-arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
         </button>
@@ -6551,9 +6551,9 @@ const SIGUNGU={"seoul":[["종로구","seoul/jongrogu"],["중구","seoul/junggu"]
 const SIDO_NAMES={seoul:"서울특별시",busan:"부산광역시",daegu:"대구광역시",incheon:"인천광역시",gwangju:"광주광역시",daejeon:"대전광역시",ulsan:"울산광역시",sejong:"세종특별자치시",gyeonggi:"경기도",gangwon:"강원특별자치도",chungbuk:"충청북도",chungnam:"충청남도",jeonbuk:"전북특별자치도",jeonnam:"전라남도",gyeongbuk:"경상북도",gyeongnam:"경상남도",jeju:"제주특별자치도"};
 var _megaOpen=false,_megaTimer=null;
 function openMegaRegion(){clearTimeout(_megaTimer);document.getElementById('mega-region').style.display='block';_megaOpen=true;document.getElementById('mega-arr').style.transform='rotate(180deg)';}
-function closeMegaRegion(){_megaTimer=setTimeout(function(){var d=document.getElementById('mega-region');if(d){d.style.display='none';_megaOpen=false;}var a=document.getElementById('mega-arr');if(a)a.style.transform='';},600);}
+function closeMegaRegion(){_megaTimer=setTimeout(function(){var d=document.getElementById('mega-region');if(d){d.style.display='none';_megaOpen=false;}var a=document.getElementById('mega-arr');if(a)a.style.transform='';},300);}
 function toggleMegaRegion(e){e.preventDefault();e.stopPropagation();if(_megaOpen)closeMegaRegion();else openMegaRegion();}
-document.addEventListener('click',function(e){if(!e.target.closest('#gi-region')){var d=document.getElementById('mega-region');if(d){d.style.display='none';_megaOpen=false;}}});
+
 function switchMegaTab(tab){document.querySelectorAll('.mega-panel-content').forEach(function(p){p.style.display='none';});document.getElementById('mega-panel-'+tab).style.display='block';document.querySelectorAll('.mega-tab-btn').forEach(function(b){b.style.background='rgba(255,255,255,0.08)';b.style.color='rgba(255,255,255,0.5)';});event.target.style.background='#1A6BFF';event.target.style.color='white';}
 
 function showSigungu(e,sidoEng){
