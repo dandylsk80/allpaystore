@@ -1,3 +1,4 @@
 name = "allpaystore"
 main = "allpaystore_worker.js"
 compatibility_date = "2024-01-01"
+no_bundle = true
