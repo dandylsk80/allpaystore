@@ -5085,10 +5085,60 @@ function getProfile(sido,sigungu,emd){
 
 function makeSVG(sido,sigungu,emd){
   const sub=`${sido} ${sigungu}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="#0D2E6E"/><text x="400" y="210" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="900" fill="white">${emd}</text><text x="400" y="280" text-anchor="middle" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">${sigungu}</text><text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.5)">카드단말기 설치 | 올페이스토어</text></svg>`;
+  return `<svg xmlns="http:
 }
 
-const CSS="<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap\" rel=\"stylesheet\">\n<style>\n*{margin:0;padding:0;box-sizing:border-box}\nbody{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}\na{text-decoration:none;color:inherit}\n.gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}\n.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}\n.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}\n.logo span{color:#7DD3FC}\n.tel-btn{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;white-space:nowrap}\n.wrap{max-width:780px;margin:0 auto;padding:0 18px 80px}\n.thumb{width:100%;border-radius:16px;overflow:hidden;margin:28px 0 22px;box-shadow:0 6px 28px rgba(13,46,110,.16)}\n.thumb img{width:100%;height:auto;display:block}\n.meta{font-size:13px;color:#999;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}\n.badge{background:#EEF4FF;color:#1A6BFF;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}\nh1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#0D2E6E;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}\n.intro{background:#fff;border-left:5px solid #1A6BFF;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}\nh2{font-size:19px;font-weight:900;color:#fff;background:linear-gradient(90deg,#0D2E6E,#1A6BFF);padding:11px 18px;border-radius:8px;margin:40px 0 16px;letter-spacing:-.3px}\nh3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #1A6BFF}\np{font-size:15.5px;color:#333;margin-bottom:16px}\n.tag{display:inline-block;background:#EEF4FF;color:#0D2E6E;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}\n.g4{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}\n.card{background:#fff;border-radius:12px;padding:18px;text-align:center;border:1.5px solid #e8e8e8}\n.card .ic{font-size:28px;margin-bottom:7px}\n.card .lb{font-size:11px;color:#999;font-weight:600;margin-bottom:4px}\n.card .vl{font-size:17px;font-weight:900;color:#0D2E6E}\n.box{background:#fff;border:1.5px solid #E8EEFF;border-radius:14px;padding:22px 24px;margin:18px 0}\n.box.blue{background:#EEF4FF;border-color:#BDD0FF}\n.box.yellow{background:#FFFBEA;border-color:#FFE082}\nul.ck{list-style:none;padding:0}\nul.ck li{padding:8px 0 8px 30px;position:relative;font-size:15px;border-bottom:1px solid #f2f2f2}\nul.ck li:last-child{border-bottom:none}\nul.ck li::before{content:'✅';position:absolute;left:0}\n.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}\n.tbl th{background:#0D2E6E;color:#fff;padding:11px 10px;text-align:center}\n.tbl td{padding:10px;border-bottom:1px solid #eee;text-align:center}\n.tbl tr:nth-child(even) td{background:#f8f9fc}\n.tbl .hi{color:#1A6BFF;font-weight:800}\n.cta{background:linear-gradient(135deg,#0D2E6E,#1A6BFF);border-radius:16px;padding:36px 24px;text-align:center;color:#fff;margin:44px 0}\n.cta h3{font-size:22px;font-weight:900;margin-bottom:10px}\n.cta p{font-size:15px;opacity:.9;margin-bottom:26px}\n.cta-main{display:inline-block;background:#FFD700;color:#0D2E6E;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.2)}\n.cta-sub{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid rgba(255,255,255,.4)}\n.faq{background:#fff;border-radius:12px;padding:20px;margin:12px 0;border:1.5px solid #eee}\n.faq-q{font-size:15px;font-weight:800;color:#0D2E6E;margin-bottom:8px}\n.faq-a{font-size:14.5px;color:#444;line-height:1.8}\n.foot-nav{margin:40px 0 0;padding:16px 0;border-top:1px solid #eee;font-size:14px;color:#aaa}\n.foot-nav a{color:#1A6BFF;font-weight:600}\n@media(max-width:480px){.cta-main{font-size:16px;padding:14px 32px}}\n</style>";
+const CSS=`<link rel="preconnect" href="https:
+<link href="https:
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}
+a{text-decoration:none;color:inherit}
+.gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}
+.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}
+.logo span{color:#7DD3FC}
+.tel-btn{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;white-space:nowrap}
+.wrap{max-width:780px;margin:0 auto;padding:0 18px 80px}
+.thumb{width:100%;border-radius:16px;overflow:hidden;margin:28px 0 22px;box-shadow:0 6px 28px rgba(13,46,110,.16)}
+.thumb img{width:100%;height:auto;display:block}
+.meta{font-size:13px;color:#999;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.badge{background:#EEF4FF;color:#1A6BFF;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}
+h1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#0D2E6E;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}
+.intro{background:#fff;border-left:5px solid #1A6BFF;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}
+h2{font-size:19px;font-weight:900;color:#fff;background:linear-gradient(90deg,#0D2E6E,#1A6BFF);padding:11px 18px;border-radius:8px;margin:40px 0 16px;letter-spacing:-.3px}
+h3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #1A6BFF}
+p{font-size:15.5px;color:#333;margin-bottom:16px}
+.tag{display:inline-block;background:#EEF4FF;color:#0D2E6E;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}
+.g4{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.card{background:#fff;border-radius:12px;padding:18px;text-align:center;border:1.5px solid #e8e8e8}
+.card .ic{font-size:28px;margin-bottom:7px}
+.card .lb{font-size:11px;color:#999;font-weight:600;margin-bottom:4px}
+.card .vl{font-size:17px;font-weight:900;color:#0D2E6E}
+.box{background:#fff;border:1.5px solid #E8EEFF;border-radius:14px;padding:22px 24px;margin:18px 0}
+.box.blue{background:#EEF4FF;border-color:#BDD0FF}
+.box.yellow{background:#FFFBEA;border-color:#FFE082}
+ul.ck{list-style:none;padding:0}
+ul.ck li{padding:8px 0 8px 30px;position:relative;font-size:15px;border-bottom:1px solid #f2f2f2}
+ul.ck li:last-child{border-bottom:none}
+ul.ck li::before{content:'✅';position:absolute;left:0}
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+.tbl th{background:#0D2E6E;color:#fff;padding:11px 10px;text-align:center}
+.tbl td{padding:10px;border-bottom:1px solid #eee;text-align:center}
+.tbl tr:nth-child(even) td{background:#f8f9fc}
+.tbl .hi{color:#1A6BFF;font-weight:800}
+.cta{background:linear-gradient(135deg,#0D2E6E,#1A6BFF);border-radius:16px;padding:36px 24px;text-align:center;color:#fff;margin:44px 0}
+.cta h3{font-size:22px;font-weight:900;margin-bottom:10px}
+.cta p{font-size:15px;opacity:.9;margin-bottom:26px}
+.cta-main{display:inline-block;background:#FFD700;color:#0D2E6E;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.2)}
+.cta-sub{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid rgba(255,255,255,.4)}
+.faq{background:#fff;border-radius:12px;padding:20px;margin:12px 0;border:1.5px solid #eee}
+.faq-q{font-size:15px;font-weight:800;color:#0D2E6E;margin-bottom:8px}
+.faq-a{font-size:14.5px;color:#444;line-height:1.8}
+.foot-nav{margin:40px 0 0;padding:16px 0;border-top:1px solid #eee;font-size:14px;color:#aaa}
+.foot-nav a{color:#1A6BFF;font-weight:600}
+@media(max-width:480px){.cta-main{font-size:16px;padding:14px 32px}}
+</style>`;
 
 
 function makeSidoPage(sidoSlug){
@@ -5097,7 +5147,7 @@ function makeSidoPage(sidoSlug){
   const sgs=SIGUNGU[sidoSlug]||[];
   const seen={};const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;return true;});
   const cards=top.map(sg=>`<a href="/blog/${sg[1]}/" style="display:inline-block;padding:10px 20px;margin:6px;background:#0D2E6E;color:#fff;border-radius:8px;font-weight:700;text-decoration:none;">${sg[0]}</a>`).join('');
-  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sidoName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/" style="color:#0D2E6E;font-weight:700;">← 홈</a><h1 style="margin:20px 0;color:#0D2E6E;">${sidoName} 카드단말기 설치 지역</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
+  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sidoName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/" style="color:#0D2E6E;font-weight:700;">← 홈</a><h1 style="margin:20px 0;color:#0D2E6E;">${sidoName} 카드단말기 설치</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
 }
 function makeSigunguPage(sidoSlug,sigunguSlug){
   const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
@@ -5109,7 +5159,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   const sgInfo=sgs.find(s=>s[1]===sgKey);
   const sgName=sgInfo?sgInfo[0]:sigunguSlug;
   const cards=dongs.map(d=>`<a href="/blog/${d.slug}/" style="display:inline-block;padding:10px 20px;margin:6px;background:#0D2E6E;color:#fff;border-radius:8px;font-weight:700;text-decoration:none;">${d.name}</a>`).join('');
-  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sgName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/blog/${sidoSlug}/" style="color:#0D2E6E;font-weight:700;">← ${sidoName}</a><h1 style="margin:20px 0;color:#0D2E6E;">${sgName} 카드단말기 설치 동/읍/면</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
+  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sgName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/blog/${sidoSlug}/" style="color:#0D2E6E;font-weight:700;">← ${sidoName}</a><h1 style="margin:20px 0;color:#0D2E6E;">${sgName} 카드단말기 설치</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
 }
 
 function makeBlog(sido,sigungu,emd,slug){
@@ -5118,7 +5168,7 @@ function makeBlog(sido,sigungu,emd,slug){
   const tags=p.biz.map(b=>`<span class="tag">${b}</span>`).join('');
   const today=new Date();
   const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
-  const canon=`https://allpaystore.com/blog/${slug}/`;
+  const canon=`https:
   const svgEnc=encodeURIComponent(makeSVG(sido,sigungu,emd));
   const iso=today.toISOString().split('T')[0];
   return `<!DOCTYPE html>
@@ -5130,7 +5180,7 @@ function makeBlog(sido,sigungu,emd,slug){
 <meta name="keywords" content="${emd} 카드단말기 설치,${emd} 포스기,${emd} 카드단말기,${sigungu} 카드단말기,${emd} 키오스크,${emd} CCTV,${sigungu} 포스기 설치">
 <meta property="og:title" content="${emd} 카드단말기 설치 | 올페이스토어">
 <meta property="og:description" content="${full} 카드단말기·포스기·키오스크·CCTV 전문. 무료 견적 010-9876-8282">
-<meta property="og:image" content="https://allpaystore.com/og-image.png">
+<meta property="og:image" content="https:
 <meta property="og:type" content="article"><meta property="og:url" content="${canon}">
 <link rel="canonical" href="${canon}">
 ${CSS}
@@ -5241,8 +5291,8 @@ ${CSS}
   </div>
 </div>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"카드단말기 설치"}</script>
+<script type="application/ld+json">{"@context":"https:
+<script type="application/ld+json">{"@context":"https:
 </body></html>`;
 }
 
@@ -5253,7 +5303,7 @@ function makeBlogList(){
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>전국 카드단말기·포스기 설치 지역 | 올페이스토어</title>
 <meta name="description" content="전국 5,066개 읍면동 카드단말기·포스기·키오스크·CCTV 설치. 올페이스토어 ☎ 010-9876-8282">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https:
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
 .gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700}
@@ -5273,8 +5323,10 @@ function makeBlogList(){
 }
 
 function makeSitemap(){
-  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://allpaystore.com/</loc></url>
-${Object.keys(R).map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join("")}
+  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http:
+<url><loc>https:
+<url><loc>https:
+${Object.keys(R).map(s=>`<url><loc>https:
 </urlset>`;
 }
 
@@ -5283,14 +5335,14 @@ function getRSS() {
 <rss version="2.0">
   <channel>
     <title>AllPayStore | 포스기·카드단말기·키오스크 전문</title>
-    <link>https://allpaystore.com/</link>
+    <link>https:
     <description>포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.</description>
     <language>ko</language>
     <lastBuildDate>Mon, 09 Mar 2025 00:00:00 +0900</lastBuildDate>
     <item>
       <title>AllPayStore - 포스기·카드단말기·키오스크 전문</title>
-      <link>https://allpaystore.com/</link>
-    <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 1,500건 이상의 설치 실적.</description>
+      <link>https:
+      <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 1,500건 이상의 설치 실적.</description>
       <pubDate>Mon, 09 Mar 2025 00:00:00 +0900</pubDate>
     </item>
   </channel>
@@ -5298,7 +5350,9 @@ function getRSS() {
 }
 
 function getRobots() {
-  return 'User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n';
+  return `User-agent: *
+Allow: /
+Sitemap: https:
 }
 
 function getHTML() {
@@ -5314,8 +5368,8 @@ function getHTML() {
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045" />
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https:
+<link href="https:
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Noto Sans KR',sans-serif; color:#111; background:#fff; }
@@ -5898,7 +5952,10 @@ footer { background:#111; padding:60px 0 100px; }
 
 <nav>
   <div class="nav-inner">
-    <div class="logo" style="display:flex;align-items:center;gap:10px;"><a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;"><img src="/images/logo.png" alt="AllPayStore" style="height:44px;width:auto;"><span style="font-size:20px;font-weight:900;color:#111;">All<span style="color:#0D2E6E;">Pay</span>Store</span></a></div>
+    <div class="logo" style="display:flex;align-items:center;gap:10px;"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+  <rect width="36" height="36" rx="8" fill="#0D2E6E"/>
+  <text x="18" y="24" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="900" fill="white">A</text>
+</svg><span style="font-size:22px;font-weight:900;color:#111;letter-spacing:-0.5px;">All<span style="color:#0D2E6E;">Pay</span>Store</span></div>
     <div style="flex:1;"></div>
     <ul class="nav-links" style="justify-content:flex-end;margin-right:24px;">
       <li class="gi" id="gi-region" style="position:relative;list-style:none;" onmouseenter="openMegaRegion()" onmouseleave="closeMegaRegion()">
@@ -6122,7 +6179,7 @@ footer { background:#111; padding:60px 0 100px; }
     </div>
     <div class="prod-grid">
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🖥️</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">올인원 포스시스템</div>
           <div class="prod-desc">어떤 업종도 OK. 실시간 매출 분석부터 재고 관리까지 한 번에.</div>
@@ -6130,7 +6187,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🖥️</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">자동커팅 단말기</div>
           <div class="prod-desc">빠른 영수증 출력과 자동 커팅으로 매장 회전율을 높여줍니다.</div>
@@ -6138,7 +6195,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🧾</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">컴팩트 카드단말기</div>
           <div class="prod-desc">좁은 카운터에서도 공간 활용이 뛰어난 소규모 매장 최적 모델.</div>
@@ -6146,7 +6203,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">💳</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">토스 단말기</div>
           <div class="prod-desc">고객이 직접 결제하고 포인트를 적립하는 스마트한 경험.</div>
@@ -6154,7 +6211,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📱</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">무선 카드단말기</div>
           <div class="prod-desc">배달·야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</div>
@@ -6162,7 +6219,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📡</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">블루투스 단말기</div>
           <div class="prod-desc">스마트폰만 있으면 결제 준비 끝. 1인 창업자에게 최적.</div>
@@ -6170,7 +6227,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🔵</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">테이블 오더</div>
           <div class="prod-desc">고객이 자리에서 직접 주문·결제. 인건비 절감과 스마트한 운영.</div>
@@ -6178,7 +6235,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📋</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">알뜰 미니키오스크</div>
           <div class="prod-desc">카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</div>
@@ -6186,7 +6243,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🤖</div>
+        <div class="prod-img"><img src="https:
         <div class="prod-body">
           <div class="prod-name">스마트 무인키오스크</div>
           <div class="prod-desc">직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</div>
@@ -6539,7 +6596,211 @@ footer { background:#111; padding:60px 0 100px; }
   </div>
 </div>
 
+<script>
 
+
+
+const SIGUNGU={"seoul":[["종로구","seoul/jongrogu"],["중구","seoul/junggu"],["용산구","seoul/yongsangu"],["성동구","seoul/seongdonggu"],["광진구","seoul/gwangjingu"],["동대문구","seoul/dongdaemungu"],["중랑구","seoul/jungranggu"],["성북구","seoul/seongbuggu"],["강북구","seoul/gangbuggu"],["도봉구","seoul/dobonggu"],["노원구","seoul/nowongu"],["은평구","seoul/eunpyeonggu"],["서대문구","seoul/seodaemungu"],["마포구","seoul/mapogu"],["양천구","seoul/yangcheongu"],["강서구","seoul/gangseogu"],["구로구","seoul/gurogu"],["금천구","seoul/geumcheongu"],["영등포구","seoul/yeongdeungpogu"],["동작구","seoul/dongjaggu"],["관악구","seoul/gwanaggu"],["서초구","seoul/seochogu"],["강남구","seoul/gangnamgu"],["송파구","seoul/songpagu"],["강동구","seoul/gangdonggu"]],"busan":[["중구","busan/junggu"],["서구","busan/seogu"],["동구","busan/donggu"],["영도구","busan/yeongdogu"],["부산진구","busan/busanjingu"],["동래구","busan/dongraegu"],["남구","busan/namgu"],["북구","busan/buggu"],["해운대구","busan/haeundaegu"],["사하구","busan/sahagu"],["금정구","busan/geumjeonggu"],["강서구","busan/gangseogu"],["연제구","busan/yeonjegu"],["수영구","busan/suyeonggu"],["사상구","busan/sasanggu"],["기장군","busan/gijanggun"]],"daegu":[["중구","daegu/junggu"],["동구","daegu/donggu"],["서구","daegu/seogu"],["남구","daegu/namgu"],["북구","daegu/buggu"],["수성구","daegu/suseonggu"],["달서구","daegu/darseogu"],["달성군","daegu/darseonggun"],["군위군","daegu/gunwigun"]],"incheon":[["중구","incheon/junggu"],["동구","incheon/donggu"],["미추홀구","incheon/michuhorgu"],["연수구","incheon/yeonsugu"],["남동구","incheon/namdonggu"],["부평구","incheon/bupyeonggu"],["계양구","incheon/gyeyanggu"],["서구","incheon/seogu"],["강화군","incheon/ganghwagun"],["옹진군","incheon/ongjingun"]],"gwangju":[["동구","gwangju/donggu"],["서구","gwangju/seogu"],["남구","gwangju/namgu"],["북구","gwangju/buggu"],["광산구","gwangju/gwangsangu"]],"daejeon":[["동구","daejeon/donggu"],["중구","daejeon/junggu"],["서구","daejeon/seogu"],["유성구","daejeon/yuseonggu"],["대덕구","daejeon/daedeoggu"]],"ulsan":[["중구","ulsan/junggu"],["남구","ulsan/namgu"],["동구","ulsan/donggu"],["북구","ulsan/buggu"],["울주군","ulsan/urjugun"]],"sejong":[["세종시","sejong/sejongsi"]],"gyeonggi":[["수원시","gyeonggi/suwonsi"],["수원시장안구","gyeonggi/suwonsijangangu"],["수원시권선구","gyeonggi/suwonsigwonseongu"],["수원시팔달구","gyeonggi/suwonsipardargu"],["수원시영통구","gyeonggi/suwonsiyeongtonggu"],["성남시","gyeonggi/seongnamsi"],["성남시수정구","gyeonggi/seongnamsisujeonggu"],["성남시중원구","gyeonggi/seongnamsijungwongu"],["성남시분당구","gyeonggi/seongnamsibundanggu"],["의정부시","gyeonggi/euijeongbusi"],["안양시","gyeonggi/anyangsi"],["안양시만안구","gyeonggi/anyangsimanangu"],["안양시동안구","gyeonggi/anyangsidongangu"],["부천시","gyeonggi/bucheonsi"],["부천시원미구","gyeonggi/bucheonsiwonmigu"],["부천시소사구","gyeonggi/bucheonsisosagu"],["부천시오정구","gyeonggi/bucheonsiojeonggu"],["광명시","gyeonggi/gwangmyeongsi"],["평택시","gyeonggi/pyeongtaegsi"],["동두천시","gyeonggi/dongducheonsi"],["안산시","gyeonggi/ansansi"],["안산시상록구","gyeonggi/ansansisangroggu"],["안산시단원구","gyeonggi/ansansidanwongu"],["고양시","gyeonggi/goyangsi"],["고양시덕양구","gyeonggi/goyangsideogyanggu"],["고양시일산동구","gyeonggi/goyangsiirsandonggu"],["고양시일산서구","gyeonggi/goyangsiirsanseogu"],["과천시","gyeonggi/gwacheonsi"],["구리시","gyeonggi/gurisi"],["남양주시","gyeonggi/namyangjusi"],["오산시","gyeonggi/osansi"],["시흥시","gyeonggi/siheungsi"],["군포시","gyeonggi/gunposi"],["의왕시","gyeonggi/euiwangsi"],["하남시","gyeonggi/hanamsi"],["용인시","gyeonggi/yonginsi"],["용인시처인구","gyeonggi/yonginsicheoingu"],["용인시기흥구","gyeonggi/yonginsigiheunggu"],["용인시수지구","gyeonggi/yonginsisujigu"],["파주시","gyeonggi/pajusi"],["이천시","gyeonggi/icheonsi"],["안성시","gyeonggi/anseongsi"],["김포시","gyeonggi/gimposi"],["화성시","gyeonggi/hwaseongsi"],["광주시","gyeonggi/gwangjusi"],["양주시","gyeonggi/yangjusi"],["포천시","gyeonggi/pocheonsi"],["여주시","gyeonggi/yeojusi"],["연천군","gyeonggi/yeoncheongun"],["가평군","gyeonggi/gapyeonggun"],["양평군","gyeonggi/yangpyeonggun"]],"gangwon":[["춘천시","gangwon/chuncheonsi"],["원주시","gangwon/wonjusi"],["강릉시","gangwon/gangreungsi"],["동해시","gangwon/donghaesi"],["태백시","gangwon/taebaegsi"],["속초시","gangwon/sogchosi"],["삼척시","gangwon/samcheogsi"],["홍천군","gangwon/hongcheongun"],["횡성군","gangwon/hoengseonggun"],["영월군","gangwon/yeongworgun"],["평창군","gangwon/pyeongchanggun"],["정선군","gangwon/jeongseongun"],["철원군","gangwon/cheorwongun"],["화천군","gangwon/hwacheongun"],["양구군","gangwon/yanggugun"],["인제군","gangwon/injegun"],["고성군","gangwon/goseonggun"],["양양군","gangwon/yangyanggun"]],"chungbuk":[["청주시","chungbuk/cheongjusi"],["청주시상당구","chungbuk/cheongjusisangdanggu"],["청주시서원구","chungbuk/cheongjusiseowongu"],["청주시흥덕구","chungbuk/cheongjusiheungdeoggu"],["청주시청원구","chungbuk/cheongjusicheongwongu"],["충주시","chungbuk/chungjusi"],["제천시","chungbuk/jecheonsi"],["보은군","chungbuk/boeungun"],["옥천군","chungbuk/ogcheongun"],["영동군","chungbuk/yeongdonggun"],["증평군","chungbuk/jeungpyeonggun"],["진천군","chungbuk/jincheongun"],["괴산군","chungbuk/goesangun"],["음성군","chungbuk/eumseonggun"],["단양군","chungbuk/danyanggun"]],"chungnam":[["천안시","chungnam/cheonansi"],["천안시동남구","chungnam/cheonansidongnamgu"],["천안시서북구","chungnam/cheonansiseobuggu"],["공주시","chungnam/gongjusi"],["보령시","chungnam/boryeongsi"],["아산시","chungnam/asansi"],["서산시","chungnam/seosansi"],["논산시","chungnam/nonsansi"],["계룡시","chungnam/gyeryongsi"],["당진시","chungnam/dangjinsi"],["금산군","chungnam/geumsangun"],["부여군","chungnam/buyeogun"],["서천군","chungnam/seocheongun"],["청양군","chungnam/cheongyanggun"],["홍성군","chungnam/hongseonggun"],["예산군","chungnam/yesangun"],["태안군","chungnam/taeangun"]],"jeonbuk":[["전주시","jeonbuk/jeonjusi"],["전주시완산구","jeonbuk/jeonjusiwansangu"],["전주시덕진구","jeonbuk/jeonjusideogjingu"],["군산시","jeonbuk/gunsansi"],["익산시","jeonbuk/igsansi"],["정읍시","jeonbuk/jeongeubsi"],["남원시","jeonbuk/namwonsi"],["김제시","jeonbuk/gimjesi"],["완주군","jeonbuk/wanjugun"],["진안군","jeonbuk/jinangun"],["무주군","jeonbuk/mujugun"],["장수군","jeonbuk/jangsugun"],["임실군","jeonbuk/imsirgun"],["순창군","jeonbuk/sunchanggun"],["고창군","jeonbuk/gochanggun"],["부안군","jeonbuk/buangun"]],"jeonnam":[["목포시","jeonnam/mogposi"],["여수시","jeonnam/yeosusi"],["순천시","jeonnam/suncheonsi"],["나주시","jeonnam/najusi"],["광양시","jeonnam/gwangyangsi"],["담양군","jeonnam/damyanggun"],["곡성군","jeonnam/gogseonggun"],["구례군","jeonnam/guryegun"],["고흥군","jeonnam/goheunggun"],["보성군","jeonnam/boseonggun"],["화순군","jeonnam/hwasungun"],["장흥군","jeonnam/jangheunggun"],["강진군","jeonnam/gangjingun"],["해남군","jeonnam/haenamgun"],["영암군","jeonnam/yeongamgun"],["무안군","jeonnam/muangun"],["함평군","jeonnam/hampyeonggun"],["영광군","jeonnam/yeonggwanggun"],["장성군","jeonnam/jangseonggun"],["완도군","jeonnam/wandogun"],["진도군","jeonnam/jindogun"],["신안군","jeonnam/sinangun"]],"gyeongbuk":[["포항시","gyeongbuk/pohangsi"],["포항시남구","gyeongbuk/pohangsinamgu"],["포항시북구","gyeongbuk/pohangsibuggu"],["경주시","gyeongbuk/gyeongjusi"],["김천시","gyeongbuk/gimcheonsi"],["안동시","gyeongbuk/andongsi"],["구미시","gyeongbuk/gumisi"],["영주시","gyeongbuk/yeongjusi"],["영천시","gyeongbuk/yeongcheonsi"],["상주시","gyeongbuk/sangjusi"],["문경시","gyeongbuk/mungyeongsi"],["경산시","gyeongbuk/gyeongsansi"],["의성군","gyeongbuk/euiseonggun"],["청송군","gyeongbuk/cheongsonggun"],["영양군","gyeongbuk/yeongyanggun"],["영덕군","gyeongbuk/yeongdeoggun"],["청도군","gyeongbuk/cheongdogun"],["고령군","gyeongbuk/goryeonggun"],["성주군","gyeongbuk/seongjugun"],["칠곡군","gyeongbuk/chirgoggun"],["예천군","gyeongbuk/yecheongun"],["봉화군","gyeongbuk/bonghwagun"],["울진군","gyeongbuk/urjingun"],["울릉군","gyeongbuk/urreunggun"]],"gyeongnam":[["창원시","gyeongnam/changwonsi"],["창원시의창구","gyeongnam/changwonsieuichanggu"],["창원시성산구","gyeongnam/changwonsiseongsangu"],["창원시마산합포구","gyeongnam/changwonsimasanhabpogu"],["창원시마산회원구","gyeongnam/changwonsimasanhoewongu"],["창원시진해구","gyeongnam/changwonsijinhaegu"],["진주시","gyeongnam/jinjusi"],["통영시","gyeongnam/tongyeongsi"],["사천시","gyeongnam/sacheonsi"],["김해시","gyeongnam/gimhaesi"],["밀양시","gyeongnam/miryangsi"],["거제시","gyeongnam/geojesi"],["양산시","gyeongnam/yangsansi"],["의령군","gyeongnam/euiryeonggun"],["함안군","gyeongnam/hamangun"],["창녕군","gyeongnam/changnyeonggun"],["고성군","gyeongnam/goseonggun"],["남해군","gyeongnam/namhaegun"],["하동군","gyeongnam/hadonggun"],["산청군","gyeongnam/sancheonggun"],["함양군","gyeongnam/hamyanggun"],["거창군","gyeongnam/geochanggun"],["합천군","gyeongnam/habcheongun"]],"jeju":[["제주시","jeju/jejusi"],["서귀포시","jeju/seogwiposi"]]};
+const SIDO_NAMES={seoul:"서울특별시",busan:"부산광역시",daegu:"대구광역시",incheon:"인천광역시",gwangju:"광주광역시",daejeon:"대전광역시",ulsan:"울산광역시",sejong:"세종특별자치시",gyeonggi:"경기도",gangwon:"강원특별자치도",chungbuk:"충청북도",chungnam:"충청남도",jeonbuk:"전북특별자치도",jeonnam:"전라남도",gyeongbuk:"경상북도",gyeongnam:"경상남도",jeju:"제주특별자치도"};
+function showSigungu(e,sidoEng){
+  e.preventDefault();
+  var list=document.getElementById('sigunguList');
+  var sgs=SIGUNGU[sidoEng]||[];
+  var html='<a href="#" class="dd-back" onclick="showSido(event)">← '+(SIDO_NAMES[sidoEng]||sidoEng)+'</a>';
+  sgs.forEach(function(sg){
+    html+='<a href="/blog/'+sg[1]+'/">'+sg[0]+'</a>';
+  });
+  list.innerHTML=html;
+  document.getElementById('sidoList').style.display='flex';
+  document.getElementById('sidoList').style.display='none';
+  list.style.display='flex';
+}
+function showSido(e){
+  e.preventDefault();
+  document.getElementById('sidoList').style.display='flex';
+  document.getElementById('sigunguList').style.display='none';
+}
+
+var reviewIdx = 0;
+var reviewMax = 6;
+function initReviewDots() {
+  var dots = document.getElementById('reviewDots');
+  if (!dots) return;
+  for (var i = 0; i <= reviewMax; i++) {
+    (function(idx) {
+      var d = document.createElement('div');
+      d.style.cssText = 'width:8px;height:8px;border-radius:50%;background:' + (idx===0?'#1A6BFF':'#ddd') + ';cursor:pointer;transition:all 0.2s;';
+      d.onclick = function() { reviewGoTo(idx); };
+      dots.appendChild(d);
+    })(i);
+  }
+}
+function reviewGoTo(idx) {
+  reviewIdx = Math.max(0, Math.min(idx, reviewMax));
+  var wrap = document.getElementById('reviewWrap');
+  var cardW = (wrap.offsetWidth - 48) / 3 + 16;
+  document.getElementById('reviewTrack').style.transform = 'translateX(-' + (reviewIdx * cardW) + 'px)';
+  document.querySelectorAll('#reviewDots div').forEach(function(d, i) {
+    d.style.background = i === reviewIdx ? '#1A6BFF' : '#ddd';
+    d.style.width = i === reviewIdx ? '24px' : '8px';
+    d.style.borderRadius = '4px';
+  });
+}
+function reviewMove(dir) { reviewGoTo(reviewIdx + dir); }
+setInterval(function() { reviewGoTo(reviewIdx < reviewMax ? reviewIdx + 1 : 0); }, 4000);
+initReviewDots();
+
+// 드롭다운 (PC hover + 클릭 토글)
+document.querySelectorAll('.nav-links li').forEach(function(li) {
+  var dropdown = li.querySelector('.dropdown');
+  if (!dropdown) return;
+  var timer;
+  function openDrop() {
+    clearTimeout(timer);
+    var sl = document.getElementById('sidoList');
+    var su = document.getElementById('sigunguList');
+    if (sl) sl.style.display = 'flex';
+    if (su) su.style.display = 'none';
+    dropdown.style.display = 'block';
+  }
+  function closeDrop() {
+    timer = setTimeout(function() { dropdown.style.display = 'none'; }, 300);
+  }
+  li.addEventListener('mouseenter', openDrop);
+  li.addEventListener('mouseleave', closeDrop);
+  dropdown.addEventListener('mouseenter', function() { clearTimeout(timer); });
+  dropdown.addEventListener('mouseleave', closeDrop);
+  var link = li.querySelector('a');
+  if (link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+      } else {
+        openDrop();
+      }
+    });
+  }
+});
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-links')) {
+    document.querySelectorAll('.nav-links .dropdown').forEach(function(d) {
+      d.style.display = 'none';
+    });
+  }
+});
+
+// 상담 모달
+function openConsultModal() {
+  document.getElementById('consultModalBg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeConsultModal(e) {
+  if (e && e.target !== document.getElementById('consultModalBg') && !e.target.classList.contains('cm-close')) return;
+  document.getElementById('consultModalBg').classList.remove('open');
+  document.body.style.overflow = '';
+  // 성공화면이면 폼 초기화
+  setTimeout(function() {
+    document.getElementById('cmForm').style.display = 'block';
+    document.getElementById('cmSuccess').style.display = 'none';
+    ['cm_name','cm_phone','cm_memo'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+    ['cm_type','cm_product'].forEach(function(id){ var el=document.getElementById(id); if(el) el.selectedIndex=0; });
+  }, 400);
+}
+function submitConsult() {
+  var name  = (document.getElementById('cm_name').value || '').trim();
+  var phone = (document.getElementById('cm_phone').value || '').trim();
+  if (!name)  { alert('성함을 입력해 주세요.'); return; }
+  if (!phone) { alert('연락처를 입력해 주세요.'); return; }
+  // TODO: 실제 폼 전송 로직 연결 (fetch POST 등)
+  // 현재는 UI 성공 처리만
+  document.getElementById('cmForm').style.display = 'none';
+  document.getElementById('cmSuccess').style.display = 'block';
+}
+
+// ── 모바일 메뉴 ──────────────────────────────────────────
+var mmIsOpen = false;
+var mmOnSido = true; // true=시도패널, false=시군구패널
+
+function toggleMobileMenu() {
+  mmIsOpen ? closeMobileMenu() : openMobileMenu();
+}
+function openMobileMenu() {
+  mmIsOpen = true;
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mmOverlay').classList.add('open');
+  document.getElementById('hamburger').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  mmToPanel1();
+}
+function closeMobileMenu() {
+  mmIsOpen = false;
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mmOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(mmToPanel1, 350);
+}
+function mmToPanel1() {
+  document.getElementById('mmPanels').style.transform = 'translateX(0)';
+  mmOnSido = true;
+}
+function mmToPanel2() {
+  document.getElementById('mmPanels').style.transform = 'translateX(-50%)';
+  mmOnSido = false;
+}
+function mmBackToMain() { mmToPanel1(); }
+
+var SIDO_NAMES_M = {
+  seoul:'서울특별시', busan:'부산광역시', daegu:'대구광역시', incheon:'인천광역시',
+  gwangju:'광주광역시', daejeon:'대전광역시', ulsan:'울산광역시', sejong:'세종특별자치시',
+  gyeonggi:'경기도', gangwon:'강원특별자치도', chungbuk:'충청북도', chungnam:'충청남도',
+  jeonbuk:'전북특별자치도', jeonnam:'전라남도', gyeongbuk:'경상북도', gyeongnam:'경상남도',
+  jeju:'제주특별자치도'
+};
+var SIDO_ICONS_M = {
+  seoul:'🏙', busan:'⚓', daegu:'🏭', incheon:'✈️', gwangju:'🌸', daejeon:'🔬',
+  ulsan:'🔧', sejong:'🏛', gyeonggi:'🌿', gangwon:'🏔', chungbuk:'⚡', chungnam:'🌾',
+  jeonbuk:'🍀', jeonnam:'🐟', gyeongbuk:'🍎', gyeongnam:'🚢', jeju:'🌺'
+};
+
+// 패널1에서 "지역별" 탭 → 시도 목록 표시 후 패널2로
+function mmOpenRegion() {
+  var sidos = Object.keys(SIDO_NAMES_M);
+  var html = '<div class="mm-sido-grid">';
+  sidos.forEach(function(eng) {
+    html += '<button class="mm-sido-btn" onclick="mmShowSigungu(\'' + eng + '\')">'
+          + SIDO_ICONS_M[eng] + '<br>' + SIDO_NAMES_M[eng] + '</button>';
+  });
+  html += '</div>';
+  document.getElementById('mmBackLabel').textContent = '지역 선택';
+  document.getElementById('mmRegionContent').innerHTML = html;
+  mmToPanel2();
+}
+
+// 시도 클릭 → 시군구 목록
+function mmShowSigungu(sidoEng) {
+  var sgs = SIGUNGU[sidoEng] || [];
+  var sidoName = SIDO_NAMES_M[sidoEng] || sidoEng;
+  var html = '<div class="mm-sgs">';
+  sgs.forEach(function(sg) {
+    html += '<a class="mm-sg" href="/blog/' + sg[1] + '/" onclick="closeMobileMenu()">' + sg[0] + '</a>';
+  });
+  html += '</div>';
+  document.getElementById('mmBackLabel').textContent = sidoName;
+  document.getElementById('mmRegionContent').innerHTML = html;
+  // 뒤로가기 → 시도 목록
+  document.getElementById('mmBackBtn').onclick = function() {
+    mmOpenRegion();
+    document.getElementById('mmBackBtn').onclick = mmBackToMain;
+    document.getElementById('mmBackLabel').textContent = '지역 선택';
+  };
+}
+
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) closeMobileMenu();
+});
+</script>
 <script>
 var _megaOpen=false,_megaTimer=null;
 function openMegaRegion(){clearTimeout(_megaTimer);var d=document.getElementById('mega-region');if(!d)return;d.style.display='block';_megaOpen=true;var a=document.getElementById('mega-arr');if(a)a.style.transform='rotate(180deg)';}
@@ -6561,7 +6822,7 @@ export default {
     }
 
     if(path==='/index.html')
-      return Response.redirect('https://allpaystore.com/', 301);
+      return Response.redirect('https:
 
     if(path==='/blog')
       return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
@@ -6584,7 +6845,7 @@ export default {
 
     if(path==='/sitemap.xml')return new Response(makeSitemap(),{headers:{'Content-Type':'application/xml;charset=utf-8'}});
     if(path.startsWith('/images/')){return Response.redirect('https://raw.githubusercontent.com/dandylsk80/allpaystore/main'+path,301);}
-    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n', {headers:{'Content-Type':'text/plain'}});
+    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https:
 
     return new Response('Not Found',{status:404});
   }
