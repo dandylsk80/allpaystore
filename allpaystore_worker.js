@@ -500,7 +500,7 @@ function wrap(title, desc, canonical, body, breadcrumbs){
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${descShort}","url":"${canonicalUrl}","publisher":{"@type":"Organization","name":"올페이스토어","url":"https://allpaystore.com","telephone":"010-9876-8282","logo":{"@type":"ImageObject","url":"https://allpaystore.com/logo.png","width":200,"height":60}},"datePublished":"${isoDate}","dateModified":"${isoDate}","inLanguage":"ko-KR"}</script>
 ${bcSchema}<link rel="alternate" type="application/rss+xml" title="올페이스토어 RSS" href="https://allpaystore.com/rss.xml">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/allpaystore.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dandylsk80/allpaystore@main/allpaystore.css">
 </head><body>${HEADER}${body}${FOOTER}</body></html>`;
 }
 
@@ -3246,7 +3246,7 @@ export default {
     }
 
     // 404
-    return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>404 - 올페이스토어</title><link rel="stylesheet" href="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/allpaystore.css"></head><body>
+    return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>404 - 올페이스토어</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dandylsk80/allpaystore@main/allpaystore.css"></head><body>
 ${HEADER}<div class="wrap" style="text-align:center;padding-top:80px">
 <div style="font-size:64px;margin-bottom:20px">🔍</div>
 <h1 class="art-title">페이지를 찾을 수 없습니다</h1>
