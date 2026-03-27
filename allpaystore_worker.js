@@ -5903,7 +5903,7 @@ footer { background:#111; padding:60px 0 100px; }
     <div style="flex:1;"></div>
     <ul class="nav-links" style="justify-content:flex-end;margin-right:24px;">
       <li class="gi" id="gi-region" style="position:relative;list-style:none;cursor:pointer;z-index:500;" onmouseenter="openMegaRegion()" onmouseleave="closeMegaRegion()">
-        <button class="gb" onclick="openMegaRegion()" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;background:none;font-size:15px;font-weight:500;color:#333;border-radius:8px;cursor:pointer;font-family:inherit;transition:color 0.2s;pointer-events:auto;">
+        <button class="gb" onclick="toggleMega()" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;background:none;font-size:15px;font-weight:500;color:#333;border-radius:8px;cursor:pointer;font-family:inherit;transition:color 0.2s;pointer-events:auto;">
           지역별 광고
           <svg style="width:14px;height:14px;color:rgba(0,0,0,0.4);transition:transform 0.2s;" id="mega-arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
         </button>
@@ -6548,6 +6548,11 @@ const SIGUNGU={"seoul":[["종로구","seoul/jongrogu"],["중구","seoul/junggu"]
 const SIDO_NAMES={seoul:"서울특별시",busan:"부산광역시",daegu:"대구광역시",incheon:"인천광역시",gwangju:"광주광역시",daejeon:"대전광역시",ulsan:"울산광역시",sejong:"세종특별자치시",gyeonggi:"경기도",gangwon:"강원특별자치도",chungbuk:"충청북도",chungnam:"충청남도",jeonbuk:"전북특별자치도",jeonnam:"전라남도",gyeongbuk:"경상북도",gyeongnam:"경상남도",jeju:"제주특별자치도"};
 var _megaOpen=false,_megaTimer=null;
 function openMegaRegion(){clearTimeout(_megaTimer);if(_megaOpen){closeMegaRegion();return;}document.getElementById('mega-region').style.display='block';_megaOpen=true;document.getElementById('mega-arr').style.transform='rotate(180deg)';}
+
+function toggleMega(){
+  if(_megaOpen){closeMegaRegion();}
+  else{openMegaRegion();}
+}
 function closeMegaRegion(){_megaTimer=setTimeout(function(){var d=document.getElementById('mega-region');if(d){d.style.display='none';_megaOpen=false;}var a=document.getElementById('mega-arr');if(a)a.style.transform='';},300);}
 function toggleMegaRegion(e){e.preventDefault();e.stopPropagation();if(_megaOpen)closeMegaRegion();else openMegaRegion();}
 
