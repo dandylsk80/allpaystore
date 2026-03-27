@@ -6594,6 +6594,7 @@ function initReviewDots() {
 function reviewGoTo(idx) {
   reviewIdx = Math.max(0, Math.min(idx, reviewMax));
   var wrap = document.getElementById('reviewWrap');
+  if(!wrap)return;
   var cardW = (wrap.offsetWidth - 48) / 3 + 16;
   document.getElementById('reviewTrack').style.transform = 'translateX(-' + (reviewIdx * cardW) + 'px)';
   document.querySelectorAll('#reviewDots div').forEach(function(d, i) {
@@ -6648,12 +6649,12 @@ document.addEventListener('click', function(e) {
 
 // 상담 모달
 function openConsultModal() {
-  document.getElementById('consultModalBg').classList.add('open');
+  var mb=document.getElementById('consultModalBg');if(mb)mb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeConsultModal(e) {
   if (e && e.target !== document.getElementById('consultModalBg') && !e.target.classList.contains('cm-close')) return;
-  document.getElementById('consultModalBg').classList.remove('open');
+  var mb2=document.getElementById('consultModalBg');if(mb2)mb2.classList.remove('open');
   document.body.style.overflow = '';
   // 성공화면이면 폼 초기화
   setTimeout(function() {
@@ -6683,17 +6684,17 @@ function toggleMobileMenu() {
 }
 function openMobileMenu() {
   mmIsOpen = true;
-  document.getElementById('mobileMenu').classList.add('open');
-  document.getElementById('mmOverlay').classList.add('open');
-  document.getElementById('hamburger').classList.add('open');
+  var mm=document.getElementById('mobileMenu');if(mm)mm.classList.add('open');
+  var mo=document.getElementById('mmOverlay');if(mo)mo.classList.add('open');
+  var hb=document.getElementById('hamburger');if(hb)hb.classList.add('open');
   document.body.style.overflow = 'hidden';
   mmToPanel1();
 }
 function closeMobileMenu() {
   mmIsOpen = false;
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('mmOverlay').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
+  var mm2=document.getElementById('mobileMenu');if(mm2)mm2.classList.remove('open');
+  var mo2=document.getElementById('mmOverlay');if(mo2)mo2.classList.remove('open');
+  var hb2=document.getElementById('hamburger');if(hb2)hb2.classList.remove('open');
   document.body.style.overflow = '';
   setTimeout(mmToPanel1, 350);
 }
@@ -6757,6 +6758,42 @@ window.addEventListener('resize', function() {
   if (window.innerWidth > 768) closeMobileMenu();
 });
 </script>
+
+<script>
+var _megaOpen=false,_megaTimer=null;
+function openMegaRegion(){
+  clearTimeout(_megaTimer);
+  var d=document.getElementById('mega-region');
+  if(!d)return;
+  d.style.display='block';
+  _megaOpen=true;
+  var a=document.getElementById('mega-arr');
+  if(a)a.style.transform='rotate(180deg)';
+}
+function closeMegaRegion(){
+  _megaTimer=setTimeout(function(){
+    var d=document.getElementById('mega-region');
+    if(d){d.style.display='none';_megaOpen=false;}
+    var a=document.getElementById('mega-arr');
+    if(a)a.style.transform='';
+  },400);
+}
+function toggleMega(){
+  if(_megaOpen){closeMegaRegion();}
+  else{openMegaRegion();}
+}
+function switchMegaTab(tab){
+  document.querySelectorAll('.mega-panel-content').forEach(function(p){p.style.display='none';});
+  var panel=document.getElementById('mega-panel-'+tab);
+  if(panel)panel.style.display='block';
+  document.querySelectorAll('.mega-tab-btn').forEach(function(b){
+    b.style.background='rgba(255,255,255,0.08)';
+    b.style.color='rgba(255,255,255,0.5)';
+  });
+  if(event&&event.target){event.target.style.background='#1A6BFF';event.target.style.color='white';}
+}
+</script>
+
 </body>
 </html>`;
 }
