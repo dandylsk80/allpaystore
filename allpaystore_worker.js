@@ -1187,12 +1187,12 @@ const HEADER = `<header>
     </div>
     <nav class="gnb">
       <div class="gi" id="gi-region">
-        <button class="gb" onclick="toggleMega('region')">지역별수업<svg class="arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="gb" onclick="toggleMega('region')">지역별광고<svg class="arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="mega-drop" id="mega-region">
           <div class="mega-tabs">
-            <button class="mega-tab on" onclick="switchTab('region','local')">📍 지역별 과외</button>
-            <button class="mega-tab" onclick="switchTab('region','grade')">🎓 학년별 과외</button>
-            <button class="mega-tab" onclick="switchTab('region','school')">🏫 학교별 과외</button>
+            <button class="mega-tab on" onclick="switchTab('region','local')">📍 지역별 카드단말기</button>
+            <button class="mega-tab" onclick="switchTab('region','grade')">💳 제품별 설치</button>
+            <button class="mega-tab" onclick="switchTab('region','school')">🏪 업종별 설치</button>
           </div>
           <div class="mega-panel on" id="region-local">
             <div class="mega-btns">
@@ -1216,48 +1216,31 @@ const HEADER = `<header>
             </div>
           </div>
           <div class="mega-panel" id="region-grade">
-            <div class="mega-rt">🎒 초등학교</div>
+            <div class="mega-rt">💳 결제 단말기</div>
             <div class="mega-btns">
-              <a class="mega-btn" href="/grade/elementary/1">초등 1학년</a>
-              <a class="mega-btn" href="/grade/elementary/2">초등 2학년</a>
-              <a class="mega-btn" href="/grade/elementary/3">초등 3학년</a>
-              <a class="mega-btn" href="/grade/elementary/4">초등 4학년</a>
-              <a class="mega-btn" href="/grade/elementary/5">초등 5학년</a>
-              <a class="mega-btn" href="/grade/elementary/6">초등 6학년</a>
+              <a class="mega-btn" href="/contact">카드단말기</a>
+              <a class="mega-btn" href="/contact">포스기</a>
+              <a class="mega-btn" href="/contact">키오스크</a>
+              <a class="mega-btn" href="/contact">테이블오더</a>
             </div>
-            <div class="mega-rt">📚 중학교</div>
+            <div class="mega-rt">📷 보안·기타</div>
             <div class="mega-btns">
-              <a class="mega-btn" href="/grade/middle/1">중학교 1학년</a>
-              <a class="mega-btn" href="/grade/middle/2">중학교 2학년</a>
-              <a class="mega-btn" href="/grade/middle/3">중학교 3학년</a>
-            </div>
-            <div class="mega-rt">🎓 고등학교</div>
-            <div class="mega-btns">
-              <a class="mega-btn" href="/grade/high/1">고등 1학년</a>
-              <a class="mega-btn" href="/grade/high/2">고등 2학년</a>
-              <a class="mega-btn" href="/grade/high/3">고등 3학년</a>
+              <a class="mega-btn" href="/contact">CCTV</a>
+              <a class="mega-btn" href="/contact">자동판매기</a>
+              <a class="mega-btn" href="/contact">철거</a>
             </div>
           </div>
           <div class="mega-panel" id="region-school">
-            <div class="mega-rt">시도별 학교 과외</div>
+            <div class="mega-rt">업종별 설치 안내</div>
             <div class="mega-btns">
-              <a class="mega-btn" href="/school/seoul">서울</a>
-              <a class="mega-btn" href="/school/gyeonggi">경기</a>
-              <a class="mega-btn" href="/school/incheon">인천</a>
-              <a class="mega-btn" href="/school/busan">부산</a>
-              <a class="mega-btn" href="/school/daegu">대구</a>
-              <a class="mega-btn" href="/school/gwangju">광주</a>
-              <a class="mega-btn" href="/school/daejeon">대전</a>
-              <a class="mega-btn" href="/school/ulsan">울산</a>
-              <a class="mega-btn" href="/school/sejong">세종</a>
-              <a class="mega-btn" href="/school/gangwon">강원</a>
-              <a class="mega-btn" href="/school/chungbuk">충북</a>
-              <a class="mega-btn" href="/school/chungnam">충남</a>
-              <a class="mega-btn" href="/school/jeonbuk">전북</a>
-              <a class="mega-btn" href="/school/jeonnam">전남</a>
-              <a class="mega-btn" href="/school/gyeongbuk">경북</a>
-              <a class="mega-btn" href="/school/gyeongnam">경남</a>
-              <a class="mega-btn" href="/school/jeju">제주</a>
+              <a class="mega-btn" href="/contact">음식점</a>
+              <a class="mega-btn" href="/contact">카페</a>
+              <a class="mega-btn" href="/contact">편의점</a>
+              <a class="mega-btn" href="/contact">미용실</a>
+              <a class="mega-btn" href="/contact">병원·의원</a>
+              <a class="mega-btn" href="/contact">마트·슈퍼</a>
+              <a class="mega-btn" href="/contact">주차장</a>
+              <a class="mega-btn" href="/contact">공공기관</a>
             </div>
           </div>
         </div>
@@ -1315,7 +1298,7 @@ const HEADER = `<header>
     <a class="mob-subj-btn" href="/academy/all"><span>🏫</span><span>학원찾기</span></a>
     <a class="mob-subj-btn" href="/school"><span>🏛</span><span>학교별과외</span></a>
   </div>
-  <div class="mob-nav-section">지역별 과외</div>
+  <div class="mob-nav-section">지역별 카드단말기</div>
   <div class="mob-sido-grid">
     <a class="mob-sido-btn" href="/seoul">서울</a><a class="mob-sido-btn" href="/gyeonggi">경기</a>
     <a class="mob-sido-btn" href="/incheon">인천</a><a class="mob-sido-btn" href="/busan">부산</a>
@@ -1358,12 +1341,12 @@ const HEADER_DARK = `<header style="background:rgba(15,32,68,0.97)!important;bor
     </div>
     <nav class="gnb">
       <div class="gi" id="gi-region">
-        <button class="gb" onclick="toggleMega('region')" style="color:rgba(255,255,255,0.85)">지역별수업<svg class="arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="gb" onclick="toggleMega('region')" style="color:rgba(255,255,255,0.85)">지역별광고<svg class="arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="mega-drop" id="mega-region">
           <div class="mega-tabs">
-            <button class="mega-tab on" onclick="switchTab('region','local')">📍 지역별 과외</button>
-            <button class="mega-tab" onclick="switchTab('region','grade')">🎓 학년별 과외</button>
-            <button class="mega-tab" onclick="switchTab('region','school')">🏫 학교별 과외</button>
+            <button class="mega-tab on" onclick="switchTab('region','local')">📍 지역별 카드단말기</button>
+            <button class="mega-tab" onclick="switchTab('region','grade')">💳 제품별 설치</button>
+            <button class="mega-tab" onclick="switchTab('region','school')">🏪 업종별 설치</button>
           </div>
           <div class="mega-panel on" id="region-local">
             <div class="mega-btns">
@@ -1387,48 +1370,31 @@ const HEADER_DARK = `<header style="background:rgba(15,32,68,0.97)!important;bor
             </div>
           </div>
           <div class="mega-panel" id="region-grade">
-            <div class="mega-rt">🎒 초등학교</div>
+            <div class="mega-rt">💳 결제 단말기</div>
             <div class="mega-btns">
-              <a class="mega-btn" href="/grade/elementary/1">초등 1학년</a>
-              <a class="mega-btn" href="/grade/elementary/2">초등 2학년</a>
-              <a class="mega-btn" href="/grade/elementary/3">초등 3학년</a>
-              <a class="mega-btn" href="/grade/elementary/4">초등 4학년</a>
-              <a class="mega-btn" href="/grade/elementary/5">초등 5학년</a>
-              <a class="mega-btn" href="/grade/elementary/6">초등 6학년</a>
+              <a class="mega-btn" href="/contact">카드단말기</a>
+              <a class="mega-btn" href="/contact">포스기</a>
+              <a class="mega-btn" href="/contact">키오스크</a>
+              <a class="mega-btn" href="/contact">테이블오더</a>
             </div>
-            <div class="mega-rt">📚 중학교</div>
+            <div class="mega-rt">📷 보안·기타</div>
             <div class="mega-btns">
-              <a class="mega-btn" href="/grade/middle/1">중학교 1학년</a>
-              <a class="mega-btn" href="/grade/middle/2">중학교 2학년</a>
-              <a class="mega-btn" href="/grade/middle/3">중학교 3학년</a>
-            </div>
-            <div class="mega-rt">🎓 고등학교</div>
-            <div class="mega-btns">
-              <a class="mega-btn" href="/grade/high/1">고등 1학년</a>
-              <a class="mega-btn" href="/grade/high/2">고등 2학년</a>
-              <a class="mega-btn" href="/grade/high/3">고등 3학년</a>
+              <a class="mega-btn" href="/contact">CCTV</a>
+              <a class="mega-btn" href="/contact">자동판매기</a>
+              <a class="mega-btn" href="/contact">철거</a>
             </div>
           </div>
           <div class="mega-panel" id="region-school">
-            <div class="mega-rt">시도별 학교 과외</div>
+            <div class="mega-rt">업종별 설치 안내</div>
             <div class="mega-btns">
-              <a class="mega-btn" href="/school/seoul">서울</a>
-              <a class="mega-btn" href="/school/gyeonggi">경기</a>
-              <a class="mega-btn" href="/school/incheon">인천</a>
-              <a class="mega-btn" href="/school/busan">부산</a>
-              <a class="mega-btn" href="/school/daegu">대구</a>
-              <a class="mega-btn" href="/school/gwangju">광주</a>
-              <a class="mega-btn" href="/school/daejeon">대전</a>
-              <a class="mega-btn" href="/school/ulsan">울산</a>
-              <a class="mega-btn" href="/school/sejong">세종</a>
-              <a class="mega-btn" href="/school/gangwon">강원</a>
-              <a class="mega-btn" href="/school/chungbuk">충북</a>
-              <a class="mega-btn" href="/school/chungnam">충남</a>
-              <a class="mega-btn" href="/school/jeonbuk">전북</a>
-              <a class="mega-btn" href="/school/jeonnam">전남</a>
-              <a class="mega-btn" href="/school/gyeongbuk">경북</a>
-              <a class="mega-btn" href="/school/gyeongnam">경남</a>
-              <a class="mega-btn" href="/school/jeju">제주</a>
+              <a class="mega-btn" href="/contact">음식점</a>
+              <a class="mega-btn" href="/contact">카페</a>
+              <a class="mega-btn" href="/contact">편의점</a>
+              <a class="mega-btn" href="/contact">미용실</a>
+              <a class="mega-btn" href="/contact">병원·의원</a>
+              <a class="mega-btn" href="/contact">마트·슈퍼</a>
+              <a class="mega-btn" href="/contact">주차장</a>
+              <a class="mega-btn" href="/contact">공공기관</a>
             </div>
           </div>
         </div>
@@ -2902,7 +2868,7 @@ function makeSidoPage(rk) {
     <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력에 따라 다르며, 무료 상담 후 예산에 맞는 선생님을 투명하게 안내해드립니다. 첫 체험 수업은 무료입니다.</p>
     <p><strong>Q. 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
     <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 과외(시험 대비 4~8주)도 운영합니다.</p>
-    <h2>지역별 과외 바로가기</h2>
+    <h2>지역별 카드단말기 설치 바로가기</h2>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin:20px 0">${distCards}</div>
   </div>
   <div style="background:linear-gradient(135deg,#0F2044,#1E3A6E);border-radius:20px;padding:40px 48px;margin:48px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
@@ -5111,12 +5077,12 @@ ${'<'}/script>
     <div class="slide s1">
       <div class="sin">
         <div>
-          <div class="seb"><div class="sdot"></div> No.1 지역별 과외 플랫폼</div>
+          <div class="seb"><div class="sdot"></div> No.1 지역별 카드단말기 설치</div>
           <p class="scap">우리 아이에게 딱 맞는 선생님을 찾아드립니다</p>
           <h1 class="stitle">내 지역 최고의<br><span class="hl">1:1 맞춤 과외</span><br>지금 찾아보세요</h1>
           <p class="sdesc">전국 검증된 선생님 12,400명+<br>지역별·과목별·학년별로 딱 맞는 수업 연결</p>
           <div class="sbtns">
-            <button class="bph" onclick="document.getElementById('region-section').scrollIntoView({behavior:'smooth'})">지역별 과외 찾기 →</button>
+            <button class="bph" onclick="document.getElementById('region-section').scrollIntoView({behavior:'smooth'})">지역별 카드단말기 찾기 →</button>
             <button class="bps" onclick="window.location.href='/contact?type=tutoring'">✉️ 문의하기</button>
           </div>
         </div>
@@ -5227,7 +5193,7 @@ ${'<'}/script>
     </div>
     <!-- 탭 -->
     <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;justify-content:center" id="find-tabs">
-      <button onclick="switchFind('region')" id="ftab-region" style="padding:10px 22px;border-radius:999px;border:1.5px solid #3B82F6;background:#3B82F6;color:white;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit">🏙 지역별 과외</button>
+      <button onclick="switchFind('region')" id="ftab-region" style="padding:10px 22px;border-radius:999px;border:1.5px solid #3B82F6;background:#3B82F6;color:white;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit">🏙 지역별 카드단말기</button>
       <button onclick="switchFind('subject')" id="ftab-subject" class="u3">📚 과목별 과외</button>
       <button onclick="switchFind('academy')" id="ftab-academy" class="u3">🏫 학원 찾기</button>
       <button onclick="switchFind('conv')" id="ftab-conv" style="padding:10px 22px;border-radius:999px;border:1.5px solid #E5E7EB;background:white;color:#374151;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit">🗣 회화수업</button>
@@ -5696,7 +5662,7 @@ function serveRSS() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>올페이스토어 - 전국 지역별 과외 안내</title>
+    <title>올페이스토어 - 전국 지역별 카드단말기 설치 안내</title>
     <link>https://allpaystore.com</link>
     <description>전국 초·중·고 1:1 맞춤 과외 전문. 수학·영어·국어·과학 검증 선생님 연결.</description>
     <language>ko</language>
