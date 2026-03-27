@@ -1347,7 +1347,7 @@ function wrap(title, desc, canonical, body, breadcrumbs){
   let bcSchema = '';
   if(breadcrumbs && breadcrumbs.length) {
     const items = breadcrumbs.map((b,i) => `{"@type":"ListItem","position":${i+1},"name":"${b.name}","item":"https://allpaystore.com${b.url}"}`).join(',');
-    bcSchema = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[${items}]}<\/script>`;
+    bcSchema = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[${items}]}${'<'}/script>`;
   }
 
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -1370,10 +1370,10 @@ function wrap(title, desc, canonical, body, breadcrumbs){
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="naver-site-verification" content="a1c57425042478220780bb530f8511e3eec2a1fd">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${descShort}","url":"${canonicalUrl}","publisher":{"@type":"Organization","name":"올페이스토어","url":"https://allpaystore.com","telephone":"010-9876-8282","logo":{"@type":"ImageObject","url":"https://allpaystore.com/logo.png","width":200,"height":60}},"datePublished":"${isoDate}","dateModified":"${isoDate}","inLanguage":"ko-KR"}<\/script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${descShort}","url":"${canonicalUrl}","publisher":{"@type":"Organization","name":"올페이스토어","url":"https://allpaystore.com","telephone":"010-9876-8282","logo":{"@type":"ImageObject","url":"https://allpaystore.com/logo.png","width":200,"height":60}},"datePublished":"${isoDate}","dateModified":"${isoDate}","inLanguage":"ko-KR"}${'<'}/script>
 ${bcSchema}<link rel="alternate" type="application/rss+xml" title="올페이스토어 RSS" href="https://allpaystore.com/rss.xml">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
-<style>${CSS}<\/style>
+<style>${CSS}${'<'}/style>
 </head><body>${HEADER}${body}${FOOTER}</body></html>`;
 }
 
@@ -2474,7 +2474,7 @@ function mslideMove(sid, dir) {
     '대리점소개 | 올페이스토어',
     '올페이스토어 대리점 소개. 3단계 검증 코치, AI 운영 시스템, 전국 코칭 센터.',
     '/academy/intro',
-    introBody + '<script>' + introScript + '<\/script>',
+    introBody + '<scr'+'ipt>' + introScript + '</'+'script>',
     [{name:'홈',url:'/'},{name:'대리점 소개',url:'/academy/intro'}]
   );
 }
@@ -3431,7 +3431,7 @@ function makeAcademyPage() {
 #card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
 @media(max-width:767px){#card-grid{grid-template-columns:1fr!important;gap:10px!important}}
 @media(min-width:768px) and (max-width:1023px){#card-grid{grid-template-columns:repeat(2,1fr)!important}}
-<\/style>
+${'<'}/style>
 <div id="card-grid"></div>
   </div>
 
@@ -3641,7 +3641,7 @@ function makeAcademyPage() {
   renderSidoTabs();
   renderDistrictBar();
   renderCards();
-  <\/script>`;
+  ${'<'}/script>`;
 
   const bcAcademy = [{name:'홈',url:'/'},{name:'센터찾기',url:'/academy/all'}];
   return wrap('전국 코칭센터 찾기 | 올페이스토어', '전국 올페이스토어 코칭센터를 찾아보세요. 서울·경기·인천 등 전국 초중고 맞춤 1:1 운영코칭 센터.', '/academy/all', body, bcAcademy);
@@ -3711,7 +3711,7 @@ function makeContactPage(type) {
       else{var el=document.getElementById('m-error');el.textContent='⚠️ 전송 중 오류가 발생했습니다.';el.style.display='block';}
     }).catch(()=>{var el=document.getElementById('m-error');el.textContent='⚠️ 네트워크 오류가 발생했습니다.';el.style.display='block';});
   }
-  <\/script>
+  ${'<'}/script>
 </div>`;
 
   return wrap(title, desc, canonical, body, [{name:'홈',url:'/'},{name:'무료 견적 문의',url:'/contact'}]);
@@ -3733,7 +3733,7 @@ function makeHomePage(){
   const body = `
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","telephone":"010-9876-8282","description":"카드단말기·포스기·키오스크·CCTV 설치 전문","areaServed":"대한민국"}
-<\/script>
+${'<'}/script>
 <div class="wrap">
   <!-- 히어로 -->
   <div style="background:linear-gradient(135deg,#0D2E6E 0%,#1A6BFF 100%);border-radius:20px;padding:60px 48px;margin-bottom:48px;text-align:center;color:white">
@@ -3775,167 +3775,6 @@ function makeHomePage(){
   return wrap(title, desc, '/', body, [{name:'홈',url:'/'}]);
 }
 
-
-function switchFind(tab){
-  ['region','subject','academy','conv'].forEach(function(t){
-    var panel = document.getElementById('fpanel-'+t);
-    var btn = document.getElementById('ftab-'+t);
-    if(t===tab){
-      panel.style.display='block';
-      btn.style.background='#3B82F6';btn.style.color='white';btn.style.borderColor='#3B82F6';
-    }else{
-      panel.style.display='none';
-      btn.style.background='white';btn.style.color='#374151';btn.style.borderColor='#E5E7EB';
-    }
-  });
-  var cbtn = document.getElementById('ftab-contact');
-  if(cbtn){ cbtn.style.background='white';cbtn.style.color='#1D4ED8';cbtn.style.borderColor='#1D4ED8'; }
-}
-<\/script>
-
-<!-- REVIEWS -->
-
-<section class="reviews">
-  <div class="sw">
-    <div class="sh fu">
-      <div class="se">REAL REVIEWS</div>
-      <h2 class="st">직접 경험한 고객·사장님의<br><span class="hl">생생한 매출 향상 스토리</span></h2>
-    </div>
-  </div>
-  <div class="rw">
-    <div class="rt">
-      <div class="rc"><span class="rb" style="background:#1D4ED8">연세대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">6개월 만에 매장 운영 4등급 → 1등급</div><div class="rtext">코치 전문가이 제 약점을 정확히 짚어주셔서 단기간에 매출이 확 올랐어요.</div><div class="rname">이*윤 회원 (고2)</div></div>
-      <div class="rc"><span class="rb" style="background:#15803D">이화여대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">수시 사장님부로 이화여대 합격!</div><div class="rtext">사장님기록부 관리부터 면접 준비까지 체계적으로 도와주셔서 합격할 수 있었어요.</div><div class="rname">김*연 회원 (고3)</div></div>
-      <div class="rc"><span class="rb" style="background:#7C3AED">서울대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">비용 절감 수학 2등급 → 만점!</div><div class="rtext">올페이스토어 덕분에 제 실력이 어느 정도인지 정확히 알고 집중 공략할 수 있었습니다.</div><div class="rname">정*원 회원 (고3)</div></div>
-      <div class="rc"><span class="rb" style="background:#B45309">경희대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">중사장님 때부터 시작해서 목표 달성</div><div class="rtext">중2 때부터 꾸준히 관리받았더니 고3이 되니 여유가 생기더라고요. 정말 추천합니다.</div><div class="rname">전*빈 회원 고객</div></div>
-      <div class="rc"><span class="rb" style="background:#0F766E">고려대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">공부 습관이 완전히 바뀌었어요</div><div class="rtext">스스로 계획 세우고 실천하는 법을 배웠어요. 매출보다 공부 자신감이 생긴 게 더 큰 수확이에요.</div><div class="rname">박*준 회원 (중3)</div></div>
-      <div class="rc"><span class="rb" style="background:#BE185D">한양대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">아이가 먼저 공부하겠다고 해요</div><div class="rtext">예전엔 억지로 책상에 앉혔는데, 지금은 스스로 계획 짜고 공부합니다. 정말 감사해요.</div><div class="rname">최*아 회원 고객</div></div>
-      <!-- 루프 복제 -->
-      <div class="rc"><span class="rb" style="background:#1D4ED8">연세대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">6개월 만에 매장 운영 4등급 → 1등급</div><div class="rtext">코치 전문가이 제 약점을 정확히 짚어주셔서 단기간에 매출이 확 올랐어요.</div><div class="rname">이*윤 회원 (고2)</div></div>
-      <div class="rc"><span class="rb" style="background:#15803D">이화여대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">수시 사장님부로 이화여대 합격!</div><div class="rtext">사장님기록부 관리부터 면접 준비까지 체계적으로 도와주셔서 합격할 수 있었어요.</div><div class="rname">김*연 회원 (고3)</div></div>
-      <div class="rc"><span class="rb" style="background:#7C3AED">서울대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">비용 절감 수학 2등급 → 만점!</div><div class="rtext">올페이스토어 덕분에 제 실력이 어느 정도인지 정확히 알고 집중 공략할 수 있었습니다.</div><div class="rname">정*원 회원 (고3)</div></div>
-      <div class="rc"><span class="rb" style="background:#B45309">경희대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">중사장님 때부터 시작해서 목표 달성</div><div class="rtext">중2 때부터 꾸준히 관리받았더니 고3이 되니 여유가 생기더라고요. 정말 추천합니다.</div><div class="rname">전*빈 회원 고객</div></div>
-      <div class="rc"><span class="rb" style="background:#0F766E">고려대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">공부 습관이 완전히 바뀌었어요</div><div class="rtext">스스로 계획 세우고 실천하는 법을 배웠어요. 매출보다 공부 자신감이 생긴 게 더 큰 수확이에요.</div><div class="rname">박*준 회원 (중3)</div></div>
-      <div class="rc"><span class="rb" style="background:#BE185D">한양대 합격</span><div class="rstar">★★★★★</div><div class="rtitle">아이가 먼저 공부하겠다고 해요</div><div class="rtext">예전엔 억지로 책상에 앉혔는데, 지금은 스스로 계획 짜고 공부합니다. 정말 감사해요.</div><div class="rname">최*아 회원 고객</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SPECIAL -->
-<section class="special">
-  <div class="sw">
-    <div class="sh fu">
-      <div class="se">SPECIAL POINT</div>
-      <h2 class="st">우리 아이 매출,<br><span class="hl">왜 올페이스토어여야 할까요?</span></h2>
-      <p class="u5">단순한 설치 중개가 아닙니다. 운영 진단부터 목표 설계, 실행 관리까지 아이의 성장을 함께 책임집니다.</p>
-    </div>
-    <div class="spg fu">
-      <div class="spc"><div class="spi ic1">🎯</div><div class="spt"><h4>학교·교재 맞춤 1:1 대비</h4><p>전국 모든 학교의 교과서·부교재를 분석해 내 학교 시험에 딱 맞는 맞춤 설치/상담을 제공합니다.</p></div></div>
-      <div class="spc"><div class="spi ic2">🔍</div><div class="spt"><h4>변형문제 완벽 대응 전략</h4><p>기본 개념부터 심화 응용까지 단계별로 훈련해 어떤 문제 유형에도 당황하지 않는 실력을 만듭니다.</p></div></div>
-      <div class="spc"><div class="spi ic3">🧠</div><div class="spt"><h4>AI 기반 운영 취약점 분석</h4><p>100만 건의 누적 운영 데이터로 아이의 취약점을 정밀하게 찾아내고 집중 보완합니다.</p></div></div>
-      <div class="spc"><div class="spi ic4">📆</div><div class="spt"><h4>시험 일정 연동 플래닝</h4><p>학사일정·시험 일정에 맞춰 역산 계획표를 설계하고 매주 실천 여부를 함께 점검합니다.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DIAGNOSIS -->
-<section class="diagnosis">
-  <div class="sw">
-    <div class="sh fu">
-      <div class="se">DIAGNOSIS PROGRAM</div>
-      <h2 class="st">6가지 정밀 진단검사<br><span class="hl">무엇이 있는지 확인해보세요</span></h2>
-      <p style="font-size:14px;color:var(--text-muted);margin-top:12px;line-height:1.7;word-break:keep-all">운영부터 진로, 부모 코칭까지<br>자세한 내용은 상담을 통해 안내드립니다.</p>
-    </div>
-    <div class="diag-grid fu">
-      <div class="diag-card dc1">
-        <span class="diag-badge db1">무료 체험</span>
-        <span class="diag-icon">📊</span>
-        <div class="diag-title">운영진단검사</div>
-        <div class="diag-desc">운영 성격 유형, 동기, 요인을 분석해 공부 방향을 잡아드립니다.</div>
-        <div class="diag-tags"><span class="diag-tag">운영 성격 유형</span><span class="diag-tag">운영 동기 분석</span><span class="diag-tag">운영 요인</span></div>
-      </div>
-      <div class="diag-card dc2">
-        <span class="diag-badge db2">무료 체험</span>
-        <span class="diag-icon">✅</span>
-        <div class="diag-title">자기주도검사</div>
-        <div class="diag-desc">계획 수립·실천 능력과 자기평가 역량을 객관적으로 측정합니다.</div>
-        <div class="diag-tags"><span class="diag-tag">자기주도성</span><span class="diag-tag">계획 수립</span><span class="diag-tag">자기평가</span></div>
-      </div>
-      <div class="diag-card dc3">
-        <span class="diag-badge db3">회원용</span>
-        <span class="diag-icon">💼</span>
-        <div class="diag-title">진로적성검사</div>
-        <div class="diag-desc">직업 성격 유형과 진로 탐색·준비 수준을 진단합니다.</div>
-        <div class="diag-tags"><span class="diag-tag">직업 성격 유형</span><span class="diag-tag">진로 탐색</span><span class="diag-tag">전공 계열</span></div>
-      </div>
-      <div class="diag-card dc4">
-        <span class="diag-badge db4">회원용</span>
-        <span class="diag-icon">📐</span>
-        <div class="diag-title">운영유형검사</div>
-        <div class="diag-desc">운영 성향, 의지, 스타일, 행동을 파악해 최적 공부법을 안내합니다.</div>
-        <div class="diag-tags"><span class="diag-tag">운영성향</span><span class="diag-tag">운영의지</span><span class="diag-tag">운영스타일</span></div>
-      </div>
-      <div class="diag-card dc5">
-        <span class="diag-badge db5">회원용</span>
-        <span class="diag-icon">🎓</span>
-        <div class="diag-title">입시예측검사</div>
-        <div class="diag-desc">목표 고교·대학 합격 가능성과 수시·정시 전략을 예측합니다.</div>
-        <div class="diag-tags"><span class="diag-tag">고교 합격 진단</span><span class="diag-tag">대학 합격 예측</span><span class="diag-tag">수시·정시</span></div>
-      </div>
-      <div class="diag-card dc6">
-        <span class="diag-badge db6">회원용</span>
-        <span class="diag-icon">👨‍👩‍👧</span>
-        <div class="diag-title">부모코칭검사</div>
-        <div class="diag-desc">자녀와의 의사소통 유형과 양육 스타일을 진단해 관계를 개선합니다.</div>
-        <div class="diag-tags"><span class="diag-tag">양육 스타일</span><span class="diag-tag">의사소통 분석</span><span class="diag-tag">관계 점검</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-
-<script>
-function switchFind(tab){
-  ['region','subject','academy','conv'].forEach(function(t){
-    var panel = document.getElementById('fpanel-'+t);
-    var btn = document.getElementById('ftab-'+t);
-    if(t===tab){
-      panel.style.display='block';
-      btn.style.background='#3B82F6';btn.style.color='white';btn.style.borderColor='#3B82F6';
-    }else{
-      panel.style.display='none';
-      btn.style.background='white';btn.style.color='#374151';btn.style.borderColor='#E5E7EB';
-    }
-  });
-  var cbtn = document.getElementById('ftab-contact');
-  if(cbtn){ cbtn.style.background='white';cbtn.style.color='#1D4ED8';cbtn.style.borderColor='#1D4ED8'; }
-}
-<\/script>
-<script>
-(function(){
-  var floats = document.getElementById('floats');
-  var footer = document.querySelector('footer');
-  if(!footer) return;
-  function adjustFloats(){
-    try {
-      if(!floats || !footer) return;
-      var footerTop = footer.getBoundingClientRect().top;
-      var windowH = window.innerHeight;
-      if(footerTop < windowH){
-        floats.style.bottom = (windowH - footerTop + 60) + 'px';
-      } else {
-        floats.style.bottom = '60px';
-      }
-    } catch(e){}
-  }
-  window.addEventListener('scroll', adjustFloats, {passive:true});
-  window.addEventListener('resize', adjustFloats, {passive:true});
-  adjustFloats();
-})();
-<\/script>
-<script>
 function toggleMobileMenu(){
   const m=document.getElementById('mobMenu');
   const b=document.getElementById('hburg');
@@ -3968,7 +3807,7 @@ function switchTab(menu,tab){
     document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
   }catch(e){}
 })();
-<\/script>`;
+${'<'}/script>`;
   return wrap('올페이스토어 | 전국 1:1 맞춤 설치·대리점 정보','전국 초·중·고 1:1 맞춤 설치 플랫폼. 검증된 전문가 빠르게 매칭. 카드단말기·포스기·키오스크·CCTV 방문설치. 무료상담 010-9876-8282','/',body,[]);
 }
 
@@ -4388,7 +4227,7 @@ export default {
       if (page) return new Response(page, { headers: h });
     }
     // 404
-    return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>404 - 올페이스토어</title><style>${CSS}<\/style></head><body>
+    return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>404 - 올페이스토어</title><style>${CSS}</style></head><body>
 ${HEADER}<div class="wrap" style="text-align:center;padding-top:80px">
 <div style="font-size:64px;margin-bottom:20px">🔍</div>
 <h1 class="art-title">페이지를 찾을 수 없습니다</h1>
