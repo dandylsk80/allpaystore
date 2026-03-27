@@ -5085,9 +5085,8 @@ function getProfile(sido,sigungu,emd){
 
 function makeSVG(sido,sigungu,emd){
   const sub=`${sido} ${sigungu}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="#0D2E6E"/><text x="400" y="250" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="900" fill="white">${emd} 카드단말기</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="#0D2E6E"/><text x="400" y="195" text-anchor="middle" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">${sub}</text><text x="400" y="270" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="900" fill="white">${emd} 카드단말기</text></svg>`;
 }
-
 const CSS=`<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -5149,14 +5148,11 @@ function makeSidoPage(sidoSlug){
   return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sidoName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/" style="color:#0D2E6E;font-weight:700;">← 홈</a><h1 style="margin:20px 0;color:#0D2E6E;">${sidoName} 카드단말기 설치</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
 }
 function makeSigunguPage(sidoSlug,sigunguSlug){
-  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
-  const sidoName=SK[sidoSlug];
+  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};const sidoName=SK[sidoSlug];
   const sgKey=sidoSlug+'/'+sigunguSlug;
   const dongs=Object.keys(R).filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
   if(!dongs.length)return null;
-  const sgs=SIGUNGU[sidoSlug]||[];
-  const sgInfo=sgs.find(s=>s[1]===sgKey);
-  const sgName=sgInfo?sgInfo[0]:sigunguSlug;
+  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
   const cards=dongs.map(d=>`<a href="/blog/${d.slug}/" style="display:inline-block;padding:10px 20px;margin:6px;background:#0D2E6E;color:#fff;border-radius:8px;font-weight:700;text-decoration:none;">${d.name}</a>`).join('');
   return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sgName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/blog/${sidoSlug}/" style="color:#0D2E6E;font-weight:700;">← ${sidoName}</a><h1 style="margin:20px 0;color:#0D2E6E;">${sgName} 카드단말기 설치</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
 }
@@ -5290,40 +5286,93 @@ ${CSS}
   </div>
 </div>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282"}</script>
 </body></html>`;
 }
 
 function makeBlogList(){
-  const cards=Object.keys(R).slice(0,60).map(slug=>{const[sido,sigungu,emd]=lk(slug);return `<a href="/blog/${slug}" class="rc"><span class="rc-sub">${sido} · ${sigungu}</span><span class="rc-main">${emd} 카드단말기 설치</span></a>`;}).join('');
+  // 시도 순서 및 한글명
+  const SIDO_ORDER=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
+  const SIDO_KO={seoul:'서울특별시',busan:'부산광역시',daegu:'대구광역시',incheon:'인천광역시',gwangju:'광주광역시',daejeon:'대전광역시',ulsan:'울산광역시',sejong:'세종특별자치시',gyeonggi:'경기도',gangwon:'강원특별자치도',chungbuk:'충청북도',chungnam:'충청남도',jeonbuk:'전북특별자치도',jeonnam:'전라남도',gyeongbuk:'경상북도',gyeongnam:'경상남도',jeju:'제주특별자치도'};
+  const SIDO_ICON={seoul:'🏙',busan:'⚓',daegu:'🏭',incheon:'✈️',gwangju:'🌸',daejeon:'🔬',ulsan:'🔧',sejong:'🏛',gyeonggi:'🌿',gangwon:'🏔',chungbuk:'⚡',chungnam:'🌾',jeonbuk:'🍀',jeonnam:'🐟',gyeongbuk:'🍎',gyeongnam:'🚢',jeju:'🌺'};
+
+  // 시도별로 slug 분류
+  const byDong={};
+  Object.keys(R).forEach(slug=>{
+    const parts=slug.split('/');
+    if(parts.length!==3)return;
+    const sido=parts[0];
+    if(!byDong[sido])byDong[sido]=[];
+    byDong[sido].push(slug);
+  });
+
+  // 시도별 탭 버튼
+  const tabs=SIDO_ORDER.map((eng,i)=>{
+    const cnt=(byDong[eng]||[]).length;
+    return `<button class="tab-btn${i===0?' active':''}" onclick="switchTab('${eng}')">${SIDO_ICON[eng]} ${SIDO_KO[eng]} <span class="tab-cnt">${cnt}</span></button>`;
+  }).join('');
+
+  // 시도별 카드 섹션
+  const sections=SIDO_ORDER.map((eng,i)=>{
+    const slugs=byDong[eng]||[];
+    const cards=slugs.map(slug=>{
+      const r=lk(slug);if(!r)return'';
+      const[sido,sigungu,emd]=r;
+      return `<a href="/blog/${slug}/" class="rc"><span class="rc-sub">${sigungu}</span><span class="rc-main">${emd}</span></a>`;
+    }).join('');
+    return `<div class="tab-panel" id="panel-${eng}" style="display:${i===0?'grid':'none'};grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;">${cards}</div>`;
+  }).join('');
+
+  const total=Object.keys(R).filter(k=>k.split('/').length===3).length;
+
   return `<!DOCTYPE html>
 <html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>전국 카드단말기·포스기 설치 지역 | 올페이스토어</title>
-<meta name="description" content="전국 5,066개 읍면동 카드단말기·포스기·키오스크·CCTV 설치. 올페이스토어 ☎ 010-9876-8282">
+<meta name="description" content="전국 ${total.toLocaleString()}개 읍면동 카드단말기·포스기·키오스크·CCTV 설치. 올페이스토어 ☎ 010-9876-8282">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
-.gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700}
-.hero{background:linear-gradient(135deg,#0D2E6E,#1A6BFF);padding:64px 24px;text-align:center;color:#fff}.hero h1{font-size:clamp(22px,4vw,40px);font-weight:900;margin-bottom:12px}.hero p{font-size:16px;opacity:.9}
-.wrap{max-width:1100px;margin:40px auto;padding:0 20px 80px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.rc{display:flex;flex-direction:column;background:#fff;border-radius:12px;padding:16px;border:1.5px solid #eee;transition:all .2s;gap:4px}
-.rc:hover{border-color:#1A6BFF;box-shadow:0 4px 16px rgba(26,107,255,.12)}
-.rc-sub{font-size:11px;color:#aaa;font-weight:600}.rc-main{font-size:15px;font-weight:800;color:#0D2E6E}
-.note{text-align:center;margin:28px 0;color:#aaa;font-size:13px}
+.gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
+.hero{background:linear-gradient(135deg,#0D2E6E,#1A6BFF);padding:52px 24px;text-align:center;color:#fff}.hero h1{font-size:clamp(20px,4vw,36px);font-weight:900;margin-bottom:10px}.hero p{font-size:15px;opacity:.85}
+.wrap{max-width:1200px;margin:0 auto;padding:28px 20px 80px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tab-btn{background:#fff;border:1.5px solid #e0e0e0;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#555;transition:all .15s;white-space:nowrap}
+.tab-btn:hover{border-color:#1A6BFF;color:#1A6BFF}
+.tab-btn.active{background:#0D2E6E;border-color:#0D2E6E;color:#fff}
+.tab-cnt{font-size:11px;opacity:.75;margin-left:3px}
+.rc{display:flex;flex-direction:column;background:#fff;border-radius:10px;padding:12px 14px;border:1.5px solid #eee;transition:all .2s;gap:3px}
+.rc:hover{border-color:#1A6BFF;box-shadow:0 3px 12px rgba(26,107,255,.1);transform:translateY(-1px)}
+.rc-sub{font-size:11px;color:#aaa;font-weight:600}.rc-main{font-size:14px;font-weight:800;color:#0D2E6E}
+.note{text-align:center;margin-top:32px;color:#aaa;font-size:13px}
 </style>
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel">📞 010-9876-8282</a></div></nav>
-<div class="hero"><h1>전국 카드단말기·포스기 설치 지역 안내</h1><p>5,066개 읍면동 전 지역 방문 설치 · 무료 견적 · 당일 설치 가능</p></div>
-<div class="wrap"><div class="grid">${cards}</div><p class="note">※ 전국 5,066개 지역 페이지가 준비되어 있습니다.</p></div>
+<div class="hero"><h1>전국 카드단말기·포스기 설치 지역</h1><p>전국 ${total.toLocaleString()}개 읍면동 전 지역 방문 설치 · 무료 견적 · 당일 설치</p></div>
+<div class="wrap">
+  <div class="tabs">${tabs}</div>
+  ${sections}
+  <p class="note">전국 ${total.toLocaleString()}개 지역 전체 서비스 중 · ☎ 010-9876-8282</p>
+</div>
+<script>
+function switchTab(eng){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.style.display='none';});
+  event.currentTarget.classList.add('active');
+  var panel=document.getElementById('panel-'+eng);
+  if(panel){panel.style.display='grid';}
+}
+</script>
 </body></html>`;
 }
 
 function makeSitemap(){
-  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://allpaystore.com/</loc></url>
-${Object.keys(R).map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join("")}
-</urlset>`;
+  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
+  const sidoUrls=sidoSlugs.map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join('');
+  // 시군구 URL (sido/sigungu 형태 slug)
+  const sgUrls=[...new Set(Object.keys(R).filter(k=>k.split('/').length===3).map(k=>k.split('/').slice(0,2).join('/')))].map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join('');
+  const dongUrls=Object.keys(R).filter(k=>k.split('/').length===3).map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join('');
+  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://allpaystore.com/</loc></url><url><loc>https://allpaystore.com/blog/</loc></url>${sidoUrls}${sgUrls}${dongUrls}</urlset>`;
 }
 
 function getRSS() {
@@ -5345,12 +5394,6 @@ function getRSS() {
 </rss>`;
 }
 
-function getRobots() {
-  return `User-agent: *
-Allow: /
-Sitemap: https://allpaystore.com/sitemap.xml`;
-}
-
 function getHTML() {
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -5361,9 +5404,6 @@ function getHTML() {
 <meta name="description" content="포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.">
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac">
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045">
-<meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
-<meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045" />
-<meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -5383,11 +5423,12 @@ nav {
   display:flex; align-items:center; gap:48px;
 }
 .logo { font-size:26px; font-weight:900; color:#111; letter-spacing:-1px; flex-shrink:0; }
+.logo img { height:40px; width:auto; display:block; }
 .logo span { color:#0D2E6E; }
-.nav-links { display:flex; gap:32px; list-style:none; align-items:center; }
+.nav-links { display:flex; gap:32px; list-style:none; flex:1; align-items:center; }
 .nav-links a { font-size:15px; font-weight:500; color:#333; transition:color 0.2s; }
 .nav-links a:hover { color:#0D2E6E; }
-.nav-links li { position:relative; }
+.nav-links li { position:relative; list-style:none; }
 .dropdown {
   display:none; position:absolute; top:calc(100% + 8px); left:-20px;
   background:#0D2E6E; border-radius:14px;
@@ -5939,71 +5980,52 @@ footer { background:#111; padding:60px 0 100px; }
   /* DROPDOWN 모바일 숨김 */
   .dropdown { display:none !important; }
 }
-
-.mega-btn-link{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.85)!important;background:rgba(255,255,255,0.08);white-space:nowrap;transition:all 0.2s;cursor:pointer;text-decoration:none!important;}
-.mega-btn-link:hover{background:#1A6BFF;color:#fff!important;}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <div class="logo" style="display:flex;align-items:center;gap:10px;"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-  <rect width="36" height="36" rx="8" fill="#0D2E6E"/>
-  <text x="18" y="24" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="900" fill="white">A</text>
-</svg><span style="font-size:22px;font-weight:900;color:#111;letter-spacing:-0.5px;">All<span style="color:#0D2E6E;">Pay</span>Store</span></div>
-    <div style="flex:1;"></div>
-    <ul class="nav-links" style="justify-content:flex-end;margin-right:24px;">
-      <li class="gi" id="gi-region" style="position:relative;list-style:none;" onmouseenter="openMegaRegion()" onmouseleave="closeMegaRegion()">
-        <button class="gb" onclick="openMegaRegion()" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;background:none;font-size:15px;font-weight:500;color:#333;border-radius:8px;cursor:pointer;font-family:inherit;transition:color 0.2s;pointer-events:auto;">
+    <div class="logo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAQ4BDgDASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAcIBQYDBAkCAf/EAEkQAQABAwMBBQMIBQsEAQQDAQABAgMEBQYRBxIhMUFhCFFxExQVFiIyQoEjM1JikRcYVFVygpOUsdLTJEOhwfCywsPhc6LRY"></div>
+    <ul class="nav-links" style="flex:1;justify-content:flex-end;">
+      <li id="gi-region" style="position:relative;list-style:none;" onmouseenter="openMegaRegion()" onmouseleave="closeMegaRegion()">
+        <button onclick="toggleMega()" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;background:none;font-size:15px;font-weight:500;color:#333;border-radius:8px;cursor:pointer;font-family:inherit;">
           지역별 광고
-          <svg style="width:14px;height:14px;color:rgba(0,0,0,0.4);transition:transform 0.2s;" id="mega-arr" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          <svg id="mega-arr" style="width:14px;height:14px;transition:transform 0.2s;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <div class="mega-drop" id="mega-region" style="display:none;position:absolute;top:calc(100% + 2px);right:0;width:680px;background:#0D2E6E;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.25);padding:24px;z-index:2000;" onmouseenter="clearTimeout(_megaTimer)" onmouseleave="closeMegaRegion()">
-          <!-- 탭 -->
-          <div style="display:flex;gap:6px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:14px;">
-            <button class="mega-tab-btn active" onclick="switchMegaTab('local')" style="padding:7px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:inherit;background:#1A6BFF;color:white;">📍 지역별</button>
-            <button class="mega-tab-btn" onclick="switchMegaTab('industry')" style="padding:7px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:inherit;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);">🏪 업종별</button>
+        <div id="mega-region" onmouseenter="clearTimeout(_megaTimer)" onmouseleave="closeMegaRegion()" style="display:none;position:absolute;top:calc(100% + 2px);right:0;width:660px;background:#0D2E6E;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:24px;z-index:9999;">
+          <div style="display:flex;gap:6px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:14px;">
+            <button onclick="switchMegaTab(event,'local')" id="tab-local" style="padding:7px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:inherit;background:#1A6BFF;color:white;">📍 지역별</button>
+            <button onclick="switchMegaTab(event,'industry')" id="tab-industry" style="padding:7px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:inherit;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);">🏪 업종별</button>
           </div>
-          <!-- 패널1: 지역별 -->
-          <div id="mega-panel-local" class="mega-panel-content">
-            <div id="mega-sidoList" style="display:flex;flex-wrap:wrap;gap:8px;">
-              <a href="/blog/seoul/" class="mega-btn-link">🏙 서울</a>
-              <a href="/blog/incheon/" class="mega-btn-link">✈️ 인천</a>
-              <a href="/blog/gyeonggi/" class="mega-btn-link">🌿 경기</a>
-              <a href="/blog/busan/" class="mega-btn-link">⚓ 부산</a>
-              <a href="/blog/daegu/" class="mega-btn-link">🏭 대구</a>
-              <a href="/blog/daejeon/" class="mega-btn-link">🔬 대전</a>
-              <a href="/blog/gwangju/" class="mega-btn-link">🌸 광주</a>
-              <a href="/blog/ulsan/" class="mega-btn-link">🔧 울산</a>
-              <a href="/blog/sejong/" class="mega-btn-link">🏛 세종</a>
-              <a href="/blog/gangwon/" class="mega-btn-link">🏔 강원</a>
-              <a href="/blog/chungbuk/" class="mega-btn-link">⚡ 충북</a>
-              <a href="/blog/chungnam/" class="mega-btn-link">🌾 충남</a>
-              <a href="/blog/jeonbuk/" class="mega-btn-link">🍀 전북</a>
-              <a href="/blog/jeonnam/" class="mega-btn-link">🐟 전남</a>
-              <a href="/blog/gyeongbuk/" class="mega-btn-link">🍎 경북</a>
-              <a href="/blog/gyeongnam/" class="mega-btn-link">🚢 경남</a>
-              <a href="/blog/jeju/" class="mega-btn-link">🌺 제주</a>
-            </div>
+          <div id="mega-panel-local" style="display:flex;flex-wrap:wrap;gap:8px;">
+            <a href="/blog/seoul/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🏙 서울</a>
+            <a href="/blog/incheon/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">✈️ 인천</a>
+            <a href="/blog/gyeonggi/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🌿 경기</a>
+            <a href="/blog/busan/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">⚓ 부산</a>
+            <a href="/blog/daegu/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🏭 대구</a>
+            <a href="/blog/daejeon/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🔬 대전</a>
+            <a href="/blog/gwangju/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🌸 광주</a>
+            <a href="/blog/ulsan/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🔧 울산</a>
+            <a href="/blog/sejong/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🏛 세종</a>
+            <a href="/blog/gangwon/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🏔 강원</a>
+            <a href="/blog/chungbuk/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">⚡ 충북</a>
+            <a href="/blog/chungnam/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🌾 충남</a>
+            <a href="/blog/jeonbuk/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🍀 전북</a>
+            <a href="/blog/jeonnam/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🐟 전남</a>
+            <a href="/blog/gyeongbuk/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🍎 경북</a>
+            <a href="/blog/gyeongnam/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🚢 경남</a>
+            <a href="/blog/jeju/" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🌺 제주</a>
           </div>
-          <!-- 패널2: 상품별 -->
-          <!-- 패널3: 업종별 -->
-          <div id="mega-panel-industry" class="mega-panel-content" style="display:none;">
-            <div style="display:flex;flex-wrap:wrap;gap:8px;">
-              <a href="#" class="mega-btn-link">🍽️ 음식점·식당</a>
-              <a href="#" class="mega-btn-link">☕ 카페·커피숍</a>
-              <a href="#" class="mega-btn-link">🏪 편의점·슈퍼</a>
-              <a href="#" class="mega-btn-link">💇 미용실·네일</a>
-              <a href="#" class="mega-btn-link">💊 약국·병원</a>
-              <a href="#" class="mega-btn-link">👗 의류·패션</a>
-              <a href="#" class="mega-btn-link">🏋️ 헬스·스포츠</a>
-              <a href="#" class="mega-btn-link">🛒 마트·유통</a>
-            </div>
+          <div id="mega-panel-industry" style="display:none;flex-wrap:wrap;gap:8px;">
+            <a href="#" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🍽️ 음식점</a>
+            <a href="#" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">☕ 카페</a>
+            <a href="#" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">🏪 편의점</a>
+            <a href="#" style="padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);text-decoration:none;">💇 미용실</a>
           </div>
         </div>
       </li>
-      <li>
+      <li style="list-style:none;">
         <a href="#">상품별 광고 ▾</a>
         <div class="dropdown" style="min-width:280px;left:auto;right:0;">
           <div class="dropdown-regions">
@@ -6020,7 +6042,7 @@ footer { background:#111; padding:60px 0 100px; }
         <span class="nav-visitor-label">누적 방문자</span>
         <span class="nav-visitor-count" id="visitorCount">353,112명</span>
       </div>
-
+      <button class="nav-consult" onclick="location.href='tel:010-9876-8282'">📞 무료 상담</button>
     </div>
     <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="메뉴">
       <span></span><span></span><span></span>
@@ -6175,7 +6197,7 @@ footer { background:#111; padding:60px 0 100px; }
     </div>
     <div class="prod-grid">
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🖥️</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">🖥️</div>
         <div class="prod-body">
           <div class="prod-name">올인원 포스시스템</div>
           <div class="prod-desc">어떤 업종도 OK. 실시간 매출 분석부터 재고 관리까지 한 번에.</div>
@@ -6183,7 +6205,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🧾</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">🧾</div>
         <div class="prod-body">
           <div class="prod-name">자동커팅 단말기</div>
           <div class="prod-desc">빠른 영수증 출력과 자동 커팅으로 매장 회전율을 높여줍니다.</div>
@@ -6191,7 +6213,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">💳</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">💳</div>
         <div class="prod-body">
           <div class="prod-name">컴팩트 카드단말기</div>
           <div class="prod-desc">좁은 카운터에서도 공간 활용이 뛰어난 소규모 매장 최적 모델.</div>
@@ -6199,7 +6221,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📱</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">📱</div>
         <div class="prod-body">
           <div class="prod-name">토스 단말기</div>
           <div class="prod-desc">고객이 직접 결제하고 포인트를 적립하는 스마트한 경험.</div>
@@ -6207,7 +6229,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📡</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">📡</div>
         <div class="prod-body">
           <div class="prod-name">무선 카드단말기</div>
           <div class="prod-desc">배달·야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</div>
@@ -6215,7 +6237,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🔵</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">🔵</div>
         <div class="prod-body">
           <div class="prod-name">블루투스 단말기</div>
           <div class="prod-desc">스마트폰만 있으면 결제 준비 끝. 1인 창업자에게 최적.</div>
@@ -6223,7 +6245,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📋</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">📋</div>
         <div class="prod-body">
           <div class="prod-name">테이블 오더</div>
           <div class="prod-desc">고객이 자리에서 직접 주문·결제. 인건비 절감과 스마트한 운영.</div>
@@ -6231,7 +6253,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🤖</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">🤖</div>
         <div class="prod-body">
           <div class="prod-name">알뜰 미니키오스크</div>
           <div class="prod-desc">카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</div>
@@ -6239,7 +6261,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🏧</div>
+        <div class="prod-img" style="font-size:56px;display:flex;align-items:center;justify-content:center;">🏧</div>
         <div class="prod-body">
           <div class="prod-name">스마트 무인키오스크</div>
           <div class="prod-desc">직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</div>
@@ -6607,7 +6629,6 @@ function showSigungu(e,sidoEng){
     html+='<a href="/blog/'+sg[1]+'/">'+sg[0]+'</a>';
   });
   list.innerHTML=html;
-  document.getElementById('sidoList').style.display='flex';
   document.getElementById('sidoList').style.display='none';
   list.style.display='flex';
 }
@@ -6622,7 +6643,7 @@ var reviewMax = 6;
 function initReviewDots() {
   var dots = document.getElementById('reviewDots');
   if (!dots) return;
-  for (var i = 0; i <= reviewMax; i++) {
+  for (var i = 0; i < reviewMax; i++) {
     (function(idx) {
       var d = document.createElement('div');
       d.style.cssText = 'width:8px;height:8px;border-radius:50%;background:' + (idx===0?'#1A6BFF':'#ddd') + ';cursor:pointer;transition:all 0.2s;';
@@ -6745,7 +6766,9 @@ function mmToPanel2() {
   document.getElementById('mmPanels').style.transform = 'translateX(-50%)';
   mmOnSido = false;
 }
-function mmBackToMain() { mmToPanel1(); }
+function mmBackToMain() {
+  if (!mmOnSido) { mmToPanel1(); } else { closeMobileMenu(); }
+}
 
 var SIDO_NAMES_M = {
   seoul:'서울특별시', busan:'부산광역시', daegu:'대구광역시', incheon:'인천광역시',
@@ -6802,7 +6825,31 @@ var _megaOpen=false,_megaTimer=null;
 function openMegaRegion(){clearTimeout(_megaTimer);var d=document.getElementById('mega-region');if(!d)return;d.style.display='block';_megaOpen=true;var a=document.getElementById('mega-arr');if(a)a.style.transform='rotate(180deg)';}
 function closeMegaRegion(){_megaTimer=setTimeout(function(){var d=document.getElementById('mega-region');if(d){d.style.display='none';_megaOpen=false;}var a=document.getElementById('mega-arr');if(a)a.style.transform='';},400);}
 function toggleMega(){if(_megaOpen){closeMegaRegion();}else{openMegaRegion();}}
-function switchMegaTab(tab){document.querySelectorAll('.mega-panel-content').forEach(function(p){p.style.display='none';});var panel=document.getElementById('mega-panel-'+tab);if(panel)panel.style.display='block';document.querySelectorAll('.mega-tab-btn').forEach(function(b){b.style.background='rgba(255,255,255,0.08)';b.style.color='rgba(255,255,255,0.5)';});if(event&&event.target){event.target.style.background='#1A6BFF';event.target.style.color='white';}}
+function switchMegaTab(e,tab){['local','industry'].forEach(function(t){var p=document.getElementById('mega-panel-'+t),b=document.getElementById('tab-'+t);if(p){p.style.display=t===tab?'flex':'none';}if(b){b.style.background=t===tab?'#1A6BFF':'rgba(255,255,255,.08)';b.style.color=t===tab?'white':'rgba(255,255,255,.5)';}});}
+
+/* ── 히어로 슬라이더 ── */
+(function(){
+  var idx=0;
+  var slides=document.querySelectorAll('.hero-slide');
+  var dots=document.querySelectorAll('.hero-dot');
+  var total=slides.length;
+  var timer=null;
+
+  function heroGoTo(n){
+    idx=(n+total)%total;
+    document.getElementById('heroSlides').style.transform='translateX(-'+idx+'00%)';
+    dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+  }
+
+  window.heroMove=function(dir){ clearInterval(timer); heroGoTo(idx+dir); startAuto(); };
+
+  dots.forEach(function(d,i){
+    d.addEventListener('click',function(){ clearInterval(timer); heroGoTo(i); startAuto(); });
+  });
+
+  function startAuto(){ timer=setInterval(function(){ heroGoTo(idx+1); },5000); }
+  startAuto();
+})();
 </script>
 </body>
 </html>`;
@@ -6819,7 +6866,6 @@ export default {
 
     if(path==='/index.html')
       return Response.redirect('https://allpaystore.com/', 301);
-
     if(path==='/blog')
       return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
 
@@ -6830,8 +6876,8 @@ export default {
     if(bm){
       const slug=bm[1].replace(/\/+$/,'');
       const parts=slug.split('/');
-      if(parts.length===1){const h=makeSidoPage(parts[0]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8'}});}
-      if(parts.length===2){const h=makeSigunguPage(parts[0],parts[1]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8'}});}
+      if(parts.length===1){const h=makeSidoPage(parts[0]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
+      if(parts.length===2){const h=makeSigunguPage(parts[0],parts[1]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
       const r=lk(slug);
       if(r)return new Response(makeBlog(...r,slug),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
       return new Response(`<html><body style="font-family:sans-serif;padding:40px;text-align:center"><h2>페이지를 찾을 수 없습니다</h2><p>${slug}</p><a href="/blog" style="color:#1A6BFF">← 전체 지역 목록</a></body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
