@@ -169,9 +169,9 @@ const CENTERS=[{"n":"하남풍산점","on":"하남풍산점와와학습코칭학
 function generateAreaFeature(ak, schools) {
   let _h=0; for(let i=0;i<ak.length;i++) _h=(_h*31+ak.charCodeAt(i))>>>0;
   const t=[
-    `${ak} 과외는 초1~고3 전 학년 수학·영어·국어·과학·사회·코딩·논술 1:1 방문 과외를 연결합니다. ${schools} 내신 기출을 철저히 분석한 검증 선생님이 학생 수준에 맞는 커리큘럼을 제공합니다. 무료 상담 빠르게 최적 선생님 연결.`,
-    `${ak} 1:1 방문 과외 전문. ${schools} 기출 분석 선생님. 초등·중등·고등 전 학년 내신·수능 맞춤 커리큘럼. 학력·경력·수업시연 3단계 검증. 무료 상담 010-9876-8282`,
-    `${ak} 맞춤 1:1 과외. ${schools} 내신 관리 전문. 수학·영어·국어·과학 검증 선생님. 매주 학습 보고서 제공.`,
+    `${ak} 카드단말기 설치는 초1~고3 전 학년 수학·영어·국어·과학·사회·코딩·논술 1:1 방문 설치를 연결합니다. ${schools} 내신 기출을 철저히 분석한 검증 선생님이 학생 수준에 맞는 커리큘럼을 제공합니다. 무료 상담 빠르게 최적 선생님 연결.`,
+    `${ak} 1:1 방문 설치 전문. ${schools} 기출 분석 선생님. 초등·중등·고등 전 학년 내신·수능 맞춤 커리큘럼. 학력·경력·수업시연 3단계 검증. 무료 상담 010-9876-8282`,
+    `${ak} 맞춤 전문 설치. ${schools} 내신 관리 전문. 수학·영어·국어·과학 검증 선생님. 매주 학습 보고서 제공.`,
   ];
   return t[_h%t.length];
 }
@@ -182,7 +182,7 @@ const REGIONS = {
     areas: {
       '강남구': {
         dongs: ['대치동','압구정동','역삼동','청담동','논현동','도곡동','삼성동','개포동','신사동','수서동','일원동','세곡동','자곡동','율현동'],
-        feature: '강남구 과외는 대치동·압구정·역삼·청담 전 지역에서 수학 과외, 영어 과외, 국어 과외, 과학 과외를 1:1 방문 과외로 연결해드립니다. 강남구 초등 과외·중등 과외·고등 과외 전 학년 내신 대비와 수능 대비를 전담하며, 강남 학원가 기출 문제 분석에 특화된 검증 선생님을 매칭합니다. 강남구 수학 과외·영어 과외 선생님은 학력·경력·수업 시연 검증을 완료한 분들로만 구성되어 있습니다. 무료 상담 후 빠르게 강남구 맞춤 과외 선생님을 연결해드립니다.',
+        feature: '강남구 카드단말기 설치는 대치동·압구정·역삼·청담 전 지역에서 카드단말기 설치, 카드단말기 설치, 카드단말기 설치, 카드단말기 설치를 1:1 방문 설치로 연결해드립니다. 강남구 초등 카드단말기 설치·중등 카드단말기 설치·고등 카드단말기 설치 전 학년 내신 대비와 수능 대비를 전담하며, 강남 학원가 기출 문제 분석에 특화된 검증 선생님을 매칭합니다. 강남구 카드단말기 설치·카드단말기 설치 선생님은 학력·경력·수업 시연 검증을 완료한 분들로만 구성되어 있습니다. 무료 상담 후 빠르게 강남구 맞춤 설치 전문가을 연결해드립니다.',
         schools: '휘문고, 단대부고, 중동고, 숙명여고, 경기고, 개포고'
       },
       '서초구': { dongs:["개포동", "방배동", "양재동", "우면동", "원지동", "도곡동", "잠원동", "반포동", "서초동", "내곡동", "염곡동", "신원동", "역삼동", "신사동", "서초1동", "서초2동", "서초3동", "반포본동", "반포1동", "반포2동", "반포3동", "방배본동", "방배1동", "방배2동", "방배3동", "도곡1동", "도곡2동"], feature:'', schools:'세화고, 반포고, 상문고' },
@@ -1275,7 +1275,7 @@ const HEADER = `<header>
     <a href="/" class="mob-nav-logo"><em>올케어</em>스터디</a>
     <button class="mob-close" onclick="closeMobNav()">✕</button>
   </div>
-  <div class="mob-nav-section">과목별 과외</div>
+  <div class="mob-nav-section">제품별 설치</div>
   <div class="mob-subj-grid">
     <a class="mob-subj-btn" href="/subject/math"><span>📐</span><span>수학</span></a>
     <a class="mob-subj-btn" href="/subject/english"><span>📖</span><span>영어</span></a>
@@ -1296,7 +1296,7 @@ const HEADER = `<header>
   <div class="mob-subj-grid">
     <a class="mob-subj-btn" href="/academy/intro"><span>🏢</span><span>학원소개</span></a>
     <a class="mob-subj-btn" href="/academy/all"><span>🏫</span><span>학원찾기</span></a>
-    <a class="mob-subj-btn" href="/school"><span>🏛</span><span>학교별과외</span></a>
+    <a class="mob-subj-btn" href="/school"><span>🏛</span><span>지역별설치</span></a>
   </div>
   <div class="mob-nav-section">지역별 카드단말기</div>
   <div class="mob-sido-grid">
@@ -1310,10 +1310,10 @@ const HEADER = `<header>
     <a class="mob-sido-btn" href="/gyeongbuk">경북</a><a class="mob-sido-btn" href="/gyeongnam">경남</a>
     <a class="mob-sido-btn" href="/jeju">제주</a>
   </div>
-  <div class="mob-nav-section">학년별 과외</div>
-  <a class="mob-nav-item" href="/grade/elementary/1">🎒 초등 과외</a>
-  <a class="mob-nav-item" href="/grade/middle/1">📚 중등 과외</a>
-  <a class="mob-nav-item" href="/grade/high/1">🎓 고등 과외</a>
+  <div class="mob-nav-section">제품별 설치</div>
+  <a class="mob-nav-item" href="/grade/elementary/1">🎒 초등 카드단말기 설치</a>
+  <a class="mob-nav-item" href="/grade/middle/1">📚 중등 카드단말기 설치</a>
+  <a class="mob-nav-item" href="/grade/high/1">🎓 고등 카드단말기 설치</a>
   <a class="mob-contact-btn" href="/contact?type=tutoring">✉️ 무료 상담하기</a>
   <a class="mob-contact-btn" href="tel:01097868282" style="background:rgba(255,255,255,.1);margin-top:8px">📞 010-9876-8282</a>
 </nav>
@@ -1570,127 +1570,127 @@ const CATEGORY_TEMPLATES = {
   // A: 학원가 특구
   A: {
     math: [
-      '{dong} 수학 과외는 {schools} 등 내신 기출을 완벽 분석한 검증 선생님이 지도합니다.',
-      '{dong} 수학 과외는 {schools} 내신 기출 분석 + 학원 병행 취약 보완 방식으로 운영합니다.',
+      '{dong} 카드단말기 설치는 {schools} 등 내신 기출을 완벽 분석한 검증 선생님이 지도합니다.',
+      '{dong} 카드단말기 설치는 {schools} 내신 기출 분석 + 학원 병행 취약 보완 방식으로 운영합니다.',
       '{dong}은 {gu}에서도 교육열이 가장 높은 지역입니다.'],
     english: [
-      '{dong} 영어과외는 {schools} 내신 영어 기출을 완벽 분석해 변형 문제와 서술형까지 완벽 대비합니다.',
-      '{dong} 영어과외는 내신 영어와 수능 영어를 동시에 잡는 통합 커리큘럼으로 운영합니다.',
-      '{gu} 최고 학군인 {dong}의 영어과외는 {schools} 내신 1등급을 목표로 합니다.'],
+      '{dong} 카드단말기설치는 {schools} 내신 영어 기출을 완벽 분석해 변형 문제와 서술형까지 완벽 대비합니다.',
+      '{dong} 카드단말기설치는 내신 영어와 수능 영어를 동시에 잡는 통합 커리큘럼으로 운영합니다.',
+      '{gu} 최고 학군인 {dong}의 카드단말기설치는 {schools} 내신 1등급을 목표로 합니다.'],
     reviews: [
-      '{dong} 수학 과외 시작하고 {schools} 첫 중간고사에서 1등급 받았어요.',
+      '{dong} 카드단말기 설치 시작하고 {schools} 첫 중간고사에서 1등급 받았어요.',
       '{dong} 학원만 다녔는데 수학이 제자리였어요.',
-      '{dong} 영어 과외 받고 처음으로 내신 1등급 받았어요.',
-      '{dong} 수학 과외 2달 만에 등급이 두 단계 올랐어요.',
+      '{dong} 카드단말기 설치 받고 처음으로 내신 1등급 받았어요.',
+      '{dong} 카드단말기 설치 2달 만에 등급이 두 단계 올랐어요.',
       '{dong}에서 영어 선생님 찾고 있었는데 하루 만에 완벽한 매칭이 됐어요.',
       '{dong} 수학 선생님이 {schools} 출제 경향을 너무 잘 아세요.'],
   },
   // B: 신도시
   B: {
     math: [
-      '{dong} 수학과외는 신도시 특성에 맞춰 신설 학교 기출 분석에 특화된 선생님을 빠르게 매칭해드립니다.',
+      '{dong} 카드단말기설치는 신도시 특성에 맞춰 신설 학교 기출 분석에 특화된 선생님을 빠르게 매칭해드립니다.',
       '{dong}은 신도시 개발로 젊은 고학력 가정이 밀집한 지역입니다.',
-      '{dong} 수학과외는 신규 입주 학생들의 빠른 적응을 지원합니다.'],
+      '{dong} 카드단말기설치는 신규 입주 학생들의 빠른 적응을 지원합니다.'],
     english: [
-      '{dong} 영어과외는 신도시 {gu}의 {schools} 내신 영어를 집중 관리합니다.',
-      '{dong} 영어과외는 초등 영어 기초부터 {schools} 중학·고등 내신까지 단계별 체계적 지도를 제공합니다.',
+      '{dong} 카드단말기설치는 신도시 {gu}의 {schools} 내신 영어를 집중 관리합니다.',
+      '{dong} 카드단말기설치는 초등 영어 기초부터 {schools} 중학·고등 내신까지 단계별 체계적 지도를 제공합니다.',
       '{dong}은 젊은 고학력 가정이 많아 영어 교육 수준이 높습니다.'],
     reviews: [
       '{dong} 이사 오자마자 수학 선생님을 연결해주셨어요.',
       '{dong} 신도시라 좋은 선생님 찾기 어려울 것 같았는데 당일 매칭이 됐어요.',
-      '{dong} 영어 과외 시작하고 {schools} 첫 내신에서 2등급 받았어요.',
-      '{dong} 초등 수학 과외 받고 있는데 아이가 수학을 좋아하게 됐어요.',
+      '{dong} 카드단말기 설치 시작하고 {schools} 첫 내신에서 2등급 받았어요.',
+      '{dong} 초등 카드단말기 설치 받고 있는데 아이가 수학을 좋아하게 됐어요.',
       '{dong}에서 영어 선생님 찾았는데 너무 빠르게 연결해주셔서 놀랐어요.',
-      '{dong} 수학 과외 시작하고 {schools} 중간고사에서 처음으로 1등급 받았어요.'],
+      '{dong} 카드단말기 설치 시작하고 {schools} 중간고사에서 처음으로 1등급 받았어요.'],
   },
   // C: 산업단지
   C: {
     math: [
-      '{dong} 수학과외는 산업단지 인근 이공계·IT 종사자 가정을 위한 맞춤 수학 심화 과외를 제공합니다.',
+      '{dong} 카드단말기설치는 산업단지 인근 이공계·IT 종사자 가정을 위한 맞춤 수학 심화 카드단말기 설치를 제공합니다.',
       '{dong}은 {gu} 산업단지 인근으로 연구원·공학자 가정 비율이 높습니다.',
-      '{dong} 수학과외는 산업단지 맞벌이 가정의 방문 과외 수요에 맞춰 유연한 수업 일정으로 운영합니다.'],
+      '{dong} 카드단말기설치는 산업단지 맞벌이 가정의 방문 설치 수요에 맞춰 유연한 수업 일정으로 운영합니다.'],
     english: [
-      '{dong} 영어과외는 산업단지 인근 글로벌 기업 종사자 가정을 위한 영어 과외를 제공합니다.',
-      '{dong} 영어과외는 맞벌이 가정 비율이 높은 지역 특성에 맞춰 방문 과외로 {schools} 내신 영어를 집중 관리합니다.',
+      '{dong} 카드단말기설치는 산업단지 인근 글로벌 기업 종사자 가정을 위한 카드단말기 설치를 제공합니다.',
+      '{dong} 카드단말기설치는 맞벌이 가정 비율이 높은 지역 특성에 맞춰 방문 설치로 {schools} 내신 영어를 집중 관리합니다.',
       '{dong}은 IT·제조업 종사자 가정이 많아 영어 교육 수요가 높습니다.'],
     reviews: [
       '{dong} IT 직장 다니다 보니 아이 수학을 못 봐줬는데 선생님이 꼼꼼하게 봐주셔서 정말 감사합니다.',
-      '{dong} 수학 과외 받고 있어요.',
+      '{dong} 카드단말기 설치 받고 있어요.',
       '{dong} 맞벌이라 시간이 없는데 선생님이 맞춰주시니 너무 편해요.',
-      '{dong} 영어 과외 받고 처음으로 내신 2등급 받았어요. — {dong} 학부모',
+      '{dong} 카드단말기 설치 받고 처음으로 내신 2등급 받았어요. — {dong} 학부모',
       '{dong} 수학 선생님이 연구원 출신이시라 설명이 정말 논리적이에요. — {dong} 학부모'],
   },
   // D: 군인가족
   D: {
     math: [
-      '{dong} 수학과외는 군인 가족 이동에 맞춰 빠른 선생님 매칭과 유연한 수업 일정을 지원합니다.',
+      '{dong} 카드단말기설치는 군인 가족 이동에 맞춰 빠른 선생님 매칭과 유연한 수업 일정을 지원합니다.',
       '{dong}은 군부대 인근으로 전국에서 모인 군인 자녀들의 교육 수요가 특화된 지역입니다.'],
     english: [
-      '{dong} 영어과외는 군인 가족 특성에 맞춰 이사 직후 빠른 선생님 매칭으로 {schools} 내신 ...',
+      '{dong} 카드단말기설치는 군인 가족 특성에 맞춰 이사 직후 빠른 선생님 매칭으로 {schools} 내신 ...',
       '{dong}은 군인 자녀 비율이 높아 전학 후 빠른 적응이 중요합니다.'],
     reviews: [
       '{dong} 전임 후 바로 수학 선생님을 연결해주셨어요.',
       '자주 이사 다니는 군인 가족인데 {dong}에서도 빠르게 영어 선생님을 찾을 수 있었어요.',
-      '{dong} 수학 과외 받고 이사 와서도 성적이 유지됐어요. 정말 감사합니다. — {dong} 학부모'],
+      '{dong} 카드단말기 설치 받고 이사 와서도 성적이 유지됐어요. 정말 감사합니다. — {dong} 학부모'],
   },
   // E: 대학가
   E: {
     math: [
-      '{dong} 수학과외는 인근 대학 재학생·졸업생 선생님 매칭이 가능한 지역입니다.',
-      '{dong}은 대학가 인근으로 우수한 과외 선생님 공급이 풍부합니다.',
-      '{dong} 수학과외는 대학가 특성상 SKY·의대 진학 목표 학생들의 집중 심화 수업 수요가 높습니다.'],
+      '{dong} 카드단말기설치는 인근 대학 재학생·졸업생 선생님 매칭이 가능한 지역입니다.',
+      '{dong}은 대학가 인근으로 우수한 설치 전문가 공급이 풍부합니다.',
+      '{dong} 카드단말기설치는 대학가 특성상 SKY·의대 진학 목표 학생들의 집중 심화 수업 수요가 높습니다.'],
     english: [
-      '{dong} 영어과외는 인근 대학 출신 선생님 매칭이 가능합니다.',
-      '{dong} 영어과외는 대학가 특성상 어학 특화 선생님 매칭이 수월합니다.',
+      '{dong} 카드단말기설치는 인근 대학 출신 선생님 매칭이 가능합니다.',
+      '{dong} 카드단말기설치는 대학가 특성상 어학 특화 선생님 매칭이 수월합니다.',
       '{dong}은 어학·인문 계열 강세 지역으로 영어 교육 수준이 높습니다.'],
     reviews: [
       '{dong}에서 수학 선생님 찾았는데 인근 대학 출신 선생님을 매칭해주셔서 설명이 정말 명쾌해요.',
-      '{dong} 수학 과외 받고 처음으로 수학 1등급 받았어요.',
-      '{dong} 영어 과외 받고 {schools} 내신 1등급 받았습니다.',
+      '{dong} 카드단말기 설치 받고 처음으로 수학 1등급 받았어요.',
+      '{dong} 카드단말기 설치 받고 {schools} 내신 1등급 받았습니다.',
       '{dong} 수학 선생님이 의대 출신이신데 정말 체계적으로 가르쳐주세요. — {dong} 학부모',
       '{dong} 영어 선생님이 영어영문학과 출신이시라 설명이 너무 좋아요. — {dong} 학부모',
-      '{dong} 과외 받고 성적이 꾸준히 올라 SKY 목표가 현실이 됐어요. — {dong} 학부모'],
+      '{dong} 설치 받고 성적이 꾸준히 올라 SKY 목표가 현실이 됐어요. — {dong} 학부모'],
   },
   // F: 농촌읍면
   F: {
     math: [
-      '{dong} 수학과외는 학원이 부족한 지역 특성에 맞춰 방문 과외 위주로 운영합니다.',
-      '{dong}은 읍면 지역으로 학원 접근성이 낮아 방문 과외 선호도가 높습니다.'],
+      '{dong} 카드단말기설치는 학원이 부족한 지역 특성에 맞춰 방문 설치 위주로 운영합니다.',
+      '{dong}은 읍면 지역으로 학원 접근성이 낮아 방문 설치 선호도가 높습니다.'],
     english: [
-      '{dong} 영어과외는 방문 과외로 {schools} 내신 영어를 집에서 편하게 준비합니다.',
-      '{dong}은 읍면 지역이지만 올페이스토어의 방문 과외로 도시와 같은 수준의 영어 교육을 받을 수 있습니다.'],
+      '{dong} 카드단말기설치는 방문 설치로 {schools} 내신 영어를 집에서 편하게 준비합니다.',
+      '{dong}은 읍면 지역이지만 올페이스토어의 방문 설치로 도시와 같은 수준의 영어 교육을 받을 수 있습니다.'],
     reviews: [
-      '{dong}은 학원이 없어 걱정이었는데 방문 수학 과외로 완벽히 해결됐어요.',
-      '{dong} 영어 과외 받고 처음으로 내신 2등급 받았어요.',
+      '{dong}은 학원이 없어 걱정이었는데 방문 카드단말기 설치로 완벽히 해결됐어요.',
+      '{dong} 카드단말기 설치 받고 처음으로 내신 2등급 받았어요.',
       '{dong}에서 수학 선생님 찾기 어려울 것 같았는데 바로 연결해주셔서 감사해요. — {dong} 학부모'],
   },
   // G: 도서
   G: {
     math: [
-      '{dong} 수학과외는 도서 지역 학생을 위한 온라인 과외와 방문 과외를 모두 지원합니다.',
-      '{dong}은 도서 지역 특성상 온라인 수학과외로 {schools} 내신을 효율적으로 관리합니다.'],
+      '{dong} 카드단말기설치는 도서 지역 학생을 위한 온라인 카드단말기 설치와 방문 설치를 모두 지원합니다.',
+      '{dong}은 도서 지역 특성상 온라인 카드단말기설치로 {schools} 내신을 효율적으로 관리합니다.'],
     english: [
-      '{dong} 영어과외는 온라인으로 {schools} 내신 영어를 집중 관리합니다.'],
+      '{dong} 카드단말기설치는 온라인으로 {schools} 내신 영어를 집중 관리합니다.'],
     reviews: [
-      '{dong} 섬에서도 온라인 수학 과외로 성적을 올릴 수 있었어요.',
-      '{dong} 온라인 영어 과외 받고 {schools} 내신 영어가 안정됐어요. — {dong} 학부모'],
+      '{dong} 섬에서도 온라인 카드단말기 설치로 성적을 올릴 수 있었어요.',
+      '{dong} 온라인 카드단말기 설치 받고 {schools} 내신 영어가 안정됐어요. — {dong} 학부모'],
   },
   // H: 일반도심
   H: {
     math: [
-      '{dong} 수학과외는 {gu} {schools} 내신 수학을 1:1 방문 과외로 집중 관리합니다.',
-      '{dong} 수학과외는 {schools} 기출 분석에 특화된 검증 선생님이 취약 단원을 집중 보완합니다.',
-      '{dong}에서 수학 과외를 시작하면 {schools} 내신 수학 관리와 수능 수학 대비를 동시에 진행합니다.'],
+      '{dong} 카드단말기설치는 {gu} {schools} 내신 수학을 1:1 방문 설치로 집중 관리합니다.',
+      '{dong} 카드단말기설치는 {schools} 기출 분석에 특화된 검증 선생님이 취약 단원을 집중 보완합니다.',
+      '{dong}에서 카드단말기 설치를 시작하면 {schools} 내신 수학 관리와 수능 수학 대비를 동시에 진행합니다.'],
     english: [
-      '{dong} 영어과외는 {schools} 내신 영어 기출을 완벽 분석해 시험에 최적화된 1:1 맞춤 수업을 제공합니다.',
-      '{dong} 영어과외는 {schools} 학교 스타일에 맞는 내신 영어 지도와 함께 수능 영어 독해 훈련을 병행합니다.',
-      '{dong}에서 영어 과외를 시작하면 {schools} 내신 영어와 수능 영어를 동시에 준비할 수 있습니다.'],
+      '{dong} 카드단말기설치는 {schools} 내신 영어 기출을 완벽 분석해 시험에 최적화된 1:1 맞춤 수업을 제공합니다.',
+      '{dong} 카드단말기설치는 {schools} 학교 스타일에 맞는 내신 영어 지도와 함께 수능 영어 독해 훈련을 병행합니다.',
+      '{dong}에서 카드단말기 설치를 시작하면 {schools} 내신 영어와 수능 영어를 동시에 준비할 수 있습니다.'],
     reviews: [
-      '{dong} 수학 과외 시작하고 {schools} 중간고사에서 등급이 올랐어요.',
-      '{dong} 영어 과외 받고 처음으로 내신 영어 2등급 받았어요.',
+      '{dong} 카드단말기 설치 시작하고 {schools} 중간고사에서 등급이 올랐어요.',
+      '{dong} 카드단말기 설치 받고 처음으로 내신 영어 2등급 받았어요.',
       '{dong} 수학 선생님이 아이 수준에 맞게 가르쳐주시니 스트레스 없이 잘 따라가요. — {dong} 학부모',
-      '{dong} 영어 과외 시작하고 수능 영어 독해 속도가 확실히 빨라졌어요. — {dong} 학부모',
-      '{dong} 수학 과외 받고 있어요.',
+      '{dong} 카드단말기 설치 시작하고 수능 영어 독해 속도가 확실히 빨라졌어요. — {dong} 학부모',
+      '{dong} 카드단말기 설치 받고 있어요.',
       '{dong} 영어 선생님이 학교 지문 분석을 정말 꼼꼼하게 해주세요.'],
   },
 };
@@ -1768,14 +1768,14 @@ function makeDongMainPage(sidoEn, guEn, dongName) {
   const tmpl = CATEGORY_TEMPLATES[cat]||CATEGORY_TEMPLATES['H'];
 
   const CAT_DESC = {
-    A:`${dong}은 ${gu}에서 교육열이 높은 학군으로 1:1 방문 과외 수요가 매우 높습니다.`,
+    A:`${dong}은 ${gu}에서 교육열이 높은 학군으로 1:1 방문 설치 수요가 매우 높습니다.`,
     B:`${dong}은 신도시 지역으로 젊은 고학력 가정이 밀집해 있습니다.`,
-    C:`${dong}은 산업단지 인근으로 맞벌이 가정 비율이 높아 방문 과외 선호도가 높습니다.`,
+    C:`${dong}은 산업단지 인근으로 맞벌이 가정 비율이 높아 방문 설치 선호도가 높습니다.`,
     D:`${dong}은 군인 가족이 많아 빠른 선생님 매칭이 중요합니다.`,
-    E:`${dong}은 대학가 인근으로 우수한 과외 선생님 공급이 풍부합니다.`,
-    F:`${dong}은 학원 접근성이 낮은 지역 특성상 1:1 방문 과외 선호도가 높습니다. 합리적인 비용으로 검증된 선생님을 연결해드립니다.`,
-    G:`${dong}은 도서 지역으로 온라인 과외와 방문 과외를 모두 지원합니다.`,
-    H:`${dong}은 ${gu} 주거지역으로 ${schools} 학군 내신 관리 과외 수요가 꾸준합니다.`,
+    E:`${dong}은 대학가 인근으로 우수한 설치 전문가 공급이 풍부합니다.`,
+    F:`${dong}은 학원 접근성이 낮은 지역 특성상 1:1 방문 설치 선호도가 높습니다. 합리적인 비용으로 검증된 선생님을 연결해드립니다.`,
+    G:`${dong}은 도서 지역으로 온라인 카드단말기 설치와 방문 설치를 모두 지원합니다.`,
+    H:`${dong}은 ${gu} 주거지역으로 ${schools} 학군 내신 관리 카드단말기 설치 수요가 꾸준합니다.`,
   };
   let _mh = 0;
   for(let j=0;j<dong.length;j++) _mh = (_mh*31+dong.charCodeAt(j))>>>0;
@@ -1793,11 +1793,11 @@ function makeDongMainPage(sidoEn, guEn, dongName) {
   const gradeBlocks = GRADES_3.map(({en,ko,label,desc}) => {
     const links = subjList.map(([subj,v]) =>
       `<a class="subj-link" href="${canonical}/${en}/${SUBJECT_EN[subj]||subj}">
-        <span>${v.emoji} ${dong} ${ko} ${subj}과외</span><span>→</span>
+        <span>${v.emoji} ${dong} ${ko} ${subj}카드단말기 설치</span><span>→</span>
       </a>`
     ).join('');
     return `
-    <h2>${dong} ${label} 과외</h2>
+    <h2>${dong} ${label} 카드단말기 설치</h2>
     <p>${desc}</p>
     <div class="subj-grid">${links}</div>`;
   }).join('');
@@ -1806,14 +1806,14 @@ function makeDongMainPage(sidoEn, guEn, dongName) {
   const schoolsHtml = `<h2>인근 학교</h2>
     <p>${dong} 인근 학교로는 ${schools} 등이 있습니다. 학교별 시험 특성에 맞춘 내신 대비 수업을 제공합니다.</p>`;
 
-  const title = `${dong} 과외 | ${gu} ${dong} 맞춤 1:1 과외 안내 - 올페이스토어`;
-  const desc = `${dong} 과외 전문. 초등·중등·고등 수학·영어·국어·과학 1:1 방문 과외. ${schools} 내신 기출 분석. 무료 상담 010-9876-8282`;
-  const bc = [{name:'홈',url:'/'},{name:sidoLabel,url:`/${sidoEn}`},{name:gu,url:`/${sidoEn}/${guEn}`},{name:`${dong} 과외`,url:canonical}];
+  const title = `${dong} 카드단말기 설치 | ${gu} ${dong} 맞춤 전문 설치 안내 - 올페이스토어`;
+  const desc = `${dong} 설치 전문. 초등·중등·고등 수학·영어·국어·과학 1:1 방문 설치. ${schools} 내신 기출 분석. 무료 상담 010-9876-8282`;
+  const bc = [{name:'홈',url:'/'},{name:sidoLabel,url:`/${sidoEn}`},{name:gu,url:`/${sidoEn}/${guEn}`},{name:`${dong} 카드단말기 설치`,url:canonical}];
 
   const body = `<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/${sidoEn}">${sidoLabel}</a> › <a href="/${sidoEn}/${guEn}">${gu}</a> › <span>${dong} 과외</span></div>
+  <div class="bc"><a href="/">홈</a> › <a href="/${sidoEn}">${sidoLabel}</a> › <a href="/${sidoEn}/${guEn}">${gu}</a> › <span>${dong} 카드단말기 설치</span></div>
   <div class="art-tag">📍 ${gu} · ${dong}</div>
-  <h1 class="art-title">${dong} 과외 | ${gu} ${dong} 맞춤 1:1 과외 안내</h1>
+  <h1 class="art-title">${dong} 카드단말기 설치 | ${gu} ${dong} 맞춤 전문 설치 안내</h1>
   <div class="art-meta"><span>✏️ 올페이스토어 편집팀</span><span>📅 ${today()}</span></div>
   <div class="info-box">
     <div class="info-item"><div class="info-num">${infoNums[0]}명</div><div class="info-label">등록 선생님</div></div>
@@ -1821,18 +1821,18 @@ function makeDongMainPage(sidoEn, guEn, dongName) {
     <div class="info-item"><div class="info-num">무료</div><div class="info-label">상담</div></div>
   </div>
   <div class="u8">
-    <img src="${(['https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80','https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=900&q=80','https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&q=80','https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=900&q=80','https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=80'])[_dh%5]}" alt="${dong} 과외" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
+    <img src="${(['https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80','https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=900&q=80','https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&q=80','https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=900&q=80','https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=80'])[_dh%5]}" alt="${dong} 카드단말기 설치" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
     <div class="u11">
-      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${gu} · ${dong}</div><div style="font-size:28px;font-weight:900">${dong} 과외</div></div>
+      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${gu} · ${dong}</div><div style="font-size:28px;font-weight:900">${dong} 카드단말기 설치</div></div>
     </div>
   </div>
   <div class="art-body">
-    <h2>${dong} 과외 안내</h2>
+    <h2>${dong} 설치 안내</h2>
     <p>${intro}</p>
-    <p>올페이스토어는 <strong>${gu} ${dong}</strong> 지역 초등·중등·고등 전 학년, 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 과외를 연결합니다. 학생의 수준과 목표에 맞는 검증된 선생님을 빠르게 매칭해드립니다.</p>
+    <p>올페이스토어는 <strong>${gu} ${dong}</strong> 지역 초등·중등·고등 전 학년, 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 설치를 연결합니다. 학생의 수준과 목표에 맞는 검증된 선생님을 빠르게 매칭해드립니다.</p>
     <p>주요 학교: <strong>${schools}</strong></p>
     ${schoolsHtml}
-    <h2>${dong} 과외 특징</h2>
+    <h2>${dong} 카드단말기 설치 특징</h2>
     <p><strong>① 학교 기출 완벽 분석</strong> — ${schools} 시험 출제 경향을 철저히 분석해 내신 최적화 수업을 진행합니다. 단원별 출제 빈도와 유형을 파악해 시험 직전 집중 대비가 가능합니다.</p>
     <p><strong>② 검증된 선생님 1:1 매칭</strong> — 학력·경력·수업 시연 3단계 검증을 통과한 선생님만 배정합니다. 학생과 선생님의 수업 스타일이 맞지 않으면 부담 없이 교체 가능합니다.</p>
     <p><strong>③ 주간 학습 보고서 제공</strong> — 매 수업 후 학습 내용·성취도를 정리해 학부모님께 공유합니다. 투명한 학습 관리로 성적 변화를 직접 확인할 수 있습니다.</p>
@@ -1849,16 +1849,16 @@ function makeDongMainPage(sidoEn, guEn, dongName) {
     <p><strong>고등</strong> — 내신 등급이 대입에 결정적인 역할을 합니다. ${schools} 내신 1등급을 목표로 집중 관리하며, 수능 대비를 동시에 진행합니다. 시험 4주 전부터 집중 대비 모드로 전환합니다.</p>
 
     <h2>자주 묻는 질문</h2>
-    <p><strong>Q. ${dong}에서 과외 선생님 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${schools} 기출을 잘 아는 선생님 위주로 추천해드리며, 빠르면 당일 매칭도 가능합니다.</p>
-    <p><strong>Q. 학원과 과외를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. 학원 진도에 맞춰 선행·복습을 병행하는 커리큘럼으로 운영합니다.</p>
+    <p><strong>Q. ${dong}에서 설치 전문가 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${schools} 기출을 잘 아는 선생님 위주로 추천해드리며, 빠르면 당일 매칭도 가능합니다.</p>
+    <p><strong>Q. 학원과 카드단말기 설치를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. 학원 진도에 맞춰 선행·복습을 병행하는 커리큘럼으로 운영합니다.</p>
     <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력·수업 방식에 따라 다르며, 무료 상담 후 학부모님 예산에 맞는 선생님을 투명하게 안내해드립니다. 첫 체험 수업은 무료입니다.</p>
-    <p><strong>Q. 성적이 많이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드리니 걱정하지 않으셔도 됩니다.</p>
-    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 과외(시험 대비 4~8주)도 운영합니다.</p>
+    <p><strong>Q. 성적이 많이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 전문 설치가 효과적입니다. 수준에 맞는 선생님을 배정해드리니 걱정하지 않으셔도 됩니다.</p>
+    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 카드단말기 설치(시험 대비 4~8주)도 운영합니다.</p>
 
-    <h2>과목별 과외</h2>
+    <h2>제품별 설치</h2>
     <p>아래에서 과목별 상세 정보를 확인하세요.</p>
     ${gradeBlocks}
-    <h2>${dong} 인근 학교별 과외</h2>
+    <h2>${dong} 인근 지역별 설치</h2>
     ${(() => {
       const schoolMap = SCHOOL_MAP[sidoEn]?.[ak];
       if(!schoolMap) return '';
@@ -1878,11 +1878,11 @@ function makeDongMainPage(sidoEn, guEn, dongName) {
     })()}
   </div>
   <div class="cta-box">
-    <h3>${dong} 과외 무료 상담</h3>
+    <h3>${dong} 카드단말기 설치 무료 상담</h3>
     <p>24시간 내 전문 코디네이터가 연락드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a>
     </div>
   </div>
 </div>`;
@@ -1898,240 +1898,227 @@ function makeDongPageByName(sidoEn, guEn, dongName, subjectEn, gradeEn) {
     if ((SIDO_EN[s]||s) === sidoEn) {
       for (const [a, ar] of Object.entries(reg.areas)) {
         if ((DISTRICT_EN[a]||a) === guEn) {
-          sido = s; ak = a; region = reg; area = ar;
-          break;
+          sido = s; ak = a; region = reg; area = ar; break;
         }
       }
     }
     if (sido) break;
   }
   if (!sido || !area) return null;
-
-  // 동이름이 REGIONS dongs에 있는지 확인
   const dongs = area.dongs || [];
   if (!dongs.includes(dongName)) return null;
 
-  const subject = SUBJECT_MAP[subjectEn] || subjectEn;
-  const grade = GRADE_MAP[gradeEn] || gradeEn;
-  const subj = SUBJECTS[subject];
-  const gradeObj = GRADES[grade];
-  if (!subj || !gradeObj) return null;
-
-  const cat = area.cat || 'H';
-  const tmpl = CATEGORY_TEMPLATES[cat] || CATEGORY_TEMPLATES['H'];
-  const subjectKey = subject === '수학' ? 'math' : subject === '영어' ? 'english' : 'math';
-  const tmplTexts = tmpl[subjectKey] || tmpl.math;
-  const reviews = tmpl.reviews;
-
   const dong = dongName;
-  let _dh2 = 0;
-  for(let j=0;j<dong.length;j++) _dh2 = (_dh2*31+dong.charCodeAt(j))>>>0;
-  const dInfoNums = [120+(_dh2%231), 91+(_dh2%9)];
-  const gu = ak;
-  // gradeEn에 따라 학교급에 맞는 학교 추출
-  const _gradeKey = (gradeEn==='elementary'||gradeEn.startsWith('elem')) ? 'E' : (gradeEn==='middle'||gradeEn.startsWith('mid')) ? 'M' : 'H';
-  const _gugunSchools = (() => {
-    // SCHOOL_MAP에서 해당 구군 + 학교급 학교 가져오기
-    const sidoData = SCHOOL_MAP[sidoEn];
-    if (!sidoData) return null;
-    // 구군 한글 찾기
-    for (const [gugunK, gradeData] of Object.entries(sidoData)) {
-      if ((DISTRICT_EN[gugunK] || toRoman(gugunK)) === guEn) {
-        const gradeSchools = gradeData[_gradeKey];
-        if (Array.isArray(gradeSchools) && gradeSchools.length) {
-          // 최대 4개 학교 + 학교급 suffix
-          const suffix = _gradeKey==='E'?'초등학교':_gradeKey==='M'?'중학교':'고등학교';
-          return gradeSchools.slice(0,4).map(n=>n+suffix).join(', ');
-        }
-        break;
-      }
-    }
-    return null;
-  })();
-  const schools = _gugunSchools || area.schools || `${ak} 주요 학교`;
+  const gu   = ak;
   const sidoLabel = region.label || sido;
-  const canonical = `/${sidoEn}/${guEn}/${toRoman(dongName)}/${gradeEn}/${subjectEn}`;
 
-  // 이하 makeDongPage와 동일한 본문 생성 로직 재사용
-  const mainText = hashSelect(dong + subject, tmplTexts)
-    .replace(/{dong}/g, dong).replace(/{gu}/g, gu)
-    .replace(/{sido}/g, sido).replace(/{subject}/g, subject)
-    .replace(/{grade}/g, grade).replace(/{schools}/g, schools);
+  // 해시 기반 수치 (동마다 다른 숫자)
+  let _h = 0;
+  for (let i = 0; i < dong.length; i++) _h = (_h * 31 + dong.charCodeAt(i)) >>> 0;
+  const installCount = 120 + (_h % 280);   // 120~400
+  const satisfyRate  = 96 + (_h % 4);       // 96~99
+  const avgDays      = 1 + (_h % 2);        // 1~2
+  const saveRate     = 20 + (_h % 31);      // 20~50
 
-  const gradeDesc = (() => {
-    const GRADE_DESC_MAP = {
-      '초등': `${dong} 초등 과외는 기초 개념부터 차근차근 쌓아 중학교를 준비합니다. 수 개념·연산·도형·분수 등 전 과정을 1:1 맞춤 지도로 탄탄하게 완성합니다.`,
-      '중등': `${dong} 중등 과외는 중학 전 과정을 체계적으로 관리합니다. 핵심 단원을 집중 보완하고 고등학교를 미리 준비합니다.`,
-      '고등': `${dong} 고등 과외는 내신과 수능을 동시에 관리하는 맞춤 커리큘럼으로 운영합니다. 취약 단원을 집중 보완하고 수능 핵심 유형을 반복 훈련합니다.`,
-    };
-    return GRADE_DESC_MAP[grade] || GRADE_DESC_MAP['고등'];
-  })();
+  // 지역 특성 태그 (해시 기반)
+  const AREA_TYPES = ['상업지구','주거밀집지역','번화가','전통시장 인근','신도시','역세권','산업단지 인근','관광지 인근','오피스 밀집지역','대학가 인근'];
+  const areaType = AREA_TYPES[_h % AREA_TYPES.length];
 
-  // 과목별 커리큘럼
-  const CURRICULUM_MAP = {
-    '수학': {
-      '초등': `올페이스토어 ${dong} 초등 수학 커리큘럼은 연산 기초→도형 개념→분수·소수→비율·비례 순서로 단계적으로 진행합니다. 각 단원이 완전히 이해된 후 다음 단원으로 넘어가는 완전학습 방식을 적용합니다.`,
-      '중등': `올페이스토어 ${dong} 중등 수학 커리큘럼은 수와 연산→방정식·부등식→함수→확률·통계 순으로 진행합니다. ${schools} 내신 기출 분석을 바탕으로 출제 빈도 높은 단원을 집중 학습합니다.`,
-      '고등': `올페이스토어 ${dong} 고등 수학 커리큘럼은 수학Ⅰ·Ⅱ 개념 완성 후 확률·통계·미적분 순으로 진행하며, 수능 기출 유형 분석을 병행합니다. 내신과 수능을 동시에 대비하는 이중 트랙 방식입니다.`,
-    },
-    '영어': {
-      '초등': `올페이스토어 ${dong} 초등 영어 커리큘럼은 파닉스→기초 어휘→읽기·쓰기→회화 순으로 진행합니다. 영어에 대한 흥미를 유지하면서 중학교 영어를 미리 대비합니다.`,
-      '중등': `올페이스토어 ${dong} 중등 영어 커리큘럼은 문법 기초→독해 훈련→내신 지문 분석→서술형 대비 순으로 진행합니다. ${schools} 시험에 자주 출제되는 문법 포인트를 집중 학습합니다.`,
-      '고등': `올페이스토어 ${dong} 고등 영어 커리큘럼은 수능 유형 분석→빠른 독해 훈련→어법·어휘 심화→실전 모의고사 순으로 진행합니다. 내신 지문 분석과 수능 기출을 병행합니다.`,
-    },
-    '국어': {
-      '초등': `올페이스토어 ${dong} 초등 국어 커리큘럼은 독서 습관 형성→문학 감상→비문학 읽기→쓰기 표현 순으로 진행합니다.`,
-      '중등': `올페이스토어 ${dong} 중등 국어 커리큘럼은 문학(시·소설·수필)→비문학 독해→문법→쓰기 순으로 진행하며, ${schools} 내신 지문을 중심으로 학습합니다.`,
-      '고등': `올페이스토어 ${dong} 고등 국어 커리큘럼은 문학 심화→비문학 유형 훈련→화법·작문·문법 완성→수능 실전 모의고사 순으로 진행합니다.`,
-    },
-    '과학': {
-      '초등': `올페이스토어 ${dong} 초등 과학 커리큘럼은 물질→생명→지구·우주→에너지 영역을 균형 있게 학습합니다. 실험 영상과 탐구 활동을 활용해 흥미를 높입니다.`,
-      '중등': `올페이스토어 ${dong} 중등 과학 커리큘럼은 물리·화학·생물·지구과학 4영역을 ${schools} 시험 범위에 맞춰 집중 학습합니다. 실험 문제와 서술형 대비를 강화합니다.`,
-      '고등': `올페이스토어 ${dong} 고등 과학 커리큘럼은 물리학Ⅰ·화학Ⅰ·생명과학Ⅰ·지구과학Ⅰ 중 수강 과목에 맞춰 개별 설계합니다. 수능 연계 교재와 기출 문제를 병행합니다.`,
-    },
-    '사회': {
-      '초등': `올페이스토어 ${dong} 초등 사회 커리큘럼은 우리 지역→역사→경제·정치 순으로 교과서 중심 학습을 진행합니다.`,
-      '중등': `올페이스토어 ${dong} 중등 사회 커리큘럼은 역사·지리·일반사회 3영역을 ${schools} 내신 시험 범위에 맞춰 체계적으로 학습합니다.`,
-      '고등': `올페이스토어 ${dong} 고등 사회 커리큘럼은 한국사·사회탐구 선택 과목에 맞춰 개별 설계하며, 수능 연계 학습을 병행합니다.`,
-    },
-    '코딩': {
-      '초등': `올페이스토어 ${dong} 초등 코딩 커리큘럼은 블록 코딩(스크래치)→알고리즘 기초→간단한 게임 만들기 순으로 진행합니다. 논리적 사고력을 키우는 것에 집중합니다.`,
-      '중등': `올페이스토어 ${dong} 중등 코딩 커리큘럼은 파이썬 기초→조건문·반복문→함수·클래스→프로젝트 제작 순으로 진행합니다. 정보 내신 대비도 병행합니다.`,
-      '고등': `올페이스토어 ${dong} 고등 코딩 커리큘럼은 파이썬 심화→알고리즘·자료구조→대학 입시 코딩 면접 대비→AI 기초 순으로 진행합니다.`,
-    },
-    '논술': {
-      '초등': `올페이스토어 ${dong} 초등 논술 커리큘럼은 독서 기반 글쓰기→주장과 근거 쓰기→논리적 단락 구성→완성된 논술 쓰기 순으로 진행합니다.`,
-      '중등': `올페이스토어 ${dong} 중등 논술 커리큘럼은 개요 작성→서론·본론·결론 구조화→근거 강화→다양한 주제 실전 연습 순으로 진행합니다. ${schools} 수행평가 논술 대비를 집중적으로 실시합니다.`,
-      '고등': `올페이스토어 ${dong} 고등 논술 커리큘럼은 대학별 논술 유형 분석→인문·수리 논술 기초→실전 첨삭→모의 논술 순으로 진행합니다. 목표 대학의 기출 문제를 중심으로 맞춤 지도합니다.`,
-    },
-  };
-  const curriculumText = (CURRICULUM_MAP[subject]?.[grade]) || `올페이스토어 ${dong} ${grade} ${subject} 커리큘럼은 학생의 현재 수준 진단 후 개별 맞춤 설계합니다. 기초 개념 완성부터 ${schools} 내신 대비까지 단계적으로 진행합니다.`;
+  // 업종 예시 (해시 기반)
+  const SHOP_TYPES = [
+    ['음식점','카페','편의점','마트'],
+    ['미용실','병원','약국','PC방'],
+    ['헬스장','세탁소','분식집','치킨집'],
+    ['호프집','삼겹살집','국밥집','분식점'],
+  ];
+  const shops = SHOP_TYPES[_h % SHOP_TYPES.length];
 
-  // 학년별 학습 전략
-  const STRATEGY_MAP = {
-    '초등': `초등 시기는 모든 학습의 기초가 완성되는 중요한 시기입니다. ${subject} 기초 개념을 탄탄히 다지지 않으면 중학교 진학 후 어려움을 겪을 수 있습니다. ${dong} 초등 ${subject} 과외는 단순 암기가 아닌 원리 이해 중심의 학습으로 자기주도 학습 능력을 키워드립니다. 학원 수업과 달리 1:1로 진행되므로 이해가 될 때까지 충분히 설명해드립니다.`,
-    '중등': `중학교는 초등과 고등의 연결 고리입니다. ${subject} 내신 성적이 고등학교 진학과 대입에 직접 영향을 미치므로, 지금부터 체계적인 관리가 필요합니다. ${dong} 중등 ${subject} 과외는 ${schools} 시험 출제 경향을 반영한 내신 집중 관리와 함께 고등 과정을 선행합니다. 중3 2학기부터는 고등 수업 준비를 병행해 고교 진학 충격을 최소화합니다.`,
-    '고등': `고등학교는 내신 등급이 대입에 결정적인 역할을 합니다. ${dong} 고등 ${subject} 과외는 ${schools} 내신 1등급을 목표로 집중 관리하며, 수능 대비를 동시에 진행합니다. 학기 중에는 내신 시험 4주 전부터 집중 대비 모드로 전환하고, 방학 중에는 취약 단원 보완과 수능 기출 분석을 집중적으로 진행합니다.`,
-  };
-  const gradeStrategyText = STRATEGY_MAP[grade] || STRATEGY_MAP['중등'];
-
-  const review1 = hashSelect(dong+'r1', reviews).replace(/{dong}/g,dong).replace(/{schools}/g,schools).replace(/{gu}/g,gu);
-  // duplicate removed.replace(/{dong}/g,dong).replace(/{schools}/g,schools).replace(/{gu}/g,gu);
-  const review2 = hashSelect(dong+'r2', reviews).replace(/{dong}/g,dong).replace(/{schools}/g,schools).replace(/{gu}/g,gu);
-
-  const CAT_DESC = {
-    A: `${dong}은 ${gu}에서도 교육열이 높은 학군으로, ${schools} 내신 경쟁이 치열합니다. 1:1 방문 과외 수요가 매우 높습니다.`,
-    B: `${dong}은 신도시 개발로 젊은 고학력 가정이 밀집한 지역입니다. 빠른 선생님 매칭이 가능합니다.`,
-    C: `${dong}은 산업단지 인근으로 맞벌이 가정이 많아 방문 과외 선호도가 높습니다.`,
-    D: `${dong}은 군인 가족이 많아 잦은 이사에도 빠른 매칭이 중요합니다.`,
-    E: `${dong}은 대학가 인근으로 우수한 과외 선생님 공급이 풍부합니다.`,
-    F: `${dong}은 학원 접근성이 낮은 지역 특성상 방문 과외 선호도가 높습니다. 합리적인 비용으로 1:1 지도가 가능합니다.`,
-    G: `${dong}은 도서 지역으로 온라인 과외와 방문 과외를 모두 지원합니다.`,
-    H: `${dong}은 ${gu} 주거지역으로 ${schools} 학군 내신 관리 과외 수요가 꾸준합니다.`,
-  };
-  const catDesc = CAT_DESC[cat] || CAT_DESC['H'];
-
-  const SUBJ_IMAGES = {
-    '수학': ['https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=900&q=80','https://images.unsplash.com/photo-1509228468518-180dd4864904?w=900&q=80','https://images.unsplash.com/photo-1596495577886-d920f1fb7238?w=900&q=80'],
-    '영어': ['https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=900&q=80','https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&q=80','https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80'],
-    '국어': ['https://images.unsplash.com/photo-1512820790803-83ca734da794?w=900&q=80','https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=900&q=80','https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=80'],
-    '과학': ['https://images.unsplash.com/photo-1532094349884-543559244e6a?w=900&q=80','https://images.unsplash.com/photo-1576086213369-97a306d36557?w=900&q=80','https://images.unsplash.com/photo-1564325724739-bae0bd08762c?w=900&q=80'],
-    '사회': ['https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=80','https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=900&q=80','https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=900&q=80'],
-    '코딩': ['https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80','https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80','https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&q=80'],
-    '논술': ['https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80','https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=900&q=80','https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=900&q=80'],
-  };
-  const _imgs = SUBJ_IMAGES[subject] || SUBJ_IMAGES['수학'];
-  const thumbImg = _imgs[_dh2 % _imgs.length];
-
-  // 초등/중등/고등 × 7과목 = 21개 링크
-  const GRADE3_LIST = [
-    {en:'elementary', ko:'초등'},
-    {en:'middle',     ko:'중등'},
-    {en:'high',       ko:'고등'}];
-  const otherSubjects = GRADE3_LIST.map(({en:gEn, ko:gKo}) =>
-    Object.entries(SUBJECTS).map(([s,v]) =>
-      `<a class="subj-link" href="/${sidoEn}/${guEn}/${toRoman(dongName)}/${gEn}/${SUBJECT_EN[s]||s}"><span>${v.emoji} ${dong} ${gKo} ${s}과외</span><span>→</span></a>`
-    ).join('')
+  // 인근 동 링크
+  const relDongs = dongs.filter(d => d !== dong).slice(0, 4).map(d =>
+    `<a class="rel-card" href="/${sidoEn}/${guEn}/${toRoman(d)}/${subjectEn||'cardterminal'}"><div class="rc-tag">${gu}</div><div class="rc-title">${d} 카드단말기 설치</div></a>`
   ).join('');
 
-  const relDongs = dongs.filter(d=>d!==dongName).slice(0,6).map(d=>
-    `<a href="/${sidoEn}/${guEn}/${toRoman(d)}/${gradeEn}/${subjectEn}" class="rel-card"><div class="rc-tag">${gu} · ${d}</div><div class="rc-title">${d} ${subject}과외 | ${gu} ${d} ${subject} 맞춤 과외</div></a>`
-  ).join('');
+  const canonical = `/${sidoEn}/${guEn}/${toRoman(dong)}/${subjectEn||'cardterminal'}`;
 
-  const keywords = [`${dong} ${subject}과외`, `${gu} ${dong} 과외`, `${dong} ${grade} 과외`,
-    `${dong} 1:1과외`, `${gu} ${grade} ${subject}`, `${dong} 내신 ${subject}`];
-  const keywordTags = keywords.map(k=>`<span class="keyword-tag">${k}</span>`).join('');
+  // 썸네일 이미지 (Unsplash 카드단말기/결제 관련)
+  const THUMBS = [
+    'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80',
+    'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80',
+    'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=900&q=80',
+    'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80',
+    'https://images.unsplash.com/photo-1601598851547-4302969d0614?w=900&q=80',
+  ];
+  const thumb = THUMBS[_h % THUMBS.length];
 
-  const title = `${dong} ${grade} ${subject}과외 | ${gu} ${dong} ${grade} ${subject} 맞춤 1:1 과외 - 올페이스토어`;
-  const desc = `${dong} ${grade} ${subject}과외 전문. ${schools} 기출 분석. 1:1 방문 과외. 무료 상담 010-9876-8282`;
-  const bc = [{name:'홈',url:'/'},{name:sidoLabel,url:`/${sidoEn}`},{name:gu,url:`/${sidoEn}/${guEn}`},{name:`${dong} ${subject}과외`,url:canonical}];
+  const title = `${dong} 카드단말기 설치 | ${gu} ${dong} 카드단말기 추천·비용·당일설치 - 올페이스토어`;
+  const desc  = `${sidoLabel} ${gu} ${dong} 카드단말기 설치 전문. 무료 방문 견적, 당일 설치, VAN사 제휴 무상 제공 가능. 포스기·키오스크·CCTV 통합 설치. ☎ 010-9876-8282`;
+
+  const bc = [
+    {name:'홈',url:'/'},
+    {name:sidoLabel,url:`/${sidoEn}`},
+    {name:gu,url:`/${sidoEn}/${guEn}`},
+    {name:`${dong} 카드단말기 설치`,url:canonical}
+  ];
 
   const body = `<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/${sidoEn}">${sidoLabel}</a> › <a href="/${sidoEn}/${guEn}">${gu}</a> › <span>${dong} ${grade} ${subject}과외</span></div>
-  <div class="art-tag">${subj.emoji} ${gu} · ${dong} · ${grade} · ${subject}</div>
-  <h1 class="art-title">${dong} ${grade} ${subject}과외 | ${gu} ${dong} ${grade} ${subject} 맞춤 1:1 과외</h1>
-  <div class="art-meta"><span>✏️ 올페이스토어 편집팀</span><span>📅 ${today()}</span><span>⏱ 5분</span></div>
-  <div class="info-box">
-    <div class="info-item"><div class="info-num">${dInfoNums[0]}명</div><div class="info-label">${subject} 선생님</div></div>
-    <div class="info-item"><div class="info-num">${dInfoNums[1]}%</div><div class="info-label">만족도</div></div>
-    <div class="info-item"><div class="info-num">무료</div><div class="info-label">상담</div></div>
+  <div class="bc"><a href="/">홈</a> › <a href="/${sidoEn}">${sidoLabel}</a> › <a href="/${sidoEn}/${guEn}">${gu}</a> › <span>${dong} 카드단말기 설치</span></div>
+
+  <div class="art-tag">💳 ${gu} · ${dong} · 카드단말기</div>
+  <h1 class="art-title">${dong} 카드단말기 설치 | ${gu} ${dong} 추천·비용·당일설치</h1>
+  <div class="art-meta">
+    <span>✏️ 올페이스토어 편집팀</span>
+    <span>📅 ${today()}</span>
+    <span>⏱ 5분</span>
   </div>
+
+  <!-- 핵심 수치 -->
+  <div class="info-box">
+    <div class="info-item"><div class="info-num">${installCount}건+</div><div class="info-label">${gu} 설치 실적</div></div>
+    <div class="info-item"><div class="info-num">${satisfyRate}%</div><div class="info-label">고객 만족도</div></div>
+    <div class="info-item"><div class="info-num">무료</div><div class="info-label">방문 견적</div></div>
+    <div class="info-item"><div class="info-num">${avgDays}일</div><div class="info-label">평균 설치일</div></div>
+  </div>
+
+  <!-- 썸네일 -->
   <div class="u8">
-    <img src="${thumbImg}" alt="${dong} ${grade} ${subject}과외" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
+    <img src="${thumb}" alt="${dong} 카드단말기 설치" style="width:100%;height:100%;object-fit:cover" loading="eager" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
     <div class="u11">
-      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${gu} · ${dong}</div><div style="font-size:28px;font-weight:900">${dong} ${subject}과외</div></div>
+      <div style="color:white">
+        <div style="font-size:13px;opacity:.7;margin-bottom:6px">${sidoLabel} ${gu} · ${areaType}</div>
+        <div style="font-size:26px;font-weight:900">${dong} 카드단말기 설치</div>
+        <div style="font-size:14px;margin-top:8px;opacity:.85">무료 방문 견적 · 당일 설치 · A/S 보장</div>
+      </div>
     </div>
   </div>
+
   <div class="art-body">
-    <h2>${dong} ${grade} ${subject}과외 안내</h2>
-    <p>${mainText}</p>
-    <p>${catDesc}</p>
-    <p>${gradeDesc}</p>
-    <p>올페이스토어는 <strong>${gu} ${dong}</strong> 지역 ${grade} ${subject} 검증된 선생님을 연결해드립니다. 인근 주요 학교: <strong>${schools}</strong> 시험 출제 경향을 완벽히 파악한 선생님을 매칭해드립니다.</p>
 
-    <h2>${dong} ${grade} ${subject}과외 선생님 특징</h2>
-    <p><strong>① 학교 기출 완벽 분석</strong> — ${schools} ${subject} 시험 출제 경향을 철저히 분석해 내신 최적화 수업을 진행합니다. 단원별 출제 빈도와 유형을 파악해 시험 직전 집중 대비가 가능합니다.</p>
-    <p><strong>② 검증된 선생님 1:1 매칭</strong> — 학력·경력·수업 시연 3단계 검증을 통과한 선생님만 배정합니다. 학생과 맞지 않으면 언제든 부담 없이 교체 가능합니다.</p>
-    <p><strong>③ 주간 학습 보고서 제공</strong> — 매 수업 후 학습 내용·성취도를 정리해 학부모님께 공유합니다. 진도 현황과 취약 단원을 투명하게 확인할 수 있습니다.</p>
-    <p><strong>④ 취약점 집중 보완</strong> — ${subject} 취약 단원을 정확히 파악하고 집중 보완합니다. 학원 수업에서 놓친 부분을 1:1로 완전히 채워드립니다.</p>
+    <!-- 1. 도입 -->
+    <h2 style="color:#1D4ED8;border-left-color:#1D4ED8">💳 ${dong} 카드단말기 설치, 왜 올페이스토어인가요?</h2>
+    <p>${sidoLabel} <strong>${gu} ${dong}</strong>은 ${areaType}으로 ${shops[0]}, ${shops[1]}, ${shops[2]} 등 다양한 소상공인 사장님들이 운영 중인 지역입니다. 매장을 운영하다 보면 카드단말기 설치·교체가 반드시 필요한 순간이 찾아옵니다. 올페이스토어는 <strong>${dong} 카드단말기 설치</strong> 전문 업체로, ${gu} 전 지역을 담당하는 전문가가 직접 방문해 최적의 결제 솔루션을 제안해드립니다.</p>
+    <p>단순 기기 판매에 그치지 않고, <strong>무료 방문 견적 → 당일 설치 → 장기 A/S</strong>까지 원스톱으로 책임집니다. VAN사(KIS·나이스·한국정보통신 등) 제휴를 통해 카드단말기를 <strong>무상으로 제공</strong>받는 조건도 안내해드리니, ${dong} 사장님들의 초기 비용 부담을 확 줄여드릴 수 있습니다.</p>
 
-    <h2>${dong} ${grade} ${subject} 수업 진행 방식</h2>
-    <p>첫 수업 전 학생의 현재 실력과 목표를 파악하는 <strong>학습 진단</strong>을 진행합니다. 진단 결과를 바탕으로 맞춤 커리큘럼을 설계하고, 주 2~3회 방문 수업으로 체계적으로 진행합니다.</p>
-    <p><strong>수업 진행 3단계</strong>: 1단계 개념 정리 → 2단계 유형별 문제 풀이 → 3단계 오답 분석 및 취약점 보완. 매 수업마다 전 시간 내용을 복습하고 새 내용을 학습하는 방식으로 기억 정착률을 높입니다.</p>
-    <p>수업 시간은 학생 일정에 맞춰 유연하게 조정하며, 시험 기간에는 집중 보충 수업을 추가로 제공합니다. 온라인 수업도 병행 가능합니다.</p>
+    <!-- 2. 비용 절감 포인트 -->
+    <h2 style="color:#059669;border-left-color:#059669">💰 ${dong} 카드단말기 설치 비용, 이렇게 아끼세요</h2>
+    <p>${dong} 소상공인 사장님들이 가장 많이 하시는 질문이 바로 <strong>"카드단말기 비용이 얼마인가요?"</strong>입니다. 올페이스토어를 통하면 평균 <strong>${saveRate}% 비용 절감</strong>이 가능합니다.</p>
+    <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:12px;padding:20px 24px;margin:16px 0">
+      <div style="font-weight:900;color:#065F46;margin-bottom:12px">✅ ${dong} 카드단말기 비용 절감 방법</div>
+      <p style="margin-bottom:8px">• <strong>VAN사 제휴 무상 제공</strong> — KIS·나이스·한국정보통신 등 주요 VAN사와 제휴 계약 시 카드단말기 본체를 무상으로 받을 수 있습니다.</p>
+      <p style="margin-bottom:8px">• <strong>패키지 할인</strong> — 포스기·카드단말기·CCTV를 함께 설치하면 개별 설치 대비 최대 30% 절감됩니다.</p>
+      <p style="margin-bottom:8px">• <strong>수수료 최적화</strong> — 업종·매출 규모에 맞는 VAN사를 선택해 카드 수수료를 최소화합니다.</p>
+      <p style="margin-bottom:0">• <strong>A/S 무상 보장</strong> — 설치 후 1~3년 무상 A/S로 유지보수 비용 걱정 없이 운영하세요.</p>
+    </div>
 
-    <h2>${dong} ${grade} ${subject} 커리큘럼</h2>
-    <p>${curriculumText}</p>
-    <p>학생의 현재 수준과 목표 학교에 맞춰 커리큘럼을 개별 설계합니다. 선행 학습이 필요한 학생은 다음 학기 내용을 미리 준비하고, 기초가 부족한 학생은 이전 학기 내용부터 차근차근 다집니다.</p>
+    <!-- 3. 설치 제품 안내 -->
+    <h2 style="color:#7C3AED;border-left-color:#7C3AED">🖥️ ${dong} 설치 가능한 카드단말기 종류</h2>
+    <p>${dong}에서 올페이스토어가 설치·공급하는 카드단말기 종류는 다음과 같습니다. 매장 업종과 결제 환경에 맞는 제품을 무료 상담 후 추천해드립니다.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0">
+      <div style="background:white;border:1.5px solid #E5E7EB;border-radius:12px;padding:16px">
+        <div style="font-size:20px;margin-bottom:6px">💳</div>
+        <div style="font-weight:900;color:#0F2044;margin-bottom:4px">유선 카드단말기</div>
+        <div style="font-size:13px;color:#6B7280">카운터 고정형, 빠른 승인속도, 가장 안정적인 방식</div>
+      </div>
+      <div style="background:white;border:1.5px solid #E5E7EB;border-radius:12px;padding:16px">
+        <div style="font-size:20px;margin-bottom:6px">📱</div>
+        <div style="font-weight:900;color:#0F2044;margin-bottom:4px">무선 카드단말기</div>
+        <div style="font-size:13px;color:#6B7280">배달·이동형 매장 최적, WiFi·4G 지원</div>
+      </div>
+      <div style="background:white;border:1.5px solid #E5E7EB;border-radius:12px;padding:16px">
+        <div style="font-size:20px;margin-bottom:6px">🤖</div>
+        <div style="font-weight:900;color:#0F2044;margin-bottom:4px">포스기 일체형</div>
+        <div style="font-size:13px;color:#6B7280">포스+카드 통합, 재고·매출관리까지 한 번에</div>
+      </div>
+      <div style="background:white;border:1.5px solid #E5E7EB;border-radius:12px;padding:16px">
+        <div style="font-size:20px;margin-bottom:6px">📲</div>
+        <div style="font-weight:900;color:#0F2044;margin-bottom:4px">모바일 단말기</div>
+        <div style="font-size:13px;color:#6B7280">스마트폰 연동, 푸드트럭·행사·소규모 매장 최적</div>
+      </div>
+    </div>
+    <p>IC칩·마그네틱·NFC(애플페이·삼성페이)·QR코드 결제 전 방식을 지원하며, ${dong} 매장 환경에 맞게 설치해드립니다.</p>
 
-    <h2>${dong} ${grade} ${subject} 학년별 학습 전략</h2>
-    <p>${gradeStrategyText}</p>
-    <p>학년이 올라갈수록 난이도가 급격히 높아지는 만큼, 지금 당장의 성적보다 <strong>기초 개념의 완성도</strong>를 먼저 높이는 것이 장기적으로 더 효과적입니다. 올페이스토어 선생님은 단순한 문제 풀이를 넘어 개념의 원리를 이해시키는 방식으로 지도합니다.</p>
+    <!-- 4. 설치 프로세스 -->
+    <h2 style="color:#DC2626;border-left-color:#DC2626">📋 ${dong} 카드단말기 설치 프로세스</h2>
+    <p>${dong} 사장님이 올페이스토어에 연락하시면 다음 절차로 진행됩니다. <strong>빠르면 당일, 늦어도 ${avgDays}일 이내</strong>에 설치가 완료됩니다.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin:16px 0">
+      <div style="display:flex;gap:16px;align-items:flex-start;background:white;border:1.5px solid #BFDBFE;border-radius:12px;padding:16px">
+        <div style="min-width:36px;height:36px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:15px;flex-shrink:0">1</div>
+        <div><div style="font-weight:900;color:#0F2044;margin-bottom:4px">📞 무료 전화·카카오톡 상담</div><div style="font-size:14px;color:#374151">${dong} 매장 업종·규모·현재 단말기 상황을 말씀해주시면 최적 제품을 바로 추천해드립니다.</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;background:white;border:1.5px solid #BFDBFE;border-radius:12px;padding:16px">
+        <div style="min-width:36px;height:36px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:15px;flex-shrink:0">2</div>
+        <div><div style="font-weight:900;color:#0F2044;margin-bottom:4px">🏪 ${dong} 무료 방문 견적</div><div style="font-size:14px;color:#374151">전문가가 직접 ${dong} 매장에 방문해 현장 상황에 맞는 정확한 견적을 무료로 제공합니다.</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;background:white;border:1.5px solid #BFDBFE;border-radius:12px;padding:16px">
+        <div style="min-width:36px;height:36px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:15px;flex-shrink:0">3</div>
+        <div><div style="font-weight:900;color:#0F2044;margin-bottom:4px">⚡ 당일 설치 완료</div><div style="font-size:14px;color:#374151">재고 보유 제품은 오전 상담 시 당일 오후 설치까지 가능합니다. 설치 소요 시간은 평균 1시간 내외입니다.</div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;background:white;border:1.5px solid #BFDBFE;border-radius:12px;padding:16px">
+        <div style="min-width:36px;height:36px;background:#1D4ED8;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:15px;flex-shrink:0">4</div>
+        <div><div style="font-weight:900;color:#0F2044;margin-bottom:4px">🛡️ 장기 A/S 보장</div><div style="font-size:14px;color:#374151">설치 후 1~3년 무상 A/S를 제공합니다. ${gu} 전담 A/S 기사가 긴급 장애 시 당일 출장합니다.</div></div>
+      </div>
+    </div>
 
-    <h2>${dong} ${subject}과외 실제 후기</h2>
-    <blockquote style="background:var(--blue-light);border-left:4px solid var(--primary);padding:16px 20px;border-radius:8px;margin:16px 0;font-style:italic;color:var(--text-dark)">"${review1}"</blockquote>
-    <blockquote style="background:var(--blue-light);border-left:4px solid var(--primary);padding:16px 20px;border-radius:8px;margin:16px 0;font-style:italic;color:var(--text-dark)">"${review2}"</blockquote>
+    <!-- 5. 지역 특성 -->
+    <h2 style="color:#0891B2;border-left-color:#0891B2">🗺️ ${dong} 지역 특성과 카드단말기 선택 가이드</h2>
+    <p>${sidoLabel} <strong>${gu} ${dong}</strong>은 ${areaType}으로 <strong>${shops[0]}, ${shops[1]}, ${shops[2]}, ${shops[3]}</strong> 등 다양한 업종의 소상공인 매장이 밀집해 있습니다. 지역 특성에 따라 최적 카드단말기 유형이 달라집니다.</p>
+    <div style="background:#F0F9FF;border:1.5px solid #BAE6FD;border-radius:12px;padding:20px 24px;margin:16px 0">
+      <div style="font-weight:900;color:#0C4A6E;margin-bottom:10px">📍 ${dong} 업종별 추천 단말기</div>
+      <p style="margin-bottom:6px">• <strong>${shops[0]}</strong> → 유선 카드단말기 + 포스기 패키지 추천</p>
+      <p style="margin-bottom:6px">• <strong>${shops[1]}</strong> → 무선 카드단말기 또는 포스 일체형 추천</p>
+      <p style="margin-bottom:6px">• <strong>${shops[2]}</strong> → 테이블오더 + 카드단말기 연동 추천</p>
+      <p style="margin-bottom:0">• <strong>${shops[3]}</strong> → 모바일 단말기 또는 QR 결제 통합형 추천</p>
+    </div>
+    <p>${dong} 매장 환경에 맞는 맞춤 추천을 원하신다면 지금 바로 <strong>무료 상담(010-9876-8282)</strong>을 요청하세요. ${dong} 담당 전문가가 친절하게 안내해드립니다.</p>
 
-    <h2>자주 묻는 질문</h2>
-    <p><strong>Q. ${dong}에서 ${subject} 과외 선생님 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${schools} 기출을 잘 아는 선생님 위주로 추천해드립니다. 빠르면 당일 매칭도 가능합니다.</p>
-    <p><strong>Q. ${grade} ${subject} 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드리니 걱정하지 않으셔도 됩니다.</p>
-    <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력·수업 방식에 따라 다르며, 무료 상담 후 학부모님 예산에 맞는 선생님을 투명하게 안내해드립니다. 첫 체험 수업은 무료입니다.</p>
-    <p><strong>Q. 학원과 과외를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. 학원 진도에 맞춰 선행·복습을 병행하는 커리큘럼으로 운영합니다.</p>
-    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>학생마다 다르지만 보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 과외(시험 대비 4~8주)도 운영합니다.</p>
+    <!-- 6. FAQ -->
+    <h2 style="color:#D97706;border-left-color:#D97706">❓ ${dong} 카드단말기 설치 자주 묻는 질문</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;margin:16px 0">
+      <div style="background:white;border:1.5px solid #FDE68A;border-radius:12px;padding:18px 20px">
+        <div style="font-weight:900;color:#92400E;margin-bottom:8px">Q. ${dong}에서 카드단말기를 무료로 받을 수 있나요?</div>
+        <div style="font-size:14px;color:#374151">VAN사(KIS·나이스·한국정보통신 등) 제휴 계약을 맺으면 카드단말기 본체를 무상으로 제공받을 수 있습니다. 단, VAN사마다 조건이 다르므로 무료 상담을 통해 ${dong} 매장에 맞는 최적 조건을 확인하세요.</div>
+      </div>
+      <div style="background:white;border:1.5px solid #FDE68A;border-radius:12px;padding:18px 20px">
+        <div style="font-weight:900;color:#92400E;margin-bottom:8px">Q. ${dong} 당일 설치가 가능한가요?</div>
+        <div style="font-size:14px;color:#374151">네, 재고 보유 제품은 오전 중 상담 완료 시 당일 오후 설치가 가능합니다. 평균 설치 소요 시간은 1시간 내외입니다.</div>
+      </div>
+      <div style="background:white;border:1.5px solid #FDE68A;border-radius:12px;padding:18px 20px">
+        <div style="font-weight:900;color:#92400E;margin-bottom:8px">Q. 기존 카드단말기를 교체하고 싶습니다.</div>
+        <div style="font-size:14px;color:#374151">기존 VAN사 계약을 그대로 유지하면서 단말기만 교체하거나, 더 유리한 조건의 VAN사로 변경하는 것도 가능합니다. 기존 단말기 회수·폐기도 무료로 처리해드립니다.</div>
+      </div>
+      <div style="background:white;border:1.5px solid #FDE68A;border-radius:12px;padding:18px 20px">
+        <div style="font-weight:900;color:#92400E;margin-bottom:8px">Q. 포스기와 카드단말기를 함께 설치하면 얼마나 절약되나요?</div>
+        <div style="font-size:14px;color:#374151">패키지 설치 시 개별 구매 대비 최대 30% 절감됩니다. 포스기·카드단말기·CCTV 통합 패키지로 구성하면 초기 비용을 더욱 낮출 수 있습니다.</div>
+      </div>
+      <div style="background:white;border:1.5px solid #FDE68A;border-radius:12px;padding:18px 20px">
+        <div style="font-weight:900;color:#92400E;margin-bottom:8px">Q. A/S는 얼마나 빠르게 받을 수 있나요?</div>
+        <div style="font-size:14px;color:#374151">${gu} 전담 A/S 기사가 상주하고 있어, 장애 신고 후 평균 ${avgDays}시간 이내 출장합니다. 긴급 장애의 경우 당일 처리를 원칙으로 합니다.</div>
+      </div>
+    </div>
 
-    <h2>${dong} 다른 과목도 함께</h2>
-    <div class="subj-grid">${otherSubjects}</div>
-    <div class="keyword-box"><div class="keyword-title">🔍 관련 검색어</div><div class="keyword-tags">${keywordTags}</div></div>
+    <!-- 7. 마무리 + 상담 유도 -->
+    <h2 style="color:#0F2044;border-left-color:#0F2044">🚀 지금 바로 ${dong} 카드단말기 무료 상담 받으세요</h2>
+    <p>${gu} <strong>${dong}</strong>에서 카드단말기 설치·교체를 고민 중이시라면 올페이스토어에 지금 바로 연락주세요. <strong>무료 방문 견적, 당일 설치, VAN사 제휴 무상 제공</strong> 혜택을 한 번에 받으실 수 있습니다.</p>
+    <div style="background:linear-gradient(135deg,#0F2044,#1E3A6E);border-radius:16px;padding:28px 32px;margin:20px 0;text-align:center">
+      <div style="font-size:18px;font-weight:900;color:white;margin-bottom:8px">📞 ${dong} 카드단말기 무료 상담</div>
+      <div style="font-size:28px;font-weight:900;color:#FFD700;margin-bottom:12px">010-9876-8282</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.7);margin-bottom:16px">평일 09:00 ~ 21:00 · 주말 10:00 ~ 18:00</div>
+      <a href="tel:01097868282" style="display:inline-block;background:#FFD700;color:#0F2044;padding:14px 36px;border-radius:10px;font-size:16px;font-weight:900;text-decoration:none">지금 무료 상담 전화하기 →</a>
+    </div>
+    <p style="font-size:13px;color:#6B7280;text-align:center">* ${dong} 방문 견적은 완전 무료입니다. 상담 후 설치 여부를 결정하셔도 됩니다.</p>
+
   </div>
+
+  <!-- CTA -->
   <div class="cta-box">
-    <h3>${dong} ${grade} ${subject}과외 무료 상담</h3>
-    <p>24시간 내 전문 코디네이터가 연락드립니다</p>
+    <h3>💳 ${dong} 카드단말기 무료 방문 견적 신청</h3>
+    <p>24시간 내 ${gu} 담당 전문가가 연락드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact">✉️ 온라인 견적 신청</a>
     </div>
   </div>
-  <div class="related-title">🔗 ${gu} 다른 동 ${subject}과외</div>
+
+  <div class="related-title">🔗 ${gu} 인근 동 카드단말기 설치</div>
   <div class="related-grid">${relDongs}</div>
 </div>`;
 
@@ -2168,7 +2155,7 @@ function findSchoolBySlug(sc, slug) {
 
 
 
-// ── 학교별 과외 페이지 (SCHOOL_MAP 동적 생성) ──────────────────────────────
+// ── 지역별 설치 페이지 (SCHOOL_MAP 동적 생성) ──────────────────────────────
 // URL: /school/{sidoEn}/{gugunRoman}/{schoolRoman}/{subject}
 
 const GRADE_SUFFIX_MAP = {E:'초등학교', M:'중학교', H:'고등학교'};
@@ -2212,7 +2199,7 @@ function schoolFromSlug(sidoEn, gugunKr, schoolRoman, grade) {
 }
 
 
-// ── 학년별 과외 정보 페이지 ─────────────────────────────────────────────────
+// ── 제품별 설치 정보 페이지 ─────────────────────────────────────────────────
 
 
 // ── 과목별 정보 페이지 ─────────────────────────────────────────────────────
@@ -2222,50 +2209,50 @@ const SUBJECT_INFO = {
     ko:'수학', emoji:'📐', color:'#3B82F6', lightColor:'#EFF6FF',
     tagline:'수학 1등급의 비밀, 개념에 있습니다',
     thumb:'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=75',
-    thumbAlt:'수학 공부 과외',
-    keywords:['수학과외','수학공부법','내신수학','수능수학','수학1등급'],
+    thumbAlt:'수학 공부 카드단말기 설치',
+    keywords:['카드단말기설치','수학공부법','내신수학','수능수학','수학1등급'],
   },
   english: {
     ko:'영어', emoji:'📖', color:'#10B981', lightColor:'#ECFDF5',
     tagline:'영어, 단어와 독해 두 가지만 잡으면 됩니다',
     thumb:'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&q=75',
-    thumbAlt:'영어 공부 과외',
-    keywords:['영어과외','영어공부법','내신영어','수능영어','영어1등급'],
+    thumbAlt:'영어 공부 카드단말기 설치',
+    keywords:['카드단말기설치','영어공부법','내신영어','수능영어','영어1등급'],
   },
   korean: {
     ko:'국어', emoji:'✍️', color:'#F59E0B', lightColor:'#FFFBEB',
     tagline:'국어는 독해력입니다. 읽는 힘을 키워드립니다',
     thumb:'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=75',
-    thumbAlt:'국어 공부 과외',
-    keywords:['국어과외','국어공부법','내신국어','수능국어','비문학독해'],
+    thumbAlt:'국어 공부 카드단말기 설치',
+    keywords:['카드단말기설치','국어공부법','내신국어','수능국어','비문학독해'],
   },
   science: {
     ko:'과학', emoji:'🔬', color:'#8B5CF6', lightColor:'#F5F3FF',
     tagline:'과학은 원리 이해가 전부입니다',
     thumb:'https://images.unsplash.com/photo-1532094349884-543559244e6a?w=800&q=75',
-    thumbAlt:'과학 공부 과외',
-    keywords:['과학과외','과학공부법','내신과학','수능과학탐구','물리화학생물'],
+    thumbAlt:'과학 공부 카드단말기 설치',
+    keywords:['카드단말기설치','과학공부법','내신과학','수능과학탐구','물리화학생물'],
   },
   social: {
     ko:'사회', emoji:'🌏', color:'#EF4444', lightColor:'#FEF2F2',
     tagline:'사회, 흐름과 맥락으로 이해하면 쉽습니다',
     thumb:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&q=75',
-    thumbAlt:'사회 공부 과외',
-    keywords:['사회과외','사회공부법','내신사회','수능사회탐구','한국사'],
+    thumbAlt:'사회 공부 카드단말기 설치',
+    keywords:['사회카드단말기 설치','사회공부법','내신사회','수능사회탐구','한국사'],
   },
   coding: {
     ko:'코딩', emoji:'💻', color:'#06B6D4', lightColor:'#ECFEFF',
     tagline:'코딩, 논리적 사고력을 키우는 가장 빠른 방법',
     thumb:'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=75',
-    thumbAlt:'코딩 공부 과외',
-    keywords:['코딩과외','파이썬과외','코딩공부법','정보과학','알고리즘'],
+    thumbAlt:'코딩 공부 카드단말기 설치',
+    keywords:['코딩카드단말기 설치','파이썬카드단말기 설치','코딩공부법','정보과학','알고리즘'],
   },
   essay: {
     ko:'논술', emoji:'📝', color:'#EC4899', lightColor:'#FDF2F8',
     tagline:'논술, 대입 당락을 결정하는 마지막 관문',
     thumb:'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=75',
-    thumbAlt:'논술 공부 과외',
-    keywords:['논술과외','논술공부법','대입논술','인문논술','수리논술'],
+    thumbAlt:'논술 공부 카드단말기 설치',
+    keywords:['논술카드단말기 설치','논술공부법','대입논술','인문논술','수리논술'],
   },
 };
 
@@ -2287,7 +2274,7 @@ function makeSubjectPage(subjectEn) {
   // 과목별 핵심 데이터 (간결 버전)
   const D = {
     math:{tag:'수학 1등급의 비밀, 개념에 있습니다',
-      ov:`수학은 공식 암기보다 원리 이해가 핵심입니다. 수학 과외는 개념 이해→기출 풀이→오답 분석 순서로 진행합니다. 내신 4주 전 학교 기출 집중, 평소 수능 기초를 꾸준히 쌓는 이원화 전략이 효과적입니다. 많은 학생이 수학을 어려워하는 가장 큰 이유는 개념이 완성되지 않은 상태에서 문제 풀이를 먼저 시작하기 때문입니다. 수학은 위층이 아래층 위에 쌓이는 구조입니다. 분수 개념이 부족하면 방정식이 어렵고, 방정식이 흔들리면 함수를 이해하기 어렵습니다. 1:1 수학 과외에서 가장 먼저 해야 할 일은 학생의 개념 구멍을 정확히 진단하고 가장 약한 부분부터 채우는 것입니다. 이 과정을 건너뛰고 현재 학년 문제만 반복하면 성적이 좀처럼 오르지 않습니다. 수학 공부에서 두 번째로 중요한 것은 오답 분석입니다. 틀린 문제를 그냥 넘어가는 학생은 같은 문제를 반복해서 틀립니다. 왜 틀렸는지, 어떤 개념이 부족했는지, 어떤 실수를 했는지를 스스로 분석하고 기록하는 오답 노트 습관이 수학 성적을 결정적으로 가릅니다. 실제로 내신에서 1등급을 받는 학생들의 공통점은 오답 노트를 빠짐없이 관리한다는 점입니다. 내신 수학에서 중요한 것은 학교 기출 분석입니다. 같은 교과서를 쓰더라도 학교마다 출제 경향, 배점, 서술형 요구 수준이 다릅니다. 1:1 과외에서 해당 학교의 최근 3~5년 기출을 철저히 분석하고, 자주 나오는 유형과 변형 문제를 집중적으로 대비하는 것이 내신 고득점의 핵심 전략입니다. 수능 수학은 내신과 달리 시간 관리가 매우 중요합니다. 100분 안에 30문제를 풀어야 하기 때문에, 쉬운 문제를 빠르고 정확하게 처리하는 것이 어려운 문제 풀 시간을 만들어줍니다. 매일 30분 연산 훈련으로 기본 계산 속도를 높이고, 풀이 과정을 정리하는 습관으로 실수를 줄이는 훈련이 수능 수학 성적 향상의 기반이 됩니다.`,
+      ov:`수학은 공식 암기보다 원리 이해가 핵심입니다. 카드단말기 설치는 개념 이해→기출 풀이→오답 분석 순서로 진행합니다. 내신 4주 전 학교 기출 집중, 평소 수능 기초를 꾸준히 쌓는 이원화 전략이 효과적입니다. 많은 학생이 수학을 어려워하는 가장 큰 이유는 개념이 완성되지 않은 상태에서 문제 풀이를 먼저 시작하기 때문입니다. 수학은 위층이 아래층 위에 쌓이는 구조입니다. 분수 개념이 부족하면 방정식이 어렵고, 방정식이 흔들리면 함수를 이해하기 어렵습니다. 1:1 카드단말기 설치에서 가장 먼저 해야 할 일은 학생의 개념 구멍을 정확히 진단하고 가장 약한 부분부터 채우는 것입니다. 이 과정을 건너뛰고 현재 학년 문제만 반복하면 성적이 좀처럼 오르지 않습니다. 수학 공부에서 두 번째로 중요한 것은 오답 분석입니다. 틀린 문제를 그냥 넘어가는 학생은 같은 문제를 반복해서 틀립니다. 왜 틀렸는지, 어떤 개념이 부족했는지, 어떤 실수를 했는지를 스스로 분석하고 기록하는 오답 노트 습관이 수학 성적을 결정적으로 가릅니다. 실제로 내신에서 1등급을 받는 학생들의 공통점은 오답 노트를 빠짐없이 관리한다는 점입니다. 내신 수학에서 중요한 것은 학교 기출 분석입니다. 같은 교과서를 쓰더라도 학교마다 출제 경향, 배점, 서술형 요구 수준이 다릅니다. 전문 설치에서 해당 학교의 최근 3~5년 기출을 철저히 분석하고, 자주 나오는 유형과 변형 문제를 집중적으로 대비하는 것이 내신 고득점의 핵심 전략입니다. 수능 수학은 내신과 달리 시간 관리가 매우 중요합니다. 100분 안에 30문제를 풀어야 하기 때문에, 쉬운 문제를 빠르고 정확하게 처리하는 것이 어려운 문제 풀 시간을 만들어줍니다. 매일 30분 연산 훈련으로 기본 계산 속도를 높이고, 풀이 과정을 정리하는 습관으로 실수를 줄이는 훈련이 수능 수학 성적 향상의 기반이 됩니다.`,
       st:[['개념 먼저, 암기는 나중에','#3B82F6','공식을 외우기 전에 왜 성립하는지 이해합니다. 원리를 아는 학생은 변형 문제에 흔들리지 않습니다.'],['오답 노트 필수','#1D4ED8','틀린 문제를 왜 틀렸는지 직접 분석·기록합니다. 시험 전날 오답 노트 복습만으로 점수가 오릅니다.'],['매일 30분 연산','#2563EB','꾸준한 반복 훈련으로 시험장 시간 여유를 만듭니다.'],['내신·수능 이원화','#1E40AF','내신 4주 전 기출 집중, 평소 수능 기초를 병행합니다.']],
       gr:[['초등','#93C5FD','사칙연산·분수·도형 기초 완성. 중학 수학의 토대가 됩니다.'],['중등','#60A5FA','방정식·함수 개념 완성. 내신 1~2등급을 목표합니다.'],['고등','#3B82F6','수Ⅰ·Ⅱ·미적분 완성. 수능·내신 동시 관리합니다.']],
       tip:'수학 공부 핵심: 반드시 직접 손으로 풀어야 합니다. 눈으로만 보고 넘기는 것은 공부가 아닙니다.'},
@@ -2297,32 +2284,32 @@ function makeSubjectPage(subjectEn) {
       gr:[['초등','#A7F3D0','파닉스→단어 500개→교과서 읽기 순서로 진행합니다.'],['중등','#6EE7B7','교과서 지문 분석·서술형 연습이 핵심입니다.'],['고등','#34D399','수능 1등급 목표. 독해 속도·어휘 3000·유형 전략 완성.']],
       tip:'매일 좋아하는 영상 영어 자막 10분 보기로 어휘와 듣기를 자연스럽게 향상할 수 있습니다.'},
     korean:{tag:'국어는 독해력입니다. 읽는 힘을 키워드립니다',
-      ov:`국어는 모든 과목의 기초입니다. 독해력이 낮으면 수학 문제도 이해하기 어렵습니다. 비문학 독해, 문학 감상, 서술형 작성 능력을 단계별로 키웁니다. 많은 학생이 국어를 "그냥 읽으면 되는 과목"으로 가볍게 생각하지만, 실제로 수능 국어 1등급은 전체 응시생의 4~5% 수준으로 매우 어려운 과목입니다. 특히 고등학교 수능 국어는 독서(비문학), 문학, 화법과 작문, 언어와 매체로 구성되며, 각 영역의 특성에 맞는 학습 전략이 다릅니다. 비문학 독해는 글의 구조를 파악하는 능력이 핵심입니다. 주제문 찾기, 단락 요약, 논리 전개 방식 분석, 세부 정보 추출 등 독해 기술을 훈련하면 낯선 지문도 두렵지 않습니다. 비문학 지문을 매일 1~2개 읽고 요약하는 훈련이 가장 효과적입니다. 문학은 단순히 감상하는 것을 넘어 분석하는 능력이 필요합니다. 시는 화자·정서·표현법(비유·상징·반어)을, 소설은 인물·사건·배경·시점을 체계적으로 분석하는 훈련을 합니다. 내신 문학 시험에서는 교과서 작품을 완벽히 이해하고 변형 문제에 대비하는 것이 중요합니다. 서술형 답안 작성은 핵심 단어를 포함한 완성된 문장으로 쓰는 훈련이 필요합니다. 많은 학생이 알고 있는 내용을 점수로 연결하지 못하는 이유는 서술형 답안 작성 훈련이 부족하기 때문입니다. 1:1 국어 과외에서 서술형 답안을 직접 쓰고 피드백받는 훈련이 내신 성적을 결정적으로 끌어올립니다. 국어 내신은 교과서 작품과 독서 활동지, 수행평가를 통합적으로 관리하는 것이 중요합니다. 수업 시간에 선생님이 강조한 내용, 판서 내용을 빠짐없이 기록하고, 시험 전 4주부터 집중적으로 정리하는 전략이 효과적입니다.`,
+      ov:`국어는 모든 과목의 기초입니다. 독해력이 낮으면 수학 문제도 이해하기 어렵습니다. 비문학 독해, 문학 감상, 서술형 작성 능력을 단계별로 키웁니다. 많은 학생이 국어를 "그냥 읽으면 되는 과목"으로 가볍게 생각하지만, 실제로 수능 국어 1등급은 전체 응시생의 4~5% 수준으로 매우 어려운 과목입니다. 특히 고등학교 수능 국어는 독서(비문학), 문학, 화법과 작문, 언어와 매체로 구성되며, 각 영역의 특성에 맞는 학습 전략이 다릅니다. 비문학 독해는 글의 구조를 파악하는 능력이 핵심입니다. 주제문 찾기, 단락 요약, 논리 전개 방식 분석, 세부 정보 추출 등 독해 기술을 훈련하면 낯선 지문도 두렵지 않습니다. 비문학 지문을 매일 1~2개 읽고 요약하는 훈련이 가장 효과적입니다. 문학은 단순히 감상하는 것을 넘어 분석하는 능력이 필요합니다. 시는 화자·정서·표현법(비유·상징·반어)을, 소설은 인물·사건·배경·시점을 체계적으로 분석하는 훈련을 합니다. 내신 문학 시험에서는 교과서 작품을 완벽히 이해하고 변형 문제에 대비하는 것이 중요합니다. 서술형 답안 작성은 핵심 단어를 포함한 완성된 문장으로 쓰는 훈련이 필요합니다. 많은 학생이 알고 있는 내용을 점수로 연결하지 못하는 이유는 서술형 답안 작성 훈련이 부족하기 때문입니다. 1:1 카드단말기 설치에서 서술형 답안을 직접 쓰고 피드백받는 훈련이 내신 성적을 결정적으로 끌어올립니다. 국어 내신은 교과서 작품과 독서 활동지, 수행평가를 통합적으로 관리하는 것이 중요합니다. 수업 시간에 선생님이 강조한 내용, 판서 내용을 빠짐없이 기록하고, 시험 전 4주부터 집중적으로 정리하는 전략이 효과적입니다.`,
       st:[['독해력은 모든 과목 기초','#F59E0B','수학 문제를 못 푸는 학생 대부분은 문제를 제대로 읽지 못합니다.'],['비문학 4단계 전략','#D97706','주제문→단락 구조→핵심어 연결→선지 판단 순서로 풉니다.'],['문학 감상법 완성','#B45309','시는 화자·정서·표현법, 소설은 인물·사건·배경을 분석합니다.'],['서술형 완성','#92400E','핵심 단어를 포함한 완성된 문장으로 답안을 작성합니다.']],
       gr:[['초등','#FDE68A','받아쓰기·독서 습관·일기 쓰기 기초 완성.'],['중등','#FCD34D','문학 분석·비문학 독해·문법 정리가 핵심.'],['고등','#F59E0B','수능 독서 매일 1~2개, 문학 심층 감상 병행.']],
       tip:'국어 핵심: 읽고 또 읽기. 독해력은 많이 읽을수록, 글쓰기는 직접 써볼수록 향상됩니다.'},
     science:{tag:'과학은 원리 이해가 전부입니다',
-      ov:`과학은 암기가 아니라 원리 이해가 핵심입니다. 원리→실험 해석→문제 적용 3단계로 진행합니다. 중학 과학이 고등 탐구과목 전체의 토대가 됩니다. 많은 학생이 과학을 암기 과목으로 접근하는데, 이는 근본적으로 잘못된 방법입니다. 과학은 '왜'를 이해하는 과목입니다. 왜 물체가 떨어지는지, 왜 화학 반응이 일어나는지, 왜 식물이 광합성을 하는지의 원리를 이해하면 암기 없이도 문제를 풀 수 있습니다. 반대로 원리 이해 없이 암기만 한 학생은 변형 문제나 실험 해석 문제에서 무너집니다. 중학교 과학은 물리·화학·생물·지구과학 4개 영역을 균형 있게 학습하는 것이 중요합니다. 특히 중학교 과학 개념이 고등학교 물리·화학·생명과학·지구과학으로 이어지기 때문에, 중학교 때 원리를 완성해두면 고등학교 탐구과목 학습이 훨씬 수월합니다. 고등학교 과학은 선택 과목 전략이 중요합니다. 수능에서 물리학Ⅰ, 화학Ⅰ, 생명과학Ⅰ, 지구과학Ⅰ 중 2개를 선택해야 하는데, 학생의 이과 전공 방향, 현재 실력, 준비 기간을 고려해 유리한 과목을 선택하는 전략이 필요합니다. 실험 해석 능력은 과학 시험에서 매우 중요합니다. 실험 목적, 변인 통제, 결과 해석, 오차 분석 등 실험 관련 문제는 실제로 실험 과정을 이해해야 풀 수 있습니다. 1:1 과외에서 실험 개념을 그림과 설명으로 체계적으로 이해하고, 실험 관련 기출 문제를 충분히 풀어보는 훈련이 필요합니다. 과학은 단원 간 연결이 강하기 때문에, 앞 단원의 개념이 부족하면 뒤 단원이 무너집니다. 취약 단원을 발견하면 현재 단원보다 앞 단원으로 돌아가 기초를 먼저 채우는 용기가 필요합니다. 이 과정이 힘들게 느껴지지만, 결국 가장 빠른 성적 향상의 길입니다.`,
+      ov:`과학은 암기가 아니라 원리 이해가 핵심입니다. 원리→실험 해석→문제 적용 3단계로 진행합니다. 중학 과학이 고등 탐구과목 전체의 토대가 됩니다. 많은 학생이 과학을 암기 과목으로 접근하는데, 이는 근본적으로 잘못된 방법입니다. 과학은 '왜'를 이해하는 과목입니다. 왜 물체가 떨어지는지, 왜 화학 반응이 일어나는지, 왜 식물이 광합성을 하는지의 원리를 이해하면 암기 없이도 문제를 풀 수 있습니다. 반대로 원리 이해 없이 암기만 한 학생은 변형 문제나 실험 해석 문제에서 무너집니다. 중학교 과학은 물리·화학·생물·지구과학 4개 영역을 균형 있게 학습하는 것이 중요합니다. 특히 중학교 과학 개념이 고등학교 물리·화학·생명과학·지구과학으로 이어지기 때문에, 중학교 때 원리를 완성해두면 고등학교 탐구과목 학습이 훨씬 수월합니다. 고등학교 과학은 선택 과목 전략이 중요합니다. 수능에서 물리학Ⅰ, 화학Ⅰ, 생명과학Ⅰ, 지구과학Ⅰ 중 2개를 선택해야 하는데, 학생의 이과 전공 방향, 현재 실력, 준비 기간을 고려해 유리한 과목을 선택하는 전략이 필요합니다. 실험 해석 능력은 과학 시험에서 매우 중요합니다. 실험 목적, 변인 통제, 결과 해석, 오차 분석 등 실험 관련 문제는 실제로 실험 과정을 이해해야 풀 수 있습니다. 전문 설치에서 실험 개념을 그림과 설명으로 체계적으로 이해하고, 실험 관련 기출 문제를 충분히 풀어보는 훈련이 필요합니다. 과학은 단원 간 연결이 강하기 때문에, 앞 단원의 개념이 부족하면 뒤 단원이 무너집니다. 취약 단원을 발견하면 현재 단원보다 앞 단원으로 돌아가 기초를 먼저 채우는 용기가 필요합니다. 이 과정이 힘들게 느껴지지만, 결국 가장 빠른 성적 향상의 길입니다.`,
       st:[['원리 이해 우선','#8B5CF6','왜 그렇게 되는지 원리를 이해하면 변형 문제에 강해집니다.'],['실험 해석 능력','#7C3AED','실험 목적·변인 통제·결과 해석 흐름을 체계적으로 익힙니다.'],['선택 과목 전략','#6D28D9','물리·화학·생명·지구과학 각각의 핵심을 파악합니다.'],['취약 단원 집중','#5B21B6','과학은 단원 간 연결이 강합니다. 앞 단원 구멍을 먼저 메웁니다.']],
       gr:[['초등','#DDD6FE','물질·생명·지구·에너지를 실생활과 연결해 학습합니다.'],['중등','#C4B5FD','물리·화학·생물·지구과학 균형 학습. 서술형 실험 설명 연습.'],['고등','#A78BFA','선택 과목 집중 공략. 수능 기출 분석이 가장 중요합니다.']],
       tip:'과학 핵심: 교과서 그림을 직접 손으로 그리며 설명해보세요. 남에게 가르치는 것처럼 설명하기가 가장 효과적입니다.'},
     social:{tag:'사회, 흐름과 맥락으로 이해하면 쉽습니다',
-      ov:`사회는 외우는 과목이 아니라 이해하는 과목입니다. 역사 인과관계, 지리·경제 메커니즘을 이해하면 암기 없이도 시험에 강해집니다. 많은 학생이 사회를 단순 암기 과목으로 접근하다가 시험 직전에 엄청난 양을 외우느라 힘들어합니다. 그러나 역사는 인과관계의 흐름으로, 지리는 환경과 인간 생활의 상호작용으로, 경제는 수요와 공급의 메커니즘으로 이해하면 암기 없이도 논리적으로 답을 유추할 수 있습니다. 한국사는 수능 필수 과목으로 모든 고등학생이 반드시 대비해야 합니다. 한국사를 공부할 때는 전체 흐름을 먼저 잡는 것이 중요합니다. 선사시대→삼국시대→남북국시대→고려→조선→개항기→일제강점기→광복 이후의 흐름을 먼저 이해하고, 각 시대의 핵심 특징 3가지씩을 정리하는 방식이 효율적입니다. 단순히 연도와 사건을 외우는 것보다 왜 그 사건이 발생했는지, 어떤 결과로 이어졌는지의 인과관계를 이해하는 것이 수능 한국사 고득점의 핵심입니다. 사회 내신은 교과서 중심으로 공부하되, 수업 시간에 선생님이 강조한 내용을 빠짐없이 기록하는 것이 중요합니다. 지도, 그래프, 표 등 시각 자료를 읽는 연습을 충분히 하고, 서술형 답안에서 핵심 용어를 정확히 사용하는 훈련을 합니다. 사회탐구 선택 과목(한국지리, 세계지리, 동아시아사, 세계사, 경제, 사회문화, 정치와 법, 생활과 윤리, 윤리와 사상) 중 수능에서 유리한 과목을 선택하는 전략도 중요합니다. 학생의 관심 분야, 이해도, 평균 점수, 수험생 수 등을 종합적으로 고려해 1:1 과외에서 최적의 선택 전략을 수립합니다.`,
+      ov:`사회는 외우는 과목이 아니라 이해하는 과목입니다. 역사 인과관계, 지리·경제 메커니즘을 이해하면 암기 없이도 시험에 강해집니다. 많은 학생이 사회를 단순 암기 과목으로 접근하다가 시험 직전에 엄청난 양을 외우느라 힘들어합니다. 그러나 역사는 인과관계의 흐름으로, 지리는 환경과 인간 생활의 상호작용으로, 경제는 수요와 공급의 메커니즘으로 이해하면 암기 없이도 논리적으로 답을 유추할 수 있습니다. 한국사는 수능 필수 과목으로 모든 고등학생이 반드시 대비해야 합니다. 한국사를 공부할 때는 전체 흐름을 먼저 잡는 것이 중요합니다. 선사시대→삼국시대→남북국시대→고려→조선→개항기→일제강점기→광복 이후의 흐름을 먼저 이해하고, 각 시대의 핵심 특징 3가지씩을 정리하는 방식이 효율적입니다. 단순히 연도와 사건을 외우는 것보다 왜 그 사건이 발생했는지, 어떤 결과로 이어졌는지의 인과관계를 이해하는 것이 수능 한국사 고득점의 핵심입니다. 사회 내신은 교과서 중심으로 공부하되, 수업 시간에 선생님이 강조한 내용을 빠짐없이 기록하는 것이 중요합니다. 지도, 그래프, 표 등 시각 자료를 읽는 연습을 충분히 하고, 서술형 답안에서 핵심 용어를 정확히 사용하는 훈련을 합니다. 사회탐구 선택 과목(한국지리, 세계지리, 동아시아사, 세계사, 경제, 사회문화, 정치와 법, 생활과 윤리, 윤리와 사상) 중 수능에서 유리한 과목을 선택하는 전략도 중요합니다. 학생의 관심 분야, 이해도, 평균 점수, 수험생 수 등을 종합적으로 고려해 전문 설치에서 최적의 선택 전략을 수립합니다.`,
       st:[['시사와 연결','#EF4444','교과서 내용을 뉴스와 연결하면 오래 기억됩니다.'],['지도·그래프 읽기','#DC2626','사회 시험 문제의 많은 비중이 시각 자료 활용입니다.'],['한국사 흐름 잡기','#B91C1C','선사→삼국→고려→조선→근현대 흐름 먼저, 각 시대 특징 3가지씩.'],['서술형 구조화','#991B1B','인과관계 구조로 핵심 용어를 포함해 답안을 작성합니다.']],
       gr:[['초등','#FECACA','우리 지역·우리나라 역사·세계 여러 나라를 배웁니다.'],['중등','#FCA5A5','역사·지리·일반사회 균형 학습.'],['고등','#F87171','한국사 필수 + 선택 과목(경제·법·사회·생활) 집중 공략.']],
       tip:'사회 핵심: 교과서를 소리 내어 읽으며 중요 용어에 밑줄, 다음 날 설명할 수 있는지 확인하세요.'},
     coding:{tag:'코딩, 논리적 사고력을 키우는 가장 빠른 방법',
-      ov:`코딩은 프로그래밍 언어를 배우는 것이 아니라 문제를 논리적으로 분해하는 사고력을 기르는 과정입니다. 초등 코딩 의무화부터 고등 정보 내신까지 중요성이 높아지고 있습니다. 2019년부터 초등학교 실과 교과에 소프트웨어 교육이 의무화되었고, 중학교 정보 교과도 필수 과목으로 지정되어 있습니다. 고등학교에서는 정보 교과가 내신 성적에 포함되고, 인공지능 기초 과목도 확대되고 있습니다. 대학 입시에서도 소프트웨어 특기자 전형, IT 관련 학과 면접에서 코딩 능력이 직접적인 평가 기준이 됩니다. AI·빅데이터 시대에 코딩은 단순히 개발자만을 위한 기술이 아닙니다. 마케팅, 금융, 의료, 교육, 제조 등 모든 분야에서 데이터를 다루고 자동화 도구를 활용하는 능력이 점점 더 중요해지고 있습니다. 코딩을 배운 학생은 컴퓨터가 문제를 어떻게 해결하는지 이해하기 때문에, AI 도구를 더 효율적으로 활용하는 능력도 높아집니다. 초등 코딩은 스크래치·엔트리 같은 블록 코딩으로 시작해 프로그래밍의 기본 개념(순서, 조건, 반복)을 게임처럼 배웁니다. 중학교는 파이썬 기초로 넘어가 변수, 조건문, 반복문, 함수, 리스트를 배웁니다. 고등학교는 알고리즘, 자료구조, 인공지능 기초, 데이터 분석 등 심화 내용을 다룹니다. 1:1 코딩 과외의 가장 큰 장점은 막히는 순간 즉시 해결할 수 있다는 점입니다. 혼자 공부할 때 30분 이상 막히는 에러를 코치와 함께하면 5분 안에 해결되는 경우가 많습니다. 에러 해결 과정 자체가 가장 많이 성장하는 순간이기 때문에, 실시간 피드백을 받으며 공부하는 것이 코딩 실력 향상의 가장 빠른 방법입니다.`,
-      st:[['미래 직업 핵심 역량','#06B6D4','AI·빅데이터 시대에 코딩은 선택이 아닌 필수입니다.'],['단계별 커리큘럼','#0891B2','초등 블록코딩→중등 파이썬 기초→고등 알고리즘·프로젝트.'],['1:1 코딩 과외 장점','#0E7490','막히는 순간 즉시 해결. 혼자서는 30분 걸릴 것을 5분 안에 해결합니다.'],['정보 내신·대회 대비','#155E75','중학 정보 내신, 한국정보올림피아드, SW마이스터고 입시 대비.']],
+      ov:`코딩은 프로그래밍 언어를 배우는 것이 아니라 문제를 논리적으로 분해하는 사고력을 기르는 과정입니다. 초등 코딩 의무화부터 고등 정보 내신까지 중요성이 높아지고 있습니다. 2019년부터 초등학교 실과 교과에 소프트웨어 교육이 의무화되었고, 중학교 정보 교과도 필수 과목으로 지정되어 있습니다. 고등학교에서는 정보 교과가 내신 성적에 포함되고, 인공지능 기초 과목도 확대되고 있습니다. 대학 입시에서도 소프트웨어 특기자 전형, IT 관련 학과 면접에서 코딩 능력이 직접적인 평가 기준이 됩니다. AI·빅데이터 시대에 코딩은 단순히 개발자만을 위한 기술이 아닙니다. 마케팅, 금융, 의료, 교육, 제조 등 모든 분야에서 데이터를 다루고 자동화 도구를 활용하는 능력이 점점 더 중요해지고 있습니다. 코딩을 배운 학생은 컴퓨터가 문제를 어떻게 해결하는지 이해하기 때문에, AI 도구를 더 효율적으로 활용하는 능력도 높아집니다. 초등 코딩은 스크래치·엔트리 같은 블록 코딩으로 시작해 프로그래밍의 기본 개념(순서, 조건, 반복)을 게임처럼 배웁니다. 중학교는 파이썬 기초로 넘어가 변수, 조건문, 반복문, 함수, 리스트를 배웁니다. 고등학교는 알고리즘, 자료구조, 인공지능 기초, 데이터 분석 등 심화 내용을 다룹니다. 1:1 코딩 카드단말기 설치의 가장 큰 장점은 막히는 순간 즉시 해결할 수 있다는 점입니다. 혼자 공부할 때 30분 이상 막히는 에러를 코치와 함께하면 5분 안에 해결되는 경우가 많습니다. 에러 해결 과정 자체가 가장 많이 성장하는 순간이기 때문에, 실시간 피드백을 받으며 공부하는 것이 코딩 실력 향상의 가장 빠른 방법입니다.`,
+      st:[['미래 직업 핵심 역량','#06B6D4','AI·빅데이터 시대에 코딩은 선택이 아닌 필수입니다.'],['단계별 커리큘럼','#0891B2','초등 블록코딩→중등 파이썬 기초→고등 알고리즘·프로젝트.'],['1:1 코딩 카드단말기 설치 장점','#0E7490','막히는 순간 즉시 해결. 혼자서는 30분 걸릴 것을 5분 안에 해결합니다.'],['정보 내신·대회 대비','#155E75','중학 정보 내신, 한국정보올림피아드, SW마이스터고 입시 대비.']],
       gr:[['초등','#A5F3FC','스크래치·엔트리 블록코딩으로 시작. 게임 만들며 논리 사고.'],['중등','#67E8F9','파이썬 기초(변수·조건·반복·함수) 학습.'],['고등','#22D3EE','파이썬 심화·알고리즘·자료구조. 대학 SW 면접 대비도 가능.']],
       tip:'코딩 성장 비결: 매일 30분 직접 타이핑. 에러를 두려워하지 마세요. 에러 해결이 가장 많이 성장하는 순간입니다.'},
     essay:{tag:'논술, 대입 당락을 결정하는 마지막 관문',
-      ov:`논술은 대학 입시에서 점점 중요해지고 있습니다. 서울 상위권 대학 논술 전형 경쟁률은 수십 대 일이지만, 체계적으로 준비하면 충분히 합격할 수 있습니다. 논술 전형은 내신 성적이 다소 부족한 학생이 상위권 대학에 진입할 수 있는 중요한 통로입니다. 연세대·고려대·성균관대·서강대·한양대·중앙대 등 상위권 대학들이 논술 전형을 유지하고 있으며, 의약계열에서는 특히 논술의 비중이 큽니다. 논술 전형의 특징은 수능 최저 학력 기준을 충족하면 논술 시험 하나로 당락이 결정된다는 점입니다. 이 말은 논술을 잘 준비한 학생에게는 매우 유리한 전형이라는 의미입니다. 인문 논술은 제시문을 정확히 읽고 핵심 논지를 파악한 후, 자신의 주장을 논리적으로 전개하는 능력이 핵심입니다. 단순히 글을 잘 쓰는 것이 아니라, 제시문의 요지를 정확히 요약하고, 주어진 논제에 맞게 주장-근거-반박의 구조로 서술하는 훈련이 필요합니다. 수리 논술은 수학적 개념을 이용해 논증하는 과정을 서술하는 시험입니다. 단순히 답을 구하는 것이 아니라, 풀이 과정을 논리적으로 설명하는 능력이 중요합니다. 수리 논술에서는 틀린 풀이라도 부분 점수를 받을 수 있기 때문에, 포기하지 않고 아는 내용을 최대한 서술하는 것이 중요합니다. 논술은 독학보다 전문 첨삭을 받을 때 실력이 훨씬 빠르게 향상됩니다. 자신의 글을 객관적으로 평가하기 어렵기 때문에, 1:1 첨삭 과외에서 논리 구조, 문장 표현, 핵심어 활용, 분량 조절 등에 대한 구체적인 피드백을 받는 것이 가장 효율적입니다. 논술 준비는 고등학교 2학년 2학기부터 시작해 6~12개월의 준비 기간을 두는 것이 권장됩니다.`,
+      ov:`논술은 대학 입시에서 점점 중요해지고 있습니다. 서울 상위권 대학 논술 전형 경쟁률은 수십 대 일이지만, 체계적으로 준비하면 충분히 합격할 수 있습니다. 논술 전형은 내신 성적이 다소 부족한 학생이 상위권 대학에 진입할 수 있는 중요한 통로입니다. 연세대·고려대·성균관대·서강대·한양대·중앙대 등 상위권 대학들이 논술 전형을 유지하고 있으며, 의약계열에서는 특히 논술의 비중이 큽니다. 논술 전형의 특징은 수능 최저 학력 기준을 충족하면 논술 시험 하나로 당락이 결정된다는 점입니다. 이 말은 논술을 잘 준비한 학생에게는 매우 유리한 전형이라는 의미입니다. 인문 논술은 제시문을 정확히 읽고 핵심 논지를 파악한 후, 자신의 주장을 논리적으로 전개하는 능력이 핵심입니다. 단순히 글을 잘 쓰는 것이 아니라, 제시문의 요지를 정확히 요약하고, 주어진 논제에 맞게 주장-근거-반박의 구조로 서술하는 훈련이 필요합니다. 수리 논술은 수학적 개념을 이용해 논증하는 과정을 서술하는 시험입니다. 단순히 답을 구하는 것이 아니라, 풀이 과정을 논리적으로 설명하는 능력이 중요합니다. 수리 논술에서는 틀린 풀이라도 부분 점수를 받을 수 있기 때문에, 포기하지 않고 아는 내용을 최대한 서술하는 것이 중요합니다. 논술은 독학보다 전문 첨삭을 받을 때 실력이 훨씬 빠르게 향상됩니다. 자신의 글을 객관적으로 평가하기 어렵기 때문에, 1:1 첨삭 카드단말기 설치에서 논리 구조, 문장 표현, 핵심어 활용, 분량 조절 등에 대한 구체적인 피드백을 받는 것이 가장 효율적입니다. 논술 준비는 고등학교 2학년 2학기부터 시작해 6~12개월의 준비 기간을 두는 것이 권장됩니다.`,
       st:[['대입 논술 유형 분석','#EC4899','인문논술·수리논술·의학계열별 전략이 다릅니다.'],['실전 첨삭의 중요성','#DB2777','논술은 혼자보다 전문 첨삭을 받을 때 훨씬 빠르게 향상됩니다.'],['제시문 분석 능력','#BE185D','낯선 텍스트를 빠르게 읽고 핵심 논지를 파악하는 능력이 기초입니다.'],['구조화된 글쓰기','#9D174D','서론(문제 제기)→본론(주장+근거+반박)→결론(요약+전망) 순서.']],
       gr:[['초등','#FBCFE8','독서 기반 글쓰기·주장과 근거 구분·짧은 논설문 작성.'],['중등','#F9A8D4','개요 작성·서론·본론·결론 구조화·수행평가 대비.'],['고등','#F472B6','대학별 유형 분석·제시문 독해·실전 글쓰기+첨삭 집중.']],
       tip:'논술 성장 비결: 매일 신문 사설 1편 읽고 3줄 요약. 6개월이면 제시문 독해 속도가 눈에 띄게 빨라집니다.'},
     gsd:{tag:'검정고시, 학력 취득과 대입의 새로운 기회',
-      ov:`검정고시는 정규 학교 교육을 받지 않았거나 중도에 그만둔 분들이 학력을 인정받을 수 있는 국가 공인 시험입니다. 초졸·중졸·고졸 검정고시로 구분되며, 합격 시 정규 학교 졸업자와 동등한 학력을 인정받습니다. 검정고시를 준비하는 분들의 상황은 매우 다양합니다. 학교 부적응, 건강 문제, 가정 사정, 이민·귀국, 해외 거주, 홈스쿨링, 직업 활동 등 다양한 이유로 정규 학교를 다니지 않은 분들이 검정고시를 통해 학력을 취득합니다. 최근에는 조기 졸업을 목표로 하는 학생, 예체능 활동으로 바쁜 학생, 직업 준비에 집중하는 학생들도 검정고시를 선택하는 경우가 늘고 있습니다. 고졸 검정고시 합격자는 수능에 응시할 수 있어 대학 진학의 문이 열립니다. 일부 대학은 검정고시 합격자를 대상으로 별도 전형(검정고시 특별전형)을 운영하기도 하며, 수능을 통한 일반 전형 지원도 가능합니다. 취업 측면에서도 고졸 검정고시 합격 이후 공무원 시험, 자격증 취득, 일반 취업 지원이 가능해집니다. 검정고시는 연 2회(4월, 8월) 시행됩니다. 고졸 검정고시는 국어, 수학, 영어, 사회, 과학, 한국사 6개 필수 과목과 선택 1과목으로 구성됩니다. 각 과목 60점 이상이면 과목 합격, 전 과목 평균 60점 이상이면 최종 합격입니다. 합격한 과목은 다음 시험에서 면제받을 수 있어, 한 번에 모든 과목을 합격하지 않아도 됩니다. 1:1 검정고시 과외는 학생의 현재 수준과 시험 일정에 맞춰 취약 과목을 집중적으로 보완하는 방식으로 진행합니다. 단기간에 합격 점수를 달성해야 하기 때문에, 기출 문제 분석과 핵심 내용 정리를 집중적으로 진행합니다. 일반적으로 3~6개월 집중 준비로 합격이 가능합니다.`,
+      ov:`검정고시는 정규 학교 교육을 받지 않았거나 중도에 그만둔 분들이 학력을 인정받을 수 있는 국가 공인 시험입니다. 초졸·중졸·고졸 검정고시로 구분되며, 합격 시 정규 학교 졸업자와 동등한 학력을 인정받습니다. 검정고시를 준비하는 분들의 상황은 매우 다양합니다. 학교 부적응, 건강 문제, 가정 사정, 이민·귀국, 해외 거주, 홈스쿨링, 직업 활동 등 다양한 이유로 정규 학교를 다니지 않은 분들이 검정고시를 통해 학력을 취득합니다. 최근에는 조기 졸업을 목표로 하는 학생, 예체능 활동으로 바쁜 학생, 직업 준비에 집중하는 학생들도 검정고시를 선택하는 경우가 늘고 있습니다. 고졸 검정고시 합격자는 수능에 응시할 수 있어 대학 진학의 문이 열립니다. 일부 대학은 검정고시 합격자를 대상으로 별도 전형(검정고시 특별전형)을 운영하기도 하며, 수능을 통한 일반 전형 지원도 가능합니다. 취업 측면에서도 고졸 검정고시 합격 이후 공무원 시험, 자격증 취득, 일반 취업 지원이 가능해집니다. 검정고시는 연 2회(4월, 8월) 시행됩니다. 고졸 검정고시는 국어, 수학, 영어, 사회, 과학, 한국사 6개 필수 과목과 선택 1과목으로 구성됩니다. 각 과목 60점 이상이면 과목 합격, 전 과목 평균 60점 이상이면 최종 합격입니다. 합격한 과목은 다음 시험에서 면제받을 수 있어, 한 번에 모든 과목을 합격하지 않아도 됩니다. 1:1 검정고시 카드단말기 설치는 학생의 현재 수준과 시험 일정에 맞춰 취약 과목을 집중적으로 보완하는 방식으로 진행합니다. 단기간에 합격 점수를 달성해야 하기 때문에, 기출 문제 분석과 핵심 내용 정리를 집중적으로 진행합니다. 일반적으로 3~6개월 집중 준비로 합격이 가능합니다.`,
       st:[['연 2회 시험 기회','#7C3AED','4월, 8월 연 2회 시행. 일부 과목만 합격해도 다음 시험에서 면제 적용됩니다.'],['과목별 60점 합격','#6D28D9','각 과목 60점 이상이면 과목 합격. 전 과목 평균 60점 이상이면 최종 합격입니다.'],['기출 중심 준비','#5B21B6','최근 5년 기출 분석만으로도 합격 가능. 출제 패턴이 일정해 효율적인 준비가 가능합니다.'],['수능·취업 연계','#4C1D95','고졸 검정고시 합격 후 수능 응시 가능. 대학 진학 및 취업의 문이 열립니다.']],
       gr:[['초졸 검정고시','#DDD6FE','국어, 수학, 사회, 과학, 도덕 5과목. 초등학교 졸업 학력 취득.'],['중졸 검정고시','#C4B5FD','국어, 수학, 영어, 사회, 과학, 도덕 6과목. 중학교 졸업 학력 취득.'],['고졸 검정고시','#A78BFA','국어, 수학, 영어, 사회, 과학, 한국사 + 선택 1과목. 고등학교 졸업 학력 취득.']],
       tip:'검정고시 합격 핵심: 기출 문제 반복이 가장 중요합니다. 최근 5년치 기출을 3회 이상 반복하고, 틀린 문제는 개념을 다시 확인하세요. 3~6개월 집중 준비로 합격이 가능합니다.'},
@@ -2334,21 +2321,21 @@ function makeSubjectPage(subjectEn) {
   const stCards=st.map(([t,c,d])=>`<div style="background:white;border:1.5px solid ${c}25;border-radius:16px;padding:20px;margin-bottom:12px;border-left:5px solid ${c}"><div style="font-size:14px;font-weight:900;color:${c};margin-bottom:7px">✦ ${t}</div><p class="u31">${d}</p></div>`).join('');
   const grCards=gr.map(([g,c,d])=>`<div style="background:${c}30;border-radius:12px;padding:14px 16px;margin-bottom:10px;border-left:4px solid ${color}"><div style="font-size:13px;font-weight:900;color:#0F2044;margin-bottom:5px">🎯 ${g}</div><p style="font-size:12px;color:#374151;line-height:1.8;margin:0">${d}</p></div>`).join('');
   const otherLinks=Object.entries(INFO).filter(([en])=>en!==subjectEn)
-    .map(([en,s])=>`<a class="subj-link" href="/subject/${en}"><span>${s.emoji} ${s.ko} 과외</span><span>→</span></a>`).join('');
+    .map(([en,s])=>`<a class="subj-link" href="/subject/${en}"><span>${s.emoji} ${s.ko} 카드단말기 설치</span><span>→</span></a>`).join('');
 
   const canonical=`/subject/${subjectEn}`;
-  const title=`${ko} 과외 | ${ko} 공부법·내신·수능 완벽 가이드 - 올페이스토어`;
-  const desc=`${ko} 과외 전문. ${ko} 공부법, 내신 관리, 수능 준비. 검증된 1:1 방문 과외. 무료 상담 010-9876-8282`;
-  const bc=[{name:'홈',url:'/'},{name:'과목별 과외',url:'/subject'},{name:`${ko} 과외`,url:canonical}];
+  const title=`${ko} 카드단말기 설치 | ${ko} 공부법·내신·수능 완벽 가이드 - 올페이스토어`;
+  const desc=`${ko} 설치 전문. ${ko} 공부법, 내신 관리, 수능 준비. 검증된 1:1 방문 설치. 무료 상담 010-9876-8282`;
+  const bc=[{name:'홈',url:'/'},{name:'제품별 설치',url:'/subject'},{name:`${ko} 카드단말기 설치`,url:canonical}];
 
   const body=`<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/subject">과목별 과외</a> › <span>${ko} 과외</span></div>
+  <div class="bc"><a href="/">홈</a> › <a href="/subject">제품별 설치</a> › <span>${ko} 카드단말기 설치</span></div>
   <div style="position:relative;width:100%;height:280px;border-radius:20px;overflow:hidden;margin-bottom:32px">
-    <img src="${thumb}" alt="${ko} 과외" style="width:100%;height:100%;object-fit:cover" loading="eager" onerror="this.parentElement.style.background='linear-gradient(135deg,${color},${color}99)';this.remove()">
+    <img src="${thumb}" alt="${ko} 카드단말기 설치" style="width:100%;height:100%;object-fit:cover" loading="eager" onerror="this.parentElement.style.background='linear-gradient(135deg,${color},${color}99)';this.remove()">
     <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,32,68,.85),rgba(15,32,68,.25))"></div>
     <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:32px 40px">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:${color};color:white;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;margin-bottom:10px;width:fit-content">${emoji} 올페이스토어 ${ko} 과외</div>
-      <h1 style="font-size:28px;font-weight:900;color:white;margin:0 0 6px;line-height:1.2">${ko} 과외 완벽 가이드</h1>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:${color};color:white;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;margin-bottom:10px;width:fit-content">${emoji} 올페이스토어 ${ko} 카드단말기 설치</div>
+      <h1 style="font-size:28px;font-weight:900;color:white;margin:0 0 6px;line-height:1.2">${ko} 카드단말기 설치 완벽 가이드</h1>
       <p style="font-size:14px;color:rgba(255,255,255,.85);margin:0">${tag}</p>
     </div>
   </div>
@@ -2356,11 +2343,11 @@ function makeSubjectPage(subjectEn) {
     <div><div style="font-size:20px;font-weight:900;color:white">빠른</div><div style="font-size:11px;color:rgba(255,255,255,.7)">매칭 보장</div></div>
     <div><div style="font-size:20px;font-weight:900;color:white">3단계</div><div style="font-size:11px;color:rgba(255,255,255,.7)">선생님 검증</div></div>
     <div><div style="font-size:20px;font-weight:900;color:white">무료</div><div style="font-size:11px;color:rgba(255,255,255,.7)">첫 체험 수업</div></div>
-    <div><div style="font-size:20px;font-weight:900;color:white">전국</div><div style="font-size:11px;color:rgba(255,255,255,.7)">방문·화상 과외</div></div>
+    <div><div style="font-size:20px;font-weight:900;color:white">전국</div><div style="font-size:11px;color:rgba(255,255,255,.7)">방문·화상 카드단말기 설치</div></div>
   </div>
   <div class="art-body">
     <div style="background:${lightColor};border-radius:14px;padding:22px;margin-bottom:26px;border-left:5px solid ${color}">
-      <h2 style="color:${color};margin-top:0;font-size:17px">📋 ${ko} 과외 안내</h2>
+      <h2 style="color:${color};margin-top:0;font-size:17px">📋 ${ko} 설치 안내</h2>
       <p class="u20">${ov}</p>
     </div>
     <h2 style="color:#0F2044;font-size:19px;border-bottom:3px solid ${color};padding-bottom:8px">🎯 ${ko} 성적 올리는 핵심 전략</h2>
@@ -2373,13 +2360,13 @@ function makeSubjectPage(subjectEn) {
     </div>
     <h2 style="color:#0F2044;font-size:19px;border-bottom:3px solid #F59E0B;padding-bottom:8px;margin-top:32px">💡 ${ko} 공부 핵심 꿀팁</h2>
     <div style="background:#FFFBEB;border-radius:14px;padding:18px;border-left:5px solid #F59E0B;margin-bottom:20px"><p class="u20">${tip}</p></div>
-    <h2 style="color:#0F2044;font-size:19px;border-bottom:3px solid ${color};padding-bottom:8px;margin-top:32px">📍 전국 ${ko} 과외 지역 안내</h2>
-    <p style="font-size:14px;color:#374151;line-height:1.9;margin-bottom:20px">서울·경기·인천·부산·대구·광주·대전·울산·세종·강원·충북·충남·전북·전남·경북·경남·제주 전국 모든 지역에서 ${ko} 과외가 가능합니다. 지역 내 선생님을 우선 배정하며, 학교 내신 기출을 잘 아는 선생님 위주로 추천해드립니다. 온라인 과외도 전국 어디서나 지원합니다.</p>
-    <h2 style="color:#0F2044;font-size:19px;border-bottom:3px solid ${color};padding-bottom:8px;margin-top:32px">📚 다른 과목 과외도 함께</h2>
+    <h2 style="color:#0F2044;font-size:19px;border-bottom:3px solid ${color};padding-bottom:8px;margin-top:32px">📍 전국 ${ko} 카드단말기 설치 지역 안내</h2>
+    <p style="font-size:14px;color:#374151;line-height:1.9;margin-bottom:20px">서울·경기·인천·부산·대구·광주·대전·울산·세종·강원·충북·충남·전북·전남·경북·경남·제주 전국 모든 지역에서 ${ko} 카드단말기 설치가 가능합니다. 지역 내 선생님을 우선 배정하며, 학교 내신 기출을 잘 아는 선생님 위주로 추천해드립니다. 온라인 카드단말기 설치도 전국 어디서나 지원합니다.</p>
+    <h2 style="color:#0F2044;font-size:19px;border-bottom:3px solid ${color};padding-bottom:8px;margin-top:32px">📚 다른 과목 카드단말기 설치도 함께</h2>
     <div class="subj-grid">${otherLinks}</div>
-    <div class="keyword-box"><div class="keyword-title">🔍 관련 검색어</div><div class="keyword-tags"><span class="keyword-tag">${ko} 과외</span><span class="keyword-tag">${ko} 공부법</span><span class="keyword-tag">${ko} 내신</span><span class="keyword-tag">${ko} 수능</span><span class="keyword-tag">${ko} 1:1과외</span><span class="keyword-tag">${ko} 방문과외</span></div></div>
+    <div class="keyword-box"><div class="keyword-title">🔍 관련 검색어</div><div class="keyword-tags"><span class="keyword-tag">${ko} 카드단말기 설치</span><span class="keyword-tag">${ko} 공부법</span><span class="keyword-tag">${ko} 내신</span><span class="keyword-tag">${ko} 수능</span><span class="keyword-tag">${ko} 1:1카드단말기 설치</span><span class="keyword-tag">${ko} 방문카드단말기 설치</span></div></div>
   </div>
-  <div class="cta-box"><h3>${ko} 과외 무료 상담</h3><p>검증된 ${ko} 전문 선생님을 빠르게 매칭해드립니다</p><div class="cta-btns"><a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a><a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a></div></div>
+  <div class="cta-box"><h3>${ko} 카드단말기 설치 무료 상담</h3><p>검증된 ${ko} 전문 선생님을 빠르게 매칭해드립니다</p><div class="cta-btns"><a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a><a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a></div></div>
 </div>`;
   return wrap(title, desc, canonical, body, bc);
 }
@@ -2446,22 +2433,22 @@ function makeGradePage(gradeType, gradeNum) {
   const fCards=methods.map(m=>`<div style="background:white;border:1.5px solid ${m.c}30;border-radius:14px;padding:20px;margin-bottom:12px;border-left:5px solid ${m.c}"><div style="font-size:14px;font-weight:900;color:${m.c};margin-bottom:7px">✦ ${m.t}</div><p class="u31">${m.d}</p></div>`).join('');
   const planRows=mp.map((r,i)=>`<tr style="background:${i%2===0?'white':'#F9FAFB'}"><td style="padding:9px 12px;font-weight:700;color:#374151">${r.p}</td><td style="padding:9px 12px;color:#4B5563">${r.m}</td><td style="padding:9px 12px;color:#4B5563">${r.e}</td><td style="padding:9px 12px;color:${color};font-weight:700">${r.g}</td></tr>`).join('');
   const faqs=[
-    {q:`${label} 과외 선생님은 어떻게 찾나요?`,a:`상담 후 24시간 내 코디네이터가 연락드립니다. ${label} 내신 기출을 잘 아는 선생님 위주로 추천해드립니다.`},
-    {q:'성적이 낮아도 시작할 수 있나요?',a:'기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 현재 수준 진단 후 맞춤 선생님을 배정합니다.'},
+    {q:`${label} 설치 전문가은 어떻게 찾나요?`,a:`상담 후 24시간 내 코디네이터가 연락드립니다. ${label} 내신 기출을 잘 아는 선생님 위주로 추천해드립니다.`},
+    {q:'성적이 낮아도 시작할 수 있나요?',a:'기초부터 차근차근 다져야 할 학생일수록 전문 설치가 효과적입니다. 현재 수준 진단 후 맞춤 선생님을 배정합니다.'},
     {q:'몇 개월이면 효과가 나타나나요?',a:'보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 시험 전 단기 집중(4~8주)도 운영합니다.'},
   ];
   const faqH=faqs.map(f=>`<div style="background:#F9FAFB;border-radius:10px;padding:16px;margin-bottom:10px"><div class="u28">Q. ${f.q}</div><div style="font-size:13px;color:#4B5563;line-height:1.75">${f.a}</div></div>`).join('');
 
   const canonical=`/grade/${gradeType}/${gradeNum}`;
-  const title=`${label} 공부방법 | ${label} 학습 전략 & 과외 가이드 - 올페이스토어`;
-  const desc=`${label} 공부법, 내신관리, 수능 준비 전략. 검증된 1:1 방문 과외. 무료 상담 010-9876-8282`;
-  const bc=[{name:'홈',url:'/'},{name:'학년별 과외',url:'/grade'},{name:label,url:canonical}];
+  const title=`${label} 공부방법 | ${label} 학습 전략 & 카드단말기 설치 가이드 - 올페이스토어`;
+  const desc=`${label} 공부법, 내신관리, 수능 준비 전략. 검증된 1:1 방문 설치. 무료 상담 010-9876-8282`;
+  const bc=[{name:'홈',url:'/'},{name:'제품별 설치',url:'/grade'},{name:label,url:canonical}];
   const body=`<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/grade">학년별 과외</a> › <span>${label}</span></div>
+  <div class="bc"><a href="/">홈</a> › <a href="/grade">제품별 설치</a> › <span>${label}</span></div>
   <div style="background:linear-gradient(135deg,${color},${color}CC);border-radius:18px;padding:36px 40px;margin-bottom:32px;color:white">
     <div style="font-size:36px;margin-bottom:10px">${emoji}</div>
     <h1 style="font-size:28px;font-weight:900;margin:0 0 10px;line-height:1.3">${label} 완벽 가이드</h1>
-    <p style="font-size:14px;opacity:.9;margin:0;line-height:1.7">${label} 학습 전략, 공부법, 내신관리, 과외 안내</p>
+    <p style="font-size:14px;opacity:.9;margin:0;line-height:1.7">${label} 학습 전략, 공부법, 내신관리, 설치 안내</p>
   </div>
   <div class="art-body">
     <div style="background:${lightColor};border-radius:14px;padding:22px;margin-bottom:28px;border-left:5px solid ${color}">
@@ -2483,16 +2470,16 @@ function makeGradePage(gradeType, gradeNum) {
     <div style="background:${lightColor};border-radius:12px;padding:18px;margin-bottom:20px">${['D-28|시험 범위 확인 + 계획표 작성','D-21|교과서 정독 + 핵심 노트 정리','D-14|기출 풀기 + 오답 분석','D-7|예상 문제 + 서술형 연습','D-1|오답 복습 + 핵심 확인'].map(r=>{const[d,t]=r.split('|');return`<div style="background:white;border-radius:8px;padding:9px 12px;display:flex;gap:10px;align-items:center;margin-bottom:6px"><span style="font-weight:900;color:${color};font-size:13px;min-width:42px">${d}</span><span style="font-size:12px;color:#374151">${t}</span></div>`;}).join('')}</div>
     <h2 style="color:#0F2044;font-size:19px;border-bottom:3px solid #6B7280;padding-bottom:8px;margin-top:32px">❓ 자주 묻는 질문</h2>
     ${faqH}
-    <p style="font-size:14px;color:#374151;line-height:1.9;margin:16px 0">서울·경기·인천·부산·대구·광주·대전·울산·세종·강원·충북·충남·전북·전남·경북·경남·제주 전국 모든 지역에서 ${label} 과외가 가능합니다. 온라인 과외도 지원합니다.</p>
-    <div class="keyword-box"><div class="keyword-title">🔍 관련 검색어</div><div class="keyword-tags"><span class="keyword-tag">${label} 공부법</span><span class="keyword-tag">${label} 과외</span><span class="keyword-tag">${label} 수학</span><span class="keyword-tag">${label} 영어</span><span class="keyword-tag">${label} 내신</span><span class="keyword-tag">${label} 1:1과외</span></div></div>
+    <p style="font-size:14px;color:#374151;line-height:1.9;margin:16px 0">서울·경기·인천·부산·대구·광주·대전·울산·세종·강원·충북·충남·전북·전남·경북·경남·제주 전국 모든 지역에서 ${label} 카드단말기 설치가 가능합니다. 온라인 카드단말기 설치도 지원합니다.</p>
+    <div class="keyword-box"><div class="keyword-title">🔍 관련 검색어</div><div class="keyword-tags"><span class="keyword-tag">${label} 공부법</span><span class="keyword-tag">${label} 카드단말기 설치</span><span class="keyword-tag">${label} 수학</span><span class="keyword-tag">${label} 영어</span><span class="keyword-tag">${label} 내신</span><span class="keyword-tag">${label} 1:1카드단말기 설치</span></div></div>
   </div>
-  <div class="cta-box"><h3>${label} 맞춤 과외 무료 상담</h3><p>${label} 전문 선생님을 빠르게 매칭해드립니다</p><div class="cta-btns"><a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a><a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a></div></div>
+  <div class="cta-box"><h3>${label} 맞춤 카드단말기 설치 무료 상담</h3><p>${label} 전문 선생님을 빠르게 매칭해드립니다</p><div class="cta-btns"><a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a><a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a></div></div>
 </div>`;
   return wrap(title, desc, canonical, body, bc);
 }
 
 
-// ── 학교별 과외 인덱스 페이지들 ─────────────────────────────────────────────
+// ── 지역별 설치 인덱스 페이지들 ─────────────────────────────────────────────
 
 const SIDO_KR_MAP = {
   'seoul':'서울특별시','gyeonggi':'경기도','incheon':'인천광역시','busan':'부산광역시',
@@ -2505,18 +2492,18 @@ function makeSchoolIndexPage() {
   const sidoList = Object.entries(SIDO_KR_MAP).map(([en,kr])=>
     `<a class="mega-btn" style="display:inline-block;padding:12px 20px;background:white;border:1.5px solid var(--border);border-radius:10px;font-size:15px;font-weight:700;color:var(--text-dark);text-decoration:none;margin:6px;transition:all .2s" href="/school/${en}">${kr}</a>`
   ).join('');
-  const title = '학교별 과외 | 전국 초등·중등·고등 학교별 1:1 맞춤 과외 - 올페이스토어';
-  const desc = '전국 12,000개 학교별 맞춤 1:1 과외. 학교 기출 완벽 분석. 수학·영어·국어·과학 내신 대비. 무료 상담 010-9876-8282';
+  const title = '지역별 설치 | 전국 초등·중등·고등 학교별 1:1 맞춤 카드단말기 설치 - 올페이스토어';
+  const desc = '전국 12,000개 학교별 맞춤 전문 설치. 학교 기출 완벽 분석. 수학·영어·국어·과학 내신 대비. 무료 상담 010-9876-8282';
   const body = `<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <span>학교별 과외</span></div>
-  <h1 class="art-title">🏫 학교별 과외 | 전국 초등·중등·고등 1:1 맞춤 과외</h1>
+  <div class="bc"><a href="/">홈</a> › <span>지역별 설치</span></div>
+  <h1 class="art-title">🏫 지역별 설치 | 전국 초등·중등·고등 1:1 맞춤 카드단말기 설치</h1>
   <div class="art-body">
-    <p>올페이스토어는 전국 12,000개 이상의 초등·중등·고등학교 재학생을 위한 학교별 맞춤 1:1 과외를 연결합니다. 학교 기출 문제를 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
-    <h2>시도별 학교 과외 찾기</h2>
+    <p>올페이스토어는 전국 12,000개 이상의 초등·중등·고등학교 재학생을 위한 학교별 맞춤 전문 설치를 연결합니다. 학교 기출 문제를 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
+    <h2>시도별 학교 카드단말기 찾기</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin:20px 0">${sidoList}</div>
   </div>
 </div>`;
-  return wrap(title, desc, '/school', body, [{name:'홈',url:'/'},{name:'학교별 과외',url:'/school'}]);
+  return wrap(title, desc, '/school', body, [{name:'홈',url:'/'},{name:'지역별 설치',url:'/school'}]);
 }
 
 function makeSchoolSidoPage(sidoEn) {
@@ -2531,26 +2518,26 @@ function makeSchoolSidoPage(sidoEn) {
     return `<a class="subj-link" href="/school/${sidoEn}/${gr}"><span>🏫 ${gugun} (${schoolCnt}개)</span><span>→</span></a>`;
   }).join('');
 
-  const title = `${sidoKr} 학교별 과외 | ${sidoKr} 초등·중등·고등 학교 1:1 과외 - 올페이스토어`;
-  const desc = `${sidoKr} 학교별 맞춤 1:1 과외. 학교 기출 완벽 분석. 무료 상담 010-9876-8282`;
+  const title = `${sidoKr} 지역별 설치 | ${sidoKr} 초등·중등·고등 학교 전문 설치 - 올페이스토어`;
+  const desc = `${sidoKr} 학교별 맞춤 전문 설치. 학교 기출 완벽 분석. 무료 상담 010-9876-8282`;
   const body = `<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/school">학교별 과외</a> › <span>${sidoKr}</span></div>
-  <h1 class="art-title">🏫 ${sidoKr} 학교별 과외</h1>
+  <div class="bc"><a href="/">홈</a> › <a href="/school">지역별 설치</a> › <span>${sidoKr}</span></div>
+  <h1 class="art-title">🏫 ${sidoKr} 지역별 설치</h1>
   <div class="art-body">
-    <p>${sidoKr} 지역 초등·중등·고등학교 재학생을 위한 학교별 맞춤 1:1 과외를 연결합니다. 해당 학교 기출을 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
-    <h2>${sidoKr} 구군별 학교 과외</h2>
+    <p>${sidoKr} 지역 초등·중등·고등학교 재학생을 위한 학교별 맞춤 전문 설치를 연결합니다. 해당 학교 기출을 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
+    <h2>${sidoKr} 구군별 학교 카드단말기 설치</h2>
     <div class="subj-grid">${gugunLinks}</div>
   </div>
   <div class="cta-box">
-    <h3>${sidoKr} 학교 과외 무료 상담</h3>
+    <h3>${sidoKr} 학교 카드단말기 설치 무료 상담</h3>
     <p>24시간 내 전문 코디네이터가 연락드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a>
     </div>
   </div>
 </div>`;
-  return wrap(title, desc, `/school/${sidoEn}`, body, [{name:'홈',url:'/'},{name:'학교별 과외',url:'/school'},{name:sidoKr,url:`/school/${sidoEn}`}]);
+  return wrap(title, desc, `/school/${sidoEn}`, body, [{name:'홈',url:'/'},{name:'지역별 설치',url:'/school'},{name:sidoKr,url:`/school/${sidoEn}`}]);
 }
 
 function makeSchoolGugunPage(sidoEn, gugunRoman) {
@@ -2586,25 +2573,25 @@ function makeSchoolGugunPage(sidoEn, gugunRoman) {
     schoolBlocks += `<h3>${label} (${names.length}개)</h3><div class="subj-grid">${links}</div>`;
   }
 
-  const title = `${gugunKr} 학교별 과외 | ${gugunKr} 초등·중등·고등 학교 1:1 과외 - 올페이스토어`;
-  const desc = `${gugunKr} 학교별 맞춤 1:1 과외. 학교 기출 완벽 분석. 무료 상담 010-9876-8282`;
+  const title = `${gugunKr} 지역별 설치 | ${gugunKr} 초등·중등·고등 학교 전문 설치 - 올페이스토어`;
+  const desc = `${gugunKr} 학교별 맞춤 전문 설치. 학교 기출 완벽 분석. 무료 상담 010-9876-8282`;
   const body = `<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/school">학교별 과외</a> › <a href="/school/${sidoEn}">${sidoKr}</a> › <span>${gugunKr}</span></div>
-  <h1 class="art-title">🏫 ${gugunKr} 학교별 과외</h1>
+  <div class="bc"><a href="/">홈</a> › <a href="/school">지역별 설치</a> › <a href="/school/${sidoEn}">${sidoKr}</a> › <span>${gugunKr}</span></div>
+  <h1 class="art-title">🏫 ${gugunKr} 지역별 설치</h1>
   <div class="art-body">
-    <p>${gugunKr} 지역 초등·중등·고등학교 재학생을 위한 학교별 맞춤 1:1 과외를 연결합니다. 해당 학교 기출을 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
+    <p>${gugunKr} 지역 초등·중등·고등학교 재학생을 위한 학교별 맞춤 전문 설치를 연결합니다. 해당 학교 기출을 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
     ${schoolBlocks}
   </div>
   <div class="cta-box">
-    <h3>${gugunKr} 학교 과외 무료 상담</h3>
+    <h3>${gugunKr} 학교 카드단말기 설치 무료 상담</h3>
     <p>24시간 내 전문 코디네이터가 연락드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a>
     </div>
   </div>
 </div>`;
-  return wrap(title, desc, `/school/${sidoEn}/${gugunRoman}`, body, [{name:'홈',url:'/'},{name:'학교별 과외',url:'/school'},{name:sidoKr,url:`/school/${sidoEn}`},{name:gugunKr,url:`/school/${sidoEn}/${gugunRoman}`}]);
+  return wrap(title, desc, `/school/${sidoEn}/${gugunRoman}`, body, [{name:'홈',url:'/'},{name:'지역별 설치',url:'/school'},{name:sidoKr,url:`/school/${sidoEn}`},{name:gugunKr,url:`/school/${sidoEn}/${gugunRoman}`}]);
 }
 
 function makeSchoolMainPage(sidoEn, gugunRoman, schoolRoman, gradeCode) {
@@ -2622,7 +2609,7 @@ function makeSchoolMainPage(sidoEn, gugunRoman, schoolRoman, gradeCode) {
 
   const regionDesc = gugunKr.includes('구')
     ? `${gugunKr}은 ${sidoKr}에서 교육열이 높은 지역으로, ${name} 학부모님들의 내신 관리 관심이 높습니다.`
-    : `${gugunKr}은 ${sidoKr} 지역으로, ${name} 학생들의 과외 수요가 꾸준합니다.`;
+    : `${gugunKr}은 ${sidoKr} 지역으로, ${name} 학생들의 카드단말기 설치 수요가 꾸준합니다.`;
 
   const thumbImgs = {
     E:['https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80','https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=900&q=80','https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=900&q=80'],
@@ -2634,18 +2621,18 @@ function makeSchoolMainPage(sidoEn, gugunRoman, schoolRoman, gradeCode) {
 
   const SUBJECTS_LIST=[{en:'math',ko:'수학',emoji:'📐'},{en:'english',ko:'영어',emoji:'📖'},{en:'korean',ko:'국어',emoji:'✍️'},{en:'science',ko:'과학',emoji:'🔬'},{en:'social',ko:'사회',emoji:'🌏'},{en:'coding',ko:'코딩',emoji:'💻'},{en:'essay',ko:'논술',emoji:'📝'},{en:'gsd',ko:'검정고시',emoji:'📋'}];
   const subjLinks = SUBJECTS_LIST.map(s=>
-    `<a class="subj-link" href="/school/${sidoEn}/${gugunRoman}/${schoolRoman}/${s.en}"><span>${s.emoji} ${name} ${s.ko}과외</span><span>→</span></a>`
+    `<a class="subj-link" href="/school/${sidoEn}/${gugunRoman}/${schoolRoman}/${s.en}"><span>${s.emoji} ${name} ${s.ko}카드단말기 설치</span><span>→</span></a>`
   ).join('');
 
   const canonical = `/school/${sidoEn}/${gugunRoman}/${schoolRoman}`;
-  const title = `${name} 과외 | ${gugunKr} ${name} 맞춤 1:1 과외 - 올페이스토어`;
-  const desc = `${name} 과외 전문. ${gradeLabel} 수학·영어·국어·과학 1:1 방문 과외. ${name} 기출 분석. 무료 상담 010-9876-8282`;
-  const bc = [{name:'홈',url:'/'},{name:'학교별 과외',url:'/school'},{name:`${name} 과외`,url:canonical}];
+  const title = `${name} 카드단말기 설치 | ${gugunKr} ${name} 맞춤 전문 설치 - 올페이스토어`;
+  const desc = `${name} 설치 전문. ${gradeLabel} 수학·영어·국어·과학 1:1 방문 설치. ${name} 기출 분석. 무료 상담 010-9876-8282`;
+  const bc = [{name:'홈',url:'/'},{name:'지역별 설치',url:'/school'},{name:`${name} 카드단말기 설치`,url:canonical}];
 
   const body = `<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/school">학교별 과외</a> › <span>${name} 과외</span></div>
+  <div class="bc"><a href="/">홈</a> › <a href="/school">지역별 설치</a> › <span>${name} 카드단말기 설치</span></div>
   <div class="art-tag">🏫 ${sidoKr} · ${gugunKr} · ${gradeLabel}</div>
-  <h1 class="art-title">${name} 과외 | ${gugunKr} ${name} 맞춤 1:1 과외 안내</h1>
+  <h1 class="art-title">${name} 카드단말기 설치 | ${gugunKr} ${name} 맞춤 전문 설치 안내</h1>
   <div class="art-meta"><span>✏️ 올페이스토어 편집팀</span><span>📅 ${today()}</span></div>
   <div class="info-box">
     <div class="info-item"><div class="info-num">${nums[0]}명</div><div class="info-label">등록 선생님</div></div>
@@ -2653,17 +2640,17 @@ function makeSchoolMainPage(sidoEn, gugunRoman, schoolRoman, gradeCode) {
     <div class="info-item"><div class="info-num">무료</div><div class="info-label">상담</div></div>
   </div>
   <div class="u8">
-    <img src="${thumbImg}" alt="${name} 과외" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
+    <img src="${thumbImg}" alt="${name} 카드단말기 설치" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
     <div class="u11">
-      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${sidoKr} · ${gugunKr}</div><div style="font-size:28px;font-weight:900">${name} 과외</div></div>
+      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${sidoKr} · ${gugunKr}</div><div style="font-size:28px;font-weight:900">${name} 카드단말기 설치</div></div>
     </div>
   </div>
   <div class="art-body">
-    <h2>${name} 과외 안내</h2>
-    <p>${name}은 ${sidoKr} ${gugunKr} 소재 ${gradeLabel}학교입니다. 학교별 시험 출제 경향이 뚜렷해 내신 전문 과외의 효과가 큽니다.</p>
+    <h2>${name} 설치 안내</h2>
+    <p>${name}은 ${sidoKr} ${gugunKr} 소재 ${gradeLabel}학교입니다. 학교별 시험 출제 경향이 뚜렷해 내신 전문 카드단말기 설치의 효과가 큽니다.</p>
     <p>${regionDesc}</p>
-    <p>올페이스토어는 <strong>${name}</strong> 재학생을 위한 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 과외를 연결합니다. ${name} 시험 출제 경향을 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
-    <h2>${name} 과외 특징</h2>
+    <p>올페이스토어는 <strong>${name}</strong> 재학생을 위한 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 설치를 연결합니다. ${name} 시험 출제 경향을 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다.</p>
+    <h2>${name} 카드단말기 설치 특징</h2>
     <p><strong>① ${name} 기출 완벽 분석</strong> — ${name} 시험 출제 경향·유형·빈도를 철저히 분석해 내신 최적화 수업을 진행합니다. 시험 직전 4주 집중 대비 프로그램을 별도로 운영합니다.</p>
     <p><strong>② 검증된 선생님 1:1 매칭</strong> — 학력·경력·수업 시연 3단계 검증을 통과한 선생님만 배정합니다. ${name} 출신 또는 해당 학교 수업 경험이 있는 선생님을 우선 추천합니다.</p>
     <p><strong>③ 주간 학습 보고서 제공</strong> — 매 수업 후 학습 내용·성취도를 정리해 학부모님께 공유합니다. 투명한 학습 관리로 성적 변화를 직접 확인할 수 있습니다.</p>
@@ -2675,32 +2662,32 @@ function makeSchoolMainPage(sidoEn, gugunRoman, schoolRoman, gradeCode) {
     <h2>${name} ${gradeLabel} 커리큘럼</h2>
     <p>${gradeCode==='E' ? `${name} 초등 커리큘럼은 교과서 기반 기초 완성부터 수행평가 대비까지 체계적으로 진행합니다. 각 단원 완전학습 후 다음 단원으로 넘어가는 방식으로 누적 학습 효과를 높입니다.` : gradeCode==='M' ? `${name} 중등 커리큘럼은 기초 개념 완성 → 기출 유형 분석 → 실전 문제 풀이 → 오답 보완 4단계로 진행합니다. 중간·기말고사 4주 전부터 시험 집중 모드로 전환합니다.` : `${name} 고등 커리큘럼은 내신 기출 분석 → 취약 단원 집중 보완 → 수능 연계 학습 순으로 진행합니다. 내신 1등급과 수능 고득점을 동시에 목표로 합니다.`}</p>
     <h2>자주 묻는 질문</h2>
-    <p><strong>Q. ${name} 과외 선생님 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${name} 기출을 잘 아는 선생님 위주로 추천해드리며, 빠르면 당일 매칭도 가능합니다.</p>
-    <p><strong>Q. 성적이 낮아도 과외를 받을 수 있나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
+    <p><strong>Q. ${name} 설치 전문가 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${name} 기출을 잘 아는 선생님 위주로 추천해드리며, 빠르면 당일 매칭도 가능합니다.</p>
+    <p><strong>Q. 성적이 낮아도 카드단말기 설치를 받을 수 있나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 전문 설치가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
     <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력에 따라 다르며, 무료 상담 후 예산에 맞는 선생님을 투명하게 안내해드립니다. 첫 체험 수업은 무료입니다.</p>
-    <p><strong>Q. 학원과 과외를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. ${name} 진도에 맞춰 유연하게 운영합니다.</p>
-    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 시험 대비 단기 집중 과외(4~8주)도 운영합니다.</p>
+    <p><strong>Q. 학원과 카드단말기 설치를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. ${name} 진도에 맞춰 유연하게 운영합니다.</p>
+    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 시험 대비 단기 집중 카드단말기 설치(4~8주)도 운영합니다.</p>
     <h2>${name} 학년별 학습 전략</h2>
     <p>${gradeCode==='E' ? `초등 시기는 모든 학습의 기초가 완성되는 중요한 시기입니다. ${name} 재학생들의 수학·영어·국어 기초 개념을 탄탄히 다지고 중학교 진학을 준비합니다. 단순 암기가 아닌 원리 이해 중심 학습으로 자기주도 학습 능력을 키워드립니다.` : gradeCode==='M' ? `중학교는 초등과 고등의 연결 고리입니다. ${name} 내신 성적이 고등학교 진학에 직접 영향을 미치므로 지금부터 체계적인 관리가 필요합니다. 내신 집중 관리와 함께 고등 과정 선행도 병행합니다.` : `고등학교는 내신 등급이 대입에 결정적인 역할을 합니다. ${name} 내신 1등급을 목표로 집중 관리하며, 수능 대비를 동시에 진행합니다. 시험 4주 전부터 집중 대비 모드로 전환합니다.`}</p>
     <h2>자주 묻는 질문</h2>
-    <p><strong>Q. ${name} 과외 선생님 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${name} 기출을 잘 아는 선생님 위주로 추천해드리며, 빠르면 당일 매칭도 가능합니다.</p>
-    <p><strong>Q. 성적이 낮아도 과외를 받을 수 있나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
+    <p><strong>Q. ${name} 설치 전문가 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${name} 기출을 잘 아는 선생님 위주로 추천해드리며, 빠르면 당일 매칭도 가능합니다.</p>
+    <p><strong>Q. 성적이 낮아도 카드단말기 설치를 받을 수 있나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 전문 설치가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
     <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력에 따라 다르며, 무료 상담 후 예산에 맞는 선생님을 투명하게 안내해드립니다. 첫 체험 수업은 무료입니다.</p>
-    <p><strong>Q. 학원과 과외를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. ${name} 진도에 맞춰 유연하게 운영합니다.</p>
-    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 시험 대비 단기 집중 과외(4~8주)도 운영합니다.</p>
-    <h2>${name} 과외 선생님 찾는 방법</h2>
-    <p>올페이스토어에서 ${name} 과외 선생님을 찾는 과정은 간단합니다. 무료 상담 신청 → 코디네이터 연락 → 선생님 매칭 → 체험 수업 → 정규 수업 시작의 5단계로 진행됩니다.</p>
+    <p><strong>Q. 학원과 카드단말기 설치를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. ${name} 진도에 맞춰 유연하게 운영합니다.</p>
+    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 시험 대비 단기 집중 카드단말기 설치(4~8주)도 운영합니다.</p>
+    <h2>${name} 설치 전문가 찾는 방법</h2>
+    <p>올페이스토어에서 ${name} 설치 전문가을 찾는 과정은 간단합니다. 무료 상담 신청 → 코디네이터 연락 → 선생님 매칭 → 체험 수업 → 정규 수업 시작의 5단계로 진행됩니다.</p>
     <p>상담 시 ${name} 학생의 현재 성적, 희망 과목, 수업 횟수, 선생님 성별 선호 등을 알려주시면 더욱 정확한 매칭이 가능합니다. ${gugunKr} 지역 ${name} 내신을 잘 아는 선생님 위주로 추천해드립니다.</p>
-    <h2>과목별 과외</h2>
+    <h2>제품별 설치</h2>
     <p>아래에서 원하는 과목을 선택하세요.</p>
     <div class="subj-grid">${subjLinks}</div>
   </div>
   <div class="cta-box">
-    <h3>${name} 과외 무료 상담</h3>
+    <h3>${name} 카드단말기 설치 무료 상담</h3>
     <p>24시간 내 전문 코디네이터가 연락드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a>
     </div>
   </div>
 </div>`;
@@ -2737,19 +2724,19 @@ function makeSchoolSubjectPage(sidoEn, gugunRoman, schoolRoman, gradeCode, subje
 
   const SUBJS_LIST=[{en:'math',ko:'수학',emoji:'📐'},{en:'english',ko:'영어',emoji:'📖'},{en:'korean',ko:'국어',emoji:'✍️'},{en:'science',ko:'과학',emoji:'🔬'},{en:'social',ko:'사회',emoji:'🌏'},{en:'coding',ko:'코딩',emoji:'💻'},{en:'essay',ko:'논술',emoji:'📝'}];
   const otherSubjs=SUBJS_LIST.filter(s=>s.en!==subjectEn).map(s=>
-    `<a class="subj-link" href="/school/${sidoEn}/${gugunRoman}/${schoolRoman}/${s.en}"><span>${s.emoji} ${name} ${s.ko}과외</span><span>→</span></a>`
+    `<a class="subj-link" href="/school/${sidoEn}/${gugunRoman}/${schoolRoman}/${s.en}"><span>${s.emoji} ${name} ${s.ko}카드단말기 설치</span><span>→</span></a>`
   ).join('');
 
   const strategyMap={
-    '수학':{E:`${name} 초등 수학 과외는 연산 기초부터 분수·소수까지 단계적으로 완성합니다. ${name} 교내 수학 수행평가 대비를 병행합니다.`,M:`${name} 중등 수학 과외는 방정식·함수·확률 등 핵심 단원을 ${name} 시험 출제 경향에 맞춰 집중 학습합니다. 내신 1등급을 목표로 기출 문제를 반복 분석합니다.`,H:`${name} 고등 수학 과외는 수학Ⅰ·Ⅱ·확통·미적분 전 과정을 내신과 수능 동시 대비 방식으로 진행합니다.`},
-    '영어':{E:`${name} 초등 영어 과외는 파닉스부터 읽기·쓰기까지 단계적으로 지도합니다. ${name} 영어 수행평가를 대비합니다.`,M:`${name} 중등 영어 과외는 내신 지문 분석과 문법 심화로 ${name} 내신 1등급을 목표합니다.`,H:`${name} 고등 영어 과외는 내신 지문 분석과 수능 독해를 병행합니다.`},
-    '국어':{E:`${name} 초등 국어 과외는 독서 습관 형성과 글쓰기 기초를 다집니다.`,M:`${name} 중등 국어 과외는 문학·비문학·문법·쓰기 전 영역을 ${name} 내신 시험에 맞춰 학습합니다.`,H:`${name} 고등 국어 과외는 내신 지문 분석과 수능 국어를 동시에 준비합니다.`},
-    '과학':{E:`${name} 초등 과학 과외는 물질·생명·지구·에너지 영역을 균형 있게 학습합니다.`,M:`${name} 중등 과학 과외는 물리·화학·생물·지구과학을 ${name} 시험 비중에 맞춰 집중 학습합니다.`,H:`${name} 고등 과학 과외는 수강 과목에 맞춰 개별 설계합니다.`},
-    '사회':{E:`${name} 초등 사회 과외는 교과서 중심으로 우리 지역·역사·경제를 학습합니다.`,M:`${name} 중등 사회 과외는 역사·지리·일반사회를 ${name} 내신 시험 범위에 맞춰 체계적으로 학습합니다.`,H:`${name} 고등 사회 과외는 한국사·사회탐구 선택 과목에 맞춰 개별 설계합니다.`},
-    '코딩':{E:`${name} 초등 코딩 과외는 블록 코딩(스크래치)부터 시작해 논리적 사고력을 키웁니다.`,M:`${name} 중등 코딩 과외는 파이썬 기초→조건문·반복문→함수 순으로 진행합니다.`,H:`${name} 고등 코딩 과외는 파이썬 심화·알고리즘·자료구조 순으로 진행합니다.`},
-    '논술':{E:`${name} 초등 논술 과외는 독서 기반 글쓰기→주장과 근거→논리적 단락 구성 순으로 진행합니다.`,M:`${name} 중등 논술 과외는 개요 작성→서론·본론·결론 구조화→근거 강화 순으로 진행합니다. ${name} 수행평가 논술 대비를 집중 실시합니다.`,H:`${name} 고등 논술 과외는 대학별 논술 유형 분석→인문·수리 논술 기초→실전 첨삭 순으로 진행합니다.`},
+    '수학':{E:`${name} 초등 카드단말기 설치는 연산 기초부터 분수·소수까지 단계적으로 완성합니다. ${name} 교내 수학 수행평가 대비를 병행합니다.`,M:`${name} 중등 카드단말기 설치는 방정식·함수·확률 등 핵심 단원을 ${name} 시험 출제 경향에 맞춰 집중 학습합니다. 내신 1등급을 목표로 기출 문제를 반복 분석합니다.`,H:`${name} 고등 카드단말기 설치는 수학Ⅰ·Ⅱ·확통·미적분 전 과정을 내신과 수능 동시 대비 방식으로 진행합니다.`},
+    '영어':{E:`${name} 초등 카드단말기 설치는 파닉스부터 읽기·쓰기까지 단계적으로 지도합니다. ${name} 영어 수행평가를 대비합니다.`,M:`${name} 중등 카드단말기 설치는 내신 지문 분석과 문법 심화로 ${name} 내신 1등급을 목표합니다.`,H:`${name} 고등 카드단말기 설치는 내신 지문 분석과 수능 독해를 병행합니다.`},
+    '국어':{E:`${name} 초등 카드단말기 설치는 독서 습관 형성과 글쓰기 기초를 다집니다.`,M:`${name} 중등 카드단말기 설치는 문학·비문학·문법·쓰기 전 영역을 ${name} 내신 시험에 맞춰 학습합니다.`,H:`${name} 고등 카드단말기 설치는 내신 지문 분석과 수능 국어를 동시에 준비합니다.`},
+    '과학':{E:`${name} 초등 카드단말기 설치는 물질·생명·지구·에너지 영역을 균형 있게 학습합니다.`,M:`${name} 중등 카드단말기 설치는 물리·화학·생물·지구과학을 ${name} 시험 비중에 맞춰 집중 학습합니다.`,H:`${name} 고등 카드단말기 설치는 수강 과목에 맞춰 개별 설계합니다.`},
+    '사회':{E:`${name} 초등 사회 카드단말기 설치는 교과서 중심으로 우리 지역·역사·경제를 학습합니다.`,M:`${name} 중등 사회 카드단말기 설치는 역사·지리·일반사회를 ${name} 내신 시험 범위에 맞춰 체계적으로 학습합니다.`,H:`${name} 고등 사회 카드단말기 설치는 한국사·사회탐구 선택 과목에 맞춰 개별 설계합니다.`},
+    '코딩':{E:`${name} 초등 코딩 카드단말기 설치는 블록 코딩(스크래치)부터 시작해 논리적 사고력을 키웁니다.`,M:`${name} 중등 코딩 카드단말기 설치는 파이썬 기초→조건문·반복문→함수 순으로 진행합니다.`,H:`${name} 고등 코딩 카드단말기 설치는 파이썬 심화·알고리즘·자료구조 순으로 진행합니다.`},
+    '논술':{E:`${name} 초등 논술 카드단말기 설치는 독서 기반 글쓰기→주장과 근거→논리적 단락 구성 순으로 진행합니다.`,M:`${name} 중등 논술 카드단말기 설치는 개요 작성→서론·본론·결론 구조화→근거 강화 순으로 진행합니다. ${name} 수행평가 논술 대비를 집중 실시합니다.`,H:`${name} 고등 논술 카드단말기 설치는 대학별 논술 유형 분석→인문·수리 논술 기초→실전 첨삭 순으로 진행합니다.`},
   };
-  const strategy=strategyMap[subject]?.[gradeCode]||`${name} ${gradeLabel} ${subject} 과외는 학생 수준에 맞춘 1:1 맞춤 지도로 내신 성적을 관리합니다.`;
+  const strategy=strategyMap[subject]?.[gradeCode]||`${name} ${gradeLabel} ${subject} 카드단말기 설치는 학생 수준에 맞춘 1:1 맞춤 지도로 내신 성적을 관리합니다.`;
 
   const curriculum=gradeCode==='E'
     ?`${name} 초등 ${subject} 커리큘럼은 교과서 기반으로 시작해 단원별 심화까지 단계적으로 진행합니다. ${name} 수행평가 일정에 맞춰 집중 대비를 병행합니다. 각 단원 완전학습 후 다음 단원으로 넘어가는 방식으로 누적 학습 효과를 높입니다.`
@@ -2757,18 +2744,18 @@ function makeSchoolSubjectPage(sidoEn, gugunRoman, schoolRoman, gradeCode, subje
     ?`${name} 중등 ${subject} 커리큘럼은 기초 개념 완성 → ${name} 기출 유형 분석 → 실전 문제 풀이 → 오답 보완 4단계로 진행합니다. 중간·기말고사 4주 전부터 시험 집중 모드로 전환합니다.`
     :`${name} 고등 ${subject} 커리큘럼은 내신 기출 분석 → 취약 단원 집중 보완 → 수능 연계 학습 → 실전 모의고사 분석 순으로 진행합니다. ${name} 내신 1등급과 수능 고득점을 동시에 목표로 합니다.`;
 
-  const keywords=[`${name} ${subject}과외`,`${name} 내신 ${subject}`,`${gugunKr} ${name} 과외`,`${name} 1:1과외`,`${gradeLabel} ${subject} 과외`];
+  const keywords=[`${name} ${subject}카드단말기 설치`,`${name} 내신 ${subject}`,`${gugunKr} ${name} 카드단말기 설치`,`${name} 1:1카드단말기 설치`,`${gradeLabel} ${subject} 카드단말기 설치`];
   const keywordTags=keywords.map(k=>`<span class="keyword-tag">${k}</span>`).join('');
 
   const canonical=`/school/${sidoEn}/${gugunRoman}/${schoolRoman}/${subjectEn}`;
-  const title=`${name} ${subject}과외 | ${gugunKr} ${name} ${gradeLabel} ${subject} 맞춤 1:1 과외 - 올페이스토어`;
-  const desc=`${name} ${subject}과외 전문. ${name} 기출 분석. ${gradeLabel} 1:1 방문 과외. 무료 상담 010-9876-8282`;
-  const bc=[{name:'홈',url:'/'},{name:'학교별 과외',url:'/school'},{name:`${name} 과외`,url:`/school/${sidoEn}/${gugunRoman}/${schoolRoman}`},{name:`${subject}과외`,url:canonical}];
+  const title=`${name} ${subject}카드단말기 설치 | ${gugunKr} ${name} ${gradeLabel} ${subject} 맞춤 전문 설치 - 올페이스토어`;
+  const desc=`${name} ${subject}설치 전문. ${name} 기출 분석. ${gradeLabel} 1:1 방문 설치. 무료 상담 010-9876-8282`;
+  const bc=[{name:'홈',url:'/'},{name:'지역별 설치',url:'/school'},{name:`${name} 카드단말기 설치`,url:`/school/${sidoEn}/${gugunRoman}/${schoolRoman}`},{name:`${subject}카드단말기 설치`,url:canonical}];
 
   const body=`<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/school">학교별 과외</a> › <a href="/school/${sidoEn}/${gugunRoman}/${schoolRoman}">${name} 과외</a> › <span>${subject}과외</span></div>
+  <div class="bc"><a href="/">홈</a> › <a href="/school">지역별 설치</a> › <a href="/school/${sidoEn}/${gugunRoman}/${schoolRoman}">${name} 카드단말기 설치</a> › <span>${subject}카드단말기 설치</span></div>
   <div class="art-tag">${subj.emoji} ${gugunKr} · ${name} · ${gradeLabel} · ${subject}</div>
-  <h1 class="art-title">${name} ${subject}과외 | ${gugunKr} ${name} ${gradeLabel} ${subject} 맞춤 1:1 과외</h1>
+  <h1 class="art-title">${name} ${subject}카드단말기 설치 | ${gugunKr} ${name} ${gradeLabel} ${subject} 맞춤 전문 설치</h1>
   <div class="art-meta"><span>✏️ 올페이스토어 편집팀</span><span>📅 ${today()}</span><span>⏱ 5분</span></div>
   <div class="info-box">
     <div class="info-item"><div class="info-num">${nums[0]}명</div><div class="info-label">${subject} 선생님</div></div>
@@ -2776,16 +2763,16 @@ function makeSchoolSubjectPage(sidoEn, gugunRoman, schoolRoman, gradeCode, subje
     <div class="info-item"><div class="info-num">무료</div><div class="info-label">상담</div></div>
   </div>
   <div class="u8">
-    <img src="${thumbImg}" alt="${name} ${subject}과외" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
+    <img src="${thumbImg}" alt="${name} ${subject}카드단말기 설치" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
     <div class="u11">
-      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${sidoKr} · ${gugunKr} · ${name}</div><div style="font-size:28px;font-weight:900">${name} ${subject}과외</div></div>
+      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${sidoKr} · ${gugunKr} · ${name}</div><div style="font-size:28px;font-weight:900">${name} ${subject}카드단말기 설치</div></div>
     </div>
   </div>
   <div class="art-body">
-    <h2>${name} ${subject}과외 안내</h2>
-    <p>${name}은 ${sidoKr} ${gugunKr} 소재 ${gradeLabel}학교입니다. 올페이스토어는 ${name} 재학생을 위한 ${gradeLabel} ${subject} 전문 1:1 방문 과외를 연결합니다.</p>
+    <h2>${name} ${subject}설치 안내</h2>
+    <p>${name}은 ${sidoKr} ${gugunKr} 소재 ${gradeLabel}학교입니다. 올페이스토어는 ${name} 재학생을 위한 ${gradeLabel} ${subject} 전문 1:1 방문 설치를 연결합니다.</p>
     <p>${name} ${subject} 시험 출제 경향을 완벽히 파악한 검증된 선생님을 빠르게 매칭해드립니다. ${name} 내신 성적 향상을 최우선 목표로 맞춤 커리큘럼을 설계합니다.</p>
-    <h2>${name} ${subject}과외 선생님 특징</h2>
+    <h2>${name} ${subject}설치 전문가 특징</h2>
     <p><strong>① ${name} 기출 완벽 분석</strong> — ${name} ${subject} 시험 출제 경향·유형·빈도를 철저히 분석해 내신 최적화 수업을 진행합니다.</p>
     <p><strong>② 검증된 선생님 1:1 매칭</strong> — 학력·경력·수업 시연 3단계 검증을 통과한 선생님만 배정합니다. ${name} 수업 경험이 있는 선생님을 우선 추천합니다.</p>
     <p><strong>③ 주간 학습 보고서 제공</strong> — 매 수업 후 학습 내용·성취도를 정리해 학부모님께 공유합니다.</p>
@@ -2799,24 +2786,24 @@ function makeSchoolSubjectPage(sidoEn, gugunRoman, schoolRoman, gradeCode, subje
     <p>${curriculum}</p>
     <p>학생의 현재 수준 진단 후 개별 맞춤 설계합니다. 시험 4주 전부터 ${name} 기출 집중 풀이 모드로 전환하고, 오답 패턴을 분석해 실수를 최소화합니다.</p>
     <h2>자주 묻는 질문</h2>
-    <p><strong>Q. ${name} ${subject} 과외 선생님 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${name} 기출을 잘 아는 선생님 위주로 추천합니다. 빠르면 당일 매칭도 가능합니다.</p>
-    <p><strong>Q. ${gradeLabel} ${subject} 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
+    <p><strong>Q. ${name} ${subject} 설치 전문가 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. ${name} 기출을 잘 아는 선생님 위주로 추천합니다. 빠르면 당일 매칭도 가능합니다.</p>
+    <p><strong>Q. ${gradeLabel} ${subject} 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 전문 설치가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
     <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력에 따라 다르며, 무료 상담 후 예산에 맞는 선생님을 투명하게 안내해드립니다.</p>
-    <p><strong>Q. 학원과 과외를 병행해도 되나요?</strong><br>학원에서 부족한 ${subject} 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다.</p>
+    <p><strong>Q. 학원과 카드단말기 설치를 병행해도 되나요?</strong><br>학원에서 부족한 ${subject} 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다.</p>
     <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다.</p>
     <h2>${name} 다른 과목도 함께</h2>
     <div class="subj-grid">${otherSubjs}</div>
     <h2>${name} ${subject} 선생님 찾는 방법</h2>
-    <p>올페이스토어에서 ${name} ${subject} 과외 선생님을 찾는 과정은 간단합니다. 무료 상담 신청 → 코디네이터 연락 → 선생님 매칭 → 체험 수업 → 정규 수업 시작의 5단계로 진행됩니다.</p>
+    <p>올페이스토어에서 ${name} ${subject} 설치 전문가을 찾는 과정은 간단합니다. 무료 상담 신청 → 코디네이터 연락 → 선생님 매칭 → 체험 수업 → 정규 수업 시작의 5단계로 진행됩니다.</p>
     <p>상담 시 ${name} 학생의 현재 성적, 목표 성적, 희망 수업 횟수, 선생님 성별 선호 등을 알려주시면 더욱 정확한 매칭이 가능합니다. ${gugunKr} 지역 ${name} 내신을 잘 아는 선생님 위주로 추천해드립니다.</p>
     <div class="keyword-box"><div class="keyword-title">🔍 관련 검색어</div><div class="keyword-tags">${keywordTags}</div></div>
   </div>
   <div class="cta-box">
-    <h3>${name} ${subject}과외 무료 상담</h3>
+    <h3>${name} ${subject}카드단말기 설치 무료 상담</h3>
     <p>24시간 내 전문 코디네이터가 연락드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a>
     </div>
   </div>
 </div>`;
@@ -2831,25 +2818,25 @@ function makeSidoPage(rk) {
     const en = DISTRICT_EN[dist]||dist;
     return `<a href="/${SIDO_EN[rk]||rk}/${en}" style="display:inline-block;padding:10px 18px;background:white;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-weight:700;color:var(--text-dark);text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='#3B82F6';this.style.color='#3B82F6'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-dark)'">${dist}</a>`;
   }).join('');
-  const title = `${r.label} 과외 | ${r.label} 지역별 맞춤 1:1 과외 - 올페이스토어`;
-  const desc = `${r.label} 과외 전문. ${r.label} 전 지역 검증된 선생님. 수학, 영어, 국어, 과학 내신·수능 완벽 대비. 무료 상담 010-9876-8282`;
+  const title = `${r.label} 카드단말기 설치 | ${r.label} 지역별 맞춤 전문 설치 - 올페이스토어`;
+  const desc = `${r.label} 설치 전문. ${r.label} 전 지역 검증된 선생님. 수학, 영어, 국어, 과학 내신·수능 완벽 대비. 무료 상담 010-9876-8282`;
   const heroImg = rk==='서울' ? 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=900&q=80' : 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80';
   const body = `<div class="wrap">
   <div class="bc"><a href="/">홈</a> › <span>${r.label}</span></div>
   <div class="art-tag">${r.emoji} ${r.label}</div>
-  <h1 class="art-title">${r.label} 과외 | 지역별 맞춤 1:1 과외 안내</h1>
+  <h1 class="art-title">${r.label} 카드단말기 설치 | 지역별 맞춤 전문 설치 안내</h1>
   <div class="art-meta"><span>✏️ 올페이스토어 편집팀</span><span>📅 ${today()}</span></div>
   <div class="u8">
-    <img src="${heroImg}" alt="${r.label} 과외" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
+    <img src="${heroImg}" alt="${r.label} 카드단말기 설치" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
     <div class="u23">
-      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${r.label} 전 지역</div><div style="font-size:28px;font-weight:900">${r.label} 과외</div></div>
+      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${r.label} 전 지역</div><div style="font-size:28px;font-weight:900">${r.label} 카드단말기 설치</div></div>
     </div>
   </div>
   <div class="art-body">
-    <h2>${r.label} 과외 안내</h2>
-    <p>올페이스토어는 <strong>${r.label}</strong> 전 지역 초등·중등·고등 전 학년, 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 과외를 연결합니다. 학생의 수준과 목표에 맞는 검증된 선생님을 빠르게 매칭해드립니다.</p>
+    <h2>${r.label} 설치 안내</h2>
+    <p>올페이스토어는 <strong>${r.label}</strong> 전 지역 초등·중등·고등 전 학년, 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 설치를 연결합니다. 학생의 수준과 목표에 맞는 검증된 선생님을 빠르게 매칭해드립니다.</p>
     <p>${r.label} 지역 학부모님들이 올페이스토어를 선택하는 이유는 명확합니다. 학력·경력·수업 시연 3단계 검증을 통과한 선생님만 배정하고, 매 수업 후 주간 학습 보고서를 제공해 학습 현황을 투명하게 공유합니다. 학생과 선생님이 맞지 않으면 언제든 무료 교체가 가능합니다.</p>
-    <h2>${r.label} 과외 특징</h2>
+    <h2>${r.label} 카드단말기 설치 특징</h2>
     <p><strong>① 지역 학교 기출 완벽 분석</strong> — ${r.label} 각 학교 시험 출제 경향을 철저히 분석해 내신 최적화 수업을 진행합니다. 단원별 출제 빈도와 유형을 파악해 시험 직전 집중 대비가 가능합니다.</p>
     <p><strong>② 검증된 선생님 1:1 매칭</strong> — 학력·경력·수업 시연 3단계 검증을 통과한 선생님만 배정합니다. 학생과 맞지 않으면 언제든 부담 없이 교체 가능합니다.</p>
     <p><strong>③ 주간 학습 보고서 제공</strong> — 매 수업 후 학습 내용·성취도를 정리해 학부모님께 공유합니다. 투명한 학습 관리로 성적 변화를 직접 확인할 수 있습니다.</p>
@@ -2863,17 +2850,17 @@ function makeSidoPage(rk) {
     <p><strong>중등</strong> — 초등과 고등의 연결 고리입니다. 내신 성적이 고등학교 진학에 직접 영향을 미치므로 지금부터 체계적인 관리가 필요합니다. 내신 집중 관리와 함께 고등 과정 선행도 병행합니다.</p>
     <p><strong>고등</strong> — 내신 등급이 대입에 결정적인 역할을 합니다. ${r.label} 각 학교 내신 1등급을 목표로 집중 관리하며, 수능 대비를 동시에 진행합니다. 시험 4주 전부터 집중 대비 모드로 전환합니다.</p>
     <h2>자주 묻는 질문</h2>
-    <p><strong>Q. ${r.label}에서 과외 선생님 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. 빠르면 당일 매칭도 가능합니다.</p>
-    <p><strong>Q. 학원과 과외를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. 학원 진도에 맞춰 선행·복습을 병행하는 커리큘럼으로 운영합니다.</p>
+    <p><strong>Q. ${r.label}에서 설치 전문가 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드립니다. 빠르면 당일 매칭도 가능합니다.</p>
+    <p><strong>Q. 학원과 카드단말기 설치를 병행해도 되나요?</strong><br>학원에서 부족한 부분을 1:1로 집중 보완하는 방식으로 병행하는 학생이 많습니다. 학원 진도에 맞춰 선행·복습을 병행하는 커리큘럼으로 운영합니다.</p>
     <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력에 따라 다르며, 무료 상담 후 예산에 맞는 선생님을 투명하게 안내해드립니다. 첫 체험 수업은 무료입니다.</p>
-    <p><strong>Q. 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
-    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 과외(시험 대비 4~8주)도 운영합니다.</p>
+    <p><strong>Q. 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 전문 설치가 효과적입니다. 수준에 맞는 선생님을 배정해드립니다.</p>
+    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 카드단말기 설치(시험 대비 4~8주)도 운영합니다.</p>
     <h2>지역별 카드단말기 설치 바로가기</h2>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin:20px 0">${distCards}</div>
   </div>
   <div style="background:linear-gradient(135deg,#0F2044,#1E3A6E);border-radius:20px;padding:40px 48px;margin:48px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
     <div>
-      <div style="font-size:22px;font-weight:900;color:white;margin-bottom:6px">${r.label} 맞춤 과외 신청</div>
+      <div style="font-size:22px;font-weight:900;color:white;margin-bottom:6px">${r.label} 맞춤 카드단말기 설치 신청</div>
       <div style="font-size:14px;color:rgba(255,255,255,.6)">무료 상담을 신청하시면 전문 코디네이터가 연결해드립니다</div>
     </div>
     <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
@@ -2883,7 +2870,7 @@ function makeSidoPage(rk) {
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <a href="tel:01097868282" style="background:#3B82F6;color:white;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap">📞 전화 상담</a>
-        <a href="/contact?type=tutoring" style="background:rgba(255,255,255,.1);color:white;border:1.5px solid rgba(255,255,255,.25);padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;text-align:center">✉️ 과외 상담하기</a>
+        <a href="/contact?type=tutoring" style="background:rgba(255,255,255,.1);color:white;border:1.5px solid rgba(255,255,255,.25);padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;text-align:center">✉️ 설치 상담하기</a>
       </div>
     </div>
   </div>
@@ -2916,12 +2903,12 @@ function makeAreaPage(rk, ak) {
         const en = DISTRICT_EN[ak]||ak;
         const url = `/${SIDO_EN[rk]||rk}/${en}/${toRoman(dname)}`;
         return `<a href="${url}" class="dong-card">
-  <img class="dong-card-img" src="${dinfo.img}" alt="${dname} 과외" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
+  <img class="dong-card-img" src="${dinfo.img}" alt="${dname} 카드단말기 설치" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
   <div class="dong-card-body">
     <div class="dong-card-tag">${ak} · ${dname}</div>
-    <div class="dong-card-title">${dname} 과외</div>
+    <div class="dong-card-title">${dname} 카드단말기 설치</div>
     <div class="dong-card-desc">${dinfo.desc}</div>
-    <div class="dong-card-arrow">과외 보기 →</div>
+    <div class="dong-card-arrow">카드단말기 설치 보기 →</div>
   </div>
 </a>`;
       }).join('');
@@ -2929,23 +2916,23 @@ function makeAreaPage(rk, ak) {
     return area.dongs.map(d => {
       const dongEnKey = DONG_EN[d] || d;
       return `<a href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}/${toRoman(d)}" class="dong-card">
-  <div class="dong-card-body"><div class="dong-card-tag">${ak} · ${d}</div><div class="dong-card-title">${d} 과외</div><div class="dong-card-arrow">과외 보기 →</div></div>
+  <div class="dong-card-body"><div class="dong-card-tag">${ak} · ${d}</div><div class="dong-card-title">${d} 카드단말기 설치</div><div class="dong-card-arrow">카드단말기 설치 보기 →</div></div>
 </a>`;
     }).join('');
   })();
 
   const subjLinks = Object.entries(SUBJECTS).map(([s, v]) =>
-    `<a class="subj-link" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}"><span>${v.emoji} ${ak} ${s}과외</span><span>→</span></a>`
+    `<a class="subj-link" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}"><span>${v.emoji} ${ak} ${s}카드단말기 설치</span><span>→</span></a>`
   ).join('');
   const relAreas = Object.keys(region.areas).filter(a => a !== ak).slice(0, 3)
-    .map(a => `<a class="rel-card" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[a]||a}"><div class="rc-tag">${region.label}</div><div class="rc-title">${a} 과외 | ${a} 맞춤 과외</div></a>`).join('');
+    .map(a => `<a class="rel-card" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[a]||a}"><div class="rc-tag">${region.label}</div><div class="rc-title">${a} 카드단말기 설치 | ${a} 맞춤 카드단말기 설치</div></a>`).join('');
 
-  const title = `${ak} 과외 | ${region.label} ${ak} 맞춤 1:1 과외 - 올페이스토어`;
-  const desc = `${ak} 과외 전문. ${area.schools} 기출 분석. 수학·영어·국어·과학 초등·중등·고등 1:1 방문 과외. 무료 상담 010-9876-8282`;
+  const title = `${ak} 카드단말기 설치 | ${region.label} ${ak} 맞춤 전문 설치 - 올페이스토어`;
+  const desc = `${ak} 설치 전문. ${area.schools} 기출 분석. 수학·영어·국어·과학 초등·중등·고등 1:1 방문 설치. 무료 상담 010-9876-8282`;
   const body = `<div class="wrap">
   <div class="bc"><a href="/">홈</a> › <a href="/${rk}">${region.label}</a> › <span>${ak}</span></div>
   <div class="art-tag">${region.emoji} ${region.label} · ${ak}</div>
-  <h1 class="art-title">${ak} 과외 | ${ak} 맞춤 1:1 과외 안내</h1>
+  <h1 class="art-title">${ak} 카드단말기 설치 | ${ak} 맞춤 전문 설치 안내</h1>
   <div class="art-meta"><span>✏️ 올페이스토어 편집팀</span><span>📅 ${today()}</span></div>
   <div class="info-box">
     <div class="info-item"><div class="info-num">${infoNums[0]}명</div><div class="info-label">등록 선생님</div></div>
@@ -2953,17 +2940,17 @@ function makeAreaPage(rk, ak) {
     <div class="info-item"><div class="info-num">무료</div><div class="info-label">상담</div></div>
   </div>
   <div style="width:100%;height:260px;border-radius:var(--radius);margin-bottom:36px;overflow:hidden;position:relative">
-    <img src="${heroImg}" alt="${ak} 과외" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
+    <img src="${heroImg}" alt="${ak} 카드단말기 설치" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#EFF6FF,#DBEAFE)';this.remove()">
     <div class="u23">
-      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${region.label} · ${ak}</div><div style="font-size:26px;font-weight:900">${ak} 과외</div></div>
+      <div style="color:white"><div style="font-size:13px;opacity:.7;margin-bottom:6px">${region.label} · ${ak}</div><div style="font-size:26px;font-weight:900">${ak} 카드단말기 설치</div></div>
     </div>
   </div>
   <div class="art-body">
-    <h2>${ak} 과외 안내</h2>
+    <h2>${ak} 설치 안내</h2>
     ${distDesc.split('<br><br>').map(p => `<p>${p}</p>`).join('\n    ')}
-    <p>올페이스토어는 <strong>${ak}</strong> 지역 초등·중등·고등 전 학년, 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 과외를 연결합니다. 학생의 수준과 목표에 맞는 검증된 선생님을 빠르게 매칭해드립니다.</p>
+    <p>올페이스토어는 <strong>${ak}</strong> 지역 초등·중등·고등 전 학년, 수학·영어·국어·과학·사회·코딩·논술 전 과목 1:1 방문 설치를 연결합니다. 학생의 수준과 목표에 맞는 검증된 선생님을 빠르게 매칭해드립니다.</p>
     <p>인근 주요 학교: <strong>${area.schools}</strong> 시험 출제 경향을 완벽히 파악한 선생님을 매칭해드립니다.</p>
-    <h2>${ak} 과외 특징</h2>
+    <h2>${ak} 카드단말기 설치 특징</h2>
     <p><strong>① 학교 기출 완벽 분석</strong> — ${area.schools} 시험 출제 경향을 철저히 분석해 내신 최적화 수업을 진행합니다. 단원별 출제 빈도와 유형을 파악해 시험 직전 집중 대비가 가능합니다.</p>
     <p><strong>② 검증된 선생님 1:1 매칭</strong> — 학력·경력·수업 시연 3단계 검증을 통과한 선생님만 배정합니다. 학생과 맞지 않으면 언제든 부담 없이 교체 가능합니다.</p>
     <p><strong>③ 주간 학습 보고서 제공</strong> — 매 수업 후 학습 내용·성취도를 정리해 학부모님께 공유합니다. 투명한 학습 관리로 성적 변화를 직접 확인할 수 있습니다.</p>
@@ -2976,9 +2963,9 @@ function makeAreaPage(rk, ak) {
     <p><strong>초등</strong> — 수학·영어·국어 기초 개념을 탄탄히 다지는 시기입니다. ${area.schools} 인근 초등학교 교과서 기반으로 기초를 완성합니다.</p>
     <p><strong>중등</strong> — ${area.schools} 내신 성적이 고등학교 진학에 직접 영향을 미칩니다. 내신 집중 관리와 함께 고등 과정 선행도 병행합니다.</p>
     <p><strong>고등</strong> — ${area.schools} 내신 1등급을 목표로 집중 관리하며, 수능 대비를 동시에 진행합니다. 시험 4주 전부터 집중 대비 모드로 전환합니다.</p>
-    <h2>동별 과외 정보</h2>
+    <h2>동별 설치 정보</h2>
     <div class="dong-grid">${dongCards}</div>
-    <h2>${ak} 학교별 과외</h2>
+    <h2>${ak} 지역별 설치</h2>
     ${(() => {
       const sidoEn = SIDO_EN[rk]||rk;
       const guMap = SCHOOL_MAP[sidoEn]?.[ak];
@@ -2992,30 +2979,30 @@ function makeAreaPage(rk, ak) {
         const suffix = grade==='E'?'초등학교':grade==='M'?'중학교':'고등학교';
         const links = names.map(n=>{
           const sr=toRoman(n);
-          return `<a class="subj-link" href="/school/${sidoEn}/${gugunRoman}/${sr}"><span>🏫 ${n+suffix} 과외</span><span>→</span></a>`;
+          return `<a class="subj-link" href="/school/${sidoEn}/${gugunRoman}/${sr}"><span>🏫 ${n+suffix} 카드단말기 설치</span><span>→</span></a>`;
         }).join('');
         html += `<h3>${label}학교</h3><div class="subj-grid">${links}</div>`;
       }
       return html || '<p>등록된 학교 정보가 없습니다.</p>';
     })()}
-    <h2>과목별 과외 바로가기</h2>
+    <h2>제품별 설치 바로가기</h2>
     <div class="subj-grid">${subjLinks}</div>
     <h2>자주 묻는 질문</h2>
-    <p><strong>Q. ${ak}에서 과외 선생님 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드리며, 빠르면 당일 매칭도 가능합니다. ${area.schools} 기출을 잘 아는 선생님 위주로 추천해드립니다.</p>
-    <p><strong>Q. 학원을 다니는데 과외도 함께 해도 되나요?</strong><br>학원과 병행하는 취약 단원 집중 보완 과외가 효과적입니다. 학원 일정을 고려해 유연하게 스케줄을 조정합니다.</p>
+    <p><strong>Q. ${ak}에서 설치 전문가 찾는 데 얼마나 걸리나요?</strong><br>상담 신청 후 24시간 이내 코디네이터가 연락드리며, 빠르면 당일 매칭도 가능합니다. ${area.schools} 기출을 잘 아는 선생님 위주로 추천해드립니다.</p>
+    <p><strong>Q. 학원을 다니는데 카드단말기 설치도 함께 해도 되나요?</strong><br>학원과 병행하는 취약 단원 집중 보완 카드단말기 설치가 효과적입니다. 학원 일정을 고려해 유연하게 스케줄을 조정합니다.</p>
     <p><strong>Q. 수업료는 어떻게 되나요?</strong><br>선생님 경력·학력·수업 방식에 따라 다르며, 첫 상담은 완전 무료입니다. 학부모님 예산에 맞는 선생님을 투명하게 안내해드립니다.</p>
-    <p><strong>Q. 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 1:1 과외가 효과적입니다. 수준에 맞는 선생님을 배정해드리니 걱정하지 않으셔도 됩니다.</p>
-    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 과외(시험 대비 4~8주)도 운영합니다.</p>
+    <p><strong>Q. 성적이 낮아도 괜찮나요?</strong><br>기초부터 차근차근 다져야 할 학생일수록 전문 설치가 효과적입니다. 수준에 맞는 선생님을 배정해드리니 걱정하지 않으셔도 됩니다.</p>
+    <p><strong>Q. 몇 개월 정도 수업하면 효과가 나타나나요?</strong><br>보통 2~3개월 꾸준히 수업하면 내신 성적 변화가 나타납니다. 단기 집중 카드단말기 설치(시험 대비 4~8주)도 운영합니다.</p>
   </div>
   <div class="cta-box">
-    <h3>${ak} 맞춤 과외 신청</h3>
+    <h3>${ak} 맞춤 카드단말기 설치 신청</h3>
     <p>무료 상담을 신청하시면 전문 코디네이터가 연결해드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a>
     </div>
   </div>
-  <div class="related-title">🔗 주변 지역 과외</div>
+  <div class="related-title">🔗 주변 지역 카드단말기 설치</div>
   <div class="related-grid">${relAreas}</div>
 </div>`;
   const bcArea = [
@@ -3036,9 +3023,9 @@ function makeArticlePage(rk, ak, gk, sk) {
   if (!region || !area || !grade || !subj) return null;
 
   const otherSubj = Object.entries(SUBJECTS).filter(([s]) => s !== sk).slice(0, 6)
-    .map(([s, v]) => `<a class="subj-link" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}/${GRADE_EN[gk]||gk}/${SUBJECT_EN[s]||s}"><span>${v.emoji} ${ak} ${gk} ${s}과외</span><span>→</span></a>`).join('');
+    .map(([s, v]) => `<a class="subj-link" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}/${GRADE_EN[gk]||gk}/${SUBJECT_EN[s]||s}"><span>${v.emoji} ${ak} ${gk} ${s}카드단말기 설치</span><span>→</span></a>`).join('');
   const relLinks = Object.keys(region.areas).filter(a => a !== ak).slice(0, 3)
-    .map(a => `<a class="rel-card" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[a]||a}/${GRADE_EN[gk]||gk}/${SUBJECT_EN[sk]||sk}"><div class="rc-tag">${region.label}</div><div class="rc-title">${a} ${gk} ${sk}과외</div></a>`).join('');
+    .map(a => `<a class="rel-card" href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[a]||a}/${GRADE_EN[gk]||gk}/${SUBJECT_EN[sk]||sk}"><div class="rc-tag">${region.label}</div><div class="rc-title">${a} ${gk} ${sk}카드단말기 설치</div></a>`).join('');
   const yearTags = grade.years.map(y => `<span class="tag">${y}</span>`).join('');
 
   const sidoEn = SIDO_EN[rk]||rk;
@@ -3048,21 +3035,21 @@ function makeArticlePage(rk, ak, gk, sk) {
 
   let _ah=0; for(let i=0;i<ak.length;i++) _ah=(_ah*31+ak.charCodeAt(i))>>>0;
   const artNums=[120+(_ah%231), 91+(_ah%9)];
-  const title = `${ak} ${gk} ${sk}과외 | ${region.label} ${ak} ${grade.label} ${sk} 1:1 맞춤 과외 - 올페이스토어`;
+  const title = `${ak} ${gk} ${sk}카드단말기 설치 | ${region.label} ${ak} ${grade.label} ${sk} 1:1 맞춤 카드단말기 설치 - 올페이스토어`;
   // 네이버 SEO: description 80~150자, 핵심 키워드 앞에 배치
-  const desc = `${ak} ${gk} ${sk}과외 전문. ${area.schools} 기출 분석 검증 선생님. 초등·중등·고등 1:1 방문 과외. 무료 상담 010-9876-8282`;
+  const desc = `${ak} ${gk} ${sk}설치 전문. ${area.schools} 기출 분석 검증 선생님. 초등·중등·고등 1:1 방문 설치. 무료 상담 010-9876-8282`;
 
   const breadcrumbs = [
     {name:'홈', url:'/'},
     {name:region.label, url:`/${sidoEn}`},
     {name:ak, url:`/${sidoEn}/${distEn}`},
-    {name:`${gk} ${sk}과외`, url:`/${sidoEn}/${distEn}/${gradeEn}/${subjEn}`}
+    {name:`${gk} ${sk}카드단말기 설치`, url:`/${sidoEn}/${distEn}/${gradeEn}/${subjEn}`}
   ];
 
   const body = `<div class="wrap">
-  <div class="bc"><a href="/">홈</a> › <a href="/${sidoEn}">${region.label}</a> › <a href="/${sidoEn}/${distEn}">${ak}</a> › <span>${gk} ${sk}과외</span></div>
+  <div class="bc"><a href="/">홈</a> › <a href="/${sidoEn}">${region.label}</a> › <a href="/${sidoEn}/${distEn}">${ak}</a> › <span>${gk} ${sk}카드단말기 설치</span></div>
   <div class="art-tag">${subj.emoji} ${ak} · ${gk} · ${sk}</div>
-  <h1 class="art-title">${ak} ${gk} ${sk}과외 | ${region.label} ${ak} ${grade.label} ${sk} 맞춤 1:1 과외</h1>
+  <h1 class="art-title">${ak} ${gk} ${sk}카드단말기 설치 | ${region.label} ${ak} ${grade.label} ${sk} 맞춤 전문 설치</h1>
   <div class="art-meta"><span>✏️ 올페이스토어 편집팀</span><span>📅 ${today()}</span><span>⏱ 4분</span></div>
   <div class="info-box">
     <div class="info-item"><div class="info-num">${artNums[0]}명</div><div class="info-label">${sk} 선생님</div></div>
@@ -3071,27 +3058,27 @@ function makeArticlePage(rk, ak, gk, sk) {
   </div>
   <div class="art-thumb">${subj.emoji}</div>
   <div class="art-body">
-    <h2>${ak} ${gk} ${sk}과외 안내</h2>
+    <h2>${ak} ${gk} ${sk}설치 안내</h2>
     <p>${generateAreaFeature(ak, area.schools || '')}</p>
     <p>올페이스토어는 ${region.label} <strong>${ak}</strong> 지역 ${grade.label} ${sk} 검증된 선생님을 연결해드립니다. 주요 대상 학교: <strong>${area.schools}</strong></p>
     <h3>${ak} ${gk} 수업 대상 학년</h3>
     <div class="tag-wrap"><div class="tag-label">🎓 학년 선택</div><div class="tags">${yearTags}</div></div>
-    <h2>${ak} ${sk}과외 선생님 특징</h2>
+    <h2>${ak} ${sk}설치 전문가 특징</h2>
     <p><strong>학교 기출 분석</strong>: ${ak} 내 학교 시험 출제 경향 집중 분석</p>
     <p><strong>검증된 선생님</strong>: 학력·경력·수업 시연 3단계 검증 완료</p>
     <p><strong>주간 학습 보고서</strong>: 매주 학습 현황 리포트 제공</p>
-    <h3>${ak} 다른 과목 ${gk} 과외</h3>
+    <h3>${ak} 다른 과목 ${gk} 카드단말기 설치</h3>
     <div class="subj-grid">${otherSubj}</div>
   </div>
   <div class="cta-box">
-    <h3>${ak} ${gk} ${sk}과외 무료 상담</h3>
+    <h3>${ak} ${gk} ${sk}카드단말기 설치 무료 상담</h3>
     <p>24시간 내 전문 코디네이터가 연락드립니다</p>
     <div class="cta-btns">
       <a class="btn-p" href="tel:01097868282">📞 전화 상담 010-9876-8282</a>
-      <a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a>
+      <a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a>
     </div>
   </div>
-  <div class="related-title">🔗 ${region.label} 다른 지역 ${sk}과외</div>
+  <div class="related-title">🔗 ${region.label} 다른 지역 ${sk}카드단말기 설치</div>
   <div class="related-grid">${relLinks}</div>
 </div>`;
   return wrap(title, desc, `/${sidoEn}/${distEn}/${gradeEn}/${subjEn}`, body, breadcrumbs);
@@ -3290,7 +3277,7 @@ function mslideMove(sid, dir) {
       <p class="diff-desc">TLC 국가공인 자격을 취득한 전문 코치가<br>학습 습관 형성부터 성적 향상까지 체계적으로 관리합니다.</p>
     </div>
     <div class="diff-grid">
-      <div class="diff-card"><div class="diff-num">POINT 01</div><div class="diff-card-title">1:1 전문 코칭 시스템</div><div class="diff-card-desc">과외식 수업 방식을 도입해 개별 맞춤 교재를 활용한 1:1 학습 코칭을 제공합니다. 단순 진도 관리가 아닌 완전한 이해를 목표로 합니다.</div></div>
+      <div class="diff-card"><div class="diff-num">POINT 01</div><div class="diff-card-title">1:1 전문 코칭 시스템</div><div class="diff-card-desc">카드단말기 설치식 수업 방식을 도입해 개별 맞춤 교재를 활용한 1:1 학습 코칭을 제공합니다. 단순 진도 관리가 아닌 완전한 이해를 목표로 합니다.</div></div>
       <div class="diff-card"><div class="diff-num">POINT 02</div><div class="diff-card-title">둥지형 참여 학습 구조</div><div class="diff-card-desc">교사를 중심으로 학생들이 둘러 앉는 둥지형 구조로 수업 참여도와 학습 몰입도를 실질적으로 향상시킵니다.</div></div>
       <div class="diff-card"><div class="diff-num">POINT 03</div><div class="diff-card-title">전방위 생활 밀착 관리</div><div class="diff-card-desc">성적은 물론 수행평가, 생활 습관, 심리적 상태까지 관리합니다. 학교생활과 학습이 선순환 구조를 이루도록 지원합니다.</div></div>
     </div>
@@ -4745,8 +4732,8 @@ ${'<'}/style>
 function makeContactPage(type) {
   const isAcademy = (type||'tutoring') === 'academy';
   const canonical = '/contact';
-  const title = '올페이스토어 무료 상담 문의 | 1:1 맞춤 과외·학원 코칭';
-  const desc = '올페이스토어 무료 상담. 과외·학원 코칭 문의. 빠르게 답변. 010-9876-8282';
+  const title = '올페이스토어 무료 상담 문의 | 1:1 맞춤 카드단말기 설치·학원 코칭';
+  const desc = '올페이스토어 무료 상담. 카드단말기 설치·학원 코칭 문의. 빠르게 답변. 010-9876-8282';
   const bc = [{name:'홈',url:'/'},{name:'문의하기',url:'/contact'}];
 
   const body = `
@@ -4853,7 +4840,7 @@ ${'<'}/style>
         <button id="tab-academy" onclick="cfSwitchType('academy')"
           style="flex:1;padding:11px;font-size:14px;font-weight:800;cursor:pointer;border:none;border-radius:8px;background:${isAcademy?'#0F2044':'transparent'};color:${isAcademy?'white':'#6B7280'};font-family:inherit;transition:all .2s">학원 상담</button>
         <button id="tab-tutoring" onclick="cfSwitchType('tutoring')"
-          style="flex:1;padding:11px;font-size:14px;font-weight:800;cursor:pointer;border:none;border-radius:8px;background:${!isAcademy?'#0F2044':'transparent'};color:${!isAcademy?'white':'#6B7280'};font-family:inherit;transition:all .2s">과외 상담</button>
+          style="flex:1;padding:11px;font-size:14px;font-weight:800;cursor:pointer;border:none;border-radius:8px;background:${!isAcademy?'#0F2044':'transparent'};color:${!isAcademy?'white':'#6B7280'};font-family:inherit;transition:all .2s">설치 상담</button>
       </div>
 
       <div style="font-size:16px;font-weight:900;color:#0F2044;margin-bottom:20px">상담 신청서
@@ -4925,7 +4912,7 @@ ${'<'}/style>
         </div>
       </div>
 
-      <!-- 과외 상담 전용 -->
+      <!-- 설치 상담 전용 -->
       <div id="tutoring-fields" style="display:${isAcademy?'none':'block'}">
         <div style="margin-bottom:16px">
           <label class="u6">희망 과목</label>
@@ -5064,10 +5051,10 @@ function makeHomePage(){
   "@type": "EducationalOrganization",
   "name": "올페이스토어",
   "url": "https://allpaystore.com",
-  "description": "전국 지역별 1:1 맞춤 과외·학원 정보 플랫폼",
+  "description": "전국 지역별 1:1 맞춤 카드단말기 설치·학원 정보 플랫폼",
   "telephone": "010-9876-8282",
   "areaServed": "KR",
-  "serviceType": ["과외", "학원", "학습코칭"]
+  "serviceType": ["카드단말기 설치", "학원", "학습코칭"]
 }
 ${'<'}/script>
 
@@ -5079,7 +5066,7 @@ ${'<'}/script>
         <div>
           <div class="seb"><div class="sdot"></div> No.1 지역별 카드단말기 설치</div>
           <p class="scap">우리 아이에게 딱 맞는 선생님을 찾아드립니다</p>
-          <h1 class="stitle">내 지역 최고의<br><span class="hl">1:1 맞춤 과외</span><br>지금 찾아보세요</h1>
+          <h1 class="stitle">내 지역 최고의<br><span class="hl">1:1 맞춤 카드단말기 설치</span><br>지금 찾아보세요</h1>
           <p class="sdesc">전국 검증된 선생님 12,400명+<br>지역별·과목별·학년별로 딱 맞는 수업 연결</p>
           <div class="sbtns">
             <button class="bph" onclick="document.getElementById('region-section').scrollIntoView({behavior:'smooth'})">지역별 카드단말기 찾기 →</button>
@@ -5088,7 +5075,7 @@ ${'<'}/script>
         </div>
         <div class="svis">
           <div class="vc-card">
-            <div class="vch"><div class="vci">📍</div><div><div class="vct">강남구 수학 과외</div><div class="vcs">매칭 완료 · 오늘 기준</div></div></div>
+            <div class="vch"><div class="vci">📍</div><div><div class="vct">강남구 카드단말기 설치</div><div class="vcs">매칭 완료 · 오늘 기준</div></div></div>
             <div class="vcst">
               <div class="vcsi"><div class="vcn">247</div><div class="vcl">등록 선생님</div></div>
               <div class="vcsi"><div class="vcn">98%</div><div class="vcl">만족도</div></div>
@@ -5194,7 +5181,7 @@ ${'<'}/script>
     <!-- 탭 -->
     <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;justify-content:center" id="find-tabs">
       <button onclick="switchFind('region')" id="ftab-region" style="padding:10px 22px;border-radius:999px;border:1.5px solid #3B82F6;background:#3B82F6;color:white;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit">🏙 지역별 카드단말기</button>
-      <button onclick="switchFind('subject')" id="ftab-subject" class="u3">📚 과목별 과외</button>
+      <button onclick="switchFind('subject')" id="ftab-subject" class="u3">📚 제품별 설치</button>
       <button onclick="switchFind('academy')" id="ftab-academy" class="u3">🏫 학원 찾기</button>
       <button onclick="switchFind('conv')" id="ftab-conv" style="padding:10px 22px;border-radius:999px;border:1.5px solid #E5E7EB;background:white;color:#374151;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit">🗣 회화수업</button>
       <button onclick="window.location.href='/contact?type=tutoring'" id="ftab-contact" style="padding:10px 22px;border-radius:999px;border:1.5px solid #1D4ED8;background:white;color:#1D4ED8;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit">✉️ 문의하기</button>
@@ -5313,7 +5300,7 @@ ${'<'}/script>
     <div class="sh fu">
       <div class="se">SPECIAL POINT</div>
       <h2 class="st">우리 아이 성적,<br><span class="hl">왜 올페이스토어여야 할까요?</span></h2>
-      <p class="u5">단순한 과외 중개가 아닙니다. 학습 진단부터 목표 설계, 실행 관리까지 아이의 성장을 함께 책임집니다.</p>
+      <p class="u5">단순한 카드단말기 설치 중개가 아닙니다. 학습 진단부터 목표 설계, 실행 관리까지 아이의 성장을 함께 책임집니다.</p>
     </div>
     <div class="spg fu">
       <div class="spc"><div class="spi ic1">🎯</div><div class="spt"><h4>학교·교재 맞춤 1:1 대비</h4><p>전국 모든 학교의 교과서·부교재를 분석해 내 학교 시험에 딱 맞는 맞춤 수업을 제공합니다.</p></div></div>
@@ -5455,7 +5442,7 @@ function switchTab(menu,tab){
   }catch(e){}
 })();
 ${'<'}/script>`;
-  return wrap('올페이스토어 | 전국 1:1 맞춤 과외·학원 정보','전국 초·중·고 1:1 맞춤 과외 플랫폼. 검증된 선생님 빠르게 매칭. 수학·영어·국어·과학 방문과외. 무료상담 010-9876-8282','/',body,[]);
+  return wrap('올페이스토어 | 전국 1:1 맞춤 카드단말기 설치·학원 정보','전국 초·중·고 1:1 맞춤 설치 플랫폼. 검증된 선생님 빠르게 매칭. 수학·영어·국어·과학 방문카드단말기 설치. 무료상담 010-9876-8282','/',body,[]);
 }
 
 
@@ -5582,7 +5569,7 @@ function serveSitemapByKey(key) {
           }
         }
       }
-      // 학교별 과외 URL 추가
+      // 지역별 설치 URL 추가
       const gugunSchools = SCHOOL_MAP[se]?.[ak];
       if(gugunSchools){
         for(const [grade, names] of Object.entries(gugunSchools)){
@@ -5626,9 +5613,9 @@ function serveRSS() {
   for (const dong of dongSamples) {
     for (const sk of ['수학','영어']) {
       items.push({
-        title: `${dong} 고등 ${sk}과외 | 강남구 ${dong} 맞춤 1:1 과외`,
+        title: `${dong} 고등 ${sk}카드단말기 설치 | 강남구 ${dong} 맞춤 전문 설치`,
         link: `https://allpaystore.com/seoul/gangnam/${DONG_EN[dong]||dong}/high/${SUBJECT_EN[sk]||sk}`,
-        desc: `강남구 ${dong} 고등 ${sk}과외 전문. 내신·수능 기출 분석 검증 선생님. 1:1 방문 과외. 무료 상담 010-9876-8282`,
+        desc: `강남구 ${dong} 고등 ${sk}설치 전문. 내신·수능 기출 분석 검증 선생님. 1:1 방문 설치. 무료 상담 010-9876-8282`,
       });
     }
   }
@@ -5643,9 +5630,9 @@ function serveRSS() {
   for (const [sido, ak] of featured) {
     for (const sk of ['수학','영어']) {
       items.push({
-        title: `${ak} 고등 ${sk}과외 | ${REGIONS[sido].label} ${ak} 1:1 맞춤 과외`,
+        title: `${ak} 고등 ${sk}카드단말기 설치 | ${REGIONS[sido].label} ${ak} 1:1 맞춤 카드단말기 설치`,
         link: `https://allpaystore.com/${SIDO_EN[sido]||sido}/${DISTRICT_EN[ak]||ak}/high/${SUBJECT_EN[sk]||sk}`,
-        desc: `${ak} 고등 ${sk}과외 전문. ${REGIONS[sido].areas[ak].schools} 기출 분석. 검증 선생님 1:1 방문 과외. 무료 상담 010-9876-8282`,
+        desc: `${ak} 고등 ${sk}설치 전문. ${REGIONS[sido].areas[ak].schools} 기출 분석. 검증 선생님 1:1 방문 설치. 무료 상담 010-9876-8282`,
       });
     }
   }
@@ -5664,7 +5651,7 @@ function serveRSS() {
   <channel>
     <title>올페이스토어 - 전국 지역별 카드단말기 설치 안내</title>
     <link>https://allpaystore.com</link>
-    <description>전국 초·중·고 1:1 맞춤 과외 전문. 수학·영어·국어·과학 검증 선생님 연결.</description>
+    <description>전국 초·중·고 1:1 맞춤 설치 전문. 수학·영어·국어·과학 검증 선생님 연결.</description>
     <language>ko</language>
     <lastBuildDate>${pubDate}</lastBuildDate>
     <atom:link href="https://allpaystore.com/rss.xml" rel="self" type="application/rss+xml"/>
@@ -5731,7 +5718,7 @@ export default {
       }
     }
 
-    // 학년별 과외 정보 페이지
+    // 제품별 설치 정보 페이지
     if(path.startsWith('/subject/')){const subEn=path.slice(9).split('/')[0];if(subEn){const p=makeSubjectPage(subEn);if(p)return new Response(p,{headers:h});}}
     if (path.startsWith('/grade/')) {
       const parts = path.slice(7).split('/').filter(Boolean);
@@ -5741,7 +5728,7 @@ export default {
         if (page) return new Response(page, {headers:h});
       }
     }
-    // 학교별 과외 페이지 라우팅
+    // 지역별 설치 페이지 라우팅
     if (path.startsWith('/school')) {
       const parts = path.slice(1).split('/').filter(Boolean);
       // /school → 전체 목록
@@ -5857,7 +5844,7 @@ export default {
             <circle cx="120" cy="315" r="60" fill="#1D4ED8"/>
             <path d="M120 275L80 295l40 20 40-20-40-20zM80 335l40 20 40-20M80 315l40 20 40-20" stroke="white" stroke-width="8" stroke-linecap="round" fill="none"/>
             <text x="200" y="300" font-family="Arial,sans-serif" font-size="52" font-weight="900" fill="white"><tspan fill="#60A5FA">올케어</tspan>스터디</text>
-            <text x="200" y="360" font-family="Arial,sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">전국 1:1 맞춤 과외·학원 정보 No.1</text>
+            <text x="200" y="360" font-family="Arial,sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">전국 1:1 맞춤 카드단말기 설치·학원 정보 No.1</text>
             <text x="200" y="420" font-family="Arial,sans-serif" font-size="22" fill="rgba(255,255,255,0.5)">allpaystore.com · 010-9876-8282</text>
           </svg>`
         : `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
@@ -5917,19 +5904,19 @@ export default {
       if (region && area && grade) {
         const subjLinks = Object.entries(SUBJECTS).map(([s, v]) => {
           const url = enUrl(rk, ak, null, gk, s);
-          return `<a class="subj-link" href="${url}"><span>${v.emoji} ${ak} ${gk} ${s}과외</span><span>→</span></a>`;
+          return `<a class="subj-link" href="${url}"><span>${v.emoji} ${ak} ${gk} ${s}카드단말기 설치</span><span>→</span></a>`;
         }).join('');
         const body = `<div class="wrap">
 <div class="bc"><a href="/">홈</a> › <a href="/${SIDO_EN[rk]||rk}">${region.label}</a> › <a href="/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}">${ak}</a> › <span>${gk}</span></div>
-<h1 class="art-title">${ak} ${gk} 과외 | 과목 선택</h1>
+<h1 class="art-title">${ak} ${gk} 카드단말기 설치 | 과목 선택</h1>
 <div class="art-body"><h2>과목을 선택하세요</h2><div class="subj-grid">${subjLinks}</div></div>
-<div class="cta-box"><h3>${ak} ${gk} 맞춤 과외</h3><p>무료 상담 신청</p>
-<div class="cta-btns"><a class="btn-p" href="tel:01097868282">📞 010-9876-8282</a><a class="btn-o" href="/contact?type=tutoring">✉️ 과외 상담하기</a></div></div>
+<div class="cta-box"><h3>${ak} ${gk} 맞춤 카드단말기 설치</h3><p>무료 상담 신청</p>
+<div class="cta-btns"><a class="btn-p" href="tel:01097868282">📞 010-9876-8282</a><a class="btn-o" href="/contact?type=tutoring">✉️ 설치 상담하기</a></div></div>
 </div>`;
         const canon = `/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}/${GRADE_EN[gk]||gk}`;
-        const bc3 = [{name:'홈',url:'/'},{name:region.label,url:`/${SIDO_EN[rk]||rk}`},{name:ak,url:`/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}`},{name:`${gk} 과외`,url:canon}];
-        const title3 = `${ak} ${gk} 과외 | ${region.label} ${ak} ${grade.label} 과외 - 올페이스토어`;
-        const desc3 = `${ak} ${gk} 과외 전문. ${area.schools} 기출 분석. 수학·영어·국어·과학 1:1 방문 과외. 무료 상담 010-9876-8282`;
+        const bc3 = [{name:'홈',url:'/'},{name:region.label,url:`/${SIDO_EN[rk]||rk}`},{name:ak,url:`/${SIDO_EN[rk]||rk}/${DISTRICT_EN[ak]||ak}`},{name:`${gk} 카드단말기 설치`,url:canon}];
+        const title3 = `${ak} ${gk} 카드단말기 설치 | ${region.label} ${ak} ${grade.label} 카드단말기 설치 - 올페이스토어`;
+        const desc3 = `${ak} ${gk} 설치 전문. ${area.schools} 기출 분석. 수학·영어·국어·과학 1:1 방문 설치. 무료 상담 010-9876-8282`;
         return new Response(wrap(title3, desc3, canon, body, bc3), { headers: h });
       }
     }
