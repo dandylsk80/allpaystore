@@ -5085,7 +5085,7 @@ function getProfile(sido,sigungu,emd){
 
 function makeSVG(sido,sigungu,emd){
   const sub=`${sido} ${sigungu}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="#0D2E6E"/><text x="400" y="180" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="900" fill="white">${emd}</text><text x="400" y="260" text-anchor="middle" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">${sido} ${sigungu}</text><text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="22" fill="rgba(255,255,255,0.5)">카드단말기 설치 | 올페이스토어</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="#0D2E6E"/><text x="400" y="210" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="900" fill="white">${emd}</text><text x="400" y="280" text-anchor="middle" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">${sigungu}</text><text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.5)">카드단말기 설치 | 올페이스토어</text></svg>`;
 }
 
 const CSS="<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap\" rel=\"stylesheet\">\n<style>\n*{margin:0;padding:0;box-sizing:border-box}\nbody{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}\na{text-decoration:none;color:inherit}\n.gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}\n.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}\n.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}\n.logo span{color:#7DD3FC}\n.tel-btn{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;white-space:nowrap}\n.wrap{max-width:780px;margin:0 auto;padding:0 18px 80px}\n.thumb{width:100%;border-radius:16px;overflow:hidden;margin:28px 0 22px;box-shadow:0 6px 28px rgba(13,46,110,.16)}\n.thumb img{width:100%;height:auto;display:block}\n.meta{font-size:13px;color:#999;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}\n.badge{background:#EEF4FF;color:#1A6BFF;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}\nh1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#0D2E6E;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}\n.intro{background:#fff;border-left:5px solid #1A6BFF;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}\nh2{font-size:19px;font-weight:900;color:#fff;background:linear-gradient(90deg,#0D2E6E,#1A6BFF);padding:11px 18px;border-radius:8px;margin:40px 0 16px;letter-spacing:-.3px}\nh3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #1A6BFF}\np{font-size:15.5px;color:#333;margin-bottom:16px}\n.tag{display:inline-block;background:#EEF4FF;color:#0D2E6E;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}\n.g4{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}\n.card{background:#fff;border-radius:12px;padding:18px;text-align:center;border:1.5px solid #e8e8e8}\n.card .ic{font-size:28px;margin-bottom:7px}\n.card .lb{font-size:11px;color:#999;font-weight:600;margin-bottom:4px}\n.card .vl{font-size:17px;font-weight:900;color:#0D2E6E}\n.box{background:#fff;border:1.5px solid #E8EEFF;border-radius:14px;padding:22px 24px;margin:18px 0}\n.box.blue{background:#EEF4FF;border-color:#BDD0FF}\n.box.yellow{background:#FFFBEA;border-color:#FFE082}\nul.ck{list-style:none;padding:0}\nul.ck li{padding:8px 0 8px 30px;position:relative;font-size:15px;border-bottom:1px solid #f2f2f2}\nul.ck li:last-child{border-bottom:none}\nul.ck li::before{content:'✅';position:absolute;left:0}\n.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}\n.tbl th{background:#0D2E6E;color:#fff;padding:11px 10px;text-align:center}\n.tbl td{padding:10px;border-bottom:1px solid #eee;text-align:center}\n.tbl tr:nth-child(even) td{background:#f8f9fc}\n.tbl .hi{color:#1A6BFF;font-weight:800}\n.cta{background:linear-gradient(135deg,#0D2E6E,#1A6BFF);border-radius:16px;padding:36px 24px;text-align:center;color:#fff;margin:44px 0}\n.cta h3{font-size:22px;font-weight:900;margin-bottom:10px}\n.cta p{font-size:15px;opacity:.9;margin-bottom:26px}\n.cta-main{display:inline-block;background:#FFD700;color:#0D2E6E;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.2)}\n.cta-sub{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid rgba(255,255,255,.4)}\n.faq{background:#fff;border-radius:12px;padding:20px;margin:12px 0;border:1.5px solid #eee}\n.faq-q{font-size:15px;font-weight:800;color:#0D2E6E;margin-bottom:8px}\n.faq-a{font-size:14.5px;color:#444;line-height:1.8}\n.foot-nav{margin:40px 0 0;padding:16px 0;border-top:1px solid #eee;font-size:14px;color:#aaa}\n.foot-nav a{color:#1A6BFF;font-weight:600}\n@media(max-width:480px){.cta-main{font-size:16px;padding:14px 32px}}\n</style>";
@@ -5118,7 +5118,7 @@ function makeBlog(sido,sigungu,emd,slug){
   const tags=p.biz.map(b=>`<span class="tag">${b}</span>`).join('');
   const today=new Date();
   const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
-  const canon=`https:
+  const canon=`https://allpaystore.com/blog/${slug}/`;
   const svgEnc=encodeURIComponent(makeSVG(sido,sigungu,emd));
   const iso=today.toISOString().split('T')[0];
   return `<!DOCTYPE html>
@@ -5130,7 +5130,7 @@ function makeBlog(sido,sigungu,emd,slug){
 <meta name="keywords" content="${emd} 카드단말기 설치,${emd} 포스기,${emd} 카드단말기,${sigungu} 카드단말기,${emd} 키오스크,${emd} CCTV,${sigungu} 포스기 설치">
 <meta property="og:title" content="${emd} 카드단말기 설치 | 올페이스토어">
 <meta property="og:description" content="${full} 카드단말기·포스기·키오스크·CCTV 전문. 무료 견적 010-9876-8282">
-<meta property="og:image" content="https:
+<meta property="og:image" content="https://allpaystore.com/og-image.png">
 <meta property="og:type" content="article"><meta property="og:url" content="${canon}">
 <link rel="canonical" href="${canon}">
 ${CSS}
@@ -5241,8 +5241,8 @@ ${CSS}
   </div>
 </div>
 
-<script type="application/ld+json">{"@context":"https:
-<script type="application/ld+json">{"@context":"https:
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"카드단말기 설치"}</script>
 </body></html>`;
 }
 
@@ -5253,7 +5253,7 @@ function makeBlogList(){
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>전국 카드단말기·포스기 설치 지역 | 올페이스토어</title>
 <meta name="description" content="전국 5,066개 읍면동 카드단말기·포스기·키오스크·CCTV 설치. 올페이스토어 ☎ 010-9876-8282">
-<link href="https:
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
 .gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700}
@@ -5273,10 +5273,8 @@ function makeBlogList(){
 }
 
 function makeSitemap(){
-  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http:
-<url><loc>https:
-<url><loc>https:
-${Object.keys(R).map(s=>`<url><loc>https:
+  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://allpaystore.com/</loc></url><url><loc>https://allpaystore.com/blog/</loc></url>
+${Object.keys(R).map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join("")}
 </urlset>`;
 }
 
@@ -5285,13 +5283,13 @@ function getRSS() {
 <rss version="2.0">
   <channel>
     <title>AllPayStore | 포스기·카드단말기·키오스크 전문</title>
-    <link>https:
+    <link>https://allpaystore.com/</link>
     <description>포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.</description>
     <language>ko</language>
     <lastBuildDate>Mon, 09 Mar 2025 00:00:00 +0900</lastBuildDate>
     <item>
       <title>AllPayStore - 포스기·카드단말기·키오스크 전문</title>
-      <link>https:
+      <link>https://allpaystore.com/</link>
       <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 1,500건 이상의 설치 실적.</description>
       <pubDate>Mon, 09 Mar 2025 00:00:00 +0900</pubDate>
     </item>
@@ -5300,9 +5298,7 @@ function getRSS() {
 }
 
 function getRobots() {
-  return `User-agent: *
-Allow: /
-Sitemap: https:
+  return `User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml`;
 }
 
 function getHTML() {
@@ -5318,8 +5314,8 @@ function getHTML() {
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045" />
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac" />
-<link rel="preconnect" href="https:
-<link href="https:
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Noto Sans KR',sans-serif; color:#111; background:#fff; }
@@ -6130,7 +6126,7 @@ footer { background:#111; padding:60px 0 100px; }
     </div>
     <div class="prod-grid">
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">올인원 포스시스템</div>
           <div class="prod-desc">어떤 업종도 OK. 실시간 매출 분석부터 재고 관리까지 한 번에.</div>
@@ -6138,7 +6134,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">자동커팅 단말기</div>
           <div class="prod-desc">빠른 영수증 출력과 자동 커팅으로 매장 회전율을 높여줍니다.</div>
@@ -6146,7 +6142,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">컴팩트 카드단말기</div>
           <div class="prod-desc">좁은 카운터에서도 공간 활용이 뛰어난 소규모 매장 최적 모델.</div>
@@ -6154,7 +6150,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">토스 단말기</div>
           <div class="prod-desc">고객이 직접 결제하고 포인트를 적립하는 스마트한 경험.</div>
@@ -6162,7 +6158,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">무선 카드단말기</div>
           <div class="prod-desc">배달·야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</div>
@@ -6170,7 +6166,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">블루투스 단말기</div>
           <div class="prod-desc">스마트폰만 있으면 결제 준비 끝. 1인 창업자에게 최적.</div>
@@ -6178,7 +6174,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">테이블 오더</div>
           <div class="prod-desc">고객이 자리에서 직접 주문·결제. 인건비 절감과 스마트한 운영.</div>
@@ -6186,7 +6182,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">알뜰 미니키오스크</div>
           <div class="prod-desc">카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</div>
@@ -6194,7 +6190,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img"><img src="https://allpaystore.com/images/product.jpg" alt="제품이미지" style="width:100%;height:100%;object-fit:contain;padding:16px;">
         <div class="prod-body">
           <div class="prod-name">스마트 무인키오스크</div>
           <div class="prod-desc">직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</div>
@@ -6773,7 +6769,7 @@ export default {
     }
 
     if(path==='/index.html')
-      return Response.redirect('https:
+      return Response.redirect('https://allpaystore.com/', 301);
 
     if(path==='/blog')
       return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
@@ -6791,7 +6787,8 @@ export default {
     if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
 
     if(path==='/sitemap.xml')return new Response(makeSitemap(),{headers:{'Content-Type':'application/xml;charset=utf-8'}});
-    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https:
+    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml
+', { headers: { 'Content-Type': 'text/plain' } });
 
     
     if(path==='/blog'||path==='/blog/'){return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
