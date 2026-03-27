@@ -5253,7 +5253,7 @@ function makeBlogList(){
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>전국 카드단말기·포스기 설치 지역 | 올페이스토어</title>
 <meta name="description" content="전국 5,066개 읍면동 카드단말기·포스기·키오스크·CCTV 설치. 올페이스토어 ☎ 010-9876-8282">
-<link href="https:
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
 .gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700}
@@ -6130,7 +6130,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🖥️</div>
         <div class="prod-body">
           <div class="prod-name">자동커팅 단말기</div>
           <div class="prod-desc">빠른 영수증 출력과 자동 커팅으로 매장 회전율을 높여줍니다.</div>
@@ -6138,7 +6138,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🧾</div>
         <div class="prod-body">
           <div class="prod-name">컴팩트 카드단말기</div>
           <div class="prod-desc">좁은 카운터에서도 공간 활용이 뛰어난 소규모 매장 최적 모델.</div>
@@ -6146,7 +6146,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">💳</div>
         <div class="prod-body">
           <div class="prod-name">토스 단말기</div>
           <div class="prod-desc">고객이 직접 결제하고 포인트를 적립하는 스마트한 경험.</div>
@@ -6154,7 +6154,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📱</div>
         <div class="prod-body">
           <div class="prod-name">무선 카드단말기</div>
           <div class="prod-desc">배달·야외 행사장 어디서나. LTE 통신으로 완벽한 결제 지원.</div>
@@ -6162,7 +6162,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📡</div>
         <div class="prod-body">
           <div class="prod-name">블루투스 단말기</div>
           <div class="prod-desc">스마트폰만 있으면 결제 준비 끝. 1인 창업자에게 최적.</div>
@@ -6170,7 +6170,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🔵</div>
         <div class="prod-body">
           <div class="prod-name">테이블 오더</div>
           <div class="prod-desc">고객이 자리에서 직접 주문·결제. 인건비 절감과 스마트한 운영.</div>
@@ -6178,7 +6178,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">📋</div>
         <div class="prod-body">
           <div class="prod-name">알뜰 미니키오스크</div>
           <div class="prod-desc">카운터 위에 간편 배치. 좁은 매장에서도 인건비 절감 효과.</div>
@@ -6186,7 +6186,7 @@ footer { background:#111; padding:60px 0 100px; }
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><img src="https:
+        <div class="prod-img" style="font-size:64px;display:flex;align-items:center;justify-content:center;background:#f0f5ff;">🤖</div>
         <div class="prod-body">
           <div class="prod-name">스마트 무인키오스크</div>
           <div class="prod-desc">직관적인 UI로 주문 대기 시간을 줄이고 운영 효율을 극대화.</div>
@@ -6765,7 +6765,7 @@ export default {
     }
 
     if(path==='/index.html')
-      return Response.redirect('https:
+      return Response.redirect('https://allpaystore.com/', 301);
 
     if(path==='/blog')
       return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
@@ -6788,7 +6788,7 @@ export default {
 
     if(path==='/sitemap.xml')return new Response(makeSitemap(),{headers:{'Content-Type':'application/xml;charset=utf-8'}});
     if(path.startsWith('/images/')){return Response.redirect('https://raw.githubusercontent.com/dandylsk80/allpaystore/main'+path,301);}
-    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https:
+    if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n', {headers:{'Content-Type':'text/plain'}});
 
     return new Response('Not Found',{status:404});
   }
