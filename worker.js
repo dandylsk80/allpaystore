@@ -5666,23 +5666,129 @@ footer { background:#111; padding:60px 0 100px; }
 .footer-info { font-size:13px; color:#666; line-height:2; }
 .footer-copy { margin-top:32px; padding-top:24px; border-top:1px solid #222; font-size:13px; color:#444; }
 
-/* MOBILE */
+/* ── 햄버거 버튼 ── */
+.hamburger {
+  display:none; flex-direction:column; justify-content:space-between;
+  width:28px; height:20px; cursor:pointer; margin-left:auto; flex-shrink:0;
+}
+.hamburger span {
+  display:block; width:100%; height:2.5px;
+  background:#111; border-radius:2px; transition:all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform:translateY(8.75px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-8.75px) rotate(-45deg); }
+
+/* ── 모바일 드로어 메뉴 ── */
+.mobile-menu {
+  display:none; position:fixed; top:60px; left:0; width:100%; z-index:999;
+  background:#fff; border-bottom:1px solid #eee;
+  padding:0; max-height:0; overflow:hidden;
+  transition:max-height 0.35s ease, padding 0.2s;
+  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+}
+.mobile-menu.open { max-height:500px; padding:16px 0 20px; }
+.mobile-menu a {
+  display:block; padding:13px 24px; font-size:15px; font-weight:600;
+  color:#222; border-bottom:1px solid #f5f5f5;
+}
+.mobile-menu a:last-child { border-bottom:none; }
+.mobile-menu .m-tel {
+  display:block; margin:14px 20px 0;
+  background:#0D2E6E; color:#fff; text-align:center;
+  padding:13px; border-radius:8px; font-size:15px; font-weight:800;
+}
+
+/* ── MOBILE ── */
 @media (max-width:768px) {
+  /* NAV */
+  nav { height:60px; }
   .nav-links { display:none; }
-  .nav-inner { padding:0 20px; }
-  .hero { height:70vh; }
+  .nav-inner { padding:0 16px; gap:12px; }
+  .logo { font-size:20px; }
+  .nav-visitor { padding:4px 10px; }
+  .nav-visitor-count { font-size:14px; }
+  .nav-consult { display:none; }
+  .hamburger { display:flex; }
+  .mobile-menu { display:block; }
+
+  /* HERO */
+  .hero { height:75vmax; min-height:420px; margin-top:60px; }
   .hero-content { padding:0 20px; }
-  .sec { padding:60px 20px; }
-  .industry-grid { grid-template-columns:1fr; }
-  .industry-grid-sm { grid-template-columns:repeat(2,1fr); }
-  .prod-grid { grid-template-columns:1fr; }
-  .serv-grid { grid-template-columns:1fr; }
-  .review-grid { grid-template-columns:repeat(2,1fr); }
+  .hero-label { font-size:12px; padding:4px 10px; margin-bottom:14px; }
+  .hero-title { letter-spacing:-1px; margin-bottom:14px; }
+  .hero-desc { margin-bottom:24px; }
+  .hero-btns { flex-direction:column; gap:10px; }
+  .btn-hero-primary, .btn-hero-secondary { padding:13px 24px; font-size:15px; width:100%; text-align:center; }
+  .hero-arrow { width:36px; height:36px; font-size:16px; }
+  .hero-arrow-left { left:10px; }
+  .hero-arrow-right { right:10px; }
+
+  /* SECTIONS */
+  .sec { padding:52px 0; }
+  .sec-inner { padding:0 16px; }
+  .sec-top { margin-bottom:36px; }
+  .sec-top h2 { font-size:22px; letter-spacing:-0.5px; }
+  .sec-top p { font-size:14px; }
+
+  /* INDUSTRY */
+  .industry-grid { grid-template-columns:1fr; gap:14px; }
+  .industry-grid-sm { grid-template-columns:repeat(2,1fr); gap:12px; }
+  .ind-img { height:160px; font-size:52px; }
+  .ind-body { padding:16px 18px; }
+  .ind-title { font-size:17px; }
+  .ind-img-sm { height:120px; font-size:36px; }
+  .ind-body-sm { padding:12px 14px; }
+  .ind-title-sm { font-size:14px; }
+
+  /* PRODUCTS */
+  .prod-grid { grid-template-columns:1fr; gap:16px; }
+  .prod-img { height:180px; }
+
+  /* SERVICES */
+  .serv-grid { grid-template-columns:1fr; gap:14px; }
+  .serv-card { aspect-ratio:16/9; }
+
+  /* REVIEWS */
+  .review-grid { grid-template-columns:1fr; gap:12px; }
+  .review-card { min-height:auto; padding:18px; }
+
+  /* NUMBERS */
   .numbers-grid { grid-template-columns:repeat(2,1fr); }
-  .number-item { border-right:none; border-bottom:1px solid rgba(255,255,255,0.2); }
-  .consult-bar { padding:12px 20px; gap:10px; }
+  .number-item { border-right:none; border-bottom:1px solid #eee; padding:28px 16px; }
+  .number-item:nth-child(odd) { border-right:1px solid #eee; }
+  .number-item:last-child, .number-item:nth-last-child(2):nth-child(odd) { border-bottom:none; }
+  .number-big { font-size:clamp(30px,7vw,46px); }
+  .number-desc { font-size:13px; }
+
+  /* CASES */
+  .case-card { min-width:260px; }
+  .cases-btn { width:36px; height:36px; font-size:15px; }
+
+  /* PARTNERS */
+  .partner-item { font-size:14px; padding:10px 18px; }
+
+  /* CTA BANNER */
+  .cta-banner { padding:60px 20px; }
+  .cta-banner h2 { font-size:22px; }
+  .cta-banner p { font-size:15px; }
+  .btn-cta-yellow, .btn-cta-white { width:100%; padding:15px 20px; font-size:15px; }
+  .cta-btns { flex-direction:column; gap:10px; align-items:stretch; }
+
+  /* FIXED BAR */
+  .consult-bar { padding:10px 16px; gap:8px; flex-wrap:nowrap; }
   .consult-bar-text { display:none; }
-  footer { padding:40px 20px 100px; }
+  .consult-bar-phone { font-size:13px; padding:8px 16px; flex:1; justify-content:center; }
+  .consult-bar-kakao { font-size:13px; padding:8px 14px; }
+
+  /* FOOTER */
+  footer { padding:36px 0 80px; }
+  .footer-inner { padding:0 20px; }
+  .footer-logo { font-size:20px; }
+  .footer-info { font-size:12px; }
+
+  /* DROPDOWN 모바일 숨김 */
+  .dropdown { display:none !important; }
 }
 </style>
 </head>
@@ -5738,10 +5844,21 @@ footer { background:#111; padding:60px 0 100px; }
         <span class="nav-visitor-label">누적 방문자</span>
         <span class="nav-visitor-count" id="visitorCount">0명</span>
       </div>
+      <button class="nav-consult" onclick="location.href='tel:010-9876-8282'">📞 무료 상담</button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="메뉴">
+      <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
-
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#products">💳 제품 보기</a>
+  <a href="#services">🔧 서비스 안내</a>
+  <a href="#cases">📋 설치 사례</a>
+  <a href="#reviews">⭐ 고객 후기</a>
+  <a href="/blog/">📍 지역별 설치 안내</a>
+  <a href="tel:010-9876-8282" class="m-tel">📞 010-9876-8282 무료 상담</a>
+</div>
 <div class="hero">
   <div class="hero-slides" id="heroSlides">
     <div class="hero-slide">
@@ -6381,6 +6498,29 @@ function casesGoTo(idx) {
 function casesMove(dir) { casesGoTo(casesIdx + dir); }
 setInterval(function() { casesGoTo(casesIdx < casesMax ? casesIdx + 1 : 0); }, 4000);
 initCasesDots();
+
+// 햄버거 메뉴
+function toggleMobileMenu() {
+  var menu = document.getElementById('mobileMenu');
+  var btn = document.getElementById('hamburger');
+  var isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+}
+// 모바일 메뉴 링크 클릭 시 닫기
+document.querySelectorAll('.mobile-menu a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+// 화면 리사이즈 시 메뉴 닫기
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>`;
