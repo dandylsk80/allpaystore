@@ -5371,18 +5371,21 @@ nav {
 .nav-links a:hover { color:#0D2E6E; }
 .nav-links li { position:relative; }
 .dropdown {
-  display:none; position:absolute; top:calc(100% + 0px); left:-20px;
+  display:none; position:absolute; top:calc(100% + 8px); left:-20px;
   background:#0D2E6E; border-radius:14px;
   box-shadow:0 12px 40px rgba(0,0,0,0.25);
   min-width:520px; padding:20px; z-index:2000;
+  pointer-events:auto;
 }
 .dropdown-tabs { display:none; }
 .dropdown-tab  { display:none; }
 .dd-back {
-  width:100%; background:rgba(255,255,255,0.12) !important;
+  display:block; width:100%;
+  background:rgba(255,255,255,0.12) !important;
   color:#fff !important; font-weight:700 !important;
   border-radius:8px !important; margin-bottom:8px;
-  padding:8px 14px !important;
+  padding:8px 14px !important; cursor:pointer;
+  white-space:nowrap !important;
 }
 .dd-back:hover { background:rgba(255,255,255,0.22) !important; }
 .dropdown-regions { display:flex; flex-wrap:wrap; gap:8px; }
@@ -5391,7 +5394,7 @@ nav {
   padding:8px 14px; border-radius:20px;
   font-size:13px; font-weight:600; color:rgba(255,255,255,0.85);
   background:rgba(255,255,255,0.08); white-space:nowrap;
-  transition:all 0.2s;
+  transition:all 0.2s; cursor:pointer;
 }
 .dropdown-regions a:hover { background:#1A6BFF; color:#fff; }
 .nav-visitor {
@@ -5753,23 +5756,77 @@ footer { background:#111; padding:60px 0 100px; }
 
 /* ── 모바일 드로어 메뉴 ── */
 .mobile-menu {
-  display:none; position:fixed; top:60px; left:0; width:100%; z-index:999;
-  background:#fff; border-bottom:1px solid #eee;
-  padding:0; max-height:0; overflow:hidden;
-  transition:max-height 0.35s ease, padding 0.2s;
-  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+  display:none; position:fixed; top:60px; left:0; width:100%; z-index:998;
+  background:#fff; overflow:hidden; max-height:0;
+  transition:max-height 0.35s ease;
+  box-shadow:0 8px 24px rgba(0,0,0,0.12);
 }
-.mobile-menu.open { max-height:500px; padding:16px 0 20px; }
-.mobile-menu a {
-  display:block; padding:13px 24px; font-size:15px; font-weight:600;
-  color:#222; border-bottom:1px solid #f5f5f5;
+.mobile-menu.open { max-height:calc(100vh - 60px); overflow-y:auto; }
+
+/* 모바일 메뉴 패널 (슬라이드) */
+.mm-panels { display:flex; width:200%; transition:transform 0.3s ease; }
+.mm-panel   { width:50%; flex-shrink:0; }
+
+/* 공통 메뉴 링크 */
+.mm-link {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px; font-size:15px; font-weight:600; color:#222;
+  border-bottom:1px solid #f2f2f2; text-decoration:none;
+  background:#fff; cursor:pointer; width:100%; border:none;
+  font-family:'Noto Sans KR',sans-serif; text-align:left;
 }
-.mobile-menu a:last-child { border-bottom:none; }
-.mobile-menu .m-tel {
-  display:block; margin:14px 20px 0;
+.mm-link:last-child { border-bottom:none; }
+.mm-link .mm-arrow { color:#aaa; font-size:13px; }
+.mm-link:active { background:#f8f9fc; }
+
+/* 시군구 패널 헤더 */
+.mm-back {
+  display:flex; align-items:center; gap:8px;
+  padding:13px 20px; font-size:14px; font-weight:700; color:#0D2E6E;
+  border-bottom:2px solid #0D2E6E; background:#EEF4FF;
+  cursor:pointer; border-top:none; border-left:none; border-right:none;
+  font-family:'Noto Sans KR',sans-serif; width:100%; text-align:left;
+}
+
+/* 시군구 그리드 */
+.mm-sgs {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:0; padding:8px 12px 16px;
+}
+.mm-sg {
+  display:block; padding:11px 8px; font-size:13px; font-weight:600;
+  color:#333; text-align:center; text-decoration:none;
+  border-radius:8px; transition:background 0.15s;
+}
+.mm-sg:active { background:#EEF4FF; color:#0D2E6E; }
+
+/* 전화 버튼 */
+.mm-tel {
+  display:block; margin:12px 16px 16px;
   background:#0D2E6E; color:#fff; text-align:center;
-  padding:13px; border-radius:8px; font-size:15px; font-weight:800;
+  padding:14px; border-radius:10px; font-size:15px; font-weight:800;
+  text-decoration:none;
 }
+
+/* 오버레이 */
+.mm-overlay {
+  display:none; position:fixed; inset:0; z-index:997;
+  background:rgba(0,0,0,0.3);
+}
+.mm-overlay.open { display:block; }
+
+/* 시도 선택 그리드 */
+.mm-sido-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:0; padding:8px 12px 20px;
+}
+.mm-sido-btn {
+  background:none; border:none; padding:13px 6px; font-size:12px; font-weight:700;
+  color:#333; text-align:center; cursor:pointer; border-radius:8px;
+  font-family:'Noto Sans KR',sans-serif; line-height:1.5;
+  transition:background 0.15s;
+}
+.mm-sido-btn:active { background:#EEF4FF; color:#0D2E6E; }
 
 /* ── MOBILE ── */
 @media (max-width:768px) {
@@ -5923,13 +5980,36 @@ footer { background:#111; padding:60px 0 100px; }
     </div>
   </div>
 </nav>
+<div class="mm-overlay" id="mmOverlay" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#products">💳 제품 보기</a>
-  <a href="#services">🔧 서비스 안내</a>
-  <a href="#cases">📋 설치 사례</a>
-  <a href="#reviews">⭐ 고객 후기</a>
-  <a href="/blog/">📍 지역별 설치 안내</a>
-  <a href="tel:010-9876-8282" class="m-tel">📞 010-9876-8282 무료 상담</a>
+  <div class="mm-panels" id="mmPanels">
+    <!-- 패널1: 메인 메뉴 -->
+    <div class="mm-panel" id="mmPanel1">
+      <button class="mm-link" onclick="mmOpenRegion()">
+        📍 지역별 설치 안내 <span class="mm-arrow">›</span>
+      </button>
+      <a class="mm-link" href="#products" onclick="closeMobileMenu()">
+        💳 제품 보기 <span class="mm-arrow">›</span>
+      </a>
+      <a class="mm-link" href="#services" onclick="closeMobileMenu()">
+        🔧 서비스 안내 <span class="mm-arrow">›</span>
+      </a>
+      <a class="mm-link" href="#cases" onclick="closeMobileMenu()">
+        📋 설치 사례 <span class="mm-arrow">›</span>
+      </a>
+      <a class="mm-link" href="#reviews" onclick="closeMobileMenu()">
+        ⭐ 고객 후기 <span class="mm-arrow">›</span>
+      </a>
+      <a class="mm-tel" href="tel:010-9876-8282">📞 010-9876-8282 무료 상담</a>
+    </div>
+    <!-- 패널2: 지역 선택 -->
+    <div class="mm-panel" id="mmPanel2">
+      <button class="mm-back" id="mmBackBtn" onclick="mmBackToMain()">
+        ← <span id="mmBackLabel">지역 선택</span>
+      </button>
+      <div id="mmRegionContent"></div>
+    </div>
+  </div>
 </div>
 <div class="hero">
   <div class="hero-slides" id="heroSlides">
@@ -6467,28 +6547,10 @@ footer { background:#111; padding:60px 0 100px; }
 
 <script>
 
-const SIGUNGU={
-  "seoul":[["종로구","seoul/jongrogu"],["중구","seoul/junggu"],["용산구","seoul/yongsangu"],["성동구","seoul/seongdonggu"],["광진구","seoul/gwangjingu"],["동대문구","seoul/dongdaemungu"],["중랑구","seoul/jungranggu"],["성북구","seoul/seongbuggu"],["강북구","seoul/gangbuggu"],["도봉구","seoul/dobonggu"],["노원구","seoul/nowongu"],["은평구","seoul/eunpyeonggu"],["서대문구","seoul/seodaemungu"],["마포구","seoul/mapogu"],["양천구","seoul/yangcheongu"],["강서구","seoul/gangseogu"],["구로구","seoul/gurogu"],["금천구","seoul/geumcheongu"],["영등포구","seoul/yeongdeungpogu"],["동작구","seoul/dongjaggu"],["관악구","seoul/gwanaggu"],["서초구","seoul/seochogu"],["강남구","seoul/gangnamgu"],["송파구","seoul/songpagu"],["강동구","seoul/gangdonggu"]],
-  "busan":[["중구","busan/junggu"],["서구","busan/seogu"],["동구","busan/donggu"],["영도구","busan/yeongdogu"],["부산진구","busan/busanjingu"],["동래구","busan/dongraegu"],["남구","busan/namgu"],["북구","busan/buggu"],["해운대구","busan/haeundaegu"],["사하구","busan/sahagu"],["금정구","busan/geumjeonggu"],["강서구","busan/gangseogu"],["연제구","busan/yeonjegu"],["수영구","busan/suyeonggu"],["사상구","busan/sasanggu"],["기장군","busan/gijanggun"]],
-  "daegu":[["중구","daegu/junggu"],["동구","daegu/donggu"],["서구","daegu/seogu"],["남구","daegu/namgu"],["북구","daegu/buggu"],["수성구","daegu/suseonggu"],["달서구","daegu/darseogu"],["달성군","daegu/darseonggun"],["군위군","daegu/gunwigun"]],
-  "incheon":[["중구","incheon/junggu"],["동구","incheon/donggu"],["미추홀구","incheon/michuhorgu"],["연수구","incheon/yeonsugu"],["남동구","incheon/namdonggu"],["부평구","incheon/bupyeonggu"],["계양구","incheon/gyeyanggu"],["서구","incheon/seogu"],["강화군","incheon/ganghwagun"],["옹진군","incheon/ongjingun"]],
-  "gwangju":[["동구","gwangju/donggu"],["서구","gwangju/seogu"],["남구","gwangju/namgu"],["북구","gwangju/buggu"],["광산구","gwangju/gwangsangu"]],
-  "daejeon":[["동구","daejeon/donggu"],["중구","daejeon/junggu"],["서구","daejeon/seogu"],["유성구","daejeon/yuseonggu"],["대덕구","daejeon/daedeoggu"]],
-  "ulsan":[["중구","ulsan/junggu"],["남구","ulsan/namgu"],["동구","ulsan/donggu"],["북구","ulsan/buggu"],["울주군","ulsan/urjugun"]],
-  "sejong":[["세종시","sejong/sejongsi"]],
-  "gyeonggi":[["수원시","gyeonggi/suwonsi"],["수원시장안구","gyeonggi/suwonsijangangu"],["수원시권선구","gyeonggi/suwonsigwonseongu"],["수원시팔달구","gyeonggi/suwonsipardargu"],["수원시영통구","gyeonggi/suwonsiyeongtonggu"],["성남시","gyeonggi/seongnamsi"],["성남시수정구","gyeonggi/seongnamsisujeonggu"],["성남시중원구","gyeonggi/seongnamsijungwongu"],["성남시분당구","gyeonggi/seongnamsibundanggu"],["의정부시","gyeonggi/euijeongbusi"],["안양시","gyeonggi/anyangsi"],["안양시만안구","gyeonggi/anyangsimanangu"],["안양시동안구","gyeonggi/anyangsidongangu"],["부천시","gyeonggi/bucheonsi"],["부천시원미구","gyeonggi/bucheonsiwonmigu"],["부천시소사구","gyeonggi/bucheonsisosagu"],["부천시오정구","gyeonggi/bucheonsiojeonggu"],["광명시","gyeonggi/gwangmyeongsi"],["평택시","gyeonggi/pyeongtaegsi"],["동두천시","gyeonggi/dongducheonsi"],["안산시","gyeonggi/ansansi"],["안산시상록구","gyeonggi/ansansisangroggu"],["안산시단원구","gyeonggi/ansansidanwongu"],["고양시","gyeonggi/goyangsi"],["고양시덕양구","gyeonggi/goyangsideogyanggu"],["고양시일산동구","gyeonggi/goyangsiirsandonggu"],["고양시일산서구","gyeonggi/goyangsiirsanseogu"],["과천시","gyeonggi/gwacheonsi"],["구리시","gyeonggi/gurisi"],["남양주시","gyeonggi/namyangjusi"],["오산시","gyeonggi/osansi"],["시흥시","gyeonggi/siheungsi"],["군포시","gyeonggi/gunposi"],["의왕시","gyeonggi/euiwangsi"],["하남시","gyeonggi/hanamsi"],["용인시","gyeonggi/yonginsi"],["용인시처인구","gyeonggi/yonginsicheoingu"],["용인시기흥구","gyeonggi/yonginsigiheunggu"],["용인시수지구","gyeonggi/yonginsisujigu"],["파주시","gyeonggi/pajusi"],["이천시","gyeonggi/icheonsi"],["안성시","gyeonggi/anseongsi"],["김포시","gyeonggi/gimposi"],["화성시","gyeonggi/hwaseongsi"],["광주시","gyeonggi/gwangjusi"],["양주시","gyeonggi/yangjusi"],["포천시","gyeonggi/pocheonsi"],["여주시","gyeonggi/yeojusi"],["연천군","gyeonggi/yeoncheongun"],["가평군","gyeonggi/gapyeonggun"],["양평군","gyeonggi/yangpyeonggun"]],
-  "gangwon":[["춘천시","gangwon/chuncheonsi"],["원주시","gangwon/wonjusi"],["강릉시","gangwon/gangreungsi"],["동해시","gangwon/donghaesi"],["태백시","gangwon/taebaegsi"],["속초시","gangwon/sogchosi"],["삼척시","gangwon/samcheogsi"],["홍천군","gangwon/hongcheongun"],["횡성군","gangwon/hoengseonggun"],["영월군","gangwon/yeongworgun"],["평창군","gangwon/pyeongchanggun"],["정선군","gangwon/jeongseongun"],["철원군","gangwon/cheorwongun"],["화천군","gangwon/hwacheongun"],["양구군","gangwon/yanggugun"],["인제군","gangwon/injegun"],["고성군","gangwon/goseonggun"],["양양군","gangwon/yangyanggun"]],
-  "chungbuk":[["청주시","chungbuk/cheongjusi"],["청주시상당구","chungbuk/cheongjusisangdanggu"],["청주시서원구","chungbuk/cheongjusiseowongu"],["청주시흥덕구","chungbuk/cheongjusiheungdeoggu"],["청주시청원구","chungbuk/cheongjusicheongwongu"],["충주시","chungbuk/chungjusi"],["제천시","chungbuk/jecheonsi"],["보은군","chungbuk/boeungun"],["옥천군","chungbuk/ogcheongun"],["영동군","chungbuk/yeongdonggun"],["증평군","chungbuk/jeungpyeonggun"],["진천군","chungbuk/jincheongun"],["괴산군","chungbuk/goesangun"],["음성군","chungbuk/eumseonggun"],["단양군","chungbuk/danyanggun"]],
-  "chungnam":[["천안시","chungnam/cheonansi"],["천안시동남구","chungnam/cheonansidongnamgu"],["천안시서북구","chungnam/cheonansiseobuggu"],["공주시","chungnam/gongjusi"],["보령시","chungnam/boryeongsi"],["아산시","chungnam/asansi"],["서산시","chungnam/seosansi"],["논산시","chungnam/nonsansi"],["계룡시","chungnam/gyeryongsi"],["당진시","chungnam/dangjinsi"],["금산군","chungnam/geumsangun"],["부여군","chungnam/buyeogun"],["서천군","chungnam/seocheongun"],["청양군","chungnam/cheongyanggun"],["홍성군","chungnam/hongseonggun"],["예산군","chungnam/yesangun"],["태안군","chungnam/taeangun"]],
-  "jeonbuk":[["전주시","jeonbuk/jeonjusi"],["전주시완산구","jeonbuk/jeonjusiwansangu"],["전주시덕진구","jeonbuk/jeonjusideogjingu"],["군산시","jeonbuk/gunsansi"],["익산시","jeonbuk/igsansi"],["정읍시","jeonbuk/jeongeubsi"],["남원시","jeonbuk/namwonsi"],["김제시","jeonbuk/gimjesi"],["완주군","jeonbuk/wanjugun"],["진안군","jeonbuk/jinangun"],["무주군","jeonbuk/mujugun"],["장수군","jeonbuk/jangsugun"],["임실군","jeonbuk/imsirgun"],["순창군","jeonbuk/sunchanggun"],["고창군","jeonbuk/gochanggun"],["부안군","jeonbuk/buangun"]],
-  "jeonnam":[["목포시","jeonnam/mogposi"],["여수시","jeonnam/yeosusi"],["순천시","jeonnam/suncheonsi"],["나주시","jeonnam/najusi"],["광양시","jeonnam/gwangyangsi"],["담양군","jeonnam/damyanggun"],["곡성군","jeonnam/gogseonggun"],["구례군","jeonnam/guryegun"],["고흥군","jeonnam/goheunggun"],["보성군","jeonnam/boseonggun"],["화순군","jeonnam/hwasungun"],["장흥군","jeonnam/jangheunggun"],["강진군","jeonnam/gangjingun"],["해남군","jeonnam/haenamgun"],["영암군","jeonnam/yeongamgun"],["무안군","jeonnam/muangun"],["함평군","jeonnam/hampyeonggun"],["영광군","jeonnam/yeonggwanggun"],["장성군","jeonnam/jangseonggun"],["완도군","jeonnam/wandogun"],["진도군","jeonnam/jindogun"],["신안군","jeonnam/sinangun"]],
-  "gyeongbuk":[["포항시","gyeongbuk/pohangsi"],["포항시남구","gyeongbuk/pohangsinamgu"],["포항시북구","gyeongbuk/pohangsibuggu"],["경주시","gyeongbuk/gyeongjusi"],["김천시","gyeongbuk/gimcheonsi"],["안동시","gyeongbuk/andongsi"],["구미시","gyeongbuk/gumisi"],["영주시","gyeongbuk/yeongjusi"],["영천시","gyeongbuk/yeongcheonsi"],["상주시","gyeongbuk/sangjusi"],["문경시","gyeongbuk/mungyeongsi"],["경산시","gyeongbuk/gyeongsansi"],["의성군","gyeongbuk/euiseonggun"],["청송군","gyeongbuk/cheongsonggun"],["영양군","gyeongbuk/yeongyanggun"],["영덕군","gyeongbuk/yeongdeoggun"],["청도군","gyeongbuk/cheongdogun"],["고령군","gyeongbuk/goryeonggun"],["성주군","gyeongbuk/seongjugun"],["칠곡군","gyeongbuk/chirgoggun"],["예천군","gyeongbuk/yecheongun"],["봉화군","gyeongbuk/bonghwagun"],["울진군","gyeongbuk/urjingun"],["울릉군","gyeongbuk/urreunggun"]],
-  "gyeongnam":[["창원시","gyeongnam/changwonsi"],["창원시의창구","gyeongnam/changwonsieuichanggu"],["창원시성산구","gyeongnam/changwonsiseongsangu"],["창원시마산합포구","gyeongnam/changwonsimasanhabpogu"],["창원시마산회원구","gyeongnam/changwonsimasanhoewongu"],["창원시진해구","gyeongnam/changwonsijinhaegu"],["진주시","gyeongnam/jinjusi"],["통영시","gyeongnam/tongyeongsi"],["사천시","gyeongnam/sacheonsi"],["김해시","gyeongnam/gimhaesi"],["밀양시","gyeongnam/miryangsi"],["거제시","gyeongnam/geojesi"],["양산시","gyeongnam/yangsansi"],["의령군","gyeongnam/euiryeonggun"],["함안군","gyeongnam/hamangun"],["창녕군","gyeongnam/changnyeonggun"],["고성군","gyeongnam/goseonggun"],["남해군","gyeongnam/namhaegun"],["하동군","gyeongnam/hadonggun"],["산청군","gyeongnam/sancheonggun"],["함양군","gyeongnam/hamyanggun"],["거창군","gyeongnam/geochanggun"],["합천군","gyeongnam/habcheongun"]],
-  "jeju":[["제주시","jeju/jejusi"],["서귀포시","jeju/seogwiposi"]]
-};
 
-// 드롭다운 시도→시군구 2단계
-const SIDO_NAMES={seoul:'서울특별시',busan:'부산광역시',daegu:'대구광역시',incheon:'인천광역시',gwangju:'광주광역시',daejeon:'대전광역시',ulsan:'울산광역시',sejong:'세종특별자치시',gyeonggi:'경기도',gangwon:'강원특별자치도',chungbuk:'충청북도',chungnam:'충청남도',jeonbuk:'전북특별자치도',jeonnam:'전라남도',gyeongbuk:'경상북도',gyeongnam:'경상남도',jeju:'제주특별자치도'};
+
+const SIGUNGU={"seoul":[["종로구","seoul/jongrogu"],["중구","seoul/junggu"],["용산구","seoul/yongsangu"],["성동구","seoul/seongdonggu"],["광진구","seoul/gwangjingu"],["동대문구","seoul/dongdaemungu"],["중랑구","seoul/jungranggu"],["성북구","seoul/seongbuggu"],["강북구","seoul/gangbuggu"],["도봉구","seoul/dobonggu"],["노원구","seoul/nowongu"],["은평구","seoul/eunpyeonggu"],["서대문구","seoul/seodaemungu"],["마포구","seoul/mapogu"],["양천구","seoul/yangcheongu"],["강서구","seoul/gangseogu"],["구로구","seoul/gurogu"],["금천구","seoul/geumcheongu"],["영등포구","seoul/yeongdeungpogu"],["동작구","seoul/dongjaggu"],["관악구","seoul/gwanaggu"],["서초구","seoul/seochogu"],["강남구","seoul/gangnamgu"],["송파구","seoul/songpagu"],["강동구","seoul/gangdonggu"]],"busan":[["중구","busan/junggu"],["서구","busan/seogu"],["동구","busan/donggu"],["영도구","busan/yeongdogu"],["부산진구","busan/busanjingu"],["동래구","busan/dongraegu"],["남구","busan/namgu"],["북구","busan/buggu"],["해운대구","busan/haeundaegu"],["사하구","busan/sahagu"],["금정구","busan/geumjeonggu"],["강서구","busan/gangseogu"],["연제구","busan/yeonjegu"],["수영구","busan/suyeonggu"],["사상구","busan/sasanggu"],["기장군","busan/gijanggun"]],"daegu":[["중구","daegu/junggu"],["동구","daegu/donggu"],["서구","daegu/seogu"],["남구","daegu/namgu"],["북구","daegu/buggu"],["수성구","daegu/suseonggu"],["달서구","daegu/darseogu"],["달성군","daegu/darseonggun"],["군위군","daegu/gunwigun"]],"incheon":[["중구","incheon/junggu"],["동구","incheon/donggu"],["미추홀구","incheon/michuhorgu"],["연수구","incheon/yeonsugu"],["남동구","incheon/namdonggu"],["부평구","incheon/bupyeonggu"],["계양구","incheon/gyeyanggu"],["서구","incheon/seogu"],["강화군","incheon/ganghwagun"],["옹진군","incheon/ongjingun"]],"gwangju":[["동구","gwangju/donggu"],["서구","gwangju/seogu"],["남구","gwangju/namgu"],["북구","gwangju/buggu"],["광산구","gwangju/gwangsangu"]],"daejeon":[["동구","daejeon/donggu"],["중구","daejeon/junggu"],["서구","daejeon/seogu"],["유성구","daejeon/yuseonggu"],["대덕구","daejeon/daedeoggu"]],"ulsan":[["중구","ulsan/junggu"],["남구","ulsan/namgu"],["동구","ulsan/donggu"],["북구","ulsan/buggu"],["울주군","ulsan/urjugun"]],"sejong":[["세종시","sejong/sejongsi"]],"gyeonggi":[["수원시","gyeonggi/suwonsi"],["수원시장안구","gyeonggi/suwonsijangangu"],["수원시권선구","gyeonggi/suwonsigwonseongu"],["수원시팔달구","gyeonggi/suwonsipardargu"],["수원시영통구","gyeonggi/suwonsiyeongtonggu"],["성남시","gyeonggi/seongnamsi"],["성남시수정구","gyeonggi/seongnamsisujeonggu"],["성남시중원구","gyeonggi/seongnamsijungwongu"],["성남시분당구","gyeonggi/seongnamsibundanggu"],["의정부시","gyeonggi/euijeongbusi"],["안양시","gyeonggi/anyangsi"],["안양시만안구","gyeonggi/anyangsimanangu"],["안양시동안구","gyeonggi/anyangsidongangu"],["부천시","gyeonggi/bucheonsi"],["부천시원미구","gyeonggi/bucheonsiwonmigu"],["부천시소사구","gyeonggi/bucheonsisosagu"],["부천시오정구","gyeonggi/bucheonsiojeonggu"],["광명시","gyeonggi/gwangmyeongsi"],["평택시","gyeonggi/pyeongtaegsi"],["동두천시","gyeonggi/dongducheonsi"],["안산시","gyeonggi/ansansi"],["안산시상록구","gyeonggi/ansansisangroggu"],["안산시단원구","gyeonggi/ansansidanwongu"],["고양시","gyeonggi/goyangsi"],["고양시덕양구","gyeonggi/goyangsideogyanggu"],["고양시일산동구","gyeonggi/goyangsiirsandonggu"],["고양시일산서구","gyeonggi/goyangsiirsanseogu"],["과천시","gyeonggi/gwacheonsi"],["구리시","gyeonggi/gurisi"],["남양주시","gyeonggi/namyangjusi"],["오산시","gyeonggi/osansi"],["시흥시","gyeonggi/siheungsi"],["군포시","gyeonggi/gunposi"],["의왕시","gyeonggi/euiwangsi"],["하남시","gyeonggi/hanamsi"],["용인시","gyeonggi/yonginsi"],["용인시처인구","gyeonggi/yonginsicheoingu"],["용인시기흥구","gyeonggi/yonginsigiheunggu"],["용인시수지구","gyeonggi/yonginsisujigu"],["파주시","gyeonggi/pajusi"],["이천시","gyeonggi/icheonsi"],["안성시","gyeonggi/anseongsi"],["김포시","gyeonggi/gimposi"],["화성시","gyeonggi/hwaseongsi"],["광주시","gyeonggi/gwangjusi"],["양주시","gyeonggi/yangjusi"],["포천시","gyeonggi/pocheonsi"],["여주시","gyeonggi/yeojusi"],["연천군","gyeonggi/yeoncheongun"],["가평군","gyeonggi/gapyeonggun"],["양평군","gyeonggi/yangpyeonggun"]],"gangwon":[["춘천시","gangwon/chuncheonsi"],["원주시","gangwon/wonjusi"],["강릉시","gangwon/gangreungsi"],["동해시","gangwon/donghaesi"],["태백시","gangwon/taebaegsi"],["속초시","gangwon/sogchosi"],["삼척시","gangwon/samcheogsi"],["홍천군","gangwon/hongcheongun"],["횡성군","gangwon/hoengseonggun"],["영월군","gangwon/yeongworgun"],["평창군","gangwon/pyeongchanggun"],["정선군","gangwon/jeongseongun"],["철원군","gangwon/cheorwongun"],["화천군","gangwon/hwacheongun"],["양구군","gangwon/yanggugun"],["인제군","gangwon/injegun"],["고성군","gangwon/goseonggun"],["양양군","gangwon/yangyanggun"]],"chungbuk":[["청주시","chungbuk/cheongjusi"],["청주시상당구","chungbuk/cheongjusisangdanggu"],["청주시서원구","chungbuk/cheongjusiseowongu"],["청주시흥덕구","chungbuk/cheongjusiheungdeoggu"],["청주시청원구","chungbuk/cheongjusicheongwongu"],["충주시","chungbuk/chungjusi"],["제천시","chungbuk/jecheonsi"],["보은군","chungbuk/boeungun"],["옥천군","chungbuk/ogcheongun"],["영동군","chungbuk/yeongdonggun"],["증평군","chungbuk/jeungpyeonggun"],["진천군","chungbuk/jincheongun"],["괴산군","chungbuk/goesangun"],["음성군","chungbuk/eumseonggun"],["단양군","chungbuk/danyanggun"]],"chungnam":[["천안시","chungnam/cheonansi"],["천안시동남구","chungnam/cheonansidongnamgu"],["천안시서북구","chungnam/cheonansiseobuggu"],["공주시","chungnam/gongjusi"],["보령시","chungnam/boryeongsi"],["아산시","chungnam/asansi"],["서산시","chungnam/seosansi"],["논산시","chungnam/nonsansi"],["계룡시","chungnam/gyeryongsi"],["당진시","chungnam/dangjinsi"],["금산군","chungnam/geumsangun"],["부여군","chungnam/buyeogun"],["서천군","chungnam/seocheongun"],["청양군","chungnam/cheongyanggun"],["홍성군","chungnam/hongseonggun"],["예산군","chungnam/yesangun"],["태안군","chungnam/taeangun"]],"jeonbuk":[["전주시","jeonbuk/jeonjusi"],["전주시완산구","jeonbuk/jeonjusiwansangu"],["전주시덕진구","jeonbuk/jeonjusideogjingu"],["군산시","jeonbuk/gunsansi"],["익산시","jeonbuk/igsansi"],["정읍시","jeonbuk/jeongeubsi"],["남원시","jeonbuk/namwonsi"],["김제시","jeonbuk/gimjesi"],["완주군","jeonbuk/wanjugun"],["진안군","jeonbuk/jinangun"],["무주군","jeonbuk/mujugun"],["장수군","jeonbuk/jangsugun"],["임실군","jeonbuk/imsirgun"],["순창군","jeonbuk/sunchanggun"],["고창군","jeonbuk/gochanggun"],["부안군","jeonbuk/buangun"]],"jeonnam":[["목포시","jeonnam/mogposi"],["여수시","jeonnam/yeosusi"],["순천시","jeonnam/suncheonsi"],["나주시","jeonnam/najusi"],["광양시","jeonnam/gwangyangsi"],["담양군","jeonnam/damyanggun"],["곡성군","jeonnam/gogseonggun"],["구례군","jeonnam/guryegun"],["고흥군","jeonnam/goheunggun"],["보성군","jeonnam/boseonggun"],["화순군","jeonnam/hwasungun"],["장흥군","jeonnam/jangheunggun"],["강진군","jeonnam/gangjingun"],["해남군","jeonnam/haenamgun"],["영암군","jeonnam/yeongamgun"],["무안군","jeonnam/muangun"],["함평군","jeonnam/hampyeonggun"],["영광군","jeonnam/yeonggwanggun"],["장성군","jeonnam/jangseonggun"],["완도군","jeonnam/wandogun"],["진도군","jeonnam/jindogun"],["신안군","jeonnam/sinangun"]],"gyeongbuk":[["포항시","gyeongbuk/pohangsi"],["포항시남구","gyeongbuk/pohangsinamgu"],["포항시북구","gyeongbuk/pohangsibuggu"],["경주시","gyeongbuk/gyeongjusi"],["김천시","gyeongbuk/gimcheonsi"],["안동시","gyeongbuk/andongsi"],["구미시","gyeongbuk/gumisi"],["영주시","gyeongbuk/yeongjusi"],["영천시","gyeongbuk/yeongcheonsi"],["상주시","gyeongbuk/sangjusi"],["문경시","gyeongbuk/mungyeongsi"],["경산시","gyeongbuk/gyeongsansi"],["의성군","gyeongbuk/euiseonggun"],["청송군","gyeongbuk/cheongsonggun"],["영양군","gyeongbuk/yeongyanggun"],["영덕군","gyeongbuk/yeongdeoggun"],["청도군","gyeongbuk/cheongdogun"],["고령군","gyeongbuk/goryeonggun"],["성주군","gyeongbuk/seongjugun"],["칠곡군","gyeongbuk/chirgoggun"],["예천군","gyeongbuk/yecheongun"],["봉화군","gyeongbuk/bonghwagun"],["울진군","gyeongbuk/urjingun"],["울릉군","gyeongbuk/urreunggun"]],"gyeongnam":[["창원시","gyeongnam/changwonsi"],["창원시의창구","gyeongnam/changwonsieuichanggu"],["창원시성산구","gyeongnam/changwonsiseongsangu"],["창원시마산합포구","gyeongnam/changwonsimasanhabpogu"],["창원시마산회원구","gyeongnam/changwonsimasanhoewongu"],["창원시진해구","gyeongnam/changwonsijinhaegu"],["진주시","gyeongnam/jinjusi"],["통영시","gyeongnam/tongyeongsi"],["사천시","gyeongnam/sacheonsi"],["김해시","gyeongnam/gimhaesi"],["밀양시","gyeongnam/miryangsi"],["거제시","gyeongnam/geojesi"],["양산시","gyeongnam/yangsansi"],["의령군","gyeongnam/euiryeonggun"],["함안군","gyeongnam/hamangun"],["창녕군","gyeongnam/changnyeonggun"],["고성군","gyeongnam/goseonggun"],["남해군","gyeongnam/namhaegun"],["하동군","gyeongnam/hadonggun"],["산청군","gyeongnam/sancheonggun"],["함양군","gyeongnam/hamyanggun"],["거창군","gyeongnam/geochanggun"],["합천군","gyeongnam/habcheongun"]],"jeju":[["제주시","jeju/jejusi"],["서귀포시","jeju/seogwiposi"]]};
+const SIDO_NAMES={seoul:"서울특별시",busan:"부산광역시",daegu:"대구광역시",incheon:"인천광역시",gwangju:"광주광역시",daejeon:"대전광역시",ulsan:"울산광역시",sejong:"세종특별자치시",gyeonggi:"경기도",gangwon:"강원특별자치도",chungbuk:"충청북도",chungnam:"충청남도",jeonbuk:"전북특별자치도",jeonnam:"전라남도",gyeongbuk:"경상북도",gyeongnam:"경상남도",jeju:"제주특별자치도"};
 function showSigungu(e,sidoEng){
   e.preventDefault();
   var list=document.getElementById('sigunguList');
@@ -6498,6 +6560,7 @@ function showSigungu(e,sidoEng){
     html+='<a href="/blog/'+sg[1]+'/">'+sg[0]+'</a>';
   });
   list.innerHTML=html;
+  document.getElementById('sidoList').style.display='flex';
   document.getElementById('sidoList').style.display='none';
   list.style.display='flex';
 }
@@ -6536,22 +6599,57 @@ function reviewMove(dir) { reviewGoTo(reviewIdx + dir); }
 setInterval(function() { reviewGoTo(reviewIdx < reviewMax ? reviewIdx + 1 : 0); }, 4000);
 initReviewDots();
 
-document.querySelectorAll('.nav-links li').forEach(function(li) {
-  var timer;
-  var dropdown = li.querySelector('.dropdown');
-  if (!dropdown) return;
-  li.addEventListener('mouseenter', function() {
-    clearTimeout(timer);
-    dropdown.style.display = 'block';
+// ── 지역별 드롭다운: 클릭 토글 (PC hover + 모바일 탭 모두 동작) ──
+(function(){
+  document.querySelectorAll('.nav-links li').forEach(function(li) {
+    var toggle = li.querySelector('a');
+    var dropdown = li.querySelector('.dropdown');
+    if (!dropdown) return;
+
+    // PC: hover로 열기
+    var hoverTimer;
+    li.addEventListener('mouseenter', function() {
+      clearTimeout(hoverTimer);
+      dropdown.style.display = 'block';
+    });
+    li.addEventListener('mouseleave', function() {
+      // 드롭다운 내부로 이동하는 게 아닐 때만 닫기
+      hoverTimer = setTimeout(function() {
+        if (!dropdown.matches(':hover')) dropdown.style.display = 'none';
+      }, 200);
+    });
+    dropdown.addEventListener('mouseenter', function() { clearTimeout(hoverTimer); });
+    dropdown.addEventListener('mouseleave', function() {
+      dropdown.style.display = 'none';
+    });
+
+    // 모바일/클릭: toggle
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = dropdown.style.display === 'block';
+      // 다른 드롭다운 모두 닫기
+      document.querySelectorAll('.nav-links .dropdown').forEach(function(d) {
+        d.style.display = 'none';
+      });
+      // 시도 목록 초기화
+      var sl = document.getElementById('sidoList');
+      var su = document.getElementById('sigunguList');
+      if (sl) sl.style.display = 'flex';
+      if (su) su.style.display = 'none';
+      dropdown.style.display = isOpen ? 'none' : 'block';
+    });
   });
-  li.addEventListener('mouseleave', function() {
-    timer = setTimeout(function() { dropdown.style.display = 'none'; }, 150);
+
+  // 드롭다운 바깥 클릭 시 닫기
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-links')) {
+      document.querySelectorAll('.nav-links .dropdown').forEach(function(d) {
+        d.style.display = 'none';
+      });
+    }
   });
-  dropdown.addEventListener('mouseenter', function() { clearTimeout(timer); });
-  dropdown.addEventListener('mouseleave', function() {
-    timer = setTimeout(function() { dropdown.style.display = 'none'; }, 150);
-  });
-});
+})();
 
 (function() {
   var target = 353112;
@@ -6687,27 +6785,87 @@ function submitConsult() {
   document.getElementById('cmSuccess').style.display = 'block';
 }
 
-// 햄버거 메뉴
+// ── 모바일 메뉴 ──────────────────────────────────────────
+var mmIsOpen = false;
+var mmOnSido = true; // true=시도패널, false=시군구패널
+
 function toggleMobileMenu() {
-  var menu = document.getElementById('mobileMenu');
-  var btn = document.getElementById('hamburger');
-  var isOpen = menu.classList.contains('open');
-  menu.classList.toggle('open', !isOpen);
-  btn.classList.toggle('open', !isOpen);
+  mmIsOpen ? closeMobileMenu() : openMobileMenu();
 }
-// 모바일 메뉴 링크 클릭 시 닫기
-document.querySelectorAll('.mobile-menu a').forEach(function(a) {
-  a.addEventListener('click', function() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
+function openMobileMenu() {
+  mmIsOpen = true;
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mmOverlay').classList.add('open');
+  document.getElementById('hamburger').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  mmToPanel1();
+}
+function closeMobileMenu() {
+  mmIsOpen = false;
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mmOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(mmToPanel1, 350);
+}
+function mmToPanel1() {
+  document.getElementById('mmPanels').style.transform = 'translateX(0)';
+  mmOnSido = true;
+}
+function mmToPanel2() {
+  document.getElementById('mmPanels').style.transform = 'translateX(-50%)';
+  mmOnSido = false;
+}
+function mmBackToMain() { mmToPanel1(); }
+
+var SIDO_NAMES_M = {
+  seoul:'서울특별시', busan:'부산광역시', daegu:'대구광역시', incheon:'인천광역시',
+  gwangju:'광주광역시', daejeon:'대전광역시', ulsan:'울산광역시', sejong:'세종특별자치시',
+  gyeonggi:'경기도', gangwon:'강원특별자치도', chungbuk:'충청북도', chungnam:'충청남도',
+  jeonbuk:'전북특별자치도', jeonnam:'전라남도', gyeongbuk:'경상북도', gyeongnam:'경상남도',
+  jeju:'제주특별자치도'
+};
+var SIDO_ICONS_M = {
+  seoul:'🏙', busan:'⚓', daegu:'🏭', incheon:'✈️', gwangju:'🌸', daejeon:'🔬',
+  ulsan:'🔧', sejong:'🏛', gyeonggi:'🌿', gangwon:'🏔', chungbuk:'⚡', chungnam:'🌾',
+  jeonbuk:'🍀', jeonnam:'🐟', gyeongbuk:'🍎', gyeongnam:'🚢', jeju:'🌺'
+};
+
+// 패널1에서 "지역별" 탭 → 시도 목록 표시 후 패널2로
+function mmOpenRegion() {
+  var sidos = Object.keys(SIDO_NAMES_M);
+  var html = '<div class="mm-sido-grid">';
+  sidos.forEach(function(eng) {
+    html += '<button class="mm-sido-btn" onclick="mmShowSigungu(\'' + eng + '\')">'
+          + SIDO_ICONS_M[eng] + '<br>' + SIDO_NAMES_M[eng] + '</button>';
   });
-});
-// 화면 리사이즈 시 메뉴 닫기
+  html += '</div>';
+  document.getElementById('mmBackLabel').textContent = '지역 선택';
+  document.getElementById('mmRegionContent').innerHTML = html;
+  mmToPanel2();
+}
+
+// 시도 클릭 → 시군구 목록
+function mmShowSigungu(sidoEng) {
+  var sgs = SIGUNGU[sidoEng] || [];
+  var sidoName = SIDO_NAMES_M[sidoEng] || sidoEng;
+  var html = '<div class="mm-sgs">';
+  sgs.forEach(function(sg) {
+    html += '<a class="mm-sg" href="/blog/' + sg[1] + '/" onclick="closeMobileMenu()">' + sg[0] + '</a>';
+  });
+  html += '</div>';
+  document.getElementById('mmBackLabel').textContent = sidoName;
+  document.getElementById('mmRegionContent').innerHTML = html;
+  // 뒤로가기 → 시도 목록
+  document.getElementById('mmBackBtn').onclick = function() {
+    mmOpenRegion();
+    document.getElementById('mmBackBtn').onclick = mmBackToMain;
+    document.getElementById('mmBackLabel').textContent = '지역 선택';
+  };
+}
+
 window.addEventListener('resize', function() {
-  if (window.innerWidth > 768) {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  }
+  if (window.innerWidth > 768) closeMobileMenu();
 });
 </script>
 </body>
