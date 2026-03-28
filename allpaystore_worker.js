@@ -5450,9 +5450,10 @@ ${CSS}
 <body>
 <nav class="gnb"><div class="gnb-in">
   <a href="/" class="logo">AllPay<span>Store</span></a>
+  <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
-<div class="wrap">
+<div class="wrap" style="padding-top:28px">
   <div class="thumb"><img src="${photoUrl}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge" style="background:${prd.color}">${prd.emoji} ${prd.ko} ${suf}</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} ${prd.ko} 완벽 가이드 — 무료 견적·${isRemoval?'정찰제·원상복구 보장':'빠른 설치·A/S 보장'}</h1>
@@ -5517,6 +5518,9 @@ body{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-he
 a{text-decoration:none;color:inherit}
 .gnb{background:#111;padding:28px 0;position:sticky;top:0;z-index:100}
 .gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.gnb-nav{display:flex;gap:20px;align-items:center}
+.gnb-nav a{color:rgba(255,255,255,.7);font-size:13px;font-weight:500;text-decoration:none}
+.gnb-nav a:hover{color:#fff}
 .logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}
 .logo span{color:#7DD3FC}
 .tel-btn{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;white-space:nowrap}
@@ -5549,8 +5553,8 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .tbl tr:nth-child(even) td{background:#f8f9fc}
 .tbl .hi{color:#555;font-weight:800}
 .cta{background:linear-gradient(135deg,#111,#333);border-radius:16px;padding:36px 24px;text-align:center;color:#fff;margin:44px 0}
-.cta h3{font-size:22px;font-weight:900;margin-bottom:10px}
-.cta p{font-size:15px;opacity:.9;margin-bottom:26px}
+.cta h3{font-size:22px;font-weight:900;margin-bottom:10px;color:#fff}
+.cta p{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:26px}
 .cta-main{display:inline-block;background:#FFD700;color:#111;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.2)}
 .cta-sub{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid rgba(255,255,255,.4)}
 .faq{background:#fff;border-radius:12px;padding:20px;margin:12px 0;border:1.5px solid #eee}
@@ -5559,6 +5563,15 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .foot-nav{margin:40px 0 0;padding:16px 0;border-top:1px solid #eee;font-size:14px;color:#aaa}
 .foot-nav a{color:#555;font-weight:600}
 @media(max-width:480px){.cta-main{font-size:16px;padding:14px 32px}}
+.sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
+.sg-card:hover{background:#ddd;color:#111}
+.pd-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 12px;background:#f9f9f9;border:1.5px solid #eee;border-radius:18px;font-size:13px;font-weight:700;color:#111;transition:all .15s;text-decoration:none;text-align:center}
+.pd-card:hover{border-color:#111;background:#fff;transform:translateY(-1px)}
+.pd-ic{font-size:28px}
+.pd-name{font-size:13px;font-weight:700}
+.gnb-nav{display:flex;gap:20px;align-items:center}
+.gnb-nav a{color:rgba(255,255,255,.7);font-size:13px;font-weight:500;text-decoration:none}
+.gnb-nav a:hover{color:#fff}
 </style>`;
 
 
@@ -5589,15 +5602,16 @@ function makeSidoPage(sidoSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sidoSlug}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap">
   
-  <div style="width:100%;height:200px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=300&fit=crop&q=80') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
-    <div style="position:absolute;top:20px;right:30px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
-    <div style="position:absolute;top:50px;right:70px;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.03)"></div>
-    <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
-    <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} 설치 전문</div>
-    <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
+  <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
+    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=300&fit=crop&q=80" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
+      <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
+      <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} 설치 전문</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
+    </div>
   </div>
   <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sidoName} 카드단말기·포스기·키오스크 설치</h1>
 
@@ -5622,7 +5636,7 @@ ${CSS}
   <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 매장 철거도 가능한가요?</div><div class="faq-a">네, ${short} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 책임지고 시공합니다. 정찰제·원상복구·폐기물 적법 처리까지 포함됩니다.</div></div>
 
-  <h2 style="font-size:20px;font-weight:800;color:#111;margin:40px 0 16px">🏙 ${short} 시군구별 바로가기</h2>
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin:40px 0 16px">🏙 ${short} 지역별 바로가기</h2>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${sgCards}</div>
 
   <div class="cta">
@@ -5655,12 +5669,16 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sgKey}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
-<div class="wrap" style="padding-top:24px">
-  <div style="width:100%;height:200px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=300&fit=crop&q=80') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
-    <div style="position:absolute;top:20px;right:30px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
-    <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
-    <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:28px">
+  <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
+    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
+      <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
+      <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
+    </div>
+  </div>
     <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
   </div>
   <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sgName} 카드단말기·포스기·키오스크 설치</h1>
@@ -5700,6 +5718,68 @@ ${CSS}
 </body></html>`;
 }
 
+function makeProductLandingPage(prodKey){
+  const prd=PRODUCTS[prodKey];
+  if(!prd)return null;
+  const isR=prodKey==='removal';
+  const suf=isR?'전문':'설치';
+  const PDESC={
+    card:{t:'모든 결제를 한 대로',d:'IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기를 매장 업종에 맞게 설치합니다. VAN사 수수료 비교를 통해 가장 유리한 조건을 찾아드리며, 설치비 무료 혜택도 제공합니다.'},
+    pos:{t:'매장 운영의 두뇌',d:'주문·결제·매출·재고·직원 관리를 하나의 시스템으로 통합합니다. 배달 3사 연동, 테이블오더 연결, 실시간 매출 분석까지 매장 운영에 필요한 모든 기능을 제공합니다.'},
+    kiosk:{t:'무인 주문·결제 솔루션',d:'인건비 월 200만원 이상 절감, 주문 정확도 100%, 피크타임 대기시간 단축. 스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천합니다.'},
+    cctv:{t:'매장 보안의 완성',d:'HD~4K 고화질 촬영, 스마트폰 원격 모니터링, AI 움직임 감지, 야간 컬러 촬영까지. 포스기와 연동하면 결제 시점 영상 자동 매칭이 가능합니다.'},
+    tableorder:{t:'홀 인건비 절감의 핵심',d:'QR코드·태블릿으로 테이블에서 바로 주문·결제. 직원 호출 대기 제로, 추가 주문 유도로 객단가 20~35% 상승. 주방 자동 연동까지.'},
+    unmanned:{t:'24시간 무인 운영',d:'직원 없이도 결제·상품판매·서비스 제공이 가능합니다. CCTV·출입관리와 통합 연동하여 완전 무인 매장을 구현합니다.'},
+    removal:{t:'매장·사무실·가게 전문 철거',d:'정밀 현장 분석, 정찰제 견적, 원상복구, 폐기물 적법 처리까지. 전문 엔지니어팀이 안전하고 신속하게 사장님의 다음 시작을 도와드립니다.'}
+  };
+  const pd=PDESC[prodKey]||{t:'전문 설치',d:'올페이스토어가 책임지고 설치합니다.'};
+  const sidoList=[
+    {e:'🏙',n:'서울',s:'seoul'},{e:'🌿',n:'경기',s:'gyeonggi'},{e:'✈️',n:'인천',s:'incheon'},{e:'⚓',n:'부산',s:'busan'},
+    {e:'🏭',n:'대구',s:'daegu'},{e:'🔬',n:'대전',s:'daejeon'},{e:'🌸',n:'광주',s:'gwangju'},{e:'🔧',n:'울산',s:'ulsan'},
+    {e:'🏛',n:'세종',s:'sejong'},{e:'🏔',n:'강원',s:'gangwon'},{e:'🌻',n:'충북',s:'chungbuk'},{e:'🌊',n:'충남',s:'chungnam'},
+    {e:'🌾',n:'전북',s:'jeonbuk'},{e:'🍵',n:'전남',s:'jeonnam'},{e:'🍎',n:'경북',s:'gyeongbuk'},{e:'🌊',n:'경남',s:'gyeongnam'},{e:'🌺',n:'제주',s:'jeju'}
+  ];
+  const regionBtns=sidoList.map(s=>{
+    const firstDong=Object.keys(R).find(k=>k.startsWith(s.s+'/'));
+    return firstDong?`<a href="/blog/${firstDong}/${prodKey}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
+  }).join('');
+  const PHOTO={card:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1534723452862-4c7edcad34c4?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=300&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=300&fit=crop&q=80'};
+  const photo=PHOTO[prodKey]||PHOTO.card;
+  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${prd.ko} ${suf} | 전국 ${prd.ko} ${suf} 전문 - 올페이스토어</title>
+<meta name="description" content="전국 ${prd.ko} ${suf} 전문. ${pd.d} 무료 견적 ☎ 010-9876-8282">
+${CSS}
+</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:28px">
+  <div style="width:100%;height:240px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('${photo}') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:24px">
+    <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · 전국 5,000+ 읍면동</div>
+    <div style="font-size:32px;font-weight:900;color:#fff">${prd.emoji} ${prd.ko} ${suf}</div>
+    <div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:4px">${pd.t}</div>
+  </div>
+  <h1 style="font-size:26px;font-weight:900;color:#111;margin-bottom:16px">${prd.ko} — ${pd.t}</h1>
+  <p style="font-size:15px;color:#555;line-height:1.8;margin-bottom:32px">${pd.d}</p>
+  <div class="g4" style="margin-bottom:32px">
+    <div class="card"><div class="ic">🏆</div><div class="lb">전국 누적</div><div class="vl">350+건</div></div>
+    <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
+    <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
+    <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
+  </div>
+  <h2>📍 ${prd.ko} ${suf} 지역 선택</h2>
+  <p style="font-size:14px;color:#888;margin-bottom:16px">지역을 선택하면 상세 ${suf} 가이드를 확인할 수 있습니다.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px">${regionBtns}</div>
+  <div class="cta">
+    <h3>${prd.emoji} ${prd.ko} 무료 견적 받기</h3>
+    <p>전국 어디서든 ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
+    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+  </div>
+</div>
+</body></html>`;
+}
+
 function makeBlog(sido,sigungu,emd,slug){
   const full=`${sido} ${sigungu} ${emd}`;
   const p=getProfile(sido,sigungu,emd);
@@ -5725,6 +5805,7 @@ ${CSS}
 <body>
 <nav class="gnb"><div class="gnb-in">
   <a href="/" class="logo">AllPay<span>Store</span></a>
+  <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
 <div class="wrap">
@@ -5894,7 +5975,7 @@ function makeBlogList(){
 .note{text-align:center;margin-top:32px;color:#aaa;font-size:13px}
 </style>
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="hero"><h1>전국 카드단말기·포스기 설치 지역</h1><p>전국 ${total.toLocaleString()}개 읍면동 전 지역 방문 설치 · 무료 견적 · 빠른 설치</p></div>
 <div class="wrap">
   <div class="tabs">${tabs}</div>
@@ -5963,9 +6044,7 @@ function getHTML() {
   ];
   const sidoBtns=sidoList.map(s=>`<a href="/blog/${s.slug}/" class="rb">${s.emoji} ${s.name}</a>`).join('');
   const prodBtns=prodList.map(p=>{
-    if(p.key==='vending') return `<a href="tel:010-9876-8282" class="rb">${p.emoji} ${p.name}</a>`;
-    if(p.key==='removal') return `<a href="tel:010-9876-8282" class="rb">${p.emoji} ${p.name}</a>`;
-    return `<a href="/blog/seoul/gangnamgu/daechidong/${p.key}/" class="rb">${p.emoji} ${p.name}</a>`;
+    return `<a href="/product/${p.key}/" class="rb">${p.emoji} ${p.name}</a>`;
   }).join('');
 
   return `<!DOCTYPE html>
@@ -6052,8 +6131,8 @@ a{text-decoration:none;color:inherit}
 .tab{padding:10px 22px;border-radius:999px;border:1.5px solid #E5E7EB;background:#fff;color:#374151;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
 .tab.on{background:#111;color:#fff;border-color:#111}
 .panel{display:none}.panel.on{display:block}
-.rb-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.rb{display:inline-flex;align-items:center;gap:6px;padding:12px 18px;background:var(--bg);border:1.5px solid #E5E7EB;border-radius:12px;font-size:14px;font-weight:700;color:var(--dark);transition:all .15s}
+.rb-wrap{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:600px;margin:0 auto}
+.rb{display:inline-flex;align-items:center;gap:4px;padding:9px 14px;background:var(--bg);border:1.5px solid #E5E7EB;border-radius:10px;font-size:13px;font-weight:700;color:var(--dark);transition:all .15s}
 .rb:hover{border-color:#111;color:#111;background:#f0f0f0;transform:translateY(-1px)}
 
 /* PRODUCTS */
@@ -6148,7 +6227,7 @@ a{text-decoration:none;color:inherit}
 .ft-tel{text-align:right}
 .ft-tel-num{font-size:20px;font-weight:900;color:#111}
 .ft-tel-btn{display:inline-block;margin-top:8px;background:#111;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700}
-.ft-bottom{padding-top:16px;font-size:10px;color:#bbb}
+.ft-bottom{padding-top:28px;font-size:10px;color:#bbb}
 
 /* FLOAT */
 .float{position:fixed;right:20px;bottom:60px;display:flex;flex-direction:column;gap:10px;z-index:90}
@@ -6187,8 +6266,7 @@ a{text-decoration:none;color:inherit}
     <nav class="hd-nav">
       <a href="#find-sec">지역별 설치</a>
       <a href="#prod-sec">제품 안내</a>
-      <a href="/blog/">설치 가이드</a>
-      <a href="tel:010-9876-8282" style="color:#aaa;font-weight:800">문의하기</a>
+      <a href="tel:010-9876-8282" style="color:#111;font-weight:800">문의하기</a>
     </nav>
     <a href="tel:010-9876-8282" class="hd-tel">📞 010-9876-8282</a>
   </div>
@@ -6363,11 +6441,11 @@ a{text-decoration:none;color:inherit}
       <div class="sec-tag" style="text-align:left">LK VENDING MACHINE</div>
       <h2 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px">판매 수익 + 광고 수익<br><b style="color:#1a1a2e">이중으로 돈 버는 자동판매기</b></h2>
       <div class="sc-features">
-        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><b>📺 광고 수익 창출</b> — 23.4인치 터치스크린으로 효과적인 광고 송출이 가능합니다. 판매 수익 외에 광고 수익까지 추가로 창출할 수 있습니다.</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><b>⚙️ 운영 편의성</b> — 원하는 매장 공지사항을 손쉽게 송출하여 편의성을 극대화합니다. 메뉴판·이벤트·안내문을 화면으로 바로 표시합니다.</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><b>📊 스마트 관리프로그램</b> — 실시간 재고 파악 및 알림, 매출 데이터 리포트를 제공합니다. 앱에서 언제든지 운영 현황을 확인하세요.</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><b>🔧 원격 관리 & 유지보수</b> — 문제 발생 시 즉시 원격 제어가 가능합니다. 현장 방문 없이도 대부분의 장애를 원격으로 해결합니다.</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><b>💳 카드·간편결제 지원</b> — 카드·삼성페이·카카오페이·제로페이 등 모든 결제 수단을 지원합니다.</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>광고 수익 창출</b><br>23.4인치 터치스크린으로 효과적인 광고 송출 가능. 판매 수익 외에 광고 수익까지 추가 창출.</div></div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>운영 편의성</b><br>매장 공지사항을 손쉽게 송출. 메뉴판·이벤트·안내문을 화면으로 바로 표시.</div></div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>스마트 관리프로그램</b><br>실시간 재고 파악 및 알림, 매출 데이터 리포트 제공. 앱에서 운영 현황 확인.</div></div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>원격 관리 및 유지보수</b><br>문제 발생 시 즉시 원격 제어 가능. 현장 방문 없이 대부분의 장애 해결.</div></div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>카드·간편결제 지원</b><br>카드·삼성페이·카카오페이·제로페이 등 모든 결제 수단 지원.</div></div>
       </div>
       <a href="tel:010-9876-8282" class="sc-btn" style="background:#1a1a2e">🏭 LK 밴딩머신 상담 받기</a>
     </div>
@@ -6509,6 +6587,12 @@ export default {
     if(path==='/blog')
       return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
 
+    const prodMatch=path.match(/^\/product\/([a-z]+)$/);
+    if(prodMatch && PRODUCTS[prodMatch[1]]){
+      const h=makeProductLandingPage(prodMatch[1]);
+      if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+    }
+
     const tm=path.match(/^\/blog\/(.+)\/thumb\.svg$/);
     if(tm){const r=lk(tm[1]);if(r)return new Response(makeSVG(...r),{headers:{'Content-Type':'image/svg+xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
 
@@ -6517,11 +6601,6 @@ export default {
       const slug=bm[1].replace(/\/+$/,'');
       const parts=slug.split('/');
       if(parts.length===1){const h=makeSidoPage(parts[0]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
-      if(parts.length===2 && PRODUCTS[parts[1]]){
-        // Product landing: /blog/seoul/card/ → first dong's product page
-        const firstDong=Object.keys(R).find(k=>k.startsWith(parts[0]+'/'));
-        if(firstDong){const r=lk(firstDong);if(r)return new Response(makeProductBlog(...r,firstDong,parts[1]),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
-      }
       if(parts.length===2){const h=makeSigunguPage(parts[0],parts[1]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
       // Product-specific page: /blog/sido/sigungu/emd/product
       if(parts.length===4 && PRODUCTS[parts[3]]){
