@@ -5449,7 +5449,7 @@ ${CSS}
 </head>
 <body>
 <nav class="gnb"><div class="gnb-in">
-  <a href="/" class="logo">AllPay<span>Store</span></a>
+  <a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></a>
   <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
@@ -5601,7 +5601,7 @@ function makeSidoPage(sidoSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sidoSlug}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   
   <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
@@ -5719,7 +5719,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sgKey}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
     <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
@@ -5858,7 +5858,7 @@ function makeProductLandingPage(prodKey){
 <meta name="description" content="전국 ${prd.ko} ${suf} 전문. ${pd.d} 무료 견적 ☎ 010-9876-8282">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:240px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('${photo}') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:24px">
     <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · 전국 5,000+ 읍면동</div>
@@ -5910,7 +5910,7 @@ ${CSS}
 </head>
 <body>
 <nav class="gnb"><div class="gnb-in">
-  <a href="/" class="logo">AllPay<span>Store</span></a>
+  <a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></a>
   <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
@@ -6081,7 +6081,7 @@ function makeBlogList(){
 .note{text-align:center;margin-top:32px;color:#aaa;font-size:13px}
 </style>
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="hero"><h1>전국 카드단말기·포스기 설치 지역</h1><p>전국 ${total.toLocaleString()}개 읍면동 전 지역 방문 설치 · 무료 견적 · 빠른 설치</p></div>
 <div class="wrap" style="padding-top:28px">
   <div class="tabs">${tabs}</div>
@@ -6247,7 +6247,7 @@ a{text-decoration:none;color:inherit}
 .prods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .prod-card{background:#fff;border-radius:18px;padding:28px 22px;border:1.5px solid #E5E7EB;transition:all .2s;text-align:center}
 .prod-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 8px 24px rgba(29,78,216,.08)}
-.prod-ic{font-size:40px;margin-bottom:10px}
+.prod-ic{margin-bottom:10px;display:flex;align-items:center;justify-content:center}
 .prod-name{font-size:16px;font-weight:800;color:var(--dark);margin-bottom:4px}
 .prod-desc{font-size:12px;color:#6B7280;line-height:1.5}
 
@@ -6365,10 +6365,7 @@ a{text-decoration:none;color:inherit}
 <!-- HEADER -->
 <header class="hd">
   <div class="hd-in">
-    <a href="/" class="logo">
-      <div class="logo-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div><span class="logo-tx"><em>올페이</em>스토어</span><span class="logo-sub">ALLPAY STORE</span></div>
-    </a>
+    <a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:32px"></a>
     <nav class="hd-nav">
       <a href="#find-sec">지역별 설치</a>
       <a href="#prod-sec">제품 안내</a>
@@ -6444,15 +6441,15 @@ a{text-decoration:none;color:inherit}
       <h2 class="sec-tit">매장에 필요한 모든 장비<br><b>한번에 설치합니다</b></h2>
     </div>
     <div class="prods-grid">
-      <div class="prod-card"><div class="prod-ic">🖥️</div><div class="prod-name">포스기(POS)</div><div class="prod-desc">주문·결제·매출·재고<br>통합 관리 시스템</div></div>
-      <div class="prod-card"><div class="prod-ic">✂️</div><div class="prod-name">자동커팅단말기</div><div class="prod-desc">영수증 자동 커팅<br>빠른 결제 처리</div></div>
-      <div class="prod-card"><div class="prod-ic">📞</div><div class="prod-name">유선카드단말기</div><div class="prod-desc">고정 카운터 전용<br>안정적 유선 결제</div></div>
-      <div class="prod-card"><div class="prod-ic">💳</div><div class="prod-name">토스단말기</div><div class="prod-desc">토스페이먼츠 연동<br>간편결제 특화</div></div>
-      <div class="prod-card"><div class="prod-ic">📱</div><div class="prod-name">무선단말기</div><div class="prod-desc">이동 결제·배달·테이블<br>어디서든 결제</div></div>
-      <div class="prod-card"><div class="prod-ic">🔵</div><div class="prod-name">블루투스단말기</div><div class="prod-desc">스마트폰 연동<br>초소형 휴대 결제</div></div>
-      <div class="prod-card"><div class="prod-ic">📋</div><div class="prod-name">테이블오더</div><div class="prod-desc">QR·태블릿 주문<br>홀 인건비 절감</div></div>
-      <div class="prod-card"><div class="prod-ic">🤖</div><div class="prod-name">미니키오스크</div><div class="prod-desc">소형 매장 전용<br>공간 절약형 무인 주문</div></div>
-      <div class="prod-card"><div class="prod-ic">🏧</div><div class="prod-name">키오스크</div><div class="prod-desc">대형 무인 주문·결제<br>인건비 월 200만원 절감</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a1.png" alt="포스기" style="width:48px;height:48px"></div><div class="prod-name">포스기(POS)</div><div class="prod-desc">주문·결제·매출·재고<br>통합 관리 시스템</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a2.png" alt="자동커팅단말기" style="width:48px;height:48px"></div><div class="prod-name">자동커팅단말기</div><div class="prod-desc">영수증 자동 커팅<br>빠른 결제 처리</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a3.png" alt="유선카드단말기" style="width:48px;height:48px"></div><div class="prod-name">유선카드단말기</div><div class="prod-desc">고정 카운터 전용<br>안정적 유선 결제</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a4.png" alt="토스단말기" style="width:48px;height:48px"></div><div class="prod-name">토스단말기</div><div class="prod-desc">토스페이먼츠 연동<br>간편결제 특화</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a5.png" alt="무선단말기" style="width:48px;height:48px"></div><div class="prod-name">무선단말기</div><div class="prod-desc">이동 결제·배달·테이블<br>어디서든 결제</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a6.png" alt="블루투스단말기" style="width:48px;height:48px"></div><div class="prod-name">블루투스단말기</div><div class="prod-desc">스마트폰 연동<br>초소형 휴대 결제</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a7.png" alt="테이블오더" style="width:48px;height:48px"></div><div class="prod-name">테이블오더</div><div class="prod-desc">QR·태블릿 주문<br>홀 인건비 절감</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a8.png" alt="미니키오스크" style="width:48px;height:48px"></div><div class="prod-name">미니키오스크</div><div class="prod-desc">소형 매장 전용<br>공간 절약형 무인 주문</div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a9.png" alt="키오스크" style="width:48px;height:48px"></div><div class="prod-name">키오스크</div><div class="prod-desc">대형 무인 주문·결제<br>인건비 월 200만원 절감</div></div>
     </div>
   </div>
 </section>
@@ -6641,10 +6638,7 @@ a{text-decoration:none;color:inherit}
   <div class="ft-in">
     <div class="ft-top">
       <div>
-        <div class="ft-logo">
-          <div class="logo-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="ft-logo-name"><em>올페이</em>스토어</div>
-        </div>
+        <div class="ft-logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></div>
         <p class="ft-desc">1인 매장부터 대형 프랜차이즈까지<br>매장 운영에 필요한 설비를 한곳에서</p>
       </div>
       <div class="ft-tel">
@@ -6701,7 +6695,7 @@ export default {
     if(path==='/product'){
       const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
       const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>제품 안내 | 올페이스토어</title>${CSS}</head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/" style="color:#fff;font-weight:800">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/" style="color:#fff;font-weight:800">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px"><h1 style="font-size:28px;font-weight:900;color:#111;margin-bottom:24px">📦 제품 안내</h1><p style="font-size:15px;color:#666;margin-bottom:32px">매장에 필요한 장비를 선택하세요. 설치비 무료 · 월 이용료 무료 · 빠른 설치</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${prodLinks}</div>
 <div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a></div></div></body></html>`;
       return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
