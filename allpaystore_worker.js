@@ -5123,7 +5123,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   const canon=`https://allpaystore.com/blog/${slug}/${prodKey}/`;
   const parentUrl=`https://allpaystore.com/blog/${slug}/`;
-  const PHOTO_URL={card:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=420&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1534723452862-4c7edcad34c4?w=800&h=420&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=420&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=420&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=420&fit=crop&q=80'};
+  const PHOTO_URL={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=420&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=420&fit=crop&q=80'};
   const photoUrl=PHOTO_URL[prodKey]||PHOTO_URL.card;
   const iso=today.toISOString().split('T')[0];
   const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#f5f5f5;border:1.5px solid #ddd;border-radius:10px;font-size:14px;font-weight:700;color:#111;text-decoration:none;transition:all .15s">${v.emoji} ${emd} ${v.ko}</a>`).join(' ');
@@ -5139,8 +5139,8 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
     <tbody>
       <tr><td>결제 방식</td><td>IC·마그네틱</td><td>IC·NFC·QR</td><td class="hi">IC·NFC·QR·간편결제 전부</td></tr>
       <tr><td>설치 위치</td><td>고정 카운터</td><td>테이블·배달 이동</td><td class="hi">어디서든 가능</td></tr>
-      <tr><td>설치비</td><td class="hi">무료~5만원</td><td>5~15만원</td><td>10~20만원</td></tr>
-      <tr><td>월 이용료</td><td>0~1만원</td><td>1~2만원</td><td>2~3만원</td></tr>
+      <tr><td>설치비</td><td class="hi">무료</td><td class="hi">무료</td><td class="hi">무료</td></tr>
+      <tr><td>월 이용료</td><td class="hi">무료</td><td class="hi">무료</td><td class="hi">무료</td></tr>
       <tr><td>포스 연동</td><td>별도 필요</td><td>일부 지원</td><td class="hi">기본 내장</td></tr>
       <tr><td>${emd} 추천 업종</td><td>소형 매장·구멍가게</td><td>배달·테이블 서비스</td><td class="hi">카페·식당·마트</td></tr>
     </tbody>
@@ -5172,7 +5172,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
     <thead><tr><th>구분</th><th>일체형 포스</th><th>태블릿 포스</th><th>클라우드 포스</th></tr></thead>
     <tbody>
       <tr><td>특징</td><td>올인원 터치스크린</td><td>태블릿+카드리더기</td><td class="hi">앱 기반·다매장</td></tr>
-      <tr><td>설치비</td><td>50~120만원</td><td>30~60만원</td><td class="hi">0~30만원(월정액)</td></tr>
+      <tr><td>설치비</td><td class="hi">무료</td><td class="hi">무료</td><td class="hi">무료</td></tr>
       <tr><td>매출 분석</td><td>기본 제공</td><td>앱 연동</td><td class="hi">실시간 대시보드</td></tr>
       <tr><td>배달 연동</td><td>별도 모듈</td><td>앱 설치</td><td class="hi">배민·요기요·쿠팡 기본</td></tr>
       <tr><td>${emd} 추천</td><td>대형 식당·마트</td><td>카페·소형 매장</td><td class="hi">배달·프랜차이즈</td></tr>
@@ -5245,7 +5245,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
       <tr><td>원격 모니터링</td><td>제한적</td><td class="hi">스마트폰 실시간</td><td class="hi">스마트폰 + AI 알림</td></tr>
       <tr><td>야간 촬영</td><td>적외선 기본</td><td>컬러 야간</td><td class="hi">AI 컬러 나이트비전</td></tr>
       <tr><td>저장 기간</td><td>7~15일</td><td>15~30일</td><td class="hi">30~90일</td></tr>
-      <tr><td>설치비(4채널)</td><td>20~40만원</td><td>30~60만원</td><td>50~100만원</td></tr>
+      <tr><td>설치비</td><td class="hi">무료</td><td class="hi">무료</td><td class="hi">무료</td></tr>
     </tbody>
   </table>
 
@@ -5352,7 +5352,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
       <tr><td>편의성</td><td>번호 기억 필요</td><td>카드 소지 필요</td><td class="hi">스마트폰만 있으면 OK</td></tr>
       <tr><td>회원 관리</td><td>제한적</td><td>출입 기록</td><td class="hi">결제+출입+이용시간 통합</td></tr>
       <tr><td>추천 매장</td><td>사무실·창고</td><td>헬스장·사무실</td><td class="hi">스터디카페·무인매장</td></tr>
-      <tr><td>설치비</td><td class="hi">30~80만원</td><td>50~120만원</td><td>80~200만원</td></tr>
+      <tr><td>설치비</td><td>상담 후 확정</td><td>상담 후 확정</td><td>상담 후 확정</td></tr>
     </tbody>
   </table>
 
@@ -5381,10 +5381,10 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
       <tr><td>소요 기간</td><td class="hi">1~2일</td><td>3~5일</td><td>1~2주</td></tr>
       <tr><td>폐기물 처리</td><td>포함</td><td>포함</td><td class="hi">대형 폐기물 포함</td></tr>
       <tr><td>원상복구</td><td>기본 포함</td><td class="hi">바닥·벽·천장 복구</td><td class="hi">완전 원상복구</td></tr>
-      <tr><td>예상 비용</td><td>50~150만원</td><td>150~400만원</td><td>400만원~</td></tr>
+      <tr><td>정부 보조금</td><td class="hi">소상공인 지원</td><td class="hi">중소기업 지원</td><td class="hi">지자체 별도 지원</td></tr>
     </tbody>
   </table>
-  <div class="box yellow">💡 <strong>${emd} 사장님 Tip:</strong> 올페이스토어에서 철거와 동시에 신규 매장 장비(카드단말기·포스기·키오스크 등)를 설치하시면 <strong>철거비 최대 30% 할인</strong> 혜택을 드립니다. 폐업이 아닌 이전·리모델링이라면 반드시 문의하세요.</div>
+  <div class="box yellow">💡 <strong>${emd} 사장님 Tip:</strong> 소상공인진흥공단의 <strong>희망리턴패키지</strong>를 통해 철거비를 지원받을 수 있습니다. 올페이스토어에서 보조금 신청 절차까지 안내해드립니다.</div>
 
   <h2>🏗️ ${emd} 철거 진행 프로세스 — 6단계 체계적 시공</h2>
   <p>올페이스토어의 ${emd} 철거는 다음 6단계로 체계적으로 진행됩니다. 모든 단계에서 사장님께 사진·영상으로 실시간 보고를 드립니다.</p>
@@ -5419,15 +5419,15 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   </div>
   <p>${emd}에서 <strong>음식점</strong>을 철거할 경우 주방 설비(후드·배기·가스배관)가 포함되며, <strong>사무실</strong>은 파티션·OA마루·전기배선 정리가 핵심입니다. <strong>소매점</strong>은 진열대·간판·조명 제거, <strong>미용실</strong>은 샴푸대·배수관·전기설비 제거가 주요 작업입니다. 어떤 업종이든 올페이스토어 전문 엔지니어팀이 업종별 특성에 맞게 안전하고 깔끔하게 철거합니다.</p>
 
-  <h2>💰 ${emd} 철거 비용 절감 방법</h2>
-  <p>철거 비용을 합리적으로 줄이는 방법을 안내드립니다.</p>
+  <h2>💰 ${emd} 철거 정부 보조금 안내</h2>
+  <p>소상공인·중소기업은 매장 철거 시 정부 및 지자체 보조금을 지원받을 수 있습니다.</p>
   <ul class="ck">
-    <li><strong>신규 장비 동시 설치:</strong> 올페이스토어에서 철거 + 카드단말기·포스기 등 신규 장비를 함께 계약하면 철거비 최대 30% 할인</li>
-    <li><strong>재사용 가능 자재 분리:</strong> 에어컨, 조명, 가구 등 재사용 가능한 자재를 분리 매각하여 비용을 상쇄할 수 있습니다</li>
-    <li><strong>비수기 활용:</strong> 1~2월, 7~8월 비수기에 철거를 진행하면 일정 조율이 쉽고 비용도 절감됩니다</li>
-    <li><strong>임대인 협의:</strong> 원상복구 범위를 임대인과 사전에 명확히 합의하면 불필요한 추가 공사를 줄일 수 있습니다</li>
+    <li><strong>소상공인진흥공단 폐업 지원금:</strong> 폐업 절차를 밟는 소상공인은 철거비·원상복구비를 최대 200만원까지 지원받을 수 있습니다. 올페이스토어에서 신청 절차를 안내해드립니다</li>
+    <li><strong>희망리턴패키지:</strong> 폐업 소상공인 대상 사업 정리 컨설팅, 철거비 지원, 재기 교육까지 원스톱으로 지원합니다. 소상공인시장진흥공단에서 운영합니다</li>
+    <li><strong>지자체 별도 지원:</strong> ${emd} 소재 지자체에서 소상공인 폐업 지원, 인테리어 철거비 보조금을 별도로 운영하는 경우가 있습니다. 올페이스토어가 해당 지역 지원 사업을 확인해드립니다</li>
+    <li><strong>재창업 지원 연계:</strong> 폐업 후 재창업을 계획하신다면 재창업 패키지(점포 철거 + 신규 매장 장비 설치)를 통해 추가 지원을 받을 수 있습니다</li>
   </ul>
-  <div class="box yellow">⚠️ <strong>${emd} 사장님 주의:</strong> 무허가 철거업체에 맡기면 불법 폐기물 투기, 안전사고, 원상복구 미흡으로 보증금 분쟁이 발생할 수 있습니다. 반드시 <strong>적법한 폐기물 처리 확인증</strong>과 <strong>시공 보증서</strong>를 발급하는 업체를 선택하세요.</div>`
+  <div class="box yellow">💡 <strong>${emd} 사장님 Tip:</strong> 정부 보조금은 예산 소진 시 조기 마감될 수 있습니다. 올페이스토어에 문의하시면 현재 신청 가능한 보조금 현황과 신청 방법을 안내해드립니다. 반드시 <strong>적법한 폐기물 처리 확인증</strong>과 <strong>시공 보증서</strong>를 발급하는 업체를 선택하세요.</div>`
   };
 
   const content=CONTENT[prodKey]||'';
@@ -5450,7 +5450,7 @@ ${CSS}
 <body>
 <nav class="gnb"><div class="gnb-in">
   <a href="/" class="logo">AllPay<span>Store</span></a>
-  <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
+  <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
 <div class="wrap" style="padding-top:28px">
@@ -5470,7 +5470,7 @@ ${CSS}
 
   <h2>❓ ${emd} ${prd.ko} ${suf} 자주 묻는 질문</h2>
   <div class="faq"><div class="faq-q">Q. ${emd}에서 ${prd.ko} 당일 ${act}가 가능한가요?</div><div class="faq-a">네, 가능합니다. 올페이스토어는 ${sido} 전 지역 직접 방문 서비스를 제공하며, ${isRemoval?'현장 규모에 따라 당일~3일 내 철거를 완료합니다.':'오전 상담 시 당일 오후 빠른 설치도 가능합니다.'}</div></div>
-  <div class="faq"><div class="faq-q">Q. ${prd.ko} 비용은 얼마인가요?</div><div class="faq-a">${isRemoval?'매장 면적과 구조에 따라 다르며, 무료 현장 방문 후 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않습니다. 신규 장비 동시 계약 시 철거비 최대 30% 할인됩니다.':'매장 업종과 규모에 따라 다르며, 무료 방문 견적 후 정확한 비용을 안내드립니다. 카드단말기·포스기 등과 함께 패키지 설치 시 최대 30% 할인됩니다.'}</div></div>
+  <div class="faq"><div class="faq-q">Q. ${prd.ko} 비용은 얼마인가요?</div><div class="faq-a">${isRemoval?'매장 면적과 구조에 따라 다르며, 무료 현장 방문 후 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않습니다. 소상공인 대상 정부 보조금(희망리턴패키지 등)을 통해 철거비를 지원받을 수 있으며, 신청 절차를 안내해드립니다.':'매장 업종과 규모에 따라 다르며, 무료 방문 견적 후 정확한 비용을 안내드립니다. 설치비 무료, 월 이용료 무료로 진행됩니다.'}</div></div>
   <div class="faq"><div class="faq-q">Q. 기존 장비와 연동이 되나요?</div><div class="faq-a">올페이스토어가 설치하는 ${prd.ko}는 기존 카드단말기·포스기와 호환됩니다. 오래된 장비는 사전 호환성 확인 후 최적의 연동 방안을 안내드립니다.</div></div>
 
   <h2>📦 ${emd} 다른 제품 설치도 확인하세요</h2>
@@ -5531,7 +5531,7 @@ a{text-decoration:none;color:inherit}
 .badge{background:#EEF4FF;color:#555;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}
 h1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#111;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}
 .intro{background:#fff;border-left:5px solid #555;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}
-h2{font-size:19px;font-weight:900;color:#111;background:#f5f5f5;border-left:4px solid #333;padding:11px 18px;border-radius:0 8px 8px 0;margin:40px 0 16px;letter-spacing:-.3px}
+h2{font-size:19px;font-weight:900;color:#000;background:#f0f0f0;border-left:5px solid #111;padding:13px 18px;border-radius:0 8px 8px 0;margin:40px 0 16px;letter-spacing:-.3px}
 h3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #555}
 p{font-size:15.5px;color:#333;margin-bottom:16px}
 .tag{display:inline-block;background:#f0f0f0;color:#111;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}
@@ -5552,11 +5552,11 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .tbl td{padding:10px;border-bottom:1px solid #eee;text-align:center}
 .tbl tr:nth-child(even) td{background:#f8f9fc}
 .tbl .hi{color:#555;font-weight:800}
-.cta{background:linear-gradient(135deg,#111,#333);border-radius:16px;padding:36px 24px;text-align:center;color:#fff;margin:44px 0}
-.cta h3{font-size:22px;font-weight:900;margin-bottom:10px;color:#fff}
-.cta p{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:26px}
-.cta-main{display:inline-block;background:#FFD700;color:#111;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.2)}
-.cta-sub{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid rgba(255,255,255,.4)}
+.cta{background:#f0f0f0;border-radius:16px;padding:36px 24px;text-align:center;color:#111;margin:44px 0;border:1px solid #ddd}
+.cta h3{font-size:22px;font-weight:900;margin-bottom:10px;color:#111}
+.cta p{font-size:15px;color:#666;margin-bottom:26px}
+.cta-main{display:inline-block;background:#111;color:#fff;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.1)}
+.cta-sub{display:inline-block;background:#fff;color:#333;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid #ccc}
 .faq{background:#fff;border-radius:12px;padding:20px;margin:12px 0;border:1.5px solid #eee}
 .faq-q{font-size:15px;font-weight:800;color:#111;margin-bottom:8px}
 .faq-a{font-size:14.5px;color:#444;line-height:1.8}
@@ -5589,9 +5589,7 @@ function makeSidoPage(sidoSlug){
   const installCount=IC[sidoSlug]||'150+';
   const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
-    const sample=Object.keys(R).find(r=>r.startsWith(sidoSlug+'/'));
-    if(!sample)return '';
-    return `<a href="/blog/${sample}/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
+    return `<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
   }).join('');
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -5602,11 +5600,11 @@ function makeSidoPage(sidoSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sidoSlug}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
-<div class="wrap">
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:28px">
   
   <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
-    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=300&fit=crop&q=80" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
+    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=300&fit=crop&q=80" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
       <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
       <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} 설치 전문</div>
@@ -5618,7 +5616,7 @@ ${CSS}
   <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
     <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sidoName} 상권 특성</h2>
     <p style="font-size:14px;color:#555;line-height:1.8;margin-bottom:16px">${note}</p>
-    <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. 무료 견적부터 빠른 설치, 1~3년 A/S까지 원스톱으로 제공합니다.</p>
+    <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. 무료 견적 · 설치비 무료 · 월 이용료 무료, 빠른 설치, 1~3년 A/S까지 원스톱으로 제공합니다.</p>
   </div>
 
   <div class="g4" style="margin-bottom:32px">
@@ -5659,7 +5657,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
   const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
   const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}</a>`).join('');
-  const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${dongs[0].slug}/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
+  const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -5669,10 +5667,10 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sgKey}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
-    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
+    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
       <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
       <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
@@ -5741,9 +5739,9 @@ function makeProductLandingPage(prodKey){
   ];
   const regionBtns=sidoList.map(s=>{
     const firstDong=Object.keys(R).find(k=>k.startsWith(s.s+'/'));
-    return firstDong?`<a href="/blog/${firstDong}/${prodKey}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
+    return firstDong?`<a href="/blog/${s.s}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
   }).join('');
-  const PHOTO={card:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1534723452862-4c7edcad34c4?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=300&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=300&fit=crop&q=80'};
+  const PHOTO={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=300&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=300&fit=crop&q=80'};
   const photo=PHOTO[prodKey]||PHOTO.card;
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -5752,7 +5750,7 @@ function makeProductLandingPage(prodKey){
 <meta name="description" content="전국 ${prd.ko} ${suf} 전문. ${pd.d} 무료 견적 ☎ 010-9876-8282">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:240px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('${photo}') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:24px">
     <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · 전국 5,000+ 읍면동</div>
@@ -5805,14 +5803,14 @@ ${CSS}
 <body>
 <nav class="gnb"><div class="gnb-in">
   <a href="/" class="logo">AllPay<span>Store</span></a>
-  <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
+  <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
-<div class="wrap">
-  <div class="thumb"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
+<div class="wrap" style="padding-top:28px">
+  <div class="thumb"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크·CCTV 연동까지 한번에</h1>
-  <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적부터 빠른 설치, A/S까지 책임집니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
+  <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적 · 설치비 무료 · 월 이용료 무료, 빠른 설치, A/S까지 책임집니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
 
   <div class="g4">
     <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치 실적</div><div class="vl">50+건</div></div>
@@ -5975,9 +5973,9 @@ function makeBlogList(){
 .note{text-align:center;margin-top:32px;color:#aaa;font-size:13px}
 </style>
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/card/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="hero"><h1>전국 카드단말기·포스기 설치 지역</h1><p>전국 ${total.toLocaleString()}개 읍면동 전 지역 방문 설치 · 무료 견적 · 빠른 설치</p></div>
-<div class="wrap">
+<div class="wrap" style="padding-top:28px">
   <div class="tabs">${tabs}</div>
   ${sections}
   <p class="note">전국 ${total.toLocaleString()}개 지역 전체 서비스 중 · ☎ 010-9876-8282</p>
@@ -6591,6 +6589,14 @@ export default {
     if(prodMatch && PRODUCTS[prodMatch[1]]){
       const h=makeProductLandingPage(prodMatch[1]);
       if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+    }
+    if(path==='/product'){
+      const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
+      const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>제품 안내 | 올페이스토어</title>${CSS}</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/" style="color:#fff;font-weight:800">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:28px"><h1 style="font-size:28px;font-weight:900;color:#111;margin-bottom:24px">📦 제품 안내</h1><p style="font-size:15px;color:#666;margin-bottom:32px">매장에 필요한 장비를 선택하세요. 설치비 무료 · 월 이용료 무료 · 빠른 설치</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${prodLinks}</div>
+<div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a> <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a></div></div></body></html>`;
+      return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
     }
 
     const tm=path.match(/^\/blog\/(.+)\/thumb\.svg$/);
