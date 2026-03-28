@@ -5532,7 +5532,7 @@ a{text-decoration:none;color:inherit}
 h1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#111;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}
 .intro{background:#fff;border-left:5px solid #555;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}
 h2{font-size:19px;font-weight:900;color:#000;background:#f0f0f0;border-left:5px solid #111;padding:13px 18px;border-radius:0 8px 8px 0;margin:40px 0 16px;letter-spacing:-.3px}
-h3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #555}
+h3{font-size:16px;font-weight:800;color:#111;margin:26px 0 10px;padding-left:10px;border-left:3px solid #555}
 p{font-size:15.5px;color:#333;margin-bottom:16px}
 .tag{display:inline-block;background:#f0f0f0;color:#111;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}
 .g4{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
@@ -5553,7 +5553,7 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .tbl tr:nth-child(even) td{background:#f8f9fc}
 .tbl .hi{color:#555;font-weight:800}
 .cta{background:#f5f5f5;border-radius:16px;padding:36px 24px;text-align:center;color:#111;margin:44px 0;border:none}
-.cta h3{font-size:22px;font-weight:900;margin-bottom:10px;color:#111}
+.cta h3{font-size:22px;font-weight:900;margin-bottom:10px;color:#111;border-left:none;padding-left:0}
 .cta p{font-size:15px;color:#666;margin-bottom:26px}
 .cta-main{display:inline-block;background:#111;color:#fff;font-size:16px;font-weight:700;padding:14px 36px;border-radius:50px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .cta-sub{display:inline-block;background:#fff;color:#333;font-size:16px;font-weight:700;padding:14px 36px;border-radius:50px;margin-top:0;margin-left:12px;border:1.5px solid #ddd}
@@ -5617,7 +5617,7 @@ ${CSS}
   <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
     <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sidoName} 상권 특성</h2>
     <p style="font-size:14px;color:#555;line-height:1.8;margin-bottom:16px">${note}</p>
-    <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. 무료 견적 · 설치비 무료 · 월 이용료 무료, 빠른 설치, 1~3년 A/S까지 원스톱으로 제공합니다.</p>
+    <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. 무료 견적 · 설치비 무료 · 월 이용료 무료, 빠른 설치, 1~3년 A/S까지 원스톱으로 제공합니다. ${sidoName} 매장 사장님들이 가장 많이 문의하시는 카드단말기 VAN사 수수료 비교, 포스기 업종별 맞춤 추천, 키오스크 설치 후 인건비 절감 효과, CCTV 보험료 할인 혜택 등을 아래에서 상세히 안내드립니다.</p>
   </div>
 
   <div class="g4" style="margin-bottom:32px">
@@ -5626,6 +5626,56 @@ ${CSS}
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
   </div>
+
+  <h2>💳 ${short} 카드단말기 설치 안내</h2>
+  <p>${sidoName} 매장에서 카드결제를 받으려면 IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기가 필수입니다. 올페이스토어는 ${short} 전 지역에 <strong>설치비 무료, 월 이용료 무료</strong>로 카드단말기를 설치합니다. VAN사별 수수료를 비교 분석하여 가장 유리한 조건을 찾아드리며, 자동커팅단말기·유선단말기·무선단말기·블루투스단말기·토스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 기존 단말기 교체도 무료 방문 견적 후 빠르게 진행됩니다.</p>
+
+  <h2>🖥️ ${short} 포스기(POS) 설치 안내</h2>
+  <p>포스기는 단순 결제를 넘어 <strong>주문·결제·매출·재고·직원 관리를 통합</strong>하는 매장 운영의 두뇌입니다. ${sidoName} 지역 음식점·카페·편의점·미용실 등 모든 업종에 최적화된 포스기를 설치합니다. 배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 테이블오더 연결, 실시간 매출 분석 대시보드까지 제공합니다. 올페이스토어에서 설치하면 <strong>설치비 무료, 월 이용료 무료, 교육까지 무상</strong>으로 진행됩니다.</p>
+
+  <h2>🤖 ${short} 키오스크 설치 안내</h2>
+  <p>키오스크는 무인 주문·결제를 가능하게 하여 <strong>인건비를 월 200만원 이상 절감</strong>할 수 있습니다. ${sidoName} 내 음식점·카페·베이커리·패스트푸드점 등에서 도입이 급증하고 있습니다. 스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천하며, 포스기와 자동 연동되어 주문 즉시 주방 전달이 됩니다. 올페이스토어는 설치부터 메뉴 세팅, 직원 교육까지 원스톱으로 지원합니다.</p>
+
+  <h2>📷 ${short} CCTV 설치 안내</h2>
+  <p>${sidoName} 매장의 보안과 관리를 위한 CCTV 설치를 전문으로 합니다. HD~4K 고화질 촬영, 스마트폰 원격 모니터링, AI 움직임 감지, 야간 컬러 촬영까지 지원합니다. 포스기와 연동하면 결제 시점과 영상을 자동으로 매칭하여 정산 검증이 가능하며, CCTV 설치 매장은 화재·도난 보험료 할인 혜택도 받을 수 있습니다. ${short} 전 지역 출장 설치, 30일 이상 영상 저장을 보장합니다.</p>
+
+  <h2>📋 ${short} 테이블오더 설치 안내</h2>
+  <p>테이블오더는 QR코드·태블릿을 통해 고객이 테이블에서 직접 주문·결제할 수 있는 시스템입니다. 직원 호출 대기 시간이 제로가 되고, 추가 주문 유도로 <strong>객단가가 20~35% 상승</strong>합니다. ${sidoName} 내 음식점·카페·술집 등에서 도입이 확산되고 있으며, 포스기·주방 프린터와 자동 연동되어 주문 누락이 없습니다. 올페이스토어에서 설치하면 QR코드 발급·메뉴 세팅·직원 교육까지 무료로 진행합니다.</p>
+
+  <h2>🔨 ${short} 매장·사무실 철거 안내</h2>
+  <p>${sidoName} 지역에서 매장·사무실·가게 폐업, 이전, 리모델링 시 전문 엔지니어팀이 철거를 책임집니다. 정밀 현장 분석 후 정찰제 견적을 확정하며, 추가 비용이 발생하지 않습니다. 바닥·벽면·천장 원상복구, 폐기물 적법 처리, 시공 보증서 발급까지 원스톱으로 처리합니다. 소상공인진흥공단의 <strong>희망리턴패키지</strong>를 통해 철거비를 지원받을 수 있으며, 올페이스토어에서 보조금 신청 절차까지 안내해드립니다.</p>
+
+  <h2>⚡ ${short} 설치 프로세스</h2>
+  <ul class="ck">
+    <li><strong>1단계 무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 장비를 상담합니다</li>
+    <li><strong>2단계 무료 방문 견적</strong> — ${short} 전 지역 직접 방문하여 매장 환경을 분석하고 최적 장비를 추천합니다</li>
+    <li><strong>3단계 장비 선정</strong> — 업종별 특성에 맞는 카드단말기·포스기·키오스크·CCTV를 선정합니다</li>
+    <li><strong>4단계 빠른 설치</strong> — 전문 기사가 직접 방문하여 장비 설치·세팅·테스트를 완료합니다</li>
+    <li><strong>5단계 교육</strong> — 사장님과 직원에게 장비 사용법을 교육합니다. 별도 비용 없습니다</li>
+    <li><strong>6단계 A/S 보장</strong> — 설치 후 1~3년간 무상 A/S를 제공합니다. 장애 발생 시 원격 지원 또는 출동 서비스를 보장합니다</li>
+  </ul>
+
+  <h2>💰 ${short} 설치 비용 안내</h2>
+  <p>올페이스토어는 ${sidoName}에서 <strong>설치비 무료, 월 이용료 무료</strong>로 장비를 설치합니다. VAN사 제휴를 통해 카드단말기 설치비를 전액 지원하며, 포스기·키오스크도 월정액 없이 이용 가능합니다. 여러 장비를 한번에 설치하면 패키지 할인이 추가 적용됩니다. CCTV·테이블오더·무인결제기도 동일한 무료 설치 혜택을 제공합니다. 매장 철거는 정찰제로 운영되며, 소상공인 대상 정부 보조금 연계도 가능합니다.</p>
+
+  <h2>🏪 ${short} 업종별 추천 장비</h2>
+  <table class="tbl">
+    <thead><tr><th>업종</th><th>필수 장비</th><th>추천 추가 장비</th></tr></thead>
+    <tbody>
+      <tr><td>음식점·식당</td><td>포스기 + 카드단말기</td><td class="hi">키오스크, 테이블오더</td></tr>
+      <tr><td>카페·베이커리</td><td>포스기 + 카드단말기</td><td class="hi">키오스크</td></tr>
+      <tr><td>편의점·마트</td><td>포스기 + 카드단말기</td><td>CCTV, 무인결제기</td></tr>
+      <tr><td>미용실·네일샵</td><td>카드단말기</td><td>포스기(예약관리)</td></tr>
+      <tr><td>스터디카페</td><td class="hi">무인결제기 + CCTV</td><td>키오스크</td></tr>
+      <tr><td>코인세탁소</td><td class="hi">무인결제기</td><td>CCTV</td></tr>
+    </tbody>
+  </table>
+  <p>${sidoName} 내 음식점·카페 사장님은 포스기+카드단말기를 기본으로 설치하고, 피크타임 대기가 긴 매장은 키오스크 추가를 권장합니다. 스터디카페·코인세탁소 등 무인 업종은 무인결제기+CCTV 조합이 필수입니다. 올페이스토어는 업종 특성을 분석하여 <strong>불필요한 장비 없이 꼭 필요한 장비만</strong> 추천합니다.</p>
+
+  <h2>📊 ${short} 매장 운영 효율화 가이드</h2>
+  <p>장비 설치만으로 끝이 아닙니다. ${sidoName} 매장의 운영 효율을 극대화하기 위해 올페이스토어는 설치 후에도 지속적인 관리를 제공합니다. 포스기 매출 데이터를 분석하여 요일별·시간대별 매출 패턴을 파악하고, 피크타임 인력 배치와 재고 관리를 최적화할 수 있습니다. 배달 3사 매출을 통합 관리하여 수수료 비교·정산 검증도 가능합니다. 또한 카드단말기 VAN사 수수료를 정기적으로 재검토하여 더 유리한 조건이 나오면 무료로 전환해드립니다. ${short} 지역 매장을 운영하시는 사장님이라면 올페이스토어의 통합 관리 서비스를 꼭 활용하세요.</p>
+
+  <div class="box yellow">💡 <strong>${short} 사장님 Tip:</strong> ${sidoName}에서 신규 매장 오픈을 준비 중이라면 카드단말기·포스기·키오스크·CCTV·테이블오더를 올페이스토어 패키지로 한번에 설치하세요. 개별 설치 대비 시간과 비용을 크게 절약할 수 있으며, 설치비 무료·월 이용료 무료·1~3년 A/S 보장까지 제공됩니다. 폐업·이전 시에는 매장 철거도 전문 엔지니어팀이 원스톱으로 처리합니다.</div>
 
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${short} 제품별 설치 안내</h2>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px">${prodCards}</div>
@@ -5696,13 +5746,71 @@ ${CSS}
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
   </div>
 
+  <h2>💳 ${sgName} 카드단말기 설치</h2>
+  <p>${sidoName} ${sgName} 매장에서 카드결제를 받으려면 IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기가 필수입니다. 올페이스토어는 ${sgName} 전 지역 ${dongs.length}개 읍면동에 <strong>설치비 무료, 월 이용료 무료</strong>로 카드단말기를 설치합니다. VAN사별 수수료를 비교 분석하여 가장 유리한 조건을 찾아드리며, 자동커팅단말기·유선단말기·무선단말기·블루투스단말기·토스단말기 등 매장 환경에 맞는 단말기를 추천합니다.</p>
+
+  <h2>🖥️ ${sgName} 포스기(POS) 설치</h2>
+  <p>포스기는 주문·결제·매출·재고·직원 관리를 통합하는 매장 운영 시스템입니다. ${sgName} 지역 ${profile.biz.slice(0,3).join('·')} 등 모든 업종에 최적화된 포스기를 설치합니다. 배달 3사 연동, 테이블오더 연결, 실시간 매출 분석 대시보드까지 제공합니다. 설치비 무료, 월 이용료 무료, 직원 교육까지 무상으로 진행됩니다.</p>
+
+  <h2>🤖 ${sgName} 키오스크·테이블오더 설치</h2>
+  <p>키오스크는 무인 주문·결제로 인건비를 월 200만원 이상 절감할 수 있습니다. 테이블오더는 QR코드·태블릿으로 테이블에서 바로 주문·결제가 가능하여 객단가가 20~35% 상승합니다. ${sgName} 내 음식점·카페·베이커리에서 도입이 급증하고 있으며, 포스기와 자동 연동되어 주문 즉시 주방 전달이 됩니다. 올페이스토어에서 설치하면 메뉴 세팅·직원 교육까지 무료입니다.</p>
+
+  <h2>📷 ${sgName} CCTV 설치</h2>
+  <p>${sgName} 매장 보안을 위한 CCTV 설치를 전문으로 합니다. HD~4K 고화질, 스마트폰 원격 모니터링, AI 움직임 감지를 지원하며, 포스기 연동으로 결제 시점과 영상을 자동 매칭합니다. CCTV 설치 매장은 화재·도난 보험료 할인 혜택도 받을 수 있습니다.</p>
+
+  <h2>🔨 ${sgName} 매장·사무실 철거</h2>
+  <p>${sgName} 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 책임집니다. 정밀 현장 분석, 정찰제 견적, 원상복구, 폐기물 적법 처리, 시공 보증서 발급까지 원스톱으로 처리합니다. 소상공인진흥공단 희망리턴패키지를 통해 철거비 보조금을 지원받을 수 있으며, 신청 절차를 안내해드립니다.</p>
+
+  <h2>⚡ ${sgName} 설치 프로세스</h2>
+  <ul class="ck">
+    <li><strong>1단계 무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 장비를 상담합니다</li>
+    <li><strong>2단계 무료 방문 견적</strong> — ${sgName} 전 지역 직접 방문하여 매장 환경을 분석합니다</li>
+    <li><strong>3단계 장비 선정·설치</strong> — 업종별 최적 장비를 선정하고 전문 기사가 설치합니다</li>
+    <li><strong>4단계 교육·A/S</strong> — 사용법 교육 후 1~3년 무상 A/S를 보장합니다</li>
+  </ul>
+
+  <div class="box yellow">💡 <strong>${sgName} 사장님 Tip:</strong> 카드단말기·포스기·키오스크·CCTV·테이블오더를 올페이스토어 패키지로 한번에 설치하면 설치비 무료·월 이용료 무료·1~3년 A/S 보장까지 제공됩니다. 폐업·이전 시에는 매장 철거도 원스톱으로 처리합니다.</div>
+
+  <h2>🏪 ${sgName} 업종별 추천 장비</h2>
+  <table class="tbl">
+    <thead><tr><th>업종</th><th>필수 장비</th><th>추천 추가 장비</th></tr></thead>
+    <tbody>
+      <tr><td>음식점·식당</td><td>포스기 + 카드단말기</td><td class="hi">키오스크, 테이블오더</td></tr>
+      <tr><td>카페·베이커리</td><td>포스기 + 카드단말기</td><td class="hi">키오스크</td></tr>
+      <tr><td>편의점·마트</td><td>포스기 + 카드단말기</td><td>CCTV, 무인결제기</td></tr>
+      <tr><td>미용실·네일샵</td><td>카드단말기</td><td>포스기(예약관리)</td></tr>
+      <tr><td>스터디카페</td><td class="hi">무인결제기 + CCTV</td><td>키오스크</td></tr>
+      <tr><td>코인세탁소</td><td class="hi">무인결제기</td><td>CCTV</td></tr>
+    </tbody>
+  </table>
+  <p>${sgName} 지역 매장 특성에 따라 장비 조합이 달라집니다. 음식점·카페는 포스기+카드단말기가 기본이고, 피크타임 대기가 긴 매장은 키오스크를 추가하면 인건비를 월 200만원 이상 절감할 수 있습니다. 스터디카페·코인세탁소 등 무인 업종은 무인결제기+CCTV 조합이 필수입니다. 올페이스토어는 매장 방문 후 업종 특성을 분석하여 불필요한 장비 없이 꼭 필요한 장비만 추천합니다.</p>
+
+  <h2>💰 ${sgName} 설치 비용 안내</h2>
+  <p>올페이스토어는 ${sgName}에서 <strong>설치비 무료, 월 이용료 무료</strong>로 장비를 설치합니다. VAN사 제휴를 통해 카드단말기 설치비를 전액 지원하며, 포스기·키오스크도 월정액 없이 이용 가능합니다. 여러 장비를 한번에 설치하면 패키지 할인이 추가 적용됩니다. 매장 철거는 정찰제로 운영되며, 소상공인 대상 정부 보조금 연계도 가능합니다. ${sgName} ${dongs.length}개 읍면동 어디서든 동일한 무료 설치 혜택을 제공합니다.</p>
+
+  <h2>📊 ${sgName} 매장 운영 가이드</h2>
+  <p>장비 설치 후에도 올페이스토어는 지속적인 관리를 제공합니다. 포스기 매출 데이터를 분석하여 요일별·시간대별 매출 패턴을 파악하고, 피크타임 인력 배치와 재고 관리를 최적화할 수 있습니다. 배달 3사 매출을 통합 관리하여 수수료 비교·정산 검증도 가능합니다. VAN사 수수료를 정기적으로 재검토하여 더 유리한 조건이 나오면 무료로 전환해드립니다.</p>
+
+  <h2>✅ ${sgName}에서 올페이스토어를 선택해야 하는 이유</h2>
+  <ul class="ck">
+    <li><strong>설치비 완전 무료:</strong> 카드단말기·포스기·키오스크·CCTV·테이블오더 모든 장비 설치비가 무료입니다. 숨겨진 비용이 없습니다</li>
+    <li><strong>월 이용료 무료:</strong> 장비 유지에 별도 월정액이 발생하지 않습니다. VAN사 카드 수수료만 정상 부과됩니다</li>
+    <li><strong>${sgName} 전 지역 직접 방문:</strong> ${dongs.length}개 읍면동 어디든 전문 기사가 직접 방문하여 설치합니다</li>
+    <li><strong>업종별 맞춤 추천:</strong> 음식점·카페·편의점·미용실·스터디카페 등 업종 특성에 맞는 장비만 추천합니다</li>
+    <li><strong>원스톱 통합 설치:</strong> 카드단말기부터 CCTV까지 필요한 모든 장비를 한번에 설치하여 시간과 비용을 절약합니다</li>
+    <li><strong>1~3년 무상 A/S:</strong> 설치 후 장애 발생 시 원격 지원 또는 현장 출동으로 빠르게 해결합니다</li>
+    <li><strong>매장 철거도 가능:</strong> 폐업·이전 시 전문 엔지니어팀이 매장 철거부터 원상복구까지 책임집니다. 정부 보조금 신청도 안내합니다</li>
+  </ul>
+
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${sgName} 제품별 설치 안내</h2>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px">${prodCards}</div>
 
   <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${sgName} 설치 자주 묻는 질문</h2>
-  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문 설치를 제공합니다. 무료 견적 후 빠른 설치가 가능합니다.</div></div>
-  <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.</div></div>
-  <div class="faq"><div class="faq-q">Q. ${sgName}에서 매장 철거도 가능한가요?</div><div class="faq-a">네, ${sgName} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 시공합니다. 정찰제·원상복구·폐기물 처리까지 포함됩니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문 설치를 제공합니다. 무료 견적 후 빠른 설치가 가능합니다. 오전 상담 시 당일 오후 설치도 가능한 경우가 많습니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. 설치비와 월 이용료가 정말 무료인가요?</div><div class="faq-a">네, 올페이스토어는 VAN사 제휴를 통해 카드단말기·포스기·키오스크·CCTV·테이블오더 모든 장비의 설치비를 무료로 제공합니다. 별도 월 이용료도 발생하지 않습니다. 카드 결제 시 VAN사 수수료만 정상 부과됩니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용되며, 장비 간 자동 연동 세팅까지 포함됩니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. A/S는 어떻게 받나요?</div><div class="faq-a">설치 후 1~3년간 무상 A/S를 보장합니다. 장애 발생 시 먼저 원격 지원으로 빠르게 해결을 시도하고, 원격으로 해결이 안 되면 ${sgName} 전 지역 현장 출동 서비스를 제공합니다. 평일 영업시간 내 접수 시 당일 대응을 원칙으로 합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${sgName}에서 매장 철거도 가능한가요?</div><div class="faq-a">네, ${sgName} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 시공합니다. 정찰제 견적·원상복구·폐기물 적법 처리까지 포함됩니다. 소상공인 대상 정부 보조금(희망리턴패키지) 신청도 안내해드립니다.</div></div>
 
   <h2 style="font-size:20px;font-weight:800;color:#111;margin:40px 0 16px">🏘 ${sgName} 읍면동별 바로가기</h2>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${dongCards}</div>
