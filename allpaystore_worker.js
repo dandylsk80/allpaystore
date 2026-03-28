@@ -5729,8 +5729,6 @@ ${CSS}
       <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
     </div>
   </div>
-    <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
-  </div>
   <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sgName} 카드단말기·포스기·키오스크 설치</h1>
 
   <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
