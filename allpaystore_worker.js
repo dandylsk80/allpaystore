@@ -5479,7 +5479,7 @@ ${CSS}
   <div class="cta">
     <h3>${prd.emoji} ${emd} ${prd.ko} 무료 견적 받기</h3>
     <p>${isRemoval?`${full} 매장·사무실·가게 철거를 전문 엔지니어팀이 책임집니다.<br>정밀 현장 분석 · 정찰제 · 원상복구 · 폐기물 적법 처리`:`${full} 매장에 딱 맞는 ${prd.ko}를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 통합 상담`}</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
     <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 
@@ -5552,11 +5552,11 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .tbl td{padding:10px;border-bottom:1px solid #eee;text-align:center}
 .tbl tr:nth-child(even) td{background:#f8f9fc}
 .tbl .hi{color:#555;font-weight:800}
-.cta{background:#f0f0f0;border-radius:16px;padding:36px 24px;text-align:center;color:#111;margin:44px 0;border:1px solid #ddd}
+.cta{background:#f5f5f5;border-radius:16px;padding:36px 24px;text-align:center;color:#111;margin:44px 0;border:none}
 .cta h3{font-size:22px;font-weight:900;margin-bottom:10px;color:#111}
 .cta p{font-size:15px;color:#666;margin-bottom:26px}
-.cta-main{display:inline-block;background:#111;color:#fff;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.1)}
-.cta-sub{display:inline-block;background:#fff;color:#333;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid #ccc}
+.cta-main{display:inline-block;background:#111;color:#fff;font-size:16px;font-weight:700;padding:14px 36px;border-radius:50px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.cta-sub{display:inline-block;background:#fff;color:#333;font-size:16px;font-weight:700;padding:14px 36px;border-radius:50px;margin-top:0;margin-left:12px;border:1.5px solid #ddd}
 .faq{background:#fff;border-radius:12px;padding:20px;margin:12px 0;border:1.5px solid #eee}
 .faq-q{font-size:15px;font-weight:800;color:#111;margin-bottom:8px}
 .faq-a{font-size:14.5px;color:#444;line-height:1.8}
@@ -5583,7 +5583,8 @@ function makeSidoPage(sidoSlug){
   const short=SHORT[sidoSlug]||sidoName;
   const note=NOTE[sidoSlug]||'다양한 업종의 매장이 운영되고 있는 지역입니다.';
   const sgs=SIGUNGU[sidoSlug]||[];
-  const seen={};const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;return true;});
+  const seen={};const names=sgs.map(s=>s[0]);
+  const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;const n=sg[0];const isSubDist=names.some(other=>other!==n && n.startsWith(other));return !isSubDist;});
   const dongCount=Object.keys(R).filter(k=>k.startsWith(sidoSlug+'/')).length;
   const IC={'seoul':'520+','gyeonggi':'480+','busan':'310+','incheon':'280+','daegu':'250+','daejeon':'220+','gwangju':'200+','ulsan':'180+','sejong':'120+','gangwon':'150+','chungbuk':'130+','chungnam':'140+','jeonbuk':'120+','jeonnam':'110+','gyeongbuk':'130+','gyeongnam':'160+','jeju':'90+'};
   const installCount=IC[sidoSlug]||'150+';
@@ -5640,7 +5641,7 @@ ${CSS}
   <div class="cta">
     <h3>📞 ${short} 무료 견적 받기</h3>
     <p>${sidoName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
     <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
@@ -5652,7 +5653,8 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
   const sidoName=SK[sidoSlug];
   const sgKey=sidoSlug+'/'+sigunguSlug;
-  const dongs=Object.keys(R).filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
+  let dongs=Object.keys(R).filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
+  if(!dongs.length) dongs=Object.keys(R).filter(k=>k.startsWith(sgKey)).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
   if(!dongs.length)return null;
   const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
   const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
@@ -5708,7 +5710,7 @@ ${CSS}
   <div class="cta">
     <h3>📞 ${sgName} 무료 견적 받기</h3>
     <p>${sidoName} ${sgName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
     <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
@@ -5739,7 +5741,7 @@ function makeProductLandingPage(prodKey){
   ];
   const regionBtns=sidoList.map(s=>{
     const firstDong=Object.keys(R).find(k=>k.startsWith(s.s+'/'));
-    return firstDong?`<a href="/blog/${s.s}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
+    return firstDong?`<a href="/blog/${firstDong}/${prodKey}/" class="sg-card">${s.e} ${s.n} ${prd.ko}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
   }).join('');
   const PHOTO={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=300&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=300&fit=crop&q=80'};
   const photo=PHOTO[prodKey]||PHOTO.card;
@@ -5771,7 +5773,7 @@ ${CSS}
   <div class="cta">
     <h3>${prd.emoji} ${prd.ko} 무료 견적 받기</h3>
     <p>전국 어디서든 ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
     <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
@@ -5901,7 +5903,7 @@ ${CSS}
   <div class="cta">
     <h3>📞 ${emd} 카드단말기 무료 견적 받기</h3>
     <p>${full} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV 통합 상담</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
     <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 
@@ -6595,7 +6597,7 @@ export default {
       const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>제품 안내 | 올페이스토어</title>${CSS}</head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/" style="color:#fff;font-weight:800">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px"><h1 style="font-size:28px;font-weight:900;color:#111;margin-bottom:24px">📦 제품 안내</h1><p style="font-size:15px;color:#666;margin-bottom:32px">매장에 필요한 장비를 선택하세요. 설치비 무료 · 월 이용료 무료 · 빠른 설치</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${prodLinks}</div>
-<div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a> <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a></div></div></body></html>`;
+<div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a></div></div></body></html>`;
       return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
     }
 
