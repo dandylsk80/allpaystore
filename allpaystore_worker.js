@@ -5539,20 +5539,130 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 
 function makeSidoPage(sidoSlug){
   const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
+  const SHORT={'seoul':'서울','busan':'부산','daegu':'대구','incheon':'인천','gwangju':'광주','daejeon':'대전','ulsan':'울산','sejong':'세종','gyeonggi':'경기','gangwon':'강원','chungbuk':'충북','chungnam':'충남','jeonbuk':'전북','jeonnam':'전남','gyeongbuk':'경북','gyeongnam':'경남','jeju':'제주'};
+  const NOTE={'seoul':'대한민국 경제·문화의 중심, 서울은 전국에서 가장 많은 매장과 상권이 밀집한 도시입니다. 강남·홍대·명동·이태원·종로 등 핵심 상권부터 주택가 골목 매장까지 다양한 업종이 운영됩니다.','busan':'대한민국 제2의 도시 부산은 해운대·서면·남포동 등 관광·상업 복합 상권이 발달했습니다. 해양 관광과 전통시장이 공존하는 항구 도시입니다.','daegu':'섬유·패션 산업의 중심지 대구는 동성로·수성구 등 핵심 상권이 활발합니다. 전통 상업 도시의 저력이 살아있습니다.','incheon':'항만·공항·물류의 중심지 인천은 송도·청라·검단 신도시와 구도심 상권이 공존합니다. 수도권 서부 최대 상권입니다.','gwangju':'호남 문화·예술의 중심지 광주는 충장로·상무지구 등 핵심 상권에서 외식업과 소매업이 활발합니다.','daejeon':'충청권 교통·행정의 중심지 대전은 둔산·유성 등 오피스·상업 상권이 발달했습니다.','ulsan':'자동차·조선 산업의 중심지 울산은 산업 근로자 대상 외식·서비스업이 많습니다.','sejong':'대한민국 행정수도 세종은 신도시 성장과 함께 상권이 빠르게 확대되고 있습니다.','gyeonggi':'대한민국 최대 인구를 가진 경기도는 수원·성남·고양·용인 등 대형 도시의 상권이 매우 활발합니다.','gangwon':'관광·레저의 중심지 강원도는 계절별 관광 수요가 크고, 춘천·원주·강릉 등 주요 도시에 상권이 집중됩니다.','chungbuk':'내륙 산업과 농업의 중심지 충북은 청주·충주·제천 등에 안정적인 상권이 형성되어 있습니다.','chungnam':'서해안 발전의 중심지 충남은 천안·아산 등 수도권 근접 도시를 중심으로 상권이 성장하고 있습니다.','jeonbuk':'농식품 산업의 중심지 전북은 전주·익산·군산 등 전통 도시에 지역 밀착형 상권이 발달했습니다.','jeonnam':'풍부한 농수산자원의 전남은 여수·순천·목포 등 주요 도시에 관광·외식 상권이 활발합니다.','gyeongbuk':'전통과 산업이 공존하는 경북은 포항·경주·구미·안동 등 다양한 산업 기반 상권이 있습니다.','gyeongnam':'제조업과 해양산업의 경남은 창원·김해·진주·거제 등 산업도시 상권이 탄탄합니다.','jeju':'대한민국 최고의 관광지 제주는 외식·숙박·카페 등 관광 특수 업종 비중이 매우 높습니다.'};
   const sidoName=SK[sidoSlug];if(!sidoName)return null;
+  const short=SHORT[sidoSlug]||sidoName;
+  const note=NOTE[sidoSlug]||'다양한 업종의 매장이 운영되고 있는 지역입니다.';
   const sgs=SIGUNGU[sidoSlug]||[];
   const seen={};const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;return true;});
-  const cards=top.map(sg=>`<a href="/blog/${sg[1]}/" style="display:inline-block;padding:10px 20px;margin:6px;background:#0D2E6E;color:#fff;border-radius:8px;font-weight:700;text-decoration:none;">${sg[0]}</a>`).join('');
-  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sidoName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/" style="color:#0D2E6E;font-weight:700;">← 홈</a><h1 style="margin:20px 0;color:#0D2E6E;">${sidoName} 카드단말기 설치</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
+  const dongCount=Object.keys(R).filter(k=>k.startsWith(sidoSlug+'/')).length;
+  const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}<span>→</span></a>`).join('');
+  const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
+    const sample=Object.keys(R).find(r=>r.startsWith(sidoSlug+'/'));
+    if(!sample)return '';
+    return `<a href="/blog/${sample}/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
+  }).join('');
+  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${sidoName} 카드단말기·포스기·키오스크 설치 | ${short} 전 지역 빠른 설치 - 올페이스토어</title>
+<meta name="description" content="${sidoName} 카드단말기·포스기·키오스크·CCTV·테이블오더 설치 전문. ${short} 전 지역 ${dongCount}개 읍면동 직접 방문, 무료 견적, 빠른 설치. ☎ 010-9876-8282">
+<meta name="keywords" content="${short} 카드단말기 설치,${short} 포스기,${short} 키오스크,${short} CCTV,${short} 테이블오더,${short} 매장 철거">
+<link rel="canonical" href="https://allpaystore.com/blog/${sidoSlug}/">
+${CSS}
+</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap">
+  <div class="meta"><a href="/" style="color:#888;font-size:13px">홈</a> <span style="color:#ccc">›</span> <strong>${sidoName}</strong></div>
+  <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sidoName} 카드단말기·포스기·키오스크 설치</h1>
+  <p style="color:#888;font-size:13px;margin-bottom:24px">${ds} 기준 · ${short} 전 지역 ${dongCount}개 읍면동 출장 설치</p>
+
+  <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
+    <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sidoName} 상권 특성</h2>
+    <p style="font-size:14px;color:#555;line-height:1.8;margin-bottom:16px">${note}</p>
+    <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. 무료 견적부터 빠른 설치, 1~3년 A/S까지 원스톱으로 제공합니다.</p>
+  </div>
+
+  <div class="g4" style="margin-bottom:32px">
+    <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적 설치</div><div class="vl">1,500+건</div></div>
+    <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
+    <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
+    <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
+  </div>
+
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${short} 제품별 설치 안내</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
+
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏙 ${short} 시군구별 설치 지역</h2>
+  <p style="font-size:14px;color:#888;margin-bottom:16px">시군구를 선택하면 읍면동별 설치 가이드를 확인할 수 있습니다.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${sgCards}</div>
+
+  <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${short} 설치 자주 묻는 질문</h2>
+  <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 설치를 제공합니다. 오전 상담 시 빠른 설치가 가능합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. 매장 철거도 가능한가요?</div><div class="faq-a">네, ${short} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 책임지고 시공합니다. 정찰제·원상복구·폐기물 적법 처리까지 포함됩니다.</div></div>
+
+  <div class="cta">
+    <h3>📞 ${short} 무료 견적 받기</h3>
+    <p>${sidoName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282 전화 상담</a><br>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 카카오톡 상담도 가능합니다</a>
+  </div>
+</div>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${sidoName} 카드단말기·포스기·키오스크 설치 전문"}</script>
+</body></html>`;
 }
+
 function makeSigunguPage(sidoSlug,sigunguSlug){
-  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};const sidoName=SK[sidoSlug];
+  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
+  const sidoName=SK[sidoSlug];
   const sgKey=sidoSlug+'/'+sigunguSlug;
   const dongs=Object.keys(R).filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
   if(!dongs.length)return null;
   const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
-  const cards=dongs.map(d=>`<a href="/blog/${d.slug}/" style="display:inline-block;padding:10px 20px;margin:6px;background:#0D2E6E;color:#fff;border-radius:8px;font-weight:700;text-decoration:none;">${d.name}</a>`).join('');
-  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${sgName} 카드단말기 설치 | 올페이스토어</title></head><body style="font-family:sans-serif;padding:40px;max-width:900px;margin:0 auto;"><a href="/blog/${sidoSlug}/" style="color:#0D2E6E;font-weight:700;">← ${sidoName}</a><h1 style="margin:20px 0;color:#0D2E6E;">${sgName} 카드단말기 설치</h1><div>${cards}</div><div style="margin-top:40px;padding:24px;background:#f0f5ff;border-radius:12px;"><strong>📞 무료 상담: 010-9876-8282</strong></div></body></html>`;
+  const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
+  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}<span>→</span></a>`).join('');
+  const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${dongs[0].slug}/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
+  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${sgName} 카드단말기·포스기·키오스크 설치 | ${sgName} 전 지역 빠른 설치 - 올페이스토어</title>
+<meta name="description" content="${sidoName} ${sgName} 카드단말기·포스기·키오스크·CCTV 설치 전문. ${sgName} ${dongs.length}개 읍면동 직접 방문, 무료 견적, 빠른 설치. ☎ 010-9876-8282">
+<meta name="keywords" content="${sgName} 카드단말기 설치,${sgName} 포스기,${sgName} 키오스크,${sgName} CCTV,${sgName} 매장 철거">
+<link rel="canonical" href="https://allpaystore.com/blog/${sgKey}/">
+${CSS}
+</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap">
+  <div class="meta"><a href="/" style="color:#888;font-size:13px">홈</a> <span style="color:#ccc">›</span> <a href="/blog/${sidoSlug}/" style="color:#888;font-size:13px">${sidoName}</a> <span style="color:#ccc">›</span> <strong>${sgName}</strong></div>
+  <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sgName} 카드단말기·포스기·키오스크 설치</h1>
+  <p style="color:#888;font-size:13px;margin-bottom:24px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동 출장 설치</p>
+
+  <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
+    <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sgName} 상권 특성</h2>
+    <p style="font-size:14px;color:#555;line-height:1.8;margin-bottom:16px">${profile.note} ${sgName} 지역에서 주로 운영되는 업종은 <strong>${profile.biz.slice(0,5).join(', ')}</strong> 등이 있으며, 각 업종에 맞는 결제·운영 장비가 필요합니다.</p>
+    <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sgName} 전 지역(${dongs.length}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. ${profile.dt}</p>
+  </div>
+
+  <div class="g4" style="margin-bottom:32px">
+    <div class="card"><div class="ic">🏆</div><div class="lb">${sgName} 누적 설치</div><div class="vl">1,500+건</div></div>
+    <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
+    <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
+    <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
+  </div>
+
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${sgName} 제품별 설치 안내</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
+
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏘 ${sgName} 읍면동별 설치 지역</h2>
+  <p style="font-size:14px;color:#888;margin-bottom:16px">읍면동을 선택하면 상세 설치 가이드를 확인할 수 있습니다.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${dongCards}</div>
+
+  <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${sgName} 설치 자주 묻는 질문</h2>
+  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문 설치를 제공합니다. 무료 견적 후 빠른 설치가 가능합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${sgName}에서 매장 철거도 가능한가요?</div><div class="faq-a">네, ${sgName} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 시공합니다. 정찰제·원상복구·폐기물 처리까지 포함됩니다.</div></div>
+
+  <div class="cta">
+    <h3>📞 ${sgName} 무료 견적 받기</h3>
+    <p>${sidoName} ${sgName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282 전화 상담</a><br>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 카카오톡 상담도 가능합니다</a>
+  </div>
+</div>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${sgName} 카드단말기·포스기·키오스크 설치 전문"}</script>
+</body></html>`;
 }
 
 function makeBlog(sido,sigungu,emd,slug){
@@ -5921,6 +6031,15 @@ a{text-decoration:none;color:inherit}
 .prod-ic{font-size:40px;margin-bottom:10px}
 .prod-name{font-size:16px;font-weight:800;color:var(--dark);margin-bottom:4px}
 .prod-desc{font-size:12px;color:#6B7280;line-height:1.5}
+
+/* SIDO/SIGUNGU CARDS */
+.sg-card{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1.5px solid #eee;border-radius:12px;font-size:14px;font-weight:700;color:#111;transition:all .15s;text-decoration:none;min-width:120px}
+.sg-card:hover{border-color:#111;background:#f9f9f9;transform:translateY(-1px)}
+.sg-card span{color:#ccc;font-size:16px}
+.pd-card{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#f9f9f9;border:1.5px solid #eee;border-radius:12px;font-size:14px;font-weight:700;color:#111;transition:all .15s;text-decoration:none}
+.pd-card:hover{border-color:#111;background:#fff;transform:translateY(-1px)}
+.pd-ic{font-size:18px}
+.pd-name{font-size:14px;font-weight:700}
 
 /* SHOWCASE */
 .showcase{padding:56px 24px;border-bottom:1px solid #E5E7EB}
