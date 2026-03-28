@@ -5094,8 +5094,6 @@ const PRODUCTS={
   cctv:{ko:'CCTV',emoji:'📷',color:'#7C3AED',slug:'cctv'},
   tableorder:{ko:'테이블오더',emoji:'📋',color:'#DC2626',slug:'tableorder'},
   unmanned:{ko:'무인결제기',emoji:'🏪',color:'#0891B2',slug:'unmanned'},
-  delivery:{ko:'배달주문기',emoji:'🛵',color:'#EA580C',slug:'delivery'},
-  access:{ko:'출입관리시스템',emoji:'🔐',color:'#4F46E5',slug:'access'},
   removal:{ko:'철거',emoji:'🔨',color:'#991B1B',slug:'removal'}
 };
 
@@ -5125,7 +5123,8 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   const canon=`https://allpaystore.com/blog/${slug}/${prodKey}/`;
   const parentUrl=`https://allpaystore.com/blog/${slug}/`;
-  const svgEnc=encodeURIComponent(makeProductSVG(sido,sigungu,emd,prd));
+  const PHOTO_URL={card:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=420&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1534723452862-4c7edcad34c4?w=800&h=420&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=420&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=420&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=420&fit=crop&q=80'};
+  const photoUrl=PHOTO_URL[prodKey]||PHOTO_URL.card;
   const iso=today.toISOString().split('T')[0];
   const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#f5f5f5;border:1.5px solid #ddd;border-radius:10px;font-size:14px;font-weight:700;color:#111;text-decoration:none;transition:all .15s">${v.emoji} ${emd} ${v.ko}</a>`).join(' ');
 
@@ -5454,7 +5453,7 @@ ${CSS}
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
 <div class="wrap">
-  <div class="thumb"><img src="data:image/svg+xml;charset=utf-8,${svgEnc}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="800" height="420" loading="eager"></div>
+  <div class="thumb"><img src="${photoUrl}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge" style="background:${prd.color}">${prd.emoji} ${prd.ko} ${suf}</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} ${prd.ko} 완벽 가이드 — 무료 견적·${isRemoval?'정찰제·원상복구 보장':'빠른 설치·A/S 보장'}</h1>
   <div class="intro"><strong>${full}</strong>에서 ${isRemoval?'매장·사무실·가게 철거':prd.ko+' 설치'}를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 <strong>무료 견적부터 ${isRemoval?'철거 시공, 원상복구까지':'빠른 설치, A/S까지'}</strong> 책임집니다. ${p.note}</div>
@@ -5479,8 +5478,8 @@ ${CSS}
   <div class="cta">
     <h3>${prd.emoji} ${emd} ${prd.ko} 무료 견적 받기</h3>
     <p>${isRemoval?`${full} 매장·사무실·가게 철거를 전문 엔지니어팀이 책임집니다.<br>정밀 현장 분석 · 정찰제 · 원상복구 · 폐기물 적법 처리`:`${full} 매장에 딱 맞는 ${prd.ko}를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 통합 상담`}</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282 전화 상담</a><br>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 카카오톡 상담도 가능합니다</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 
   <div class="foot-nav">
@@ -5516,7 +5515,7 @@ const CSS=`<link rel="preconnect" href="https://fonts.googleapis.com"><link href
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}
 a{text-decoration:none;color:inherit}
-.gnb{background:#111;padding:20px 0;position:sticky;top:0;z-index:100}
+.gnb{background:#111;padding:28px 0;position:sticky;top:0;z-index:100}
 .gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}
 .logo span{color:#7DD3FC}
@@ -5573,6 +5572,8 @@ function makeSidoPage(sidoSlug){
   const sgs=SIGUNGU[sidoSlug]||[];
   const seen={};const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;return true;});
   const dongCount=Object.keys(R).filter(k=>k.startsWith(sidoSlug+'/')).length;
+  const IC={'seoul':'520+','gyeonggi':'480+','busan':'310+','incheon':'280+','daegu':'250+','daejeon':'220+','gwangju':'200+','ulsan':'180+','sejong':'120+','gangwon':'150+','chungbuk':'130+','chungnam':'140+','jeonbuk':'120+','jeonnam':'110+','gyeongbuk':'130+','gyeongnam':'160+','jeju':'90+'};
+  const installCount=IC[sidoSlug]||'150+';
   const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
     const sample=Object.keys(R).find(r=>r.startsWith(sidoSlug+'/'));
@@ -5591,7 +5592,7 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap">
   
-  <div style="width:100%;height:200px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
+  <div style="width:100%;height:200px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=300&fit=crop&q=80') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
     <div style="position:absolute;top:20px;right:30px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
     <div style="position:absolute;top:50px;right:70px;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.03)"></div>
     <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
@@ -5607,14 +5608,14 @@ ${CSS}
   </div>
 
   <div class="g4" style="margin-bottom:32px">
-    <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적 설치</div><div class="vl">350+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적 설치</div><div class="vl">${installCount}건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
   </div>
 
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${short} 제품별 설치 안내</h2>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px">${prodCards}</div>
 
   <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${short} 설치 자주 묻는 질문</h2>
   <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 설치를 제공합니다. 오전 상담 시 빠른 설치가 가능합니다.</div></div>
@@ -5627,8 +5628,8 @@ ${CSS}
   <div class="cta">
     <h3>📞 ${short} 무료 견적 받기</h3>
     <p>${sidoName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282 전화 상담</a><br>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 카카오톡 상담도 가능합니다</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${sidoName} 카드단말기·포스기·키오스크 설치 전문"}</script>
@@ -5655,8 +5656,8 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
 ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
-<div class="wrap">
-  <div style="width:100%;height:200px;background:linear-gradient(135deg,#2c3e50,#34495e);border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
+<div class="wrap" style="padding-top:24px">
+  <div style="width:100%;height:200px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=300&fit=crop&q=80') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
     <div style="position:absolute;top:20px;right:30px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
     <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
     <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
@@ -5678,7 +5679,7 @@ ${CSS}
   </div>
 
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${sgName} 제품별 설치 안내</h2>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px">${prodCards}</div>
 
   <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${sgName} 설치 자주 묻는 질문</h2>
   <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문 설치를 제공합니다. 무료 견적 후 빠른 설치가 가능합니다.</div></div>
@@ -5691,8 +5692,8 @@ ${CSS}
   <div class="cta">
     <h3>📞 ${sgName} 무료 견적 받기</h3>
     <p>${sidoName} ${sgName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282 전화 상담</a><br>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 카카오톡 상담도 가능합니다</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${sgName} 카드단말기·포스기·키오스크 설치 전문"}</script>
@@ -5706,8 +5707,7 @@ function makeBlog(sido,sigungu,emd,slug){
   const today=new Date();
   const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   const canon=`https://allpaystore.com/blog/${slug}/`;
-  const svgEnc=encodeURIComponent(makeSVG(sido,sigungu,emd));
-  const iso=today.toISOString().split('T')[0];
+    const iso=today.toISOString().split('T')[0];
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5728,7 +5728,7 @@ ${CSS}
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
 <div class="wrap">
-  <div class="thumb"><img src="data:image/svg+xml;charset=utf-8,${svgEnc}" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
+  <div class="thumb"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크·CCTV 연동까지 한번에</h1>
   <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적부터 빠른 설치, A/S까지 책임집니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
@@ -5822,8 +5822,8 @@ ${CSS}
   <div class="cta">
     <h3>📞 ${emd} 카드단말기 무료 견적 받기</h3>
     <p>${full} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV 통합 상담</p>
-    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282 전화 상담</a><br>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 카카오톡 상담도 가능합니다</a>
+    <a href="tel:010-9876-8282" class="cta-main">📞 전화 상담</a>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
 
   <div class="foot-nav">
@@ -5880,7 +5880,7 @@ function makeBlogList(){
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
-.gnb{background:#111;padding:20px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
+.gnb{background:#111;padding:28px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
 .hero{background:linear-gradient(135deg,#111,#555);padding:52px 24px;text-align:center;color:#fff}.hero h1{font-size:clamp(20px,4vw,36px);font-weight:900;margin-bottom:10px}.hero p{font-size:15px;opacity:.85}
 .wrap{max-width:1200px;margin:0 auto;padding:28px 20px 80px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
@@ -6067,12 +6067,12 @@ a{text-decoration:none;color:inherit}
 .prod-desc{font-size:12px;color:#6B7280;line-height:1.5}
 
 /* SIDO/SIGUNGU CARDS */
-.sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
+.sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
 .sg-card:hover{background:#ddd;color:#111}
 
-.pd-card{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#f9f9f9;border:1.5px solid #eee;border-radius:12px;font-size:14px;font-weight:700;color:#111;transition:all .15s;text-decoration:none}
+.pd-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 12px;background:#f9f9f9;border:1.5px solid #eee;border-radius:18px;font-size:13px;font-weight:700;color:#111;transition:all .15s;text-decoration:none;text-align:center}
 .pd-card:hover{border-color:#111;background:#fff;transform:translateY(-1px)}
-.pd-ic{font-size:18px}
+.pd-ic{font-size:28px}
 .pd-name{font-size:14px;font-weight:700}
 
 /* SHOWCASE */
@@ -6517,6 +6517,11 @@ export default {
       const slug=bm[1].replace(/\/+$/,'');
       const parts=slug.split('/');
       if(parts.length===1){const h=makeSidoPage(parts[0]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
+      if(parts.length===2 && PRODUCTS[parts[1]]){
+        // Product landing: /blog/seoul/card/ → first dong's product page
+        const firstDong=Object.keys(R).find(k=>k.startsWith(parts[0]+'/'));
+        if(firstDong){const r=lk(firstDong);if(r)return new Response(makeProductBlog(...r,firstDong,parts[1]),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
+      }
       if(parts.length===2){const h=makeSigunguPage(parts[0],parts[1]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
       // Product-specific page: /blog/sido/sigungu/emd/product
       if(parts.length===4 && PRODUCTS[parts[3]]){
