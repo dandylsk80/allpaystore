@@ -5101,23 +5101,18 @@ const PRODUCTS={
 
 function makeProductSVG(sido,sigungu,emd,prd){
   const sub=`${sido} ${sigungu}`;
-  const isRemoval=prd.slug==='removal';
-  const suf=isRemoval?'전문':'설치';
-  const scenes={card:'🏪💳',pos:'☕🖥️',kiosk:'🍽️🤖',cctv:'🏢📷',tableorder:'🍽️📋',unmanned:'🏪🏧',delivery:'🛵🍽️',access:'🔐🏢',removal:'🔨🏗️'};
-  const sc=scenes[prd.slug]||'💳🏪';
+  const isR=prd.slug==='removal';
+  const label=isR?`${emd} 철거 전문`:`${emd} ${prd.ko} 설치`;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${prd.color}"/><stop offset="1" stop-color="${prd.color}88"/></linearGradient></defs>
-<rect width="800" height="420" fill="url(#g)"/>
-<rect x="50" y="30" width="180" height="130" rx="16" fill="rgba(255,255,255,.06)"/>
-<rect x="560" y="40" width="200" height="120" rx="16" fill="rgba(255,255,255,.05)"/>
-<circle cx="400" cy="80" r="50" fill="rgba(255,255,255,.04)"/>
-<text x="140" y="108" text-anchor="middle" font-size="55">${sc[0]}</text>
-<text x="400" y="100" text-anchor="middle" font-size="65">${prd.emoji}</text>
-<text x="660" y="108" text-anchor="middle" font-size="55">${sc[1]||sc[0]}</text>
-<rect y="200" width="800" height="220" fill="rgba(0,0,0,.35)"/>
-<text x="400" y="280" text-anchor="middle" font-family="sans-serif" font-size="22" fill="rgba(255,255,255,.6)">${sub}</text>
-<text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="42" font-weight="900" fill="white">${emd} ${prd.ko} ${suf}</text>
-<text x="400" y="375" text-anchor="middle" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,.4)">올페이스토어 | 무료 견적 · 전문 시공</text>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${prd.color}"/><stop offset="1" stop-color="${prd.color}cc"/></linearGradient></defs>
+<rect width="800" height="420" fill="url(#bg)"/>
+<rect x="30" y="25" width="740" height="370" rx="20" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<circle cx="400" cy="120" r="60" fill="rgba(255,255,255,.06)"/>
+<rect x="300" y="80" width="200" height="80" rx="14" fill="rgba(255,255,255,.04)"/>
+<rect y="220" width="800" height="200" fill="rgba(0,0,0,.3)"/>
+<text x="400" y="300" text-anchor="middle" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,.5)">${sub}</text>
+<text x="400" y="350" text-anchor="middle" font-family="sans-serif" font-size="38" font-weight="900" fill="white">${label}</text>
+<text x="400" y="385" text-anchor="middle" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,.35)">올페이스토어 | 무료 견적 · 전문 시공</text>
 </svg>`;
 }
 
@@ -5462,10 +5457,10 @@ ${CSS}
   <div class="thumb"><img src="data:image/svg+xml;charset=utf-8,${svgEnc}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge" style="background:${prd.color}">${prd.emoji} ${prd.ko} ${suf}</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} ${prd.ko} 완벽 가이드 — 무료 견적·${isRemoval?'정찰제·원상복구 보장':'빠른 설치·A/S 보장'}</h1>
-  <div class="intro"><strong>${full}</strong>에서 ${isRemoval?'매장·사무실·가게 철거':'${prd.ko} 설치'}를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 <strong>무료 견적부터 ${isRemoval?'철거 시공, 원상복구까지':'빠른 설치, A/S까지'}</strong> 책임집니다. ${p.note}</div>
+  <div class="intro"><strong>${full}</strong>에서 ${isRemoval?'매장·사무실·가게 철거':prd.ko+' 설치'}를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 <strong>무료 견적부터 ${isRemoval?'철거 시공, 원상복구까지':'빠른 설치, A/S까지'}</strong> 책임집니다. ${p.note}</div>
 
   <div class="g4">
-    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치</div><div class="vl">350+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치</div><div class="vl">50+건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">최단 설치</div><div class="vl">당일 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
@@ -5500,24 +5495,20 @@ ${CSS}
 
 function makeSVG(sido,sigungu,emd){
   const sub=`${sido} ${sigungu}`;
-  const scenes=['🏢','🏪','☕','🍽️','🏬','🏗️','💼','🛒'];
-  const sc=scenes[emd.length%scenes.length];
-  const colors=[['#1a1a2e','#16213e'],['#2d132c','#4a1942'],['#1b2838','#2a4858'],['#1f1f1f','#3a3a3a'],['#0f3460','#16213e'],['#2c3e50','#34495e']];
+  const colors=[['#1a1a2e','#16213e'],['#2d132c','#4a1942'],['#1b2838','#2a4858'],['#1f1f1f','#3a3a3a'],['#2c3e50','#34495e'],['#1a1a1a','#2d2d2d']];
   const ci=colors[(sido.length+emd.length)%colors.length];
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${ci[0]}"/><stop offset="1" stop-color="${ci[1]}"/></linearGradient></defs>
-<rect width="800" height="420" fill="url(#g)"/>
-<rect x="40" y="30" width="200" height="140" rx="16" fill="rgba(255,255,255,.06)"/>
-<rect x="260" y="50" width="180" height="120" rx="16" fill="rgba(255,255,255,.04)"/>
-<rect x="540" y="30" width="220" height="140" rx="16" fill="rgba(255,255,255,.05)"/>
-<circle cx="680" cy="100" r="40" fill="rgba(255,255,255,.03)"/>
-<text x="140" y="115" text-anchor="middle" font-size="60">${sc}</text>
-<text x="350" y="115" text-anchor="middle" font-size="50">💳</text>
-<text x="650" y="115" text-anchor="middle" font-size="55">🖥️</text>
-<rect y="220" width="800" height="200" fill="rgba(0,0,0,.4)"/>
-<text x="400" y="300" text-anchor="middle" font-family="sans-serif" font-size="22" fill="rgba(255,255,255,.6)">${sub}</text>
-<text x="400" y="360" text-anchor="middle" font-family="sans-serif" font-size="42" font-weight="900" fill="white">${emd} 카드단말기 설치</text>
-<text x="400" y="395" text-anchor="middle" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,.4)">올페이스토어 | 무료 견적 · 빠른 설치 · A/S 보장</text>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${ci[0]}"/><stop offset="1" stop-color="${ci[1]}"/></linearGradient></defs>
+<rect width="800" height="420" fill="url(#bg)"/>
+<rect x="30" y="25" width="740" height="370" rx="20" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<circle cx="120" cy="130" r="50" fill="rgba(255,255,255,.04)"/><circle cx="680" cy="130" r="40" fill="rgba(255,255,255,.03)"/>
+<rect x="50" y="90" width="140" height="80" rx="10" fill="rgba(255,255,255,.05)"/>
+<rect x="250" y="70" width="300" height="100" rx="14" fill="rgba(255,255,255,.04)"/>
+<rect x="610" y="100" width="140" height="70" rx="10" fill="rgba(255,255,255,.04)"/>
+<rect y="230" width="800" height="190" fill="rgba(0,0,0,.35)"/>
+<text x="400" y="300" text-anchor="middle" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,.5)">${sub}</text>
+<text x="400" y="350" text-anchor="middle" font-family="sans-serif" font-size="38" font-weight="900" fill="white">${emd} 카드단말기 설치</text>
+<text x="400" y="385" text-anchor="middle" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,.35)">올페이스토어 | 무료 견적 · 빠른 설치 · A/S 보장</text>
 </svg>`;
 }
 const CSS=`<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -5525,7 +5516,7 @@ const CSS=`<link rel="preconnect" href="https://fonts.googleapis.com"><link href
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}
 a{text-decoration:none;color:inherit}
-.gnb{background:#111;padding:14px 0;position:sticky;top:0;z-index:100}
+.gnb{background:#111;padding:20px 0;position:sticky;top:0;z-index:100}
 .gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}
 .logo span{color:#7DD3FC}
@@ -5537,7 +5528,7 @@ a{text-decoration:none;color:inherit}
 .badge{background:#EEF4FF;color:#555;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}
 h1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#111;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}
 .intro{background:#fff;border-left:5px solid #555;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}
-h2{font-size:19px;font-weight:900;color:#fff;background:linear-gradient(90deg,#222,#555);padding:11px 18px;border-radius:8px;margin:40px 0 16px;letter-spacing:-.3px}
+h2{font-size:19px;font-weight:900;color:#111;background:#f5f5f5;border-left:4px solid #333;padding:11px 18px;border-radius:0 8px 8px 0;margin:40px 0 16px;letter-spacing:-.3px}
 h3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #555}
 p{font-size:15.5px;color:#333;margin-bottom:16px}
 .tag{display:inline-block;background:#f0f0f0;color:#111;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}
@@ -5599,9 +5590,15 @@ ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap">
-  <div class="meta"><a href="/" style="color:#888;font-size:13px">홈</a> <span style="color:#ccc">›</span> <strong>${sidoName}</strong></div>
+  
+  <div style="width:100%;height:200px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:30px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
+    <div style="position:absolute;top:50px;right:70px;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.03)"></div>
+    <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
+    <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} 설치 전문</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
+  </div>
   <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sidoName} 카드단말기·포스기·키오스크 설치</h1>
-  <p style="color:#888;font-size:13px;margin-bottom:24px">${ds} 기준 · ${short} 전 지역 ${dongCount}개 읍면동 출장 설치</p>
 
   <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
     <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sidoName} 상권 특성</h2>
@@ -5619,14 +5616,13 @@ ${CSS}
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${short} 제품별 설치 안내</h2>
   <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
 
-  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏙 ${short} 시군구별 바로가기</h2>
-  <p style="font-size:14px;color:#888;margin-bottom:16px">시군구를 선택하면 읍면동별 설치 가이드를 확인할 수 있습니다.</p>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${sgCards}</div>
-
   <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${short} 설치 자주 묻는 질문</h2>
   <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 설치를 제공합니다. 오전 상담 시 빠른 설치가 가능합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 매장 철거도 가능한가요?</div><div class="faq-a">네, ${short} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 책임지고 시공합니다. 정찰제·원상복구·폐기물 적법 처리까지 포함됩니다.</div></div>
+
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin:40px 0 16px">🏙 ${short} 시군구별 바로가기</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${sgCards}</div>
 
   <div class="cta">
     <h3>📞 ${short} 무료 견적 받기</h3>
@@ -5660,9 +5656,13 @@ ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo">AllPay<span>Store</span></a><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap">
-  <div class="meta"><a href="/" style="color:#888;font-size:13px">홈</a> <span style="color:#ccc">›</span> <a href="/blog/${sidoSlug}/" style="color:#888;font-size:13px">${sidoName}</a> <span style="color:#ccc">›</span> <strong>${sgName}</strong></div>
+  <div style="width:100%;height:200px;background:linear-gradient(135deg,#2c3e50,#34495e);border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:20px;right:30px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
+    <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
+    <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:4px">카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 · 철거</div>
+  </div>
   <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sgName} 카드단말기·포스기·키오스크 설치</h1>
-  <p style="color:#888;font-size:13px;margin-bottom:24px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동 출장 설치</p>
 
   <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
     <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sgName} 상권 특성</h2>
@@ -5671,7 +5671,7 @@ ${CSS}
   </div>
 
   <div class="g4" style="margin-bottom:32px">
-    <div class="card"><div class="ic">🏆</div><div class="lb">${sgName} 누적 설치</div><div class="vl">350+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">${sgName} 누적 설치</div><div class="vl">120+건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
@@ -5680,14 +5680,13 @@ ${CSS}
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${sgName} 제품별 설치 안내</h2>
   <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
 
-  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏘 ${sgName} 읍면동별 바로가기</h2>
-  <p style="font-size:14px;color:#888;margin-bottom:16px">읍면동을 선택하면 상세 설치 가이드를 확인할 수 있습니다.</p>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${dongCards}</div>
-
   <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${sgName} 설치 자주 묻는 질문</h2>
   <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문 설치를 제공합니다. 무료 견적 후 빠른 설치가 가능합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.</div></div>
   <div class="faq"><div class="faq-q">Q. ${sgName}에서 매장 철거도 가능한가요?</div><div class="faq-a">네, ${sgName} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 시공합니다. 정찰제·원상복구·폐기물 처리까지 포함됩니다.</div></div>
+
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin:40px 0 16px">🏘 ${sgName} 읍면동별 바로가기</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${dongCards}</div>
 
   <div class="cta">
     <h3>📞 ${sgName} 무료 견적 받기</h3>
@@ -5735,7 +5734,7 @@ ${CSS}
   <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적부터 빠른 설치, A/S까지 책임집니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
 
   <div class="g4">
-    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치 실적</div><div class="vl">350+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치 실적</div><div class="vl">50+건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">최단 설치</div><div class="vl">당일 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
@@ -5881,7 +5880,7 @@ function makeBlogList(){
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
-.gnb{background:#111;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
+.gnb{background:#111;padding:20px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
 .hero{background:linear-gradient(135deg,#111,#555);padding:52px 24px;text-align:center;color:#fff}.hero h1{font-size:clamp(20px,4vw,36px);font-weight:900;margin-bottom:10px}.hero p{font-size:15px;opacity:.85}
 .wrap{max-width:1200px;margin:0 auto;padding:28px 20px 80px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
@@ -5987,7 +5986,7 @@ a{text-decoration:none;color:inherit}
 
 /* HEADER */
 .hd{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
-.hd-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 24px}
+.hd-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:6px 24px}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-ic{width:34px;height:34px;background:#111;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-ic svg{width:17px;height:17px}
@@ -6068,9 +6067,9 @@ a{text-decoration:none;color:inherit}
 .prod-desc{font-size:12px;color:#6B7280;line-height:1.5}
 
 /* SIDO/SIGUNGU CARDS */
-.sg-card{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1.5px solid #eee;border-radius:12px;font-size:14px;font-weight:700;color:#111;transition:all .15s;text-decoration:none;min-width:120px}
-.sg-card:hover{border-color:#111;background:#f9f9f9;transform:translateY(-1px)}
-.sg-card span{color:#ccc;font-size:16px}
+.sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
+.sg-card:hover{background:#ddd;color:#111}
+
 .pd-card{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#f9f9f9;border:1.5px solid #eee;border-radius:12px;font-size:14px;font-weight:700;color:#111;transition:all .15s;text-decoration:none}
 .pd-card:hover{border-color:#111;background:#fff;transform:translateY(-1px)}
 .pd-ic{font-size:18px}
