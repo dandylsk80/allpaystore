@@ -5101,7 +5101,24 @@ const PRODUCTS={
 
 function makeProductSVG(sido,sigungu,emd,prd){
   const sub=`${sido} ${sigungu}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="${prd.color}"/><text x="400" y="160" text-anchor="middle" font-family="sans-serif" font-size="60">${prd.emoji}</text><text x="400" y="230" text-anchor="middle" font-family="sans-serif" font-size="22" fill="rgba(255,255,255,0.7)">${sub}</text><text x="400" y="300" text-anchor="middle" font-family="sans-serif" font-size="42" font-weight="900" fill="white">${emd} ${prd.ko}</text></svg>`;
+  const isRemoval=prd.slug==='removal';
+  const suf=isRemoval?'전문':'설치';
+  const scenes={card:'🏪💳',pos:'☕🖥️',kiosk:'🍽️🤖',cctv:'🏢📷',tableorder:'🍽️📋',unmanned:'🏪🏧',delivery:'🛵🍽️',access:'🔐🏢',removal:'🔨🏗️'};
+  const sc=scenes[prd.slug]||'💳🏪';
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${prd.color}"/><stop offset="1" stop-color="${prd.color}88"/></linearGradient></defs>
+<rect width="800" height="420" fill="url(#g)"/>
+<rect x="50" y="30" width="180" height="130" rx="16" fill="rgba(255,255,255,.06)"/>
+<rect x="560" y="40" width="200" height="120" rx="16" fill="rgba(255,255,255,.05)"/>
+<circle cx="400" cy="80" r="50" fill="rgba(255,255,255,.04)"/>
+<text x="140" y="108" text-anchor="middle" font-size="55">${sc[0]}</text>
+<text x="400" y="100" text-anchor="middle" font-size="65">${prd.emoji}</text>
+<text x="660" y="108" text-anchor="middle" font-size="55">${sc[1]||sc[0]}</text>
+<rect y="200" width="800" height="220" fill="rgba(0,0,0,.35)"/>
+<text x="400" y="280" text-anchor="middle" font-family="sans-serif" font-size="22" fill="rgba(255,255,255,.6)">${sub}</text>
+<text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="42" font-weight="900" fill="white">${emd} ${prd.ko} ${suf}</text>
+<text x="400" y="375" text-anchor="middle" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,.4)">올페이스토어 | 무료 견적 · 전문 시공</text>
+</svg>`;
 }
 
 function makeProductBlog(sido,sigungu,emd,slug,prodKey){
@@ -5115,7 +5132,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   const parentUrl=`https://allpaystore.com/blog/${slug}/`;
   const svgEnc=encodeURIComponent(makeProductSVG(sido,sigungu,emd,prd));
   const iso=today.toISOString().split('T')[0];
-  const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#f0f5ff;border:1.5px solid #d0dff8;border-radius:10px;font-size:14px;font-weight:700;color:#0D2E6E;text-decoration:none;transition:all .15s">${v.emoji} ${emd} ${v.ko}</a>`).join(' ');
+  const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#f5f5f5;border:1.5px solid #ddd;border-radius:10px;font-size:14px;font-weight:700;color:#111;text-decoration:none;transition:all .15s">${v.emoji} ${emd} ${v.ko}</a>`).join(' ');
 
   const CONTENT={
     card:`
@@ -5448,7 +5465,7 @@ ${CSS}
   <div class="intro"><strong>${full}</strong>에서 ${isRemoval?'매장·사무실·가게 철거':'${prd.ko} 설치'}를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 <strong>무료 견적부터 ${isRemoval?'철거 시공, 원상복구까지':'빠른 설치, A/S까지'}</strong> 책임집니다. ${p.note}</div>
 
   <div class="g4">
-    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치</div><div class="vl">1,500+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치</div><div class="vl">350+건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">최단 설치</div><div class="vl">당일 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
@@ -5483,34 +5500,52 @@ ${CSS}
 
 function makeSVG(sido,sigungu,emd){
   const sub=`${sido} ${sigungu}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="#0D2E6E"/><text x="400" y="195" text-anchor="middle" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">${sub}</text><text x="400" y="270" text-anchor="middle" font-family="sans-serif" font-size="48" font-weight="900" fill="white">${emd} 카드단말기</text></svg>`;
+  const scenes=['🏢','🏪','☕','🍽️','🏬','🏗️','💼','🛒'];
+  const sc=scenes[emd.length%scenes.length];
+  const colors=[['#1a1a2e','#16213e'],['#2d132c','#4a1942'],['#1b2838','#2a4858'],['#1f1f1f','#3a3a3a'],['#0f3460','#16213e'],['#2c3e50','#34495e']];
+  const ci=colors[(sido.length+emd.length)%colors.length];
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${ci[0]}"/><stop offset="1" stop-color="${ci[1]}"/></linearGradient></defs>
+<rect width="800" height="420" fill="url(#g)"/>
+<rect x="40" y="30" width="200" height="140" rx="16" fill="rgba(255,255,255,.06)"/>
+<rect x="260" y="50" width="180" height="120" rx="16" fill="rgba(255,255,255,.04)"/>
+<rect x="540" y="30" width="220" height="140" rx="16" fill="rgba(255,255,255,.05)"/>
+<circle cx="680" cy="100" r="40" fill="rgba(255,255,255,.03)"/>
+<text x="140" y="115" text-anchor="middle" font-size="60">${sc}</text>
+<text x="350" y="115" text-anchor="middle" font-size="50">💳</text>
+<text x="650" y="115" text-anchor="middle" font-size="55">🖥️</text>
+<rect y="220" width="800" height="200" fill="rgba(0,0,0,.4)"/>
+<text x="400" y="300" text-anchor="middle" font-family="sans-serif" font-size="22" fill="rgba(255,255,255,.6)">${sub}</text>
+<text x="400" y="360" text-anchor="middle" font-family="sans-serif" font-size="42" font-weight="900" fill="white">${emd} 카드단말기 설치</text>
+<text x="400" y="395" text-anchor="middle" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,.4)">올페이스토어 | 무료 견적 · 빠른 설치 · A/S 보장</text>
+</svg>`;
 }
 const CSS=`<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}
 a{text-decoration:none;color:inherit}
-.gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}
+.gnb{background:#111;padding:14px 0;position:sticky;top:0;z-index:100}
 .gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}
 .logo span{color:#7DD3FC}
-.tel-btn{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;white-space:nowrap}
+.tel-btn{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;white-space:nowrap}
 .wrap{max-width:780px;margin:0 auto;padding:0 18px 80px}
 .thumb{width:100%;border-radius:16px;overflow:hidden;margin:28px 0 22px;box-shadow:0 6px 28px rgba(13,46,110,.16)}
 .thumb img{width:100%;height:auto;display:block}
 .meta{font-size:13px;color:#999;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
-.badge{background:#EEF4FF;color:#1A6BFF;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}
-h1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#0D2E6E;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}
-.intro{background:#fff;border-left:5px solid #1A6BFF;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}
-h2{font-size:19px;font-weight:900;color:#fff;background:linear-gradient(90deg,#0D2E6E,#1A6BFF);padding:11px 18px;border-radius:8px;margin:40px 0 16px;letter-spacing:-.3px}
-h3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #1A6BFF}
+.badge{background:#EEF4FF;color:#555;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}
+h1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#111;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}
+.intro{background:#fff;border-left:5px solid #555;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}
+h2{font-size:19px;font-weight:900;color:#fff;background:linear-gradient(90deg,#222,#555);padding:11px 18px;border-radius:8px;margin:40px 0 16px;letter-spacing:-.3px}
+h3{font-size:16px;font-weight:800;color:#1A4FA0;margin:26px 0 10px;padding-left:10px;border-left:3px solid #555}
 p{font-size:15.5px;color:#333;margin-bottom:16px}
-.tag{display:inline-block;background:#EEF4FF;color:#0D2E6E;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}
+.tag{display:inline-block;background:#f0f0f0;color:#111;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}
 .g4{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .card{background:#fff;border-radius:12px;padding:18px;text-align:center;border:1.5px solid #e8e8e8}
 .card .ic{font-size:28px;margin-bottom:7px}
 .card .lb{font-size:11px;color:#999;font-weight:600;margin-bottom:4px}
-.card .vl{font-size:17px;font-weight:900;color:#0D2E6E}
+.card .vl{font-size:17px;font-weight:900;color:#111}
 .box{background:#fff;border:1.5px solid #E8EEFF;border-radius:14px;padding:22px 24px;margin:18px 0}
 .box.blue{background:#EEF4FF;border-color:#BDD0FF}
 .box.yellow{background:#FFFBEA;border-color:#FFE082}
@@ -5519,20 +5554,20 @@ ul.ck li{padding:8px 0 8px 30px;position:relative;font-size:15px;border-bottom:1
 ul.ck li:last-child{border-bottom:none}
 ul.ck li::before{content:'✅';position:absolute;left:0}
 .tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
-.tbl th{background:#0D2E6E;color:#fff;padding:11px 10px;text-align:center}
+.tbl th{background:#222;color:#fff;padding:11px 10px;text-align:center}
 .tbl td{padding:10px;border-bottom:1px solid #eee;text-align:center}
 .tbl tr:nth-child(even) td{background:#f8f9fc}
-.tbl .hi{color:#1A6BFF;font-weight:800}
-.cta{background:linear-gradient(135deg,#0D2E6E,#1A6BFF);border-radius:16px;padding:36px 24px;text-align:center;color:#fff;margin:44px 0}
+.tbl .hi{color:#555;font-weight:800}
+.cta{background:linear-gradient(135deg,#111,#333);border-radius:16px;padding:36px 24px;text-align:center;color:#fff;margin:44px 0}
 .cta h3{font-size:22px;font-weight:900;margin-bottom:10px}
 .cta p{font-size:15px;opacity:.9;margin-bottom:26px}
-.cta-main{display:inline-block;background:#FFD700;color:#0D2E6E;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.2)}
+.cta-main{display:inline-block;background:#FFD700;color:#111;font-size:18px;font-weight:900;padding:16px 44px;border-radius:50px;box-shadow:0 4px 18px rgba(0,0,0,.2)}
 .cta-sub{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-size:14px;font-weight:600;padding:10px 26px;border-radius:50px;margin-top:12px;border:1.5px solid rgba(255,255,255,.4)}
 .faq{background:#fff;border-radius:12px;padding:20px;margin:12px 0;border:1.5px solid #eee}
-.faq-q{font-size:15px;font-weight:800;color:#0D2E6E;margin-bottom:8px}
+.faq-q{font-size:15px;font-weight:800;color:#111;margin-bottom:8px}
 .faq-a{font-size:14.5px;color:#444;line-height:1.8}
 .foot-nav{margin:40px 0 0;padding:16px 0;border-top:1px solid #eee;font-size:14px;color:#aaa}
-.foot-nav a{color:#1A6BFF;font-weight:600}
+.foot-nav a{color:#555;font-weight:600}
 @media(max-width:480px){.cta-main{font-size:16px;padding:14px 32px}}
 </style>`;
 
@@ -5547,7 +5582,7 @@ function makeSidoPage(sidoSlug){
   const sgs=SIGUNGU[sidoSlug]||[];
   const seen={};const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;return true;});
   const dongCount=Object.keys(R).filter(k=>k.startsWith(sidoSlug+'/')).length;
-  const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}<span>→</span></a>`).join('');
+  const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
     const sample=Object.keys(R).find(r=>r.startsWith(sidoSlug+'/'));
     if(!sample)return '';
@@ -5575,7 +5610,7 @@ ${CSS}
   </div>
 
   <div class="g4" style="margin-bottom:32px">
-    <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적 설치</div><div class="vl">1,500+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적 설치</div><div class="vl">350+건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
@@ -5584,7 +5619,7 @@ ${CSS}
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${short} 제품별 설치 안내</h2>
   <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
 
-  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏙 ${short} 시군구별 설치 지역</h2>
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏙 ${short} 시군구별 바로가기</h2>
   <p style="font-size:14px;color:#888;margin-bottom:16px">시군구를 선택하면 읍면동별 설치 가이드를 확인할 수 있습니다.</p>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${sgCards}</div>
 
@@ -5612,7 +5647,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   if(!dongs.length)return null;
   const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
   const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
-  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}<span>→</span></a>`).join('');
+  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${dongs[0].slug}/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -5636,7 +5671,7 @@ ${CSS}
   </div>
 
   <div class="g4" style="margin-bottom:32px">
-    <div class="card"><div class="ic">🏆</div><div class="lb">${sgName} 누적 설치</div><div class="vl">1,500+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">${sgName} 누적 설치</div><div class="vl">350+건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
@@ -5645,7 +5680,7 @@ ${CSS}
   <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">📦 ${sgName} 제품별 설치 안내</h2>
   <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">${prodCards}</div>
 
-  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏘 ${sgName} 읍면동별 설치 지역</h2>
+  <h2 style="font-size:20px;font-weight:800;color:#111;margin-bottom:16px">🏘 ${sgName} 읍면동별 바로가기</h2>
   <p style="font-size:14px;color:#888;margin-bottom:16px">읍면동을 선택하면 상세 설치 가이드를 확인할 수 있습니다.</p>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">${dongCards}</div>
 
@@ -5700,7 +5735,7 @@ ${CSS}
   <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적부터 빠른 설치, A/S까지 책임집니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
 
   <div class="g4">
-    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치 실적</div><div class="vl">1,500+건</div></div>
+    <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치 실적</div><div class="vl">350+건</div></div>
     <div class="card"><div class="ic">⚡</div><div class="lb">최단 설치</div><div class="vl">당일 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
@@ -5783,7 +5818,7 @@ ${CSS}
 
   <h2>📦 ${emd} 제품별 전문 설치 가이드</h2>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
-    ${Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:12px 20px;background:#f0f5ff;border:1.5px solid #d0dff8;border-radius:10px;font-size:14px;font-weight:700;color:#0D2E6E;text-decoration:none;">${v.emoji} ${emd} ${v.ko} 설치</a>`).join(' ')}
+    ${Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:12px 20px;background:#f5f5f5;border:1.5px solid #ddd;border-radius:10px;font-size:14px;font-weight:700;color:#111;text-decoration:none;">${v.emoji} ${emd} ${v.ko} 설치</a>`).join(' ')}
   </div>
   <div class="cta">
     <h3>📞 ${emd} 카드단말기 무료 견적 받기</h3>
@@ -5846,17 +5881,17 @@ function makeBlogList(){
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
-.gnb{background:#0D2E6E;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#1A6BFF;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
-.hero{background:linear-gradient(135deg,#0D2E6E,#1A6BFF);padding:52px 24px;text-align:center;color:#fff}.hero h1{font-size:clamp(20px,4vw,36px);font-weight:900;margin-bottom:10px}.hero p{font-size:15px;opacity:.85}
+.gnb{background:#111;padding:14px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}.logo span{color:#7DD3FC}.tel{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
+.hero{background:linear-gradient(135deg,#111,#555);padding:52px 24px;text-align:center;color:#fff}.hero h1{font-size:clamp(20px,4vw,36px);font-weight:900;margin-bottom:10px}.hero p{font-size:15px;opacity:.85}
 .wrap{max-width:1200px;margin:0 auto;padding:28px 20px 80px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .tab-btn{background:#fff;border:1.5px solid #e0e0e0;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#555;transition:all .15s;white-space:nowrap}
-.tab-btn:hover{border-color:#1A6BFF;color:#1A6BFF}
-.tab-btn.active{background:#0D2E6E;border-color:#0D2E6E;color:#fff}
+.tab-btn:hover{border-color:#555;color:#555}
+.tab-btn.active{background:#111;border-color:#111;color:#fff}
 .tab-cnt{font-size:11px;opacity:.75;margin-left:3px}
 .rc{display:flex;flex-direction:column;background:#fff;border-radius:10px;padding:12px 14px;border:1.5px solid #eee;transition:all .2s;gap:3px}
-.rc:hover{border-color:#1A6BFF;box-shadow:0 3px 12px rgba(26,107,255,.1);transform:translateY(-1px)}
-.rc-sub{font-size:11px;color:#aaa;font-weight:600}.rc-main{font-size:14px;font-weight:800;color:#0D2E6E}
+.rc:hover{border-color:#555;box-shadow:0 3px 12px rgba(26,107,255,.1);transform:translateY(-1px)}
+.rc-sub{font-size:11px;color:#aaa;font-weight:600}.rc-main{font-size:14px;font-weight:800;color:#111}
 .note{text-align:center;margin-top:32px;color:#aaa;font-size:13px}
 </style>
 </head><body>
@@ -5902,7 +5937,7 @@ function getRSS() {
     <item>
       <title>AllPayStore - 포스기·카드단말기·키오스크 전문</title>
       <link>https://allpaystore.com/</link>
-      <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 1,500건 이상의 설치 실적.</description>
+      <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 350건 이상의 설치 실적.</description>
       <pubDate>Mon, 09 Mar 2025 00:00:00 +0900</pubDate>
     </item>
   </channel>
@@ -6176,7 +6211,7 @@ a{text-decoration:none;color:inherit}
     <div class="hero-card">
       <div class="hc-top"><div class="hc-ic">📍</div><div><div class="hc-tit">강남구 카드단말기 설치</div><div class="hc-sub">오늘 기준 · 실시간</div></div></div>
       <div class="hc-stats">
-        <div class="hc-stat"><div class="hc-num">1,500+</div><div class="hc-lbl">누적 설치</div></div>
+        <div class="hc-stat"><div class="hc-num">350+</div><div class="hc-lbl">누적 설치</div></div>
         <div class="hc-stat"><div class="hc-num">98%</div><div class="hc-lbl">만족도</div></div>
       </div>
       <div class="hc-bar"><div class="hc-bar-top"><span>빠른 설치율</span><b>94%</b></div><div class="hc-bar-bg"><div class="hc-bar-fill" style="width:94%"></div></div></div>
@@ -6193,7 +6228,7 @@ a{text-decoration:none;color:inherit}
       <h2 class="sec-tit">전국 사장님이 선택한<br><b>올페이스토어가 다릅니다</b></h2>
     </div>
     <div class="str-grid">
-      <div class="str-card"><div class="str-ic">🏆</div><div class="str-num">1,500+</div><div class="str-lbl">누적 설치 건수</div><div class="str-desc">전국 직접 출장 설치</div></div>
+      <div class="str-card"><div class="str-ic">🏆</div><div class="str-num">350+</div><div class="str-lbl">누적 설치 건수</div><div class="str-desc">전국 직접 출장 설치</div></div>
       <div class="str-card"><div class="str-ic">⚡</div><div class="str-num">당일</div><div class="str-lbl">최단 설치 완료</div><div class="str-desc">오전 상담 → 오후 설치</div></div>
       <div class="str-card"><div class="str-ic">💰</div><div class="str-num">무료</div><div class="str-lbl">방문 견적·상담</div><div class="str-desc">부담 없이 비교하세요</div></div>
       <div class="str-card"><div class="str-ic">🔧</div><div class="str-num">1~3년</div><div class="str-lbl">무상 A/S 보장</div><div class="str-desc">장애 시 당일 출동</div></div>
@@ -6495,7 +6530,7 @@ export default {
       if(ptm && PRODUCTS[ptm[2]]){const r=lk(ptm[1]);if(r)return new Response(makeProductSVG(...r,PRODUCTS[ptm[2]]),{headers:{'Content-Type':'image/svg+xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
       const r=lk(slug);
       if(r)return new Response(makeBlog(...r,slug),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
-      return new Response(`<html><body style="font-family:sans-serif;padding:40px;text-align:center"><h2>페이지를 찾을 수 없습니다</h2><p>${slug}</p><a href="/blog" style="color:#1A6BFF">← 전체 지역 목록</a></body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
+      return new Response(`<html><body style="font-family:sans-serif;padding:40px;text-align:center"><h2>페이지를 찾을 수 없습니다</h2><p>${slug}</p><a href="/blog" style="color:#555">← 전체 지역 목록</a></body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
     }
 
     if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
