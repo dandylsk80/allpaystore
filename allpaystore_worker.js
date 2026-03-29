@@ -5131,8 +5131,8 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   // Get nearby dongs in same sigungu
   const slugParts=slug.split('/');
   const sgPrefix=slugParts.slice(0,2).join('/');
-  const nearbyDongs=Object.keys(R).filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,20);
-  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="side-link">📍 ${d.name} ${prd.ko}</a>`).join('');
+  const nearbyDongs=Object.keys(R).filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,7);
+  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${d.name}</a>`).join('');
 
   const CONTENT={
     card:`
@@ -5610,12 +5610,13 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .gnb-nav{display:flex;gap:20px;align-items:center}
 .gnb-nav a{color:rgba(255,255,255,.7);font-size:13px;font-weight:500;text-decoration:none}
 .gnb-nav a:hover{color:#fff}
-.side-nav{float:right;width:240px;margin:0 0 20px 24px;position:relative}
-.side-box{background:#fff;border:1.5px solid #eee;border-radius:14px;padding:16px;margin-bottom:14px}
-.side-box h4{font-size:14px;font-weight:800;color:#111;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid #f0f0f0}
-.side-link{display:block;padding:8px 10px;font-size:13px;color:#444;text-decoration:none;border-radius:8px;transition:background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.side-link:hover{background:#f5f5f5;color:#111}
-@media(max-width:768px){.side-nav{float:none;width:100%;margin:0 0 20px 0}.side-box{margin-bottom:10px}}
+.side-nav{float:right;width:220px;margin:0 0 20px 28px;position:relative}
+.side-box{background:#fafafa;border:1px solid #eee;border-radius:12px;padding:14px;margin-bottom:12px}
+.side-box h4{font-size:13px;font-weight:800;color:#111;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #eee}
+.side-link{display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:12px;color:#555;text-decoration:none;border-radius:6px;transition:background .15s}
+.side-link:hover{background:#eee;color:#111}
+
+@media(max-width:768px){.side-nav{float:none;width:100%;margin:0 0 20px 0}}
 </style>`;
 
 
@@ -5634,7 +5635,7 @@ function makeSidoPage(sidoSlug){
   const installCount=IC[sidoSlug]||'150+';
   const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
   const otherSidos=[{s:'seoul',n:'서울'},{s:'gyeonggi',n:'경기'},{s:'busan',n:'부산'},{s:'incheon',n:'인천'},{s:'daegu',n:'대구'},{s:'daejeon',n:'대전'},{s:'gwangju',n:'광주'},{s:'ulsan',n:'울산'},{s:'sejong',n:'세종'},{s:'gangwon',n:'강원'},{s:'chungbuk',n:'충북'},{s:'chungnam',n:'충남'},{s:'jeonbuk',n:'전북'},{s:'jeonnam',n:'전남'},{s:'gyeongbuk',n:'경북'},{s:'gyeongnam',n:'경남'},{s:'jeju',n:'제주'}].filter(x=>x.s!==sidoSlug);
-  const sidoSideLinks=otherSidos.map(x=>`<a href="/blog/${x.s}/" class="side-link">📍 ${x.n}</a>`).join('');
+  const sidoSideLinks=otherSidos.map(x=>`<a href="/blog/${x.s}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${x.n}</a>`).join('');
   const prodSideLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sidoSlug}/" class="side-link">${v.emoji} ${short} ${v.ko}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
     return `<a href="/product/${k}/${sidoSlug}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
@@ -5763,8 +5764,8 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sgKey}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
   const seen2={};const names2=sgs.map(s2=>s2[0]);
-  const siblingsSgs=sgs.filter(sg2=>{if(seen2[sg2[0]])return false;seen2[sg2[0]]=1;if(sg2[1]===sgKey)return false;const n2=sg2[0];return !names2.some(o=>o!==n2 && n2.startsWith(o));}).slice(0,15);
-  const sgSideLinks=siblingsSgs.map(sg2=>`<a href="/blog/${sg2[1]}/" class="side-link">📍 ${sg2[0]}</a>`).join('');
+  const siblingsSgs=sgs.filter(sg2=>{if(seen2[sg2[0]])return false;seen2[sg2[0]]=1;if(sg2[1]===sgKey)return false;const n2=sg2[0];return !names2.some(o=>o!==n2 && n2.startsWith(o));}).slice(0,7);
+  const sgSideLinks=siblingsSgs.map(sg2=>`<a href="/blog/${sg2[1]}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${sg2[0]}</a>`).join('');
   const prodSideLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sgKey}/" class="side-link">${v.emoji} ${sgName} ${v.ko}</a>`).join('');
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -6274,8 +6275,8 @@ function makeBlog(sido,sigungu,emd,slug){
   // Sidebar data
   const slugParts=slug.split('/');
   const sgPrefix=slugParts.slice(0,2).join('/');
-  const nearbyDongs=Object.keys(R).filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,20);
-  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/" class="side-link">📍 ${d.name}</a>`).join('');
+  const nearbyDongs=Object.keys(R).filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,7);
+  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${d.name}</a>`).join('');
   const productLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${slug}/${k}/" class="side-link">${v.emoji} ${emd} ${v.ko}</a>`).join('');
   return `<!DOCTYPE html>
 <html lang="ko">
