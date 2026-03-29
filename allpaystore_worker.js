@@ -5608,7 +5608,7 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .faq-a{font-size:14.5px;color:#444;line-height:1.8}
 .foot-nav{margin:40px 0 0;padding:16px 0;border-top:1px solid #eee;font-size:14px;color:#aaa}
 .foot-nav a{color:#555;font-weight:600}
-@media(max-width:480px){.cta-main{font-size:16px;padding:14px 32px}}
+@media(max-width:480px){.cta-main{font-size:14px;padding:12px 28px}.cta-sub{margin-left:0;margin-top:10px}.cta{padding:28px 18px}}
 .sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
 .sg-card:hover{background:#ddd;color:#111}
 .pd-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 12px;background:#f9f9f9;border:1.5px solid #eee;border-radius:18px;font-size:13px;font-weight:700;color:#111;transition:all .15s;text-decoration:none;text-align:center}
@@ -6263,6 +6263,13 @@ function makeBlog(sido,sigungu,emd,slug){
   const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   const canon=`https://allpaystore.com/blog/${slug}/`;
     const iso=today.toISOString().split('T')[0];
+
+  // Sidebar data
+  const slugParts=slug.split('/');
+  const sgPrefix=slugParts.slice(0,2).join('/');
+  const nearbyDongs=Object.keys(R).filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,20);
+  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/" class="side-link">📍 ${d.name}</a>`).join('');
+  const productLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${slug}/${k}/" class="side-link">${v.emoji} ${emd} ${v.ko}</a>`).join('');
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6283,7 +6290,8 @@ ${CSS}
   <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
-<div class="wrap" style="padding-top:28px">
+<div class="layout" style="padding-top:28px">
+  <div class="main">
   <div class="thumb"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크·CCTV 연동까지 한번에</h1>
@@ -6371,10 +6379,6 @@ ${CSS}
   <div class="faq"><div class="faq-q">Q. ${emd} 견적은 어떻게 받나요?</div><div class="faq-a">전화(010-9876-8282) 또는 카카오톡으로 문의 주시면 됩니다. 업종과 매장 규모를 말씀해 주시면 <strong>1분 안에 예상 견적</strong>을 안내드리며 무료 방문 견적도 가능합니다.</div></div>
 
 
-  <h2>📦 ${emd} 제품별 전문 설치 가이드</h2>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
-    ${Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:12px 20px;background:#f5f5f5;border:1.5px solid #ddd;border-radius:10px;font-size:14px;font-weight:700;color:#111;text-decoration:none;">${v.emoji} ${emd} ${v.ko} 설치</a>`).join(' ')}
-  </div>
   <div class="cta">
     <h3>📞 ${emd} 카드단말기 무료 견적 받기</h3>
     <p>${full} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV 통합 상담</p>
@@ -6387,6 +6391,18 @@ ${CSS}
     <a href="/blog/">전체 지역 보기</a> &nbsp;|&nbsp;
     <span>📍 ${full} 카드단말기 설치 전문</span>
   </div>
+  </div>
+
+  <aside class="side">
+    <div class="side-box">
+      <h4>📍 ${sigungu} 인근 동</h4>
+      ${nearbyLinks}
+    </div>
+    <div class="side-box">
+      <h4>📦 ${emd} 제품별 설치</h4>
+      ${productLinks}
+    </div>
+  </aside>
 </div>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282"}</script>
@@ -6632,7 +6648,7 @@ a{text-decoration:none;color:inherit}
 .pd-name{font-size:14px;font-weight:700}
 
 /* SHOWCASE */
-.showcase{padding:56px 24px;border-bottom:1px solid #E5E7EB}
+.showcase{padding:56px 24px;border-bottom:1px solid #E5E7EB;overflow:hidden}
 .sc-in{max-width:1100px;margin:0 auto;display:flex;gap:40px;align-items:center}
 .sc-left{flex:0 0 360px}
 .sc-right{flex:1}
@@ -6724,10 +6740,38 @@ a{text-decoration:none;color:inherit}
   .prods-grid{grid-template-columns:repeat(2,1fr)}
   .spc-grid{grid-template-columns:1fr}
   .feat-grid{grid-template-columns:1fr}
-  .sc-in{flex-direction:column!important}
-  .sc-left{flex:none;width:100%}
+  .sc-in{flex-direction:column!important;gap:24px;padding:0 16px}
+  .sc-left{flex:none!important;width:100%!important;padding:28px!important;border-radius:16px!important}
+  .sc-left h3{font-size:20px!important}
+  .sc-left div[style*="font-size:52px"]{font-size:36px!important}
+  .sc-right{width:100%}
+  .sc-right h2{font-size:20px!important}
+  .sc-feat{font-size:13px}
+  .sc-btn{width:100%;justify-content:center;padding:12px 20px;font-size:14px}
+  .rev-card{min-width:260px;padding:18px}
+  .rev-title{font-size:14px}
   .ft-top{flex-direction:column;text-align:center}
   .ft-tel{text-align:center}
+  .showcase{padding:40px 0!important}
+  .rm-q b{font-size:14px}
+}
+@media(max-width:480px){
+  .hero-h1{font-size:22px}
+  .str-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .prods-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .prod-ic img{width:80px!important;height:80px!important}
+  .prod-info{padding:14px 10px}
+  .prod-name{font-size:14px}
+  .sc-left{padding:20px!important}
+  .sc-left h3{font-size:18px!important}
+  .sc-right h2{font-size:18px!important}
+  .rev-card{min-width:230px;padding:16px}
+  .rev-title{font-size:13px}
+  .rev-text{font-size:11px}
+  .cta-main{font-size:14px;padding:12px 28px}
+  .cta-sub{font-size:14px;padding:12px 28px;margin-left:0;margin-top:10px}
+  .cta{padding:28px 18px}
+  .hd-tel{font-size:12px;padding:7px 14px}
 }
 </style>
 </head>
