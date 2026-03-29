@@ -5620,7 +5620,7 @@ function makeSidoPage(sidoSlug){
   const installCount=IC[sidoSlug]||'150+';
   const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
-    return `<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
+    return `<a href="/product/${k}/${sidoSlug}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
   }).join('');
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -5739,7 +5739,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
   const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
   const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}</a>`).join('');
-  const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
+  const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sgKey}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
