@@ -5126,7 +5126,13 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   const PHOTO_URL={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=420&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=420&fit=crop&q=80'};
   const photoUrl=PHOTO_URL[prodKey]||PHOTO_URL.card;
   const iso=today.toISOString().split('T')[0];
-  const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#f5f5f5;border:1.5px solid #ddd;border-radius:10px;font-size:14px;font-weight:700;color:#111;text-decoration:none;transition:all .15s">${v.emoji} ${emd} ${v.ko}</a>`).join(' ');
+  const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" class="side-link">${v.emoji} ${emd} ${v.ko}</a>`).join('');
+
+  // Get nearby dongs in same sigungu
+  const slugParts=slug.split('/');
+  const sgPrefix=slugParts.slice(0,2).join('/');
+  const nearbyDongs=Object.keys(R).filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,20);
+  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="side-link">📍 ${d.name} ${prd.ko}</a>`).join('');
 
   const CONTENT={
     card:`
@@ -5483,7 +5489,8 @@ ${CSS}
   <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
-<div class="wrap" style="padding-top:28px">
+<div class="layout" style="padding-top:28px">
+  <div class="main">
   <div class="thumb"><img src="${photoUrl}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge" style="background:${prd.color}">${prd.emoji} ${prd.ko} ${suf}</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} ${prd.ko} 완벽 가이드 — 무료 견적·${isRemoval?'정찰제·원상복구 보장':'빠른 설치·A/S 보장'}</h1>
@@ -5503,9 +5510,6 @@ ${CSS}
   <div class="faq"><div class="faq-q">Q. ${prd.ko} 비용은 얼마인가요?</div><div class="faq-a">${isRemoval?'매장 면적과 구조에 따라 다르며, 무료 현장 방문 후 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않습니다. 소상공인 대상 정부 보조금(희망리턴패키지 등)을 통해 철거비를 지원받을 수 있으며, 신청 절차를 안내해드립니다.':'매장 업종과 규모에 따라 다르며, 무료 방문 견적 후 정확한 비용을 안내드립니다. 설치비 무료, 월 이용료 무료로 진행됩니다.'}</div></div>
   <div class="faq"><div class="faq-q">Q. 기존 장비와 연동이 되나요?</div><div class="faq-a">올페이스토어가 설치하는 ${prd.ko}는 기존 카드단말기·포스기와 호환됩니다. 오래된 장비는 사전 호환성 확인 후 최적의 연동 방안을 안내드립니다.</div></div>
 
-  <h2>📦 ${emd} 다른 제품 설치도 확인하세요</h2>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">${otherProducts}</div>
-
   <div class="cta">
     <h3>${prd.emoji} ${emd} ${prd.ko} 무료 견적 받기</h3>
     <p>${isRemoval?`${full} 매장·사무실·가게 철거를 전문 엔지니어팀이 책임집니다.<br>정밀 현장 분석 · 정찰제 · 원상복구 · 폐기물 적법 처리`:`${full} 매장에 딱 맞는 ${prd.ko}를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 통합 상담`}</p>
@@ -5518,6 +5522,18 @@ ${CSS}
     <a href="/blog/">전체 지역 보기</a> &nbsp;|&nbsp;
     <span>📍 ${full} ${prd.ko} ${suf}</span>
   </div>
+  </div>
+
+  <aside class="side">
+    <div class="side-box">
+      <h4>📍 ${sigungu} 인근 동</h4>
+      ${nearbyLinks}
+    </div>
+    <div class="side-box">
+      <h4>📦 ${emd} 다른 제품</h4>
+      ${otherProducts}
+    </div>
+  </aside>
 </div>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${emd} ${prd.ko} ${suf}"}</script>
 </body></html>`;
@@ -5602,6 +5618,14 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .gnb-nav{display:flex;gap:20px;align-items:center}
 .gnb-nav a{color:rgba(255,255,255,.7);font-size:13px;font-weight:500;text-decoration:none}
 .gnb-nav a:hover{color:#fff}
+.layout{display:flex;gap:28px;max-width:1100px;margin:0 auto;padding:0 18px 80px}
+.main{flex:1;min-width:0}
+.side{width:260px;flex-shrink:0}
+.side-box{background:#fff;border:1.5px solid #eee;border-radius:14px;padding:18px;margin-bottom:16px;position:sticky;top:80px}
+.side-box h4{font-size:14px;font-weight:800;color:#111;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid #f0f0f0}
+.side-link{display:block;padding:8px 10px;font-size:13px;color:#444;text-decoration:none;border-radius:8px;transition:background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.side-link:hover{background:#f5f5f5;color:#111}
+@media(max-width:768px){.layout{flex-direction:column}.side{width:100%}.side-box{position:static}}
 </style>`;
 
 
