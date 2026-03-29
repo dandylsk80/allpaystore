@@ -5489,12 +5489,16 @@ ${CSS}
   <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
-<div class="layout" style="padding-top:28px">
-  <div class="main">
+<div class="wrap" style="padding-top:28px">
   <div class="thumb"><img src="${photoUrl}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge" style="background:${prd.color}">${prd.emoji} ${prd.ko} ${suf}</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} ${prd.ko} 완벽 가이드 — 무료 견적·${isRemoval?'정찰제·원상복구 보장':'빠른 설치·A/S 보장'}</h1>
   <div class="intro"><strong>${full}</strong>에서 ${isRemoval?'매장·사무실·가게 철거':prd.ko+' 설치'}를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 <strong>무료 견적부터 ${isRemoval?'철거 시공, 원상복구까지':'빠른 설치, A/S까지'}</strong> 책임집니다. ${p.note}</div>
+
+  <div class="side-nav">
+    <div class="side-box"><h4>📍 ${sigungu} 인근 동</h4>${nearbyLinks}</div>
+    <div class="side-box"><h4>📦 ${emd} 다른 제품</h4>${otherProducts}</div>
+  </div>
 
   <div class="g4">
     <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치</div><div class="vl">50+건</div></div>
@@ -5522,18 +5526,6 @@ ${CSS}
     <a href="/blog/">전체 지역 보기</a> &nbsp;|&nbsp;
     <span>📍 ${full} ${prd.ko} ${suf}</span>
   </div>
-  </div>
-
-  <aside class="side">
-    <div class="side-box">
-      <h4>📍 ${sigungu} 인근 동</h4>
-      ${nearbyLinks}
-    </div>
-    <div class="side-box">
-      <h4>📦 ${emd} 다른 제품</h4>
-      ${otherProducts}
-    </div>
-  </aside>
 </div>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${emd} ${prd.ko} ${suf}"}</script>
 </body></html>`;
@@ -5618,14 +5610,12 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .gnb-nav{display:flex;gap:20px;align-items:center}
 .gnb-nav a{color:rgba(255,255,255,.7);font-size:13px;font-weight:500;text-decoration:none}
 .gnb-nav a:hover{color:#fff}
-.layout{display:flex;gap:28px;max-width:1100px;margin:0 auto;padding:0 18px 80px}
-.main{flex:1;min-width:0}
-.side{width:260px;flex-shrink:0}
-.side-box{background:#fff;border:1.5px solid #eee;border-radius:14px;padding:18px;margin-bottom:16px;position:sticky;top:80px}
+.side-nav{float:right;width:240px;margin:0 0 20px 24px;position:relative}
+.side-box{background:#fff;border:1.5px solid #eee;border-radius:14px;padding:16px;margin-bottom:14px}
 .side-box h4{font-size:14px;font-weight:800;color:#111;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid #f0f0f0}
 .side-link{display:block;padding:8px 10px;font-size:13px;color:#444;text-decoration:none;border-radius:8px;transition:background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .side-link:hover{background:#f5f5f5;color:#111}
-@media(max-width:768px){.layout{flex-direction:column}.side{width:100%}.side-box{position:static}}
+@media(max-width:768px){.side-nav{float:none;width:100%;margin:0 0 20px 0}.side-box{margin-bottom:10px}}
 </style>`;
 
 
@@ -5643,6 +5633,9 @@ function makeSidoPage(sidoSlug){
   const IC={'seoul':'520+','gyeonggi':'480+','busan':'310+','incheon':'280+','daegu':'250+','daejeon':'220+','gwangju':'200+','ulsan':'180+','sejong':'120+','gangwon':'150+','chungbuk':'130+','chungnam':'140+','jeonbuk':'120+','jeonnam':'110+','gyeongbuk':'130+','gyeongnam':'160+','jeju':'90+'};
   const installCount=IC[sidoSlug]||'150+';
   const sgCards=top.map(sg=>`<a href="/blog/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
+  const otherSidos=[{s:'seoul',n:'서울'},{s:'gyeonggi',n:'경기'},{s:'busan',n:'부산'},{s:'incheon',n:'인천'},{s:'daegu',n:'대구'},{s:'daejeon',n:'대전'},{s:'gwangju',n:'광주'},{s:'ulsan',n:'울산'},{s:'sejong',n:'세종'},{s:'gangwon',n:'강원'},{s:'chungbuk',n:'충북'},{s:'chungnam',n:'충남'},{s:'jeonbuk',n:'전북'},{s:'jeonnam',n:'전남'},{s:'gyeongbuk',n:'경북'},{s:'gyeongnam',n:'경남'},{s:'jeju',n:'제주'}].filter(x=>x.s!==sidoSlug);
+  const sidoSideLinks=otherSidos.map(x=>`<a href="/blog/${x.s}/" class="side-link">📍 ${x.n}</a>`).join('');
+  const prodSideLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sidoSlug}/" class="side-link">${v.emoji} ${short} ${v.ko}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
     return `<a href="/product/${k}/${sidoSlug}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
   }).join('');
@@ -5667,6 +5660,11 @@ ${CSS}
     </div>
   </div>
   <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sidoName} 카드단말기·포스기·키오스크 설치</h1>
+
+  <div class="side-nav">
+    <div class="side-box"><h4>📍 다른 지역</h4>${sidoSideLinks}</div>
+    <div class="side-box"><h4>📦 ${short} 제품별</h4>${prodSideLinks}</div>
+  </div>
 
   <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
     <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sidoName} 상권 특성</h2>
@@ -5764,6 +5762,10 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
   const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}</a>`).join('');
   const prodCards=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sgKey}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
+  const seen2={};const names2=sgs.map(s2=>s2[0]);
+  const siblingsSgs=sgs.filter(sg2=>{if(seen2[sg2[0]])return false;seen2[sg2[0]]=1;if(sg2[1]===sgKey)return false;const n2=sg2[0];return !names2.some(o=>o!==n2 && n2.startsWith(o));}).slice(0,15);
+  const sgSideLinks=siblingsSgs.map(sg2=>`<a href="/blog/${sg2[1]}/" class="side-link">📍 ${sg2[0]}</a>`).join('');
+  const prodSideLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sgKey}/" class="side-link">${v.emoji} ${sgName} ${v.ko}</a>`).join('');
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -5784,6 +5786,11 @@ ${CSS}
     </div>
   </div>
   <h1 style="font-size:28px;font-weight:900;color:#111;margin:16px 0">${sgName} 카드단말기·포스기·키오스크 설치</h1>
+
+  <div class="side-nav">
+    <div class="side-box"><h4>📍 인근 지역</h4>${sgSideLinks}</div>
+    <div class="side-box"><h4>📦 ${sgName} 제품별</h4>${prodSideLinks}</div>
+  </div>
 
   <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
     <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sgName} 상권 특성</h2>
@@ -6290,12 +6297,16 @@ ${CSS}
   <div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
-<div class="layout" style="padding-top:28px">
-  <div class="main">
+<div class="wrap" style="padding-top:28px">
   <div class="thumb"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
   <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
   <h1>${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크·CCTV 연동까지 한번에</h1>
   <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적 · 설치비 무료 · 월 이용료 무료, 빠른 설치, A/S까지 책임집니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
+
+  <div class="side-nav">
+    <div class="side-box"><h4>📍 ${sigungu} 인근 동</h4>${nearbyLinks}</div>
+    <div class="side-box"><h4>📦 ${emd} 제품별 설치</h4>${productLinks}</div>
+  </div>
 
   <div class="g4">
     <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치 실적</div><div class="vl">50+건</div></div>
@@ -6391,18 +6402,6 @@ ${CSS}
     <a href="/blog/">전체 지역 보기</a> &nbsp;|&nbsp;
     <span>📍 ${full} 카드단말기 설치 전문</span>
   </div>
-  </div>
-
-  <aside class="side">
-    <div class="side-box">
-      <h4>📍 ${sigungu} 인근 동</h4>
-      ${nearbyLinks}
-    </div>
-    <div class="side-box">
-      <h4>📦 ${emd} 제품별 설치</h4>
-      ${productLinks}
-    </div>
-  </aside>
 </div>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282"}</script>
