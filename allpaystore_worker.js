@@ -6584,7 +6584,7 @@ a{text-decoration:none;color:inherit}
 .btn-main:hover{background:#333;transform:translateY(-1px)}
 .btn-sub{padding:14px 28px;background:transparent;color:#555;border:1px solid #ccc;border-radius:12px;font-size:15px;cursor:pointer;font-family:inherit;transition:all .2s}
 .btn-sub:hover{background:#f0f0f0}
-.hero-card{flex:0 0 280px;background:#fff;border:1px solid #e5e5e5;box-shadow:0 4px 20px rgba(0,0,0,.06);border-radius:20px;padding:22px;backdrop-filter:blur(8px)}
+.hero-card{flex:0 0 280px;background:#fff;border:1px solid #e5e5e5;box-shadow:0 4px 20px rgba(0,0,0,.06);border-radius:20px;padding:22px;backdrop-filter:blur(8px);transition:opacity .3s,transform .3s}
 .hc-top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .hc-ic{width:40px;height:40px;background:#f5f5f5;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .hc-tit{font-size:14px;font-weight:800;color:#111}
@@ -6597,7 +6597,7 @@ a{text-decoration:none;color:inherit}
 .hc-bar-top{display:flex;justify-content:space-between;font-size:10px;color:#999;margin-bottom:3px}
 .hc-bar-top b{color:#111}
 .hc-bar-bg{height:5px;background:#eee;border-radius:3px}
-.hc-bar-fill{height:5px;background:linear-gradient(90deg,#111,#555);border-radius:3px}
+.hc-bar-fill{height:5px;background:linear-gradient(90deg,#111,#555);border-radius:3px;transition:width .5s ease}
 
 /* STRENGTH */
 .str{padding:56px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB}
@@ -6803,13 +6803,13 @@ a{text-decoration:none;color:inherit}
       </div>
     </div>
     <div class="hero-card">
-      <div class="hc-top"><div class="hc-ic">📍</div><div><div class="hc-tit">강남구 카드단말기 설치</div><div class="hc-sub">오늘 기준 · 실시간</div></div></div>
+      <div class="hc-top"><div class="hc-ic">📍</div><div><div class="hc-tit" id="hc-area">강남구 카드단말기 설치</div><div class="hc-sub">오늘 기준 · 실시간</div></div></div>
       <div class="hc-stats">
-        <div class="hc-stat"><div class="hc-num">350+</div><div class="hc-lbl">누적 설치</div></div>
-        <div class="hc-stat"><div class="hc-num">98%</div><div class="hc-lbl">만족도</div></div>
+        <div class="hc-stat"><div class="hc-num" id="hc-cnt">350+</div><div class="hc-lbl">누적 설치</div></div>
+        <div class="hc-stat"><div class="hc-num" id="hc-sat">98%</div><div class="hc-lbl">만족도</div></div>
       </div>
-      <div class="hc-bar"><div class="hc-bar-top"><span>빠른 설치율</span><b>94%</b></div><div class="hc-bar-bg"><div class="hc-bar-fill" style="width:94%"></div></div></div>
-      <div class="hc-bar"><div class="hc-bar-top"><span>재계약률</span><b>87%</b></div><div class="hc-bar-bg"><div class="hc-bar-fill" style="width:87%"></div></div></div>
+      <div class="hc-bar"><div class="hc-bar-top"><span>빠른 설치율</span><b id="hc-speed">94%</b></div><div class="hc-bar-bg"><div class="hc-bar-fill" id="hc-bar1" style="width:94%"></div></div></div>
+      <div class="hc-bar"><div class="hc-bar-top"><span>재계약률</span><b id="hc-re">87%</b></div><div class="hc-bar-bg"><div class="hc-bar-fill" id="hc-bar2" style="width:87%"></div></div></div>
     </div>
   </div>
 </section>
@@ -7083,6 +7083,53 @@ document.querySelectorAll('.rm-q').forEach(q=>{
     item.classList.toggle('open');
   });
 });
+
+// Hero card cycling - rotate through dongs
+(function(){
+  const areas=[
+    {a:'강남구 카드단말기 설치',c:'350+',s:'98%',b1:94,b2:87},
+    {a:'홍대입구 포스기 설치',c:'280+',s:'97%',b1:92,b2:89},
+    {a:'해운대구 키오스크 설치',c:'310+',s:'99%',b1:96,b2:91},
+    {a:'수원시 테이블오더 설치',c:'260+',s:'97%',b1:91,b2:85},
+    {a:'명동 카드단말기 설치',c:'420+',s:'98%',b1:95,b2:90},
+    {a:'부평구 CCTV 설치',c:'190+',s:'96%',b1:90,b2:86},
+    {a:'동탄 무인결제기 설치',c:'220+',s:'97%',b1:93,b2:88},
+    {a:'강서구 포스기 설치',c:'240+',s:'98%',b1:92,b2:87},
+    {a:'대전 유성구 키오스크 설치',c:'180+',s:'96%',b1:89,b2:84},
+    {a:'제주시 카드단말기 설치',c:'150+',s:'97%',b1:91,b2:86},
+    {a:'분당구 테이블오더 설치',c:'290+',s:'98%',b1:94,b2:90},
+    {a:'마포구 CCTV 설치',c:'210+',s:'97%',b1:92,b2:88},
+    {a:'서초구 포스기 설치',c:'330+',s:'99%',b1:95,b2:91},
+    {a:'일산 카드단말기 설치',c:'270+',s:'97%',b1:93,b2:87},
+    {a:'송파구 키오스크 설치',c:'300+',s:'98%',b1:94,b2:89},
+    {a:'광주 서구 매장 철거',c:'120+',s:'96%',b1:88,b2:83},
+    {a:'노원구 카드단말기 설치',c:'230+',s:'97%',b1:91,b2:86},
+    {a:'청주시 포스기 설치',c:'160+',s:'96%',b1:90,b2:85},
+    {a:'김포시 테이블오더 설치',c:'200+',s:'97%',b1:92,b2:87},
+    {a:'용인시 CCTV 설치',c:'250+',s:'98%',b1:93,b2:88}
+  ];
+  let idx=0;
+  const el=document.getElementById('hc-area');
+  if(!el)return;
+  setInterval(function(){
+    idx=(idx+1)%areas.length;
+    const d=areas[idx];
+    const card=el.closest('.hero-card');
+    card.style.opacity='0';
+    card.style.transform='translateY(6px)';
+    setTimeout(function(){
+      el.textContent=d.a;
+      document.getElementById('hc-cnt').textContent=d.c;
+      document.getElementById('hc-sat').textContent=d.s;
+      document.getElementById('hc-speed').textContent=d.b1+'%';
+      document.getElementById('hc-re').textContent=d.b2+'%';
+      document.getElementById('hc-bar1').style.width=d.b1+'%';
+      document.getElementById('hc-bar2').style.width=d.b2+'%';
+      card.style.opacity='1';
+      card.style.transform='translateY(0)';
+    },300);
+  },3000);
+})();
 </script>
 </body></html>`;
 }
