@@ -5847,7 +5847,7 @@ function makeProductLandingPage(prodKey){
   ];
   const regionBtns=sidoList.map(s=>{
     const firstDong=Object.keys(R).find(k=>k.startsWith(s.s+'/'));
-    return firstDong?`<a href="/blog/${firstDong}/${prodKey}/" class="sg-card">${s.e} ${s.n} ${prd.ko}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
+    return firstDong?`<a href="/product/${prodKey}/${s.s}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
   }).join('');
   const PHOTO={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=300&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=300&fit=crop&q=80'};
   const photo=PHOTO[prodKey]||PHOTO.card;
@@ -5879,6 +5879,99 @@ ${CSS}
   <div class="cta">
     <h3>${prd.emoji} ${prd.ko} 무료 견적 받기</h3>
     <p>전국 어디서든 ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+  </div>
+</div>
+</body></html>`;
+}
+
+function makeProductSidoPage(prodKey,sidoSlug){
+  const prd=PRODUCTS[prodKey];if(!prd)return null;
+  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
+  const SHORT={'seoul':'서울','busan':'부산','daegu':'대구','incheon':'인천','gwangju':'광주','daejeon':'대전','ulsan':'울산','sejong':'세종','gyeonggi':'경기','gangwon':'강원','chungbuk':'충북','chungnam':'충남','jeonbuk':'전북','jeonnam':'전남','gyeongbuk':'경북','gyeongnam':'경남','jeju':'제주'};
+  const sidoName=SK[sidoSlug];if(!sidoName)return null;
+  const short=SHORT[sidoSlug]||sidoName;
+  const isR=prodKey==='removal';
+  const suf=isR?'전문':'설치';
+  const sgs=SIGUNGU[sidoSlug]||[];
+  const seen={};const names=sgs.map(s=>s[0]);
+  const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;const n=sg[0];const isSubDist=names.some(other=>other!==n && n.startsWith(other));return !isSubDist;});
+  const dongCount=Object.keys(R).filter(k=>k.startsWith(sidoSlug+'/')).length;
+  const sgCards=top.map(sg=>`<a href="/product/${prodKey}/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
+  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${short} ${prd.ko} ${suf} | ${sidoName} ${prd.ko} ${suf} 전문 - 올페이스토어</title>
+<meta name="description" content="${sidoName} ${prd.ko} ${suf} 전문. ${short} 전 지역 ${dongCount}개 읍면동 직접 방문. 설치비 무료, 월 이용료 무료. ☎ 010-9876-8282">
+${CSS}
+</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/blog/${sidoSlug}/">지역별 설치</a><a href="/product/${prodKey}/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:28px">
+  <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
+    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=300&fit=crop&q=80" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
+      <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
+      <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} ${prd.ko} ${suf}</div>
+    </div>
+  </div>
+  <h1 style="font-size:26px;font-weight:900;color:#111;margin-bottom:16px">${sidoName} ${prd.ko} ${suf}</h1>
+  <p style="font-size:15px;color:#555;line-height:1.8;margin-bottom:24px">${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)에 ${prd.ko} ${suf}를 전문으로 합니다. 설치비 무료, 월 이용료 무료로 진행되며, 1~3년 무상 A/S를 보장합니다. 아래에서 ${short} 시군구를 선택하시면 읍면동별 ${prd.ko} ${suf} 가이드를 확인할 수 있습니다.</p>
+  <div class="g4" style="margin-bottom:32px">
+    <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적</div><div class="vl">350+건</div></div>
+    <div class="card"><div class="ic">⚡</div><div class="lb">빠른 ${suf}</div><div class="vl">신속 완료</div></div>
+    <div class="card"><div class="ic">💰</div><div class="lb">${suf}비</div><div class="vl">무료</div></div>
+    <div class="card"><div class="ic">🔧</div><div class="lb">A/S</div><div class="vl">1~3년</div></div>
+  </div>
+  <h2>🏙 ${short} ${prd.ko} ${suf} 지역 선택</h2>
+  <p style="font-size:14px;color:#888;margin-bottom:16px">시군구를 선택하면 읍면동별 ${prd.ko} ${suf} 가이드를 확인할 수 있습니다.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px">${sgCards}</div>
+  <div class="cta">
+    <h3>${prd.emoji} ${short} ${prd.ko} 무료 견적 받기</h3>
+    <p>${sidoName} ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
+    <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
+    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+  </div>
+</div>
+</body></html>`;
+}
+
+function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
+  const prd=PRODUCTS[prodKey];if(!prd)return null;
+  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
+  const sidoName=SK[sidoSlug];
+  const isR=prodKey==='removal';
+  const suf=isR?'전문':'설치';
+  const sgKey=sidoSlug+'/'+sigunguSlug;
+  let dongs=Object.keys(R).filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
+  if(!dongs.length) dongs=Object.keys(R).filter(k=>k.startsWith(sgKey)).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
+  if(!dongs.length)return null;
+  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
+  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="sg-card">${d.name} ${prd.ko}</a>`).join('');
+  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${sgName} ${prd.ko} ${suf} | ${sgName} ${prd.ko} ${suf} 전문 - 올페이스토어</title>
+<meta name="description" content="${sidoName} ${sgName} ${prd.ko} ${suf} 전문. ${sgName} ${dongs.length}개 읍면동 직접 방문. 설치비 무료. ☎ 010-9876-8282">
+${CSS}
+</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/product/${prodKey}/${sidoSlug}/">지역별</a><a href="/product/${prodKey}/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:28px">
+  <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
+    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
+      <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
+      <div style="font-size:28px;font-weight:900;color:#fff">${sgName} ${prd.ko} ${suf}</div>
+    </div>
+  </div>
+  <h1 style="font-size:26px;font-weight:900;color:#111;margin-bottom:16px">${sgName} ${prd.ko} ${suf}</h1>
+  <p style="font-size:15px;color:#555;line-height:1.8;margin-bottom:24px">${sidoName} ${sgName} 전 지역(${dongs.length}개 읍면동)에 ${prd.ko} ${suf}를 전문으로 합니다. 아래에서 읍면동을 선택하시면 상세 ${prd.ko} ${suf} 가이드를 확인할 수 있습니다. 설치비 무료, 월 이용료 무료, 1~3년 A/S 보장.</p>
+  <h2>🏘 ${sgName} ${prd.ko} ${suf} 지역 선택</h2>
+  <p style="font-size:14px;color:#888;margin-bottom:16px">읍면동을 선택하면 상세 ${prd.ko} ${suf} 가이드를 확인할 수 있습니다.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px">${dongCards}</div>
+  <div class="cta">
+    <h3>${prd.emoji} ${sgName} ${prd.ko} 무료 견적 받기</h3>
+    <p>${sgName} ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
     <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
   </div>
@@ -6692,6 +6785,18 @@ export default {
     const prodMatch=path.match(/^\/product\/([a-z]+)$/);
     if(prodMatch && PRODUCTS[prodMatch[1]]){
       const h=makeProductLandingPage(prodMatch[1]);
+      if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+    }
+    // /product/card/seoul → product sido page
+    const prodSidoMatch=path.match(/^\/product\/([a-z]+)\/([a-z]+)$/);
+    if(prodSidoMatch && PRODUCTS[prodSidoMatch[1]]){
+      const h=makeProductSidoPage(prodSidoMatch[1],prodSidoMatch[2]);
+      if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+    }
+    // /product/card/seoul/gangnamgu → product sigungu page
+    const prodSgMatch=path.match(/^\/product\/([a-z]+)\/([a-z]+)\/([a-z]+)$/);
+    if(prodSgMatch && PRODUCTS[prodSgMatch[1]]){
+      const h=makeProductSigunguPage(prodSgMatch[1],prodSgMatch[2],prodSgMatch[3]);
       if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
     }
     if(path==='/product'){
