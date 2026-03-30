@@ -6630,15 +6630,16 @@ a{text-decoration:none;color:inherit}
 .prods{padding:56px 24px;background:#fff;border-bottom:1px solid #E5E7EB}
 .prods-in{max-width:1100px;margin:0 auto}
 .prods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.prod-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1;border:1.5px solid #E5E7EB;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.prod-card:hover{border-color:#e05050;transform:translateY(-4px);box-shadow:0 12px 32px rgba(180,30,30,.15)}
-.prod-ic{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#fff;padding:24px}
-.prod-ic img{width:80%;height:80%;object-fit:contain;transition:transform .3s}
-.prod-card:hover .prod-ic img{transform:scale(1.05)}
-.prod-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(180,30,30,.88));padding:20px 16px 16px;transform:translateY(100%);transition:transform .25s;pointer-events:none;box-shadow:0 -8px 24px rgba(180,30,30,.3)}
+.prod-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1;border:1px solid #e0e0e0;transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);background:#fff}
+.prod-card:hover{border-color:#e05050;transform:translateY(-6px) scale(1.02);box-shadow:0 16px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06)}
+.prod-ic{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#ffffff,#f5f5f5);padding:24px}
+.prod-ic img{width:75%;height:75%;object-fit:contain;transition:transform .3s;filter:drop-shadow(0 4px 8px rgba(0,0,0,.1))}
+.prod-card:hover .prod-ic img{transform:scale(1.08)}
+.prod-card:hover .prod-ic{background:linear-gradient(145deg,#ffffff,#f0f0f0)}
+.prod-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(200,40,40,.9);padding:16px;transform:translateY(100%);transition:transform .25s;pointer-events:none}
 .prod-card:hover .prod-overlay{transform:translateY(0)}
 .prod-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
-.prod-desc{font-size:11px;color:rgba(255,255,255,.9);line-height:1.5}
+.prod-desc{font-size:11px;color:rgba(255,255,255,.85);line-height:1.5}
 .prod-label{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:10px;font-size:14px;font-weight:800;color:#111;background:linear-gradient(transparent,rgba(255,255,255,.95));transition:opacity .25s}
 .prod-card:hover .prod-label{opacity:0}
 
@@ -6746,6 +6747,7 @@ a{text-decoration:none;color:inherit}
   .feat-grid{grid-template-columns:1fr}
   .sc-in{flex-direction:column!important;gap:24px;padding:0 16px}
   .sc-left{flex:none!important;width:100%!important;padding:28px!important;border-radius:16px!important}
+  .sc-left[style*="min-height"]{padding:0!important;min-height:240px!important}
   .sc-left h3{font-size:20px!important}
   .sc-left div[style*="font-size:52px"]{font-size:36px!important}
   .sc-right{width:100%}
@@ -6917,13 +6919,13 @@ a{text-decoration:none;color:inherit}
 
 <!-- CCTV -->
 <section class="showcase" style="background:#fff">
-  <div class="sc-in">
-    <div class="sc-left" style="border-radius:24px;overflow:hidden;position:relative;min-height:360px;background:#111;padding:0">
-      <img src="/images/c1.png" alt="CCTV 설치 사례" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
+  <div class="sc-in" style="gap:56px">
+    <div class="sc-left" style="border-radius:20px;overflow:hidden;position:relative;min-height:340px;background:#1a1a2e;padding:0!important">
+      <img src="/images/c1.png" alt="CCTV 설치" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
       <img src="/images/c2.png" alt="CCTV 모니터링" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <img src="/images/c3.png" alt="CCTV 야간촬영" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <img src="/images/c4.png" alt="CCTV 원격확인" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
-      <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2">
+      <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2">
         <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:1;transition:opacity .3s;cursor:pointer"></span>
         <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
         <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
@@ -6932,13 +6934,19 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="sc-right">
       <div class="sec-tag" style="text-align:left">CCTV SOLUTION</div>
-      <h2 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px">매장을 떠나 있어도<br><b style="color:#7C3AED">스마트폰으로 실시간 확인</b></h2>
+      <h2 style="font-size:24px;font-weight:900;color:#111;margin-bottom:12px">매장을 떠나 있어도<br><b style="color:#7C3AED">스마트폰으로 실시간 확인</b></h2>
+      <p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:20px">HD~4K 고화질 카메라, AI 움직임 감지, 30일 이상 영상 저장까지. 포스기와 연동하면 결제 시점 영상 매칭으로 정산 검증이 가능합니다.</p>
+      <div style="display:flex;gap:20px;margin-bottom:20px">
+        <div style="text-align:center;flex:1;padding:14px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">HD~4K</div><div style="font-size:10px;color:#888;margin-top:2px">고화질 촬영</div></div>
+        <div style="text-align:center;flex:1;padding:14px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">30일+</div><div style="font-size:10px;color:#888;margin-top:2px">영상 저장</div></div>
+        <div style="text-align:center;flex:1;padding:14px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">24시간</div><div style="font-size:10px;color:#888;margin-top:2px">원격 확인</div></div>
+      </div>
       <div class="sc-features">
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>스마트폰 원격 모니터링</b> — 어디서든 매장 상황을 실시간으로 확인합니다</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>AI 움직임 감지</b> — 이상 행동 발생 시 즉시 푸시 알림을 보내드립니다</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>야간 컬러 촬영</b> — 어두운 환경에서도 선명한 컬러 영상을 녹화합니다</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>포스기 연동</b> — 결제 시점과 영상을 매칭해 정산을 검증합니다</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>보험료 절감</b> — CCTV 설치 매장은 화재·도난 보험료 할인이 가능합니다</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>스마트폰 원격 모니터링</b> — 어디서든 실시간 확인</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>AI 움직임 감지</b> — 이상 행동 시 즉시 푸시 알림</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>야간 컬러 촬영</b> — 어두워도 선명한 영상 녹화</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>포스기 연동</b> — 결제 시점과 영상 자동 매칭</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>보험료 절감</b> — CCTV 설치 시 화재·도난 보험 할인</div>
       </div>
       <a href="tel:010-9876-8282" class="sc-btn" style="background:#7C3AED">📷 CCTV 무료 견적 받기</a>
     </div>
