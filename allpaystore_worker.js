@@ -6918,16 +6918,11 @@ a{text-decoration:none;color:inherit}
 <!-- CCTV -->
 <section class="showcase" style="background:#fff">
   <div class="sc-in">
-    <div class="sc-left" style="background:linear-gradient(135deg,#7C3AED,#6D28D9);border-radius:24px;padding:40px;color:#fff;position:relative;overflow:hidden">
-      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,.06);border-radius:50%"></div>
-      <div style="font-size:52px;margin-bottom:16px">📷</div>
-      <h3 style="font-size:26px;font-weight:900;margin-bottom:8px">CCTV 설치</h3>
-      <p style="font-size:14px;color:rgba(255,255,255,.7);line-height:1.7">매장 보안부터 원격 모니터링,<br>직원 관리까지 한번에</p>
-      <div style="display:flex;gap:16px;margin-top:24px">
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">HD~4K</div><div style="font-size:10px;color:rgba(255,255,255,.5)">고화질 촬영</div></div>
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">30일+</div><div style="font-size:10px;color:rgba(255,255,255,.5)">영상 저장</div></div>
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">24시간</div><div style="font-size:10px;color:rgba(255,255,255,.5)">원격 확인</div></div>
-      </div>
+    <div class="sc-left" style="border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#111;padding:0">
+      <img src="/images/c1.png" alt="CCTV 설치 사례" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1;display:block">
+      <img src="/images/c2.png" alt="CCTV 모니터링" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1;display:block">
+      <img src="/images/c3.png" alt="CCTV 야간촬영" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1;display:block">
+      <img src="/images/c4.png" alt="CCTV 원격확인" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1;display:block">
     </div>
     <div class="sc-right">
       <div class="sec-tag" style="text-align:left">CCTV SOLUTION</div>
