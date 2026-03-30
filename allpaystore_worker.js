@@ -6631,14 +6631,14 @@ a{text-decoration:none;color:inherit}
 .prods-in{max-width:1100px;margin:0 auto}
 .prods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .prod-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1;border:1.5px solid #E5E7EB;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.prod-card:hover{border-color:#bbb;transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.prod-card:hover{border-color:#e05050;transform:translateY(-4px);box-shadow:0 12px 32px rgba(180,30,30,.15)}
 .prod-ic{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#fff;padding:24px}
 .prod-ic img{width:80%;height:80%;object-fit:contain;transition:transform .3s}
 .prod-card:hover .prod-ic img{transform:scale(1.05)}
-.prod-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(17,17,17,.85));padding:20px 16px 16px;transform:translateY(100%);transition:transform .25s;pointer-events:none}
+.prod-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(180,30,30,.88));padding:20px 16px 16px;transform:translateY(100%);transition:transform .25s;pointer-events:none;box-shadow:0 -8px 24px rgba(180,30,30,.3)}
 .prod-card:hover .prod-overlay{transform:translateY(0)}
 .prod-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
-.prod-desc{font-size:11px;color:rgba(255,255,255,.8);line-height:1.5}
+.prod-desc{font-size:11px;color:rgba(255,255,255,.9);line-height:1.5}
 .prod-label{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:10px;font-size:14px;font-weight:800;color:#111;background:linear-gradient(transparent,rgba(255,255,255,.95));transition:opacity .25s}
 .prod-card:hover .prod-label{opacity:0}
 
@@ -6918,16 +6918,16 @@ a{text-decoration:none;color:inherit}
 <!-- CCTV -->
 <section class="showcase" style="background:#fff">
   <div class="sc-in">
-    <div class="sc-left" style="border-radius:24px;overflow:hidden;position:relative;aspect-ratio:1;background:#111;padding:0">
-      <img src="/images/c1.png" alt="CCTV 설치 사례" class="cctv-slide cctv-active" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
+    <div class="sc-left" style="border-radius:24px;overflow:hidden;position:relative;min-height:360px;background:#111;padding:0">
+      <img src="/images/c1.png" alt="CCTV 설치 사례" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
       <img src="/images/c2.png" alt="CCTV 모니터링" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <img src="/images/c3.png" alt="CCTV 야간촬영" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <img src="/images/c4.png" alt="CCTV 원격확인" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2">
-        <span class="cctv-dot cctv-dot-on" style="width:8px;height:8px;border-radius:50%;background:#fff;opacity:1;transition:opacity .3s;cursor:pointer"></span>
-        <span class="cctv-dot" style="width:8px;height:8px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
-        <span class="cctv-dot" style="width:8px;height:8px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
-        <span class="cctv-dot" style="width:8px;height:8px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:1;transition:opacity .3s;cursor:pointer"></span>
+        <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
       </div>
     </div>
     <div class="sc-right">
