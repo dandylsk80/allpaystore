@@ -6630,13 +6630,17 @@ a{text-decoration:none;color:inherit}
 .prods{padding:56px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB}
 .prods-in{max-width:1100px;margin:0 auto}
 .prods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.prod-card{background:#fff;border-radius:20px;border:1.5px solid #E5E7EB;transition:all .2s;overflow:hidden;text-align:center}
-.prod-card:hover{border-color:#bbb;transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
-.prod-ic{background:#f3f4f6;padding:32px 20px;display:flex;align-items:center;justify-content:center}
-.prod-ic img{width:120px;height:120px;object-fit:contain}
-.prod-info{padding:20px 16px}
-.prod-name{font-size:17px;font-weight:800;color:var(--dark);margin-bottom:6px}
-.prod-desc{font-size:12px;color:#6B7280;line-height:1.6}
+.prod-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1;border:1.5px solid #E5E7EB;transition:all .25s}
+.prod-card:hover{border-color:#bbb;transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.prod-ic{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f3f4f6;padding:24px}
+.prod-ic img{width:80%;height:80%;object-fit:contain;transition:transform .3s}
+.prod-card:hover .prod-ic img{transform:scale(1.05)}
+.prod-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:20px 16px 16px;transform:translateY(100%);transition:transform .25s;pointer-events:none}
+.prod-card:hover .prod-overlay{transform:translateY(0)}
+.prod-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
+.prod-desc{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
+.prod-label{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:14px;font-weight:800;color:#111;transition:opacity .25s}
+.prod-card:hover .prod-label{opacity:0}
 
 /* SIDO/SIGUNGU CARDS */
 .sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
@@ -6759,9 +6763,9 @@ a{text-decoration:none;color:inherit}
   .hero-h1{font-size:22px}
   .str-grid{grid-template-columns:1fr 1fr;gap:10px}
   .prods-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .prod-ic img{width:80px!important;height:80px!important}
-  .prod-info{padding:14px 10px}
-  .prod-name{font-size:14px}
+  .prod-card{aspect-ratio:1}.prod-overlay{transform:translateY(0)}.prod-label{display:none}
+  
+  
   .sc-left{padding:20px!important}
   .sc-left h3{font-size:18px!important}
   .sc-right h2{font-size:18px!important}
@@ -6856,15 +6860,15 @@ a{text-decoration:none;color:inherit}
       <h2 class="sec-tit">매장에 필요한 모든 장비<br><b>한번에 설치합니다</b></h2>
     </div>
     <div class="prods-grid">
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a1.png" alt="포스기"></div><div class="prod-info"><div class="prod-name">포스기(POS)</div><div class="prod-desc">주문·결제·매출·재고<br>통합 관리 시스템</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a2.png" alt="자동커팅단말기"></div><div class="prod-info"><div class="prod-name">자동커팅단말기</div><div class="prod-desc">영수증 자동 커팅<br>빠른 결제 처리</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a3.png" alt="유선카드단말기"></div><div class="prod-info"><div class="prod-name">유선카드단말기</div><div class="prod-desc">고정 카운터 전용<br>안정적 유선 결제</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a4.png" alt="토스단말기"></div><div class="prod-info"><div class="prod-name">토스단말기</div><div class="prod-desc">토스페이먼츠 연동<br>간편결제 특화</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a5.png" alt="무선단말기"></div><div class="prod-info"><div class="prod-name">무선단말기</div><div class="prod-desc">이동 결제·배달·테이블<br>어디서든 결제</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a6.png" alt="블루투스단말기"></div><div class="prod-info"><div class="prod-name">블루투스단말기</div><div class="prod-desc">스마트폰 연동<br>초소형 휴대 결제</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a7.png" alt="테이블오더"></div><div class="prod-info"><div class="prod-name">테이블오더</div><div class="prod-desc">QR·태블릿 주문<br>홀 인건비 절감</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a8.png" alt="미니키오스크"></div><div class="prod-info"><div class="prod-name">미니키오스크</div><div class="prod-desc">소형 매장 전용<br>공간 절약형 무인 주문</div></div></div>
-      <div class="prod-card"><div class="prod-ic"><img src="/images/a9.png" alt="키오스크"></div><div class="prod-info"><div class="prod-name">키오스크</div><div class="prod-desc">대형 무인 주문·결제<br>인건비 월 200만원 절감</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a1.png" alt="포스기"></div><div class="prod-label">포스기(POS)</div><div class="prod-overlay"><div class="prod-name">포스기(POS)</div><div class="prod-desc">주문·결제·매출·재고<br>통합 관리 시스템</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a2.png" alt="자동커팅단말기"></div><div class="prod-label">자동커팅단말기</div><div class="prod-overlay"><div class="prod-name">자동커팅단말기</div><div class="prod-desc">영수증 자동 커팅<br>빠른 결제 처리</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a3.png" alt="유선카드단말기"></div><div class="prod-label">유선카드단말기</div><div class="prod-overlay"><div class="prod-name">유선카드단말기</div><div class="prod-desc">고정 카운터 전용<br>안정적 유선 결제</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a4.png" alt="토스단말기"></div><div class="prod-label">토스단말기</div><div class="prod-overlay"><div class="prod-name">토스단말기</div><div class="prod-desc">토스페이먼츠 연동<br>간편결제 특화</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a5.png" alt="무선단말기"></div><div class="prod-label">무선단말기</div><div class="prod-overlay"><div class="prod-name">무선단말기</div><div class="prod-desc">이동 결제·배달·테이블<br>어디서든 결제</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a6.png" alt="블루투스단말기"></div><div class="prod-label">블루투스단말기</div><div class="prod-overlay"><div class="prod-name">블루투스단말기</div><div class="prod-desc">스마트폰 연동<br>초소형 휴대 결제</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a7.png" alt="테이블오더"></div><div class="prod-label">테이블오더</div><div class="prod-overlay"><div class="prod-name">테이블오더</div><div class="prod-desc">QR·태블릿 주문<br>홀 인건비 절감</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a8.png" alt="미니키오스크"></div><div class="prod-label">미니키오스크</div><div class="prod-overlay"><div class="prod-name">미니키오스크</div><div class="prod-desc">소형 매장 전용<br>공간 절약형 무인 주문</div></div></div>
+      <div class="prod-card"><div class="prod-ic"><img src="/images/a9.png" alt="키오스크"></div><div class="prod-label">키오스크</div><div class="prod-overlay"><div class="prod-name">키오스크</div><div class="prod-desc">대형 무인 주문·결제<br>인건비 월 200만원 절감</div></div></div>
     </div>
   </div>
 </section>
