@@ -6921,10 +6921,10 @@ a{text-decoration:none;color:inherit}
 <section class="showcase" style="background:#fff">
   <div class="sc-in" style="gap:56px">
     <div class="sc-left" style="border-radius:20px;overflow:hidden;position:relative;min-height:340px;background:#1a1a2e;padding:0!important">
-      <img src="/images/c1.png" alt="CCTV 설치" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
-      <img src="/images/c2.png" alt="CCTV 모니터링" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
-      <img src="/images/c3.png" alt="CCTV 야간촬영" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
-      <img src="/images/c4.png" alt="CCTV 원격확인" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/c1.jpg" alt="CCTV 설치" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
+      <img src="/images/c2.jpg" alt="CCTV 모니터링" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/c3.jpg" alt="CCTV 야간촬영" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/c4.jpg" alt="CCTV 원격확인" class="cctv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2">
         <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:1;transition:opacity .3s;cursor:pointer"></span>
         <span class="cctv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
@@ -6936,19 +6936,22 @@ a{text-decoration:none;color:inherit}
       <div class="sec-tag" style="text-align:left">CCTV SOLUTION</div>
       <h2 style="font-size:24px;font-weight:900;color:#111;margin-bottom:12px">매장을 떠나 있어도<br><b style="color:#7C3AED">스마트폰으로 실시간 확인</b></h2>
       <p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:20px">HD~4K 고화질 카메라, AI 움직임 감지, 30일 이상 영상 저장까지. 포스기와 연동하면 결제 시점 영상 매칭으로 정산 검증이 가능합니다.</p>
-      <div style="display:flex;gap:20px;margin-bottom:20px">
-        <div style="text-align:center;flex:1;padding:14px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">HD~4K</div><div style="font-size:10px;color:#888;margin-top:2px">고화질 촬영</div></div>
-        <div style="text-align:center;flex:1;padding:14px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">30일+</div><div style="font-size:10px;color:#888;margin-top:2px">영상 저장</div></div>
-        <div style="text-align:center;flex:1;padding:14px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">24시간</div><div style="font-size:10px;color:#888;margin-top:2px">원격 확인</div></div>
+      <div style="display:flex;gap:16px;margin-bottom:24px">
+        <div style="text-align:center;flex:1;padding:16px 8px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">HD~4K</div><div style="font-size:10px;color:#888;margin-top:2px">고화질 촬영</div></div>
+        <div style="text-align:center;flex:1;padding:16px 8px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">30일+</div><div style="font-size:10px;color:#888;margin-top:2px">영상 저장</div></div>
+        <div style="text-align:center;flex:1;padding:16px 8px;background:#f8f5ff;border-radius:12px"><div style="font-size:22px;font-weight:900;color:#7C3AED">24시간</div><div style="font-size:10px;color:#888;margin-top:2px">원격 확인</div></div>
       </div>
       <div class="sc-features">
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>스마트폰 원격 모니터링</b> — 어디서든 실시간 확인</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>AI 움직임 감지</b> — 이상 행동 시 즉시 푸시 알림</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>야간 컬러 촬영</b> — 어두워도 선명한 영상 녹화</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>포스기 연동</b> — 결제 시점과 영상 자동 매칭</div>
-        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>보험료 절감</b> — CCTV 설치 시 화재·도난 보험 할인</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>스마트폰 원격 모니터링</b> — 매장에 없어도 스마트폰에서 실시간 영상 확인. 직원 관리와 고객 동선 파악까지</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>AI 움직임 감지</b> — 영업 시간 외 침입이나 이상 행동 발생 시 즉시 푸시 알림 전송</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>야간 컬러 촬영</b> — 적외선이 아닌 풀컬러로 어두운 환경에서도 선명한 영상 녹화</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>포스기 연동 정산 검증</b> — 결제 시점과 영상을 자동 매칭하여 매출 누락·직원 부정을 방지</div>
+        <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>보험료 절감 혜택</b> — CCTV 설치 매장은 화재·도난 보험료 10~20% 할인이 적용됩니다</div>
       </div>
-      <a href="tel:010-9876-8282" class="sc-btn" style="background:#7C3AED">📷 CCTV 무료 견적 받기</a>
+      <div style="display:flex;gap:12px;margin-top:24px;align-items:center;flex-wrap:wrap">
+        <a href="tel:010-9876-8282" class="sc-btn" style="background:#7C3AED">📷 CCTV 무료 견적 받기</a>
+        <span style="font-size:12px;color:#999">설치비 무료 · 월 이용료 무료</span>
+      </div>
     </div>
   </div>
 </section>
