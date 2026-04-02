@@ -6643,8 +6643,8 @@ a{text-decoration:none;color:inherit}
 
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
-.hero::before{content:'';position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;background:url('/images/t1.png') center/cover no-repeat;filter:blur(4px);opacity:.35;z-index:0}
-.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(245,245,245,.7));z-index:0}
+.hero-bg{position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;object-fit:cover;width:calc(100% + 40px);height:calc(100% + 40px);filter:blur(3px);opacity:.7;z-index:0}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(245,245,245,.5));z-index:0}
 .hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
 .hero-txt{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
@@ -6872,6 +6872,8 @@ a{text-decoration:none;color:inherit}
 
 <!-- HERO -->
 <section class="hero">
+  <img src="/images/t1.png" alt="" class="hero-bg">
+  <div class="hero-overlay"></div>
   <div class="hero-in">
     <div class="hero-txt">
       <div class="hero-badge"><i></i> No.1 매장설비 설치 플랫폼</div>
