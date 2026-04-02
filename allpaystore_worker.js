@@ -6642,8 +6642,9 @@ a{text-decoration:none;color:inherit}
 .hd-nav a:hover{color:#111}
 
 /* HERO */
-.hero{background:#FAFAFA;padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
-.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(0,0,0,.02),transparent 70%);border-radius:50%}
+.hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
+.hero::before{content:'';position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;background:url('/images/t1.png') center/cover no-repeat;filter:blur(6px);opacity:.15;z-index:0}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(245,245,245,.88));z-index:0}
 .hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
 .hero-txt{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
