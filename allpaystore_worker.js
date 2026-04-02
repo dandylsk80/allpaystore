@@ -5523,6 +5523,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
 <html lang="ko">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${emd} ${prd.ko} ${suf} | ${sigungu} ${prd.ko} ${suf} 올페이스토어</title>
 <meta name="description" content="${full} ${prd.ko} ${suf}. ${emd} 매장·사무실·가게 ${prd.ko} 무료 방문 견적, 당일 ${act} 가능. ☎ 010-9876-8282">
 <meta name="keywords" content="${emd} ${prd.ko},${emd} 매장 ${prd.ko},${sigungu} ${prd.ko},${emd} ${prd.ko} 비용,${emd} ${prd.ko} 업체,${emd} 인테리어 철거,${emd} 원상복구">
@@ -5707,6 +5708,7 @@ function makeSidoPage(sidoSlug){
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${sidoName} 카드단말기·포스기·키오스크 설치 | ${short} 전 지역 빠른 설치 - 올페이스토어</title>
 <meta name="description" content="${sidoName} 카드단말기·포스기·키오스크·CCTV·테이블오더 설치 전문. ${short} 전 지역 ${dongCount}개 읍면동 직접 방문, 무료 견적, 빠른 설치. ☎ 010-9876-8282">
 <meta name="keywords" content="${short} 카드단말기 설치,${short} 포스기,${short} 키오스크,${short} CCTV,${short} 테이블오더,${short} 매장 철거">
@@ -5834,6 +5836,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${sgName} 카드단말기·포스기·키오스크 설치 | ${sgName} 전 지역 빠른 설치 - 올페이스토어</title>
 <meta name="description" content="${sidoName} ${sgName} 카드단말기·포스기·키오스크·CCTV 설치 전문. ${sgName} ${dongs.length}개 읍면동 직접 방문, 무료 견적, 빠른 설치. ☎ 010-9876-8282">
 <meta name="keywords" content="${sgName} 카드단말기 설치,${sgName} 포스기,${sgName} 키오스크,${sgName} CCTV,${sgName} 매장 철거">
@@ -5980,6 +5983,7 @@ function makeProductLandingPage(prodKey){
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${prd.ko} ${suf} | 전국 ${prd.ko} ${suf} 전문 - 올페이스토어</title>
 <meta name="description" content="전국 ${prd.ko} ${suf} 전문. ${pd.d} 무료 견적 ☎ 010-9876-8282">
 ${CSS}
@@ -6113,6 +6117,7 @@ function makeProductSidoPage(prodKey,sidoSlug){
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${short} ${prd.ko} ${suf} | ${sidoName} ${prd.ko} ${suf} 전문 - 올페이스토어</title>
 <meta name="description" content="${sidoName} ${prd.ko} ${suf} 전문. ${short} 전 지역 ${dongCount}개 읍면동 직접 방문. 설치비 무료, 월 이용료 무료. ☎ 010-9876-8282">
 ${CSS}
@@ -6232,6 +6237,7 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${sgName} ${prd.ko} ${suf} | ${sgName} ${prd.ko} ${suf} 전문 - 올페이스토어</title>
 <meta name="description" content="${sidoName} ${sgName} ${prd.ko} ${suf} 전문. ${sgName} ${dongs.length}개 읍면동 직접 방문. 설치비 무료. ☎ 010-9876-8282">
 ${CSS}
@@ -6346,6 +6352,7 @@ function makeBlog(sido,sigungu,emd,slug){
 <html lang="ko">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${emd} 카드단말기 설치 | 포스기·키오스크·CCTV 전문 올페이스토어</title>
 <meta name="description" content="${full} 카드단말기 설치 전문. ${emd} 포스기·키오스크·CCTV 원스톱 설치, 무료 방문 견적, 빠른 설치 가능. ☎ 010-9876-8282">
 <meta name="keywords" content="${emd} 카드단말기 설치,${emd} 포스기,${emd} 카드단말기,${sigungu} 카드단말기,${emd} 키오스크,${emd} CCTV,${sigungu} 포스기 설치">
@@ -6511,6 +6518,7 @@ function makeBlogList(){
   return `<!DOCTYPE html>
 <html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>전국 카드단말기·포스기 설치 지역 | 올페이스토어</title>
 <meta name="description" content="전국 ${total.toLocaleString()}개 읍면동 카드단말기·포스기·키오스크·CCTV 설치. 올페이스토어 ☎ 010-9876-8282">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -6606,6 +6614,7 @@ function getHTML() {
 <html lang="ko">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>올페이스토어 | 카드단말기·포스기·키오스크·CCTV 전국 설치 전문</title>
 <meta name="description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 방문 견적, 빠른 설치, 1~3년 A/S 보장. 전국 5,000+ 읍면동 직접 출장. ☎ 010-9876-8282">
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac">
@@ -7265,7 +7274,8 @@ export default {
     }
     if(path==='/product'){
       const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
-      const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>제품 안내 | 올페이스토어</title>${CSS}</head><body>
+      const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png"><title>제품 안내 | 올페이스토어</title>${CSS}</head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/blog/seoul/">지역별 설치</a><a href="/product/" style="color:#fff;font-weight:800">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px"><h1 style="font-size:28px;font-weight:900;color:#111;margin-bottom:24px">📦 제품 안내</h1><p style="font-size:15px;color:#666;margin-bottom:32px">매장에 필요한 장비를 선택하세요. 설치비 무료 · 월 이용료 무료 · 빠른 설치</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${prodLinks}</div>
 <div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a></div></div></body></html>`;
