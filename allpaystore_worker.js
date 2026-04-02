@@ -7035,16 +7035,20 @@ a{text-decoration:none;color:inherit}
 <!-- VENDING -->
 <section class="showcase" style="background:#F8FAFF">
   <div class="sc-in" style="flex-direction:row-reverse">
-    <div class="sc-left" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:24px;padding:40px;color:#fff;position:relative;overflow:hidden">
-      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,.04);border-radius:50%"></div>
-      <div style="font-size:52px;margin-bottom:16px">🏭</div>
-      <h3 style="font-size:22px;font-weight:900;margin-bottom:4px;line-height:1.3">24시간 무인매장의 혁신</h3>
-      <h3 style="font-size:26px;font-weight:900;margin-bottom:8px;line-height:1.3">LK 광고형 홈타운<br>밴딩머신</h3>
-      <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.7">광고 수익까지 창출하는<br>스마트 자동판매기</p>
-      <div style="display:flex;gap:16px;margin-top:24px">
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">23.4"</div><div style="font-size:10px;color:rgba(255,255,255,.5)">터치스크린</div></div>
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">24시간</div><div style="font-size:10px;color:rgba(255,255,255,.5)">무인 운영</div></div>
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">광고+판매</div><div style="font-size:10px;color:rgba(255,255,255,.5)">이중 수익</div></div>
+    <div class="sc-left" style="border-radius:20px;overflow:hidden;position:relative;min-height:340px;background:#1a1a2e;padding:0!important">
+      <img src="/images/m1.jpg" alt="LK 밴딩머신" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
+      <img src="/images/m2.png" alt="밴딩머신 설치" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/m3.jpg" alt="밴딩머신 매장" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/m4.jpg" alt="밴딩머신 운영" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/m5.png" alt="밴딩머신 관리" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/m6.png" alt="밴딩머신 결제" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2">
+        <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:1;transition:opacity .3s;cursor:pointer"></span>
+        <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
       </div>
     </div>
     <div class="sc-right">
@@ -7192,6 +7196,23 @@ document.querySelectorAll('.rm-q').forEach(q=>{
   }
   dots.forEach(function(d,i){d.addEventListener('click',function(){go(i);});});
   setInterval(function(){go(ci+1);},4000);
+})();
+
+// Vending slideshow
+(function(){
+  const slides=document.querySelectorAll('.vend-slide');
+  const dots=document.querySelectorAll('.vend-dot');
+  if(!slides.length)return;
+  let vi=0;
+  function go(n){
+    slides[vi].style.opacity='0';
+    dots[vi].style.opacity='.4';
+    vi=n%slides.length;
+    slides[vi].style.opacity='1';
+    dots[vi].style.opacity='1';
+  }
+  dots.forEach(function(d,i){d.addEventListener('click',function(){go(i);});});
+  setInterval(function(){go(vi+1);},4000);
 })();
 
 // Hero card cycling - rotate through dongs
