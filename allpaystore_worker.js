@@ -6643,8 +6643,8 @@ a{text-decoration:none;color:inherit}
 
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
-.hero-bg{position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;object-fit:cover;object-position:center 20%;width:calc(100% + 40px);height:calc(100% + 40px);filter:blur(3px);opacity:.85;z-index:0}
-.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,.4),rgba(245,245,245,.35));z-index:0}
+.hero-bg{position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;object-fit:cover;object-position:center 20%;width:calc(100% + 40px);height:calc(100% + 40px);filter:blur(3px);opacity:.95;z-index:0}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(245,245,245,.2));z-index:0}
 .hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
 .hero-txt{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
@@ -7035,7 +7035,7 @@ a{text-decoration:none;color:inherit}
 <!-- VENDING -->
 <section class="showcase" style="background:#F8FAFF">
   <div class="sc-in" style="flex-direction:row-reverse">
-    <div class="sc-left" style="border-radius:20px;overflow:hidden;position:relative;min-height:500px;background:#f0f2f5;padding:0!important">
+    <div class="sc-left" style="flex:0 0 520px;border-radius:20px;overflow:hidden;position:relative;min-height:650px;background:#f0f2f5;padding:0!important">
       <img src="/images/m1.jpg" alt="LK 밴딩머신" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
       <img src="/images/m2.png" alt="밴딩머신 설치" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <img src="/images/m3.jpg" alt="밴딩머신 매장" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
