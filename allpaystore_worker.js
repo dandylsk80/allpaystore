@@ -6643,8 +6643,8 @@ a{text-decoration:none;color:inherit}
 
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
-.hero-bg{position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;object-fit:cover;object-position:center 20%;width:calc(100% + 40px);height:calc(100% + 40px);filter:blur(3px);opacity:.95;z-index:0}
-.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(245,245,245,.2));z-index:0}
+.hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;object-fit:cover;object-position:center 20%;width:100%;height:100%;z-index:0}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.85) 0%,rgba(255,255,255,.6) 50%,rgba(255,255,255,.1) 100%);z-index:0}
 .hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
 .hero-txt{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
@@ -7069,15 +7069,16 @@ a{text-decoration:none;color:inherit}
 <!-- REMOVAL -->
 <section class="showcase" style="background:#fff">
   <div class="sc-in">
-    <div class="sc-left" style="background:#111;border-radius:24px;padding:40px;color:#fff;position:relative;overflow:hidden">
-      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,.04);border-radius:50%"></div>
-      <div style="font-size:52px;margin-bottom:20px">🔨</div>
-      <h3 style="font-size:24px;font-weight:900;margin-bottom:12px;line-height:1.4">정확한 견적과 완벽한 시공으로<br>믿음을 드립니다.</h3>
-      <p style="font-size:14px;color:rgba(255,255,255,.55);line-height:1.8">전문 엔지니어팀이 안전하고 신속하게<br>사장님의 다음 시작을 도와드립니다.</p>
-      <div style="display:flex;gap:16px;margin-top:28px">
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">당일</div><div style="font-size:10px;color:rgba(255,255,255,.5)">철거 가능</div></div>
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">정찰제</div><div style="font-size:10px;color:rgba(255,255,255,.5)">추가비용 없음</div></div>
-        <div style="text-align:center"><div style="font-size:24px;font-weight:900">100%</div><div style="font-size:10px;color:rgba(255,255,255,.5)">사후 책임</div></div>
+    <div class="sc-left" style="border-radius:20px;overflow:hidden;position:relative;min-height:400px;background:#222;padding:0!important">
+      <img src="/images/b1.png" alt="매장 철거" class="rmv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
+      <img src="/images/b2.png" alt="철거 시공" class="rmv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/b3.png" alt="원상복구" class="rmv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <img src="/images/b4.png" alt="철거 완료" class="rmv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+      <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2">
+        <span class="rmv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:1;transition:opacity .3s;cursor:pointer"></span>
+        <span class="rmv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="rmv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
+        <span class="rmv-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
       </div>
     </div>
     <div class="sc-right">
@@ -7213,6 +7214,23 @@ document.querySelectorAll('.rm-q').forEach(q=>{
   }
   dots.forEach(function(d,i){d.addEventListener('click',function(){go(i);});});
   setInterval(function(){go(vi+1);},4000);
+})();
+
+// Removal slideshow
+(function(){
+  const slides=document.querySelectorAll('.rmv-slide');
+  const dots=document.querySelectorAll('.rmv-dot');
+  if(!slides.length)return;
+  let ri=0;
+  function go(n){
+    slides[ri].style.opacity='0';
+    dots[ri].style.opacity='.4';
+    ri=n%slides.length;
+    slides[ri].style.opacity='1';
+    dots[ri].style.opacity='1';
+  }
+  dots.forEach(function(d,i){d.addEventListener('click',function(){go(i);});});
+  setInterval(function(){go(ri+1);},4000);
 })();
 
 // Hero card cycling - rotate through dongs
