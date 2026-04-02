@@ -5681,7 +5681,7 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .side-link{display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:12px;color:#555;text-decoration:none;border-radius:6px;transition:background .15s}
 .side-link:hover{background:#eee;color:#111}
 
-@media(max-width:768px){.side-nav{float:none;width:100%;margin:0 0 20px 0}}
+
 </style>`;
 
 
@@ -6815,13 +6815,15 @@ a{text-decoration:none;color:inherit}
   .hero-h1{font-size:26px}
   .hero-card{width:100%}
   .hero-btns{justify-content:center}
+  .hero-bg{object-position:center center!important}
+  .hero-overlay{background:rgba(255,255,255,.65)!important}
   .str-grid{grid-template-columns:repeat(2,1fr)}
   .prods-grid{grid-template-columns:repeat(2,1fr)}
   .spc-grid{grid-template-columns:1fr}
   .feat-grid{grid-template-columns:1fr}
   .sc-in{flex-direction:column!important;gap:24px;padding:0 16px}
   .sc-left{flex:none!important;width:100%!important;padding:28px!important;border-radius:16px!important}
-  .sc-left[style*="min-height"]{padding:0!important;min-height:240px!important}
+  .sc-left[style*="min-height"]{padding:0!important;min-height:300px!important}
   .sc-left h3{font-size:20px!important}
   .sc-left div[style*="font-size:52px"]{font-size:36px!important}
   .sc-right{width:100%}
@@ -6834,14 +6836,19 @@ a{text-decoration:none;color:inherit}
   .ft-tel{text-align:center}
   .showcase{padding:40px 0!important}
   .rm-q b{font-size:14px}
+  .side-nav{float:none;width:100%;margin:0 0 20px 0}
 }
 @media(max-width:480px){
+  .hero{padding:48px 16px 40px!important}
   .hero-h1{font-size:22px}
+  .hero-desc{font-size:13px}
+  .hero-btns{flex-direction:column;gap:8px}
+  .hero-btns a,.hero-btns button{width:100%}
+  .hero-overlay{background:rgba(255,255,255,.75)!important}
   .str-grid{grid-template-columns:1fr 1fr;gap:10px}
   .prods-grid{grid-template-columns:1fr 1fr;gap:10px}
   .prod-card{aspect-ratio:1}.prod-overlay{transform:translateY(0)}.prod-label{display:none}
-  
-  
+  .sc-left[style*="min-height"]{min-height:250px!important}
   .sc-left{padding:20px!important}
   .sc-left h3{font-size:18px!important}
   .sc-right h2{font-size:18px!important}
@@ -6852,6 +6859,8 @@ a{text-decoration:none;color:inherit}
   .cta-sub{font-size:14px;padding:12px 28px;margin-left:0;margin-top:10px}
   .cta{padding:28px 18px}
   .hd-tel{font-size:12px;padding:7px 14px}
+  .g4{grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .card{padding:12px 8px!important}
 }
 </style>
 </head>
@@ -7069,7 +7078,7 @@ a{text-decoration:none;color:inherit}
 <!-- REMOVAL -->
 <section class="showcase" style="background:#fff">
   <div class="sc-in">
-    <div class="sc-left" style="border-radius:20px;overflow:hidden;position:relative;min-height:400px;background:#222;padding:0!important">
+    <div class="sc-left" style="flex:0 0 520px;border-radius:20px;overflow:hidden;position:relative;min-height:650px;background:#222;padding:0!important">
       <img src="/images/b1.png" alt="매장 철거" class="rmv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
       <img src="/images/b2.png" alt="철거 시공" class="rmv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
       <img src="/images/b3.png" alt="원상복구" class="rmv-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
