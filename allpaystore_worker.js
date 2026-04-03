@@ -588,7 +588,7 @@ ${CSS}
  <tr><td>코인세탁소</td><td class="hi">CCTV</td><td>CCTV</td></tr>
  </tbody>
  </table>
- <p>${sidoName} 내 음식점·카페 사장님은 포스기+카드단말기를 기본으로 설치하고, 피크타임 대기가 긴 매장은 키오스크 추가를 권장합니다. 스터디카페·코인세탁소 등 무인 업종은 무인결제기+CCTV 조합이 필수입니다. 올페이스토어는 업종 특성을 분석하여 <strong>불필요한 장비 없이 꼭 필요한 장비만</strong> 추천합니다.</p>
+ <p>${sidoName} 내 음식점·카페 사장님은 포스기+카드단말기를 기본으로 설치하고, 피크타임 대기가 긴 매장은 키오스크 추가를 권장합니다. 스터디카페·코인세탁소 등 무인 업종은 CCTV+키오스크 조합이 필수입니다. 올페이스토어는 업종 특성을 분석하여 <strong>불필요한 장비 없이 꼭 필요한 장비만</strong> 추천합니다.</p>
  <h2>📊 ${short} 매장 운영 효율화 가이드</h2>
  <p>장비 설치만으로 끝이 아닙니다. ${sidoName} 매장의 운영 효율을 극대화하기 위해 올페이스토어는 설치 후에도 지속적인 관리를 제공합니다. 포스기 매출 데이터를 분석하여 요일별·시간대별 매출 패턴을 파악하고, 피크타임 인력 배치와 재고 관리를 최적화할 수 있습니다. 배달 3사 매출을 통합 관리하여 수수료 비교·정산 검증도 가능합니다. 또한 카드단말기 VAN사 수수료를 정기적으로 재검토하여 더 유리한 조건이 나오면 무료로 전환해드립니다. ${short} 지역 매장을 운영하시는 사장님이라면 올페이스토어의 통합 관리 서비스를 꼭 활용하세요.</p>
  <div class="box yellow">💡 <strong>${short} 사장님 Tip:</strong> ${sidoName}에서 신규 매장 오픈을 준비 중이라면 카드단말기·포스기·키오스크·CCTV·테이블오더를 올페이스토어 패키지로 한번에 설치하세요. 개별 설치 대비 시간과 비용을 크게 절약할 수 있으며, 카드단말기·포스기·키오스크·테이블오더는 설치비 무료로 제공됩니다. CCTV는 별도 견적. 폐업·이전 시에는 매장 철거도 전문 엔지니어팀이 원스톱으로 처리합니다.</div>
@@ -695,7 +695,7 @@ ${CSS}
  <tr><td>코인세탁소</td><td class="hi">CCTV</td><td>CCTV</td></tr>
  </tbody>
  </table>
- <p>${sgName} 지역 매장 특성에 따라 장비 조합이 달라집니다. 음식점·카페는 포스기+카드단말기가 기본이고, 피크타임 대기가 긴 매장은 키오스크를 추가하면 인건비를 월 200만원 이상 절감할 수 있습니다. 스터디카페·코인세탁소 등 무인 업종은 무인결제기+CCTV 조합이 필수입니다. 올페이스토어는 업종 특성을 분석하여 불필요한 장비 없이 꼭 필요한 장비만 추천합니다.</p>
+ <p>${sgName} 지역 매장 특성에 따라 장비 조합이 달라집니다. 음식점·카페는 포스기+카드단말기가 기본이고, 피크타임 대기가 긴 매장은 키오스크를 추가하면 인건비를 월 200만원 이상 절감할 수 있습니다. 스터디카페·코인세탁소 등 무인 업종은 CCTV+키오스크 조합이 필수입니다. 올페이스토어는 업종 특성을 분석하여 불필요한 장비 없이 꼭 필요한 장비만 추천합니다.</p>
  <h2>💰 ${sgName} 설치 비용 안내</h2>
  <p>올페이스토어는 ${sgName}에서 <strong>설치비 무료, 월 이용료 무료</strong>로 장비를 설치합니다. VAN사 제휴를 통해 카드단말기 설치비를 전액 지원하며, 포스기·키오스크도 월정액 없이 이용 가능합니다. 여러 장비를 한번에 설치하면 패키지 할인이 추가 적용됩니다. 매장 철거는 정찰제로 운영되며, 소상공인 대상 정부 보조금 연계도 가능합니다. ${sgName} ${dongs.length}개 읍면동 어디서든 동일한 무료 설치 혜택을 제공합니다.</p>
  <h2>📊 ${sgName} 매장 운영 가이드</h2>
@@ -2087,15 +2087,6 @@ textarea.ct-input{height:120px;resize:vertical}
  <div class="ct-success-desc">빠른 시일 내 연락드리겠습니다.<br>급하시면 <a href="tel:010-9876-8282" style="color:#111;font-weight:800">📞 010-9876-8282</a>로 전화 주세요.</div>
  </div>
 </div>
-<iframe name="hiddenFrame" style="display:none"></iframe>
-<form id="hiddenForm" method="POST" action="https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec" target="hiddenFrame" style="display:none">
- <input name="name" id="hf-name">
- <input name="phone" id="hf-phone">
- <input name="addr" id="hf-addr">
- <input name="product" id="hf-product">
- <input name="biz" id="hf-biz">
- <input name="msg" id="hf-msg">
-</form>
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
@@ -2130,19 +2121,18 @@ function submitForm(){
  if(!product){alert('문의 제품을 선택해주세요.');return;}
  var biz=document.getElementById('ct-biz').value;
  var msg=document.getElementById('ct-msg').value.trim();
- document.getElementById('hf-name').value=name;
- document.getElementById('hf-phone').value=phone;
- document.getElementById('hf-addr').value=addr+' '+addr2;
- document.getElementById('hf-product').value=product;
- document.getElementById('hf-biz').value=biz;
- document.getElementById('hf-msg').value=msg;
  var btn=document.querySelector('.ct-submit');
  btn.textContent='접수 중...';btn.disabled=true;
- document.getElementById('hiddenForm').submit();
- setTimeout(function(){
+ fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,addr:addr+' '+addr2,product:product,biz:biz,msg:msg})})
+ .then(function(r){return r.json();})
+ .then(function(d){
   document.getElementById('ct-form').style.display='none';
   document.getElementById('ct-success').classList.add('show');
- },1500);
+ })
+ .catch(function(){
+  document.getElementById('ct-form').style.display='none';
+  document.getElementById('ct-success').classList.add('show');
+ });
 }
 </script>
 </body></html>`;
@@ -2158,13 +2148,15 @@ export default {
  return Response.redirect('https://allpaystore.com/', 301);
  if(path==='/blog')
  return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
- if(path==='/contact' && request.method==='POST'){
+ if(path==='/api/contact' && request.method==='POST'){
  try{
   const data=await request.json();
-  console.log('[문의접수]',JSON.stringify(data));
-  await fetch('https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
- }catch(e){console.log('[문의오류]',e.message);}
- return new Response(JSON.stringify({ok:true}),{headers:{'Content-Type':'application/json','Access-Control-Allow-Origin':'*'}});
+  const p=new URLSearchParams();
+  Object.keys(data).forEach(k=>p.append(k,data[k]||''));
+  const gsUrl='https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec?'+p.toString();
+  await fetch(gsUrl,{method:'GET',redirect:'follow'});
+ }catch(e){}
+ return new Response(JSON.stringify({ok:true}),{headers:{'Content-Type':'application/json'}});
  }
  if(path==='/contact'){
  return new Response(makeContactPage(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
