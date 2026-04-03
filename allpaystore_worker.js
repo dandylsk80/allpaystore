@@ -2123,16 +2123,15 @@ function submitForm(){
  var msg=document.getElementById('ct-msg').value.trim();
  var btn=document.querySelector('.ct-submit');
  btn.textContent='접수 중...';btn.disabled=true;
- fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,addr:addr+' '+addr2,product:product,biz:biz,msg:msg})})
- .then(function(r){return r.json();})
- .then(function(d){
+ var p=new URLSearchParams();
+ p.append('name',name);p.append('phone',phone);p.append('addr',addr+' '+addr2);
+ p.append('product',product);p.append('biz',biz);p.append('msg',msg);
+ var img=new Image();
+ img.src='https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZlOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec?'+p.toString();
+ setTimeout(function(){
   document.getElementById('ct-form').style.display='none';
   document.getElementById('ct-success').classList.add('show');
- })
- .catch(function(){
-  document.getElementById('ct-form').style.display='none';
-  document.getElementById('ct-success').classList.add('show');
- });
+ },2000);
 }
 </script>
 </body></html>`;
