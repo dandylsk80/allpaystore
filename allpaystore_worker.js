@@ -2078,7 +2078,7 @@ textarea.ct-input{height:120px;resize:vertical}
  <label>문의 내용</label>
  <textarea class="ct-input" id="ct-msg" placeholder="매장 위치, 현재 사용 장비, 궁금한 점 등을 자유롭게 적어주세요."></textarea>
  </div>
- <button type="button" class="ct-submit" onclick="event.preventDefault();submitForm();return false;">문의 접수하기</button>
+ <button type="button" class="ct-submit" onclick="submitForm()">문의 접수하기</button>
  <p class="ct-note">접수 후 영업시간 내 빠르게 연락드리겠습니다.<br>급하시면 📞 010-9876-8282로 전화 주세요.</p>
  </div>
  <div class="ct-success" id="ct-success">
@@ -2087,6 +2087,15 @@ textarea.ct-input{height:120px;resize:vertical}
  <div class="ct-success-desc">빠른 시일 내 연락드리겠습니다.<br>급하시면 <a href="tel:010-9876-8282" style="color:#111;font-weight:800">📞 010-9876-8282</a>로 전화 주세요.</div>
  </div>
 </div>
+<iframe name="hiddenFrame" style="display:none"></iframe>
+<form id="hiddenForm" method="POST" action="https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec" target="hiddenFrame" style="display:none">
+ <input name="name" id="hf-name">
+ <input name="phone" id="hf-phone">
+ <input name="addr" id="hf-addr">
+ <input name="product" id="hf-product">
+ <input name="biz" id="hf-biz">
+ <input name="msg" id="hf-msg">
+</form>
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
@@ -2121,18 +2130,19 @@ function submitForm(){
  if(!product){alert('문의 제품을 선택해주세요.');return;}
  var biz=document.getElementById('ct-biz').value;
  var msg=document.getElementById('ct-msg').value.trim();
+ document.getElementById('hf-name').value=name;
+ document.getElementById('hf-phone').value=phone;
+ document.getElementById('hf-addr').value=addr+' '+addr2;
+ document.getElementById('hf-product').value=product;
+ document.getElementById('hf-biz').value=biz;
+ document.getElementById('hf-msg').value=msg;
  var btn=document.querySelector('.ct-submit');
  btn.textContent='접수 중...';btn.disabled=true;
- var url='https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec';
- var fd=new FormData();
- fd.append('data',JSON.stringify({name:name,phone:phone,addr:addr+' '+addr2,product:product,biz:biz,msg:msg}));
- fetch(url,{method:'POST',body:fd,mode:'no-cors'}).then(function(){
+ document.getElementById('hiddenForm').submit();
+ setTimeout(function(){
   document.getElementById('ct-form').style.display='none';
   document.getElementById('ct-success').classList.add('show');
- }).catch(function(){
-  document.getElementById('ct-form').style.display='none';
-  document.getElementById('ct-success').classList.add('show');
- });
+ },1500);
 }
 </script>
 </body></html>`;
