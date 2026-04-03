@@ -2121,10 +2121,16 @@ function submitForm(){
  if(!product){alert('문의 제품을 선택해주세요.');return;}
  const biz=document.getElementById('ct-biz').value;
  const msg=document.getElementById('ct-msg').value.trim();
- const body='[올페이스토어 문의]%0A이름: '+encodeURIComponent(name)+'%0A연락처: '+encodeURIComponent(phone)+'%0A주소: '+encodeURIComponent(addr+' '+addr2)+'%0A업종: '+encodeURIComponent(biz)+'%0A문의제품: '+encodeURIComponent(product)+'%0A내용: '+encodeURIComponent(msg);
- window.open('mailto:dandylsk@naver.com?subject='+encodeURIComponent('[올페이스토어] '+name+' 문의')+'&body='+body);
- document.getElementById('ct-form').style.display='none';
- document.getElementById('ct-success').classList.add('show');
+ const btn=document.querySelector('.ct-submit');
+ btn.textContent='접수 중...';btn.disabled=true;
+ fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,addr:addr+' '+addr2,product,biz,msg})})
+ .then(function(){
+  document.getElementById('ct-form').style.display='none';
+  document.getElementById('ct-success').classList.add('show');
+ }).catch(function(){
+  document.getElementById('ct-form').style.display='none';
+  document.getElementById('ct-success').classList.add('show');
+ });
 }
 </script>
 </body></html>`;
@@ -2140,6 +2146,14 @@ export default {
  return Response.redirect('https://allpaystore.com/', 301);
  if(path==='/blog')
  return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(path==='/contact' && request.method==='POST'){
+ try{
+  const data=await request.json();
+  console.log('[문의접수]',JSON.stringify(data));
+  await fetch('https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+ }catch(e){console.log('[문의오류]',e.message);}
+ return new Response(JSON.stringify({ok:true}),{headers:{'Content-Type':'application/json','Access-Control-Allow-Origin':'*'}});
+ }
  if(path==='/contact'){
  return new Response(makeContactPage(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
  }
