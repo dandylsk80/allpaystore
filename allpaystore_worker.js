@@ -20,8 +20,7 @@ const PRODUCTS={
  kiosk:{ko:'키오스크',emoji:'🤖',color:'#D97706',slug:'kiosk'},
  cctv:{ko:'CCTV',emoji:'📷',color:'#7C3AED',slug:'cctv'},
  tableorder:{ko:'테이블오더',emoji:'📋',color:'#DC2626',slug:'tableorder'},
- unmanned:{ko:'무인결제기',emoji:'🏪',color:'#0891B2',slug:'unmanned'},
- removal:{ko:'철거',emoji:'🔨',color:'#991B1B',slug:'removal'}
+  removal:{ko:'철거',emoji:'🔨',color:'#991B1B',slug:'removal'}
 };
 function makeProductSVG(sido,sigungu,emd,prd){
  const sub=`${sido} ${sigungu}`;
@@ -48,7 +47,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
  const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  const canon=`https://allpaystore.com/blog/${slug}/${prodKey}/`;
  const parentUrl=`https://allpaystore.com/blog/${slug}/`;
- const PHOTO_URL={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=420&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=420&fit=crop&q=80'};
+ const PHOTO_URL={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=420&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=420&fit=crop&q=80'};
  const photoUrl=PHOTO_URL[prodKey]||PHOTO_URL.card;
  const iso=today.toISOString().split('T')[0];
  const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" class="side-link">${v.emoji} ${emd} ${v.ko}</a>`).join('');
@@ -273,49 +272,6 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
  <h2>💰 ${pk([""+emd+" 테이블오더 비용 안내",""+emd+" 테이블오더 설치 비용은?",""+emd+" 테이블오더 — 설치비 무료·월 이용료 무료"],h2)}</h2>
  <p>${pk(["올페이스토어는 "+emd+"에서 테이블오더를 설치비 무료, 월 이용료 무료로 설치합니다. QR코드 발급·메뉴 사진 촬영·등록까지 무료 대행합니다.",""+emd+" 테이블오더 설치에 드는 비용은 0원입니다. 올페이스토어는 VAN사 제휴로 설치비를 전액 지원하며, 메뉴 등록까지 무료 대행합니다.","QR 테이블오더는 초기 비용이 거의 없습니다. 태블릿 방식도 올페이스토어 패키지로 설치하면 설치비 무료. "+emd+" 매장 사장님 부담 제로.","포스기·카드단말기와 함께 테이블오더를 패키지로 설치하면 추가 할인이 적용됩니다. 기존 테이블오더 교체도 동일한 무료 혜택."],h)}</p>
  <div class="box yellow">💡 <strong>${emd} 사장님 Tip:</strong> ${pk(["테이블오더를 올페이스토어에서 포스기와 함께 설치하면 메뉴 사진 촬영·등록 무료 대행 + 주방 프린터 연동까지 원스톱으로 완료합니다.",""+emd+" "+p.biz[0]+" 사장님들의 후기: 테이블오더 설치 후 첫 달 객단가 "+savePct+"% 상승, 홀 직원 1명 감축에 성공했습니다.","QR 테이블오더는 초기 비용이 거의 없어 소규모 카페·음식점에서도 부담 없이 시작할 수 있습니다.","테이블오더+포스기+주방 디스플레이를 함께 설치하면 주문부터 조리까지 완전 자동화됩니다. 패키지 할인 적용."],h)}</div>`,
- unmanned:`
- <h2>🏪 ${emd} 무인결제기가 필요한 이유</h2>
- <p>${pk([`${full}에서 스터디카페·코인세탁소·무인카페 등을 운영하신다면 무인결제기는 24시간 무인 운영의 핵심 인프라입니다.`,`${emd} 지역에서 무인 매장을 운영하거나 계획 중이시라면, 무인결제기+CCTV 통합 시스템이 필수입니다. 직원 0명으로 24시간 매출을 창출하세요.`,`${sido} ${sigungu} ${emd}은 ${densityWord} 상권으로, 인건비 부담 없이 24시간 운영이 가능한 무인 매장 수요가 증가하고 있습니다.`,`${emd} 사장님, 직원 없이도 매장을 운영할 수 있다면? 올페이스토어 무인결제기는 카드·간편결제를 지원하고 CCTV와 연동됩니다.`],h)} 직원 없이도 결제·상품판매·서비스 제공이 가능해 인건비를 획기적으로 줄일 수 있습니다. 올페이스토어는 ${emd} 매장에 맞는 무인결제기를 설치하고 CCTV와 연동합니다.</p>
- <h2>📊 ${emd} 무인결제기 종류 비교</h2>
- <table class="tbl">
- <thead><tr><th>구분</th><th>결제 전용 키오스크</th><th>자판기형</th><th>무인 정산기</th></tr></thead>
- <tbody>
- <tr><td>결제 방식</td><td class="hi">카드·간편결제·현금 모두</td><td>카드·현금</td><td class="hi">카드·간편결제</td></tr>
- <tr><td>추천 업종</td><td class="hi">무인카페·스터디카페</td><td>음료·과자 판매</td><td>코인세탁·PC방</td></tr>
- <tr><td>원격 관리</td><td class="hi">앱으로 실시간 모니터링</td><td>기본적</td><td>앱 지원</td></tr>
- <tr><td>가격대</td><td>200~400만원</td><td>150~300만원</td><td class="hi">100~200만원</td></tr>
- </tbody>
- </table>
- <h2>✅ ${emd} 무인결제기 도입 효과</h2>
- <ul class="ck">
- <li><strong>24시간 매출:</strong> ${pk(["야간·새벽에도 결제·판매가 자동으로 진행","직원 없이도 새벽 2시, 3시에 매출이 발생합니다","심야 시간대 매출을 놓치지 않는 완전 자동화 운영"],h)}</li>
- <li><strong>인건비 절감:</strong> ${pk(["직원 0명으로 매장 운영 가능 — 인건비 100% 절감","월 인건비 200만원 이상 절약, 1인 사업자도 다매장 운영 가능","인건비 부담 제로 — 수익의 대부분이 순이익으로 남습니다"],h2)}</li>
- <li><strong>원격 관리:</strong> ${pk(["스마트폰 앱에서 실시간 매출·재고 확인","집에서도 매장 매출과 재고를 실시간으로 모니터링","앱 한 번이면 오늘 매출, 재고 현황, 이상 알림까지 확인"],h)}</li>
- <li><strong>CCTV 연동:</strong> ${pk(["결제 시점 영상 자동 연결로 분쟁 방지","결제 시각과 CCTV 영상을 매칭하여 부정 이용을 차단","무인 매장의 보안 핵심 — 결제+영상 자동 매칭 시스템"],h2)}</li>
- </ul>
- <div class="box yellow">💡 <strong>${emd} 사장님 Tip:</strong> ${pk(["무인결제기를 올페이스토어에서 CCTV와 함께 설치하면 무인 매장 패키지 할인 혜택을 드립니다.",""+emd+" 지역에서 무인 스터디카페·코인세탁소를 준비 중이시라면, 올페이스토어의 무인매장 올인원 패키지를 확인하세요.","무인결제기+CCTV를 한번에 설치하면 패키지 할인 혜택. "+emd+" 무인매장의 성공 공식입니다.",""+p.biz[0]+" 업종이라면 무인결제기만으로도 운영이 가능합니다. CCTV를 추가하면 보안까지 완벽해집니다."],h)}</div>`,
- delivery:`
- <h2>🛵 ${emd} 배달주문기가 필요한 이유</h2>
- <p>${full}에서 배달 매출을 올리고 싶으시다면 배달주문기는 <strong>배민·요기요·쿠팡이츠 주문을 하나의 기기로 통합 관리</strong>하는 필수 장비입니다. 각 배달 앱에서 주문이 들어올 때마다 태블릿을 바꿔가며 확인하는 비효율을 완전히 제거합니다. 올페이스토어는 ${emd} 매장에 배달주문기를 설치하고 포스기·주방 프린터와 완벽 연동합니다.</p>
- <h2>📊 배달주문기 통합 관리 효과</h2>
- <div class="g4">
- <div class="card"><div class="ic">📱</div><div class="lb">배달 앱 통합</div><div class="vl">3사 한번에</div></div>
- <div class="card"><div class="ic">🔔</div><div class="lb">주문 놓침</div><div class="vl">0건</div></div>
- <div class="card"><div class="ic">🖨️</div><div class="lb">주방 자동출력</div><div class="vl">즉시 연동</div></div>
- <div class="card"><div class="ic">📊</div><div class="lb">매출 통합분석</div><div class="vl">앱별 비교</div></div>
- </div>
- <h2>✅ ${emd} 배달주문기 도입 효과</h2>
- <ul class="ck">
- <li><strong>배민·요기요·쿠팡이츠 주문 한 화면에서 관리</strong> — 태블릿 3대 → 1대로 정리</li>
- <li><strong>주문 놓침 제로:</strong> 통합 알림으로 모든 배달 주문 실시간 수신</li>
- <li><strong>주방 프린터 자동 출력:</strong> 주문 접수 즉시 주방에 자동 전달</li>
- <li><strong>앱별 매출 비교:</strong> 어떤 배달 앱이 매출 기여도가 높은지 데이터로 확인</li>
- <li><strong>포스기 연동:</strong> 배달·홀·포장 매출을 하나의 시스템으로 통합 정산</li>
- <li><strong>메뉴 일괄 관리:</strong> 가격·품절 상태를 3사에 동시 반영</li>
- </ul>
- <div class="box yellow">💡 <strong>${emd} 사장님 Tip:</strong> 배달주문기를 올페이스토어에서 포스기와 함께 설치하면 <strong>배달 3사 연동 세팅 무료</strong> + 메뉴 사진 등록까지 대행합니다. 배달 수수료 비교 분석도 무료로 제공합니다.</div>`,
- access:`
- `,
  removal:`
  <h2>🔨 ${pk([""+emd+" 철거가 필요한 순간",""+emd+" 매장 철거 — 언제, 왜 필요한가?",""+sigungu+" "+emd+" 매장 정리를 결심하셨다면",""+emd+" 폐업·이전·리모델링 시 철거 가이드"],h)}</h2>
  <p>${full}에서 매장·사무실·가게의 폐업, 이전, 리모델링을 준비하고 계신가요? ${pk(["철거는 단순히 부수는 것이 아닙니다. 구조물 분석, 안전 관리, 폐기물 적법 처리, 원상복구까지 전문 엔지니어팀이 체계적으로 진행해야 보증금도 지키고 분쟁도 예방할 수 있습니다.","비전문 업체에 맡기면 추가 비용, 불법 폐기물 투기, 보증금 분쟁이 발생할 수 있습니다. 올페이스토어는 정밀 현장 분석부터 시공 보증서 발급까지 원스톱으로 처리합니다.","임대차 계약 해지 시 원상복구 의무를 제대로 이행하지 않으면 보증금을 돌려받지 못할 수 있습니다. 올페이스토어 전문팀이 계약서 기준에 맞게 완벽히 복구합니다.","철거 시 가장 중요한 것은 적법한 폐기물 처리와 완벽한 원상복구입니다. 올페이스토어는 "+emd+" 전 지역에서 이 두 가지를 확실하게 보장합니다."],h)} ${areaDesc}</p>
@@ -626,10 +582,10 @@ ${CSS}
  <tbody>
  <tr><td>음식점·식당</td><td>포스기 + 카드단말기</td><td class="hi">키오스크, 테이블오더</td></tr>
  <tr><td>카페·베이커리</td><td>포스기 + 카드단말기</td><td class="hi">키오스크</td></tr>
- <tr><td>편의점·마트</td><td>포스기 + 카드단말기</td><td>CCTV, 무인결제기</td></tr>
+ <tr><td>편의점·마트</td><td>포스기 + 카드단말기</td><td>CCTV</td></tr>
  <tr><td>미용실·네일샵</td><td>카드단말기</td><td>포스기(예약관리)</td></tr>
- <tr><td>스터디카페</td><td class="hi">무인결제기 + CCTV</td><td>키오스크</td></tr>
- <tr><td>코인세탁소</td><td class="hi">무인결제기</td><td>CCTV</td></tr>
+ <tr><td>스터디카페</td><td class="hi">CCTV</td><td>키오스크</td></tr>
+ <tr><td>코인세탁소</td><td class="hi">CCTV</td><td>CCTV</td></tr>
  </tbody>
  </table>
  <p>${sidoName} 내 음식점·카페 사장님은 포스기+카드단말기를 기본으로 설치하고, 피크타임 대기가 긴 매장은 키오스크 추가를 권장합니다. 스터디카페·코인세탁소 등 무인 업종은 무인결제기+CCTV 조합이 필수입니다. 올페이스토어는 업종 특성을 분석하여 <strong>불필요한 장비 없이 꼭 필요한 장비만</strong> 추천합니다.</p>
@@ -733,10 +689,10 @@ ${CSS}
  <tbody>
  <tr><td>음식점·식당</td><td>포스기 + 카드단말기</td><td class="hi">키오스크, 테이블오더</td></tr>
  <tr><td>카페·베이커리</td><td>포스기 + 카드단말기</td><td class="hi">키오스크</td></tr>
- <tr><td>편의점·마트</td><td>포스기 + 카드단말기</td><td>CCTV, 무인결제기</td></tr>
+ <tr><td>편의점·마트</td><td>포스기 + 카드단말기</td><td>CCTV</td></tr>
  <tr><td>미용실·네일샵</td><td>카드단말기</td><td>포스기(예약관리)</td></tr>
- <tr><td>스터디카페</td><td class="hi">무인결제기 + CCTV</td><td>키오스크</td></tr>
- <tr><td>코인세탁소</td><td class="hi">무인결제기</td><td>CCTV</td></tr>
+ <tr><td>스터디카페</td><td class="hi">CCTV</td><td>키오스크</td></tr>
+ <tr><td>코인세탁소</td><td class="hi">CCTV</td><td>CCTV</td></tr>
  </tbody>
  </table>
  <p>${sgName} 지역 매장 특성에 따라 장비 조합이 달라집니다. 음식점·카페는 포스기+카드단말기가 기본이고, 피크타임 대기가 긴 매장은 키오스크를 추가하면 인건비를 월 200만원 이상 절감할 수 있습니다. 스터디카페·코인세탁소 등 무인 업종은 무인결제기+CCTV 조합이 필수입니다. 올페이스토어는 업종 특성을 분석하여 불필요한 장비 없이 꼭 필요한 장비만 추천합니다.</p>
@@ -789,8 +745,7 @@ function makeProductLandingPage(prodKey){
  kiosk:{t:'무인 주문·결제 솔루션',d:'인건비 월 200만원 이상 절감, 주문 정확도 100%, 피크타임 대기시간 단축. 스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천합니다. 포스기와 자동 연동되어 주문 즉시 주방 전달이 되며, 메뉴 사진 촬영·등록까지 무료로 대행합니다. 음식점·카페·베이커리·패스트푸드점에서 도입이 급증하고 있으며, 설치비 무료·월 이용료 무료로 진행됩니다.'},
  cctv:{t:'매장 보안의 완성',d:'HD~4K 고화질 촬영, 스마트폰 원격 모니터링, AI 움직임 감지, 야간 컬러 촬영까지 지원합니다. 포스기와 연동하면 결제 시점과 영상을 자동 매칭하여 정산 검증이 가능합니다. CCTV 설치 매장은 화재·도난 보험료 할인 혜택도 받을 수 있습니다. 30일 이상 영상 저장을 보장합니다. 매장 규모에 맞게 합리적인 비용으로 설치합니다. 4채널·8채널·16채널 등 매장 규모에 맞게 설계합니다.'},
  tableorder:{t:'홀 인건비 절감의 핵심',d:'QR코드·태블릿으로 테이블에서 바로 주문·결제. 직원 호출 대기 제로, 추가 주문 유도로 객단가 20~35% 상승. 주방 자동 연동까지. 홀 직원 1~2명을 감축하여 월 150~200만원 인건비를 절감할 수 있습니다. 메뉴 사진 촬영·등록 무료 대행, 다국어 지원(한국어·영어·중국어·일본어), 매출 데이터 분석까지 제공합니다. 설치비 무료·월 이용료 무료로 진행됩니다.'},
- unmanned:{t:'24시간 무인 운영',d:'직원 없이도 결제·상품판매·서비스 제공이 가능합니다. CCTV와 연동하여 무인 매장을 구현합니다. 스터디카페·코인세탁소·무인카페·무인아이스크림 등 무인 업종에 최적화되어 있으며, 스마트폰 앱으로 실시간 매출·재고를 원격 관리할 수 있습니다. 야간·새벽에도 매출이 자동으로 발생하며, 인건비를 100% 절감할 수 있습니다.'},
- removal:{t:'매장·사무실·가게 전문 철거',d:'정밀 현장 분석, 정찰제 견적, 원상복구, 폐기물 적법 처리까지. 전문 엔지니어팀이 안전하고 신속하게 사장님의 다음 시작을 도와드립니다. 음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 소상공인진흥공단 희망리턴패키지를 통해 철거비 보조금을 지원받을 수 있으며, 올페이스토어에서 신청 절차까지 안내합니다.'}
+  removal:{t:'매장·사무실·가게 전문 철거',d:'정밀 현장 분석, 정찰제 견적, 원상복구, 폐기물 적법 처리까지. 전문 엔지니어팀이 안전하고 신속하게 사장님의 다음 시작을 도와드립니다. 음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 소상공인진흥공단 희망리턴패키지를 통해 철거비 보조금을 지원받을 수 있으며, 올페이스토어에서 신청 절차까지 안내합니다.'}
  };
  const pd=PDESC[prodKey]||{t:'전문 설치',d:'올페이스토어가 책임지고 설치합니다.'};
  const sidoList=[
@@ -803,7 +758,7 @@ function makeProductLandingPage(prodKey){
  const firstDong=Object.keys(R).find(k=>k.startsWith(s.s+'/'));
  return firstDong?`<a href="/product/${prodKey}/${s.s}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
  }).join('');
- const PHOTO={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=300&fit=crop&q=80',unmanned:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=300&fit=crop&q=80'};
+ const PHOTO={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=300&fit=crop&q=80'};
  const photo=PHOTO[prodKey]||PHOTO.card;
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
@@ -879,7 +834,7 @@ ${CSS}
  <p><strong>음식점·식당:</strong> ${isR?'주방 설비(후드·배기·가스배관), 인테리어(바닥·벽면·천장), 카운터·좌석·조명까지 전체 철거. 가스배관은 반드시 전문가가 안전하게 차단해야 합니다.':'포스기+카드단말기가 기본이며, 피크타임 대기가 긴 매장은 키오스크·테이블오더 추가를 권장합니다. 배달 3사 연동, 주방 프린터 연결로 주문 누락을 방지합니다.'}</p>
  <p><strong>카페·베이커리:</strong> ${isR?'커피머신·제빵기 철거, 배수관·전기설비 정리, 카운터·진열대 해체까지. 특수 장비는 재판매 가능 여부를 함께 확인합니다.':'음료·디저트 메뉴가 많은 카페는 키오스크로 주문 대기를 줄이고, QR 테이블오더로 추가 주문을 유도할 수 있습니다.'}</p>
  <p><strong>편의점·마트:</strong> ${isR?'진열대·간판·냉장고·POS 장비 일체 철거. 간판은 관할 구청 허가 확인 후 철거합니다.':'카드단말기+포스기로 재고 자동 관리, 자동 발주 시스템 연동이 가능합니다. CCTV 설치로 도난 방지와 보험료 할인 혜택도 받을 수 있습니다.'}</p>
- <p><strong>무인매장(스터디카페·코인세탁소):</strong> ${isR?'파티션·좌석·세탁기·건조기 등 장비 일체 철거. 배수관·전기설비 안전 정리까지 포함합니다.':'무인결제기+CCTV 패키지로 24시간 무인 운영이 가능합니다. 직원 0명으로 운영하여 인건비를 100% 절감합니다.'}</p>
+ <p><strong>무인매장(스터디카페·코인세탁소):</strong> ${isR?'파티션·좌석·세탁기·건조기 등 장비 일체 철거. 배수관·전기설비 안전 정리까지 포함합니다.':'CCTV 패키지로 24시간 무인 운영이 가능합니다. 직원 0명으로 운영하여 인건비를 100% 절감합니다.'}</p>
  <h2>🔍 ${prd.ko} ${suf} 전 알아야 할 핵심 정보</h2>
  <p>${isR?'매장 철거를 진행할 때 가장 중요한 것은 적법한 절차를 따르는 것입니다. 불법 폐기물 투기는 100만원 이상의 과태료가 부과되며, 원상복구가 부실하면 보증금을 돌려받지 못할 수 있습니다. 반드시 폐기물 처리 확인증과 시공 보증서를 발급하는 전문 업체를 선택하세요. 또한 소상공인진흥공단의 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있으며, 지자체별 별도 지원 사업도 확인할 필요가 있습니다. 올페이스토어에 문의하시면 현재 신청 가능한 보조금 현황과 절차를 안내해드립니다.':'${prd.ko}를 도입할 때 가장 중요한 것은 매장 업종에 맞는 장비를 선택하는 것입니다. 음식점과 카페는 주문·결제 처리 속도가 중요하고, 편의점·마트는 재고 관리 연동이 핵심이며, 미용실·네일샵은 예약 관리 기능이 필요합니다. 또한 VAN사마다 카드 수수료율이 다르므로 반드시 비교한 후 결정해야 합니다. 올페이스토어는 업종별 특성을 분석하여 가장 적합한 장비와 가장 유리한 VAN사 조건을 찾아드립니다. 설치 후에도 VAN사 수수료를 정기적으로 재검토하여 더 유리한 조건이 나오면 무료로 전환해드립니다.'}</p>
  <h2>✅ ${prd.ko} ${suf} 시 꼭 확인할 사항</h2>
@@ -926,7 +881,7 @@ function makeProductSidoPage(prodKey,sidoSlug){
  const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;const n=sg[0];const isSubDist=names.some(other=>other!==n && n.startsWith(other));return !isSubDist;});
  const dongCount=Object.keys(R).filter(k=>k.startsWith(sidoSlug+'/')).length;
  const sgCards=top.map(sg=>`<a href="/product/${prodKey}/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
- const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 실시간 매출 분석 대시보드, 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료로 대행합니다.',cctv:'4채널·8채널·16채널 등 매장 규모에 맞게 설계하며, 30일 이상 영상 저장을 보장합니다. 화재·도난 보험료 할인 혜택도 받을 수 있습니다.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록까지 무료로 대행합니다. 한국어·영어·중국어·일본어 다국어를 지원하며, 주방 자동 연동으로 주문 누락이 없습니다.',unmanned:'스마트폰 앱으로 실시간 매출·재고를 원격 관리할 수 있습니다. CCTV 연동으로 무인 매장을 구현합니다.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 폐기물 처리 확인증과 시공 보증서를 발급합니다.'};
+ const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 실시간 매출 분석 대시보드, 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료로 대행합니다.',cctv:'4채널·8채널·16채널 등 매장 규모에 맞게 설계하며, 30일 이상 영상 저장을 보장합니다. 화재·도난 보험료 할인 혜택도 받을 수 있습니다.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록까지 무료로 대행합니다. 한국어·영어·중국어·일본어 다국어를 지원하며, 주방 자동 연동으로 주문 누락이 없습니다.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 폐기물 처리 확인증과 시공 보증서를 발급합니다.'};
  const pd2=PDESC2[prodKey]||'';
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
@@ -999,7 +954,7 @@ ${CSS}
  <h2>🏢 ${short} 업종별 ${prd.ko} 가이드</h2>
  <p><strong>음식점·카페:</strong> ${isR?`${sidoName} 음식점·카페 철거는 주방 설비(후드·배기·가스배관)가 핵심입니다. 가스배관은 반드시 전문가가 안전하게 차단해야 하며, 배수관·전기설비 정리까지 체계적으로 진행합니다.`:`${sidoName} 음식점·카페는 포스기+카드단말기가 기본이며, 키오스크·테이블오더 추가로 인건비를 월 150~200만원 절감할 수 있습니다. 배달 3사 연동으로 주문을 통합 관리합니다.`}</p>
  <p><strong>편의점·마트·소매점:</strong> ${isR?'진열대·간판·냉장고 일체 철거. 간판은 관할 구청 허가 확인 후 철거합니다. 원상복구 시 바닥·벽면·천장까지 깔끔하게 처리합니다.':'카드단말기+포스기로 재고 자동 관리, CCTV로 도난 방지. 모든 장비를 한번에 설치하면 패키지 할인이 적용됩니다.'}</p>
- <p><strong>무인매장:</strong> ${isR?'파티션·좌석·장비 일체 철거. 배수관·전기설비 안전 정리까지 포함합니다.':'무인결제기+CCTV 패키지로 24시간 무인 운영. 인건비 100% 절감.'}</p>
+ <p><strong>무인매장:</strong> ${isR?'파티션·좌석·장비 일체 철거. 배수관·전기설비 안전 정리까지 포함합니다.':'CCTV 패키지로 24시간 무인 운영. 인건비 100% 절감.'}</p>
  <h2>❓ ${short} ${prd.ko} ${suf} 자주 묻는 질문</h2>
  <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 ${suf}가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 ${suf}를 제공합니다. 상담 후 빠른 일정으로 방문합니다.</div></div>
  <div class="faq"><div class="faq-q">Q. ${isR?"정부 보조금을 받을 수 있나요?":"설치비가 정말 무료인가요?"}</div><div class="faq-a">${isR?`네, 소상공인진흥공단의 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있습니다. 지자체별 별도 지원 사업도 있으며, 올페이스토어에서 신청 절차를 안내해드립니다.`:`네, 올페이스토어는 VAN사 제휴를 통해 설치비를 전액 지원합니다. 월 이용료도 무료이며, 카드 결제 시 VAN사 수수료만 정상 부과됩니다. 숨겨진 비용이 전혀 없습니다.`}</div></div>
@@ -1036,7 +991,7 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
  if(!dongs.length)return null;
  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="sg-card">${d.name} ${prd.ko}</a>`).join('');
- const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사 자동 연동, 실시간 매출 분석, 요일별·시간대별 매출 패턴 분석으로 매장 운영을 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료 대행합니다.',cctv:'4채널~16채널 매장 규모에 맞게 설계, 30일 이상 영상 저장, 화재·도난 보험료 할인 혜택.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록 무료 대행, 다국어 지원, 주방 자동 연동.',unmanned:'스마트폰 앱 원격 관리, CCTV 연동으로 무인 매장 구현.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대 등 모든 업종 철거. 폐기물 처리 확인증·시공 보증서 발급.'};
+ const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사 자동 연동, 실시간 매출 분석, 요일별·시간대별 매출 패턴 분석으로 매장 운영을 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료 대행합니다.',cctv:'4채널~16채널 매장 규모에 맞게 설계, 30일 이상 영상 저장, 화재·도난 보험료 할인 혜택.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록 무료 대행, 다국어 지원, 주방 자동 연동.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대 등 모든 업종 철거. 폐기물 처리 확인증·시공 보증서 발급.'};
  const pd2=PDESC2[prodKey]||'';
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
@@ -1102,7 +1057,7 @@ ${CSS}
  <h2>🏢 ${sgName} 업종별 ${prd.ko} 안내</h2>
  <p><strong>음식점·카페:</strong> ${isR?`${sgName} 음식점·카페 철거는 주방 설비 해체가 핵심입니다. 후드·배기·가스배관을 안전하게 차단하고, 배수관·전기설비까지 정리합니다.`:`${sgName} 음식점·카페는 포스기+카드단말기가 기본, 키오스크·테이블오더 추가로 인건비를 월 150~200만원 절감합니다.`}</p>
  <p><strong>편의점·마트:</strong> ${isR?'진열대·간판·냉장고 일체 철거. 원상복구까지 깔끔하게 처리합니다.':'카드단말기+포스기로 재고 자동 관리, CCTV로 도난 방지 + 보험료 할인.'}</p>
- <p><strong>무인매장:</strong> ${isR?'파티션·좌석·장비 일체 철거. 배수관·전기설비 안전 정리.':'무인결제기+CCTV 패키지로 24시간 무인 운영. 인건비 100% 절감.'}</p>
+ <p><strong>무인매장:</strong> ${isR?'파티션·좌석·장비 일체 철거. 배수관·전기설비 안전 정리.':'CCTV 패키지로 24시간 무인 운영. 인건비 100% 절감.'}</p>
  <p>${isR?`${sgName}에서 어떤 업종이든 올페이스토어 전문 엔지니어팀이 업종별 특성에 맞게 안전하고 깔끔하게 철거합니다. 정찰제 견적으로 추가 비용 걱정 없이 진행하실 수 있습니다.`:`${sgName} 지역 매장 특성에 맞는 최적의 ${prd.ko}를 올페이스토어가 추천합니다. 설치비 무료, 월 이용료 무료로 부담 없이 도입하실 수 있습니다.`}</p>
  <h2>❓ ${sgName} ${prd.ko} ${suf} 자주 묻는 질문</h2>
  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장이 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문합니다. 무료 견적 후 빠르게 진행합니다. 상담 후 빠른 일정으로 방문합니다.</div></div>
@@ -1814,7 +1769,7 @@ a{text-decoration:none;color:inherit}
  <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>원격 관리 및 유지보수</b><br>문제 발생 시 즉시 원격 제어 가능. 현장 방문 없이 대부분의 장애 해결.</div></div>
  <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>카드·간편결제 지원</b><br>카드·삼성페이·카카오페이·제로페이 등 모든 결제 수단 지원.</div></div>
  </div>
- <a href="/contact/?product=unmanned" class="sc-btn" style="background:#1a1a2e">🏭 LK 밴딩머신 상담 받기</a>
+ <a href="/contact/" class="sc-btn" style="background:#1a1a2e">🏭 LK 밴딩머신 상담 받기</a>
  </div>
  </div>
 </section>
@@ -1860,7 +1815,7 @@ a{text-decoration:none;color:inherit}
  <div class="rev-card"><div class="rev-badge" style="background:#059669">인건비 50%↓</div><div class="rev-star">★★★★★</div><div class="rev-title">키오스크 설치 후 홀 인건비 반으로</div><div class="rev-text">테이블오더+키오스크로 홀 직원 2명→1명. 서비스 품질도 유지됩니다.</div><div class="rev-name">부산 해운대구 음식점 사장님</div></div>
  <div class="rev-card"><div class="rev-badge" style="background:#7C3AED">수수료 절감</div><div class="rev-star">★★★★★</div><div class="rev-title">VAN사 변경으로 연 40만원 절약</div><div class="rev-text">기존보다 수수료 저렴한 VAN사로 바꿔주셔서 매년 절약 중입니다.</div><div class="rev-name">경기 수원시 소매점 사장님</div></div>
  <div class="rev-card"><div class="rev-badge" style="background:#DC2626">빠른 설치</div><div class="rev-star">★★★★★</div><div class="rev-title">전화 한 통으로 빠른 설치 완료!</div><div class="rev-text">급하게 필요했는데 빠르게 설치해주셨어요. 바로 영업 시작할 수 있었습니다.</div><div class="rev-name">대전 유성구 음식점 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#0891B2">무인화 성공</div><div class="rev-star">★★★★★</div><div class="rev-title">24시간 무인매장 전환 완료</div><div class="rev-text">무인결제기+CCTV 한번에 설치. 월 매출 30% 증가!</div><div class="rev-name">인천 연수구 스터디카페 사장님</div></div>
+ <div class="rev-card"><div class="rev-badge" style="background:#0891B2">무인화 성공</div><div class="rev-star">★★★★★</div><div class="rev-title">24시간 무인매장 전환 완료</div><div class="rev-text">CCTV 설치. 월 매출 30% 증가!</div><div class="rev-name">인천 연수구 스터디카페 사장님</div></div>
  <div class="rev-card"><div class="rev-badge" style="background:#EA580C">A/S 최고</div><div class="rev-star">★★★★★</div><div class="rev-title">포스기 장애 빠르게 해결</div><div class="rev-text">전화하니 빠르게 해결해주셨어요. 이런 A/S는 처음입니다.</div><div class="rev-name">광주 서구 미용실 사장님</div></div>
  <div class="rev-card"><div class="rev-badge" style="background:#6D28D9">CCTV 만족</div><div class="rev-star">★★★★★</div><div class="rev-title">스마트폰으로 매장 실시간 확인</div><div class="rev-text">매장에 없어도 스마트폰으로 확인 가능. CCTV 화질도 선명합니다.</div><div class="rev-name">서울 마포구 음식점 사장님</div></div>
  <div class="rev-card"><div class="rev-badge" style="background:#059669">매출 증가</div><div class="rev-star">★★★★★</div><div class="rev-title">테이블오더 도입 후 객단가 25% 상승</div><div class="rev-text">메뉴 사진 보고 추가 주문이 늘었어요. 직원 호출도 줄어서 편해요.</div><div class="rev-name">경기 분당구 치킨집 사장님</div></div>
@@ -1980,8 +1935,7 @@ document.querySelectorAll('.rm-q').forEach(q=>{
  {a:'수원시 테이블오더 설치',c:'260+',s:'97%',b1:91,b2:85},
  {a:'명동 카드단말기 설치',c:'420+',s:'98%',b1:95,b2:90},
  {a:'부평구 CCTV 설치',c:'190+',s:'96%',b1:90,b2:86},
- {a:'동탄 무인결제기 설치',c:'220+',s:'97%',b1:93,b2:88},
- {a:'강서구 포스기 설치',c:'240+',s:'98%',b1:92,b2:87},
+  {a:'강서구 포스기 설치',c:'240+',s:'98%',b1:92,b2:87},
  {a:'대전 유성구 키오스크 설치',c:'180+',s:'96%',b1:89,b2:84},
  {a:'제주시 카드단말기 설치',c:'150+',s:'97%',b1:91,b2:86},
  {a:'분당구 테이블오더 설치',c:'290+',s:'98%',b1:94,b2:90},
@@ -2029,7 +1983,7 @@ function makeContactPage(){
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>상담 문의 | 올페이스토어</title>
-<meta name="description" content="올페이스토어 상담 문의. 카드단말기·포스기·키오스크·CCTV·테이블오더·무인결제기·매장 철거 무료 견적. ☎ 010-9876-8282">
+<meta name="description" content="올페이스토어 상담 문의. 카드단말기·포스기·키오스크·CCTV·테이블오더·매장 철거 무료 견적. ☎ 010-9876-8282">
 ${CSS}
 <style>
 .ct-wrap{max-width:640px;margin:0 auto;padding:40px 24px 80px}
@@ -2063,7 +2017,7 @@ textarea.ct-input{height:120px;resize:vertical}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="ct-wrap">
  <h1 class="ct-title">📞 상담 문의</h1>
- <p class="ct-desc">카드단말기·포스기·키오스크·CCTV·테이블오더·무인결제기·매장 철거까지<br>무엇이든 편하게 문의하세요.</p>
+ <p class="ct-desc">카드단말기·포스기·키오스크·CCTV·테이블오더·매장 철거까지<br>무엇이든 편하게 문의하세요.</p>
  <a href="tel:010-9876-8282" class="ct-tel">
  <div class="ct-tel-ic">📞</div>
  <div>
@@ -2071,7 +2025,6 @@ textarea.ct-input{height:120px;resize:vertical}
  <div class="ct-tel-sub">전화 상담 (가장 빠른 방법)</div>
  </div>
  </a>
- </div>
  <div class="ct-form" id="ct-form">
  <h3>✍️ 온라인 문의</h3>
  <div class="ct-field">
@@ -2099,8 +2052,7 @@ textarea.ct-input{height:120px;resize:vertical}
  <option>🤖 키오스크</option>
  <option>📷 CCTV</option>
  <option>📋 테이블오더</option>
- <option>🏪 무인결제기</option>
- <option>🔨 매장 철거</option>
+  <option>🔨 매장 철거</option>
  <option>📦 패키지 (여러 장비)</option>
  <option>기타</option>
  </select>
@@ -2144,7 +2096,7 @@ textarea.ct-input{height:120px;resize:vertical}
 (function(){
  var p=new URLSearchParams(location.search).get('product');
  if(p){
- var map={card:'💳 카드단말기',pos:'🖥️ 포스기(POS)',kiosk:'🤖 키오스크',cctv:'📷 CCTV',tableorder:'📋 테이블오더',unmanned:'🏪 무인결제기',removal:'🔨 매장 철거',package:'📦 패키지 (여러 장비)'};
+ var map={card:'💳 카드단말기',pos:'🖥️ 포스기(POS)',kiosk:'🤖 키오스크',cctv:'📷 CCTV',tableorder:'📋 테이블오더',removal:'🔨 매장 철거',package:'📦 패키지 (여러 장비)'};
  var v=map[p];
  if(v){var sel=document.getElementById('ct-product');for(var i=0;i<sel.options.length;i++){if(sel.options[i].text===v){sel.selectedIndex=i;break;}}}
  }
