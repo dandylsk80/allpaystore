@@ -6886,7 +6886,7 @@ a{text-decoration:none;color:inherit}
     <nav class="hd-nav">
       <a href="#find-sec">지역별 설치</a>
       <a href="#prod-sec">제품 안내</a>
-      <a href="tel:010-9876-8282" style="color:#111;font-weight:800">문의하기</a>
+      <a href="/contact/" style="color:#111;font-weight:800">문의하기</a>
     </nav>
     <a href="tel:010-9876-8282" class="hd-tel">📞 010-9876-8282</a>
   </div>
