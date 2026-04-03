@@ -5511,7 +5511,7 @@ ${CSS}
 <body>
 <nav class="gnb"><div class="gnb-in">
   <a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a>
-  <div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
+  <div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
 <div class="wrap" style="padding-top:28px">
@@ -5558,7 +5558,7 @@ ${CSS}
     <h3>${prd.emoji} ${emd} ${prd.ko} 무료 견적 받기</h3>
     <p>${isRemoval?`${full} 매장·사무실·가게 철거를 전문 엔지니어팀이 책임집니다.<br>정밀 현장 분석 · 정찰제 · 원상복구 · 폐기물 적법 처리`:`${full} 매장에 딱 맞는 ${prd.ko}를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 통합 상담`}</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+    <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
   </div>
 
   <div class="foot-nav">
@@ -5698,7 +5698,7 @@ function makeSidoPage(sidoSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sidoSlug}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   
   <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
@@ -5794,7 +5794,7 @@ ${CSS}
     <h3>📞 ${short} 무료 견적 받기</h3>
     <p>${sidoName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+    <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${sidoName} 카드단말기·포스기·키오스크 설치 전문"}</script>
@@ -5830,7 +5830,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
 <link rel="canonical" href="https://allpaystore.com/blog/${sgKey}/">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
     <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
@@ -5933,7 +5933,7 @@ ${CSS}
     <h3>📞 ${sgName} 무료 견적 받기</h3>
     <p>${sidoName} ${sgName} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+    <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","description":"${sgName} 카드단말기·포스기·키오스크 설치 전문"}</script>
@@ -5979,7 +5979,7 @@ function makeProductLandingPage(prodKey){
 <meta name="description" content="전국 ${prd.ko} ${suf} 전문. ${pd.d} 무료 견적 ☎ 010-9876-8282">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:240px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('${photo}') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:24px">
     <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · 전국 5,000+ 읍면동</div>
@@ -6084,7 +6084,7 @@ ${CSS}
     <h3>${prd.emoji} ${prd.ko} 무료 견적 받기</h3>
     <p>전국 어디서든 ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+    <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
 <div class="fl-wrap">
@@ -6117,7 +6117,7 @@ function makeProductSidoPage(prodKey,sidoSlug){
 <meta name="description" content="${sidoName} ${prd.ko} ${suf} 전문. ${short} 전 지역 ${dongCount}개 읍면동 직접 방문. 설치비 무료, 월 이용료 무료. ☎ 010-9876-8282">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/${prodKey}/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/${prodKey}/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
     <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=300&fit=crop&q=80" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
@@ -6209,7 +6209,7 @@ ${CSS}
     <h3>${prd.emoji} ${short} ${prd.ko} 무료 견적 받기</h3>
     <p>${sidoName} ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+    <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
 <div class="fl-wrap">
@@ -6241,7 +6241,7 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
 <meta name="description" content="${sidoName} ${sgName} ${prd.ko} ${suf} 전문. ${sgName} ${dongs.length}개 읍면동 직접 방문. 설치비 무료. ☎ 010-9876-8282">
 ${CSS}
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/product/${prodKey}/${sidoSlug}/">지역별</a><a href="/product/${prodKey}/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/product/${prodKey}/${sidoSlug}/">지역별</a><a href="/product/${prodKey}/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
   <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
     <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
@@ -6326,7 +6326,7 @@ ${CSS}
     <h3>${prd.emoji} ${sgName} ${prd.ko} 무료 견적 받기</h3>
     <p>${sgName} ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+    <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
   </div>
 </div>
 <div class="fl-wrap">
@@ -6369,7 +6369,7 @@ ${CSS}
 <body>
 <nav class="gnb"><div class="gnb-in">
   <a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a>
-  <div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div>
+  <div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div>
   <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
 <div class="wrap" style="padding-top:28px">
@@ -6469,7 +6469,7 @@ ${CSS}
     <h3>📞 ${emd} 카드단말기 무료 견적 받기</h3>
     <p>${full} 매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV 통합 상담</p>
     <a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a>
-    <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a>
+    <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
   </div>
 
   <div class="foot-nav">
@@ -6545,7 +6545,7 @@ function makeBlogList(){
 .note{text-align:center;margin-top:32px;color:#aaa;font-size:13px}
 </style>
 </head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="hero"><h1>전국 카드단말기·포스기 설치 지역</h1><p>전국 ${total.toLocaleString()}개 읍면동 전 지역 방문 설치 · 무료 견적 · 빠른 설치</p></div>
 <div class="wrap" style="padding-top:28px">
   <div class="tabs">${tabs}</div>
@@ -7047,7 +7047,7 @@ a{text-decoration:none;color:inherit}
         <div class="sc-feat"><span class="sc-dot" style="background:#7C3AED"></span><b>보험료 절감 혜택</b> — CCTV 설치 매장은 화재·도난 보험료 10~20% 할인이 적용됩니다</div>
       </div>
       <div style="display:flex;gap:12px;margin-top:24px;align-items:center;flex-wrap:wrap">
-        <a href="tel:010-9876-8282" class="sc-btn" style="background:#7C3AED">📷 CCTV 무료 견적 받기</a>
+        <a href="/contact/?product=cctv" class="sc-btn" style="background:#7C3AED">📷 CCTV 무료 견적 받기</a>
         <span style="font-size:12px;color:#999">설치비 무료 · 월 이용료 무료</span>
       </div>
     </div>
@@ -7083,7 +7083,7 @@ a{text-decoration:none;color:inherit}
         <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>원격 관리 및 유지보수</b><br>문제 발생 시 즉시 원격 제어 가능. 현장 방문 없이 대부분의 장애 해결.</div></div>
         <div class="sc-feat"><span class="sc-dot" style="background:#6C63FF"></span><div><b>카드·간편결제 지원</b><br>카드·삼성페이·카카오페이·제로페이 등 모든 결제 수단 지원.</div></div>
       </div>
-      <a href="tel:010-9876-8282" class="sc-btn" style="background:#1a1a2e">🏭 LK 밴딩머신 상담 받기</a>
+      <a href="/contact/?product=unmanned" class="sc-btn" style="background:#1a1a2e">🏭 LK 밴딩머신 상담 받기</a>
     </div>
   </div>
 </section>
@@ -7114,7 +7114,7 @@ a{text-decoration:none;color:inherit}
         <div class="rm-item"><div class="rm-q"><b>합리적 정찰제</b><span>+</span></div><div class="rm-a">현장 분석 후 견적을 확정하며, 추가 비용 없는 정찰제로 운영합니다. 견적 대비 추가 청구가 없습니다.</div></div>
         <div class="rm-item"><div class="rm-q"><b>100% 사후 책임</b><span>+</span></div><div class="rm-a">철거 완료 후 하자가 발견되면 무상으로 보수합니다. 시공 보증서를 발급해드립니다.</div></div>
       </div>
-      <a href="tel:010-9876-8282" class="sc-btn" style="background:#DC2626;margin-top:24px">🔨 철거 무료 견적 받기</a>
+      <a href="/contact/?product=removal" class="sc-btn" style="background:#DC2626;margin-top:24px">🔨 철거 무료 견적 받기</a>
     </div>
   </div>
 </section>
@@ -7315,6 +7315,167 @@ document.querySelectorAll('.rm-q').forEach(q=>{
 </body></html>`;
 }
 
+function makeContactPage(){
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
+<title>상담 문의 | 올페이스토어</title>
+<meta name="description" content="올페이스토어 상담 문의. 카드단말기·포스기·키오스크·CCTV·테이블오더·무인결제기·매장 철거 무료 견적. ☎ 010-9876-8282">
+${CSS}
+<style>
+.ct-wrap{max-width:640px;margin:0 auto;padding:40px 24px 80px}
+.ct-title{font-size:28px;font-weight:900;color:#111;margin-bottom:8px}
+.ct-desc{font-size:15px;color:#666;line-height:1.7;margin-bottom:32px}
+.ct-tel{display:flex;align-items:center;gap:12px;padding:20px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;margin-bottom:32px;text-decoration:none;color:#111;transition:background .2s}
+.ct-tel:hover{background:#dcfce7}
+.ct-tel-ic{width:48px;height:48px;background:#10B981;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;flex-shrink:0}
+.ct-tel-num{font-size:22px;font-weight:900;color:#111}
+.ct-tel-sub{font-size:12px;color:#888;margin-top:2px}
+.ct-form{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.ct-form h3{font-size:18px;font-weight:800;color:#111;margin-bottom:20px}
+.ct-field{margin-bottom:16px}
+.ct-field label{display:block;font-size:13px;font-weight:700;color:#333;margin-bottom:6px}
+.ct-field label span{color:#DC2626;margin-left:2px}
+.ct-input{width:100%;padding:12px 14px;border:1px solid #d1d5db;border-radius:10px;font-size:15px;font-family:inherit;outline:none;transition:border .2s;box-sizing:border-box}
+.ct-input:focus{border-color:#111;box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+.ct-select{width:100%;padding:12px 14px;border:1px solid #d1d5db;border-radius:10px;font-size:15px;font-family:inherit;outline:none;background:#fff;transition:border .2s;box-sizing:border-box;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23666'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.ct-select:focus{border-color:#111;box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+textarea.ct-input{height:120px;resize:vertical}
+.ct-submit{width:100%;padding:16px;background:#111;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;transition:background .2s}
+.ct-submit:hover{background:#333}
+.ct-note{font-size:11px;color:#999;margin-top:12px;text-align:center;line-height:1.6}
+.ct-success{display:none;text-align:center;padding:40px 20px}
+.ct-success.show{display:block}
+.ct-success-ic{font-size:48px;margin-bottom:16px}
+.ct-success-title{font-size:22px;font-weight:900;color:#111;margin-bottom:8px}
+.ct-success-desc{font-size:14px;color:#666;line-height:1.7}
+</style>
+</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+
+<div class="ct-wrap">
+  <h1 class="ct-title">📞 상담 문의</h1>
+  <p class="ct-desc">카드단말기·포스기·키오스크·CCTV·테이블오더·무인결제기·매장 철거까지<br>무엇이든 편하게 문의하세요.</p>
+
+  <a href="tel:010-9876-8282" class="ct-tel">
+    <div class="ct-tel-ic">📞</div>
+    <div>
+      <div class="ct-tel-num">010-9876-8282</div>
+      <div class="ct-tel-sub">전화 상담 (가장 빠른 방법)</div>
+    </div>
+  </a>
+
+  </div>
+
+  <div class="ct-form" id="ct-form">
+    <h3>✍️ 온라인 문의</h3>
+    <div class="ct-field">
+      <label>상호(이름)<span>*</span></label>
+      <input type="text" class="ct-input" id="ct-name" placeholder="상호 또는 이름을 입력하세요">
+    </div>
+    <div class="ct-field">
+      <label>연락처<span>*</span></label>
+      <input type="tel" class="ct-input" id="ct-phone" placeholder="010-0000-0000">
+    </div>
+    <div class="ct-field">
+      <label>주소<span>*</span></label>
+      <div style="display:flex;gap:8px;margin-bottom:8px">
+        <input type="text" class="ct-input" id="ct-addr" placeholder="주소 검색을 클릭하세요" readonly style="flex:1;background:#f9fafb;cursor:pointer" onclick="searchAddr()">
+        <button type="button" onclick="searchAddr()" style="padding:12px 16px;background:#111;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">주소 검색</button>
+      </div>
+      <input type="text" class="ct-input" id="ct-addr2" placeholder="상세주소 입력 (건물명, 층, 호수 등)">
+    </div>
+    <div class="ct-field">
+      <label>문의 제품<span>*</span></label>
+      <select class="ct-select" id="ct-product">
+        <option value="">선택해주세요</option>
+        <option>💳 카드단말기</option>
+        <option>🖥️ 포스기(POS)</option>
+        <option>🤖 키오스크</option>
+        <option>📷 CCTV</option>
+        <option>📋 테이블오더</option>
+        <option>🏪 무인결제기</option>
+        <option>🔨 매장 철거</option>
+        <option>📦 패키지 (여러 장비)</option>
+        <option>기타</option>
+      </select>
+    </div>
+    <div class="ct-field">
+      <label>업종</label>
+      <select class="ct-select" id="ct-biz">
+        <option value="">선택해주세요</option>
+        <option>음식점 (한식·중식·일식·양식)</option>
+        <option>카페·디저트·베이커리</option>
+        <option>편의점·슈퍼·소매점</option>
+        <option>미용실·네일샵·뷰티</option>
+        <option>병원·약국·의원</option>
+        <option>학원·교육</option>
+        <option>스터디카페·코워킹</option>
+        <option>코인세탁소</option>
+        <option>무인매장 (아이스크림·카페)</option>
+        <option>사무실</option>
+        <option>기타</option>
+      </select>
+    </div>
+    <div class="ct-field">
+      <label>문의 내용</label>
+      <textarea class="ct-input" id="ct-msg" placeholder="매장 위치, 현재 사용 장비, 궁금한 점 등을 자유롭게 적어주세요."></textarea>
+    </div>
+    <button class="ct-submit" onclick="submitForm()">문의 접수하기</button>
+    <p class="ct-note">접수 후 영업시간 내 빠르게 연락드리겠습니다.<br>급하시면 📞 010-9876-8282로 전화 주세요.</p>
+  </div>
+
+  <div class="ct-success" id="ct-success">
+    <div class="ct-success-ic">✅</div>
+    <div class="ct-success-title">문의가 접수되었습니다</div>
+    <div class="ct-success-desc">빠른 시일 내 연락드리겠습니다.<br>급하시면 <a href="tel:010-9876-8282" style="color:#111;font-weight:800">📞 010-9876-8282</a>로 전화 주세요.</div>
+  </div>
+</div>
+
+<div class="fl-wrap">
+  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+  <a href="tel:010-9876-8282" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
+</div>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('product');
+  if(p){
+    var map={card:'💳 카드단말기',pos:'🖥️ 포스기(POS)',kiosk:'🤖 키오스크',cctv:'📷 CCTV',tableorder:'📋 테이블오더',unmanned:'🏪 무인결제기',removal:'🔨 매장 철거',package:'📦 패키지 (여러 장비)'};
+    var v=map[p];
+    if(v){var sel=document.getElementById('ct-product');for(var i=0;i<sel.options.length;i++){if(sel.options[i].text===v){sel.selectedIndex=i;break;}}}
+  }
+})();
+function searchAddr(){
+  new daum.Postcode({
+    oncomplete:function(data){
+      document.getElementById('ct-addr').value=data.roadAddress||data.jibunAddress;
+      document.getElementById('ct-addr2').focus();
+    }
+  }).open();
+}
+function submitForm(){
+  const name=document.getElementById('ct-name').value.trim();
+  const phone=document.getElementById('ct-phone').value.trim();
+  if(!name){alert('상호(이름)을 입력해주세요.');return;}
+  if(!phone){alert('연락처를 입력해주세요.');return;}
+  const addr=document.getElementById('ct-addr').value.trim();
+  if(!addr){alert('주소를 검색해주세요.');return;}
+  const addr2=document.getElementById('ct-addr2').value.trim();
+  const product=document.getElementById('ct-product').value;
+  if(!product){alert('문의 제품을 선택해주세요.');return;}
+  const biz=document.getElementById('ct-biz').value;
+  const msg=document.getElementById('ct-msg').value.trim();
+  const body='[올페이스토어 문의]%0A이름: '+encodeURIComponent(name)+'%0A연락처: '+encodeURIComponent(phone)+'%0A주소: '+encodeURIComponent(addr+' '+addr2)+'%0A업종: '+encodeURIComponent(biz)+'%0A문의제품: '+encodeURIComponent(product)+'%0A내용: '+encodeURIComponent(msg);
+  window.open('mailto:dandylsk@naver.com?subject='+encodeURIComponent('[올페이스토어] '+name+' 문의')+'&body='+body);
+  document.getElementById('ct-form').style.display='none';
+  document.getElementById('ct-success').classList.add('show');
+}
+</script>
+</body></html>`;
+}
+
 export default {
   async fetch(request){
     const url=new URL(request.url);
@@ -7328,6 +7489,10 @@ export default {
       return Response.redirect('https://allpaystore.com/', 301);
     if(path==='/blog')
       return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+
+    if(path==='/contact'){
+      return new Response(makeContactPage(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+    }
 
     const prodMatch=path.match(/^\/product\/([a-z]+)$/);
     if(prodMatch && PRODUCTS[prodMatch[1]]){
@@ -7350,9 +7515,9 @@ export default {
       const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
       const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png"><title>제품 안내 | 올페이스토어</title>${CSS}</head><body>
-<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/" style="color:#fff;font-weight:800">제품 안내</a><a href="tel:010-9876-8282" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/" style="color:#fff;font-weight:800">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px"><h1 style="font-size:28px;font-weight:900;color:#111;margin-bottom:24px">📦 제품 안내</h1><p style="font-size:15px;color:#666;margin-bottom:32px">매장에 필요한 장비를 선택하세요. 설치비 무료 · 월 이용료 무료 · 빠른 설치</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${prodLinks}</div>
-<div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="tel:010-9876-8282" class="cta-sub">💬 상담 문의</a></div></div><div class="fl-wrap">
+<div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a></div></div><div class="fl-wrap">
   <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
   <a href="tel:010-9876-8282" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
 </div>
