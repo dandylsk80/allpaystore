@@ -2078,7 +2078,7 @@ textarea.ct-input{height:120px;resize:vertical}
  <label>문의 내용</label>
  <textarea class="ct-input" id="ct-msg" placeholder="매장 위치, 현재 사용 장비, 궁금한 점 등을 자유롭게 적어주세요."></textarea>
  </div>
- <button class="ct-submit" onclick="submitForm()">문의 접수하기</button>
+ <button type="button" class="ct-submit" onclick="event.preventDefault();submitForm();return false;">문의 접수하기</button>
  <p class="ct-note">접수 후 영업시간 내 빠르게 연락드리겠습니다.<br>급하시면 📞 010-9876-8282로 전화 주세요.</p>
  </div>
  <div class="ct-success" id="ct-success">
