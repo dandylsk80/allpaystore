@@ -2153,7 +2153,7 @@ export default {
   const data=await request.json();
   const p=new URLSearchParams();
   Object.keys(data).forEach(k=>p.append(k,data[k]||''));
-  const gsUrl='https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec?'+p.toString();
+  const gsUrl='https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZlOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec?'+p.toString();
   await fetch(gsUrl,{method:'GET',redirect:'follow'});
  }catch(e){}
  return new Response(JSON.stringify({ok:true}),{headers:{'Content-Type':'application/json'}});
