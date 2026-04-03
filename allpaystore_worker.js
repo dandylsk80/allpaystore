@@ -2110,21 +2110,23 @@ function searchAddr(){
  }).open();
 }
 function submitForm(){
- const name=document.getElementById('ct-name').value.trim();
- const phone=document.getElementById('ct-phone').value.trim();
+ var name=document.getElementById('ct-name').value.trim();
+ var phone=document.getElementById('ct-phone').value.trim();
  if(!name){alert('상호(이름)을 입력해주세요.');return;}
  if(!phone){alert('연락처를 입력해주세요.');return;}
- const addr=document.getElementById('ct-addr').value.trim();
+ var addr=document.getElementById('ct-addr').value.trim();
  if(!addr){alert('주소를 검색해주세요.');return;}
- const addr2=document.getElementById('ct-addr2').value.trim();
- const product=document.getElementById('ct-product').value;
+ var addr2=document.getElementById('ct-addr2').value.trim();
+ var product=document.getElementById('ct-product').value;
  if(!product){alert('문의 제품을 선택해주세요.');return;}
- const biz=document.getElementById('ct-biz').value;
- const msg=document.getElementById('ct-msg').value.trim();
- const btn=document.querySelector('.ct-submit');
+ var biz=document.getElementById('ct-biz').value;
+ var msg=document.getElementById('ct-msg').value.trim();
+ var btn=document.querySelector('.ct-submit');
  btn.textContent='접수 중...';btn.disabled=true;
- fetch('/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,addr:addr+' '+addr2,product,biz,msg})})
- .then(function(){
+ var url='https://script.google.com/macros/s/AKfycbwo7fOHwAJXAUICYoA8ZDp_MXqeiiZIOf_KBv-MHMWon7ZKTZl9d3MOMsykoyjGhK0/exec';
+ var fd=new FormData();
+ fd.append('data',JSON.stringify({name:name,phone:phone,addr:addr+' '+addr2,product:product,biz:biz,msg:msg}));
+ fetch(url,{method:'POST',body:fd,mode:'no-cors'}).then(function(){
   document.getElementById('ct-form').style.display='none';
   document.getElementById('ct-success').classList.add('show');
  }).catch(function(){
