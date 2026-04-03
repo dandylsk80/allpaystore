@@ -5193,10 +5193,10 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   <p>${pk([`올페이스토어의 ${emd} 카드단말기 설치는 다음 순서로 진행됩니다.`,`${emd} 매장에 카드단말기를 설치하는 전 과정을 안내드립니다.`,`${emd} 사장님이 전화 한 통이면 시작되는 카드단말기 설치 과정입니다.`],h)}</p>
   <ul class="ck">
     <li><strong>1단계 ${pk(['전화·카톡 상담','무료 전화 상담','간편 온라인 접수'],h)}</strong> — ${pk(['업종, 매장 규모, 기존 장비 여부를 확인합니다',`${emd} 매장 업종과 필요 사항을 파악합니다`,'매장 상황에 맞는 최적의 솔루션을 사전 안내합니다'],h)}</li>
-    <li><strong>2단계 무료 방문 견적</strong> — ${pk([`${emd} 매장을 직접 방문해 최적 단말기를 추천합니다`,'매장 환경과 카운터 위치를 분석하여 설치 위치를 확정합니다',`${emd} 전 지역 직접 방문, 매장 동선에 맞는 단말기 배치를 설계합니다`],h2)}</li>
+    <li><strong>2단계 무료 견적</strong> — ${pk([`${emd} 매장을 직접 방문해 최적 단말기를 추천합니다`,'매장 환경과 카운터 위치를 분석하여 설치 위치를 확정합니다',`${emd} 전 지역 직접 방문, 매장 동선에 맞는 단말기 배치를 설계합니다`],h2)}</li>
     <li><strong>3단계 빠른 설치</strong> — ${pk(['IC·NFC·QR 모든 결제를 테스트 완료합니다','단말기 세팅부터 결제 테스트까지 현장에서 완료합니다','VAN사 개통부터 카드·간편결제 테스트까지 원스톱 완료'],h)}</li>
     <li><strong>4단계 사용법 교육</strong> — ${pk(['사장님과 직원 모두 바로 사용할 수 있도록 교육합니다','정산 확인, 취소 처리, 영수증 출력 등 실무 교육을 진행합니다','매뉴얼 없이도 바로 쓸 수 있도록 실습 중심 교육'],h2)}</li>
-    <li><strong>5단계 A/S 보증</strong> — ${pk(['1~3년 무상 A/S, 장애 시 원격 또는 당일 방문 조치합니다','장비 장애 발생 시 원격 우선 → 미해결 시 당일 출동 서비스','고장·오류 발생 시 전화 한 통이면 빠르게 해결합니다'],h)}</li>
+    <li><strong>5단계 A/S 보증</strong> — ${pk(['1~3년 무상 A/S, 장애 시 원격 지원으로 빠르게 해결합니다','장비 장애 발생 시 원격 우선 → 미해결 시 빠른 현장 출동 서비스','고장·오류 발생 시 전화 한 통이면 빠르게 해결합니다'],h)}</li>
   </ul>
 
   <h2>🔗 ${pk(['카드단말기와 함께 설치하면 좋은 장비','카드단말기 + 연동 장비 패키지','매출을 더 올리는 연동 장비 조합'],h)}</h2>
@@ -5242,14 +5242,14 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   <div class="box yellow">💡 <strong>${emd} 사장님 Tip:</strong> ${pk([
     `포스기를 올페이스토어에서 카드단말기와 함께 설치하면 연동 세팅 무료 + 메뉴 등록 대행 서비스를 제공합니다.`,
     `${emd} ${p.biz[0]} 매장에 가장 인기 있는 포스기는 클라우드형입니다. 스마트폰에서도 실시간 매출을 확인할 수 있어 매장을 떠나 있어도 안심입니다.`,
-    `포스기 교체를 고민 중이시라면, 기존 메뉴·상품 데이터를 100% 이전해드립니다. 영업 중단 없이 당일 교체 완료.`,
+    `포스기 교체를 고민 중이시라면, 기존 메뉴·상품 데이터를 100% 이전해드립니다. 영업 중단 없이 빠른 교체 완료.`,
     `배달 매출이 전체의 30% 이상인 매장이라면 배달 3사 자동 연동 포스기를 강력 추천합니다. 주문 누락이 사라집니다.`
   ],h)}</div>
 
   <h2>⚡ ${emd} 포스기 설치 프로세스</h2>
   <ul class="ck">
     <li><strong>1단계</strong> — ${pk(['업종·메뉴 구조·배달 여부 사전 분석',`${emd} 매장 업종과 운영 방식 파악`],h)}</li>
-    <li><strong>2단계</strong> — ${pk([`${emd} 매장 방문, 카운터 동선·테이블 배치 확인`,'무료 방문 견적, 매장 환경에 맞는 포스기 추천'],h2)}</li>
+    <li><strong>2단계</strong> — ${pk([`${emd} 매장 방문, 카운터 동선·테이블 배치 확인`,'무료 견적, 매장 환경에 맞는 포스기 추천'],h2)}</li>
     <li><strong>3단계</strong> — ${pk(['포스기 설치 + 카드단말기 연동 + 주방 프린터 연결','장비 설치·세팅·결제 테스트 완료'],h)}</li>
     <li><strong>4단계</strong> — ${pk(['메뉴·상품 등록, 배달 앱 연동, 결제 테스트','메뉴 사진 촬영·등록 무료 대행, 배달 3사 연동'],h2)}</li>
     <li><strong>5단계</strong> — ${pk([`사장님·직원 교육 후 실운영 시작`,'실습 중심 교육 + 1~3년 무상 A/S 보장'],h)}</li>
@@ -5353,7 +5353,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
   <h2>⚡ ${pk([""+emd+" 테이블오더 설치 프로세스",""+emd+" 테이블오더 설치, 이렇게 진행됩니다","전화 한 통이면 시작 — "+emd+" 테이블오더 설치 과정"],h2)}</h2>
   <ul class="ck">
     <li><strong>1단계 무료 상담:</strong> ${pk(["매장 업종·테이블 수·메뉴 구성을 상담합니다",""+emd+" 매장 업종과 좌석 수를 파악하여 최적의 방식을 추천합니다","전화 또는 카카오톡으로 간편하게 상담을 시작합니다"],h)}</li>
-    <li><strong>2단계 무료 방문 견적:</strong> ${pk([""+emd+" 매장을 직접 방문하여 테이블 배치와 동선을 분석합니다",""+emd+" 현장 방문 후 매장 구조에 맞는 최적의 테이블오더 방식을 추천합니다","테이블 수·좌석 배치·메뉴 특성을 분석하여 맞춤 설계합니다"],h2)}</li>
+    <li><strong>2단계 무료 견적:</strong> ${pk([""+emd+" 매장을 직접 방문하여 테이블 배치와 동선을 분석합니다",""+emd+" 현장 방문 후 매장 구조에 맞는 최적의 테이블오더 방식을 추천합니다","테이블 수·좌석 배치·메뉴 특성을 분석하여 맞춤 설계합니다"],h2)}</li>
     <li><strong>3단계 메뉴 등록:</strong> ${pk(["메뉴 사진 촬영·등록을 무료로 대행합니다. 카테고리·옵션 설정까지 완료","전문 사진작가가 메뉴 사진을 촬영하고, 카테고리·옵션·가격을 등록합니다","메뉴판을 디지털로 옮기는 작업을 올페이스토어가 모두 대행합니다"],h2)}</li>
     <li><strong>4단계 장비 설치:</strong> ${pk(["QR코드 스티커 부착 또는 태블릿 설치, 포스기·주방 프린터 연동 완료","각 테이블에 QR 또는 태블릿을 배치하고, 주방 KDS와 완벽 연동합니다","설치·연동·결제 테스트를 현장에서 모두 완료합니다. 영업 중단 최소화"],h2)}</li>
     <li><strong>5단계 교육:</strong> ${pk(["사장님과 직원에게 테이블오더 관리 방법을 교육합니다","메뉴 변경·가격 수정·주문 확인 방법을 실습으로 교육합니다","별도 매뉴얼 없이 바로 운영할 수 있도록 실습 중심 교육"],h)}</li>
@@ -5525,7 +5525,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${emd} ${prd.ko} ${suf} | ${sigungu} ${prd.ko} ${suf} 올페이스토어</title>
-<meta name="description" content="${full} ${prd.ko} ${suf}. ${emd} 매장·사무실·가게 ${prd.ko} 무료 방문 견적, 당일 ${act} 가능. ☎ 010-9876-8282">
+<meta name="description" content="${full} ${prd.ko} ${suf}. ${emd} 매장·사무실·가게 ${prd.ko} 무료 견적, 빠른 ${act} 가능. ☎ 010-9876-8282">
 <meta name="keywords" content="${emd} ${prd.ko},${emd} 매장 ${prd.ko},${sigungu} ${prd.ko},${emd} ${prd.ko} 비용,${emd} ${prd.ko} 업체,${emd} 인테리어 철거,${emd} 원상복구">
 <meta property="og:title" content="${emd} ${prd.ko} ${suf} | 올페이스토어">
 <meta property="og:description" content="${full} ${prd.ko} ${suf}. 무료 견적 010-9876-8282">
@@ -5551,7 +5551,7 @@ ${CSS}
   ],h)}</h1>
   <div class="intro">${pk([
     `<strong>${full}</strong>에서 ${isRemoval?'매장·사무실·가게 철거':prd.ko+' '+suf}를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 <strong>무료 견적부터 ${isRemoval?'철거 시공, 원상복구까지':'빠른 설치, A/S까지'}</strong> 책임집니다.`,
-    `<strong>${emd}</strong> 지역에서 ${isRemoval?'매장 철거가 필요하신':prd.ko+'를 찾고 계신'} 사장님, 올페이스토어가 ${isRemoval?'정밀 현장 분석부터 폐기물 처리까지':'무료 방문 견적부터 설치·교육까지'} 원스톱으로 해결해드립니다.`,
+    `<strong>${emd}</strong> 지역에서 ${isRemoval?'매장 철거가 필요하신':prd.ko+'를 찾고 계신'} 사장님, 올페이스토어가 ${isRemoval?'정밀 현장 분석부터 폐기물 처리까지':'무료 견적부터 설치·교육까지'} 원스톱으로 해결해드립니다.`,
     `<strong>${sido} ${sigungu} ${emd}</strong>에서 ${bi} 등의 매장을 운영하신다면, ${isRemoval?'전문 철거 업체 선택이 보증금을 지키는 핵심입니다':'최신 '+prd.ko+'가 매출 향상의 열쇠입니다'}. 올페이스토어가 ${emd} 전 지역을 직접 방문합니다.`,
     `<strong>${full}</strong>은 ${densityWord} 상권입니다. ${isRemoval?'매장 정리를 계획 중이시라면 올페이스토어 전문 엔지니어팀이 안전하고 신속하게 도와드립니다':'이 지역 매장에 최적화된 '+prd.ko+'를 올페이스토어가 직접 방문 설치합니다'}.`
   ],h2)} ${areaDesc}</div>
@@ -5563,7 +5563,7 @@ ${CSS}
 
   <div class="g4">
     <div class="card"><div class="ic">🏆</div><div class="lb">${pk(['누적 설치','설치 실적','시공 건수'],h)}</div><div class="vl">${installCnt}+건</div></div>
-    <div class="card"><div class="ic">⚡</div><div class="lb">${pk(['최단 설치','빠른 시공','신속 완료'],h2)}</div><div class="vl">${pk(['당일 완료','즉일 가능','빠른 처리'],h)}</div></div>
+    <div class="card"><div class="ic">⚡</div><div class="lb">${pk(['최단 설치','빠른 시공','신속 완료'],h2)}</div><div class="vl">${pk(['빠른 완료','신속 처리','빠른 처리'],h)}</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">${pk(['방문 견적','견적 비용','출장 견적'],h)}</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">${pk(['A/S 보증','무상 A/S','사후 관리'],h2)}</div><div class="vl">${pk(['1~3년','최대 3년','장기 보장'],h)}</div></div>
   </div>
@@ -5571,12 +5571,12 @@ ${CSS}
   ${content}
 
   <h2>❓ ${emd} ${prd.ko} ${suf} ${pk(['자주 묻는 질문','궁금한 점 총정리','Q&A'],h)}</h2>
-  <div class="faq"><div class="faq-q">Q. ${pk([`${emd}에서 ${prd.ko} 당일 ${act}가 가능한가요?`,`${emd} 지역도 빠른 ${act}가 되나요?`,`${sido} ${emd}까지 출장 ${act}가 가능한가요?`],h)}</div><div class="faq-a">${pk([
-    `네, 가능합니다. 올페이스토어는 ${sido} 전 지역 직접 방문 서비스를 제공하며, ${isRemoval?'현장 규모에 따라 당일~3일 내 철거를 완료합니다.':'오전 상담 시 당일 오후 빠른 설치도 가능합니다.'}`,
-    `물론입니다. ${emd}을 포함한 ${sigungu} 전 지역에 직접 방문하며, ${isRemoval?'소규모 매장은 당일 철거도 가능합니다.':'장비 재고 상황에 따라 당일 설치를 진행합니다.'}`,
-    `${sido} ${sigungu} ${emd} 지역은 올페이스토어의 직접 ${act} 서비스 범위에 포함됩니다. ${isRemoval?'현장 규모에 따라 일정을 조율해드립니다.':'대부분 1~2시간 내 설치가 완료됩니다.'}`
+  <div class="faq"><div class="faq-q">Q. ${pk([`${emd}에서 ${prd.ko} 빠른 ${act}가 가능한가요?`,`${emd} 지역도 빠른 ${act}가 되나요?`,`${sido} ${emd}까지 출장 ${act}가 가능한가요?`],h)}</div><div class="faq-a">${pk([
+    `네, 가능합니다. 올페이스토어는 ${sido} 전 지역 직접 방문 서비스를 제공하며, ${isRemoval?'현장 규모에 따라 빠른 일정으로 철거를 완료합니다.':'상담 후 빠른 설치를 진행합니다.'}`,
+    `물론입니다. ${emd}을 포함한 ${sigungu} 전 지역에 직접 방문하며, ${isRemoval?'소규모 매장은 빠른 철거가 가능합니다.':'장비 재고 확인 후 빠른 설치를 진행합니다.'}`,
+    `${sido} ${sigungu} ${emd} 지역은 올페이스토어의 직접 ${act} 서비스 범위에 포함됩니다. ${isRemoval?'현장 규모에 따라 일정을 조율해드립니다.':'빠른 설치가 완료됩니다.'}`
   ],h)}</div></div>
-  <div class="faq"><div class="faq-q">Q. ${pk([`${prd.ko} 비용은 얼마인가요?`,`${emd} ${prd.ko} ${act} 비용이 궁금합니다`,`${prd.ko} ${isRemoval?'철거비':'설치비'}는 얼마나 드나요?`],h2)}</div><div class="faq-a">${isRemoval?pk(['매장 면적과 구조에 따라 다르며, 무료 현장 방문 후 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않습니다.','현장 분석 후 정찰제로 견적을 확정하며, 소상공인 대상 정부 보조금(희망리턴패키지)으로 비용을 절감할 수 있습니다.','무료 방문 견적 후 정확한 비용을 안내드립니다. 정찰제 운영으로 추가 비용이 없으며, 보조금 신청도 도와드립니다.'],h):pk(['설치비 무료, 월 이용료 무료로 진행됩니다. VAN사 제휴를 통해 설치비를 전액 지원합니다.','올페이스토어는 설치비·월 이용료 모두 무료입니다. 카드 결제 시 VAN사 수수료만 정상 부과됩니다.',`${emd} 지역 ${p.biz[0]} 매장 기준, 설치비와 월 이용료 모두 무료입니다. 패키지 설치 시 추가 할인도 적용됩니다.`],h2)}</div></div>
+  <div class="faq"><div class="faq-q">Q. ${pk([`${prd.ko} 비용은 얼마인가요?`,`${emd} ${prd.ko} ${act} 비용이 궁금합니다`,`${prd.ko} ${isRemoval?'철거비':'설치비'}는 얼마나 드나요?`],h2)}</div><div class="faq-a">${isRemoval?pk(['매장 면적과 구조에 따라 다르며, 무료 현장 방문 후 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않습니다.','현장 분석 후 정찰제로 견적을 확정하며, 소상공인 대상 정부 보조금(희망리턴패키지)으로 비용을 절감할 수 있습니다.','무료 견적 후 정확한 비용을 안내드립니다. 정찰제 운영으로 추가 비용이 없으며, 보조금 신청도 도와드립니다.'],h):pk(['설치비 무료, 월 이용료 무료로 진행됩니다. VAN사 제휴를 통해 설치비를 전액 지원합니다.','올페이스토어는 설치비·월 이용료 모두 무료입니다. 카드 결제 시 VAN사 수수료만 정상 부과됩니다.',`${emd} 지역 ${p.biz[0]} 매장 기준, 설치비와 월 이용료 모두 무료입니다. 패키지 설치 시 추가 할인도 적용됩니다.`],h2)}</div></div>
   <div class="faq"><div class="faq-q">Q. ${pk(['기존 장비와 연동이 되나요?','다른 장비와 함께 설치할 수 있나요?','A/S는 어떻게 받나요?'],h)}</div><div class="faq-a">${pk([`올페이스토어가 설치하는 ${prd.ko}는 기존 카드단말기·포스기와 호환됩니다. 오래된 장비는 사전 호환성 확인 후 최적의 연동 방안을 안내드립니다.`,`카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다. 장비 간 자동 연동도 포함됩니다.`,`설치 후 1~3년간 무상 A/S를 보장합니다. 장애 발생 시 원격 지원으로 먼저 해결을 시도하고, 안 되면 ${emd} 현장으로 직접 출동합니다.`],h)}</div></div>
 
   <div class="cta">
@@ -5747,7 +5747,7 @@ ${CSS}
   </div>
 
   <h2>💳 ${short} 카드단말기 설치 안내</h2>
-  <p>${sidoName} 매장에서 카드결제를 받으려면 IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기가 필수입니다. 올페이스토어는 ${short} 전 지역에 <strong>설치비 무료, 월 이용료 무료</strong>로 카드단말기를 설치합니다. VAN사별 수수료를 비교 분석하여 가장 유리한 조건을 찾아드리며, 자동커팅단말기·유선단말기·무선단말기·블루투스단말기·토스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 기존 단말기 교체도 무료 방문 견적 후 빠르게 진행됩니다.</p>
+  <p>${sidoName} 매장에서 카드결제를 받으려면 IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기가 필수입니다. 올페이스토어는 ${short} 전 지역에 <strong>설치비 무료, 월 이용료 무료</strong>로 카드단말기를 설치합니다. VAN사별 수수료를 비교 분석하여 가장 유리한 조건을 찾아드리며, 자동커팅단말기·유선단말기·무선단말기·블루투스단말기·토스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 기존 단말기 교체도 무료 견적 후 빠르게 진행됩니다.</p>
 
   <h2>🖥️ ${short} 포스기(POS) 설치 안내</h2>
   <p>포스기는 단순 결제를 넘어 <strong>주문·결제·매출·재고·직원 관리를 통합</strong>하는 매장 운영의 두뇌입니다. ${sidoName} 지역 음식점·카페·편의점·미용실 등 모든 업종에 최적화된 포스기를 설치합니다. 배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 테이블오더 연결, 실시간 매출 분석 대시보드까지 제공합니다. 올페이스토어에서 설치하면 <strong>설치비 무료, 월 이용료 무료, 교육까지 무상</strong>으로 진행됩니다.</p>
@@ -5767,7 +5767,7 @@ ${CSS}
   <h2>⚡ ${short} 설치 프로세스</h2>
   <ul class="ck">
     <li><strong>1단계 무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 장비를 상담합니다</li>
-    <li><strong>2단계 무료 방문 견적</strong> — ${short} 전 지역 직접 방문하여 매장 환경을 분석하고 최적 장비를 추천합니다</li>
+    <li><strong>2단계 무료 견적</strong> — ${short} 전 지역 직접 방문하여 매장 환경을 분석하고 최적 장비를 추천합니다</li>
     <li><strong>3단계 장비 선정</strong> — 업종별 특성에 맞는 카드단말기·포스기·키오스크·CCTV를 선정합니다</li>
     <li><strong>4단계 빠른 설치</strong> — 전문 기사가 직접 방문하여 장비 설치·세팅·테스트를 완료합니다</li>
     <li><strong>5단계 교육</strong> — 사장님과 직원에게 장비 사용법을 교육합니다. 별도 비용 없습니다</li>
@@ -5800,7 +5800,7 @@ ${CSS}
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px">${prodCards}</div>
 
   <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${short} 설치 자주 묻는 질문</h2>
-  <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 설치를 제공합니다. 오전 상담 시 빠른 설치가 가능합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 설치를 제공합니다. 상담 후 빠른 설치가 가능합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 매장 철거도 가능한가요?</div><div class="faq-a">네, ${short} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 책임지고 시공합니다. 정찰제·원상복구·폐기물 적법 처리까지 포함됩니다.</div></div>
 
@@ -5891,7 +5891,7 @@ ${CSS}
   <h2>⚡ ${sgName} 설치 프로세스</h2>
   <ul class="ck">
     <li><strong>1단계 무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 장비를 상담합니다</li>
-    <li><strong>2단계 무료 방문 견적</strong> — ${sgName} 전 지역 직접 방문하여 매장 환경을 분석합니다</li>
+    <li><strong>2단계 무료 견적</strong> — ${sgName} 전 지역 직접 방문하여 매장 환경을 분석합니다</li>
     <li><strong>3단계 장비 선정·설치</strong> — 업종별 최적 장비를 선정하고 전문 기사가 설치합니다</li>
     <li><strong>4단계 교육·A/S</strong> — 사용법 교육 후 1~3년 무상 A/S를 보장합니다</li>
   </ul>
@@ -5933,10 +5933,10 @@ ${CSS}
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px">${prodCards}</div>
 
   <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">❓ ${sgName} 설치 자주 묻는 질문</h2>
-  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문 설치를 제공합니다. 무료 견적 후 빠른 설치가 가능합니다. 오전 상담 시 당일 오후 설치도 가능한 경우가 많습니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장 설치가 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문 설치를 제공합니다. 무료 견적 후 빠른 설치가 가능합니다. 상담 후 빠른 일정으로 설치를 진행합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 설치비와 월 이용료가 정말 무료인가요?</div><div class="faq-a">네, 올페이스토어는 VAN사 제휴를 통해 카드단말기·포스기·키오스크·CCTV·테이블오더 모든 장비의 설치비를 무료로 제공합니다. 별도 월 이용료도 발생하지 않습니다. 카드 결제 시 VAN사 수수료만 정상 부과됩니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크를 한번에 설치할 수 있나요?</div><div class="faq-a">올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용되며, 장비 간 자동 연동 세팅까지 포함됩니다.</div></div>
-  <div class="faq"><div class="faq-q">Q. A/S는 어떻게 받나요?</div><div class="faq-a">설치 후 1~3년간 무상 A/S를 보장합니다. 장애 발생 시 먼저 원격 지원으로 빠르게 해결을 시도하고, 원격으로 해결이 안 되면 ${sgName} 전 지역 현장 출동 서비스를 제공합니다. 평일 영업시간 내 접수 시 당일 대응을 원칙으로 합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. A/S는 어떻게 받나요?</div><div class="faq-a">설치 후 1~3년간 무상 A/S를 보장합니다. 장애 발생 시 먼저 원격 지원으로 빠르게 해결을 시도하고, 원격으로 해결이 안 되면 빠른 현장 출동 서비스를 제공합니다. 평일 영업시간 내 접수 시 빠른 대응을 원칙으로 합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. ${sgName}에서 매장 철거도 가능한가요?</div><div class="faq-a">네, ${sgName} 전 지역 매장·사무실·가게 철거를 전문 엔지니어팀이 시공합니다. 정찰제 견적·원상복구·폐기물 적법 처리까지 포함됩니다. 소상공인 대상 정부 보조금(희망리턴패키지) 신청도 안내해드립니다.</div></div>
 
   <h2 style="font-size:20px;font-weight:800;color:#111;margin:40px 0 16px">🏘 ${sgName} 읍면동별 바로가기</h2>
@@ -5959,7 +5959,7 @@ function makeProductLandingPage(prodKey){
   const isR=prodKey==='removal';
   const suf=isR?'전문':'설치';
   const PDESC={
-    card:{t:'모든 결제를 한 대로',d:'IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기를 매장 업종에 맞게 설치합니다. VAN사 수수료 비교를 통해 가장 유리한 조건을 찾아드리며, 설치비 무료·월 이용료 무료 혜택을 제공합니다. 자동커팅단말기, 유선카드단말기, 토스단말기, 무선단말기, 블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 기존 단말기 교체도 무료 방문 견적 후 빠르게 진행됩니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대의 단말기로 처리할 수 있습니다.'},
+    card:{t:'모든 결제를 한 대로',d:'IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기를 매장 업종에 맞게 설치합니다. VAN사 수수료 비교를 통해 가장 유리한 조건을 찾아드리며, 설치비 무료·월 이용료 무료 혜택을 제공합니다. 자동커팅단말기, 유선카드단말기, 토스단말기, 무선단말기, 블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 기존 단말기 교체도 무료 견적 후 빠르게 진행됩니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대의 단말기로 처리할 수 있습니다.'},
     pos:{t:'매장 운영의 두뇌',d:'주문·결제·매출·재고·직원 관리를 하나의 시스템으로 통합합니다. 배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 테이블오더 연결, 실시간 매출 분석 대시보드까지 매장 운영에 필요한 모든 기능을 제공합니다. 업종별(음식점·카페·편의점·미용실) 최적화된 포스기를 추천하며, 설치비 무료·월 이용료 무료·직원 교육까지 무상으로 진행됩니다. 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화할 수 있습니다.'},
     kiosk:{t:'무인 주문·결제 솔루션',d:'인건비 월 200만원 이상 절감, 주문 정확도 100%, 피크타임 대기시간 단축. 스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천합니다. 포스기와 자동 연동되어 주문 즉시 주방 전달이 되며, 메뉴 사진 촬영·등록까지 무료로 대행합니다. 음식점·카페·베이커리·패스트푸드점에서 도입이 급증하고 있으며, 설치비 무료·월 이용료 무료로 진행됩니다.'},
     cctv:{t:'매장 보안의 완성',d:'HD~4K 고화질 촬영, 스마트폰 원격 모니터링, AI 움직임 감지, 야간 컬러 촬영까지 지원합니다. 포스기와 연동하면 결제 시점과 영상을 자동 매칭하여 정산 검증이 가능합니다. CCTV 설치 매장은 화재·도난 보험료 할인 혜택도 받을 수 있습니다. 30일 이상 영상 저장을 보장하며, 설치비 무료·월 이용료 무료로 진행됩니다. 4채널·8채널·16채널 등 매장 규모에 맞게 설계합니다.'},
@@ -6005,12 +6005,12 @@ ${CSS}
   </div>
 
   <h2>${prd.emoji} ${prd.ko} ${suf}가 필요한 이유</h2>
-  <p>${isR?'매장·사무실·가게를 폐업하거나 이전할 때 전문 철거 업체를 통해 체계적으로 진행해야 보증금을 지키고, 폐기물 적법 처리 문제를 예방할 수 있습니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 매장 철거를 전문 엔지니어팀이 직접 시공합니다. 정밀 현장 분석 후 정찰제 견적을 확정하며, 추가 비용이 발생하지 않습니다. 바닥·벽면·천장 원상복구, 폐기물 적법 처리, 시공 보증서 발급까지 원스톱으로 처리합니다.':'최신 ${prd.ko}는 매장 운영 효율을 획기적으로 개선합니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 ${prd.ko}를 직접 방문 설치합니다. 업종별 특성을 분석하여 가장 적합한 장비를 추천하며, 설치비 무료·월 이용료 무료·1~3년 A/S 보장까지 제공합니다. 기존 장비 교체도 무료 방문 견적 후 빠르게 진행됩니다.'}</p>
+  <p>${isR?'매장·사무실·가게를 폐업하거나 이전할 때 전문 철거 업체를 통해 체계적으로 진행해야 보증금을 지키고, 폐기물 적법 처리 문제를 예방할 수 있습니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 매장 철거를 전문 엔지니어팀이 직접 시공합니다. 정밀 현장 분석 후 정찰제 견적을 확정하며, 추가 비용이 발생하지 않습니다. 바닥·벽면·천장 원상복구, 폐기물 적법 처리, 시공 보증서 발급까지 원스톱으로 처리합니다.':'최신 ${prd.ko}는 매장 운영 효율을 획기적으로 개선합니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 ${prd.ko}를 직접 방문 설치합니다. 업종별 특성을 분석하여 가장 적합한 장비를 추천하며, 설치비 무료·월 이용료 무료·1~3년 A/S 보장까지 제공합니다. 기존 장비 교체도 무료 견적 후 빠르게 진행됩니다.'}</p>
 
   <h2>⚡ ${prd.ko} ${suf} 프로세스</h2>
   <ul class="ck">
     <li><strong>1단계 무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 사항을 상담합니다</li>
-    <li><strong>2단계 무료 방문 견적</strong> — 전국 어디든 직접 방문하여 매장 환경을 분석하고 최적의 ${prd.ko}를 추천합니다</li>
+    <li><strong>2단계 무료 견적</strong> — 전국 어디든 직접 방문하여 매장 환경을 분석하고 최적의 ${prd.ko}를 추천합니다</li>
     <li><strong>3단계 ${isR?'견적 확정 (정찰제)':'장비 선정'}</strong> — ${isR?'현장 분석 결과를 바탕으로 정확한 견적을 산출합니다. 추가 비용 없는 정찰제로 운영합니다':'업종별 특성에 맞는 최적의 장비를 선정합니다'}</li>
     <li><strong>4단계 ${isR?'철거 시공':'빠른 설치'}</strong> — 전문 ${isR?'엔지니어팀':'기사'}이 직접 방문하여 ${isR?'철거 시공을 진행합니다. 실시간 사진·영상을 공유합니다':'장비 설치·세팅·테스트를 완료합니다'}</li>
     <li><strong>5단계 ${isR?'원상복구':'교육'}</strong> — ${isR?'바닥·벽면·천장을 원상복구하고 폐기물을 적법 처리합니다':'사장님과 직원에게 장비 사용법을 교육합니다. 별도 비용 없습니다'}</li>
@@ -6078,7 +6078,7 @@ ${CSS}
   </ul>
 
   <h2>❓ ${prd.ko} ${suf} 자주 묻는 질문</h2>
-  <div class="faq"><div class="faq-q">Q. ${prd.ko} ${isR?'당일 철거':'빠른 설치'}가 가능한가요?</div><div class="faq-a">${isR?'매장 규모에 따라 다르지만, 소규모 매장은 당일 철거도 가능합니다. 중규모 이상은 3~5일 소요됩니다.':'네, 오전 상담 시 당일 오후 설치도 가능합니다. 매장 환경에 따라 1~2시간 내 설치가 완료됩니다.'}</div></div>
+  <div class="faq"><div class="faq-q">Q. ${prd.ko} ${isR?'빠른 철거':'빠른 설치'}가 가능한가요?</div><div class="faq-a">${isR?'매장 규모에 따라 다르지만, 소규모 매장은 빠른 철거가 가능합니다. 중규모 이상은 3~5일 소요됩니다.':'네, 상담 후 빠른 일정으로 설치를 진행합니다. 매장 환경에 따라 설치 소요시간이 달라집니다.'}</div></div>
   <div class="faq"><div class="faq-q">Q. ${prd.ko} 비용은 얼마인가요?</div><div class="faq-a">${isR?'매장 면적과 구조에 따라 다르며, 무료 현장 방문 후 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않습니다. 소상공인 대상 정부 보조금도 안내해드립니다.':'올페이스토어는 설치비 무료, 월 이용료 무료로 진행합니다. VAN사 제휴를 통해 설치비를 전액 지원하며, 카드 결제 시 VAN사 수수료만 정상 부과됩니다.'}</div></div>
   <div class="faq"><div class="faq-q">Q. 다른 장비와 함께 ${isR?'철거':'설치'}할 수 있나요?</div><div class="faq-a">${isR?'네, 카드단말기·포스기·키오스크·CCTV 등 기존 장비를 한번에 철거할 수 있습니다. 신규 장비 교체도 동시에 가능합니다.':'네, 올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.'}</div></div>
   <div class="faq"><div class="faq-q">Q. A/S는 어떻게 받나요?</div><div class="faq-a">${isR?'시공 완료 후 보증서를 발급합니다. 하자 발견 시 무상으로 보수합니다.':'설치 후 1~3년간 무상 A/S를 보장합니다. 장애 발생 시 먼저 원격 지원으로 해결을 시도하고, 안 되면 현장 출동 서비스를 제공합니다.'}</div></div>
@@ -6146,7 +6146,7 @@ ${CSS}
   <h2>⚡ ${short} ${prd.ko} ${suf} 프로세스</h2>
   <ul class="ck">
     <li><strong>1단계 무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 사항을 상담합니다</li>
-    <li><strong>2단계 무료 방문 견적</strong> — ${short} 전 지역 직접 방문하여 매장 환경을 분석합니다</li>
+    <li><strong>2단계 무료 견적</strong> — ${short} 전 지역 직접 방문하여 매장 환경을 분석합니다</li>
     <li><strong>3단계 ${isR?'정찰제 견적 확정':'장비 선정·설치'}</strong> — ${isR?'추가 비용 없는 정찰제로 견적을 확정합니다':'업종별 최적 장비를 선정하고 전문 기사가 설치합니다'}</li>
     <li><strong>4단계 ${isR?'철거 시공·원상복구':'교육·A/S'}</strong> — ${isR?'전문 엔지니어팀이 시공하고 원상복구까지 완료합니다':'사용법 교육 후 1~3년 무상 A/S를 보장합니다'}</li>
   </ul>
@@ -6181,7 +6181,7 @@ ${CSS}
   </ul>
 
   <h2>📋 ${short} ${prd.ko} 상세 안내</h2>
-  <p>${isR?`${sidoName} 지역에서 매장을 철거할 때는 구조물 안전 분석이 가장 중요합니다. 전기·가스·수도를 안전하게 차단하고, 주변 매장에 사전 안내를 진행합니다. 인테리어 해체 → 설비 제거 → 구조물 철거 → 원상복구 → 폐기물 처리 순서로 체계적으로 시공합니다. 올페이스토어는 ${short} 전 지역에서 ${top.length}개 시군구, ${dongCount}개 읍면동을 직접 방문하여 정밀 현장 분석을 진행합니다.`:`${sidoName} 매장에 ${prd.ko}를 도입하면 매출과 운영 효율이 눈에 띄게 개선됩니다. ${pd2} 올페이스토어는 ${short} 전 지역 ${top.length}개 시군구, ${dongCount}개 읍면동에서 직접 방문 설치를 진행하며, 설치 당일 매장 환경에 맞게 장비를 세팅하고 직원 교육까지 무상으로 완료합니다. 설치 후에도 VAN사 수수료 재검토, 장비 업그레이드 안내 등 지속적인 관리를 제공합니다.`}</p>
+  <p>${isR?`${sidoName} 지역에서 매장을 철거할 때는 구조물 안전 분석이 가장 중요합니다. 전기·가스·수도를 안전하게 차단하고, 주변 매장에 사전 안내를 진행합니다. 인테리어 해체 → 설비 제거 → 구조물 철거 → 원상복구 → 폐기물 처리 순서로 체계적으로 시공합니다. 올페이스토어는 ${short} 전 지역에서 ${top.length}개 시군구, ${dongCount}개 읍면동을 직접 방문하여 정밀 현장 분석을 진행합니다.`:`${sidoName} 매장에 ${prd.ko}를 도입하면 매출과 운영 효율이 눈에 띄게 개선됩니다. ${pd2} 올페이스토어는 ${short} 전 지역 ${top.length}개 시군구, ${dongCount}개 읍면동에서 직접 방문 설치를 진행하며, 설치 시 매장 환경에 맞게 장비를 세팅하고 직원 교육까지 무상으로 완료합니다. 설치 후에도 VAN사 수수료 재검토, 장비 업그레이드 안내 등 지속적인 관리를 제공합니다.`}</p>
 
   <h2>🔍 ${short} ${prd.ko} 도입 전 체크리스트</h2>
   <ul class="ck">
@@ -6198,9 +6198,9 @@ ${CSS}
   <p><strong>무인매장:</strong> ${isR?'파티션·좌석·장비 일체 철거. 배수관·전기설비 안전 정리까지 포함합니다.':'무인결제기+CCTV+출입관리 통합 패키지로 24시간 무인 운영. 인건비 100% 절감.'}</p>
 
   <h2>❓ ${short} ${prd.ko} ${suf} 자주 묻는 질문</h2>
-  <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 ${suf}가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 ${suf}를 제공합니다. 오전 상담 시 당일 오후 방문도 가능합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${short} 전 지역 출장 ${suf}가 가능한가요?</div><div class="faq-a">네, ${sidoName} 전체 ${top.length}개 시군구, ${dongCount}개 읍면동에 직접 방문 ${suf}를 제공합니다. 상담 후 빠른 일정으로 방문합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. ${isR?"정부 보조금을 받을 수 있나요?":"설치비가 정말 무료인가요?"}</div><div class="faq-a">${isR?`네, 소상공인진흥공단의 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있습니다. 지자체별 별도 지원 사업도 있으며, 올페이스토어에서 신청 절차를 안내해드립니다.`:`네, 올페이스토어는 VAN사 제휴를 통해 설치비를 전액 지원합니다. 월 이용료도 무료이며, 카드 결제 시 VAN사 수수료만 정상 부과됩니다. 숨겨진 비용이 전혀 없습니다.`}</div></div>
-  <div class="faq"><div class="faq-q">Q. ${isR?"철거 후 원상복구도 해주나요?":"기존 장비를 교체할 수도 있나요?"}</div><div class="faq-a">${isR?`네, 바닥·벽면·천장을 임대차 계약서 기준으로 완벽하게 복구합니다. 시공 보증서를 발급하며, 하자 발견 시 무상으로 보수합니다.`:`네, 기존 카드단말기·포스기 교체도 무료 방문 견적 후 빠르게 진행됩니다. VAN사 변경 시 위약금 여부도 사전에 확인해드립니다.`}</div></div>
+  <div class="faq"><div class="faq-q">Q. ${isR?"철거 후 원상복구도 해주나요?":"기존 장비를 교체할 수도 있나요?"}</div><div class="faq-a">${isR?`네, 바닥·벽면·천장을 임대차 계약서 기준으로 완벽하게 복구합니다. 시공 보증서를 발급하며, 하자 발견 시 무상으로 보수합니다.`:`네, 기존 카드단말기·포스기 교체도 무료 견적 후 빠르게 진행됩니다. VAN사 변경 시 위약금 여부도 사전에 확인해드립니다.`}</div></div>
   <div class="faq"><div class="faq-q">Q. ${prd.ko} 비용은 얼마인가요?</div><div class="faq-a">${isR?"매장 면적과 구조에 따라 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않으며, 소상공인 대상 정부 보조금도 안내해드립니다.":"올페이스토어는 설치비 무료, 월 이용료 무료로 진행합니다. VAN사 제휴를 통해 설치비를 전액 지원합니다."}</div></div>
   <div class="faq"><div class="faq-q">Q. 다른 장비와 함께 ${isR?"철거":"설치"}할 수 있나요?</div><div class="faq-a">${isR?"네, 매장 내 모든 장비를 한번에 철거할 수 있습니다.":"네, 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다."}</div></div>
 
@@ -6260,7 +6260,7 @@ ${CSS}
   <h2>⚡ ${sgName} ${prd.ko} ${suf} 프로세스</h2>
   <ul class="ck">
     <li><strong>무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 사항을 상담합니다</li>
-    <li><strong>무료 방문 견적</strong> — ${sgName} 전 지역 직접 방문하여 매장 환경을 분석합니다</li>
+    <li><strong>무료 견적</strong> — ${sgName} 전 지역 직접 방문하여 매장 환경을 분석합니다</li>
     <li><strong>${isR?'정찰제 견적 확정 → 철거 시공 → 원상복구':'장비 선정 → 빠른 설치 → 교육'}</strong> — ${isR?'추가 비용 없이 깔끔하게 시공합니다':'전문 기사가 설치하고 사용법까지 교육합니다'}</li>
     <li><strong>${isR?'폐기물 처리 → 시공 보증서 발급':'1~3년 무상 A/S'}</strong> — ${isR?'적법 처리 후 보증서를 발급합니다':'장애 발생 시 원격 또는 출동 서비스'}</li>
   </ul>
@@ -6294,7 +6294,7 @@ ${CSS}
   </ul>
 
   <h2>📋 ${sgName} ${prd.ko} 상세 안내</h2>
-  <p>${isR?`${sgName} 지역 매장 철거는 구조물 안전 분석부터 시작합니다. 전기·가스·수도 차단, 주변 매장 사전 안내, 분진·소음 차단 가림막 설치 후 체계적으로 시공합니다. 인테리어 해체 → 설비 제거 → 원상복구 → 폐기물 처리 순서로 진행하며, 모든 과정을 사진·영상으로 실시간 보고합니다. ${sgName} ${dongs.length}개 읍면동 어디든 직접 방문합니다.`:`${sgName}에 ${prd.ko}를 도입하면 매장 운영이 근본적으로 달라집니다. ${pd2} 올페이스토어는 ${sgName} ${dongs.length}개 읍면동 전 지역에 직접 방문하여 매장 환경을 분석하고, 업종에 맞는 최적의 장비를 추천합니다. 설치 당일 장비 세팅·테스트·직원 교육까지 완료하며, 설치 후에도 VAN사 수수료 재검토와 장비 업그레이드 안내를 제공합니다.`}</p>
+  <p>${isR?`${sgName} 지역 매장 철거는 구조물 안전 분석부터 시작합니다. 전기·가스·수도 차단, 주변 매장 사전 안내, 분진·소음 차단 가림막 설치 후 체계적으로 시공합니다. 인테리어 해체 → 설비 제거 → 원상복구 → 폐기물 처리 순서로 진행하며, 모든 과정을 사진·영상으로 실시간 보고합니다. ${sgName} ${dongs.length}개 읍면동 어디든 직접 방문합니다.`:`${sgName}에 ${prd.ko}를 도입하면 매장 운영이 근본적으로 달라집니다. ${pd2} 올페이스토어는 ${sgName} ${dongs.length}개 읍면동 전 지역에 직접 방문하여 매장 환경을 분석하고, 업종에 맞는 최적의 장비를 추천합니다. 설치 시 장비 세팅·테스트·직원 교육까지 완료하며, 설치 후에도 VAN사 수수료 재검토와 장비 업그레이드 안내를 제공합니다.`}</p>
 
   <h2>🔍 ${sgName} ${prd.ko} 도입 전 체크리스트</h2>
   <ul class="ck">
@@ -6311,10 +6311,10 @@ ${CSS}
   <p>${isR?`${sgName}에서 어떤 업종이든 올페이스토어 전문 엔지니어팀이 업종별 특성에 맞게 안전하고 깔끔하게 철거합니다. 정찰제 견적으로 추가 비용 걱정 없이 진행하실 수 있습니다.`:`${sgName} 지역 매장 특성에 맞는 최적의 ${prd.ko}를 올페이스토어가 추천합니다. 설치비 무료, 월 이용료 무료로 부담 없이 도입하실 수 있습니다.`}</p>
 
   <h2>❓ ${sgName} ${prd.ko} ${suf} 자주 묻는 질문</h2>
-  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장이 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문합니다. 무료 견적 후 빠르게 진행합니다. 오전 상담 시 당일 오후 방문도 가능합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${sgName} 전 지역 출장이 가능한가요?</div><div class="faq-a">네, ${sgName} 전체 ${dongs.length}개 읍면동에 직접 방문합니다. 무료 견적 후 빠르게 진행합니다. 상담 후 빠른 일정으로 방문합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 비용은 얼마인가요?</div><div class="faq-a">${isR?`매장 면적과 구조에 따라 정찰제 견적을 확정합니다. 추가 비용이 발생하지 않습니다. 소상공인진흥공단 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있으며, 올페이스토어에서 신청 절차를 안내해드립니다.`:`올페이스토어는 설치비 무료, 월 이용료 무료로 진행합니다. VAN사 제휴를 통해 설치비를 전액 지원하며, 카드 결제 시 VAN사 수수료만 정상 부과됩니다. 숨겨진 비용이 전혀 없습니다. 패키지 설치 시 추가 할인도 적용됩니다.`}</div></div>
-  <div class="faq"><div class="faq-q">Q. A/S는 어떻게 받나요?</div><div class="faq-a">${isR?`시공 완료 후 보증서를 발급합니다. 하자 발견 시 무상으로 보수하며, 폐기물 처리 확인증도 함께 발급합니다.`:`설치 후 1~3년간 무상 A/S를 보장합니다. 장애 발생 시 먼저 원격 지원으로 해결을 시도하고, 원격으로 해결이 안 되면 ${sgName} 전 지역 현장 출동 서비스를 제공합니다. 평일 영업시간 내 접수 시 당일 대응을 원칙으로 합니다.`}</div></div>
-  <div class="faq"><div class="faq-q">Q. ${isR?"원상복구 범위는?":"기존 장비 교체도 가능한가요?"}</div><div class="faq-a">${isR?`바닥·벽면·천장을 임대차 계약서 기준으로 완벽하게 복구합니다. 시공 보증서를 발급하며, 임대인과 함께 최종 점검을 진행합니다.`:`네, 기존 카드단말기·포스기 교체도 무료 방문 견적 후 빠르게 진행됩니다. VAN사 변경 시 위약금 여부도 사전에 확인해드립니다. 동일한 무료 설치 혜택이 적용됩니다.`}</div></div>
+  <div class="faq"><div class="faq-q">Q. A/S는 어떻게 받나요?</div><div class="faq-a">${isR?`시공 완료 후 보증서를 발급합니다. 하자 발견 시 무상으로 보수하며, 폐기물 처리 확인증도 함께 발급합니다.`:`설치 후 1~3년간 무상 A/S를 보장합니다. 장애 발생 시 먼저 원격 지원으로 해결을 시도하고, 원격으로 해결이 안 되면 빠른 현장 출동 서비스를 제공합니다. 평일 영업시간 내 접수 시 빠른 대응을 원칙으로 합니다.`}</div></div>
+  <div class="faq"><div class="faq-q">Q. ${isR?"원상복구 범위는?":"기존 장비 교체도 가능한가요?"}</div><div class="faq-a">${isR?`바닥·벽면·천장을 임대차 계약서 기준으로 완벽하게 복구합니다. 시공 보증서를 발급하며, 임대인과 함께 최종 점검을 진행합니다.`:`네, 기존 카드단말기·포스기 교체도 무료 견적 후 빠르게 진행됩니다. VAN사 변경 시 위약금 여부도 사전에 확인해드립니다. 동일한 무료 설치 혜택이 적용됩니다.`}</div></div>
   <div class="faq"><div class="faq-q">Q. 다른 장비와 함께 ${isR?"철거":"설치"}할 수 있나요?</div><div class="faq-a">${isR?`네, 매장 내 카드단말기·포스기·키오스크·CCTV 등 모든 장비를 한번에 철거할 수 있습니다. 신규 장비 교체와 동시 진행도 가능합니다.`:`네, 올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용되며, 장비 간 자동 연동까지 포함됩니다.`}</div></div>
 
   <h2>📈 ${sgName} ${prd.ko} 도입 효과</h2>
@@ -6354,7 +6354,7 @@ function makeBlog(sido,sigungu,emd,slug){
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${emd} 카드단말기 설치 | 포스기·키오스크·CCTV 전문 올페이스토어</title>
-<meta name="description" content="${full} 카드단말기 설치 전문. ${emd} 포스기·키오스크·CCTV 원스톱 설치, 무료 방문 견적, 빠른 설치 가능. ☎ 010-9876-8282">
+<meta name="description" content="${full} 카드단말기 설치 전문. ${emd} 포스기·키오스크·CCTV 원스톱 설치, 무료 견적, 빠른 설치 가능. ☎ 010-9876-8282">
 <meta name="keywords" content="${emd} 카드단말기 설치,${emd} 포스기,${emd} 카드단말기,${sigungu} 카드단말기,${emd} 키오스크,${emd} CCTV,${sigungu} 포스기 설치">
 <meta property="og:title" content="${emd} 카드단말기 설치 | 올페이스토어">
 <meta property="og:description" content="${full} 카드단말기·포스기·키오스크·CCTV 전문. 무료 견적 010-9876-8282">
@@ -6382,7 +6382,7 @@ ${CSS}
 
   <div class="g4">
     <div class="card"><div class="ic">🏆</div><div class="lb">누적 설치 실적</div><div class="vl">50+건</div></div>
-    <div class="card"><div class="ic">⚡</div><div class="lb">최단 설치</div><div class="vl">당일 완료</div></div>
+    <div class="card"><div class="ic">⚡</div><div class="lb">최단 설치</div><div class="vl">빠른 완료</div></div>
     <div class="card"><div class="ic">💰</div><div class="lb">방문 견적</div><div class="vl">무료</div></div>
     <div class="card"><div class="ic">🔧</div><div class="lb">A/S 보증</div><div class="vl">1~3년</div></div>
   </div>
@@ -6455,11 +6455,11 @@ ${CSS}
   <div class="box yellow">💰 <strong>비용 절감 핵심 전략:</strong> ${emd} 카드단말기·포스기·키오스크·CCTV를 <strong>올페이스토어 패키지로 한번에 설치</strong>하시면 개별 대비 최대 30% 절감됩니다. VAN사 계약을 올페이스토어를 통해 진행 시 <strong>카드단말기 설치비 무료</strong>가 될 수 있습니다.</div>
 
   <h2>❓ ${emd} 사장님 자주 묻는 질문</h2>
-  <div class="faq"><div class="faq-q">Q. ${emd}에서 빠른 설치가 가능한가요?</div><div class="faq-a">네, 가능합니다. 올페이스토어는 ${sido} 전 지역 직접 방문 서비스를 제공하며, 오전 상담 시 당일 오후 빠른 설치도 가능합니다. 장비 재고에 따라 익일 설치가 될 수 있으니 사전 확인을 권장합니다.</div></div>
-  <div class="faq"><div class="faq-q">Q. ${emd} 설치 후 A/S는 어떻게 되나요?</div><div class="faq-a">장비에 따라 1~3년 무상 A/S를 제공합니다. 긴급 장애 시 원격 지원 또는 당일 방문 A/S를 원칙으로 하며, ${sido} 전 지역 A/S 네트워크를 운영합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${emd}에서 빠른 설치가 가능한가요?</div><div class="faq-a">네, 가능합니다. 올페이스토어는 ${sido} 전 지역 직접 방문 서비스를 제공하며, 상담 후 빠른 설치를 진행합니다. 장비 재고에 따라 익일 설치가 될 수 있으니 사전 확인을 권장합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${emd} 설치 후 A/S는 어떻게 되나요?</div><div class="faq-a">장비에 따라 1~3년 무상 A/S를 제공합니다. 긴급 장애 시 원격 지원 또는 빠른 A/S를 원칙으로 하며, ${sido} 전 지역 A/S 네트워크를 운영합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 기존 포스기가 있는데 카드단말기만 교체할 수 있나요?</div><div class="faq-a">물론입니다. 기존 포스기와 호환되는 카드단말기를 연동해 드립니다. 오래된 포스기는 호환성 확인이 필요하므로 사전 상담을 권장합니다.</div></div>
   <div class="faq"><div class="faq-q">Q. 카드단말기·포스기·키오스크·CCTV를 따로 계약해야 하나요?</div><div class="faq-a">올페이스토어는 <strong>원스톱 통합 계약</strong>으로 처리합니다. 한 번의 상담으로 ${emd} 매장에 최적화된 솔루션을 제안드립니다.</div></div>
-  <div class="faq"><div class="faq-q">Q. ${emd} 견적은 어떻게 받나요?</div><div class="faq-a">전화(010-9876-8282) 또는 카카오톡으로 문의 주시면 됩니다. 업종과 매장 규모를 말씀해 주시면 <strong>1분 안에 예상 견적</strong>을 안내드리며 무료 방문 견적도 가능합니다.</div></div>
+  <div class="faq"><div class="faq-q">Q. ${emd} 견적은 어떻게 받나요?</div><div class="faq-a">전화(010-9876-8282) 또는 카카오톡으로 문의 주시면 됩니다. 업종과 매장 규모를 말씀해 주시면 <strong>1분 안에 예상 견적</strong>을 안내드리며 무료 견적도 가능합니다.</div></div>
 
 
   <div class="cta">
@@ -6616,7 +6616,7 @@ function getHTML() {
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>올페이스토어 | 카드단말기·포스기·키오스크·CCTV 전국 설치 전문</title>
-<meta name="description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 방문 견적, 빠른 설치, 1~3년 A/S 보장. 전국 5,000+ 읍면동 직접 출장. ☎ 010-9876-8282">
+<meta name="description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 견적, 빠른 설치, 1~3년 A/S 보장. 전국 5,000+ 읍면동 직접 출장. ☎ 010-9876-8282">
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac">
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -6917,9 +6917,9 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="str-grid">
       <div class="str-card"><div class="str-ic">🏆</div><div class="str-num">350+</div><div class="str-lbl">누적 설치 건수</div><div class="str-desc">전국 직접 출장 설치</div></div>
-      <div class="str-card"><div class="str-ic">⚡</div><div class="str-num">당일</div><div class="str-lbl">최단 설치 완료</div><div class="str-desc">오전 상담 → 오후 설치</div></div>
+      <div class="str-card"><div class="str-ic">⚡</div><div class="str-num">빠른</div><div class="str-lbl">신속 설치 완료</div><div class="str-desc">상담 후 빠른 설치</div></div>
       <div class="str-card"><div class="str-ic">💰</div><div class="str-num">무료</div><div class="str-lbl">방문 견적·상담</div><div class="str-desc">부담 없이 비교하세요</div></div>
-      <div class="str-card"><div class="str-ic">🔧</div><div class="str-num">1~3년</div><div class="str-lbl">무상 A/S 보장</div><div class="str-desc">장애 시 당일 출동</div></div>
+      <div class="str-card"><div class="str-ic">🔧</div><div class="str-num">1~3년</div><div class="str-lbl">무상 A/S 보장</div><div class="str-desc">장애 시 빠른 출동</div></div>
     </div>
   </div>
 </section>
@@ -7121,9 +7121,9 @@ a{text-decoration:none;color:inherit}
       <div class="rev-card"><div class="rev-badge" style="background:#333">매출 40%↑</div><div class="rev-star">★★★★★</div><div class="rev-title">카드단말기 교체 후 카드매출 급증</div><div class="rev-text">수수료 비교까지 해주셔서 연간 60만원 절약하고 매출도 올랐어요.</div><div class="rev-name">서울 강남구 카페 사장님</div></div>
       <div class="rev-card"><div class="rev-badge" style="background:#059669">인건비 50%↓</div><div class="rev-star">★★★★★</div><div class="rev-title">키오스크 설치 후 홀 인건비 반으로</div><div class="rev-text">테이블오더+키오스크로 홀 직원 2명→1명. 서비스 품질도 유지됩니다.</div><div class="rev-name">부산 해운대구 음식점 사장님</div></div>
       <div class="rev-card"><div class="rev-badge" style="background:#7C3AED">수수료 절감</div><div class="rev-star">★★★★★</div><div class="rev-title">VAN사 변경으로 연 40만원 절약</div><div class="rev-text">기존보다 수수료 저렴한 VAN사로 바꿔주셔서 매년 절약 중입니다.</div><div class="rev-name">경기 수원시 소매점 사장님</div></div>
-      <div class="rev-card"><div class="rev-badge" style="background:#DC2626">빠른 설치</div><div class="rev-star">★★★★★</div><div class="rev-title">오전 전화 → 오후 설치 완료!</div><div class="rev-text">급하게 필요했는데 당일 바로 설치해주셨어요. 다음 날부터 영업 시작했습니다.</div><div class="rev-name">대전 유성구 음식점 사장님</div></div>
+      <div class="rev-card"><div class="rev-badge" style="background:#DC2626">빠른 설치</div><div class="rev-star">★★★★★</div><div class="rev-title">전화 한 통으로 빠른 설치 완료!</div><div class="rev-text">급하게 필요했는데 빠르게 설치해주셨어요. 바로 영업 시작할 수 있었습니다.</div><div class="rev-name">대전 유성구 음식점 사장님</div></div>
       <div class="rev-card"><div class="rev-badge" style="background:#0891B2">무인화 성공</div><div class="rev-star">★★★★★</div><div class="rev-title">24시간 무인매장 전환 완료</div><div class="rev-text">무인결제기+CCTV+출입관리 한번에 설치. 월 매출 30% 증가!</div><div class="rev-name">인천 연수구 스터디카페 사장님</div></div>
-      <div class="rev-card"><div class="rev-badge" style="background:#EA580C">A/S 최고</div><div class="rev-star">★★★★★</div><div class="rev-title">포스기 장애 2시간 내 해결</div><div class="rev-text">전화하니 2시간 내 기사분이 오셨어요. 이런 A/S는 처음입니다.</div><div class="rev-name">광주 서구 미용실 사장님</div></div>
+      <div class="rev-card"><div class="rev-badge" style="background:#EA580C">A/S 최고</div><div class="rev-star">★★★★★</div><div class="rev-title">포스기 장애 빠르게 해결</div><div class="rev-text">전화하니 빠르게 해결해주셨어요. 이런 A/S는 처음입니다.</div><div class="rev-name">광주 서구 미용실 사장님</div></div>
       <div class="rev-card"><div class="rev-badge" style="background:#333">매출 40%↑</div><div class="rev-star">★★★★★</div><div class="rev-title">카드단말기 교체 후 카드매출 급증</div><div class="rev-text">수수료 비교까지 해주셔서 연간 60만원 절약하고 매출도 올랐어요.</div><div class="rev-name">서울 강남구 카페 사장님</div></div>
       <div class="rev-card"><div class="rev-badge" style="background:#059669">인건비 50%↓</div><div class="rev-star">★★★★★</div><div class="rev-title">키오스크 설치 후 홀 인건비 반으로</div><div class="rev-text">테이블오더+키오스크로 홀 직원 2명→1명. 서비스 품질도 유지됩니다.</div><div class="rev-name">부산 해운대구 음식점 사장님</div></div>
     </div>
@@ -7141,7 +7141,7 @@ a{text-decoration:none;color:inherit}
       <div class="spc-card"><div class="spc-ic" style="background:#f0f0f0">🎯</div><div><div class="spc-tit">업종별 1:1 맞춤 설치</div><div class="spc-desc">음식점·카페·편의점·미용실 등 업종 특성에 맞는 최적 장비를 분석해 추천합니다.</div></div></div>
       <div class="spc-card"><div class="spc-ic" style="background:#ECFDF5">📦</div><div><div class="spc-tit">전 제품 원스톱 통합 설치</div><div class="spc-desc">카드단말기부터 CCTV까지 매장에 필요한 모든 장비를 한번에 설치합니다.</div></div></div>
       <div class="spc-card"><div class="spc-ic" style="background:#F5F3FF">💰</div><div><div class="spc-tit">VAN사 수수료 비교·절감</div><div class="spc-desc">VAN사별 수수료를 비교 분석해 가장 유리한 조건을 찾아드립니다. 연 수십만원 절약.</div></div></div>
-      <div class="spc-card"><div class="spc-ic" style="background:#FFFBEB">🔧</div><div><div class="spc-tit">설치 후 A/S·유지보수 보장</div><div class="spc-desc">1~3년 무상 A/S. 장애 발생 시 원격 지원 또는 당일 방문 출동을 보장합니다.</div></div></div>
+      <div class="spc-card"><div class="spc-ic" style="background:#FFFBEB">🔧</div><div><div class="spc-tit">설치 후 A/S·유지보수 보장</div><div class="spc-desc">1~3년 무상 A/S. 장애 발생 시 원격 지원으로 빠르게 해결하며, 필요 시 현장 출동합니다.</div></div></div>
     </div>
   </div>
 </section>
