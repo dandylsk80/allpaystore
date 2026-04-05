@@ -553,7 +553,7 @@ ${CSS}
  <div class="side-box"><h4>📍 다른 지역</h4>${sidoSideLinks}</div>
  <div class="side-box"><h4>📦 ${short} 제품별</h4>${prodSideLinks}</div>
  </div>
- <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
+ <div style="margin-bottom:32px">
  <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sidoName} 상권 특성</h2>
  <p style="font-size:14px;color:#555;line-height:1.8;margin-bottom:16px">${note}</p>
  <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. 무료 견적 · 빠른 설치를 원스톱으로 제공합니다. 카드단말기·포스기·키오스크·테이블오더는 설치비 무료, CCTV는 별도 견적입니다. ${sidoName} 매장 사장님들이 가장 많이 문의하시는 카드단말기 VAN사 수수료 비교, 포스기 업종별 맞춤 추천, 키오스크 설치 후 인건비 절감 효과, CCTV 보험료 할인 혜택 등을 아래에서 상세히 안내드립니다.</p>
@@ -665,7 +665,7 @@ ${CSS}
  <div class="side-box"><h4>📍 인근 지역</h4>${sgSideLinks}</div>
  <div class="side-box"><h4>📦 ${sgName} 제품별</h4>${prodSideLinks}</div>
  </div>
- <div style="background:#f9f9f9;border:1px solid #eee;border-radius:16px;padding:24px;margin-bottom:32px">
+ <div style="margin-bottom:32px">
  <h2 style="font-size:18px;font-weight:800;color:#111;margin-bottom:12px">📍 ${sgName} 상권 특성</h2>
  <p style="font-size:14px;color:#555;line-height:1.8;margin-bottom:16px">${profile.note} ${sgName} 지역에서 주로 운영되는 업종은 <strong>${profile.biz.slice(0,5).join(', ')}</strong> 등이 있으며, 각 업종에 맞는 결제·운영 장비가 필요합니다.</p>
  <p style="font-size:14px;color:#555;line-height:1.8">올페이스토어는 <strong>${sgName} 전 지역(${dongs.length}개 읍면동)</strong>에 카드단말기·포스기·키오스크·CCTV·테이블오더를 직접 방문 설치합니다. ${profile.dt}</p>
