@@ -476,7 +476,6 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .faq-a{font-size:14.5px;color:#444;line-height:1.8}
 .foot-nav{margin:40px 0 0;padding:16px 0;border-top:1px solid #eee;font-size:14px;color:#aaa}
 .foot-nav a{color:#555;font-weight:600}
-@media(max-width:480px){.cta-main{font-size:14px;padding:12px 28px}.cta-sub{margin-left:0;margin-top:10px}.cta{padding:28px 18px}}
 .sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
 .sg-card:hover{background:#ddd;color:#111}
 .pd-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 12px;background:#f9f9f9;border:1.5px solid #eee;border-radius:18px;font-size:13px;font-weight:700;color:#111;transition:all .15s;text-decoration:none;text-align:center}
@@ -496,6 +495,18 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .fl-wrap a:hover{transform:scale(1.1)}
 .fl-tel{background:linear-gradient(135deg,#10B981,#059669)}
 .fl-chat{background:#111}
+@media(max-width:768px){
+ .gnb-nav{display:none}
+ .gnb{padding:16px 0}
+ .wrap{display:flex;flex-direction:column}
+ .side-nav{float:none!important;width:100%!important;margin:24px 0 0 0!important;order:99}
+ .g4{grid-template-columns:1fr 1fr!important;gap:8px!important}
+}
+@media(max-width:480px){
+ .cta-main{font-size:14px;padding:12px 28px}
+ .cta-sub{margin-left:0;margin-top:10px}
+ .cta{padding:28px 18px}
+}
 </style>`;
 function makeSidoPage(sidoSlug){
  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
@@ -1523,7 +1534,8 @@ a{text-decoration:none;color:inherit}
 .fl-chat{background:#111}
 /* MOBILE */
 @media(max-width:768px){
- .hd-nav{display:none}
+ .gnb-nav{display:none}
+ .gnb{padding:16px 0}
  .hero-in{flex-direction:column;gap:28px;text-align:center}
  .hero-h1{font-size:26px}
  .hero-card{width:100%}
@@ -1550,7 +1562,8 @@ a{text-decoration:none;color:inherit}
  .ft-tel{text-align:center}
  .showcase{padding:40px 0!important}
  .rm-q b{font-size:14px}
- .side-nav{float:none;width:100%;margin:0 0 20px 0}
+ .side-nav{float:none!important;width:100%!important;margin:24px 0 0 0!important;order:99}
+ .wrap{display:flex;flex-direction:column}
 }
 @media(max-width:480px){
  .hero{padding:48px 16px 40px!important}
