@@ -5771,7 +5771,7 @@ export default {
           return new Response(JSON.stringify({ ok: false, error: '필수 항목 누락' }), { headers: corsHeaders });
         }
         const GAS_URL = 'https://script.google.com/macros/s/AKfycbzpqkKUW6IpwNFRFJRn_t_1AU1wMeUBnYqwAXnCK16yPDo5kPrJbEZiGRJkjDr-Stce/exec';
-        const params = new URLSearchParams({
+        const gasPayload = JSON.stringify({
           name: name || '',
           grade: grade || '',
           phone: phone || '',
@@ -5779,13 +5779,15 @@ export default {
           message: message || '',
           type: body.type || 'tutoring'
         });
-        const gasRes = await fetch(GAS_URL + '?' + params.toString(), {
-          method: 'GET',
+        const gasRes = await fetch(GAS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: gasPayload,
           redirect: 'follow'
         });
         const gasText = await gasRes.text();
         let gasData;
-        try { gasData = JSON.parse(gasText); } catch(e) { gasData = { ok: false, error: gasText }; }
+        try { gasData = JSON.parse(gasText); } catch(e) { gasData = { ok: true }; }
         if (gasData.ok) {
           return new Response(JSON.stringify({ ok: true }), { headers: corsHeaders });
         } else {
