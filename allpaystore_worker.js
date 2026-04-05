@@ -445,7 +445,7 @@ a{text-decoration:none;color:inherit}
 .badge{background:#EEF4FF;color:#555;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}
 h1{font-size:clamp(21px,3.8vw,31px);font-weight:900;color:#111;line-height:1.35;margin-bottom:14px;letter-spacing:-.5px}
 .intro{background:#fff;border-left:5px solid #555;padding:16px 20px;border-radius:0 10px 10px 0;font-size:15.5px;color:#444;margin:18px 0 32px;line-height:1.9}
-h2{font-size:19px;font-weight:900;color:#000;background:#f0f0f0;border-left:5px solid #111;padding:13px 18px;border-radius:0 8px 8px 0;margin:40px 0 16px;letter-spacing:-.3px}
+h2{font-size:19px;font-weight:900;color:#000;padding:0;margin:40px 0 16px;letter-spacing:-.3px}
 h3{font-size:16px;font-weight:800;color:#111;margin:26px 0 10px;padding-left:10px;border-left:3px solid #555}
 p{font-size:15.5px;color:#333;margin-bottom:16px}
 .tag{display:inline-block;background:#f0f0f0;color:#111;border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600;margin:3px}
