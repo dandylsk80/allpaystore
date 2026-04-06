@@ -1344,22 +1344,17 @@ function makeSitemap(){
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+xml+'</urlset>';
 }
 function getRSS() {
- return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
- <channel>
- <title>AllPayStore | 포스기·카드단말기·키오스크 전문</title>
- <link>https://allpaystore.com/</link>
- <description>포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.</description>
- <language>ko</language>
- <lastBuildDate>Mon, 06 Apr 2026 06:39:48 +0000</lastBuildDate>
- <item>
- <title>AllPayStore - 포스기·카드단말기·키오스크 전문</title>
- <link>https://allpaystore.com/</link>
- <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 350건 이상의 설치 실적.</description>
- <pubDate>Mon, 06 Apr 2026 06:39:48 +0000</pubDate>
- </item>
- </channel>
-</rss>`;
+ const now=new Date().toUTCString();
+ const base='https://allpaystore.com';
+ const prodSlugs=Object.keys(PRODUCTS);
+ const sidoSlugs=['seoul','gyeonggi','busan','incheon','daegu','daejeon','gwangju','ulsan','sejong','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
+ let items=`<item><title>올페이스토어 — 카드단말기·포스기·키오스크·CCTV 전국 설치</title><link>${base}/</link><description>전국 5,000개 읍면동 매장 설비 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;
+ items+=`<item><title>상담 문의 | 올페이스토어</title><link>${base}/contact/</link><description>카드단말기·포스기·키오스크·CCTV·테이블오더·매장 철거 무료 견적 문의</description><pubDate>${now}</pubDate></item>`;
+ prodSlugs.forEach(p=>{items+=`<item><title>${PRODUCTS[p].ko} 설치 안내 | 올페이스토어</title><link>${base}/product/${p}/</link><description>${PRODUCTS[p].ko} 전국 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;});
+ sidoSlugs.forEach(s=>{const n=SIDO_NAMES[S.indexOf(s)]||s;items+=`<item><title>${n} ${Object.values(PRODUCTS).map(v=>v.ko).slice(0,3).join('·')} 설치 | 올페이스토어</title><link>${base}/blog/${s}/</link><description>${n} 전 지역 카드단말기·포스기·키오스크 직접 방문 설치</description><pubDate>${now}</pubDate></item>`;});
+ const sgSet=new Set();Object.keys(R).filter(k=>k.split('/').length===3).forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
+ [...sgSet].slice(0,50).forEach(sg=>{const parts=sg.split('/');const r=lk(Object.keys(R).find(k=>k.startsWith(sg+'/'))||'');if(r)items+=`<item><title>${r[1]} 카드단말기·포스기 설치 | 올페이스토어</title><link>${base}/blog/${sg}/</link><description>${r[1]} 전 지역 직접 방문 설치. 무료 견적.</description><pubDate>${now}</pubDate></item>`;});
+ return `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>올페이스토어 | 카드단말기·포스기·키오스크·CCTV 전국 설치</title><link>${base}/</link><description>전국 5,000개 읍면동 카드단말기·포스기·키오스크·CCTV·테이블오더 설치 전문</description><language>ko</language><lastBuildDate>${now}</lastBuildDate>${items}</channel></rss>`;
 }
 function getHTML() {
  const sidoList=[
