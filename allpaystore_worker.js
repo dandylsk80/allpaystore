@@ -2245,6 +2245,9 @@ export default {
  const parts=slug.split('/');
  if(parts.length===1){const h=makeSidoPage(parts[0]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
  if(parts.length===2){const h=makeSigunguPage(parts[0],parts[1]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(parts.length===4 && (parts[3]==='unmanned'||parts[3]==='delivery'||parts[3]==='access')){
+  return Response.redirect('https://allpaystore.com/blog/'+parts.slice(0,3).join('/')+'/',301);
+ }
  if(parts.length===4 && PRODUCTS[parts[3]]){
  const baseSlug=parts.slice(0,3).join('/');
  const r=lk(baseSlug);
@@ -2262,7 +2265,12 @@ export default {
  }
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
  if(path==='/sitemap.xml')return new Response(makeSitemap(),{headers:{'Content-Type':'application/xml;charset=utf-8'}});
- if(path.startsWith('/images/')){return Response.redirect('https://raw.githubusercontent.com/dandylsk80/allpaystore/main'+path,301);}
+ if(path.startsWith('/images/')){
+  const imgResp=await fetch('https://raw.githubusercontent.com/dandylsk80/allpaystore/main'+path);
+  const h2=new Headers(imgResp.headers);
+  h2.set('Cache-Control','public,max-age=604800,s-maxage=604800');
+  return new Response(imgResp.body,{headers:h2});
+ }
  if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n',{headers:{'Content-Type':'text/plain'}});
  return new Response('Not Found',{status:404});
  }
