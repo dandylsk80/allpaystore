@@ -2190,12 +2190,12 @@ export default {
  const url=new URL(request.url);
  const path=decodeURIComponent(url.pathname).replace(/\/+$/,'')||'/';
  if(path==='/'){
- return new Response(getHTML(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=1800'}});
+ return new Response(getHTML(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  if(path==='/index.html')
  return Response.redirect('https://allpaystore.com/', 301);
  if(path==='/blog')
- return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  if(path==='/api/contact' && request.method==='POST'){
  try{
   const data=await request.json();
@@ -2207,22 +2207,22 @@ export default {
  return new Response(JSON.stringify({ok:true}),{headers:{'Content-Type':'application/json'}});
  }
  if(path==='/contact'){
- return new Response(makeContactPage(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ return new Response(makeContactPage(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const prodMatch=path.match(/^\/product\/([a-z]+)$/);
  if(prodMatch && PRODUCTS[prodMatch[1]]){
  const h=makeProductLandingPage(prodMatch[1]);
- if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const prodSidoMatch=path.match(/^\/product\/([a-z]+)\/([a-z]+)$/);
  if(prodSidoMatch && PRODUCTS[prodSidoMatch[1]]){
  const h=makeProductSidoPage(prodSidoMatch[1],prodSidoMatch[2]);
- if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const prodSgMatch=path.match(/^\/product\/([a-z]+)\/([a-z]+)\/([a-z]+)$/);
  if(prodSgMatch && PRODUCTS[prodSgMatch[1]]){
  const h=makeProductSigunguPage(prodSgMatch[1],prodSgMatch[2],prodSgMatch[3]);
- if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  if(path==='/product'){
  const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`).join('');
@@ -2235,7 +2235,7 @@ export default {
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
 </div>
 </body></html>`;
- return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const tm=path.match(/^\/blog\/(.+)\/thumb\.svg$/);
  if(tm){const r=lk(tm[1]);if(r)return new Response(makeSVG(...r),{headers:{'Content-Type':'image/svg+xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
@@ -2243,17 +2243,17 @@ export default {
  if(bm){
  const slug=bm[1].replace(/\/+$/,'');
  const parts=slug.split('/');
- if(parts.length===1){const h=makeSidoPage(parts[0]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
- if(parts.length===2){const h=makeSigunguPage(parts[0],parts[1]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});}
+ if(parts.length===1){const h=makeSidoPage(parts[0]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(parts.length===2){const h=makeSigunguPage(parts[0],parts[1]);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
  if(parts.length===4 && PRODUCTS[parts[3]]){
  const baseSlug=parts.slice(0,3).join('/');
  const r=lk(baseSlug);
- if(r)return new Response(makeProductBlog(...r,baseSlug,parts[3]),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(r)return new Response(makeProductBlog(...r,baseSlug,parts[3]),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const ptm=slug.match(/^(.+)\/([a-z]+)\/thumb\.svg$/);
  if(ptm && PRODUCTS[ptm[2]]){const r=lk(ptm[1]);if(r)return new Response(makeProductSVG(...r,PRODUCTS[ptm[2]]),{headers:{'Content-Type':'image/svg+xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
  const r=lk(slug);
- if(r)return new Response(makeBlog(...r,slug),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(r)return new Response(makeBlog(...r,slug),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  return new Response(`<html><body style="font-family:sans-serif;padding:40px;text-align:center"><h2>페이지를 찾을 수 없습니다</h2><p>${slug}</p><a href="/blog" style="color:#555">← 전체 지역 목록</a><div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
