@@ -1326,13 +1326,22 @@ function switchTab(eng){
 </body></html>`;
 }
 function makeSitemap(){
+ const base='https://allpaystore.com';
+ const today=new Date().toISOString().split('T')[0];
+ const u=(path,pri)=>`<url><loc>${base}${path}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri}</priority></url>`;
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
- const sidoUrls=sidoSlugs.map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join('');
- const sgUrls=[...new Set(Object.keys(R).filter(k=>k.split('/').length===3).map(k=>k.split('/').slice(0,2).join('/')))].map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join('');
- const dongUrls=Object.keys(R).filter(k=>k.split('/').length===3).map(s=>`<url><loc>https://allpaystore.com/blog/${s}/</loc></url>`).join('');
  const prodSlugs=Object.keys(PRODUCTS);
- const prodUrls=Object.keys(R).filter(k=>k.split('/').length===3).flatMap(s=>prodSlugs.map(p=>`<url><loc>https://allpaystore.com/blog/${s}/${p}/</loc></url>`)).join('');
- return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://allpaystore.com/</loc></url><url><loc>https://allpaystore.com/blog/</loc></url>${sidoUrls}${sgUrls}${dongUrls}${prodUrls}</urlset>`;
+ let xml=u('/',1.0)+u('/contact/',0.9)+u('/product/',0.9);
+ prodSlugs.forEach(p=>{xml+=u('/product/'+p+'/',0.8);});
+ prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{xml+=u('/product/'+p+'/'+s+'/',0.7);});});
+ sidoSlugs.forEach(s=>{xml+=u('/blog/'+s+'/',0.8);});
+ const sgSet=new Set();
+ Object.keys(R).filter(k=>k.split('/').length===3).forEach(k=>{const sg=k.split('/').slice(0,2).join('/');sgSet.add(sg);});
+ sgSet.forEach(s=>{xml+=u('/blog/'+s+'/',0.7);});
+ prodSlugs.forEach(p=>{sgSet.forEach(s=>{xml+=u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/',0.6);});});
+ Object.keys(R).filter(k=>k.split('/').length===3).forEach(s=>{xml+=u('/blog/'+s+'/',0.5);});
+ Object.keys(R).filter(k=>k.split('/').length===3).forEach(s=>{prodSlugs.forEach(p=>{xml+=u('/blog/'+s+'/'+p+'/',0.4);});});
+ return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+xml+'</urlset>';
 }
 function getRSS() {
  return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1342,12 +1351,12 @@ function getRSS() {
  <link>https://allpaystore.com/</link>
  <description>포스기, 카드단말기, 키오스크, CCTV 전문 올페이스토어. 매장에 맞는 최적 솔루션을 컨설팅해드립니다.</description>
  <language>ko</language>
- <lastBuildDate>Mon, 09 Mar 2025 00:00:00 +0900</lastBuildDate>
+ <lastBuildDate>Mon, 06 Apr 2026 06:39:48 +0000</lastBuildDate>
  <item>
  <title>AllPayStore - 포스기·카드단말기·키오스크 전문</title>
  <link>https://allpaystore.com/</link>
  <description>업종별 맞춤 포스기, 카드단말기, 키오스크, CCTV 설치 전문. 350건 이상의 설치 실적.</description>
- <pubDate>Mon, 09 Mar 2025 00:00:00 +0900</pubDate>
+ <pubDate>Mon, 06 Apr 2026 06:39:48 +0000</pubDate>
  </item>
  </channel>
 </rss>`;
@@ -1383,6 +1392,13 @@ function getHTML() {
 <meta name="description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 견적, 빠른 설치, A/S 지원. 전국 5,000+ 읍면동 직접 출장. ☎ 010-9876-8282">
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac">
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045">
+<meta property="og:title" content="올페이스토어 | 카드단말기·포스기·키오스크·CCTV 전국 설치 전문">
+<meta property="og:description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 견적, 빠른 설치. 전국 5,000+ 읍면동 직접 출장.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allpaystore.com/">
+<meta property="og:image" content="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png">
+<link rel="canonical" href="https://allpaystore.com/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","telephone":"010-9876-8282","url":"https://allpaystore.com","description":"전국 카드단말기·포스기·키오스크·CCTV 설치 전문","address":{"@type":"PostalAddress","addressCountry":"KR"},"areaServed":"대한민국"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
