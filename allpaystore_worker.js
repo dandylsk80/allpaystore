@@ -1417,7 +1417,7 @@ a{text-decoration:none;color:inherit}
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
 .hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;object-fit:cover;object-position:center 20%;width:100%;height:100%;z-index:0}
-.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.85) 0%,rgba(255,255,255,.6) 50%,rgba(255,255,255,.1) 100%);z-index:0}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.65) 50%,rgba(255,255,255,.2) 100%);z-index:0}
 .hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
 .hero-txt{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
@@ -1577,7 +1577,7 @@ a{text-decoration:none;color:inherit}
  .hero-card{width:100%}
  .hero-btns{justify-content:center}
  .hero-bg{object-position:center center!important}
- .hero-overlay{background:rgba(255,255,255,.65)!important}
+ .hero-overlay{background:rgba(255,255,255,.75)!important}
  .str-grid{grid-template-columns:repeat(2,1fr)}
  .prods-grid{grid-template-columns:repeat(2,1fr)}
  .spc-grid{grid-template-columns:1fr}
@@ -1607,7 +1607,7 @@ a{text-decoration:none;color:inherit}
  .hero-desc{font-size:13px}
  .hero-btns{flex-direction:column;gap:8px}
  .hero-btns a,.hero-btns button{width:100%}
- .hero-overlay{background:rgba(255,255,255,.75)!important}
+ .hero-overlay{background:rgba(255,255,255,.85)!important}
  .str-grid{grid-template-columns:1fr 1fr;gap:10px}
  .prods-grid{grid-template-columns:1fr 1fr;gap:10px}
  .prod-card{aspect-ratio:1}
@@ -2129,6 +2129,15 @@ textarea.ct-input{height:120px;resize:vertical}
  </div>
  <button type="button" class="ct-submit" onclick="submitForm()">문의 접수하기</button>
  <p class="ct-note">접수 후 영업시간 내 빠르게 연락드리겠습니다.<br>급하시면 📞 010-9876-8282로 전화 주세요.</p>
+ <p style="font-size:10px;color:#bbb;margin-top:16px;text-align:center;line-height:1.6">위 문의 접수를 통해 수집된 개인정보(상호, 연락처, 주소)는 상담 및 서비스 안내 목적으로만 사용되며,<br>제3자에게 제공되지 않습니다. 수집된 정보는 상담 완료 후 지체 없이 파기합니다.<br>문의 접수 시 위 내용에 동의한 것으로 간주합니다.</p>
+ <div style="margin-top:16px;padding:14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;font-size:11px;color:#888;line-height:1.7">
+ <strong style="color:#666">📋 개인정보 수집·이용 동의</strong><br>
+ 수집 항목: 상호(이름), 연락처, 주소, 문의 내용<br>
+ 수집 목적: 상담 문의 접수 및 답변, 견적 안내<br>
+ 보유 기간: 문의 처리 완료 후 1년 이내 파기<br>
+ <span style="color:#aaa">※ 동의를 거부할 수 있으며, 거부 시 문의 접수가 제한됩니다.</span><br>
+ <span style="color:#aaa">※ 문의 접수 시 위 내용에 동의한 것으로 간주합니다.</span>
+ </div>
  </div>
  <div class="ct-success" id="ct-success">
  <div class="ct-success-ic">✅</div>
