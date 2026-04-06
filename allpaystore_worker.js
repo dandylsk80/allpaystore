@@ -2281,6 +2281,27 @@ export default {
   return new Response(imgResp.body,{headers:h2});
  }
  if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n',{headers:{'Content-Type':'text/plain'}});
+ const INDEXNOW_KEY='822a08bd2bba4c3cb62c6fba162a9cb3';
+ if(path==='/'+INDEXNOW_KEY+'.txt')return new Response(INDEXNOW_KEY,{headers:{'Content-Type':'text/plain'}});
+ if(path==='/api/indexnow'){
+  try{
+   const allSlugs=Object.keys(R);
+   const prods=Object.keys(PRODUCTS);
+   const urls=['https://allpaystore.com/','https://allpaystore.com/contact/','https://allpaystore.com/product/'];
+   prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/');});
+   const sidos=['seoul','gyeonggi','busan','incheon','daegu','daejeon','gwangju','ulsan','sejong','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
+   sidos.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');});
+   const sgSet=new Set();allSlugs.forEach(k=>{if(k.split('/').length===3)sgSet.add(k.split('/').slice(0,2).join('/'));});
+   sgSet.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');});
+   const batch=urls.slice(0,10000);
+   const body=JSON.stringify({host:'allpaystore.com',key:INDEXNOW_KEY,keyLocation:'https://allpaystore.com/'+INDEXNOW_KEY+'.txt',urlList:batch});
+   const [naverRes,bingRes]=await Promise.allSettled([
+    fetch('https://searchadvisor.naver.com/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body}),
+    fetch('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body})
+   ]);
+   return new Response(JSON.stringify({ok:true,submitted:batch.length,naver:naverRes.status||'done',bing:bingRes.status||'done'}),{headers:{'Content-Type':'application/json'}});
+  }catch(e){return new Response(JSON.stringify({ok:false,error:e.message}),{headers:{'Content-Type':'application/json'}});}
+ }
  return new Response('Not Found',{status:404});
  }
 };
