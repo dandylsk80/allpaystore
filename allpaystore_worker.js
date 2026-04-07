@@ -2274,6 +2274,13 @@ export default {
  }
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
  if(path==='/sitemap.xml')return new Response(makeSitemap(),{headers:{'Content-Type':'application/xml;charset=utf-8'}});
+ if(path==='/favicon.ico'){
+  const fResp=await fetch('https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png');
+  const fh=new Headers(fResp.headers);
+  fh.set('Content-Type','image/png');
+  fh.set('Cache-Control','public,max-age=2592000,s-maxage=2592000');
+  return new Response(fResp.body,{headers:fh});
+ }
  if(path.startsWith('/images/')){
   const imgResp=await fetch('https://raw.githubusercontent.com/dandylsk80/allpaystore/main'+path);
   const h2=new Headers(imgResp.headers);
