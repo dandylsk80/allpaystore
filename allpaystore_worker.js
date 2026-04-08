@@ -745,7 +745,6 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
  const sidoName=SK[sidoSlug];
  const sgKey=sidoSlug+'/'+sigunguSlug;
  let dongs=Object.keys(R).filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
- if(!dongs.length) dongs=Object.keys(R).filter(k=>k.startsWith(sgKey)).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
  if(!dongs.length)return null;
  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
  const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
@@ -1114,7 +1113,6 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
  const suf=isR?'전문':'설치';
  const sgKey=sidoSlug+'/'+sigunguSlug;
  let dongs=Object.keys(R).filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
- if(!dongs.length) dongs=Object.keys(R).filter(k=>k.startsWith(sgKey)).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
  if(!dongs.length)return null;
  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="sg-card">${d.name} ${prd.ko}</a>`).join('');
