@@ -1342,21 +1342,21 @@ function switchTab(eng){
 }
 function makeSitemap(){
  const base='https://allpaystore.com';
- const today=new Date().toISOString().split('T')[0];
- const u=(path,pri)=>`<url><loc>${base}${path}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri}</priority></url>`;
+ const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
  const prodSlugs=Object.keys(PRODUCTS);
- let xml=u('/',1.0)+u('/contact/',0.9)+u('/product/',0.9);
- prodSlugs.forEach(p=>{xml+=u('/product/'+p+'/',0.8);});
- prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{xml+=u('/product/'+p+'/'+s+'/',0.7);});});
- sidoSlugs.forEach(s=>{xml+=u('/blog/'+s+'/',0.8);});
+ const parts=[u('/'),u('/contact/'),u('/product/')];
+ prodSlugs.forEach(p=>{parts.push(u('/product/'+p+'/'));});
+ prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{parts.push(u('/product/'+p+'/'+s+'/'));});});
+ sidoSlugs.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
  const sgSet=new Set();
- Object.keys(R).filter(k=>k.split('/').length===3).forEach(k=>{const sg=k.split('/').slice(0,2).join('/');sgSet.add(sg);});
- sgSet.forEach(s=>{xml+=u('/blog/'+s+'/',0.7);});
- prodSlugs.forEach(p=>{sgSet.forEach(s=>{xml+=u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/',0.6);});});
- Object.keys(R).filter(k=>k.split('/').length===3).forEach(s=>{xml+=u('/blog/'+s+'/',0.5);});
- Object.keys(R).filter(k=>k.split('/').length===3).forEach(s=>{prodSlugs.forEach(p=>{xml+=u('/blog/'+s+'/'+p+'/',0.4);});});
- return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+xml+'</urlset>';
+ const dongKeys=Object.keys(R).filter(k=>k.split('/').length===3);
+ dongKeys.forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
+ sgSet.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
+ prodSlugs.forEach(p=>{sgSet.forEach(s=>{parts.push(u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/'));});});
+ dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
+ dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
+ return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function getRSS() {
  const now=new Date().toUTCString();
@@ -2288,7 +2288,7 @@ export default {
 </body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
  }
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
- if(path==='/sitemap.xml')return new Response(makeSitemap(),{headers:{'Content-Type':'application/xml;charset=utf-8'}});
+ if(path==='/sitemap.xml'){const xml=makeSitemap();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
  if(path==='/favicon.ico'){
   const fResp=await fetch('https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png');
   const fh=new Headers(fResp.headers);
