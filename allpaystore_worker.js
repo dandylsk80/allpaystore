@@ -22,6 +22,80 @@ const PRODUCTS={
  tableorder:{ko:'테이블오더',emoji:'📋',color:'#DC2626',slug:'tableorder'},
   removal:{ko:'철거',emoji:'🔨',color:'#991B1B',slug:'removal'}
 };
+const GUIDE_KW=['가건물철거','가게원상복구','가게철거','가게철거비용','가게폐업','가벽철거','가벽철거비용','가설건축물철거','간판철거','개인사업자폐업','개인사업자폐업지원금','건물내부철거','건물주원상복구협의','건물철거','건물철거공사','건물철거비용','건물철거업체','건축물철거','건축물철거공사','건축물철거비용','건축물철거업체','건축철거','건축철거업체','고층건물철거','공실원상복구','공장원상복구','공장철거','공장철거공사','공장폐업','내력벽철거','내벽철거','내부철거','노래방철거','농막철거','담벼락철거','담장철거','당구장폐업','덕트철거','데크철거','리모델링철거','마트철거','마트폐업','매장원상복구','매장철거','매장철거비용','매장철거업체','목재철거','무허가건물철거','문구점폐업','바닥철거','바닥철거비용','방음부스철거','벽면철거','벽철거','벽체철거','부분철거','부분철거비용','불법건축물철거','붙박이장철거비용','사무실가벽철거','사무실벽철거','사무실보수','사무실복구','사무실원복공사','사무실원상복구','사무실원상복구공사','사무실원상복구비용','사무실원상복구업체','사무실인테리어철거','사무실정리업체','사무실천장철거','사무실철거','사무실철거공사','사무실철거비용','사무실철거업체','사무실폐기물','사무실폐업','사무실폐업정리','사업정리','사업정리컨설턴트','사업정리컨설팅','사우나철거','상가부분철거','상가원상복구','상가원상복구비용','상가인테리어철거','상가인테리어철거비용','상가천장원상복구','상가천장철거','상가철거','상가철거비','상가철거비용','상가철거비지원','상가철거업체','상가철거지원금','상가폐업','샤시철거','샷시철거비용','석면해체','소상공인점포철거비','소상공인지원','소상공인지원금','소상공인지원사업','소상공인철거','소상공인철거비지원','소상공인철거업체','소상공인철거지원','소상공인철거지원금','소상공인철거지원사업','소상공인폐업','소상공인폐업지원','소상공인폐업지원금','소상공인폐업지원사업','소상공인폐업철거지원','소상공인희망리턴패키지','시설물철거','식당원상복구','식당철거','식당철거업체','식당폐업','식당폐업정리','실내철거','업체정리철거','옥탑철거','완파철거','외벽철거','욕조철거비용','원상복구','원상복구견적','원상복구공사','원상복구범위','원상복구업체','원상복구철거','원상복구철거업체','원상복귀','원상회복','유리벽철거','유리파티션철거','음식점철거비용','음식점폐업','음식점폐업지원금','인테리어복구','인테리어원상복구','인테리어철거','인테리어철거견적','인테리어철거공사','인테리어철거비용','인테리어철거업체','자영업자철거','자영업자폐업','자영업자폐업무료견적','자영업자폐업지원','자영업자폐업지원금','자영업폐업','재창업지원금','전시철거','점포정리','점포철거','점포철거비지원','점포철거업체','점포철거지원금','점포철거지원비','점포폐업','정리업체','정육점철거','정육점폐업','주방철거','주방폐업','중고주방집기','창고철거','천장철거','천정철거','철거','철거견적','철거공사견적','철거공사견적서','철거공사비용','철거단가','철거문의','철거비용','철거비용지원','철거비지원','철거사업','철거시공','철거업체','철거업체견적','철거업체비용','철거업체순위','철거업체추천','철거원상복구','철거인테리어','철거작업','철거전문','철거전문업체','철거정부지원','철거지원','철거지원금','철거지원금신청','철거지원사업','철거회사','철거후보증금반환','청년사업지원금','카페철거','카페철거비용','카페폐업','카페폐업매입','카페폐업정리','커피숍폐업','컨테이너철거비용','키즈카페폐업','파티션철거','판넬철거','팝업철거','페업지원','페업지원금','평당철거비용','폐기물처리비용','폐기물철거','폐기물철거업체','폐업','폐업대출','폐업대행','폐업매장철거','폐업물품','폐업사업자환급','폐업소상공인지원','폐업수거','폐업신고','폐업업체','폐업원상복구','폐업인테리어복원','폐업자지원','폐업전문','폐업전문업체','폐업정리','폐업정부지원금','폐업지원','폐업지원금','폐업지원금신청','폐업지원사업','폐업지원철거','폐업처리','폐업철거','폐업철거비','폐업철거비용','폐업철거업체','폐업철거지원금','폐업철거후기','폐업카페','폐업컨설턴트','폐업컨설팅','폐업후원상복구','학원원상복구','학원철거','학원철거업체','학원폐업'];
+function makeGuidePage(kw){
+ const h=kw.split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
+ const pk=(arr)=>arr[Math.abs(h^arr.length)%arr.length];
+ const yr=new Date().getFullYear();
+ // Detect category
+ const is복구=kw.includes('원상복구')||kw.includes('원상복귀')||kw.includes('원상회복')||kw.includes('복구')||kw.includes('보수');
+ const is폐업=kw.includes('폐업')||kw.includes('사업정리')||kw.includes('점포정리');
+ const is지원=kw.includes('지원금')||kw.includes('지원사업')||kw.includes('지원비')||kw.includes('비지원')||kw.includes('희망리턴');
+ const is비용=kw.includes('비용')||kw.includes('단가')||kw.includes('견적')||kw.includes('철거비');
+ const is업체=kw.includes('업체')||kw.includes('회사')||kw.includes('추천')||kw.includes('순위')||kw.includes('전문');
+ // Extract subject
+ let subj='매장';
+ const subjMap={'가건물':'가건물','가게':'가게','가벽':'가벽','가설건축물':'가설건축물','간판':'간판','건물':'건물','건축물':'건축물','건축':'건축','고층건물':'고층건물','공실':'공실','공장':'공장','내력벽':'내력벽','내벽':'내벽','내부':'내부','노래방':'노래방','농막':'농막','담벼락':'담벼락','담장':'담장','당구장':'당구장','덕트':'덕트','데크':'데크','마트':'마트','매장':'매장','목재':'목재','무허가건물':'무허가건물','문구점':'문구점','바닥':'바닥','방음부스':'방음부스','벽면':'벽면','벽체':'벽체','벽':'벽','사무실':'사무실','사우나':'사우나','상가':'상가','샤시':'샤시','샷시':'샷시','석면':'석면','시설물':'시설물','식당':'식당','실내':'실내','옥탑':'옥탑','외벽':'외벽','욕조':'욕조','유리벽':'유리벽','유리파티션':'유리파티션','음식점':'음식점','인테리어':'인테리어','자영업자':'자영업자','자영업':'자영업','전시':'전시','점포':'점포','정육점':'정육점','주방':'주방','창고':'창고','천장':'천장','천정':'천장','카페':'카페','커피숍':'커피숍','컨테이너':'컨테이너','키즈카페':'키즈카페','파티션':'파티션','판넬':'판넬','팝업':'팝업','학원':'학원','소상공인':'소상공인','개인사업자':'개인사업자','붙박이장':'붙박이장','리모델링':'리모델링'};
+ for(const[k,v]of Object.entries(subjMap)){if(kw.startsWith(k)){subj=v;break;}}
+ const isPlace=['가게','노래방','당구장','마트','매장','문구점','사무실','사우나','상가','식당','음식점','점포','정육점','카페','커피숍','키즈카페','학원','공장','창고'].includes(subj);
+ const isPart=['가벽','간판','내력벽','내벽','덕트','데크','바닥','방음부스','벽면','벽체','벽','목재','샤시','샷시','외벽','욕조','유리벽','유리파티션','천장','천정','파티션','판넬','붙박이장'].includes(subj);
+ const title=`${kw} — ${yr}년 완벽 가이드 | 올페이스토어`;
+ const desc=is비용?`${kw} 정보를 찾고 계신가요? 무료 현장 실측 후 정찰제 견적을 안내합니다. 추가 비용 없는 투명한 ${kw} 안내.`:is지원?`${kw} 신청 방법과 자격 요건을 상세하게 안내합니다. 소상공인진흥공단 희망리턴패키지 등 활용 가능한 지원 제도를 확인하세요.`:is폐업?`${kw} 절차와 비용을 전문가가 안내합니다. 보증금 보호부터 원상복구, 폐기물 처리까지 원스톱으로 진행합니다.`:is복구?`${kw} 전문 서비스. 임대차 계약서 기준 원상복구 범위 확인부터 시공, 보증금 반환까지 체계적으로 진행합니다.`:is업체?`믿을 수 있는 ${kw}를 찾고 계신가요? 정찰제 운영, 시공 보증서 발급, 폐기물 적법 처리까지 책임지는 전문 업체를 안내합니다.`:`${kw} 전문 올페이스토어. 무료 견적부터 시공, 원상복구, 폐기물 처리까지 원스톱 서비스를 제공합니다. ☎ 010-9876-8282`;
+ // Build ~2000 char body
+ let body='';
+ // Section 1: Intro
+ if(is비용){
+  body+=`<h2>${kw}, 얼마나 들까요?</h2><p>${subj} ${isPart?'부분 ':''}철거 비용은 면적, 구조, 자재 종류에 따라 달라집니다. 일반적으로 ${isPart?subj+' 철거는 부위별 단가로 산정되며':'평당 단가를 기준으로 산정하며'}, 현장 실측 없이 정확한 비용을 산출하기 어렵습니다. 올페이스토어는 무료 현장 실측 후 정찰제 견적을 확정하며, 견적 이후 추가 비용이 발생하지 않습니다.</p>`;
+  body+=`<h2>${kw} 산정 기준</h2><p>${isPart?subj+'의 재질과 면적, 설치 방식에 따라 비용이 달라집니다. 예를 들어 석고보드 '+subj+'과 콘크리트 '+subj+'은 철거 난이도가 다르므로 단가 차이가 발생합니다.':'면적(평수)이 가장 큰 변수이며, 층수, 엘리베이터 유무, 폐기물 반출 동선에 따라 추가 비용이 발생할 수 있습니다.'} 올페이스토어는 현장 방문 후 모든 변수를 반영한 최종 견적을 서면으로 제공합니다. 구두 견적이 아닌 서면 견적이므로 추후 분쟁의 소지가 없습니다.</p>`;
+  body+=`<h2>${kw} 절감하는 방법</h2><p>첫째, 여러 업체에서 비교 견적을 받으세요. 둘째, 소상공인이라면 소상공인진흥공단의 희망리턴패키지를 통해 철거비를 최대 200만원까지 지원받을 수 있습니다. 셋째, 철거와 원상복구를 한 업체에서 동시에 진행하면 별도 시공 대비 비용을 절약할 수 있습니다. 올페이스토어에서 보조금 신청 절차까지 안내해드립니다.</p>`;
+ }else if(is지원){
+  body+=`<h2>${kw} 신청 자격</h2><p>${yr}년 현재, 폐업을 준비하는 소상공인이라면 정부 지원 사업을 활용하여 철거 비용을 크게 줄일 수 있습니다. 대표적으로 소상공인시장진흥공단에서 운영하는 희망리턴패키지가 있으며, 이를 통해 점포 철거비를 최대 200만원까지 지원받을 수 있습니다. 신청 자격은 폐업 예정이거나 폐업한 소상공인으로, 연 매출 기준 등 세부 조건이 있습니다.</p>`;
+  body+=`<h2>${kw} 신청 절차</h2><p>지원금 신청은 온라인(소상공인마당 홈페이지) 또는 가까운 소상공인지원센터에서 가능합니다. 필요 서류는 사업자등록증 사본, 임대차계약서, 폐업사실증명원 등이며, 서류 접수 후 심사를 거쳐 지원 여부가 결정됩니다. 올페이스토어에서는 서류 준비부터 접수까지 전 과정을 무료로 안내해드립니다. 예산 소진 시 조기 마감될 수 있으므로 빠른 신청을 권장합니다.</p>`;
+  body+=`<h2>${kw} 활용 팁</h2><p>지원금은 철거 공사 완료 후 증빙 서류를 제출해야 지급됩니다. 따라서 시공 보증서, 폐기물 처리 확인증, 세금계산서 등을 발급하는 업체를 선택하는 것이 중요합니다. 올페이스토어는 모든 증빙 서류를 기본 제공하며, 지원금 정산에 필요한 서류 양식까지 안내합니다.</p>`;
+ }else if(is폐업){
+  body+=`<h2>${kw} 절차 안내</h2><p>${isPlace?subj+'을':'사업장을'} 폐업할 때는 체계적인 절차가 필요합니다. 임대차 계약서의 원상복구 조항을 먼저 확인하고, 세무서에 폐업 신고를 해야 합니다. 이후 ${isPlace?subj:'매장'} 내 시설물 철거, 원상복구, 폐기물 처리를 진행합니다. 올페이스토어는 이 모든 과정을 원스톱으로 지원하여 사장님의 부담을 최소화합니다.</p>`;
+  body+=`<h2>${kw} 시 보증금 보호하기</h2><p>폐업 시 가장 중요한 것은 보증금 반환입니다. 임대인이 요구하는 원상복구 범위를 정확히 파악하고, 해당 범위에 맞게 시공해야 보증금 분쟁을 예방할 수 있습니다. 올페이스토어는 시공 전 임대차 계약서를 분석하여 원상복구 범위를 확정하고, 시공 전후 사진 기록과 시공 보증서를 제공합니다.</p>`;
+  body+=`<h2>${kw} 비용 절감 방법</h2><p>소상공인이라면 소상공인진흥공단의 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있습니다. 또한 지자체별로 별도 지원 사업이 있을 수 있으니 반드시 확인하세요. 폐업 후 재창업을 계획하신다면 기존 매장 철거와 새 매장 장비 설치를 동시에 진행하여 비용을 절약할 수도 있습니다.</p>`;
+ }else if(is복구){
+  body+=`<h2>${kw}란?</h2><p>${is복구&&subj!=='매장'?subj+' ':''}원상복구란 임대 기간 종료 시 임차인이 ${isPlace?subj:'공간'}을 입주 전 상태로 되돌리는 것을 말합니다. 임대차 계약서에 명시된 원상복구 범위에 따라 시공 내용이 달라지며, 바닥·벽면·천장 복구, 설비 철거, 도배·페인트 작업 등이 포함될 수 있습니다. 올페이스토어는 계약서 분석부터 시공까지 체계적으로 진행합니다.</p>`;
+  body+=`<h2>${kw} 시 주의사항</h2><p>원상복구 범위를 임대인과 사전에 명확히 합의하는 것이 가장 중요합니다. 구두 합의가 아닌 서면으로 확인하세요. 시공 전 현재 상태를 사진과 영상으로 기록하고, 시공 후에도 동일하게 기록을 남겨야 분쟁을 예방할 수 있습니다. 올페이스토어는 시공 전후 기록을 체계적으로 관리하며, 시공 보증서를 발급합니다.</p>`;
+  body+=`<h2>${kw} 비용과 기간</h2><p>${isPlace?subj:'공간'}의 면적과 복구 범위에 따라 비용과 기간이 달라집니다. 올페이스토어는 무료 현장 실측 후 정찰제 견적을 확정하며, 추가 비용이 발생하지 않습니다. 소상공인의 경우 정부 보조금을 활용하여 비용을 절감할 수 있으며, 올페이스토어에서 신청 절차를 안내해드립니다.</p>`;
+ }else if(is업체){
+  body+=`<h2>좋은 ${kw} 선택 기준</h2><p>${kw}를 선택할 때 가장 중요한 기준은 정찰제 운영 여부, 시공 보증서 발급, 폐기물 적법 처리 능력입니다. 저렴한 견적만 보고 선택하면 추가 비용 요구, 불법 폐기물 투기 등의 문제가 발생할 수 있습니다. 올페이스토어는 무료 현장 실측 후 서면 견적을 확정하며, 모든 폐기물을 관련 법규에 따라 처리합니다.</p>`;
+  body+=`<h2>${kw} 비교 시 확인사항</h2><p>업체를 비교할 때 반드시 확인해야 할 항목: 첫째, 서면 견적서를 제공하는지. 둘째, 시공 보증서와 폐기물 처리 확인증을 발급하는지. 셋째, 사업자등록이 되어 있고 세금계산서 발행이 가능한지. 넷째, 원상복구 경험과 실적이 있는지. 올페이스토어는 이 네 가지 조건을 모두 충족하며 전국 서비스를 제공합니다.</p>`;
+  body+=`<h2>올페이스토어 ${kw} 서비스</h2><p>올페이스토어는 전국 5,000개 이상의 읍면동에서 ${isPlace?subj:'매장'} 철거·원상복구를 직접 시공합니다. 정밀 현장 분석 후 정찰제 견적을 확정하며, 추가 비용이 발생하지 않습니다. 시공 보증서 발급, 폐기물 적법 처리, 보조금 신청 안내까지 원스톱으로 제공합니다.</p>`;
+ }else{
+  body+=`<h2>${kw} — 알아야 할 핵심 정보</h2><p>${isPart?subj+' 철거는 전체 공간 철거와 달리 주변 구조물 손상 없이 해당 부위만 정밀하게 제거하는 기술이 필요합니다.':isPlace?subj+' 철거는 내부 시설물 해체, 폐기물 반출, 원상복구까지 포함하는 종합 서비스입니다.':'전문 장비와 숙련된 기술자가 안전하게 작업을 진행하며, 구조물 보호와 폐기물 적법 처리를 보장합니다.'} 올페이스토어는 전국 어디서든 직접 방문하여 무료 현장 실측을 진행하고, 정찰제 견적을 확정합니다.</p>`;
+  body+=`<h2>${kw} 진행 절차</h2><p>올페이스토어의 ${kw} 서비스는 다음 절차로 진행됩니다. ① 전화 상담 또는 온라인 문의 ② 무료 현장 방문 및 실측 ③ 정찰제 견적 확정(서면 제공) ④ 시공 일정 협의 ⑤ 전문 엔지니어팀 시공 ⑥ 원상복구(필요 시) ⑦ 폐기물 적법 처리 및 확인증 발급 ⑧ 시공 보증서 발급. 전 과정에서 추가 비용이 발생하지 않습니다.</p>`;
+  body+=`<h2>${kw} 관련 자주 묻는 질문</h2><p><strong>Q. 비용은 얼마인가요?</strong> 면적과 구조에 따라 다르며, 무료 현장 실측 후 정확한 견적을 안내합니다. 정찰제로 운영되어 추가 비용이 없습니다. <strong>Q. 정부 지원금을 받을 수 있나요?</strong> 소상공인이라면 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있습니다. 올페이스토어에서 신청 절차를 안내합니다. <strong>Q. 전국 어디서든 가능한가요?</strong> 네, 올페이스토어는 전국 5,000개 이상의 읍면동에서 서비스를 제공합니다.</p>`;
+ }
+ // Common closing section
+ body+=`<h2>${kw}, 올페이스토어에 맡기세요</h2><p>올페이스토어는 ${yr}년 현재 전국에서 매장·사무실·가게·공장 등 다양한 공간의 철거와 원상복구를 전문으로 합니다. 정찰제 견적으로 추가 비용 걱정이 없으며, 시공 보증서 발급과 폐기물 적법 처리를 기본 제공합니다. 지금 바로 무료 견적을 받아보세요.</p>`;
+ // Related keywords
+ const related=GUIDE_KW.filter(k=>k!==kw&&(k.includes(subj)||kw.split('').some((c,i)=>i<2&&k.includes(kw.slice(0,2))))).slice(0,12);
+ const relLinks=related.map(k=>`<a href="/guide/${encodeURIComponent(k)}/" style="display:inline-block;margin:4px;padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:13px;color:#374151;text-decoration:none">${k}</a>`).join('');
+ return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://allpaystore.com/guide/${encodeURIComponent(kw)}/">
+${CSS}</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:28px">
+<p style="font-size:13px;color:#888;margin-bottom:8px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/product/removal/" style="color:#888;text-decoration:none">철거</a> &gt; ${kw}</p>
+<h1 style="font-size:26px;font-weight:900;color:#111;margin-bottom:20px;line-height:1.4">🔨 ${kw}</h1>
+${body}
+<div class="cta"><h3>📞 ${kw} 무료 견적</h3><p>전문 엔지니어가 직접 방문하여 정확한 견적을 안내합니다.<br>정찰제 운영 · 추가 비용 없음 · 시공 보증서 발급</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=removal" class="cta-sub">💬 상담 문의</a></div>
+${relLinks?'<div style="margin-top:32px"><h3 style="font-size:16px;font-weight:700;margin-bottom:12px">관련 가이드</h3><div>'+relLinks+'</div></div>':''}
+</div>
+<div class="fl-wrap">
+ <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+ <a href="/contact/?product=removal" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
+</div></body></html>`;
+}
 function makeProductSVG(sido,sigungu,emd,prd){
  const sub=`${sido} ${sigungu}`;
  const isR=prd.slug==='removal';
@@ -428,6 +502,7 @@ ${CSS}
  ],h)}</div></div>
  <div class="faq"><div class="faq-q">Q. ${pk([`${prd.ko} 비용은 얼마인가요?`,`${emd} ${prd.ko} ${act} 비용이 궁금합니다`,`${prd.ko} ${isRemoval?'철거비':'설치비'}는 얼마나 드나요?`],h2)}</div><div class="faq-a">${isRemoval?pk(['매장 면적과 구조에 따라 다르며, 무료 견적 후 정찰제로 비용을 확정합니다. 추가 비용이 발생하지 않습니다.','현장 분석 후 정찰제로 견적을 확정하며, 소상공인 대상 정부 보조금(희망리턴패키지)으로 비용을 절감할 수 있습니다.','무료 견적 후 정확한 비용을 안내드립니다. 정찰제 운영으로 추가 비용이 없으며, 보조금 신청도 도와드립니다.'],h):(prodKey==='cctv'?pk(['매장 규모와 카메라 대수에 따라 비용이 달라집니다. 무료 견적을 통해 정확한 비용을 안내드립니다.','CCTV는 4채널~16채널 구성에 따라 비용이 달라지며, 무료 견적 후 안내드립니다.','매장에 맞는 최적의 CCTV 구성을 무료로 설계해드립니다. 견적 문의 010-9876-8282'],h2):pk(['설치비 무료, 월 이용료 무료로 진행됩니다. VAN사 제휴를 통해 설치비를 전액 지원합니다.','올페이스토어는 설치비·월 이용료 모두 무료입니다. 카드 결제 시 VAN사 수수료만 정상 부과됩니다.',`${emd} 지역 ${p.biz[0]} 매장 기준, 설치비 무료입니다. 패키지 설치 시 추가 할인도 적용됩니다.`],h2))}</div></div>
  <div class="faq"><div class="faq-q">Q. ${isRemoval?pk(['철거 후 원상복구도 해주나요?','다른 장비도 함께 철거할 수 있나요?','철거 폐기물 처리는 어떻게 하나요?'],h):pk(['기존 장비와 연동이 되나요?','다른 장비와 함께 설치할 수 있나요?','A/S는 어떻게 받나요?'],h)}</div><div class="faq-a">${isRemoval?pk(['네, 철거 후 바닥·벽면 원상복구까지 포함하여 진행합니다. 복구 범위는 현장 확인 후 안내드립니다.','네, 카드단말기·포스기·키오스크·CCTV 등 매장 내 모든 장비를 한번에 철거할 수 있습니다. 신규 장비 교체도 동시에 가능합니다.','모든 폐기물은 관련 법규에 따라 적법하게 처리됩니다. 폐기물 처리 비용은 견적에 포함되어 별도 비용이 없습니다.'],h):pk([`올페이스토어가 설치하는 ${prd.ko}는 기존 카드단말기·포스기와 호환됩니다. 오래된 장비는 사전 호환성 확인 후 최적의 연동 방안을 안내드립니다.`,`카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다. 장비 간 자동 연동도 포함됩니다.`,`장비 장애 시 원격 지원으로 빠르게 해결해드립니다. 원격으로 해결이 안 되면 현장 출동 서비스를 제공합니다.`],h)}</div></div>
+ ${isRemoval?'<h2 style="font-size:18px;font-weight:800;margin:32px 0 12px">📚 철거 가이드</h2><div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px">'+GUIDE_KW.filter((_,i)=>i%4===Math.abs(h)%4).slice(0,20).map(k=>'<a href="/guide/'+encodeURIComponent(k)+'/" style="display:inline-block;padding:4px 9px;background:#f3f4f6;border-radius:5px;font-size:12px;color:#374151;text-decoration:none">'+k+'</a>').join('')+'<a href="/guide/" style="display:inline-block;padding:4px 9px;background:#991B1B;border-radius:5px;font-size:12px;color:#fff;text-decoration:none">전체 보기</a></div>':''}
  <div class="cta">
  <h3>${prd.emoji} ${emd} ${prd.ko} 무료 견적 받기</h3>
  <p>${isRemoval?`${full} 매장·사무실·가게 철거를 전문 엔지니어팀이 책임집니다.<br>정밀 현장 분석 · 정찰제 · 원상복구 · 폐기물 적법 처리`:`${full} 매장에 딱 맞는 ${prd.ko}를 전문가가 직접 추천해 드립니다.<br>카드단말기 · 포스기 · 키오스크 · CCTV · 테이블오더 통합 상담`}</p>
@@ -906,6 +981,7 @@ ${CSS}
  <h2>📍 ${prd.ko} ${suf} 지역 선택</h2>
  <p style="font-size:14px;color:#888;margin-bottom:16px">지역을 선택하면 상세 ${suf} 가이드를 확인할 수 있습니다.</p>
  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px">${regionBtns}</div>
+ ${prodKey==='removal'?'<h2 style="font-size:20px;font-weight:800;margin-bottom:16px">📚 철거·원상복구·폐업 가이드</h2><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:32px">'+GUIDE_KW.slice(0,60).map(k=>'<a href="/guide/'+encodeURIComponent(k)+'/" style="display:inline-block;padding:5px 10px;background:#f3f4f6;border-radius:6px;font-size:12px;color:#374151;text-decoration:none">'+k+'</a>').join('')+'<a href="/guide/" style="display:inline-block;padding:5px 10px;background:#991B1B;border-radius:6px;font-size:12px;color:#fff;text-decoration:none">전체 보기 →</a></div>':''}
  <div class="cta">
  <h3>${prd.emoji} ${prd.ko} 무료 견적 받기</h3>
  <p>전국 어디서든 ${prd.ko} ${suf}를 전문가가 책임집니다.</p>
@@ -1356,6 +1432,8 @@ function makeSitemap(){
  prodSlugs.forEach(p=>{sgSet.forEach(s=>{parts.push(u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/'));});});
  dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
  dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
+ parts.push(u('/guide/'));
+ GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/'));});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function getRSS() {
@@ -2232,6 +2310,17 @@ export default {
  }
  if(path==='/contact'){
  return new Response(makeContactPage(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+ }
+ const guideMatch=path.match(/^\/guide\/(.+)$/);
+ if(guideMatch){
+  const kw=decodeURIComponent(guideMatch[1]);
+  if(GUIDE_KW.includes(kw)){
+   return new Response(makeGuidePage(kw),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+  }
+ }
+ if(path==='/guide'){
+  const links=GUIDE_KW.map(k=>`<a href="/guide/${encodeURIComponent(k)}/" style="display:inline-block;margin:4px;padding:8px 14px;background:#f3f4f6;border-radius:8px;font-size:14px;color:#374151;text-decoration:none">${k}</a>`).join('');
+  return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>철거·원상복구·폐업 가이드 | 올페이스토어</title><meta name="description" content="매장철거, 원상복구, 폐업 절차, 정부 지원금 등 철거에 관한 모든 가이드를 제공합니다. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><h1 style="font-size:26px;font-weight:900;margin-bottom:24px">🔨 철거·원상복구·폐업 가이드</h1><p style="font-size:15px;color:#555;margin-bottom:24px">매장 철거, 원상복구, 폐업 절차, 정부 지원금 등 사장님이 알아야 할 모든 정보를 모았습니다.</p><div>${links}</div></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const prodMatch=path.match(/^\/product\/([a-z]+)$/);
  if(prodMatch && PRODUCTS[prodMatch[1]]){
