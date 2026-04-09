@@ -1651,7 +1651,7 @@ a{text-decoration:none;color:inherit}
 .logo-sub{font-size:9px;color:#999;display:block;letter-spacing:2px}
 .hd-tel{display:flex;align-items:center;gap:8px;padding:8px 18px;background:#f5f5f5;border:1px solid #ddd;border-radius:999px;color:#111;font-size:13px;font-weight:700}
 .hd-nav{display:flex;gap:24px;font-size:13px}
-.hd-nav a{color:#555;font-weight:500;transition:color .15s}
+.hd-nav a{color:#555;font-weight:500;transition:color .15s;white-space:nowrap}
 .hd-nav a:hover{color:#111}
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
@@ -1812,6 +1812,8 @@ a{text-decoration:none;color:inherit}
  .gnb-nav{display:none}
  .gnb{padding:16px 0}
  .hero-in{flex-direction:column;gap:28px;text-align:center}
+ .hd-nav{gap:12px;font-size:11px}
+ .hd-in{padding:6px 12px}
  .hero-h1{font-size:26px}
  .hero-card{width:100%}
  .hero-btns{justify-content:center}
@@ -1862,6 +1864,10 @@ a{text-decoration:none;color:inherit}
  .cta-sub{font-size:14px;padding:12px 28px;margin-left:0;margin-top:10px}
  .cta{padding:28px 18px}
  .hd-tel{font-size:12px;padding:7px 14px}
+ .hd-nav{gap:10px;font-size:11px}
+ .hd-in{padding:6px 10px}
+ .hd-tel span{display:none}
+ .hd-nav a{white-space:nowrap}
  .g4{grid-template-columns:1fr 1fr!important;gap:8px!important}
  .card{padding:12px 8px!important}
 }
@@ -1877,7 +1883,7 @@ a{text-decoration:none;color:inherit}
  <a href="/biz/">업종별</a>
  <a href="/contact/" style="color:#111;font-weight:800">문의하기</a>
  </nav>
- <a href="tel:010-9876-8282" class="hd-tel">📞 010-9876-8282</a>
+ <a href="tel:010-9876-8282" class="hd-tel">📞<span> 010-9876-8282</span></a>
  </div>
 </header>
 <section class="hero">
