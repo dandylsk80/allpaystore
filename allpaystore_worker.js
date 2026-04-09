@@ -2563,21 +2563,28 @@ export default {
  if(path==='/'+INDEXNOW_KEY+'.txt')return new Response(INDEXNOW_KEY,{headers:{'Content-Type':'text/plain'}});
  if(path==='/api/indexnow'){
   try{
-   const allSlugs=Object.keys(R);
+   const allSlugs=Object.keys(R).filter(k=>k.split('/').length===3);
    const prods=Object.keys(PRODUCTS);
-   const urls=['https://allpaystore.com/','https://allpaystore.com/contact/','https://allpaystore.com/product/'];
+   const urls=['https://allpaystore.com/','https://allpaystore.com/contact/','https://allpaystore.com/product/','https://allpaystore.com/guide/','https://allpaystore.com/biz/'];
    prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/');});
    const sidos=['seoul','gyeonggi','busan','incheon','daegu','daejeon','gwangju','ulsan','sejong','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
-   sidos.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');});
-   const sgSet=new Set();allSlugs.forEach(k=>{if(k.split('/').length===3)sgSet.add(k.split('/').slice(0,2).join('/'));});
-   sgSet.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');});
-   const batch=urls.slice(0,10000);
-   const body=JSON.stringify({host:'allpaystore.com',key:INDEXNOW_KEY,keyLocation:'https://allpaystore.com/'+INDEXNOW_KEY+'.txt',urlList:batch});
-   const [naverRes,bingRes]=await Promise.allSettled([
-    fetch('https://searchadvisor.naver.com/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body}),
-    fetch('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body})
-   ]);
-   return new Response(JSON.stringify({ok:true,submitted:batch.length,naver:naverRes.status||'done',bing:bingRes.status||'done'}),{headers:{'Content-Type':'application/json'}});
+   sidos.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/'+s+'/');});});
+   const sgSet=new Set();allSlugs.forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
+   sgSet.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/');});});
+   allSlugs.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/blog/'+s+'/'+p+'/');});});
+   GUIDE_KW.forEach(k=>{urls.push('https://allpaystore.com/guide/'+encodeURIComponent(k)+'/');});
+   BIZ_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz/'+s+'/');});
+   let submitted=0;
+   for(let i=0;i<urls.length;i+=10000){
+    const batch=urls.slice(i,i+10000);
+    const body=JSON.stringify({host:'allpaystore.com',key:INDEXNOW_KEY,keyLocation:'https://allpaystore.com/'+INDEXNOW_KEY+'.txt',urlList:batch});
+    await Promise.allSettled([
+     fetch('https://searchadvisor.naver.com/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body}),
+     fetch('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body})
+    ]);
+    submitted+=batch.length;
+   }
+   return new Response(JSON.stringify({ok:true,totalUrls:urls.length,submitted}),{headers:{'Content-Type':'application/json'}});
   }catch(e){return new Response(JSON.stringify({ok:false,error:e.message}),{headers:{'Content-Type':'application/json'}});}
  }
  return new Response('Not Found',{status:404});
