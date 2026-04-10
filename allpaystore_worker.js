@@ -1732,16 +1732,16 @@ a{text-decoration:none;color:inherit}
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
 .hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;object-fit:cover;object-position:center 20%;width:100%;height:100%;z-index:0}
-.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.65) 0%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.05) 100%);z-index:0}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,.5) 40%,rgba(255,255,255,.05) 70%,transparent 100%);z-index:0}
 .hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
 .hero-txt{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
 .hero-badge i{width:7px;height:7px;border-radius:50%;background:#111;display:block;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .hero-cap{font-size:14px;color:#888;margin-bottom:8px}
-.hero-h1{font-size:38px;font-weight:900;color:#111;line-height:1.25;margin-bottom:16px}
+.hero-h1{font-size:38px;font-weight:900;color:#000;line-height:1.25;margin-bottom:16px;text-shadow:0 1px 8px rgba(255,255,255,.8)}
 .hero-h1 b{color:#111}
-.hero-desc{font-size:15px;color:#888;line-height:1.7;margin-bottom:24px}
+.hero-desc{font-size:15px;color:#333;line-height:1.7;margin-bottom:24px;text-shadow:0 1px 4px rgba(255,255,255,.6)}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
 .btn-main{padding:14px 28px;background:#111;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
 .btn-main:hover{background:#333;transform:translateY(-1px)}
