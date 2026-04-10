@@ -1653,6 +1653,15 @@ a{text-decoration:none;color:inherit}
 .hd-nav{display:flex;gap:24px;font-size:13px}
 .hd-nav a{color:#555;font-weight:500;transition:color .15s;white-space:nowrap}
 .hd-nav a:hover{color:#111}
+.hd-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;line-height:1}
+.hd-burger svg{width:24px;height:24px;stroke:#111;stroke-width:2;stroke-linecap:round}
+.hd-mob{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:rgba(0,0,0,.5)}
+.hd-mob.open{display:block}
+.hd-mob-in{background:#fff;padding:24px;max-width:280px;margin-left:auto;height:100%;display:flex;flex-direction:column;gap:0;box-shadow:-4px 0 20px rgba(0,0,0,.1)}
+.hd-mob-close{align-self:flex-end;background:none;border:none;font-size:28px;cursor:pointer;color:#555;padding:0 0 16px}
+.hd-mob-in a{display:block;padding:14px 0;border-bottom:1px solid #f0f0f0;font-size:16px;font-weight:600;color:#333;text-decoration:none}
+.hd-mob-in a:last-child{border-bottom:none}
+.hd-mob-tel{display:block;margin-top:20px;padding:14px;background:#111;color:#fff;border-radius:10px;text-align:center;font-size:15px;font-weight:700;text-decoration:none}
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
 .hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;object-fit:cover;object-position:center 20%;width:100%;height:100%;z-index:0}
@@ -1811,9 +1820,11 @@ a{text-decoration:none;color:inherit}
 @media(max-width:768px){
  .gnb-nav{display:none}
  .gnb{padding:16px 0}
+ .hd-nav{display:none}
+ .hd-tel{display:none}
+ .hd-burger{display:block}
+ .hd-in{padding:6px 16px}
  .hero-in{flex-direction:column;gap:28px;text-align:center}
- .hd-nav{gap:12px;font-size:11px}
- .hd-in{padding:6px 12px}
  .hero-h1{font-size:26px}
  .hero-card{width:100%}
  .hero-btns{justify-content:center}
@@ -1863,11 +1874,6 @@ a{text-decoration:none;color:inherit}
  .cta-main{font-size:14px;padding:12px 28px}
  .cta-sub{font-size:14px;padding:12px 28px;margin-left:0;margin-top:10px}
  .cta{padding:28px 18px}
- .hd-tel{font-size:12px;padding:7px 14px}
- .hd-nav{gap:10px;font-size:11px}
- .hd-in{padding:6px 10px}
- .hd-tel span{display:none}
- .hd-nav a{white-space:nowrap}
  .g4{grid-template-columns:1fr 1fr!important;gap:8px!important}
  .card{padding:12px 8px!important}
 }
@@ -1883,9 +1889,22 @@ a{text-decoration:none;color:inherit}
  <a href="/biz/">업종별</a>
  <a href="/contact/" style="color:#111;font-weight:800">문의하기</a>
  </nav>
- <a href="tel:010-9876-8282" class="hd-tel">📞<span> 010-9876-8282</span></a>
+ <a href="tel:010-9876-8282" class="hd-tel">📞 010-9876-8282</a>
+ <button class="hd-burger" onclick="document.getElementById('mobMenu').classList.add('open')"><svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
  </div>
 </header>
+<div id="mobMenu" class="hd-mob" onclick="if(event.target===this)this.classList.remove('open')">
+ <div class="hd-mob-in">
+  <button class="hd-mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')">&times;</button>
+  <a href="/" onclick="document.getElementById('mobMenu').classList.remove('open')">🏠 홈</a>
+  <a href="#find-sec" onclick="document.getElementById('mobMenu').classList.remove('open')">📍 지역별 설치</a>
+  <a href="#prod-sec" onclick="document.getElementById('mobMenu').classList.remove('open')">📦 제품 안내</a>
+  <a href="/biz/">💳 업종별</a>
+  <a href="/guide/">🔨 철거 가이드</a>
+  <a href="/contact/">💬 문의하기</a>
+  <a href="tel:010-9876-8282" class="hd-mob-tel">📞 010-9876-8282</a>
+ </div>
+</div>
 <section class="hero">
  <img src="/images/t1.png" alt="" class="hero-bg">
  <div class="hero-overlay"></div>
