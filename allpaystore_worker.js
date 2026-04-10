@@ -1732,7 +1732,7 @@ a{text-decoration:none;color:inherit}
 /* HERO */
 .hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
 .hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;object-fit:cover;object-position:center 20%;width:100%;height:100%;z-index:0}
-.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.65) 50%,rgba(255,255,255,.2) 100%);z-index:0}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.65) 0%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.05) 100%);z-index:0}
 .hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
 .hero-txt{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
@@ -1896,7 +1896,7 @@ a{text-decoration:none;color:inherit}
  .hero-card{width:100%}
  .hero-btns{justify-content:center}
  .hero-bg{object-position:center center!important}
- .hero-overlay{background:rgba(255,255,255,.75)!important}
+ .hero-overlay{background:rgba(255,255,255,.5)!important}
  .str-grid{grid-template-columns:repeat(2,1fr)}
  .prods-grid{grid-template-columns:repeat(2,1fr)}
  .spc-grid{grid-template-columns:1fr}
@@ -1926,7 +1926,7 @@ a{text-decoration:none;color:inherit}
  .hero-desc{font-size:13px}
  .hero-btns{flex-direction:column;gap:8px}
  .hero-btns a,.hero-btns button{width:100%}
- .hero-overlay{background:rgba(255,255,255,.85)!important}
+ .hero-overlay{background:rgba(255,255,255,.55)!important}
  .str-grid{grid-template-columns:1fr 1fr;gap:10px}
  .prods-grid{grid-template-columns:1fr 1fr;gap:10px}
  .prod-card{aspect-ratio:1}
@@ -1952,7 +1952,7 @@ a{text-decoration:none;color:inherit}
  <a href="/" class="logo" style="display:flex;align-items:center;gap:8px"><img src="/images/logo.png" alt="올페이스토어" style="height:28px"><span style="font-size:18px;font-weight:900;color:#111;letter-spacing:-0.5px">올페이스토어</span></a>
  <nav class="hd-nav">
  <a href="#find-sec">지역별 설치</a>
- <a href="#prod-sec">제품 안내</a>
+ <a href="/product/">제품 안내</a>
  <a href="/biz/">업종별</a>
  <a href="/contact/" style="color:#111;font-weight:800">문의하기</a>
  </nav>
@@ -1965,7 +1965,7 @@ a{text-decoration:none;color:inherit}
   <button class="hd-mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')">&times;</button>
   <a href="/" onclick="document.getElementById('mobMenu').classList.remove('open')">🏠 홈</a>
   <a href="#find-sec" onclick="document.getElementById('mobMenu').classList.remove('open')">📍 지역별 설치</a>
-  <a href="#prod-sec" onclick="document.getElementById('mobMenu').classList.remove('open')">📦 제품 안내</a>
+  <a href="/product/" onclick="document.getElementById('mobMenu').classList.remove('open')">📦 제품 안내</a>
   <a href="/biz/">💳 업종별</a>
   <a href="/guide/">🔨 철거 가이드</a>
   <a href="/contact/">💬 문의하기</a>
