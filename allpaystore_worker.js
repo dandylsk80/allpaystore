@@ -757,7 +757,7 @@ const CSS=`<link rel="preconnect" href="https://fonts.googleapis.com"><link href
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;color:#222;background:#f7f8fc;line-height:1.85}
 a{text-decoration:none;color:inherit}
-.gnb{background:#111;padding:56px 0;position:sticky;top:0;z-index:100}
+.gnb{background:#111;padding:22px 0;position:sticky;top:0;z-index:100}
 .gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
 .gnb-nav{display:flex;gap:20px;align-items:center}
 .gnb-nav a{color:rgba(255,255,255,.7);font-size:13px;font-weight:500;text-decoration:none}
@@ -824,7 +824,7 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .fl-chat{background:#111}
 @media(max-width:768px){
  .gnb-nav{display:none}
- .gnb{padding:32px 0}
+ .gnb{padding:14px 0}
  .wrap{display:flex;flex-direction:column}
  .side-nav{float:none!important;width:100%!important;margin:24px 0 0 0!important;order:99;padding-left:0!important;border-left:none!important}
  .g4{grid-template-columns:1fr 1fr!important;gap:8px!important}
@@ -1590,7 +1590,7 @@ function makeBlogList(){
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',sans-serif;background:#f7f8fc}a{text-decoration:none;color:inherit}
-.gnb{background:#111;padding:56px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}.logo span{color:#7DD3FC}.tel{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
+.gnb{background:#111;padding:22px 0;position:sticky;top:0;z-index:100}.gnb-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}.logo span{color:#7DD3FC}.tel{background:#555;color:#fff;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;}
 .hero{background:linear-gradient(135deg,#111,#555);padding:52px 24px;text-align:center;color:#fff}.hero h1{font-size:clamp(20px,4vw,36px);font-weight:900;margin-bottom:10px}.hero p{font-size:15px;opacity:.85}
 .wrap{max-width:1200px;margin:0 auto;padding:28px 20px 80px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
@@ -1709,7 +1709,7 @@ a{text-decoration:none;color:inherit}
 :root{--primary:#111;--sky:#555;--dark:#111;--hf:#fff;--bg:#FAFAFA}
 /* HEADER */
 .hd{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
-.hd-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:120px;padding:12px 24px}
+.hd-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:80px;padding:10px 24px}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-ic{width:34px;height:34px;background:#111;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-ic svg{width:17px;height:17px}
@@ -1886,7 +1886,7 @@ a{text-decoration:none;color:inherit}
 /* MOBILE */
 @media(max-width:768px){
  .gnb-nav{display:none}
- .gnb{padding:32px 0}
+ .gnb{padding:14px 0}
  .hd-nav{display:none}
  .hd-tel{display:none}
  .hd-burger{display:block}
