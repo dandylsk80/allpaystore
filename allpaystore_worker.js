@@ -132,6 +132,119 @@ Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
  });
 });
 const BIZ_SLUGS=BIZ_TITLES.map((_,i)=>'biz-'+(i+1).toString().padStart(3,'0'));
+const CCTV_TMPLS=[
+'{b} CCTV 설치 전 꼭 확인할 3가지',
+'{b} CCTV 설치 비용 — 실제로 얼마나 들까',
+'{b} CCTV 설치 후 달라진 점 — 사장님 후기',
+'{b} CCTV 추천 — 채널별 최적 구성 가이드',
+'{b} 창업할 때 CCTV 이렇게 준비하세요',
+'{b} CCTV 화질 비교 — HD vs 4K 차이점',
+'{b} CCTV 원격 모니터링 활용법 총정리'
+];
+const CCTV_TITLES=[];const CCTV_CAT_MAP={};
+Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
+ types.forEach(b=>{
+  CCTV_TMPLS.forEach(tmpl=>{
+   const title=tmpl.replace('{b}',b);
+   CCTV_CAT_MAP[CCTV_TITLES.length]=cat;
+   CCTV_TITLES.push(title);
+  });
+ });
+});
+const CCTV_SLUGS=CCTV_TITLES.map((_,i)=>'biz-cctv-'+(i+1).toString().padStart(3,'0'));
+function getCctvCat(title){
+ const idx=CCTV_TITLES.indexOf(title);
+ const cat=idx>=0?CCTV_CAT_MAP[idx]:'retail';
+ const info={cafe:{cat:'cafe',area:'30~60평',risk:'화재·도난',spot:'카운터·홀·입구·주방',cam:'4채널'},food:{cat:'food',area:'20~50평',risk:'화재·위생·도난',spot:'주방·홀·카운터·출입구',cam:'4~8채널'},bar:{cat:'bar',area:'20~40평',risk:'주취고객·시비·도난',spot:'홀·카운터·입구·비상구',cam:'4~8채널'},leisure:{cat:'leisure',area:'50~200평',risk:'안전사고·분쟁',spot:'이용공간·카운터·출입구·복도',cam:'8~16채널'},edu:{cat:'edu',area:'30~100평',risk:'안전사고·분쟁',spot:'교실·복도·출입구·주차장',cam:'4~8채널'},beauty:{cat:'beauty',area:'15~40평',risk:'도난·분쟁',spot:'시술공간·대기실·출입구',cam:'4채널'},medical:{cat:'medical',area:'30~100평',risk:'의료사고·도난',spot:'대기실·접수처·출입구·주차장',cam:'4~8채널'},retail:{cat:'retail',area:'20~80평',risk:'도난·만인',spot:'매장내부·카운터·출입구·창고',cam:'4~8채널'},service:{cat:'service',area:'15~50평',risk:'도난·화재',spot:'작업공간·카운터·출입구',cam:'4채널'},auto:{cat:'auto',area:'50~300평',risk:'차량사고·도난',spot:'작업장·주차장·출입구·사무실',cam:'8~16채널'},office:{cat:'office',area:'20~60평',risk:'도난·정보유출',spot:'사무실·출입구·복도·서버실',cam:'4채널'},stay:{cat:'stay',area:'100~500평',risk:'도난·안전사고',spot:'로비·복도·주차장·외부',cam:'8~16채널'},unmanned:{cat:'unmanned',area:'10~40평',risk:'도난·파손·무단이용',spot:'매장전체·출입구·결제구역',cam:'4~8채널'},mobile:{cat:'mobile',area:'소규모',risk:'도난·분쟁',spot:'판매구역·보관소',cam:'1~4채널'}};
+ return info[cat]||info.retail;
+}
+function makeCctvBizPage(idx){
+ const title=CCTV_TITLES[idx];
+ if(!title)return null;
+ const slug=CCTV_SLUGS[idx];
+ const h=title.split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
+ const yr=new Date().getFullYear();
+ const catKey=CCTV_CAT_MAP[idx];
+ const cc=getCctvCat(title);
+ const biz=title.split(' CCTV')[0];
+ const tmplIdx=idx%CCTV_TMPLS.length;
+ const catColors={cafe:['#B45309','#FFF7ED'],food:['#DC2626','#FEF2F2'],bar:['#D97706','#FFFBEB'],leisure:['#7C3AED','#F5F3FF'],edu:['#2563EB','#EFF6FF'],beauty:['#DB2777','#FDF2F8'],medical:['#059669','#ECFDF5'],retail:['#EA580C','#FFF7ED'],service:['#4F46E5','#EEF2FF'],auto:['#0D9488','#F0FDFA'],office:['#475569','#F8FAFC'],stay:['#9333EA','#FAF5FF'],unmanned:['#0EA5E9','#F0F9FF'],mobile:['#65A30D','#F7FEE7']};
+ const [mc,bg]=catColors[catKey]||catColors.retail;
+ const cctvPhotos=['photo-1558002038-1055907df827','photo-1557597774-9d273605dfa9','photo-1585771724684-38269d6639fd','photo-1549109786-eb80da56e693'];
+ const photo='https://images.unsplash.com/'+cctvPhotos[Math.abs(h)%cctvPhotos.length]+'?w=800&h=420&fit=crop&q=80';
+ const metaDesc=`${biz} CCTV 설치 가이드. ${cc.cam} 구성, HD~4K 화질, 스마트폰 원격 모니터링. 설치비 무료 상담. 올페이스토어 ☎ 010-9876-8282`;
+ const box=(icon,t,c)=>`<div style="background:${bg};border-left:4px solid ${mc};padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0"><strong style="color:${mc}">${icon} ${t}</strong><p style="margin:8px 0 0;font-size:14px;color:#444;line-height:1.7">${c}</p></div>`;
+ const rv=(name,stars,text)=>`<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:36px;height:36px;background:${bg};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</span><div><strong style="font-size:14px">${name}</strong><span style="font-size:12px;color:#999;margin-left:8px">${'⭐'.repeat(stars)}</span></div></div><p style="font-size:14px;color:#444;margin:0;line-height:1.7">"${text}"</p></div>`;
+ let body='';
+ if(tmplIdx===0){
+  body+=`<p>${biz}에 CCTV를 설치하려고 알아보면 카메라 대수, 화질, 저장 용량, 설치 위치 등 결정할 게 많습니다. ${biz} 업종 특성에 맞는 CCTV 구성을 잘못 선택하면 사각지대가 생기거나 불필요한 비용이 발생합니다. 이 글에서는 ${biz} 사장님이 CCTV 설치 전 반드시 확인해야 할 핵심 3가지를 정리했습니다.</p>`;
+  body+=box('✅','체크 1 — 설치 위치와 카메라 대수',`${biz}은 평균 ${cc.area} 규모로, 주요 감시 포인트는 ${cc.spot}입니다. 이 포인트를 빠짐없이 커버하려면 최소 ${cc.cam} 구성이 필요합니다. 올페이스토어는 ${biz} 매장 방문 후 동선과 사각지대를 분석하여 최적의 카메라 배치를 설계합니다.`);
+  body+=box('✅','체크 2 — 화질과 야간 촬영',`${biz}에서 ${cc.risk} 위험에 대비하려면 최소 Full HD(200만 화소) 이상의 화질이 필요합니다. 특히 야간에도 영업하는 ${biz}이라면 야간 컬러 촬영이 가능한 카메라를 추천합니다. 적외선 방식은 야간에 흑백으로 전환되지만, 풀컬러 야간 카메라는 어두운 환경에서도 컬러 영상을 제공합니다.`);
+  body+=box('✅','체크 3 — 저장 용량과 원격 모니터링',`CCTV 영상은 최소 30일 이상 저장할 수 있어야 합니다. ${cc.cam} 구성 기준으로 1TB~4TB HDD가 필요하며, 올페이스토어는 매장 규모에 맞는 저장 장치를 함께 설치합니다. 스마트폰 앱으로 ${biz} 밖에서도 실시간 영상을 확인할 수 있으며, 움직임 감지 시 자동 알림도 제공됩니다.`);
+  body+=rv(biz+' 사장님',5,biz+'에 CCTV를 처음 설치할 때 어디에 몇 대를 달아야 할지 전혀 감이 없었어요. 올페이스토어 기사님이 직접 매장을 보시고 사각지대 없이 '+cc.cam+'로 설계해주셨습니다. 설치 후 앱으로 확인해보니 정말 구석구석 다 보여서 안심이 됩니다.');
+ }else if(tmplIdx===1){
+  body+=`<p>${biz} CCTV 설치 비용, 실제로 얼마나 들까요? 카메라 대수, 화질, 저장 장치, 설치 공사비까지 항목별로 정리했습니다. ${biz} 매장 규모에 맞는 합리적인 CCTV 구성을 찾아보세요.</p>`;
+  body+=`<h2 style="color:${mc}">💰 ${biz} CCTV 비용 항목별 분석</h2>`;
+  body+=`<div style="background:#f8fafc;border-radius:12px;padding:20px;margin:20px 0"><table style="width:100%;font-size:13px;border-collapse:collapse"><tr style="background:${mc};color:#fff"><th style="padding:10px;text-align:left">항목</th><th style="padding:10px;text-align:center">기본 구성</th><th style="padding:10px;text-align:center">고급 구성</th></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px">카메라</td><td style="padding:10px;text-align:center">200만 화소 × ${cc.cam.split('~')[0]}대</td><td style="padding:10px;text-align:center">500만 화소 × ${cc.cam.split('~').pop().replace('채널','')}대</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px">녹화기(DVR/NVR)</td><td style="padding:10px;text-align:center">${cc.cam} 1TB</td><td style="padding:10px;text-align:center">${cc.cam} 4TB</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px">야간 촬영</td><td style="padding:10px;text-align:center">적외선(흑백)</td><td style="padding:10px;text-align:center">풀컬러</td></tr><tr><td style="padding:10px">원격 모니터링</td><td style="padding:10px;text-align:center">스마트폰 앱</td><td style="padding:10px;text-align:center">스마트폰 + PC</td></tr></table></div>`;
+  body+=box('💡','비용 절감 팁',`${biz}에 카드단말기·포스기와 CCTV를 동시에 설치하면 패키지 할인이 적용됩니다. 또한 CCTV 설치 매장은 화재·도난 보험료 10~20% 할인 혜택을 받을 수 있습니다. 올페이스토어에서 ${biz} 매장 규모에 맞는 최적 구성을 무료로 상담해드립니다.`);
+  body+=rv(biz+' 사장님',5,'처음에 인터넷으로 직접 CCTV를 사서 달았는데, 화질도 안 좋고 야간에는 아무것도 안 보여서 결국 올페이스토어에 다시 맡겼어요. 전문가가 설치하니까 화질 차이가 확실하고, 앱으로 언제든 볼 수 있어서 만족합니다.');
+ }else if(tmplIdx===2){
+  body+=`<p>${biz}에 CCTV를 설치하고 실제로 어떤 변화가 있었는지, 현직 ${biz} 사장님들의 솔직한 후기를 모았습니다. 도난 예방, 직원 관리, 고객 분쟁 해결까지 — CCTV 설치가 ${biz} 운영에 미치는 영향을 확인하세요.</p>`;
+  body+=rv(biz+' 3년차 사장님',5,biz+'을 3년 운영하면서 CCTV 없이 버텼는데, 한번 도난 사고를 겪고 바로 설치했어요. 올페이스토어에서 '+cc.cam+'로 사각지대 없이 설계해주셨고, 설치 후 앱에서 실시간으로 매장을 볼 수 있으니까 마음이 편해졌습니다.');
+  body+=rv(biz+' 사장님 B',5,'직원이 늦게 출근하거나 일찍 퇴근하는 걸 알 수가 없었는데, CCTV 설치 후 출퇴근 시간이 자동으로 기록돼요. 직원한테 말 안 해도 스스로 근태가 좋아졌습니다. '+biz+' 운영에 CCTV는 필수라고 생각합니다.');
+  body+=rv(biz+' 사장님 C',4,'손님이 "서비스가 안 좋았다"고 항의한 적이 있었는데, CCTV 영상을 확인하니까 오해였어요. 영상이 있으니까 분쟁 해결이 빠르고 공정해집니다. '+biz+' 사장님들 꼭 설치하세요.');
+  body+=box('📊','CCTV 설치 전후 비교',`${biz} 사장님들의 후기를 종합하면, CCTV 설치 후 도난 발생률 90% 감소, 직원 근태 관리 효율 50% 향상, 고객 분쟁 해결 시간 80% 단축 효과가 나타났습니다. 화재·도난 보험료도 10~20% 할인받을 수 있습니다.`);
+ }else if(tmplIdx===3){
+  body+=`<p>${yr}년 기준 ${biz}에 가장 적합한 CCTV 구성은 어떤 걸까요? ${biz} 매장 면적(${cc.area})과 주요 위험 요소(${cc.risk})를 고려한 채널별 추천 구성을 정리했습니다.</p>`;
+  body+=`<h2 style="color:${mc}">🏆 ${biz} CCTV 추천 구성</h2>`;
+  body+=`<div style="background:${bg};border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:14px"><span style="background:${mc};color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:4px">추천</span><strong style="font-size:16px">${cc.cam} 구성</strong></div><p style="font-size:14px;color:#444;margin:0">설치 위치: ${cc.spot}<br>화질: Full HD~4K (${biz} 면적에 따라 조절)<br>저장: 30일 이상 연속 녹화<br>부가기능: 스마트폰 원격 모니터링, AI 움직임 감지, 야간 컬러 촬영</p></div>`;
+  body+=`<h2 style="color:${mc}">📱 스마트폰으로 ${biz} 실시간 확인</h2><p>올페이스토어가 설치하는 CCTV는 전용 앱을 통해 스마트폰에서 실시간 영상을 확인할 수 있습니다. ${biz} 밖에서도 매장 상황을 한눈에 파악할 수 있고, 영업 시간 외 침입이나 이상 행동이 감지되면 즉시 푸시 알림이 전송됩니다. 직원 관리, 고객 동선 분석에도 활용할 수 있어 ${biz} 운영 효율이 크게 향상됩니다.</p>`;
+  body+=rv(biz+' 사장님',5,'처음에 '+cc.cam.split('~')[0]+'채널이면 충분할 줄 알았는데, 올페이스토어 기사님이 매장을 보시고 사각지대를 짚어주셔서 카메라를 1대 더 추가했어요. 덕분에 진짜 구석구석 다 보입니다.');
+ }else if(tmplIdx===4){
+  body+=`<p>${biz} 창업을 준비하고 계신가요? 인테리어와 장비 설치에 집중하다 보면 CCTV를 놓치기 쉽습니다. 하지만 ${biz} 오픈 첫날부터 CCTV가 작동해야 ${cc.risk} 위험에 대비할 수 있습니다. ${biz} 창업 시 CCTV 준비 방법을 단계별로 안내합니다.</p>`;
+  body+=`<h2 style="color:${mc}">📝 ${biz} 창업 CCTV 준비 타임라인</h2>`;
+  body+=`<div style="display:grid;grid-template-columns:1fr;gap:10px;margin:16px 0">${['올페이스토어에 CCTV 상담 신청','기사 매장 방문 — 동선·사각지대 분석',''+cc.cam+' 최적 구성 확정','인테리어 마무리 단계에서 배선 작업','카메라·녹화기·모니터 설치 (2~3시간)','스마트폰 앱 연동 및 원격 접속 테스트'].map((s,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:${i%2===0?bg:'#fff'};border-radius:8px;border:1px solid ${i%2===0?mc+'33':'#eee'}"><span style="width:28px;height:28px;background:${mc};color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">${i+1}</span><span style="font-size:14px;color:#333">${s}</span></div>`).join('')}</div>`;
+  body+=box('🎁','창업 패키지',`카드단말기 + 포스기 + CCTV를 한번에 설치하면 패키지 할인이 적용됩니다. ${biz} 오픈에 필요한 모든 장비를 올페이스토어에서 원스톱으로 준비하세요. ☎ 010-9876-8282`);
+  body+=rv(biz+' 창업 사장님',5,biz+' 오픈 준비할 때 CCTV까지 신경 쓸 여유가 없었는데, 올페이스토어에서 카드단말기랑 CCTV를 한번에 설치해줬어요. 패키지로 하니까 비용도 절약되고, 오픈 전날 한번에 끝나서 편했습니다.');
+ }else if(tmplIdx===5){
+  body+=`<p>${biz}에 CCTV를 설치할 때 가장 많이 고민하는 것 중 하나가 화질입니다. HD, Full HD, 4K 중 어떤 화질을 선택해야 ${biz}에 적합한지, 실제 영상 품질 차이는 어떤지 비교 분석했습니다.</p>`;
+  body+=`<h2 style="color:${mc}">📊 화질별 비교</h2>`;
+  body+=`<div style="background:#f8fafc;border-radius:12px;padding:20px;margin:20px 0"><table style="width:100%;font-size:13px;border-collapse:collapse"><tr style="background:${mc};color:#fff"><th style="padding:10px;text-align:left">구분</th><th style="padding:10px">HD (100만)</th><th style="padding:10px">Full HD (200만)</th><th style="padding:10px">4K (800만)</th></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px;font-weight:600">해상도</td><td style="padding:10px;text-align:center">1280×720</td><td style="padding:10px;text-align:center">1920×1080</td><td style="padding:10px;text-align:center">3840×2160</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px;font-weight:600">얼굴 식별</td><td style="padding:10px;text-align:center">3m 이내</td><td style="padding:10px;text-align:center">5m 이내</td><td style="padding:10px;text-align:center">10m 이상</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px;font-weight:600">저장 용량</td><td style="padding:10px;text-align:center">적음</td><td style="padding:10px;text-align:center">보통</td><td style="padding:10px;text-align:center">많음</td></tr><tr><td style="padding:10px;font-weight:600">${biz} 추천</td><td style="padding:10px;text-align:center">△</td><td style="padding:10px;text-align:center;color:${mc};font-weight:700">✅ 가성비</td><td style="padding:10px;text-align:center">넓은 매장</td></tr></table></div>`;
+  body+=`<h2 style="color:${mc}">🌙 야간 촬영 — ${biz}에서 중요한 이유</h2><p>${biz}에서 ${cc.risk} 사고는 야간에 더 많이 발생합니다. 일반 적외선 카메라는 야간에 흑백으로 전환되어 인물 식별이 어려울 수 있습니다. 풀컬러 야간 카메라는 어두운 환경에서도 컬러 영상을 제공하여 인물 특징(옷 색상 등)을 정확하게 식별할 수 있습니다. ${biz} 영업 종료 후에도 매장을 안전하게 감시하려면 야간 컬러 카메라를 권장합니다.</p>`;
+  body+=rv(biz+' 사장님',5,'처음에 저렴한 HD 카메라로 설치했는데, 실제로 사고가 났을 때 영상이 흐릿해서 범인 얼굴을 식별할 수 없었어요. Full HD로 교체하니까 확실히 차이가 나더라고요. 처음부터 좋은 화질로 설치하세요.');
+ }else{
+  body+=`<p>${biz} 사장님, 매장에 없을 때도 스마트폰으로 ${biz} 상황을 실시간으로 확인할 수 있다면 어떨까요? CCTV 원격 모니터링은 ${biz} 운영의 효율성을 크게 높여주는 핵심 기능입니다. 활용법을 상세하게 정리했습니다.</p>`;
+  body+=`<h2 style="color:${mc}">📱 원격 모니터링으로 할 수 있는 것</h2>`;
+  body+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0"><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">👀</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">실시간 영상 확인</p><p style="font-size:12px;color:#666;margin:0">${biz} 밖에서도 매장 상황 파악</p></div><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">🔔</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">AI 이상 감지 알림</p><p style="font-size:12px;color:#666;margin:0">침입·이상 행동 시 즉시 푸시</p></div><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">⏪</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">과거 영상 재생</p><p style="font-size:12px;color:#666;margin:0">30일 이상 저장 영상 검색</p></div><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">👥</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">직원·고객 동선</p><p style="font-size:12px;color:#666;margin:0">근태 관리·피크타임 분석</p></div></div>`;
+  body+=`<h2 style="color:${mc}">🔒 ${biz} CCTV 보안과 프라이버시</h2><p>CCTV 영상은 개인정보에 해당하므로 관련 법규를 준수해야 합니다. ${biz}에 CCTV를 설치할 때는 "CCTV 촬영 중" 안내문을 부착해야 하며, 영상은 설치 목적(${cc.risk} 예방) 외의 용도로 사용할 수 없습니다. 올페이스토어는 설치 시 안내문 제공 및 법규 준수 사항을 안내합니다. 녹화기 접속 비밀번호 설정과 원격 접속 보안도 함께 세팅합니다.</p>`;
+  body+=rv(biz+' 사장님',5,'출장이 잦아서 매장에 못 있을 때가 많은데, 앱으로 실시간 영상을 볼 수 있으니까 안심이 돼요. 한번은 영업 종료 후 누가 문 앞에서 서성이는 걸 알림으로 받고 바로 경비업체에 연락했어요. CCTV 원격 모니터링 진짜 필수입니다.');
+ }
+ // Related
+ const related=CCTV_TITLES.filter((t,i)=>i!==idx&&CCTV_CAT_MAP[i]===catKey).slice(0,6);
+ const relLinks=related.map(t=>{const ri=CCTV_TITLES.indexOf(t);return `<a href="/biz-cctv/${CCTV_SLUGS[ri]}/" style="display:block;padding:10px 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:14px">${t}</a>`;}).join('');
+ const catName={cafe:'카페·베이커리',food:'음식점',bar:'주점',leisure:'레저·스포츠',edu:'학원·교육',beauty:'뷰티·미용',medical:'의료·건강',retail:'소매·판매',service:'생활서비스',auto:'자동차',office:'사무실·전문직',stay:'숙박',unmanned:'무인매장',mobile:'이동·시장'}[catKey]||'';
+ return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="/images/logo.png"><title>${title} | 올페이스토어</title>
+<meta name="description" content="${metaDesc}">
+<meta property="og:title" content="${title} | 올페이스토어">
+<meta property="og:description" content="${metaDesc}">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://allpaystore.com/biz-cctv/${slug}/">
+${CSS}</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
+<div class="wrap" style="padding-top:24px">
+<p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz-cctv/" style="color:#888;text-decoration:none">업종별 CCTV</a> &gt; <a href="/biz-cctv/${catKey}/" style="color:#888;text-decoration:none">${catName}</a></p>
+<h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">${title}</h1>
+<div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><img src="${photo}" alt="${biz} CCTV" style="width:100%;height:auto;display:block;filter:brightness(1.1)"></div>
+${body}
+<div class="cta" style="background:linear-gradient(135deg,${mc},${mc}dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">📹 ${biz} CCTV 무료 견적</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">매장 방문 후 최적 구성 설계 · ${cc.cam} · HD~4K · 원격 모니터링</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:${mc}">📞 010-9876-8282</a> <a href="/contact/?product=cctv" class="cta-sub" style="border-color:rgba(255,255,255,.5);color:#fff">💬 상담 문의</a></div>
+${relLinks?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 CCTV 가이드</h3>'+relLinks+'</div>':''}
+</div>
+<div class="fl-wrap">
+ <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+ <a href="/contact/?product=cctv" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
+</div></body></html>`;
+}
 const BIZ_PHOTOS={
  cafe:['https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=420&fit=crop&q=80'],
  food:['https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&h=420&fit=crop&q=80'],
@@ -1646,6 +1759,9 @@ function makeSitemap(){
  GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/'));});
  parts.push(u('/biz/'));
  BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/'));});
+ parts.push(u('/biz-cctv/'));
+ ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{parts.push(u('/biz-cctv/'+c+'/'));});
+ CCTV_SLUGS.forEach(s=>{parts.push(u('/biz-cctv/'+s+'/'));});
  Object.keys(BIZ_TYPES).forEach(c=>{parts.push(u('/biz/'+c+'/'));});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
@@ -2566,6 +2682,27 @@ export default {
   const idx=BIZ_SLUGS.indexOf(bizMatch[1]);
   if(idx>=0){const h=makeBizPage(idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
  }
+ const cctvMatch=path.match(/^\/biz-cctv\/(biz-cctv-\d+)$/);
+ if(cctvMatch){
+  const idx=CCTV_SLUGS.indexOf(cctvMatch[1]);
+  if(idx>=0){const h=makeCctvBizPage(idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ }
+ const cctvCatMatch=path.match(/^\/biz-cctv\/(cafe|food|bar|leisure|edu|beauty|medical|retail|service|auto|office|stay|unmanned|mobile)$/);
+ if(cctvCatMatch){
+  const ck=cctvCatMatch[1];
+  const cn={cafe:'카페·베이커리',food:'음식점',bar:'주점',leisure:'레저·스포츠',edu:'학원·교육',beauty:'뷰티·미용',medical:'의료·건강',retail:'소매·판매',service:'생활서비스',auto:'자동차',office:'사무실·전문직',stay:'숙박',unmanned:'무인매장',mobile:'이동·시장'}[ck];
+  const cc={cafe:'#B45309',food:'#DC2626',bar:'#D97706',leisure:'#7C3AED',edu:'#2563EB',beauty:'#DB2777',medical:'#059669',retail:'#EA580C',service:'#4F46E5',auto:'#0D9488',office:'#475569',stay:'#9333EA',unmanned:'#0EA5E9',mobile:'#65A30D'}[ck];
+  const items=CCTV_TITLES.map((t,i)=>({t,i})).filter(x=>CCTV_CAT_MAP[x.i]===ck);
+  const tagColors=[{tag:'설치',bg:'#DBEAFE',color:'#1D4ED8'},{tag:'비용',bg:'#FEE2E2',color:'#DC2626'},{tag:'후기',bg:'#D1FAE5',color:'#059669'},{tag:'추천',bg:'#FEF3C7',color:'#D97706'},{tag:'창업',bg:'#E0E7FF',color:'#4338CA'},{tag:'화질',bg:'#FCE7F3',color:'#BE185D'},{tag:'원격',bg:'#F0FDFA',color:'#0D9488'}];
+  const getTag=(t)=>{if(t.includes('설치'))return tagColors[0];if(t.includes('비용'))return tagColors[1];if(t.includes('후기'))return tagColors[2];if(t.includes('추천'))return tagColors[3];if(t.includes('창업'))return tagColors[4];if(t.includes('화질'))return tagColors[5];if(t.includes('원격'))return tagColors[6];return tagColors[0];};
+  const links=items.map((x,idx)=>{const tag=getTag(x.t);return `<a href="/biz-cctv/${CCTV_SLUGS[x.i]}/" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fff;border-radius:10px;border:1px solid #f0f0f0;text-decoration:none;transition:all .15s" onmouseover="this.style.borderColor='${cc}'" onmouseout="this.style.borderColor='#f0f0f0'"><div style="width:36px;height:36px;background:${tag.bg};border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:800;color:${tag.color}">${idx+1}</div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:#222;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${x.t}</div><div style="margin-top:3px"><span style="display:inline-block;padding:2px 8px;background:${tag.bg};border-radius:4px;font-size:11px;color:${tag.color};font-weight:600">${tag.tag}</span></div></div><span style="color:#ccc;flex-shrink:0">›</span></a>`;}).join('');
+  return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>📹 ${cn} CCTV 설치 가이드 | 올페이스토어</title><meta name="description" content="${cn} 업종별 CCTV 설치 가이드. HD~4K, 원격 모니터링, 매장 맞춤 설계. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz-cctv/" style="color:#888;text-decoration:none">업종별 CCTV</a> &gt; ${cn}</p><div style="display:flex;align-items:center;gap:14px;margin-bottom:8px"><span style="font-size:44px">📹</span><div><h1 style="font-size:24px;font-weight:900;color:#111;margin:0">${cn} CCTV 설치 가이드</h1><p style="font-size:14px;color:#666;margin:4px 0 0">${items.length}개 가이드</p></div></div><div style="display:grid;grid-template-columns:1fr;gap:10px;margin:24px 0 32px">${links}</div><div class="cta"><h3>📹 ${cn} CCTV 무료 견적</h3><p>매장 방문 후 최적 구성을 설계해드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=cctv" class="cta-sub">💬 상담 문의</a></div></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+ }
+ if(path==='/biz-cctv'){
+  const cats=[{key:'cafe',name:'카페·베이커리',emoji:'☕',color:'#B45309',bg:'#FFF7ED'},{key:'food',name:'음식점',emoji:'🍽️',color:'#DC2626',bg:'#FEF2F2'},{key:'bar',name:'주점',emoji:'🍺',color:'#D97706',bg:'#FFFBEB'},{key:'leisure',name:'레저·스포츠',emoji:'🎮',color:'#7C3AED',bg:'#F5F3FF'},{key:'edu',name:'학원·교육',emoji:'📚',color:'#2563EB',bg:'#EFF6FF'},{key:'beauty',name:'뷰티·미용',emoji:'💇',color:'#DB2777',bg:'#FDF2F8'},{key:'medical',name:'의료·건강',emoji:'🏥',color:'#059669',bg:'#ECFDF5'},{key:'retail',name:'소매·판매',emoji:'🛍️',color:'#EA580C',bg:'#FFF7ED'},{key:'service',name:'생활서비스',emoji:'🧹',color:'#4F46E5',bg:'#EEF2FF'},{key:'auto',name:'자동차',emoji:'🚗',color:'#0D9488',bg:'#F0FDFA'},{key:'office',name:'사무실·전문직',emoji:'🏢',color:'#475569',bg:'#F8FAFC'},{key:'stay',name:'숙박',emoji:'🏨',color:'#9333EA',bg:'#FAF5FF'},{key:'unmanned',name:'무인매장',emoji:'🤖',color:'#0EA5E9',bg:'#F0F9FF'},{key:'mobile',name:'이동·시장',emoji:'🚚',color:'#65A30D',bg:'#F7FEE7'}];
+  const boxes=cats.map(c=>{const cnt=CCTV_TITLES.filter((_,i)=>CCTV_CAT_MAP[i]===c.key).length;return `<a href="/biz-cctv/${c.key}/" style="display:flex;align-items:center;gap:14px;padding:16px;background:#fff;border-radius:12px;border:1px solid #eee;text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='${c.color}'" onmouseout="this.style.borderColor='#eee'"><div style="width:48px;height:48px;background:${c.bg};border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:24px">${c.emoji}</span></div><div><div style="font-size:15px;font-weight:700;color:#111">${c.name}</div><div style="font-size:12px;color:#999;margin-top:2px">${cnt}개 가이드 →</div></div></a>`;}).join('');
+  return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>업종별 CCTV 설치 가이드 | 올페이스토어</title><meta name="description" content="카페, 음식점, 미용실, 병원, 학원 등 업종별 CCTV 설치 가이드. HD~4K, 원격 모니터링, 매장 맞춤 설계. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><div style="text-align:center;margin-bottom:28px"><p style="font-size:13px;color:#059669;font-weight:700;margin-bottom:6px">CCTV GUIDE</p><h1 style="font-size:24px;font-weight:900;margin:0 0 8px;color:#111">업종별 CCTV 설치 가이드</h1><p style="font-size:14px;color:#666;margin:0">우리 매장에 딱 맞는 CCTV 구성을 찾아보세요</p></div><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px"><span style="padding:6px 14px;background:#ecfdf5;border-radius:20px;font-size:12px;color:#059669;font-weight:600">📹 HD~4K 고화질</span><span style="padding:6px 14px;background:#eff6ff;border-radius:20px;font-size:12px;color:#2563eb;font-weight:600">📱 원격 모니터링</span><span style="padding:6px 14px;background:#fef2f2;border-radius:20px;font-size:12px;color:#dc2626;font-weight:600">🔔 AI 움직임 감지</span></div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:36px">${boxes}</div></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+ }
  const bizCatMatch=path.match(/^\/biz\/(cafe|food|bar|leisure|edu|beauty|medical|retail|service|auto|office|stay|unmanned|mobile)$/);
  if(bizCatMatch){
   const catKey=bizCatMatch[1];
@@ -2691,6 +2828,8 @@ export default {
    allSlugs.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/blog/'+s+'/'+p+'/');});});
    GUIDE_KW.forEach(k=>{urls.push('https://allpaystore.com/guide/'+encodeURIComponent(k)+'/');});
    BIZ_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz/'+s+'/');});
+   urls.push('https://allpaystore.com/biz-cctv/');
+   CCTV_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz-cctv/'+s+'/');});
    let submitted=0;
    for(let i=0;i<urls.length;i+=10000){
     const batch=urls.slice(i,i+10000);
