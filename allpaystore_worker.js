@@ -96,42 +96,63 @@ ${relLinks?'<div style="margin-top:32px"><h3 style="font-size:16px;font-weight:7
  <a href="/contact/?product=removal" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
 </div></body></html>`;
 }
-const BIZ_TITLES=['카페 카드단말기 설치 전 꼭 확인할 점','카페 카드단말기 비용 부담 줄이는 방법','커피숍 카드단말기 선택 시 중요한 기준','디저트카페 카드단말기 추천 이유 정리','베이커리 카드단말기 설치 준비 가이드','빵집 카드단말기 비용과 사용 편의성 비교','음식점 카드단말기 설치 시 필요한 체크사항','한식집 카드단말기 준비 전 알아둘 내용','중식당 카드단말기 설치 비용 정리','일식집 카드단말기 추천 기준 알아보기','분식집 카드단말기 설치가 중요한 이유','치킨집 카드단말기 비용과 관리 팁','피자집 카드단말기 설치 전 준비사항','패스트푸드 카드단말기 선택 방법 정리','고깃집 카드단말기 사용 시 편리한 기능','술집 카드단말기 설치 시 체크포인트','호프집 카드단말기 비용 비교 전 확인사항','포차 카드단말기 추천 이유와 준비 방법','이자카야 카드단말기 설치 전 꼭 볼 내용','노래방 카드단말기 설치 시 필요한 기능 정리','PC방 카드단말기 준비 시 체크해야 할 부분','당구장 카드단말기 설치 비용 알아보기','스크린골프장 카드단말기 선택 기준 정리','헬스장 카드단말기 설치가 필요한 이유','필라테스 카드단말기 비용과 연동 기능 정리','요가학원 카드단말기 준비 가이드','태권도장 카드단말기 설치 전 알아둘 점','피아노학원 카드단말기 추천 기준 정리','미술학원 카드단말기 설치 시 필요한 기능','영어학원 카드단말기 비용 비교 포인트','수학학원 카드단말기 설치 준비 방법','공부방 카드단말기 필요한 이유 정리','독서실 카드단말기 설치 시 주의할 점','스터디카페 카드단말기 추천 이유 알아보기','미용실 카드단말기 설치 전 확인해야 할 내용','네일샵 카드단말기 비용과 선택 기준','속눈썹샵 카드단말기 설치 준비 체크리스트','왁싱샵 카드단말기 추천 기능 정리','피부관리실 카드단말기 설치가 중요한 이유','마사지샵 카드단말기 비용 부담 줄이는 방법','에스테틱 카드단말기 선택 시 꼭 볼 부분','반영구샵 카드단말기 설치 전 준비사항','문신샵 카드단말기 추천 기준 알아보기','바버샵 카드단말기 설치 비용 정리','애견미용실 카드단말기 준비 시 체크포인트','동물병원 카드단말기 설치 전 필요한 정보','병원 카드단말기 선택 기준과 준비 방법','치과 카드단말기 설치 시 꼭 확인할 점','한의원 카드단말기 비용과 기능 비교','약국 카드단말기 설치 준비 가이드','안경점 카드단말기 추천 이유 정리','옷가게 카드단말기 설치 시 필요한 기능','의류매장 카드단말기 비용 비교 방법','신발가게 카드단말기 선택 전 체크사항','가방매장 카드단말기 설치 준비 팁','액세서리샵 카드단말기 추천 기준 정리','잡화점 카드단말기 설치 전 알아둘 내용','편의점 카드단말기 비용과 사용 편의성 정리','마트 카드단말기 설치 시 중요한 포인트','과일가게 카드단말기 추천 이유 알아보기','정육점 카드단말기 설치 전 확인사항','수산물가게 카드단말기 비용 비교 포인트','반찬가게 카드단말기 설치 준비 체크리스트','꽃집 카드단말기 선택 시 필요한 기능','문구점 카드단말기 설치가 중요한 이유','서점 카드단말기 비용과 관리 팁 정리','휴대폰매장 카드단말기 설치 전 알아야 할 점','전자제품매장 카드단말기 추천 기준 정리','가전매장 카드단말기 설치 준비 방법','세탁소 카드단말기 비용과 기능 비교','빨래방 카드단말기 설치 시 필요한 기능 정리','세차장 카드단말기 선택 전 꼭 확인할 점','카센터 카드단말기 설치 준비 가이드','자동차정비소 카드단말기 추천 이유 정리','타이어샵 카드단말기 비용과 설치 포인트','주유소 카드단말기 설치 시 중요한 기준','부동산 카드단말기 준비 전 알아둘 점','공인중개사사무소 카드단말기 추천 이유','여행사 카드단말기 설치 비용 정리','펜션 카드단말기 설치 전 체크사항','호텔 카드단말기 추천 기준과 준비 방법','게스트하우스 카드단말기 비용 비교 포인트','모텔 카드단말기 설치 시 꼭 필요한 기능','무인매장 카드단말기 설치가 중요한 이유','무인카페 카드단말기 추천 기준 정리','무인아이스크림할인점 카드단말기 준비 방법','셀프사진관 카드단말기 설치 전 알아둘 내용','사진관 카드단말기 비용과 선택 기준','인쇄소 카드단말기 설치 준비 가이드','광고기획사 카드단말기 추천 이유 알아보기','사무실 카드단말기 설치 시 필요한 기능','소형매장 카드단말기 비용 부담 줄이는 방법','개인사업자 카드단말기 설치 전 꼭 확인할 점','신규창업 카드단말기 준비 시 체크리스트','소상공인 카드단말기 추천 기준 정리','배달전문점 카드단말기 설치 비용 알아보기','포장전문점 카드단말기 선택 시 중요한 기준','푸드트럭 카드단말기 설치 준비 방법','이동식매장 카드단말기 추천 이유 정리','시장상인 카드단말기 비용과 사용 편의성','플리마켓 카드단말기 설치 전 필요한 정보','행사부스 카드단말기 준비 시 꼭 알아둘 점'];
+const BIZ_TYPES={
+cafe:['카페','커피숍','디저트카페','베이커리','빵집','브런치카페','개인카페','프랜차이즈카페'],
+food:['음식점','한식집','중식당','일식집','분식집','치킨집','피자집','고깃집','삼겹살집','족발집','국밥집','곱창집'],
+bar:['술집','호프집','포차','이자카야','와인바','칵테일바','감성주점'],
+leisure:['노래방','PC방','당구장','스크린골프장','헬스장','필라테스','볼링장','찜질방'],
+edu:['요가학원','태권도장','피아노학원','미술학원','영어학원','수학학원','공부방','독서실','보습학원','코딩학원','댄스학원'],
+beauty:['미용실','네일샵','속눈썹샵','왁싱샵','피부관리실','마사지샵','에스테틱','반영구샵','바버샵','애견미용실'],
+medical:['동물병원','병원','치과','한의원','약국','안경점','피부과','정형외과'],
+retail:['옷가게','의류매장','신발가게','편의점','마트','과일가게','정육점','꽃집','문구점','서점','화장품매장','철물점'],
+service:['세탁소','빨래방','수선집','열쇠집','인테리어업체','이사업체','청소업체'],
+auto:['세차장','카센터','자동차정비소','타이어샵','주유소','중고차매장','오토바이샵'],
+office:['부동산','공인중개사사무소','여행사','사진관','인쇄소','세무사사무실','사무실','법률사무소'],
+stay:['펜션','호텔','게스트하우스','모텔','글램핑','캠핑장','민박'],
+unmanned:['무인매장','무인카페','무인아이스크림할인점','셀프사진관','코인세탁소','무인편의점','무인밀키트매장'],
+mobile:['배달전문점','포장전문점','푸드트럭','이동식매장','시장상인','플리마켓','행사부스','소형매장']
+};
+const BIZ_TMPLS=[
+'{b} 카드단말기 설치 전 꼭 확인할 3가지',
+'{b} 카드단말기 비용 진짜 0원? 사장님 필독',
+'{b} 사장님이 단말기 바꾸고 달라진 매출 후기',
+'{b} 카드단말기 추천 — 현직 사장님 솔직 리뷰',
+'{b} 창업할 때 카드단말기 이렇게 고르세요',
+'{b} VAN사 수수료 비교 — 수십만원 아끼는 법',
+'{b} 카드단말기 교체 후기 — 바꾸길 잘했다'
+];
+const BIZ_TITLES=[];const BIZ_CAT_MAP={};
+Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
+ types.forEach(b=>{
+  BIZ_TMPLS.forEach(tmpl=>{
+   const title=tmpl.replace('{b}',b);
+   BIZ_CAT_MAP[BIZ_TITLES.length]=cat;
+   BIZ_TITLES.push(title);
+  });
+ });
+});
 const BIZ_SLUGS=BIZ_TITLES.map((_,i)=>'biz-'+(i+1).toString().padStart(3,'0'));
-const BIZ_PHOTO={
- food:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=630&fit=crop&q=80',
- cafe:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&h=630&fit=crop&q=80',
- bar:'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&h=630&fit=crop&q=80',
- leisure:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=630&fit=crop&q=80',
- edu:'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&h=630&fit=crop&q=80',
- beauty:'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&h=630&fit=crop&q=80',
- medical:'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&h=630&fit=crop&q=80',
- retail:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=630&fit=crop&q=80',
- service:'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=630&fit=crop&q=80',
- auto:'https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1200&h=630&fit=crop&q=80',
- stay:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=630&fit=crop&q=80',
- unmanned:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=630&fit=crop&q=80',
- office:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=630&fit=crop&q=80',
- mobile:'https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=1200&h=630&fit=crop&q=80'
+const BIZ_PHOTOS={
+ cafe:['https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=420&fit=crop&q=80'],
+ food:['https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&h=420&fit=crop&q=80'],
+ bar:['https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=420&fit=crop&q=80'],
+ leisure:['https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?w=800&h=420&fit=crop&q=80'],
+ edu:['https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=420&fit=crop&q=80'],
+ beauty:['https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=420&fit=crop&q=80'],
+ medical:['https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=420&fit=crop&q=80'],
+ retail:['https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80'],
+ service:['https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&h=420&fit=crop&q=80'],
+ auto:['https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&h=420&fit=crop&q=80'],
+ office:['https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&h=420&fit=crop&q=80'],
+ stay:['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=420&fit=crop&q=80'],
+ unmanned:['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=420&fit=crop&q=80'],
+ mobile:['https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=420&fit=crop&q=80']
 };
 function getBizCat(title){
- const t=title;
- if(/카페|커피숍|디저트카페|베이커리|빵집|스터디카페|무인카페/.test(t))return{cat:'cafe',pay:'카드·간편결제',peak:'오전~오후',avg:'5,000~15,000원',cust:'테이크아웃+매장 이용 고객'};
- if(/음식점|한식|중식|일식|분식|치킨|피자|패스트|고깃집|반찬/.test(t))return{cat:'food',pay:'카드·배달앱 연동',peak:'점심·저녁 피크타임',avg:'8,000~30,000원',cust:'식사 고객+배달 주문'};
- if(/술집|호프|포차|이자카야/.test(t))return{cat:'bar',pay:'카드·테이블 분할결제',peak:'저녁~심야',avg:'20,000~50,000원',cust:'단체 모임 고객'};
- if(/노래방|PC방|당구장|스크린골프|헬스|필라테스/.test(t))return{cat:'leisure',pay:'카드·시간제 결제',peak:'저녁·주말',avg:'10,000~30,000원',cust:'시간제 이용 고객'};
- if(/학원|태권도|피아노|미술|영어|수학|공부방|독서실|요가/.test(t))return{cat:'edu',pay:'카드·정기결제',peak:'월초 수강료 결제',avg:'100,000~300,000원',cust:'학부모·수강생'};
- if(/미용실|네일|속눈썹|왁싱|피부관리|마사지|에스테틱|반영구|문신|바버|애견미용/.test(t))return{cat:'beauty',pay:'카드·예약금 결제',peak:'주말·공휴일',avg:'30,000~100,000원',cust:'예약 고객'};
- if(/병원|치과|한의원|약국|안경|동물병원/.test(t))return{cat:'medical',pay:'카드·보험 연동',peak:'오전~오후',avg:'10,000~500,000원',cust:'환자·보호자'};
- if(/옷가게|의류|신발|가방|액세서리|잡화|편의점|마트|과일|정육|수산|꽃집|문구|서점|휴대폰|전자제품|가전/.test(t))return{cat:'retail',pay:'카드·간편결제·현금',peak:'주말·세일 기간',avg:'5,000~200,000원',cust:'쇼핑 고객'};
- if(/세탁|빨래방/.test(t))return{cat:'service',pay:'카드·무인결제',peak:'주말',avg:'3,000~15,000원',cust:'세탁 이용 고객'};
- if(/세차|카센터|정비소|타이어|주유소/.test(t))return{cat:'auto',pay:'카드·간편결제',peak:'주말·출퇴근',avg:'10,000~300,000원',cust:'차량 소유 고객'};
- if(/부동산|공인중개|여행사/.test(t))return{cat:'office',pay:'카드·계좌이체',peak:'비정기',avg:'고액 거래',cust:'계약 고객'};
- if(/펜션|호텔|게스트하우스|모텔/.test(t))return{cat:'stay',pay:'카드·온라인 예약',peak:'주말·성수기',avg:'50,000~300,000원',cust:'숙박 고객'};
- if(/무인매장|무인아이스크림|셀프사진관/.test(t))return{cat:'unmanned',pay:'카드·간편결제 전용',peak:'24시간',avg:'3,000~20,000원',cust:'무인 이용 고객'};
- if(/사무실|광고기획|인쇄|사진관/.test(t))return{cat:'office',pay:'카드·세금계산서',peak:'비정기',avg:'다양',cust:'기업·개인 고객'};
- if(/배달|포장|푸드트럭|이동식|시장|플리마켓|행사|소형|개인사업|신규창업|소상공인/.test(t))return{cat:'mobile',pay:'무선단말기·간편결제',peak:'유동적',avg:'5,000~20,000원',cust:'현장 구매 고객'};
- return{cat:'retail',pay:'카드·간편결제',peak:'영업시간 내',avg:'다양',cust:'일반 고객'};
+ const idx=BIZ_TITLES.indexOf(title);
+ const cat=idx>=0?BIZ_CAT_MAP[idx]:'retail';
+ const info={cafe:{cat:'cafe',pay:'카드·간편결제',peak:'오전~오후',avg:'5,000~15,000원',cust:'테이크아웃+매장 이용 고객'},food:{cat:'food',pay:'카드·배달앱 연동',peak:'점심·저녁 피크타임',avg:'8,000~30,000원',cust:'식사 고객+배달 주문'},bar:{cat:'bar',pay:'카드·테이블 분할결제',peak:'저녁~심야',avg:'20,000~50,000원',cust:'단체 모임 고객'},leisure:{cat:'leisure',pay:'카드·시간제 결제',peak:'저녁·주말',avg:'10,000~30,000원',cust:'시간제 이용 고객'},edu:{cat:'edu',pay:'카드·정기결제',peak:'월초 수강료 결제',avg:'100,000~300,000원',cust:'학부모·수강생'},beauty:{cat:'beauty',pay:'카드·예약금 결제',peak:'주말·공휴일',avg:'30,000~100,000원',cust:'예약 고객'},medical:{cat:'medical',pay:'카드·보험 연동',peak:'오전~오후',avg:'10,000~500,000원',cust:'환자·보호자'},retail:{cat:'retail',pay:'카드·간편결제·현금',peak:'주말·세일 기간',avg:'5,000~200,000원',cust:'쇼핑 고객'},service:{cat:'service',pay:'카드·무인결제',peak:'주말',avg:'3,000~15,000원',cust:'이용 고객'},auto:{cat:'auto',pay:'카드·간편결제',peak:'주말·출퇴근',avg:'10,000~300,000원',cust:'차량 소유 고객'},office:{cat:'office',pay:'카드·계좌이체',peak:'비정기',avg:'고액 거래',cust:'계약 고객'},stay:{cat:'stay',pay:'카드·온라인 예약',peak:'주말·성수기',avg:'50,000~300,000원',cust:'숙박 고객'},unmanned:{cat:'unmanned',pay:'카드·간편결제 전용',peak:'24시간',avg:'3,000~20,000원',cust:'무인 이용 고객'},mobile:{cat:'mobile',pay:'무선단말기·간편결제',peak:'유동적',avg:'5,000~20,000원',cust:'현장 구매 고객'}};
+ return info[cat]||info.retail;
 }
 function makeBizPage(idx){
  const title=BIZ_TITLES[idx];
@@ -141,78 +162,83 @@ function makeBizPage(idx){
  const pk=(arr)=>arr[Math.abs(h^arr.length)%arr.length];
  const pk2=(arr)=>arr[Math.abs((h>>>3)^arr.length)%arr.length];
  const pk3=(arr)=>arr[Math.abs((h>>>7)^arr.length)%arr.length];
+ const pk4=(arr)=>arr[Math.abs((h>>>11)^arr.length)%arr.length];
  const yr=new Date().getFullYear();
  const bc=getBizCat(title);
- const photo=BIZ_PHOTO[bc.cat];
+ const catKey=bc.cat;
+ // Multiple photos per category for variety
+ const PHOTOS={
+  cafe:['photo-1501339847302-ac426a4a7cbb','photo-1554118811-1e0d58224f24','photo-1495474472287-4d71bcdd2085','photo-1453614512568-c4024d13c247'],
+  food:['photo-1517248135467-4c7edcad34c4','photo-1414235077428-338989a2e8c0','photo-1552566626-52f8b828add9','photo-1466978913421-dad2ebd01d17'],
+  bar:['photo-1514933651103-005eec06c04b','photo-1572116469696-31de0f17cc34','photo-1470337458703-46ad1756a187'],
+  leisure:['photo-1534438327276-14e5300c3a48','photo-1593079831268-3381b0db4a77','photo-1545558014-8692077e9b5c'],
+  edu:['photo-1580582932707-520aed937b7b','photo-1497633762265-9d179a990aa6','photo-1509062522246-3755977927d7'],
+  beauty:['photo-1560066984-138dadb4c035','photo-1522337360788-8b13dee7a37e','photo-1633681926022-84c23e8cb2d6'],
+  medical:['photo-1519494026892-80bbd2d6fd0d','photo-1538108149393-fbbd81895907','photo-1579684385127-1ef15d508118'],
+  retail:['photo-1441986300917-64674bd600d8','photo-1604719312566-8912e9227c6a','photo-1556742049-0cfed4f6a45d'],
+  service:['photo-1545173168-9f1947eebb7f','photo-1521791136064-7986c2920216'],
+  auto:['photo-1486006920555-c77dcf18193c','photo-1558618666-fcd25c85f82e'],
+  office:['photo-1497366216548-37526070297c','photo-1497215842964-222b430dc094'],
+  stay:['photo-1566073771259-6a8506099945','photo-1564501049412-61c2a3083791'],
+  unmanned:['photo-1556742049-0cfed4f6a45d','photo-1563013544-824ae1b704d3'],
+  mobile:['photo-1565123409695-7b5ef63a2efb','photo-1556742111-a301076d9d18']
+ };
+ const photoArr=PHOTOS[catKey]||PHOTOS.retail;
+ const photo='https://images.unsplash.com/'+pk(photoArr)+'?w=800&h=420&fit=crop&q=80';
  const biz=title.split(' 카드단말기')[0];
- const topic=title.split('카드단말기 ')[1]||'설치 가이드';
- // Meta
- const metaDesc=pk([
-  biz+' 카드단말기 '+topic+'. 설치비 무료, 월 이용료 무료로 업종에 맞는 최적의 단말기를 추천합니다. VAN사 수수료 비교부터 설치까지 올페이스토어.',
-  biz+'에서 카드단말기를 도입하려면? '+topic+'을 상세하게 안내합니다. 올페이스토어 무료 상담 010-9876-8282.',
-  biz+' 운영자를 위한 카드단말기 완벽 가이드. '+topic+' 핵심만 정리했습니다. 전국 설치 가능.'
- ]);
- // Body ~3000 chars, unique per article
+ const catColors={cafe:['#B45309','#FFF7ED','#FDE68A'],food:['#DC2626','#FEF2F2','#FECACA'],bar:['#D97706','#FFFBEB','#FDE68A'],leisure:['#7C3AED','#F5F3FF','#DDD6FE'],edu:['#2563EB','#EFF6FF','#BFDBFE'],beauty:['#DB2777','#FDF2F8','#FBCFE8'],medical:['#059669','#ECFDF5','#A7F3D0'],retail:['#EA580C','#FFF7ED','#FED7AA'],service:['#4F46E5','#EEF2FF','#C7D2FE'],auto:['#0D9488','#F0FDFA','#99F6E4'],office:['#475569','#F8FAFC','#CBD5E1'],stay:['#9333EA','#FAF5FF','#E9D5FF'],unmanned:['#0EA5E9','#F0F9FF','#BAE6FD'],mobile:['#65A30D','#F7FEE7','#D9F99D']};
+ const [mainColor,bgLight,accentLight]=catColors[catKey]||catColors.retail;
+ const metaDesc=`${biz} 카드단말기 완벽 가이드. 설치비 무료, 월 이용료 무료. ${biz} 업종에 맞는 최적의 단말기를 추천합니다. 올페이스토어 ☎ 010-9876-8282`;
+ // BODY - richly formatted ~3000 chars
  let body='';
- // Section 1: Intro (biz-specific)
+ // Intro with colored box
  const intros=[
-  `<p>${biz}을 운영하시면서 카드단말기 때문에 고민이 많으셨을 겁니다. ${yr}년 현재 소비자의 카드·간편결제 비중이 80%를 넘어섰고, ${biz}에서도 ${bc.pay} 결제를 원활하게 처리하는 것이 매출과 직결됩니다. 이 글에서는 ${biz} 사장님이 카드단말기를 선택하기 전에 반드시 알아야 할 핵심 정보를 정리했습니다. 실제 ${biz} 운영 경험을 바탕으로 작성한 내용이니 끝까지 읽어보시면 비용을 아끼면서도 최적의 단말기를 고를 수 있습니다.</p>`,
-  `<p>${biz} 사장님, 카드단말기 어떤 걸 골라야 할지 막막하시죠? 저도 처음 ${biz}을 열었을 때 똑같은 고민을 했습니다. VAN사는 여러 곳인데 수수료는 제각각이고, 단말기 종류도 유선·무선·블루투스·일체형까지 너무 다양합니다. ${yr}년 기준으로 ${biz} 업종에 가장 적합한 카드단말기는 어떤 것인지, 비용은 실제로 얼마나 드는지, 그리고 설치 후 관리는 어떻게 하는 것이 효율적인지 하나하나 풀어보겠습니다.</p>`,
-  `<p>요즘 ${biz}에서 현금만 받는 곳은 거의 없습니다. 삼성페이, 카카오페이, 네이버페이까지 간편결제 수단이 다양해지면서 이 모든 결제를 한 대의 단말기로 처리해야 하는 시대가 됐습니다. ${biz}처럼 ${bc.peak}에 결제가 집중되는 업종이라면 결제 속도와 안정성이 특히 중요합니다. 오늘은 ${biz} 업종 특성에 딱 맞는 카드단말기 선택법을 실전 경험 위주로 알려드리겠습니다.</p>`,
-  `<p>${biz}을 준비하면서 카드단말기까지 신경 쓸 여유가 없으셨을 수도 있습니다. 하지만 결제 시스템은 ${biz} 운영의 기본 중의 기본입니다. 평균 객단가 ${bc.avg}인 ${biz} 업종에서 결제 오류나 느린 처리 속도는 곧 고객 이탈로 이어집니다. 이 글에서는 실제 ${biz} 사장님들의 경험담을 토대로, 단말기 선택부터 설치, 그리고 운영 시 꼭 알아야 할 팁까지 모두 담았습니다.</p>`
+  `<p>${biz}을 운영하시면서 카드단말기 때문에 고민이 많으셨을 겁니다. ${yr}년 현재 소비자의 카드·간편결제 비중이 80%를 넘어섰고, ${biz}에서도 ${bc.pay} 결제를 원활하게 처리하는 것이 매출과 직결됩니다.</p>`,
+  `<p>${biz} 사장님, 카드단말기 어떤 걸 골라야 할지 막막하시죠? VAN사는 여러 곳인데 수수료는 제각각이고, 단말기 종류도 유선·무선·블루투스까지 너무 다양합니다. ${yr}년 기준으로 ${biz} 업종에 가장 적합한 카드단말기가 무엇인지 정리했습니다.</p>`,
+  `<p>요즘 ${biz}에서 현금만 받는 곳은 거의 없습니다. 삼성페이, 카카오페이, 네이버페이까지 이 모든 결제를 한 대의 단말기로 처리해야 하는 시대입니다. ${biz}처럼 ${bc.peak}에 결제가 집중되는 업종이라면 결제 속도와 안정성이 특히 중요합니다.</p>`,
+  `<p>${biz}을 준비하면서 카드단말기까지 신경 쓸 여유가 없으셨을 수도 있습니다. 하지만 결제 시스템은 ${biz} 운영의 기본 중의 기본입니다. 평균 객단가 ${bc.avg}인 ${biz} 업종에서 결제 오류는 곧 고객 이탈로 이어집니다.</p>`
  ];
  body+=pk(intros);
- // Section 2: Biz-specific considerations
- const sec2Title=pk2(['왜 '+biz+'에는 업종별 맞춤 단말기가 필요할까',biz+' 업종 특성과 카드단말기의 관계',biz+' 사장님이 단말기 선택 시 가장 많이 실수하는 점',biz+'에서 카드단말기가 매출에 미치는 영향']);
- const sec2Body=[
-  `<p>${biz}은 ${bc.cust}이 주 고객층이며, 결제 패턴이 ${bc.peak}에 몰리는 특징이 있습니다. 이런 업종에서는 피크 시간대에 결제가 밀리지 않도록 처리 속도가 빠른 단말기를 선택하는 것이 핵심입니다. 또한 ${bc.pay} 결제를 모두 지원하는 복합 단말기가 아니면 고객이 결제 수단을 바꿔야 하는 불편이 생기고, 이는 재방문율 하락으로 이어질 수 있습니다. 올페이스토어에서 ${biz} 업종에 가장 많이 설치하는 단말기는 IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 복합 단말기이며, 설치비와 월 이용료가 모두 무료입니다.</p>`,
-  `<p>같은 카드단말기라도 ${biz}에 맞는 기능이 있고, 불필요한 기능이 있습니다. 예를 들어 ${biz}에서는 ${bc.avg} 수준의 결제가 ${bc.peak}에 집중되기 때문에 빠른 전표 출력과 안정적인 통신이 필수입니다. 유선 단말기는 통신이 안정적이지만 설치 위치가 고정되고, 무선 단말기는 자유롭지만 배터리 관리가 필요합니다. ${biz} 매장 구조와 카운터 위치를 고려해서 선택해야 합니다. 올페이스토어는 매장 방문 후 동선을 분석하여 최적의 단말기 타입을 추천해드립니다.</p>`,
-  `<p>많은 ${biz} 사장님들이 "카드단말기는 다 비슷하겠지"라고 생각하시는데, 실제로 업종에 따라 최적의 단말기가 완전히 다릅니다. ${biz}의 경우 ${bc.cust}을 상대하기 때문에 ${bc.pay} 결제를 모두 빠르게 처리할 수 있어야 합니다. 특히 ${biz} 업종은 ${bc.peak}에 결제가 집중되므로, 이 시간대에 단말기가 느려지거나 먹통이 되면 매출 손실이 큽니다. VAN사 선택도 중요한데, ${biz} 매출 규모에 따라 수수료율이 달라지므로 반드시 비교 견적을 받아보셔야 합니다.</p>`,
-  `<p>${biz}을 방문하는 고객 입장에서 생각해보세요. 결제할 때 "카드 됩니다", "삼성페이 됩니다", "QR결제 됩니다"라고 하면 편하게 느끼지만, "현금만 됩니다"거나 "이 결제수단은 안 됩니다"라고 하면 불편함을 느낍니다. ${yr}년 기준 ${biz} 고객의 대부분은 카드 또는 간편결제를 사용하며, 평균 결제 금액은 ${bc.avg} 수준입니다. 이 금액대에서 결제 수단 제한으로 고객을 놓치는 건 큰 손실입니다.</p>`
+ // Highlight box
+ body+=`<div style="background:${bgLight};border-left:4px solid ${mainColor};padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0"><strong style="color:${mainColor}">📌 핵심 요약</strong><br><span style="font-size:14px;color:#333">• ${biz} 카드단말기 설치비: <strong>무료</strong><br>• 월 이용료: <strong>무료</strong><br>• VAN사 수수료: 매출 규모별 최저 수수료 비교 제공<br>• 설치 소요시간: 약 15~30분 (영업 중 가능)</span></div>`;
+ // Section 2
+ const sec2=[
+  `<h2 style="color:${mainColor}">🏪 ${biz} 업종에 맞는 단말기란?</h2><p>${biz}은 ${bc.cust}이 주 고객층이며, 결제 패턴이 ${bc.peak}에 몰립니다. 피크 시간대에 결제가 밀리지 않도록 처리 속도가 빠른 단말기를 선택하는 것이 핵심입니다. IC칩·NFC·QR코드·간편결제를 모두 지원하는 복합 단말기가 필수이며, 올페이스토어에서 설치비·월 이용료 모두 무료로 제공합니다.</p>`,
+  `<h2 style="color:${mainColor}">🏪 왜 ${biz}에는 업종별 맞춤 단말기가 필요할까?</h2><p>같은 카드단말기라도 ${biz}에 맞는 기능이 있고, 불필요한 기능이 있습니다. ${biz}에서는 ${bc.avg} 수준의 결제가 ${bc.peak}에 집중되기 때문에 빠른 전표 출력과 안정적인 통신이 필수입니다. 유선 단말기는 통신이 안정적이지만 설치 위치가 고정되고, 무선 단말기는 자유롭지만 배터리 관리가 필요합니다.</p>`
  ];
- body+='<h2>'+sec2Title+'</h2>'+pk2(sec2Body);
- // Section 3: Cost & VAN
- const sec3Title=pk3([biz+' 카드단말기 비용, 실제로 얼마나 들까','VAN사 수수료 비교 — '+biz+' 사장님이 꼭 확인할 사항',biz+' 카드단말기 설치비와 월 비용 총정리','카드단말기 비용의 진실 — '+biz+' 편']);
- const sec3Body=[
-  `<p>결론부터 말씀드리면, 올페이스토어를 통해 설치하시면 단말기 설치비와 월 이용료가 모두 무료입니다. "그러면 어디서 돈을 버는 거냐"고 물으시는 분이 많은데, VAN사 제휴 구조 덕분입니다. VAN사는 카드 결제 건마다 일정 수수료를 받고, 이 수익의 일부로 단말기 설치비를 지원합니다. ${biz} 사장님이 부담하시는 비용은 카드 결제 시 발생하는 VAN사 수수료뿐이며, 이 수수료도 매출 규모에 따라 우대 적용이 가능합니다. 연 매출 3억 이하 소상공인이라면 카드 수수료 우대제도(0.5~1.5%)가 자동 적용됩니다.</p>`,
-  `<p>${biz} 사장님이 카드단말기 비용에서 가장 헷갈려하시는 부분이 "설치비 무료"의 의미입니다. 정확히 말하면, VAN사 제휴를 통해 단말기 설치비를 전액 지원받는 구조입니다. 월 이용료도 없습니다. ${biz} 사장님이 실제로 부담하시는 것은 카드 결제 건별 수수료인데, 이 수수료율은 VAN사마다 다릅니다. 예를 들어 A VAN사는 1.2%, B VAN사는 1.5%일 수 있으며, ${biz} 월 매출이 2,000만원이라면 이 0.3% 차이가 월 6만원, 연간 72만원 차이로 이어집니다. 올페이스토어에서는 ${biz} 매출 규모에 맞는 최저 수수료 VAN사를 비교 분석하여 추천합니다.</p>`,
-  `<p>온라인에서 카드단말기를 검색하면 "0원 설치"라는 문구가 넘쳐납니다. 대부분 사실이긴 하지만, 주의할 점이 있습니다. 일부 업체는 설치비는 무료지만 월 이용료를 별도로 청구하거나, 약정 기간 내 해지 시 위약금을 부과합니다. ${biz} 사장님이라면 반드시 확인해야 할 세 가지: ① 월 이용료 유무 ② 약정 기간과 위약금 조건 ③ VAN사 수수료율. 올페이스토어는 설치비 무료, 월 이용료 무료, 약정 없이 진행합니다. ${biz} 업종 매출 기준으로 가장 유리한 VAN사를 찾아드립니다.</p>`,
-  `<p>${biz}에서 카드단말기를 설치할 때 발생하는 비용 구조를 투명하게 설명드리겠습니다. 단말기 장비 자체는 VAN사 제휴를 통해 무상으로 제공됩니다. 설치 기사 방문 비용도 올페이스토어가 부담합니다. 월정액이나 관리비도 없습니다. ${biz} 사장님이 부담하시는 유일한 비용은 카드 결제 시 발생하는 수수료이며, 이 수수료율은 VAN사와 매출 규모에 따라 달라집니다. 소상공인 우대 수수료(연매출 3억 이하: 0.5~1.5%)가 적용되면 ${biz} 대부분의 사장님이 해당될 수 있습니다.</p>`
+ body+=pk2(sec2);
+ // Comparison table box
+ body+=`<div style="background:#f8fafc;border-radius:12px;padding:20px;margin:20px 0"><h3 style="font-size:16px;margin:0 0 12px;color:#333">📊 ${biz} 단말기 타입 비교</h3><table style="width:100%;font-size:13px;border-collapse:collapse"><tr style="background:${mainColor};color:#fff"><th style="padding:8px;text-align:left;border-radius:6px 0 0 0">구분</th><th style="padding:8px">유선</th><th style="padding:8px">무선(LTE)</th><th style="padding:8px;border-radius:0 6px 0 0">블루투스</th></tr><tr style="border-bottom:1px solid #eee"><td style="padding:8px;font-weight:600">통신 안정성</td><td style="padding:8px;text-align:center">⭐⭐⭐</td><td style="padding:8px;text-align:center">⭐⭐</td><td style="padding:8px;text-align:center">⭐⭐</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:8px;font-weight:600">이동성</td><td style="padding:8px;text-align:center">❌</td><td style="padding:8px;text-align:center">⭐⭐⭐</td><td style="padding:8px;text-align:center">⭐⭐⭐</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:8px;font-weight:600">월 통신비</td><td style="padding:8px;text-align:center">없음</td><td style="padding:8px;text-align:center">있음</td><td style="padding:8px;text-align:center">없음</td></tr><tr><td style="padding:8px;font-weight:600">${biz} 추천</td><td style="padding:8px;text-align:center">${bc.peak==='24시간'||bc.peak==='유동적'?'△':'✅'}</td><td style="padding:8px;text-align:center">${bc.peak==='유동적'||bc.peak==='저녁~심야'?'✅':'○'}</td><td style="padding:8px;text-align:center">${bc.peak==='유동적'?'✅':'△'}</td></tr></table></div>`;
+ // Section 3 - Cost with emoji
+ const sec3=[
+  `<h2 style="color:${mainColor}">💰 ${biz} 카드단말기 비용의 진실</h2><p>올페이스토어를 통해 설치하시면 <strong style="color:${mainColor}">단말기 설치비와 월 이용료가 모두 무료</strong>입니다. VAN사 제휴 구조 덕분입니다. VAN사는 카드 결제 건마다 일정 수수료를 받고, 이 수익의 일부로 단말기 설치비를 지원합니다. ${biz} 사장님이 부담하시는 비용은 카드 결제 시 발생하는 VAN사 수수료뿐이며, 연 매출 3억 이하 소상공인이라면 우대 수수료(0.5~1.5%)가 자동 적용됩니다.</p>`,
+  `<h2 style="color:${mainColor}">💰 비용 0원의 비밀 — VAN사 제휴 구조</h2><p>온라인에서 "카드단말기 0원 설치"라는 문구가 넘칩니다. 대부분 사실이지만 주의할 점이 있습니다. 일부 업체는 <span style="background:${accentLight};padding:2px 6px;border-radius:4px">월 이용료를 별도 청구</span>하거나 약정 기간 내 해지 시 위약금을 부과합니다. 올페이스토어는 설치비 무료, 월 이용료 무료, <strong>약정 없이</strong> 진행합니다.</p>`
  ];
- body+='<h2>'+sec3Title+'</h2>'+pk3(sec3Body);
- // Section 4: Terminal types for this biz
- const sec4Title=pk([biz+'에 맞는 카드단말기 종류',biz+' 업종별 추천 단말기 타입',biz+' 매장 환경에 따른 단말기 선택법','유선 vs 무선 vs 블루투스 — '+biz+'에는 어떤 게 맞을까']);
- const termTypes=[
-  `<p>카드단말기는 크게 유선(전화선/인터넷), 무선(LTE), 블루투스 세 종류로 나뉩니다. ${biz}의 매장 환경을 기준으로 추천드리자면, 카운터가 고정되어 있고 인터넷이 설치된 ${biz}이라면 유선 단말기가 가장 안정적입니다. 통신 비용이 별도로 들지 않고 처리 속도도 빠릅니다. 반면 ${biz} 매장이 넓어서 테이블에서 직접 결제를 받아야 한다면 무선(LTE) 단말기가 적합합니다. 블루투스 단말기는 스마트폰과 연동하여 사용하는 방식으로, 배달이나 외부 행사가 잦은 경우에 유용합니다.</p>`,
-  `<p>${biz} 매장 특성상 ${bc.peak}에 결제가 집중됩니다. 이 시간대에 단말기 한 대로 감당이 안 된다면 추가 단말기를 고려해야 합니다. 올페이스토어에서는 ${biz} 매장 방문 시 피크 시간 결제 건수, 카운터 수, 매장 면적을 파악하여 최적의 단말기 수량과 타입을 제안합니다. 최신 자동커팅 단말기는 영수증이 자동으로 잘려 나와 바쁜 시간에 편리하고, 토스 단말기는 앱과 연동하여 매출 관리까지 한번에 가능합니다.</p>`,
-  `<p>${biz}에서 가장 많이 선택하는 단말기는 IC칩·NFC·QR 복합 단말기입니다. 카드를 꽂아도 되고, 삼성페이로 터치해도 되고, 카카오페이 QR을 스캔해도 됩니다. ${biz} 고객층인 ${bc.cust}의 결제 습관을 고려하면 이런 복합 단말기가 필수입니다. 최근에는 토스 단말기도 인기인데, 토스 앱에서 실시간 매출 확인과 정산 내역 조회가 가능해서 ${biz} 사장님들의 만족도가 높습니다. 올페이스토어에서 무료로 설치 가능합니다.</p>`,
-  `<p>요즘 ${biz} 사장님들 사이에서 가장 반응이 좋은 단말기는 터치스크린 일체형 단말기입니다. 메뉴 입력, 결제, 영수증 출력이 한 대에서 모두 처리되고, 포스기(POS)처럼 사용할 수 있습니다. ${biz}처럼 ${bc.avg} 수준의 결제가 반복되는 업종에서는 빠른 금액 입력과 자동 정산 기능이 큰 도움이 됩니다. 물론 기본 카드단말기로 시작한 후 나중에 포스기로 업그레이드하는 것도 가능합니다.</p>`
- ];
- body+='<h2>'+sec4Title+'</h2>'+pk2(termTypes);
- // Section 5: Real user review style
- const sec5Title=pk3(['실제 '+biz+' 사장님의 카드단말기 사용 후기',biz+' 사장님이 직접 겪은 단말기 설치 이야기','현직 '+biz+' 운영자가 전하는 카드단말기 솔직 후기','카드단말기 바꾸고 달라진 점 — '+biz+' 사장님 인터뷰']);
+ body+=pk3(sec3);
+ // Tip box
+ body+=`<div style="background:linear-gradient(135deg,${bgLight},#fff);border:2px dashed ${mainColor};padding:18px;border-radius:12px;margin:20px 0"><span style="font-size:18px">💡</span> <strong style="color:${mainColor}">사장님 Tip</strong><p style="margin:8px 0 0;font-size:14px;color:#444">${pk4([biz+' 매출 규모에 맞는 VAN사를 선택하면 월 수수료를 10만원 이상 절약할 수 있습니다. 올페이스토어에서 VAN사별 수수료를 무료로 비교 분석해드립니다.','카드단말기를 바꿀 때 기존 단말기 해지 절차가 복잡할까 걱정하시는 분이 많습니다. 올페이스토어에서는 기존 업체 해지부터 새 단말기 설치까지 전 과정을 대행해드립니다.','단말기 하나 바꿨을 뿐인데 정산이 자동으로 되고, 매출 관리가 한결 수월해졌다는 사장님이 많습니다. 토스 단말기는 앱에서 실시간 매출 확인이 가능합니다.','여러 장비를 한번에 설치하면 패키지 할인이 적용됩니다. 카드단말기+포스기+키오스크를 함께 문의해보세요.'])}</p></div>`;
+ // Section 4 - Review
  const reviews=[
-  `<p>"처음에는 인터넷에서 가장 싼 단말기를 직접 구매했는데, 설치도 혼자 해야 했고 고장 나면 AS 받기가 너무 힘들었어요. 올페이스토어로 바꾸고 나서는 설치부터 관리까지 다 해주니까 ${biz} 운영에만 집중할 수 있게 됐습니다. 설치비도 무료이고 월 이용료도 없어서 이전 업체보다 오히려 비용이 줄었어요."</p><p>"${biz}이 ${bc.peak}에 바쁘다 보니 결제가 느려지면 줄이 길어져요. 전에 쓰던 구형 단말기는 카드 읽는 데만 5초 넘게 걸렸는데, 새 단말기는 1~2초면 끝나요. 삼성페이, 카카오페이도 바로 되고요. 손님들도 편하다고 하세요."</p>`,
-  `<p>"${biz}을 10년째 하고 있는데, 예전에는 VAN사 수수료가 얼마인지도 모르고 쓰고 있었어요. 올페이스토어에서 상담받고 VAN사를 바꿨더니 월 수수료가 15만원 가까이 줄었습니다. ${biz} 월 매출이 2천만원 정도인데, 수수료율 0.7% 차이가 이렇게 큰 줄 몰랐어요."</p><p>"${biz} 오픈 준비하면서 카드단말기를 어디서 설치해야 할지 몰라서 검색하다가 올페이스토어를 알게 됐어요. 상담 전화하니까 ${biz} 업종에 맞는 단말기를 바로 추천해주셨고, 이틀 만에 설치 완료됐습니다. 이렇게 간단한 걸 혼자 며칠씩 고민했다니 아쉽더라고요."</p>`,
-  `<p>"솔직히 카드단말기 바꾸는 게 귀찮아서 미루고 있었는데, 기존 단말기가 간편결제를 지원 안 해서 손님 불만이 계속 들어왔어요. 결국 올페이스토어에 연락했더니 다음 날 바로 교체해주셨고, NFC·QR 전부 되는 신형으로 바뀌었습니다. 교체 비용 0원이었고, ${biz} 영업 중에 10분 만에 완료됐어요."</p><p>"${biz} 근처 사장님이 올페이스토어 추천해주셔서 설치했는데, 확실히 다릅니다. 매일 정산 내역이 문자로 오고, 앱에서 월별 매출을 그래프로 볼 수 있어서 ${biz} 매출 관리가 한결 수월해졌어요."</p>`,
-  `<p>"${biz} 매장을 이전하면서 카드단말기도 옮겨야 했는데, 기존 업체에서는 이전 비용을 청구하더라고요. 올페이스토어는 이전도 무료, 새 매장 환경에 맞게 위치도 다시 잡아주셨어요. ${biz} 사장님들한테 정말 추천합니다."</p><p>"단말기 하나 바꿨을 뿐인데 ${biz} 운영이 확 편해졌어요. 예전 단말기는 전표 용지가 자주 걸렸는데, 새 자동커팅 단말기는 그런 문제가 전혀 없어요. ${bc.peak}에 바쁠 때 이런 작은 차이가 크게 느껴집니다."</p>`
+  `<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:36px;height:36px;background:${bgLight};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</span><div><strong style="font-size:14px">${biz} 사장님 A</strong><span style="font-size:12px;color:#999;margin-left:8px">⭐⭐⭐⭐⭐</span></div></div><p style="font-size:14px;color:#444;margin:0;line-height:1.7">"처음에는 인터넷에서 가장 싼 단말기를 직접 구매했는데, 고장 나면 AS 받기가 너무 힘들었어요. 올페이스토어로 바꾸고 나서는 설치부터 관리까지 다 해주니까 ${biz} 운영에만 집중할 수 있게 됐습니다."</p></div>`,
+  `<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:36px;height:36px;background:${bgLight};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</span><div><strong style="font-size:14px">${biz} 사장님 B</strong><span style="font-size:12px;color:#999;margin-left:8px">⭐⭐⭐⭐⭐</span></div></div><p style="font-size:14px;color:#444;margin:0;line-height:1.7">"${biz}을 10년째 하고 있는데, VAN사 수수료가 얼마인지도 모르고 쓰고 있었어요. 올페이스토어에서 상담받고 VAN사를 바꿨더니 월 수수료가 15만원 가까이 줄었습니다."</p></div>`
  ];
- body+='<h2>'+sec5Title+'</h2>'+pk(reviews);
- // Section 6: Installation process
- const sec6Title=pk2([biz+' 카드단말기 설치 절차',biz+' 매장 카드단말기 설치는 이렇게 진행됩니다','신청부터 설치 완료까지 — '+biz+' 편','올페이스토어 '+biz+' 카드단말기 설치 과정']);
- body+='<h2>'+sec6Title+'</h2>';
- body+=pk3([
-  `<p>올페이스토어에서 ${biz} 카드단말기를 설치하는 과정은 매우 간단합니다. 먼저 전화(010-9876-8282) 또는 온라인으로 상담을 신청하시면 ${biz} 업종 전문 상담사가 매출 규모, 결제 패턴, 매장 환경을 파악합니다. 이후 가장 유리한 VAN사와 단말기 타입을 추천해드리고, 사장님이 동의하시면 설치 일정을 잡습니다. 설치는 전문 기사가 매장을 방문하여 진행하며, ${biz} 영업 중에도 설치가 가능합니다. 소요 시간은 보통 15~30분 정도이며, 기사가 단말기 사용법을 직접 안내해드립니다.</p>`,
-  `<p>${biz} 카드단말기 설치 절차를 단계별로 정리하면 이렇습니다. ① 올페이스토어에 전화 또는 온라인 문의 ② ${biz} 업종에 맞는 단말기·VAN사 상담 ③ 견적 확인 및 설치 일정 조율 ④ 전문 기사 방문 설치(15~30분) ⑤ 단말기 사용법 교육 ⑥ 첫 결제 테스트까지 확인 후 완료. 설치비 무료, 월 이용료 무료이며, 기존에 다른 업체 단말기를 사용 중이시더라도 교체 설치가 가능합니다. ${biz} 사장님은 사업자등록증만 준비하시면 됩니다.</p>`,
-  `<p>카드단말기 설치가 복잡할 것 같다고 미루시는 ${biz} 사장님이 많습니다. 실제로는 전화 한 통이면 끝납니다. 올페이스토어 상담센터(010-9876-8282)에 연락하시면 ${biz} 업종 전담 상담사가 매장 상황을 파악하고, 최적의 단말기를 추천해드립니다. 설치 당일 기사가 방문하여 단말기 세팅, 통신 연결, 테스트 결제까지 모두 진행합니다. ${biz} 영업을 중단하지 않고 설치할 수 있으며, 설치 후에도 궁금한 점은 언제든 전화로 문의하실 수 있습니다.</p>`
- ]);
- // Section 7: CTA
- body+=`<h2>${biz} 카드단말기 무료 상담 안내</h2><p>${biz} 사장님, 카드단말기 고민은 올페이스토어에 맡기세요. 설치비 무료, 월 이용료 무료, VAN사 수수료 비교 분석, 전국 당일 설치까지 한번에 해결해드립니다. 전화 상담은 010-9876-8282, 온라인 문의는 상담 페이지에서 가능합니다.</p>`;
+ body+=`<h2 style="color:${mainColor}">🗣️ 실제 ${biz} 사장님 후기</h2>`+pk(reviews)+pk2(reviews);
+ // Section 5 - Process with steps
+ body+=`<h2 style="color:${mainColor}">📋 설치 절차 — 전화 한 통이면 끝</h2><div style="display:grid;grid-template-columns:1fr;gap:10px;margin:16px 0">${['① 전화 상담 (010-9876-8282)','② '+biz+' 업종 맞춤 단말기·VAN사 추천','③ 설치 일정 조율','④ 전문 기사 방문 설치 (15~30분)','⑤ 사용법 교육 + 첫 결제 테스트'].map((step,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:${i%2===0?bgLight:'#fff'};border-radius:8px;border:1px solid ${i%2===0?mainColor+'33':'#eee'}"><span style="width:28px;height:28px;background:${mainColor};color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">${i+1}</span><span style="font-size:14px;color:#333">${step.slice(2)}</span></div>`).join('')}</div>`;
+ // FAQ accordion style
+ body+=`<h2 style="color:${mainColor}">❓ 자주 묻는 질문</h2>`;
+ const faqs=[
+  ['비용이 정말 무료인가요?','네, VAN사 제휴를 통해 설치비와 월 이용료 모두 무료입니다. '+biz+' 사장님이 부담하시는 비용은 카드 결제 건별 수수료뿐이며, 소상공인 우대 수수료가 자동 적용됩니다.'],
+  ['기존 단말기를 교체할 수 있나요?','가능합니다. 기존 업체 해지 절차부터 새 단말기 설치까지 올페이스토어가 전 과정을 대행합니다. '+biz+' 영업 중에도 교체할 수 있으며, 소요 시간은 약 10분입니다.'],
+  ['간편결제(삼성페이, 카카오페이 등)도 되나요?','올페이스토어가 설치하는 복합 단말기는 IC칩, NFC, QR코드, 삼성페이, 카카오페이, 네이버페이, 제로페이 등 모든 결제 수단을 지원합니다.'],
+  ['전국 어디서든 설치 가능한가요?','네, 올페이스토어는 전국 5,000개 이상의 읍면동에서 직접 방문 설치 서비스를 제공합니다.']
+ ];
+ body+=faqs.map(([q,a])=>`<div style="border:1px solid #eee;border-radius:10px;padding:16px;margin:8px 0"><div style="font-weight:700;color:${mainColor};margin-bottom:8px;font-size:14px">Q. ${q}</div><div style="font-size:14px;color:#555;line-height:1.7">A. ${a}</div></div>`).join('');
  // Related articles
- const related=BIZ_TITLES.filter((t,i)=>i!==idx&&getBizCat(t).cat===bc.cat).slice(0,6);
- const relMore=BIZ_TITLES.filter((t,i)=>i!==idx&&getBizCat(t).cat!==bc.cat).slice(Math.abs(h)%50,Math.abs(h)%50+4);
+ const related=BIZ_TITLES.filter((t,i)=>i!==idx&&getBizCat(t).cat===catKey).slice(0,6);
+ const relMore=BIZ_TITLES.filter((t,i)=>i!==idx&&getBizCat(t).cat!==catKey).slice(Math.abs(h)%50,Math.abs(h)%50+4);
  const relAll=[...related,...relMore].slice(0,8);
- const relLinks=relAll.map(t=>{const ri=BIZ_TITLES.indexOf(t);return `<a href="/biz/${BIZ_SLUGS[ri]}/" style="display:block;padding:10px 0;border-bottom:1px solid #eee;color:#333;text-decoration:none;font-size:14px">${t}</a>`;}).join('');
+ const relLinks=relAll.map(t=>{const ri=BIZ_TITLES.indexOf(t);return `<a href="/biz/${BIZ_SLUGS[ri]}/" style="display:block;padding:10px 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:14px">${t}</a>`;}).join('');
  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
 <title>${title} | 올페이스토어</title>
@@ -224,18 +250,13 @@ function makeBizPage(idx){
 <link rel="canonical" href="https://allpaystore.com/biz/${slug}/">
 ${CSS}</head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
-<div style="position:relative;height:320px;overflow:hidden">
- <img src="${photo}" alt="${biz} 카드단말기" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.45)">
- <div style="position:absolute;bottom:40px;left:24px;right:24px;color:#fff">
-  <p style="font-size:13px;opacity:0.8;margin-bottom:8px">${yr}년 ${biz} 업종 가이드</p>
-  <h1 style="font-size:24px;font-weight:900;line-height:1.4;margin:0">${title}</h1>
- </div>
-</div>
 <div class="wrap" style="padding-top:24px">
-<p style="font-size:13px;color:#888;margin-bottom:20px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz/" style="color:#888;text-decoration:none">업종별 광고</a> &gt; ${biz}</p>
+<p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz/" style="color:#888;text-decoration:none">업종별</a> &gt; <a href="/biz/${catKey}/" style="color:#888;text-decoration:none">${bc.cat==='cafe'?'카페·베이커리':bc.cat==='food'?'음식점':bc.cat==='bar'?'주점':bc.cat==='leisure'?'레저·스포츠':bc.cat==='edu'?'학원·교육':bc.cat==='beauty'?'뷰티·미용':bc.cat==='medical'?'의료·건강':bc.cat==='retail'?'소매·판매':bc.cat==='service'?'생활서비스':bc.cat==='auto'?'자동차':bc.cat==='office'?'사무실·전문직':bc.cat==='stay'?'숙박':bc.cat==='unmanned'?'무인매장':'이동·시장'}</a></p>
+<h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">${title}</h1>
+<div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><img src="${photo}" alt="${biz} 카드단말기" style="width:100%;height:auto;display:block"></div>
 ${body}
-<div class="cta"><h3>💳 ${biz} 카드단말기 무료 설치</h3><p>설치비 무료 · 월 이용료 무료 · VAN사 수수료 비교 · 전국 설치<br>${biz} 업종 전문 상담사가 맞춤 추천해드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=card" class="cta-sub">💬 상담 문의</a></div>
-${relLinks?'<div style="margin-top:32px"><h3 style="font-size:17px;font-weight:700;margin-bottom:12px">다른 업종 카드단말기 가이드</h3>'+relLinks+'</div>':''}
+<div class="cta" style="background:linear-gradient(135deg,${mainColor},${mainColor}dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">💳 ${biz} 카드단말기 무료 설치</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">설치비 무료 · 월 이용료 무료 · VAN사 수수료 비교 · 전국 설치</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:${mainColor}">📞 010-9876-8282</a> <a href="/contact/?product=card" class="cta-sub" style="border-color:rgba(255,255,255,.5);color:#fff">💬 상담 문의</a></div>
+${relLinks?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+relLinks+'</div>':''}
 </div>
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
@@ -1580,6 +1601,7 @@ function makeSitemap(){
  GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/'));});
  parts.push(u('/biz/'));
  BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/'));});
+ Object.keys(BIZ_TYPES).forEach(c=>{parts.push(u('/biz/'+c+'/'));});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function getRSS() {
@@ -2499,18 +2521,39 @@ export default {
   const idx=BIZ_SLUGS.indexOf(bizMatch[1]);
   if(idx>=0){const h=makeBizPage(idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
  }
+ const bizCatMatch=path.match(/^\/biz\/(cafe|food|bar|leisure|edu|beauty|medical|retail|service|auto|office|stay|unmanned|mobile)$/);
+ if(bizCatMatch){
+  const catKey=bizCatMatch[1];
+  const catInfo={cafe:{name:'카페·베이커리',emoji:'☕',color:'#B45309',bg:'#FFF7ED',desc:'카페, 커피숍, 디저트카페, 베이커리, 빵집 등 카페 업종 사장님을 위한 카드단말기 가이드'},food:{name:'음식점',emoji:'🍽️',color:'#DC2626',bg:'#FEF2F2',desc:'한식, 중식, 일식, 분식, 치킨, 피자, 패스트푸드, 고깃집 등 음식점 업종 카드단말기 가이드'},bar:{name:'주점',emoji:'🍺',color:'#D97706',bg:'#FFFBEB',desc:'술집, 호프, 포차, 이자카야 등 주점 업종 카드단말기 가이드'},leisure:{name:'레저·스포츠',emoji:'🎮',color:'#7C3AED',bg:'#F5F3FF',desc:'노래방, PC방, 당구장, 스크린골프, 헬스장, 필라테스 등 카드단말기 가이드'},edu:{name:'학원·교육',emoji:'📚',color:'#2563EB',bg:'#EFF6FF',desc:'요가, 태권도, 피아노, 미술, 영어, 수학학원, 공부방, 독서실 등 교육 업종 카드단말기 가이드'},beauty:{name:'뷰티·미용',emoji:'💇',color:'#DB2777',bg:'#FDF2F8',desc:'미용실, 네일샵, 속눈썹, 왁싱, 피부관리, 마사지, 에스테틱, 바버샵 등 카드단말기 가이드'},medical:{name:'의료·건강',emoji:'🏥',color:'#059669',bg:'#ECFDF5',desc:'병원, 치과, 한의원, 약국, 안경점, 동물병원 등 의료 업종 카드단말기 가이드'},retail:{name:'소매·판매',emoji:'🛍️',color:'#EA580C',bg:'#FFF7ED',desc:'옷가게, 의류, 신발, 편의점, 마트, 꽃집, 문구점, 서점 등 소매 업종 카드단말기 가이드'},service:{name:'생활서비스',emoji:'🧹',color:'#4F46E5',bg:'#EEF2FF',desc:'세탁소, 빨래방 등 생활서비스 업종 카드단말기 가이드'},auto:{name:'자동차',emoji:'🚗',color:'#0D9488',bg:'#F0FDFA',desc:'세차장, 카센터, 정비소, 타이어샵, 주유소 등 자동차 업종 카드단말기 가이드'},office:{name:'사무실·전문직',emoji:'🏢',color:'#475569',bg:'#F8FAFC',desc:'부동산, 공인중개사, 여행사, 사진관, 인쇄소, 광고기획사 등 카드단말기 가이드'},stay:{name:'숙박',emoji:'🏨',color:'#9333EA',bg:'#FAF5FF',desc:'펜션, 호텔, 게스트하우스, 모텔 등 숙박 업종 카드단말기 가이드'},unmanned:{name:'무인매장',emoji:'🤖',color:'#0EA5E9',bg:'#F0F9FF',desc:'무인매장, 무인카페, 무인아이스크림, 셀프사진관 등 카드단말기 가이드'},mobile:{name:'이동·시장',emoji:'🚚',color:'#65A30D',bg:'#F7FEE7',desc:'배달, 포장, 푸드트럭, 이동식매장, 시장상인, 플리마켓, 행사부스 등 카드단말기 가이드'}};
+  const ci=catInfo[catKey];
+  if(ci){
+   const items=BIZ_TITLES.map((t,i)=>({t,i})).filter(x=>getBizCat(x.t).cat===catKey);
+   const links=items.map(x=>`<a href="/biz/${BIZ_SLUGS[x.i]}/" style="display:flex;align-items:center;gap:12px;padding:16px;background:#fff;border-radius:10px;border:1px solid #eee;text-decoration:none;transition:border-color .15s,box-shadow .15s" onmouseover="this.style.borderColor='${ci.color}';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'" onmouseout="this.style.borderColor='#eee';this.style.boxShadow='none'"><span style="width:40px;height:40px;background:${ci.bg};border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${ci.emoji}</span><span style="font-size:14px;font-weight:600;color:#333;line-height:1.4">${x.t}</span></a>`).join('');
+   return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>${ci.emoji} ${ci.name} 카드단말기 가이드 | 올페이스토어</title><meta name="description" content="${ci.desc}. 설치비 무료, 월 이용료 무료. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/" style="color:#fff;font-weight:800">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz/" style="color:#888;text-decoration:none">업종별</a> &gt; ${ci.name}</p><div style="display:flex;align-items:center;gap:14px;margin-bottom:8px"><span style="font-size:44px">${ci.emoji}</span><div><h1 style="font-size:24px;font-weight:900;color:#111;margin:0">${ci.name} 카드단말기 가이드</h1><p style="font-size:14px;color:#666;margin:4px 0 0">${items.length}개 가이드</p></div></div><p style="font-size:14px;color:#555;margin-bottom:24px;padding:14px;background:${ci.bg};border-radius:10px;border-left:4px solid ${ci.color}">${ci.desc}</p><div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:32px">${links}</div><div class="cta"><h3>${ci.emoji} ${ci.name} 카드단말기 무료 상담</h3><p>${ci.name} 업종 전문 상담사가 매장에 딱 맞는 단말기를 추천해드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=card" class="cta-sub">💬 상담 문의</a></div></div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product=card" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+  }
+ }
  if(path==='/biz'){
-  const cats={cafe:'☕ 카페·베이커리',food:'🍽️ 음식점',bar:'🍺 주점',leisure:'🎮 레저·스포츠',edu:'📚 학원·교육',beauty:'💇 뷰티·미용',medical:'🏥 의료·건강',retail:'🛍️ 소매·판매',service:'🧹 생활서비스',auto:'🚗 자동차',office:'🏢 사무실·전문직',stay:'🏨 숙박',unmanned:'🤖 무인매장',mobile:'🚚 이동·시장'};
-  const bizEmoji={cafe:'☕',food:'🍽️',bar:'🍺',leisure:'🎮',edu:'📚',beauty:'💇',medical:'🏥',retail:'🛍️',service:'🧹',auto:'🚗',office:'🏢',stay:'🏨',unmanned:'🤖',mobile:'🚚'};
-  let sections='';
-  Object.entries(cats).forEach(([catKey,catName])=>{
-   const items=BIZ_TITLES.map((t,i)=>({t,i,c:getBizCat(t).cat})).filter(x=>x.c===catKey);
-   if(items.length){
-    const links=items.map(x=>`<a href="/biz/${BIZ_SLUGS[x.i]}/" style="display:block;padding:10px 14px;background:#fff;border-radius:8px;border:1px solid #f0f0f0;text-decoration:none;font-size:14px;color:#333;line-height:1.4;transition:border-color .15s">${bizEmoji[x.c]} ${x.t}</a>`).join('');
-    sections+=`<div style="margin-bottom:28px"><h2 style="font-size:17px;font-weight:800;color:#111;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #111">${catName} <span style="font-size:13px;font-weight:500;color:#999">${items.length}개</span></h2><div style="display:grid;grid-template-columns:1fr;gap:6px">${links}</div></div>`;
-   }
-  });
-  return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>업종별 카드단말기 가이드 | 올페이스토어</title><meta name="description" content="카페, 음식점, 미용실, 병원, 학원 등 102개 업종별 카드단말기 설치 가이드. 설치비 무료, 월 이용료 무료. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/" style="color:#fff;font-weight:800">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><h1 style="font-size:26px;font-weight:900;margin-bottom:12px">💳 업종별 카드단말기 가이드</h1><p style="font-size:15px;color:#555;margin-bottom:8px">우리 매장에 딱 맞는 카드단말기, 업종별로 알아보세요.</p><p style="font-size:13px;color:#999;margin-bottom:28px">설치비 무료 · 월 이용료 무료 · VAN사 수수료 비교 · 전국 설치</p>${sections}<div class="cta"><h3>💳 업종별 맞춤 카드단말기 무료 상담</h3><p>어떤 단말기가 좋을지 모르겠다면?<br>업종 전문 상담사가 매장에 딱 맞는 단말기를 추천해드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=card" class="cta-sub">💬 상담 문의</a></div></div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product=card" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+  const cats=[
+   {key:'cafe',name:'카페·베이커리',emoji:'☕',color:'#B45309',bg:'#FFF7ED'},
+   {key:'food',name:'음식점',emoji:'🍽️',color:'#DC2626',bg:'#FEF2F2'},
+   {key:'bar',name:'주점',emoji:'🍺',color:'#D97706',bg:'#FFFBEB'},
+   {key:'leisure',name:'레저·스포츠',emoji:'🎮',color:'#7C3AED',bg:'#F5F3FF'},
+   {key:'edu',name:'학원·교육',emoji:'📚',color:'#2563EB',bg:'#EFF6FF'},
+   {key:'beauty',name:'뷰티·미용',emoji:'💇',color:'#DB2777',bg:'#FDF2F8'},
+   {key:'medical',name:'의료·건강',emoji:'🏥',color:'#059669',bg:'#ECFDF5'},
+   {key:'retail',name:'소매·판매',emoji:'🛍️',color:'#EA580C',bg:'#FFF7ED'},
+   {key:'service',name:'생활서비스',emoji:'🧹',color:'#4F46E5',bg:'#EEF2FF'},
+   {key:'auto',name:'자동차',emoji:'🚗',color:'#0D9488',bg:'#F0FDFA'},
+   {key:'office',name:'사무실·전문직',emoji:'🏢',color:'#475569',bg:'#F8FAFC'},
+   {key:'stay',name:'숙박',emoji:'🏨',color:'#9333EA',bg:'#FAF5FF'},
+   {key:'unmanned',name:'무인매장',emoji:'🤖',color:'#0EA5E9',bg:'#F0F9FF'},
+   {key:'mobile',name:'이동·시장',emoji:'🚚',color:'#65A30D',bg:'#F7FEE7'}
+  ];
+  const boxes=cats.map(c=>{
+   const cnt=BIZ_TITLES.filter((_,i)=>getBizCat(BIZ_TITLES[i]).cat===c.key).length;
+   return `<a href="/biz/${c.key}/" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 12px;background:${c.bg};border-radius:14px;border:2px solid transparent;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='${c.color}';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='transparent';this.style.transform='none'"><span style="font-size:36px">${c.emoji}</span><span style="font-size:14px;font-weight:800;color:${c.color}">${c.name}</span><span style="font-size:12px;color:#999">${cnt}개 가이드</span></a>`;
+  }).join('');
+  return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>업종별 카드단말기 가이드 | 올페이스토어</title><meta name="description" content="카페, 음식점, 미용실, 병원, 학원 등 업종별 카드단말기 설치 가이드. 설치비 무료, 월 이용료 무료. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/" style="color:#fff;font-weight:800">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:32px"><h1 style="font-size:28px;font-weight:900;margin-bottom:10px;text-align:center">💳 업종별 카드단말기 가이드</h1><p style="font-size:15px;color:#555;margin-bottom:6px;text-align:center">우리 매장에 딱 맞는 카드단말기, 업종별로 알아보세요</p><p style="font-size:13px;color:#aaa;margin-bottom:32px;text-align:center">설치비 무료 · 월 이용료 무료 · VAN사 수수료 비교 · 전국 설치</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${boxes}</div><div class="cta"><h3>💳 업종별 맞춤 카드단말기 무료 상담</h3><p>어떤 단말기가 좋을지 모르겠다면?<br>업종 전문 상담사가 매장에 딱 맞는 단말기를 추천해드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=card" class="cta-sub">💬 상담 문의</a></div></div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product=card" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const prodMatch=path.match(/^\/product\/([a-z]+)$/);
  if(prodMatch && PRODUCTS[prodMatch[1]]){
