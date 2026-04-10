@@ -163,63 +163,76 @@ function makeCctvBizPage(idx){
  if(!title)return null;
  const slug=CCTV_SLUGS[idx];
  const h=title.split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
+ const s=(arr,seed)=>arr[Math.abs((h>>>seed)^arr.length)%arr.length];
  const yr=new Date().getFullYear();
  const catKey=CCTV_CAT_MAP[idx];
  const cc=getCctvCat(title);
  const biz=title.split(' CCTV')[0];
- const tmplIdx=idx%CCTV_TMPLS.length;
  const catColors={cafe:['#B45309','#FFF7ED'],food:['#DC2626','#FEF2F2'],bar:['#D97706','#FFFBEB'],leisure:['#7C3AED','#F5F3FF'],edu:['#2563EB','#EFF6FF'],beauty:['#DB2777','#FDF2F8'],medical:['#059669','#ECFDF5'],retail:['#EA580C','#FFF7ED'],service:['#4F46E5','#EEF2FF'],auto:['#0D9488','#F0FDFA'],office:['#475569','#F8FAFC'],stay:['#9333EA','#FAF5FF'],unmanned:['#0EA5E9','#F0F9FF'],mobile:['#65A30D','#F7FEE7']};
  const [mc,bg]=catColors[catKey]||catColors.retail;
  const cctvPhotos=['photo-1558002038-1055907df827','photo-1557597774-9d273605dfa9','photo-1585771724684-38269d6639fd','photo-1549109786-eb80da56e693'];
  const photo='https://images.unsplash.com/'+cctvPhotos[Math.abs(h)%cctvPhotos.length]+'?w=800&h=420&fit=crop&q=80';
- const metaDesc=`${biz} CCTV 설치 가이드. ${cc.cam} 구성, HD~4K 화질, 스마트폰 원격 모니터링. 설치비 무료 상담. 올페이스토어 ☎ 010-9876-8282`;
- const box=(icon,t,c)=>`<div style="background:${bg};border-left:4px solid ${mc};padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0"><strong style="color:${mc}">${icon} ${t}</strong><p style="margin:8px 0 0;font-size:14px;color:#444;line-height:1.7">${c}</p></div>`;
- const rv=(name,stars,text)=>`<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:36px;height:36px;background:${bg};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</span><div><strong style="font-size:14px">${name}</strong><span style="font-size:12px;color:#999;margin-left:8px">${'⭐'.repeat(stars)}</span></div></div><p style="font-size:14px;color:#444;margin:0;line-height:1.7">"${text}"</p></div>`;
+ const metaDesc=`${biz} CCTV 설치 가이드. ${cc.cam} 구성, HD~4K 화질, 스마트폰 원격 모니터링. 올페이스토어 ☎ 010-9876-8282`;
+ const bx=(icon,t,c)=>`<div style="background:${bg};border-left:4px solid ${mc};padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0"><strong style="color:${mc}">${icon} ${t}</strong><p style="margin:8px 0 0;font-size:14px;color:#444;line-height:1.7">${c}</p></div>`;
+ const rv=(nm,st,tx)=>`<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:36px;height:36px;background:${bg};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</span><div><strong style="font-size:14px">${nm}</strong><span style="font-size:12px;color:#999;margin-left:8px">${'⭐'.repeat(st)}</span></div></div><p style="font-size:14px;color:#444;margin:0;line-height:1.7">"${tx}"</p></div>`;
+ const P1=[
+  `<p>${biz}에 CCTV를 설치하려고 알아보면 카메라 대수, 화질, 저장 용량 등 결정할 게 많습니다. 이 글에서는 ${biz} 업종에 최적화된 CCTV 구성을 상세하게 안내합니다.</p>`,
+  `<p>${biz} 사장님, 매장 보안 때문에 CCTV를 고민하고 계신가요? ${yr}년 기준 ${biz} 업종에서 가장 효과적인 CCTV 시스템을 정리했습니다. 설치부터 원격 모니터링까지 한번에 알아보세요.</p>`,
+  `<p>요즘 ${biz}에서 CCTV 없이 운영하는 곳은 거의 없습니다. ${cc.risk} 위험에 대비하고, 스마트폰으로 매장을 실시간 확인할 수 있는 CCTV는 ${biz} 운영의 필수 장비가 되었습니다.</p>`,
+  `<p>${biz}을 운영하면서 보안이 걱정되셨다면, 지금이 CCTV를 설치할 최적의 타이밍입니다. 카메라 성능은 좋아지고 가격은 합리적으로 변했습니다. ${biz} 맞춤 CCTV 가이드를 확인하세요.</p>`,
+  `<p>스마트폰 하나로 ${biz} 매장을 24시간 지켜볼 수 있다면 어떨까요? CCTV 원격 모니터링이 바로 그 해답입니다. ${biz}에서 발생할 수 있는 ${cc.risk} 문제를 사전에 예방하고, 사후에도 빠르게 대응할 수 있습니다.</p>`,
+  `<p>${biz} 사장님 10명 중 8명이 CCTV를 설치한 이유가 있습니다. ${cc.risk} 예방은 물론이고, 직원 관리와 매출 분석까지 가능한 최신 CCTV 시스템을 ${biz}에 맞게 안내해드리겠습니다.</p>`
+ ];
+ const P2=[
+  `<h2 style="color:${mc}">🏪 ${biz}에 CCTV가 꼭 필요한 이유</h2><p>${biz}은 평균 ${cc.area} 규모로, ${cc.risk} 위험이 항상 존재합니다. CCTV는 범죄 억제 효과만으로도 설치 가치가 충분합니다. 카메라가 보이는 것만으로 도난 시도가 90% 이상 감소하며, 고객 분쟁 시 객관적 증거로 활용할 수 있어 빠른 해결이 가능합니다.</p>`,
+  `<h2 style="color:${mc}">📊 ${biz} CCTV — 비용 대비 효과</h2><p>CCTV 설치 비용이 부담되시나요? ${biz}에서 한 건의 도난 사고가 발생하면 평균 피해액이 수십만원에서 수백만원에 달합니다. CCTV 설치 비용은 이 피해액의 일부에 불과하며, 화재·도난 보험료 10~20% 할인 혜택까지 더하면 실질적인 투자 수익률이 매우 높습니다.</p>`,
+  `<h2 style="color:${mc}">🔍 ${biz} 매장 분석 — 카메라 최적 배치</h2><p>${biz}의 주요 감시 포인트는 ${cc.spot}입니다. 올페이스토어 전문 기사가 ${biz} 매장을 직접 방문하여 동선을 분석하고, 사각지대가 없는 최적의 카메라 배치를 설계합니다. ${cc.cam} 구성으로 모든 핵심 포인트를 커버할 수 있습니다.</p>`,
+  `<h2 style="color:${mc}">⚡ 아날로그에서 스마트 CCTV로 — ${biz}의 변화</h2><p>과거의 CCTV는 단순히 녹화만 하는 장비였지만, 최신 스마트 CCTV는 AI 움직임 감지, 스마트폰 원격 접속, 클라우드 저장까지 지원합니다. ${biz}에서 발생하는 ${cc.risk} 상황을 실시간으로 감지하여 사장님의 스마트폰으로 즉시 알림을 보냅니다.</p>`,
+  `<h2 style="color:${mc}">🏗️ ${biz} CCTV ${cc.cam} 구성의 이유</h2><p>${biz}이 ${cc.area} 규모라면 ${cc.cam} 구성이 가장 합리적입니다. 이보다 적으면 사각지대가 생기고, 너무 많으면 불필요한 비용이 발생합니다. ${cc.spot} 각 포인트에 1대씩 배치하고, 출입구에는 얼굴 식별용 고화질 카메라를 설치합니다.</p>`,
+  `<h2 style="color:${mc}">📱 ${biz} 사장님이 가장 좋아하는 기능</h2><p>${biz} 사장님들에게 물어보면 CCTV에서 가장 만족하는 기능으로 스마트폰 원격 모니터링을 꼽습니다. 매장에 없어도 앱 하나로 실시간 영상을 확인할 수 있고, 과거 영상 검색과 캡처도 가능합니다. 여러 매장을 운영한다면 하나의 앱에서 모든 매장을 동시에 볼 수 있습니다.</p>`
+ ];
+ const P3=[
+  bx('✅',biz+' 추천 구성',cc.cam+' · Full HD~4K · 30일+ 저장 · 스마트폰 원격 모니터링 · AI 움직임 감지 · 야간 컬러 촬영. 올페이스토어에서 '+biz+' 매장에 맞게 설계합니다.'),
+  bx('📌','핵심 스펙 요약','설치 위치: '+cc.spot+' | 추천 화질: Full HD 이상 | 저장: 1TB~4TB HDD | 야간: 풀컬러 권장 | 앱: iOS·Android 지원'),
+  `<div style="background:#f8fafc;border-radius:12px;padding:20px;margin:20px 0"><h3 style="font-size:16px;margin:0 0 12px;color:#333">📊 ${biz} CCTV 구성표</h3><table style="width:100%;font-size:13px;border-collapse:collapse"><tr style="background:${mc};color:#fff"><th style="padding:8px">항목</th><th style="padding:8px">권장 사양</th></tr><tr style="border-bottom:1px solid #eee"><td style="padding:8px">카메라 수</td><td style="padding:8px">${cc.cam}</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:8px">설치 위치</td><td style="padding:8px">${cc.spot}</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:8px">화질</td><td style="padding:8px">Full HD ~ 4K</td></tr><tr><td style="padding:8px">저장</td><td style="padding:8px">30일+</td></tr></table></div>`,
+  bx('🎯',biz+' 맞춤 설계','같은 업종이라도 매장 면적과 구조에 따라 최적의 CCTV 구성이 달라집니다. 올페이스토어 전문 기사가 '+biz+' 매장을 직접 방문하여 동선과 사각지대를 분석한 후 맞춤 설계합니다.'),
+  bx('💰','비용 안내',biz+' CCTV '+cc.cam+' 구성 기준 무료 견적을 제공합니다. 패키지 설치 시 할인이 적용되며, CCTV 설치 매장은 보험료 10~20% 할인 혜택도 받으실 수 있습니다.'),
+  bx('⏰','설치 소요시간',biz+' CCTV '+cc.cam+' 기준 약 2~3시간. 카메라 설치, 배선 정리, 녹화기 세팅, 앱 연동까지 포함. '+biz+' 영업 중에도 가능하며, 배선은 몰딩 처리로 깔끔하게 마무리합니다.')
+ ];
+ const P4=[
+  rv(biz+' 3년차 A사장님',5,biz+'을 3년째 하면서 CCTV 없이 버텼는데, 도난 사고 한 번 겪고 바로 설치했어요. '+cc.cam+'로 사각지대 없이 설치하니 앱으로 구석구석 다 보여서 안심됩니다.'),
+  rv(biz+' B사장님',5,'직원이 늦게 오는 걸 알 수가 없었는데, CCTV 설치 후 출퇴근이 자동으로 기록돼요. 말 안 해도 근태가 확실히 좋아졌어요. '+biz+' 운영에 CCTV는 필수입니다.'),
+  rv(biz+' 창업 C사장님',5,biz+' 오픈하면서 카드단말기랑 CCTV를 패키지로 설치했어요. 따로 하는 것보다 할인도 되고, 하루 만에 전부 끝나서 편했습니다. 앱으로 매장 보는 게 신기해요.'),
+  rv(biz+' 10년차 D사장님',5,'이전 CCTV는 화질이 나빠서 사고 났을 때 얼굴 식별이 안 됐어요. Full HD로 교체하니까 차이가 확실합니다. 야간에도 컬러로 녹화되니까 보안이 훨씬 든든합니다.'),
+  rv(biz+' E사장님',4,'손님이 서비스 불만을 제기했는데, CCTV 영상으로 확인하니 오해였어요. 영상 증거가 있으니까 분쟁 해결이 빠르고 공정해요. 꼭 설치하세요.'),
+  rv(biz+' F사장님',5,'출장이 잦아서 매장에 못 있을 때가 많은데, 앱으로 실시간 보니까 안심이 돼요. 새벽에 수상한 사람이 서성이는 걸 알림으로 받고 바로 대응했습니다.')
+ ];
+ const P5=[
+  `<h2 style="color:${mc}">🌙 ${biz} 야간 촬영의 중요성</h2><p>${biz}에서 ${cc.risk} 사고는 야간에 더 많이 발생합니다. 일반 적외선 카메라는 야간에 흑백으로 전환되어 인물 식별이 어렵습니다. 풀컬러 야간 카메라는 조명이 거의 없는 환경에서도 컬러 영상을 제공하여 옷 색상, 차량 번호판까지 정확하게 기록합니다. ${biz} 영업 종료 후 매장 보안을 위해 야간 컬러 촬영을 권장합니다.</p>`,
+  `<h2 style="color:${mc}">🤖 AI 움직임 감지 — 스마트 보안</h2><p>최신 CCTV의 AI 감지는 단순 화면 변화가 아닌 사람 움직임만 선별하여 알림을 보냅니다. 바람에 흔들리는 간판이나 동물에 의한 오작동이 크게 줄어들고, ${biz} 영업 종료 후 실제 침입만 정확하게 감지합니다. 알림을 받으면 앱에서 즉시 영상을 확인하고 경찰에 연락할 수 있습니다.</p>`,
+  `<h2 style="color:${mc}">💾 녹화 저장 — 적정 보관 기간</h2><p>CCTV 영상은 최소 30일 이상 보관을 권장합니다. ${cc.cam} 기준 1TB HDD로 약 15~30일, 4TB로 약 60~90일 저장이 가능합니다. 중요한 영상은 앱에서 바로 캡처하거나 다운로드할 수 있어, ${biz}에서 사고 발생 시 빠르게 증거를 확보할 수 있습니다.</p>`,
+  `<h2 style="color:${mc}">🔒 CCTV 보안과 프라이버시</h2><p>CCTV 영상은 개인정보에 해당합니다. ${biz}에 설치할 때는 출입구에 "CCTV 촬영 중" 안내판을 부착해야 하며, 영상은 ${cc.risk} 예방 목적 외에 사용할 수 없습니다. 올페이스토어는 설치 시 안내판을 제공하고, 녹화기 비밀번호와 원격 접속 보안까지 함께 세팅합니다.</p>`,
+  `<h2 style="color:${mc}">📦 장비 패키지 할인</h2><p>카드단말기·포스기와 CCTV를 한번에 설치하면 패키지 할인이 적용됩니다. 포스기와 CCTV를 연동하면 결제 시점과 영상이 자동 매칭되어 정산 검증에 활용 가능합니다. ${biz} 창업이나 리모델링 시 올페이스토어에서 모든 장비를 원스톱으로 준비하세요.</p>`,
+  `<h2 style="color:${mc}">🛡️ CCTV 설치 매장 보험 혜택</h2><p>CCTV가 설치된 ${biz} 매장은 화재·도난 보험료를 10~20% 할인받을 수 있습니다. 올페이스토어에서 설치 확인서를 발급해드리며, 사고 발생 시 영상은 보험금 청구의 핵심 증거가 됩니다. 보험료 절감까지 고려하면 CCTV는 비용이 아니라 투자입니다.</p>`
+ ];
+ const P6=[
+  `<h2 style="color:${mc}">📋 ${biz} CCTV 설치 절차</h2><p>올페이스토어에 전화(010-9876-8282) 또는 온라인 문의 → 전문 기사 ${biz} 매장 방문 → 동선 분석 및 ${cc.cam} 구성 확정 → 견적 안내 → 설치 일정 조율 → 카메라·녹화기 설치(2~3시간) → 스마트폰 앱 연동 → 완료. ${biz} 영업 중에도 설치 가능합니다.</p>`,
+  `<h2 style="color:${mc}">🔧 설치 후 유지보수</h2><p>CCTV는 설치 후 관리도 중요합니다. 렌즈 먼지로 화질이 저하되거나, HDD 수명이 다하면 녹화가 중단될 수 있습니다. 올페이스토어는 원격 진단 서비스를 제공하며, 화질 저하나 녹화 오류 시 빠르게 대응합니다. ${biz} 사장님은 앱에서 카메라 상태를 실시간 확인 가능합니다.</p>`,
+  `<h2 style="color:${mc}">🌐 유선 vs 무선 — ${biz}에는?</h2><p>유선(PoE) 카메라는 케이블로 전원·데이터를 동시 전송하여 안정성이 뛰어납니다. ${biz}처럼 고정 위치라면 유선을 추천합니다. 무선(WiFi)은 배선 공사가 필요 없어 간편하지만 WiFi 환경에 따라 품질이 달라질 수 있습니다. 올페이스토어 기사가 ${biz} 환경에 맞는 방식을 제안합니다.</p>`,
+  `<h2 style="color:${mc}">💡 ${biz} CCTV 활용 팁</h2><p>CCTV를 보안 목적으로만 쓰시나요? 영상을 분석하면 고객 동선, 피크타임, 체류 시간 등 ${biz} 운영에 유용한 데이터를 얻을 수 있습니다. 어떤 시간대에 방문객이 많은지, 어떤 구역에서 오래 머무는지 파악하면 상품 배치와 인력 운용을 최적화할 수 있습니다.</p>`,
+  `<h2 style="color:${mc}">❓ 자주 묻는 질문</h2><div style="border:1px solid #eee;border-radius:10px;padding:16px;margin:8px 0"><strong style="color:${mc}">Q. 설치 시간은?</strong><br><span style="font-size:14px;color:#555">${cc.cam} 기준 약 2~3시간. ${biz} 영업 중 가능.</span></div><div style="border:1px solid #eee;border-radius:10px;padding:16px;margin:8px 0"><strong style="color:${mc}">Q. 영상 보관 기간?</strong><br><span style="font-size:14px;color:#555">1TB로 15~30일, 4TB로 60~90일 저장.</span></div><div style="border:1px solid #eee;border-radius:10px;padding:16px;margin:8px 0"><strong style="color:${mc}">Q. 전국 설치 가능?</strong><br><span style="font-size:14px;color:#555">전국 5,000+ 읍면동 직접 방문.</span></div>`,
+  `<h2 style="color:${mc}">⚖️ ${biz} CCTV 법적 주의사항</h2><p>개인정보보호법에 따라 CCTV 설치 시 출입구에 안내판을 부착해야 하며, 영상은 ${cc.risk} 예방 목적 외 사용이 금지됩니다. 보관 기간이 지난 영상은 삭제 필요합니다. 올페이스토어는 안내판 제공, 녹화기 보안 설정, 법규 안내까지 포함하여 설치합니다.</p>`
+ ];
  let body='';
- if(tmplIdx===0){
-  body+=`<p>${biz}에 CCTV를 설치하려고 알아보면 카메라 대수, 화질, 저장 용량, 설치 위치 등 결정할 게 많습니다. ${biz} 업종 특성에 맞는 CCTV 구성을 잘못 선택하면 사각지대가 생기거나 불필요한 비용이 발생합니다. 이 글에서는 ${biz} 사장님이 CCTV 설치 전 반드시 확인해야 할 핵심 3가지를 정리했습니다.</p>`;
-  body+=box('✅','체크 1 — 설치 위치와 카메라 대수',`${biz}은 평균 ${cc.area} 규모로, 주요 감시 포인트는 ${cc.spot}입니다. 이 포인트를 빠짐없이 커버하려면 최소 ${cc.cam} 구성이 필요합니다. 올페이스토어는 ${biz} 매장 방문 후 동선과 사각지대를 분석하여 최적의 카메라 배치를 설계합니다.`);
-  body+=box('✅','체크 2 — 화질과 야간 촬영',`${biz}에서 ${cc.risk} 위험에 대비하려면 최소 Full HD(200만 화소) 이상의 화질이 필요합니다. 특히 야간에도 영업하는 ${biz}이라면 야간 컬러 촬영이 가능한 카메라를 추천합니다. 적외선 방식은 야간에 흑백으로 전환되지만, 풀컬러 야간 카메라는 어두운 환경에서도 컬러 영상을 제공합니다.`);
-  body+=box('✅','체크 3 — 저장 용량과 원격 모니터링',`CCTV 영상은 최소 30일 이상 저장할 수 있어야 합니다. ${cc.cam} 구성 기준으로 1TB~4TB HDD가 필요하며, 올페이스토어는 매장 규모에 맞는 저장 장치를 함께 설치합니다. 스마트폰 앱으로 ${biz} 밖에서도 실시간 영상을 확인할 수 있으며, 움직임 감지 시 자동 알림도 제공됩니다.`);
-  body+=rv(biz+' 사장님',5,biz+'에 CCTV를 처음 설치할 때 어디에 몇 대를 달아야 할지 전혀 감이 없었어요. 올페이스토어 기사님이 직접 매장을 보시고 사각지대 없이 '+cc.cam+'로 설계해주셨습니다. 설치 후 앱으로 확인해보니 정말 구석구석 다 보여서 안심이 됩니다.');
- }else if(tmplIdx===1){
-  body+=`<p>${biz} CCTV 설치 비용, 실제로 얼마나 들까요? 카메라 대수, 화질, 저장 장치, 설치 공사비까지 항목별로 정리했습니다. ${biz} 매장 규모에 맞는 합리적인 CCTV 구성을 찾아보세요.</p>`;
-  body+=`<h2 style="color:${mc}">💰 ${biz} CCTV 비용 항목별 분석</h2>`;
-  body+=`<div style="background:#f8fafc;border-radius:12px;padding:20px;margin:20px 0"><table style="width:100%;font-size:13px;border-collapse:collapse"><tr style="background:${mc};color:#fff"><th style="padding:10px;text-align:left">항목</th><th style="padding:10px;text-align:center">기본 구성</th><th style="padding:10px;text-align:center">고급 구성</th></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px">카메라</td><td style="padding:10px;text-align:center">200만 화소 × ${cc.cam.split('~')[0]}대</td><td style="padding:10px;text-align:center">500만 화소 × ${cc.cam.split('~').pop().replace('채널','')}대</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px">녹화기(DVR/NVR)</td><td style="padding:10px;text-align:center">${cc.cam} 1TB</td><td style="padding:10px;text-align:center">${cc.cam} 4TB</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px">야간 촬영</td><td style="padding:10px;text-align:center">적외선(흑백)</td><td style="padding:10px;text-align:center">풀컬러</td></tr><tr><td style="padding:10px">원격 모니터링</td><td style="padding:10px;text-align:center">스마트폰 앱</td><td style="padding:10px;text-align:center">스마트폰 + PC</td></tr></table></div>`;
-  body+=box('💡','비용 절감 팁',`${biz}에 카드단말기·포스기와 CCTV를 동시에 설치하면 패키지 할인이 적용됩니다. 또한 CCTV 설치 매장은 화재·도난 보험료 10~20% 할인 혜택을 받을 수 있습니다. 올페이스토어에서 ${biz} 매장 규모에 맞는 최적 구성을 무료로 상담해드립니다.`);
-  body+=rv(biz+' 사장님',5,'처음에 인터넷으로 직접 CCTV를 사서 달았는데, 화질도 안 좋고 야간에는 아무것도 안 보여서 결국 올페이스토어에 다시 맡겼어요. 전문가가 설치하니까 화질 차이가 확실하고, 앱으로 언제든 볼 수 있어서 만족합니다.');
- }else if(tmplIdx===2){
-  body+=`<p>${biz}에 CCTV를 설치하고 실제로 어떤 변화가 있었는지, 현직 ${biz} 사장님들의 솔직한 후기를 모았습니다. 도난 예방, 직원 관리, 고객 분쟁 해결까지 — CCTV 설치가 ${biz} 운영에 미치는 영향을 확인하세요.</p>`;
-  body+=rv(biz+' 3년차 사장님',5,biz+'을 3년 운영하면서 CCTV 없이 버텼는데, 한번 도난 사고를 겪고 바로 설치했어요. 올페이스토어에서 '+cc.cam+'로 사각지대 없이 설계해주셨고, 설치 후 앱에서 실시간으로 매장을 볼 수 있으니까 마음이 편해졌습니다.');
-  body+=rv(biz+' 사장님 B',5,'직원이 늦게 출근하거나 일찍 퇴근하는 걸 알 수가 없었는데, CCTV 설치 후 출퇴근 시간이 자동으로 기록돼요. 직원한테 말 안 해도 스스로 근태가 좋아졌습니다. '+biz+' 운영에 CCTV는 필수라고 생각합니다.');
-  body+=rv(biz+' 사장님 C',4,'손님이 "서비스가 안 좋았다"고 항의한 적이 있었는데, CCTV 영상을 확인하니까 오해였어요. 영상이 있으니까 분쟁 해결이 빠르고 공정해집니다. '+biz+' 사장님들 꼭 설치하세요.');
-  body+=box('📊','CCTV 설치 전후 비교',`${biz} 사장님들의 후기를 종합하면, CCTV 설치 후 도난 발생률 90% 감소, 직원 근태 관리 효율 50% 향상, 고객 분쟁 해결 시간 80% 단축 효과가 나타났습니다. 화재·도난 보험료도 10~20% 할인받을 수 있습니다.`);
- }else if(tmplIdx===3){
-  body+=`<p>${yr}년 기준 ${biz}에 가장 적합한 CCTV 구성은 어떤 걸까요? ${biz} 매장 면적(${cc.area})과 주요 위험 요소(${cc.risk})를 고려한 채널별 추천 구성을 정리했습니다.</p>`;
-  body+=`<h2 style="color:${mc}">🏆 ${biz} CCTV 추천 구성</h2>`;
-  body+=`<div style="background:${bg};border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:14px"><span style="background:${mc};color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:4px">추천</span><strong style="font-size:16px">${cc.cam} 구성</strong></div><p style="font-size:14px;color:#444;margin:0">설치 위치: ${cc.spot}<br>화질: Full HD~4K (${biz} 면적에 따라 조절)<br>저장: 30일 이상 연속 녹화<br>부가기능: 스마트폰 원격 모니터링, AI 움직임 감지, 야간 컬러 촬영</p></div>`;
-  body+=`<h2 style="color:${mc}">📱 스마트폰으로 ${biz} 실시간 확인</h2><p>올페이스토어가 설치하는 CCTV는 전용 앱을 통해 스마트폰에서 실시간 영상을 확인할 수 있습니다. ${biz} 밖에서도 매장 상황을 한눈에 파악할 수 있고, 영업 시간 외 침입이나 이상 행동이 감지되면 즉시 푸시 알림이 전송됩니다. 직원 관리, 고객 동선 분석에도 활용할 수 있어 ${biz} 운영 효율이 크게 향상됩니다.</p>`;
-  body+=rv(biz+' 사장님',5,'처음에 '+cc.cam.split('~')[0]+'채널이면 충분할 줄 알았는데, 올페이스토어 기사님이 매장을 보시고 사각지대를 짚어주셔서 카메라를 1대 더 추가했어요. 덕분에 진짜 구석구석 다 보입니다.');
- }else if(tmplIdx===4){
-  body+=`<p>${biz} 창업을 준비하고 계신가요? 인테리어와 장비 설치에 집중하다 보면 CCTV를 놓치기 쉽습니다. 하지만 ${biz} 오픈 첫날부터 CCTV가 작동해야 ${cc.risk} 위험에 대비할 수 있습니다. ${biz} 창업 시 CCTV 준비 방법을 단계별로 안내합니다.</p>`;
-  body+=`<h2 style="color:${mc}">📝 ${biz} 창업 CCTV 준비 타임라인</h2>`;
-  body+=`<div style="display:grid;grid-template-columns:1fr;gap:10px;margin:16px 0">${['올페이스토어에 CCTV 상담 신청','기사 매장 방문 — 동선·사각지대 분석',''+cc.cam+' 최적 구성 확정','인테리어 마무리 단계에서 배선 작업','카메라·녹화기·모니터 설치 (2~3시간)','스마트폰 앱 연동 및 원격 접속 테스트'].map((s,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:${i%2===0?bg:'#fff'};border-radius:8px;border:1px solid ${i%2===0?mc+'33':'#eee'}"><span style="width:28px;height:28px;background:${mc};color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">${i+1}</span><span style="font-size:14px;color:#333">${s}</span></div>`).join('')}</div>`;
-  body+=box('🎁','창업 패키지',`카드단말기 + 포스기 + CCTV를 한번에 설치하면 패키지 할인이 적용됩니다. ${biz} 오픈에 필요한 모든 장비를 올페이스토어에서 원스톱으로 준비하세요. ☎ 010-9876-8282`);
-  body+=rv(biz+' 창업 사장님',5,biz+' 오픈 준비할 때 CCTV까지 신경 쓸 여유가 없었는데, 올페이스토어에서 카드단말기랑 CCTV를 한번에 설치해줬어요. 패키지로 하니까 비용도 절약되고, 오픈 전날 한번에 끝나서 편했습니다.');
- }else if(tmplIdx===5){
-  body+=`<p>${biz}에 CCTV를 설치할 때 가장 많이 고민하는 것 중 하나가 화질입니다. HD, Full HD, 4K 중 어떤 화질을 선택해야 ${biz}에 적합한지, 실제 영상 품질 차이는 어떤지 비교 분석했습니다.</p>`;
-  body+=`<h2 style="color:${mc}">📊 화질별 비교</h2>`;
-  body+=`<div style="background:#f8fafc;border-radius:12px;padding:20px;margin:20px 0"><table style="width:100%;font-size:13px;border-collapse:collapse"><tr style="background:${mc};color:#fff"><th style="padding:10px;text-align:left">구분</th><th style="padding:10px">HD (100만)</th><th style="padding:10px">Full HD (200만)</th><th style="padding:10px">4K (800만)</th></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px;font-weight:600">해상도</td><td style="padding:10px;text-align:center">1280×720</td><td style="padding:10px;text-align:center">1920×1080</td><td style="padding:10px;text-align:center">3840×2160</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px;font-weight:600">얼굴 식별</td><td style="padding:10px;text-align:center">3m 이내</td><td style="padding:10px;text-align:center">5m 이내</td><td style="padding:10px;text-align:center">10m 이상</td></tr><tr style="border-bottom:1px solid #eee"><td style="padding:10px;font-weight:600">저장 용량</td><td style="padding:10px;text-align:center">적음</td><td style="padding:10px;text-align:center">보통</td><td style="padding:10px;text-align:center">많음</td></tr><tr><td style="padding:10px;font-weight:600">${biz} 추천</td><td style="padding:10px;text-align:center">△</td><td style="padding:10px;text-align:center;color:${mc};font-weight:700">✅ 가성비</td><td style="padding:10px;text-align:center">넓은 매장</td></tr></table></div>`;
-  body+=`<h2 style="color:${mc}">🌙 야간 촬영 — ${biz}에서 중요한 이유</h2><p>${biz}에서 ${cc.risk} 사고는 야간에 더 많이 발생합니다. 일반 적외선 카메라는 야간에 흑백으로 전환되어 인물 식별이 어려울 수 있습니다. 풀컬러 야간 카메라는 어두운 환경에서도 컬러 영상을 제공하여 인물 특징(옷 색상 등)을 정확하게 식별할 수 있습니다. ${biz} 영업 종료 후에도 매장을 안전하게 감시하려면 야간 컬러 카메라를 권장합니다.</p>`;
-  body+=rv(biz+' 사장님',5,'처음에 저렴한 HD 카메라로 설치했는데, 실제로 사고가 났을 때 영상이 흐릿해서 범인 얼굴을 식별할 수 없었어요. Full HD로 교체하니까 확실히 차이가 나더라고요. 처음부터 좋은 화질로 설치하세요.');
- }else{
-  body+=`<p>${biz} 사장님, 매장에 없을 때도 스마트폰으로 ${biz} 상황을 실시간으로 확인할 수 있다면 어떨까요? CCTV 원격 모니터링은 ${biz} 운영의 효율성을 크게 높여주는 핵심 기능입니다. 활용법을 상세하게 정리했습니다.</p>`;
-  body+=`<h2 style="color:${mc}">📱 원격 모니터링으로 할 수 있는 것</h2>`;
-  body+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0"><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">👀</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">실시간 영상 확인</p><p style="font-size:12px;color:#666;margin:0">${biz} 밖에서도 매장 상황 파악</p></div><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">🔔</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">AI 이상 감지 알림</p><p style="font-size:12px;color:#666;margin:0">침입·이상 행동 시 즉시 푸시</p></div><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">⏪</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">과거 영상 재생</p><p style="font-size:12px;color:#666;margin:0">30일 이상 저장 영상 검색</p></div><div style="background:${bg};border-radius:10px;padding:16px;text-align:center"><span style="font-size:24px">👥</span><p style="font-size:13px;color:${mc};font-weight:700;margin:8px 0 4px">직원·고객 동선</p><p style="font-size:12px;color:#666;margin:0">근태 관리·피크타임 분석</p></div></div>`;
-  body+=`<h2 style="color:${mc}">🔒 ${biz} CCTV 보안과 프라이버시</h2><p>CCTV 영상은 개인정보에 해당하므로 관련 법규를 준수해야 합니다. ${biz}에 CCTV를 설치할 때는 "CCTV 촬영 중" 안내문을 부착해야 하며, 영상은 설치 목적(${cc.risk} 예방) 외의 용도로 사용할 수 없습니다. 올페이스토어는 설치 시 안내문 제공 및 법규 준수 사항을 안내합니다. 녹화기 접속 비밀번호 설정과 원격 접속 보안도 함께 세팅합니다.</p>`;
-  body+=rv(biz+' 사장님',5,'출장이 잦아서 매장에 못 있을 때가 많은데, 앱으로 실시간 영상을 볼 수 있으니까 안심이 돼요. 한번은 영업 종료 후 누가 문 앞에서 서성이는 걸 알림으로 받고 바로 경비업체에 연락했어요. CCTV 원격 모니터링 진짜 필수입니다.');
- }
- // Related
+ body+=s(P1,0);
+ body+=s(P2,3);
+ body+=s(P3,5);
+ body+=s(P4,7);
+ body+=s(P5,11);
+ body+=s(P4,13);
+ body+=s(P6,17);
+ body+=s(P5,19);
+ // Related CCTV
  const related=CCTV_TITLES.filter((t,i)=>i!==idx&&CCTV_CAT_MAP[i]===catKey).slice(0,6);
  const relLinks=related.map(t=>{const ri=CCTV_TITLES.indexOf(t);return `<a href="/biz-cctv/${CCTV_SLUGS[ri]}/" style="display:block;padding:10px 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:14px">${t}</a>`;}).join('');
  const catName={cafe:'카페·베이커리',food:'음식점',bar:'주점',leisure:'레저·스포츠',edu:'학원·교육',beauty:'뷰티·미용',medical:'의료·건강',retail:'소매·판매',service:'생활서비스',auto:'자동차',office:'사무실·전문직',stay:'숙박',unmanned:'무인매장',mobile:'이동·시장'}[catKey]||'';
