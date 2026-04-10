@@ -113,13 +113,7 @@ unmanned:['무인매장','무인카페','무인아이스크림할인점','셀프
 mobile:['배달전문점','포장전문점','푸드트럭','이동식매장','시장상인','플리마켓','행사부스','소형매장']
 };
 const BIZ_TMPLS=[
-'{b} 카드단말기 설치 전 꼭 확인할 3가지',
-'{b} 카드단말기 비용 진짜 0원? 사장님 필독',
-'{b} 사장님이 단말기 바꾸고 달라진 매출 후기',
-'{b} 카드단말기 추천 — 현직 사장님 솔직 리뷰',
-'{b} 창업할 때 카드단말기 이렇게 고르세요',
-'{b} VAN사 수수료 비교 — 수십만원 아끼는 법',
-'{b} 카드단말기 교체 후기 — 바꾸길 잘했다'
+'{b} 카드단말기 설치 가이드 — 비용·수수료·추천 총정리'
 ];
 const BIZ_TITLES=[];const BIZ_CAT_MAP={};
 Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
@@ -133,13 +127,7 @@ Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
 });
 const BIZ_SLUGS=BIZ_TITLES.map((_,i)=>'biz-'+(i+1).toString().padStart(3,'0'));
 const CCTV_TMPLS=[
-'{b} CCTV 설치 전 꼭 확인할 3가지',
-'{b} CCTV 설치 비용 — 실제로 얼마나 들까',
-'{b} CCTV 설치 후 달라진 점 — 사장님 후기',
-'{b} CCTV 추천 — 채널별 최적 구성 가이드',
-'{b} 창업할 때 CCTV 이렇게 준비하세요',
-'{b} CCTV 화질 비교 — HD vs 4K 차이점',
-'{b} CCTV 원격 모니터링 활용법 총정리'
+'{b} CCTV 설치 가이드 — 비용·화질·구성 총정리'
 ];
 const CCTV_TITLES=[];const CCTV_CAT_MAP={};
 Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
