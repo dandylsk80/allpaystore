@@ -1684,7 +1684,7 @@ a{text-decoration:none;color:inherit}
 :root{--primary:#111;--sky:#555;--dark:#111;--hf:#fff;--bg:#FAFAFA}
 /* HEADER */
 .hd{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
-.hd-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:6px 24px}
+.hd-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:120px;padding:12px 24px}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-ic{width:34px;height:34px;background:#111;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-ic svg{width:17px;height:17px}
