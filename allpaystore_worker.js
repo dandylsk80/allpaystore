@@ -311,47 +311,27 @@ const BU={
 }
 
 const BIZ_PHOTOS={
- cafe:['https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=420&fit=crop&q=80'],
- food:['https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&h=420&fit=crop&q=80'],
- bar:['https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=420&fit=crop&q=80'],
- leisure:['https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?w=800&h=420&fit=crop&q=80'],
- edu:['https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=420&fit=crop&q=80'],
- beauty:['https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=420&fit=crop&q=80'],
- medical:['https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=420&fit=crop&q=80'],
- retail:['https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80'],
- service:['https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&h=420&fit=crop&q=80'],
- auto:['https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&h=420&fit=crop&q=80'],
- office:['https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&h=420&fit=crop&q=80'],
- stay:['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=420&fit=crop&q=80'],
- unmanned:['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=420&fit=crop&q=80'],
- mobile:['https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=420&fit=crop&q=80']
+ cafe:['https://picsum.photos/seed/cafe1/800/420','https://picsum.photos/seed/cafe2/800/420','https://picsum.photos/seed/cafe3/800/420','https://picsum.photos/seed/cafe4/800/420'],
+ food:['https://picsum.photos/seed/food1/800/420','https://picsum.photos/seed/food2/800/420','https://picsum.photos/seed/food3/800/420','https://picsum.photos/seed/food4/800/420'],
+ bar:['https://picsum.photos/seed/bar1/800/420','https://picsum.photos/seed/bar2/800/420','https://picsum.photos/seed/bar3/800/420'],
+ leisure:['https://picsum.photos/seed/leisure1/800/420','https://picsum.photos/seed/leisure2/800/420','https://picsum.photos/seed/leisure3/800/420'],
+ edu:['https://picsum.photos/seed/edu1/800/420','https://picsum.photos/seed/edu2/800/420','https://picsum.photos/seed/edu3/800/420'],
+ beauty:['https://picsum.photos/seed/beauty1/800/420','https://picsum.photos/seed/beauty2/800/420','https://picsum.photos/seed/beauty3/800/420'],
+ medical:['https://picsum.photos/seed/medical1/800/420','https://picsum.photos/seed/medical2/800/420','https://picsum.photos/seed/medical3/800/420'],
+ retail:['https://picsum.photos/seed/retail1/800/420','https://picsum.photos/seed/retail2/800/420','https://picsum.photos/seed/retail3/800/420'],
+ service:['https://picsum.photos/seed/service1/800/420','https://picsum.photos/seed/service2/800/420'],
+ auto:['https://picsum.photos/seed/auto1/800/420','https://picsum.photos/seed/auto2/800/420','https://picsum.photos/seed/auto3/800/420'],
+ office:['https://picsum.photos/seed/office1/800/420','https://picsum.photos/seed/office2/800/420'],
+ stay:['https://picsum.photos/seed/stay1/800/420','https://picsum.photos/seed/stay2/800/420','https://picsum.photos/seed/stay3/800/420'],
+ unmanned:['https://picsum.photos/seed/unmanned1/800/420','https://picsum.photos/seed/unmanned2/800/420'],
+ mobile:['https://picsum.photos/seed/mobile1/800/420','https://picsum.photos/seed/mobile2/800/420']
 };
 
 const PROD_PHOTOS={
- cctv:[
-  'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1549109786-eb80da56e693?w=800&h=420&fit=crop&q=80'
- ],
- pos:[
-  'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=420&fit=crop&q=80'
- ],
- kiosk:[
-  'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=420&fit=crop&q=80'
- ],
- table:[
-  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&h=420&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&h=420&fit=crop&q=80'
- ]
+ cctv:['https://picsum.photos/seed/cctv1/800/420','https://picsum.photos/seed/cctv2/800/420','https://picsum.photos/seed/cctv3/800/420','https://picsum.photos/seed/cctv4/800/420'],
+ pos:['https://picsum.photos/seed/pos1/800/420','https://picsum.photos/seed/pos2/800/420','https://picsum.photos/seed/pos3/800/420','https://picsum.photos/seed/pos4/800/420'],
+ kiosk:['https://picsum.photos/seed/kiosk1/800/420','https://picsum.photos/seed/kiosk2/800/420','https://picsum.photos/seed/kiosk3/800/420','https://picsum.photos/seed/kiosk4/800/420'],
+ table:['https://picsum.photos/seed/table1/800/420','https://picsum.photos/seed/table2/800/420','https://picsum.photos/seed/table3/800/420','https://picsum.photos/seed/table4/800/420']
 };
 
 function getBizCat(title){
@@ -409,7 +389,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
  const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  const canon=`https://allpaystore.com/blog/${slug}/${prodKey}/`;
  const parentUrl=`https://allpaystore.com/blog/${slug}/`;
- const PHOTO_URL={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=420&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=420&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=420&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=420&fit=crop&q=80'};
+ const PHOTO_URL={card:'https://picsum.photos/seed/img4q71/800/420',pos:'https://picsum.photos/seed/img4qad/800/420',kiosk:'https://picsum.photos/seed/img4qdo/800/420',cctv:'https://picsum.photos/seed/img4qgy/800/420',tableorder:'https://picsum.photos/seed/img4qke/800/420',removal:'https://picsum.photos/seed/img4qnu/800/420'};
  const photoUrl=PHOTO_URL[prodKey]||PHOTO_URL.card;
  const iso=today.toISOString().split('T')[0];
  const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" class="side-link">${v.emoji} ${emd} ${v.ko}</a>`).join('');
@@ -944,7 +924,7 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
  <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=300&fit=crop&q=80" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
+ <img src="https://picsum.photos/seed/img648p/800/420" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} 설치 전문</div>
@@ -1055,7 +1035,7 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
  <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
+ <img src="https://picsum.photos/seed/img6cuz/800/420" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
@@ -1171,7 +1151,7 @@ function makeProductLandingPage(prodKey){
  const firstDong=RK().find(k=>k.startsWith(s.s+'/'));
  return firstDong?`<a href="/product/${prodKey}/${s.s}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
  }).join('');
- const PHOTO={card:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=300&fit=crop&q=80',pos:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=300&fit=crop&q=80',kiosk:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=300&fit=crop&q=80',cctv:'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=300&fit=crop&q=80',tableorder:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=300&fit=crop&q=80',removal:'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&h=300&fit=crop&q=80'};
+ const PHOTO={card:'https://picsum.photos/seed/img6l9m/800/420',pos:'https://picsum.photos/seed/img6lc7/800/420',kiosk:'https://picsum.photos/seed/img6ler/800/420',cctv:'https://picsum.photos/seed/img6lha/800/420',tableorder:'https://picsum.photos/seed/img6ljz/800/420',removal:'https://picsum.photos/seed/img6lmo/800/420'};
  const photo=PHOTO[prodKey]||PHOTO.card;
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
@@ -1308,7 +1288,7 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/${prodKey}/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
  <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=300&fit=crop&q=80" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
+ <img src="https://picsum.photos/seed/img6xpn/800/420" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} ${prd.ko} ${suf}</div>
@@ -1417,7 +1397,7 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/product/${prodKey}/${sidoSlug}/">지역별</a><a href="/product/${prodKey}/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
 <div class="wrap" style="padding-top:28px">
  <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=300&fit=crop&q=80" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
+ <img src="https://picsum.photos/seed/img774n/800/420" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sgName} ${prd.ko} ${suf}</div>
@@ -1531,7 +1511,7 @@ ${CSS}
  <a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a>
 </div></nav>
 <div class="wrap" style="padding-top:28px">
- <div class="thumb"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=420&fit=crop&q=80" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
+ <div class="thumb"><img src="https://picsum.photos/seed/img7fnj/800/420" alt="${emd} 카드단말기 설치 올페이스토어" width="800" height="420" loading="eager"></div>
  <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
  <h1>${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크·CCTV 연동까지 한번에</h1>
  <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적 · 빠른 설치 · A/S까지 책임집니다. 카드단말기·포스기·키오스크·테이블오더는 설치비 무료입니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
