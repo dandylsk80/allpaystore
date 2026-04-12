@@ -277,7 +277,7 @@ const BU={
  const catKey=CCTV_CAT_MAP[idx];const cc=getCctvCat(title);const biz=title.split(' CCTV')[0];
  const cols={cafe:['#B45309','#FFF7ED'],food:['#DC2626','#FEF2F2'],bar:['#D97706','#FFFBEB'],leisure:['#7C3AED','#F5F3FF'],edu:['#2563EB','#EFF6FF'],beauty:['#DB2777','#FDF2F8'],medical:['#059669','#ECFDF5'],retail:['#EA580C','#FFF7ED'],service:['#4F46E5','#EEF2FF'],auto:['#0D9488','#F0FDFA'],office:['#475569','#F8FAFC'],stay:['#9333EA','#FAF5FF'],unmanned:['#0EA5E9','#F0F9FF'],mobile:['#65A30D','#F7FEE7']};
  const [mc,bg]=cols[catKey]||cols.retail;
- const _cp=BIZ_PHOTOS[catKey]||BIZ_PHOTOS.retail;const photo=_cp[Math.abs(h)%_cp.length];
+ const photo=PROD_PHOTOS.cctv[Math.abs(h)%PROD_PHOTOS.cctv.length];
  const md=biz+' CCTV '+cc.cam+' 설치 가이드. 올페이스토어 010-9876-8282';
  const rv=(n,st,tx)=>'<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:36px;height:36px;background:'+bg+';border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</span><div><strong style="font-size:14px">'+n+'</strong><span style="font-size:12px;color:#999;margin-left:8px">'+'⭐'.repeat(st)+'</span></div></div><p style="font-size:14px;color:#444;margin:0;line-height:1.7">"'+tx+'"</p></div>';
  // CCTV 전용 업종별 콘텐츠 (보안·감시 관점)
@@ -326,6 +326,34 @@ const BIZ_PHOTOS={
  unmanned:['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=420&fit=crop&q=80'],
  mobile:['https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=800&h=420&fit=crop&q=80','https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=420&fit=crop&q=80']
 };
+
+const PROD_PHOTOS={
+ cctv:[
+  'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1549109786-eb80da56e693?w=800&h=420&fit=crop&q=80'
+ ],
+ pos:[
+  'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=800&h=420&fit=crop&q=80'
+ ],
+ kiosk:[
+  'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=420&fit=crop&q=80'
+ ],
+ table:[
+  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&h=420&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&h=420&fit=crop&q=80'
+ ]
+};
+
 function getBizCat(title){
  const idx=BIZ_TITLES.indexOf(title);
  const cat=idx>=0?BIZ_CAT_MAP[idx]:'retail';
@@ -1744,7 +1772,7 @@ function makeProdBizPage(prodKey,titles,catMap,slugs,idx){
   bar:{desc:'추가 주문이 빈번한 주점에서 테이블오더는 필수입니다. 소주 2병 추가 — 터치 한 번이면 주방에 전달되고 테이블 금액에 자동 합산됩니다.',tip:'해피아워 할인, 세트 메뉴 등 프로모션을 테이블오더 화면에 노출하면 프로모션 인지율이 올라갑니다.',review:'8개 테이블에서 동시에 추가 주문이 와도 자동으로 처리되니까 주문 누락이 완전히 사라졌습니다.'}
  }};
  const ci=(PI[prodKey]||{})[catKey]||(PI[prodKey]||{}).retail||{desc:biz+'에서 '+prodLabel+'를 도입하면 운영 효율이 크게 올라갑니다.',tip:'업종 특성에 맞는 맞춤 세팅으로 도입 첫날부터 바로 사용 가능합니다.',review:prodLabel+' 도입 후 운영이 한결 편해졌습니다. 빨리 바꿀걸 그랬어요.'};
- const _pp=BIZ_PHOTOS[catKey]||BIZ_PHOTOS.retail;const photo=_pp[Math.abs(h)%_pp.length];
+ const _pp=PROD_PHOTOS[prodKey]||BIZ_PHOTOS[catKey]||BIZ_PHOTOS.retail;const photo=Array.isArray(_pp)?_pp[Math.abs(h)%_pp.length]:_pp;
  const md=biz+' '+prodLabel+' 도입 가이드. 올페이스토어 010-9876-8282';
 
  let body='<p>'+ci.desc+' '+biz+js(biz,'은','는')+' '+bc.cust+js(bc.cust,'이','가')+' 주로 방문하며, '+bc.peak+'에 집중되는 업종입니다.</p>';
