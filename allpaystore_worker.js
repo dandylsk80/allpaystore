@@ -2732,15 +2732,17 @@ export default {
   const links=GUIDE_KW.map(k=>`<a href="/guide/${encodeURIComponent(k)}/" style="display:inline-block;margin:4px;padding:8px 14px;background:#f3f4f6;border-radius:8px;font-size:14px;color:#374151;text-decoration:none">${k}</a>`).join('');
   return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>철거·원상복구·폐업 가이드 | 올페이스토어</title><meta name="description" content="매장철거, 원상복구, 폐업 절차, 정부 지원금 등 철거에 관한 모든 가이드를 제공합니다. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><h1 style="font-size:26px;font-weight:900;margin-bottom:24px">🔨 철거·원상복구·폐업 가이드</h1><p style="font-size:15px;color:#555;margin-bottom:24px">매장 철거, 원상복구, 폐업 절차, 정부 지원금 등 사장님이 알아야 할 모든 정보를 모았습니다.</p><div>${links}</div></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
- const bizMatch=path.match(/^\/biz\/(biz-\d+)$/);
+ const bizMatch=path.match(/^\/biz\/(biz-(\d+))$/);
  if(bizMatch){
   const idx=BIZ_SLUGS.indexOf(bizMatch[1]);
   if(idx>=0){const h=makeBizPage(idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+  else{const oldNum=parseInt(bizMatch[2]);if(oldNum>=1&&oldNum<=840){const newIdx=Math.floor((oldNum-1)/7);const newSlug='biz-'+(newIdx+1).toString().padStart(3,'0');return Response.redirect('https://allpaystore.com/biz/'+newSlug+'/',301);}}
  }
- const cctvMatch=path.match(/^\/biz-cctv\/(biz-cctv-\d+)$/);
+ const cctvMatch=path.match(/^\/biz-cctv\/(biz-cctv-(\d+))$/);
  if(cctvMatch){
   const idx=CCTV_SLUGS.indexOf(cctvMatch[1]);
   if(idx>=0){const h=makeCctvBizPage(idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+  else{const oldNum=parseInt(cctvMatch[2]);if(oldNum>=1&&oldNum<=840){const newIdx=Math.floor((oldNum-1)/7);const newSlug='biz-cctv-'+(newIdx+1).toString().padStart(3,'0');return Response.redirect('https://allpaystore.com/biz-cctv/'+newSlug+'/',301);}}
  }
  const cctvCatMatch=path.match(/^\/biz-cctv\/(cafe|food|bar|leisure|edu|beauty|medical|retail|service|auto|office|stay|unmanned|mobile)$/);
  if(cctvCatMatch){
