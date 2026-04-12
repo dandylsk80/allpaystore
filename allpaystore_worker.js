@@ -1672,6 +1672,92 @@ function switchTab(eng){
 </div>
 </body></html>`;
 }
+
+const POS_CATS=['cafe','food','bar','leisure','beauty','medical','retail','service','auto','office','stay'];
+const KIOSK_CATS=['cafe','food','leisure','medical','retail','unmanned','stay'];
+const TABLE_CATS=['cafe','food','bar'];
+const KIOSK_EXCLUDE=['와인바','칵테일바','감성주점','필라테스','피아노학원','미술학원','왁싱샵','속눈썹샵','반영구샵','애견미용실','약국','안경점','꽃집','문구점','서점','철물점','과일가게','정육점'];
+const TABLE_EXCLUDE=['베이커리','빵집','디저트카페','개인카페','프랜차이즈카페','분식집','포차','배달전문점','포장전문점'];
+
+function buildProdTitles(prodName,cats,exclude){
+ const titles=[],catMap={},slugPrefix=prodName==='pos'?'biz-pos':prodName==='kiosk'?'biz-kiosk':'biz-table';
+ Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
+  if(!cats.includes(cat))return;
+  types.forEach(b=>{
+   if(exclude&&exclude.includes(b))return;
+   catMap[titles.length]=cat;
+   titles.push(b+' '+(prodName==='pos'?'포스기 도입 가이드 — 메뉴·정산·매출관리':prodName==='kiosk'?'키오스크 설치 가이드 — 무인주문·인건비 절감':'테이블오더 도입 가이드 — QR주문·서빙효율'));
+  });
+ });
+ const slugs=titles.map((_,i)=>slugPrefix+'-'+(i+1).toString().padStart(3,'0'));
+ return {titles,catMap,slugs};
+}
+const POS_DATA=buildProdTitles('pos',POS_CATS);
+const POS_TITLES=POS_DATA.titles,POS_CAT_MAP=POS_DATA.catMap,POS_SLUGS=POS_DATA.slugs;
+const KIOSK_DATA=buildProdTitles('kiosk',KIOSK_CATS,KIOSK_EXCLUDE);
+const KIOSK_TITLES=KIOSK_DATA.titles,KIOSK_CAT_MAP=KIOSK_DATA.catMap,KIOSK_SLUGS=KIOSK_DATA.slugs;
+const TABLE_DATA=buildProdTitles('table',TABLE_CATS,TABLE_EXCLUDE);
+const TABLE_TITLES=TABLE_DATA.titles,TABLE_CAT_MAP=TABLE_DATA.catMap,TABLE_SLUGS=TABLE_DATA.slugs;
+
+
+function makeProdBizPage(prodKey,titles,catMap,slugs,idx){
+ const title=titles[idx];if(!title)return null;
+ const slug=slugs[idx];const catKey=catMap[idx];
+ const biz=title.split(prodKey==='pos'?' 포스기':prodKey==='kiosk'?' 키오스크':' 테이블오더')[0];
+ const h=title.split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
+ const s=(arr,seed)=>arr[Math.abs((h>>>seed)^arr.length)%arr.length];
+ const bc=getBizCat(biz+' 카드단말기 설치 가이드 — 비용·수수료·추천 총정리');
+ const cols={cafe:['#B45309','#FFF7ED'],food:['#DC2626','#FEF2F2'],bar:['#D97706','#FFFBEB'],leisure:['#7C3AED','#F5F3FF'],edu:['#2563EB','#EFF6FF'],beauty:['#DB2777','#FDF2F8'],medical:['#059669','#ECFDF5'],retail:['#EA580C','#FFF7ED'],service:['#4F46E5','#EEF2FF'],auto:['#0D9488','#F0FDFA'],office:['#475569','#F8FAFC'],stay:['#9333EA','#FAF5FF'],unmanned:['#0EA5E9','#F0F9FF'],mobile:['#65A30D','#F7FEE7']};
+ const [mc,bg]=cols[catKey]||cols.retail;
+ const cn={cafe:'카페·베이커리',food:'음식점',bar:'주점',leisure:'레저·스포츠',edu:'학원·교육',beauty:'뷰티·미용',medical:'의료·건강',retail:'소매·판매',service:'생활서비스',auto:'자동차',office:'사무실·전문직',stay:'숙박',unmanned:'무인매장',mobile:'이동·시장'}[catKey]||'';
+ const rv=(n,tx)=>'<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:20px;margin:16px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:36px;height:36px;background:'+bg+';border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</span><div><strong style="font-size:14px">'+n+'</strong><span style="font-size:12px;color:#999;margin-left:8px">⭐⭐⭐⭐⭐</span></div></div><p style="font-size:14px;color:#444;margin:0;line-height:1.7">\"'+tx+'\"</p></div>';
+ const prodLabel=prodKey==='pos'?'포스기':prodKey==='kiosk'?'키오스크':'테이블오더';
+ const urlPrefix=prodKey==='pos'?'biz-pos':prodKey==='kiosk'?'biz-kiosk':'biz-table';
+ const prodParam=prodKey==='pos'?'pos':prodKey==='kiosk'?'kiosk':'tableorder';
+
+ // 제품별 카테고리별 콘텐츠
+ const PI={pos:{
+  cafe:{desc:'하루 200잔 이상 나가는 카페에서 메뉴별 판매량, 시간대별 매출, 원두 소진량을 한눈에 파악하는 것이 포스기의 핵심 역할입니다.',tip:'시즌 음료 추가·삭제가 터치 한 번이면 되고, 재료별 원가를 등록하면 메뉴별 수익률이 자동으로 계산됩니다.',review:'메뉴별 매출 데이터를 보고 안 팔리는 음료를 빼고 신메뉴를 넣었더니 월 매출이 15% 올랐어요.'},
+  food:{desc:'주방 전표 자동 출력, 배달앱 3사 연동, 테이블별 주문 관리가 음식점 포스기의 3대 필수 기능입니다.',tip:'배달의민족·요기요·쿠팡이츠 주문이 포스 하나에 통합되면 태블릿 3대를 번갈아 볼 필요가 없습니다.',review:'배달 3사 연동 포스로 바꾸고 나서 주방 실수가 확 줄었어요. 주문이 자동으로 전표에 찍히니까요.'},
+  bar:{desc:'테이블별 누적 금액 실시간 확인, 주류·음식 분리 정산, 야간 시간대 안정적 운영이 주점 포스기의 핵심입니다.',tip:'마감 정산이 자동화되면 새벽 2시 영업 종료 후 10분이면 하루 매출이 정리됩니다. 시재 오차도 바로 잡힙니다.',review:'테이블 8개 동시 관리가 됩니다. 추가 주문 넣으면 자동 합산이라 계산 실수가 사라졌어요.'},
+  leisure:{desc:'시간제 요금 자동 계산, 회원 관리, 부대시설 매출 통합이 레저 업종 포스기의 핵심 기능입니다.',tip:'회원권 잔여 횟수와 유효기간을 자동 추적하고, 만료 전 알림을 보내면 재등록률이 올라갑니다.',review:'회원 300명 관리가 엑셀에서 포스로 바뀌니까 월초 정산이 1시간에서 10분으로 줄었어요.'},
+  beauty:{desc:'시술 조합별 자동 합산, 디자이너별 매출 분리, 예약 연동이 뷰티 업종 포스기의 3대 기능입니다.',tip:'시술 중간에 추가 메뉴를 넣어도 기존 주문에 바로 합산되고, 디자이너별 실적이 자동 분리됩니다.',review:'디자이너 4명의 매출이 자동으로 나뉘니까 인센티브 계산 분쟁이 사라졌어요.'},
+  medical:{desc:'급여·비급여 분리 수납, 환자별 진료 이력 관리, 보험 청구 연동이 의료기관 포스기의 핵심입니다.',tip:'비급여 시술 패키지의 남은 횟수를 자동 관리하면 환자에게 매번 확인할 필요 없이 정확한 안내가 됩니다.',review:'환자 수납과 보험 청구가 하나로 연결되니 원무과 업무가 절반으로 줄었습니다.'},
+  retail:{desc:'바코드 스캔 판매, 재고 자동 차감, 유통기한 관리가 소매점 포스기의 기본 기능입니다.',tip:'어떤 상품이 잘 팔리는지, 재고가 얼마나 남았는지 실시간으로 파악하면 발주 타이밍을 놓치지 않습니다.',review:'재고 관리가 자동화되니까 품절 사고가 거의 사라졌어요. 발주도 데이터 보고 하니까 정확합니다.'},
+  service:{desc:'서비스 항목별 가격 관리, 고객 이력 추적, 예약과 결제 연동이 서비스업 포스기의 핵심입니다.',tip:'고객별 서비스 이력이 쌓이면 재방문 시 별도 상담 없이 바로 접수할 수 있어 시간이 절약됩니다.',review:'단골 고객 이력이 바로 뜨니까 접수가 빨라지고, 고객도 기억해준다고 좋아하세요.'},
+  auto:{desc:'정비 견적 → 승인 → 작업 → 결제 전 과정을 하나의 시스템으로 관리하는 것이 자동차 업종 포스기의 핵심입니다.',tip:'차량 번호를 입력하면 이전 정비 이력이 바로 떠서 정확한 진단과 견적이 가능합니다.',review:'차량별 정비 이력이 한눈에 보이니까 다음 정비 시기를 안내하기 쉽고, 재방문율이 올랐어요.'},
+  office:{desc:'서비스별 단가 관리, 거래처별 미수금 추적, 세금계산서 자동 발행이 사무 업종 포스기의 핵심입니다.',tip:'거래처별 결제 상태를 한 화면에서 확인하고, 미납 시 자동 알림을 보내면 수금 스트레스가 줄어듭니다.',review:'세금계산서 발행이 포스에서 바로 되니까 월말 행정이 훨씬 간편해졌습니다.'},
+  stay:{desc:'객실별 요금 관리, 날짜별 가격 자동 전환, 부대시설 매출 합산이 숙박업 포스기의 3대 기능입니다.',tip:'체크인부터 체크아웃까지 객실 이용료, 미니바, 부대시설을 모두 합산하여 퇴실 시 한번에 정산합니다.',review:'시즌별 가격이 자동으로 바뀌니까 수동 변경 실수가 없어졌어요. 예약 플랫폼 연동도 편합니다.'}
+ },kiosk:{
+  cafe:{desc:'카운터 혼잡 없이 고객이 직접 메뉴를 선택하고 결제하면, 바리스타는 음료 제조에만 집중할 수 있습니다.',tip:'인기 메뉴를 상단에 배치하고 세트 할인을 화면에 노출하면 객단가가 자연스럽게 올라갑니다.',review:'키오스크 놓고 나서 사장님 혼자 운영이 가능해졌어요. 주문 받을 필요 없이 음료만 만들면 됩니다.'},
+  food:{desc:'점심 피크에 40명이 몰려도 키오스크 2대면 대기 줄이 사라집니다. 주문과 결제가 동시에 처리돼 회전율이 올라갑니다.',tip:'주문 시 자동으로 주방 전표가 출력되어 구두 전달 실수가 완전히 없어집니다.',review:'점심 피크에 줄이 문밖까지 늘었는데 키오스크 설치 후 대기 시간이 절반으로 줄었어요.'},
+  leisure:{desc:'회원 확인, 이용권 구매, 좌석 선택까지 키오스크에서 셀프로 처리하면 접수 직원 없이도 운영이 가능합니다.',tip:'시간제 요금이 자동 계산되고, 회원증 바코드를 스캔하면 잔여 횟수가 바로 차감됩니다.',review:'무인 시간대에도 키오스크가 접수를 대신하니까 야간 인건비를 절약하고 있어요.'},
+  medical:{desc:'접수·수납 키오스크를 도입하면 오전 피크에 환자 30명이 몰려도 대기 시간이 크게 줄어듭니다.',tip:'진료 후 수납까지 키오스크에서 처리하면 접수 창구 혼잡이 해소되고 환자 만족도가 올라갑니다.',review:'접수 키오스크 도입 후 대기 시간 민원이 80% 줄었습니다. 접수 직원도 다른 업무에 집중할 수 있게 됐어요.'},
+  retail:{desc:'셀프 계산 키오스크를 도입하면 계산 직원 인건비를 줄이면서 고객 대기 시간도 단축됩니다.',tip:'바코드 스캔 후 카드 결제까지 고객이 직접 처리하므로, 직원은 상품 진열과 고객 응대에 집중합니다.',review:'셀프 계산대 도입 후 피크 시간 대기가 거의 없어졌어요. 인건비도 월 200만원 절약하고 있습니다.'},
+  unmanned:{desc:'24시간 무인 운영의 핵심은 키오스크입니다. 상품 선택부터 결제, 출입 연동까지 모든 것을 키오스크가 처리합니다.',tip:'결제 완료 시 출입문이 자동으로 열리고, CCTV와 연동하면 미결제 이탈을 실시간 감지합니다.',review:'키오스크 하나로 24시간 무인 운영이 됩니다. 직원 없이도 월 매출 500만원 이상 나와요.'},
+  stay:{desc:'체크인 키오스크를 도입하면 심야 도착 고객도 프론트 직원 없이 셀프로 입실할 수 있습니다.',tip:'객실 선택, 결제, 카드키 발급까지 키오스크에서 2분이면 완료됩니다. 야간 인건비 절감 효과가 큽니다.',review:'심야 체크인 키오스크 덕분에 야간 프론트 직원을 줄이고도 고객 만족도가 오히려 올랐어요.'}
+ },table:{
+  cafe:{desc:'매장 이용 고객이 자리에서 QR을 스캔하면 메뉴 선택부터 결제까지 완료됩니다. 카운터 혼잡 없이 추가 주문도 자유롭습니다.',tip:'디저트와 음료 세트 할인을 테이블오더 화면에 노출하면 추가 주문율이 올라갑니다.',review:'카운터까지 안 와도 추가 주문이 되니까 고객 만족도가 확 올랐어요. 객단가도 15% 상승했습니다.'},
+  food:{desc:'테이블에서 QR 주문이 들어오면 주방 전표가 자동 출력됩니다. 서빙 직원이 주문을 받으러 다니지 않아도 되어 인건비가 절감됩니다.',tip:'추가 주문 시 기존 테이블에 자동 합산되고, 계산할 때 테이블 번호만 입력하면 총액이 바로 나옵니다.',review:'서빙 직원 2명을 1명으로 줄이고도 주문 속도가 더 빨라졌어요. 손님이 원할 때 바로 주문하니까요.'},
+  bar:{desc:'추가 주문이 빈번한 주점에서 테이블오더는 필수입니다. 소주 2병 추가 — 터치 한 번이면 주방에 전달되고 테이블 금액에 자동 합산됩니다.',tip:'해피아워 할인, 세트 메뉴 등 프로모션을 테이블오더 화면에 노출하면 프로모션 인지율이 올라갑니다.',review:'8개 테이블에서 동시에 추가 주문이 와도 자동으로 처리되니까 주문 누락이 완전히 사라졌습니다.'}
+ }};
+ const ci=(PI[prodKey]||{})[catKey]||(PI[prodKey]||{}).retail||{desc:biz+'에서 '+prodLabel+'를 도입하면 운영 효율이 크게 올라갑니다.',tip:'업종 특성에 맞는 맞춤 세팅으로 도입 첫날부터 바로 사용 가능합니다.',review:prodLabel+' 도입 후 운영이 한결 편해졌습니다. 빨리 바꿀걸 그랬어요.'};
+ const photo='https://images.unsplash.com/'+{pos:'photo-1556742049-0cfed4f6a45d',kiosk:'photo-1534723452862-4c874018d66d',table:'photo-1517248135467-4c7edcad34c4'}[prodKey]+'?w=800&h=420&fit=crop&q=80';
+ const md=biz+' '+prodLabel+' 도입 가이드. 올페이스토어 010-9876-8282';
+
+ let body='<p>'+ci.desc+' '+biz+js(biz,'은','는')+' '+bc.cust+js(bc.cust,'이','가')+' 주로 방문하며, '+bc.peak+'에 집중되는 업종입니다.</p>';
+ body+='<h2 style="color:'+mc+'">📋 '+biz+' '+prodLabel+' 도입 효과</h2><p>'+ci.tip+'</p>';
+ body+=rv(biz+' 사장님',ci.review);
+ body+='<h2 style="color:'+mc+'">💡 '+biz+' '+prodLabel+' 추천 이유</h2><p>'+s([biz+' 업종은 '+bc.peak+'에 주문이 몰려 '+prodLabel+'의 효과가 극대화됩니다. 피크 시간 처리 속도가 매출을 직접적으로 좌우합니다.',biz+' 특성상 '+bc.pay+' 처리가 빈번하며, '+prodLabel+js(prodLabel,'을','를')+' 도입하면 직원 업무 부담이 줄고 고객 경험이 개선됩니다.',bc.cust+js(bc.cust,'이','가')+' 주 고객인 '+biz+'에서 '+prodLabel+'는 대기 시간 단축과 주문 정확도 향상에 결정적입니다.'],0)+'</p>';
+ body+=rv(biz+' 사장님 B',s(['도입 전에는 반신반의했는데, 써보니 왜 진작 안 했나 싶어요. '+biz+' 운영이 한결 편해졌습니다.','피크타임 처리 속도가 확실히 빨라졌고, 직원들도 여유가 생겼습니다. 고객 리뷰도 좋아졌어요.',biz+' 규모에서 이 정도 투자로 이만큼 효과를 보기 어렵습니다. 강력 추천합니다.'],3));
+ body+='<h2 style="color:'+mc+'">📞 '+biz+' '+prodLabel+' 설치 안내</h2><p>010-9876-8282로 문의하시면 '+biz+' 전문 기사가 매장을 방문하여 업종에 맞는 '+prodLabel+'를 설치합니다. 영업 중에도 세팅이 가능하며, '+bc.cust+'에게 불편을 주지 않고 진행됩니다.</p>';
+
+ const related=titles.filter((t,i)=>i!==idx&&catMap[i]===catKey).slice(0,6);
+ const rl=related.map(t=>{const ri=titles.indexOf(t);return '<a href="/'+urlPrefix+'/'+slugs[ri]+'/" style="display:block;padding:10px 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:14px">'+t+'</a>';}).join('');
+
+ return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>'+title+' | 올페이스토어</title><meta name="description" content="'+md+'"><meta property="og:title" content="'+title+'"><meta property="og:type" content="article"><link rel="canonical" href="https://allpaystore.com/'+urlPrefix+'/'+slug+'/">'+CSS+'</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:24px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/'+urlPrefix+'/" style="color:#888;text-decoration:none">업종별 '+prodLabel+'</a> &gt; <a href="/'+urlPrefix+'/'+catKey+'/" style="color:#888;text-decoration:none">'+cn+'</a></p><h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">'+title+'</h1><div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><img src="'+photo+'" alt="'+biz+' '+prodLabel+'" style="width:100%;height:auto;display:block"></div>'+body+'<div class="cta" style="background:linear-gradient(135deg,'+mc+','+mc+'dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">'+biz+' '+prodLabel+' 도입 상담</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">업종 맞춤 · 무료 설치 · 현장 세팅</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:'+mc+'">📞 010-9876-8282</a> <a href="/contact/?product='+prodParam+'" class="cta-sub" style="border-color:rgba(255,255,255,.5);color:#fff">💬 상담</a></div>'+(rl?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+rl+'</div>':'')+'</div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product='+prodParam+'" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>';
+}
+
 function makeSitemap(){
  const base='https://allpaystore.com';
  const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
@@ -1692,7 +1778,11 @@ function makeSitemap(){
  GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/'));});
  parts.push(u('/biz/'));
  parts.push(u('/biz/card/'));
- BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/'));});
+ 
+  POS_SLUGS.forEach(s=>{parts.push(u('/biz-pos/'+s+'/'));});
+  KIOSK_SLUGS.forEach(s=>{parts.push(u('/biz-kiosk/'+s+'/'));});
+  TABLE_SLUGS.forEach(s=>{parts.push(u('/biz-table/'+s+'/'));});
+BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/'));});
  parts.push(u('/biz-cctv/'));
  ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{parts.push(u('/biz-cctv/'+c+'/'));});
  CCTV_SLUGS.forEach(s=>{parts.push(u('/biz-cctv/'+s+'/'));});
@@ -2632,7 +2722,14 @@ export default {
   const links=items.map((x,idx)=>{const tag=getTag(x.t);return `<a href="/biz-cctv/${CCTV_SLUGS[x.i]}/" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fff;border-radius:10px;border:1px solid #f0f0f0;text-decoration:none;transition:all .15s" onmouseover="this.style.borderColor='${cc}'" onmouseout="this.style.borderColor='#f0f0f0'"><div style="width:36px;height:36px;background:${tag.bg};border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:800;color:${tag.color}">${idx+1}</div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:600;color:#222;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${x.t}</div><div style="margin-top:3px"><span style="display:inline-block;padding:2px 8px;background:${tag.bg};border-radius:4px;font-size:11px;color:${tag.color};font-weight:600">${tag.tag}</span></div></div><span style="color:#ccc;flex-shrink:0">›</span></a>`;}).join('');
   return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>📹 ${cn} CCTV 설치 가이드 | 올페이스토어</title><meta name="description" content="${cn} 업종별 CCTV 설치 가이드. HD~4K, 원격 모니터링, 매장 맞춤 설계. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz-cctv/" style="color:#888;text-decoration:none">업종별 CCTV</a> &gt; ${cn}</p><div style="display:flex;align-items:center;gap:14px;margin-bottom:8px"><span style="font-size:44px">📹</span><div><h1 style="font-size:24px;font-weight:900;color:#111;margin:0">${cn} CCTV 설치 가이드</h1><p style="font-size:14px;color:#666;margin:4px 0 0">${items.length}개 가이드</p></div></div><div style="display:grid;grid-template-columns:1fr;gap:10px;margin:24px 0 32px">${links}</div><div class="cta"><h3>📹 ${cn} CCTV 무료 견적</h3><p>매장 방문 후 최적 구성을 설계해드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="/contact/?product=cctv" class="cta-sub">💬 상담 문의</a></div></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
- if(path==='/biz-cctv'){
+ 
+  const posMatch=path.match(/^\/biz-pos\/(biz-pos-\d+)$/);
+  if(posMatch){const idx=POS_SLUGS.indexOf(posMatch[1]);if(idx>=0){const h=makeProdBizPage('pos',POS_TITLES,POS_CAT_MAP,POS_SLUGS,idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}}
+  const kioskMatch=path.match(/^\/biz-kiosk\/(biz-kiosk-\d+)$/);
+  if(kioskMatch){const idx=KIOSK_SLUGS.indexOf(kioskMatch[1]);if(idx>=0){const h=makeProdBizPage('kiosk',KIOSK_TITLES,KIOSK_CAT_MAP,KIOSK_SLUGS,idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}}
+  const tableMatch=path.match(/^\/biz-table\/(biz-table-\d+)$/);
+  if(tableMatch){const idx=TABLE_SLUGS.indexOf(tableMatch[1]);if(idx>=0){const h=makeProdBizPage('table',TABLE_TITLES,TABLE_CAT_MAP,TABLE_SLUGS,idx);if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}}
+if(path==='/biz-cctv'){
   const cats=[{key:'cafe',name:'카페·베이커리',emoji:'☕',color:'#B45309',bg:'#FFF7ED'},{key:'food',name:'음식점',emoji:'🍽️',color:'#DC2626',bg:'#FEF2F2'},{key:'bar',name:'주점',emoji:'🍺',color:'#D97706',bg:'#FFFBEB'},{key:'leisure',name:'레저·스포츠',emoji:'🎮',color:'#7C3AED',bg:'#F5F3FF'},{key:'edu',name:'학원·교육',emoji:'📚',color:'#2563EB',bg:'#EFF6FF'},{key:'beauty',name:'뷰티·미용',emoji:'💇',color:'#DB2777',bg:'#FDF2F8'},{key:'medical',name:'의료·건강',emoji:'🏥',color:'#059669',bg:'#ECFDF5'},{key:'retail',name:'소매·판매',emoji:'🛍️',color:'#EA580C',bg:'#FFF7ED'},{key:'service',name:'생활서비스',emoji:'🧹',color:'#4F46E5',bg:'#EEF2FF'},{key:'auto',name:'자동차',emoji:'🚗',color:'#0D9488',bg:'#F0FDFA'},{key:'office',name:'사무실·전문직',emoji:'🏢',color:'#475569',bg:'#F8FAFC'},{key:'stay',name:'숙박',emoji:'🏨',color:'#9333EA',bg:'#FAF5FF'},{key:'unmanned',name:'무인매장',emoji:'🤖',color:'#0EA5E9',bg:'#F0F9FF'},{key:'mobile',name:'이동·시장',emoji:'🚚',color:'#65A30D',bg:'#F7FEE7'}];
   const boxes=cats.map(c=>{const cnt=CCTV_TITLES.filter((_,i)=>CCTV_CAT_MAP[i]===c.key).length;return `<a href="/biz-cctv/${c.key}/" style="display:flex;align-items:center;gap:14px;padding:16px;background:#fff;border-radius:12px;border:1px solid #eee;text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='${c.color}'" onmouseout="this.style.borderColor='#eee'"><div style="width:48px;height:48px;background:${c.bg};border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:24px">${c.emoji}</span></div><div><div style="font-size:15px;font-weight:700;color:#111">${c.name}</div><div style="font-size:12px;color:#999;margin-top:2px">${cnt}개 가이드 →</div></div></a>`;}).join('');
   return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>업종별 CCTV 설치 가이드 | 올페이스토어</title><meta name="description" content="카페, 음식점, 미용실, 병원, 학원 등 업종별 CCTV 설치 가이드. HD~4K, 원격 모니터링, 매장 맞춤 설계. 올페이스토어 ☎ 010-9876-8282">${CSS}</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:28px"><div style="text-align:center;margin-bottom:28px"><p style="font-size:13px;color:#059669;font-weight:700;margin-bottom:6px">CCTV GUIDE</p><h1 style="font-size:24px;font-weight:900;margin:0 0 8px;color:#111">업종별 CCTV 설치 가이드</h1><p style="font-size:14px;color:#666;margin:0">우리 매장에 딱 맞는 CCTV 구성을 찾아보세요</p></div><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px"><span style="padding:6px 14px;background:#ecfdf5;border-radius:20px;font-size:12px;color:#059669;font-weight:600">📹 HD~4K 고화질</span><span style="padding:6px 14px;background:#eff6ff;border-radius:20px;font-size:12px;color:#2563eb;font-weight:600">📱 원격 모니터링</span><span style="padding:6px 14px;background:#fef2f2;border-radius:20px;font-size:12px;color:#dc2626;font-weight:600">🔔 AI 움직임 감지</span></div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:36px">${boxes}</div></div></body></html>`,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
