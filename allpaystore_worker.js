@@ -1900,12 +1900,31 @@ function makeProdListPage(prodKey,titles,catMap,slugs){
   cctv:{label:'CCTV GUIDE',emoji:'📹',title:'업종별 CCTV 설치 가이드',sub:'우리 매장에 딱 맞는 CCTV 구성을 찾아보세요',color:'#059669',tags:[{t:'📹 HD~4K 고화질',bg:'#ecfdf5',c:'#059669'},{t:'📱 원격 모니터링',bg:'#eff6ff',c:'#2563eb'},{t:'🔔 AI 움직임 감지',bg:'#fef2f2',c:'#dc2626'}],cta:'📹 CCTV 무료 견적',ctaP:'전문 기사가 매장을 방문하여 최적 구성을 설계합니다.',param:'cctv'},
   pos:{label:'POS GUIDE',emoji:'🖥️',title:'업종별 포스기 도입 가이드',sub:'우리 매장에 딱 맞는 포스기를 찾아보세요',color:'#7C3AED',tags:[{t:'📊 매출 분석',bg:'#f5f3ff',c:'#7c3aed'},{t:'🍳 주방 전표 연동',bg:'#eff6ff',c:'#2563eb'},{t:'📱 배달앱 3사 통합',bg:'#fef2f2',c:'#dc2626'}],cta:'🖥️ 포스기 무료 상담',ctaP:'업종별 맞춤 포스기를 추천해드립니다.',param:'pos'},
   kiosk:{label:'KIOSK GUIDE',emoji:'🤖',title:'업종별 키오스크 설치 가이드',sub:'무인 주문으로 인건비를 절감하세요',color:'#EA580C',tags:[{t:'🤖 무인 주문',bg:'#fff7ed',c:'#ea580c'},{t:'💰 인건비 절감',bg:'#f0fdf4',c:'#059669'},{t:'⏱️ 대기 시간 단축',bg:'#eff6ff',c:'#2563eb'}],cta:'🤖 키오스크 무료 상담',ctaP:'매장 규모에 맞는 키오스크를 추천해드립니다.',param:'kiosk'},
+  vending:{label:'VENDING MACHINE GUIDE',emoji:'🏭',title:'업종별 밴딩머신(자판기) 가이드',sub:'자동판매기 설치·임대, 수익 모델까지 한눈에',color:'#0D9488',tags:[{t:'🏭 자동판매기 설치',bg:'#f0fdfa',c:'#0d9488'},{t:'💵 수익 쉐어 모델',bg:'#f0fdf4',c:'#059669'},{t:'📱 원격 재고 관리',bg:'#eff6ff',c:'#2563eb'}],cta:'🏭 밴딩머신(자판기) 무료 상담',ctaP:'입지 분석부터 설치, 상품 보충까지 원스톱으로 지원합니다.',param:'vending'},
   table:{label:'TABLE ORDER GUIDE',emoji:'📋',title:'업종별 테이블오더 도입 가이드',sub:'QR 주문으로 서빙 효율을 높이세요',color:'#0D9488',tags:[{t:'📱 QR 주문',bg:'#f0fdfa',c:'#0d9488'},{t:'🍽️ 서빙 효율화',bg:'#eff6ff',c:'#2563eb'},{t:'📈 객단가 상승',bg:'#fef2f2',c:'#dc2626'}],cta:'📋 테이블오더 무료 상담',ctaP:'테이블에서 바로 주문! 도입 상담을 받아보세요.',param:'tableorder'}
  };
  const p=cfg[prodKey]||cfg.card;
- const prefix={card:'biz',cctv:'biz-cctv',pos:'biz-pos',kiosk:'biz-kiosk',table:'biz-table'}[prodKey]||'biz';
- const prodName={card:'카드단말기',cctv:'CCTV',pos:'포스기',kiosk:'키오스크',table:'테이블오더'}[prodKey]||'';
- const cats=[{key:'cafe',name:'카페·베이커리',emoji:'☕',color:'#B45309',bg:'#FFF7ED'},{key:'food',name:'음식점',emoji:'🍽️',color:'#DC2626',bg:'#FEF2F2'},{key:'bar',name:'주점',emoji:'🍺',color:'#D97706',bg:'#FFFBEB'},{key:'leisure',name:'레저·스포츠',emoji:'🎮',color:'#7C3AED',bg:'#F5F3FF'},{key:'edu',name:'학원·교육',emoji:'📚',color:'#2563EB',bg:'#EFF6FF'},{key:'beauty',name:'뷰티·미용',emoji:'💇',color:'#DB2777',bg:'#FDF2F8'},{key:'medical',name:'의료·건강',emoji:'🏥',color:'#059669',bg:'#ECFDF5'},{key:'retail',name:'소매·판매',emoji:'🛍️',color:'#EA580C',bg:'#FFF7ED'},{key:'service',name:'생활서비스',emoji:'🧹',color:'#4F46E5',bg:'#EEF2FF'},{key:'auto',name:'자동차',emoji:'🚗',color:'#0D9488',bg:'#F0FDFA'},{key:'office',name:'사무실·전문직',emoji:'🏢',color:'#475569',bg:'#F8FAFC'},{key:'stay',name:'숙박',emoji:'🏨',color:'#9333EA',bg:'#FAF5FF'},{key:'unmanned',name:'무인매장',emoji:'🤖',color:'#0EA5E9',bg:'#F0F9FF'},{key:'mobile',name:'이동·시장',emoji:'🚚',color:'#65A30D',bg:'#F7FEE7'}];
+ const prefix={card:'biz',cctv:'biz-cctv',pos:'biz-pos',kiosk:'biz-kiosk',table:'biz-table',vending:'biz-vending'}[prodKey]||'biz';
+ const prodName={card:'카드단말기',cctv:'CCTV',pos:'포스기',kiosk:'키오스크',table:'테이블오더',vending:'밴딩머신(자판기)'}[prodKey]||'';
+ const cats=prodKey==='vending'?[
+  {key:'edu',name:'교육·학습',emoji:'📚',color:'#2563EB',bg:'#EFF6FF'},
+  {key:'medical',name:'의료·건강',emoji:'🏥',color:'#059669',bg:'#ECFDF5'},
+  {key:'office',name:'오피스·관공서',emoji:'🏢',color:'#475569',bg:'#F8FAFC'},
+  {key:'leisure',name:'숙박·레저',emoji:'🎮',color:'#7C3AED',bg:'#F5F3FF'},
+  {key:'kids',name:'키즈·반려',emoji:'🧒',color:'#DB2777',bg:'#FDF2F8'},
+  {key:'fitness',name:'피트니스',emoji:'💪',color:'#EA580C',bg:'#FFF7ED'},
+  {key:'residence',name:'주거·생활',emoji:'🏠',color:'#0D9488',bg:'#F0FDFA'},
+  {key:'beauty',name:'뷰티',emoji:'💇',color:'#DB2777',bg:'#FDF2F8'},
+  {key:'unmanned',name:'무인',emoji:'🤖',color:'#0EA5E9',bg:'#F0F9FF'},
+  {key:'smart',name:'스마트·디지털',emoji:'📱',color:'#7C3AED',bg:'#F5F3FF'},
+  {key:'payment',name:'결제방식',emoji:'💳',color:'#2563EB',bg:'#EFF6FF'},
+  {key:'custom',name:'맞춤·주문제작',emoji:'🎨',color:'#EA580C',bg:'#FFF7ED'},
+  {key:'advert',name:'광고·수익',emoji:'📺',color:'#D97706',bg:'#FFFBEB'},
+  {key:'premium',name:'프리미엄',emoji:'✨',color:'#9333EA',bg:'#FAF5FF'},
+  {key:'manage',name:'관리·운영',emoji:'⚙️',color:'#475569',bg:'#F8FAFC'},
+  {key:'food',name:'식품',emoji:'🥗',color:'#059669',bg:'#ECFDF5'},
+  {key:'goods',name:'생활·굿즈',emoji:'🎁',color:'#DC2626',bg:'#FEF2F2'}
+]:[{key:'cafe',name:'카페·베이커리',emoji:'☕',color:'#B45309',bg:'#FFF7ED'},{key:'food',name:'음식점',emoji:'🍽️',color:'#DC2626',bg:'#FEF2F2'},{key:'bar',name:'주점',emoji:'🍺',color:'#D97706',bg:'#FFFBEB'},{key:'leisure',name:'레저·스포츠',emoji:'🎮',color:'#7C3AED',bg:'#F5F3FF'},{key:'edu',name:'학원·교육',emoji:'📚',color:'#2563EB',bg:'#EFF6FF'},{key:'beauty',name:'뷰티·미용',emoji:'💇',color:'#DB2777',bg:'#FDF2F8'},{key:'medical',name:'의료·건강',emoji:'🏥',color:'#059669',bg:'#ECFDF5'},{key:'retail',name:'소매·판매',emoji:'🛍️',color:'#EA580C',bg:'#FFF7ED'},{key:'service',name:'생활서비스',emoji:'🧹',color:'#4F46E5',bg:'#EEF2FF'},{key:'auto',name:'자동차',emoji:'🚗',color:'#0D9488',bg:'#F0FDFA'},{key:'office',name:'사무실·전문직',emoji:'🏢',color:'#475569',bg:'#F8FAFC'},{key:'stay',name:'숙박',emoji:'🏨',color:'#9333EA',bg:'#FAF5FF'},{key:'unmanned',name:'무인매장',emoji:'🤖',color:'#0EA5E9',bg:'#F0F9FF'},{key:'mobile',name:'이동·시장',emoji:'🚚',color:'#65A30D',bg:'#F7FEE7'}];
  const activeCats=cats.filter(c=>titles.some((_,i)=>catMap[i]===c.key));
  const boxes=activeCats.map(c=>{
   const cnt=titles.filter((_,i)=>catMap[i]===c.key).length;
