@@ -1,6 +1,6 @@
 const S=["서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시","울산광역시","세종특별자치시","경기도","충청북도","충청남도","전라남도","경상북도","경상남도","제주특별자치도","강원특별자치도","전북특별자치도"];
 
-const VEND_TITLES=['학교 자판기 설치 가이드 — 비용·추천·수익 총정리','고등학교 자판기 설치 가이드 — 비용·추천·수익 총정리','대학교 자판기 설치 가이드 — 비용·추천·수익 총정리','독서실 자판기 설치 가이드 — 비용·추천·수익 총정리','스터디카페 자판기 설치 가이드 — 비용·추천·수익 총정리','기숙사 자판기 설치 가이드 — 비용·추천·수익 총정리','병원 자판기 설치 가이드 — 비용·추천·수익 총정리','병실 자판기 설치 가이드 — 비용·추천·수익 총정리','동물병원 자판기 설치 가이드 — 비용·추천·수익 총정리','사내 자판기 설치 가이드 — 비용·추천·수익 총정리','회사복지 자판기 설치 가이드 — 비용·추천·수익 총정리','구내식당 자판기 설치 가이드 — 비용·추천·수익 총정리','공유오피스 자판기 설치 가이드 — 비용·추천·수익 총정리','관공서 자판기 설치 가이드 — 비용·추천·수익 총정리','호텔 자판기 설치 가이드 — 비용·추천·수익 총정리','스크린골프장 자판기 설치 가이드 — 비용·추천·수익 총정리','볼링장 자판기 설치 가이드 — 비용·추천·수익 총정리','당구장 자판기 설치 가이드 — 비용·추천·수익 총정리','PC방 자판기 설치 가이드 — 비용·추천·수익 총정리','만화카페 자판기 설치 가이드 — 비용·추천·수익 총정리','캠핑장 자판기 설치 가이드 — 비용·추천·수익 총정리','글램핑장 자판기 설치 가이드 — 비용·추천·수익 총정리','키즈카페 자판기 설치 가이드 — 비용·추천·수익 총정리','대형키즈카페 자판기 설치 가이드 — 비용·추천·수익 총정리','애견호텔 자판기 설치 가이드 — 비용·추천·수익 총정리','애견카페 자판기 설치 가이드 — 비용·추천·수익 총정리','헬스장 자판기 설치 가이드 — 비용·추천·수익 총정리','휘트니스센터 자판기 설치 가이드 — 비용·추천·수익 총정리','아파트커뮤니티 자판기 설치 가이드 — 비용·추천·수익 총정리','주상복합 자판기 설치 가이드 — 비용·추천·수익 총정리','오피스텔 자판기 설치 가이드 — 비용·추천·수익 총정리','미용실 자판기 설치 가이드 — 비용·추천·수익 총정리','네일샵 자판기 설치 가이드 — 비용·추천·수익 총정리','무인매장 자판기 설치 가이드 — 비용·추천·수익 총정리','무인세차장 자판기 설치 가이드 — 비용·추천·수익 총정리','스마트자판기 설치 가이드 — 비용·추천·수익 총정리','스마트밴딩머신 설치 가이드 — 비용·추천·수익 총정리','디지털자판기 설치 가이드 — 비용·추천·수익 총정리','터치스크린자판기 설치 가이드 — 비용·추천·수익 총정리','멀티자판기 설치 가이드 — 비용·추천·수익 총정리','키오스크자판기 설치 가이드 — 비용·추천·수익 총정리','카드결제 자판기 설치 가이드 — 비용·추천·수익 총정리','카드자판기 설치 가이드 — 비용·추천·수익 총정리','사원증결제 자판기 설치 가이드 — 비용·추천·수익 총정리','회원카드 자판기 설치 가이드 — 비용·추천·수익 총정리','커스터마이징 자판기 설치 가이드 — 비용·추천·수익 총정리','DIY 자판기 설치 가이드 — 비용·추천·수익 총정리','주문제작 자판기 설치 가이드 — 비용·추천·수익 총정리','맞춤제작 자판기 설치 가이드 — 비용·추천·수익 총정리','커스텀 자판기 설치 가이드 — 비용·추천·수익 총정리','자판기 래핑 설치 가이드 — 비용·추천·수익 총정리','광고판 자판기 설치 가이드 — 비용·추천·수익 총정리','자판기 광고판 설치 가이드 — 비용·추천·수익 총정리','광고용 자판기 설치 가이드 — 비용·추천·수익 총정리','광고수익 자판기 설치 가이드 — 비용·추천·수익 총정리','럭셔리 자판기 설치 가이드 — 비용·추천·수익 총정리','고급 자판기 설치 가이드 — 비용·추천·수익 총정리','원격관리 자판기 설치 가이드 — 비용·추천·수익 총정리','재고관리 자판기 설치 가이드 — 비용·추천·수익 총정리','냉장 자판기 설치 가이드 — 비용·추천·수익 총정리','상온 자판기 설치 가이드 — 비용·추천·수익 총정리','샐러드 자판기 설치 가이드 — 비용·추천·수익 총정리','밀키트 자판기 설치 가이드 — 비용·추천·수익 총정리','신선식품 자판기 설치 가이드 — 비용·추천·수익 총정리','반찬 자판기 설치 가이드 — 비용·추천·수익 총정리','냉장식품 자판기 설치 가이드 — 비용·추천·수익 총정리','프로틴 자판기 설치 가이드 — 비용·추천·수익 총정리','건강음료 자판기 설치 가이드 — 비용·추천·수익 총정리','화장품 자판기 설치 가이드 — 비용·추천·수익 총정리','뷰티 자판기 설치 가이드 — 비용·추천·수익 총정리','생필품 자판기 설치 가이드 — 비용·추천·수익 총정리','반려동물간식 자판기 설치 가이드 — 비용·추천·수익 총정리','애견용품 자판기 설치 가이드 — 비용·추천·수익 총정리','굿즈 자판기 설치 가이드 — 비용·추천·수익 총정리','문구 자판기 설치 가이드 — 비용·추천·수익 총정리','보드게임 자판기 설치 가이드 — 비용·추천·수익 총정리','호텔어메니티 자판기 설치 가이드 — 비용·추천·수익 총정리'];
+const VEND_TITLES=["학교 자판기 도입 비용 비교","고등학교 자판기 추천 모델 정리","대학교 자판기 도입 비용 비교","독서실 자판기 도입 이유","스터디카페 자판기 추천 모델 정리","기숙사 자판기 설치 후기","병원 자판기 비용 총정리","병실 자판기 도입 비용 비교","동물병원 자판기 수익 구조 분석","사내 자판기 설치비용 얼마일까","회사복지 자판기 비용 총정리","구내식당 자판기 설치 방법","공유오피스 자판기 도입 비용 비교","관공서 자판기 설치 후기","호텔 자판기 설치비용 얼마일까","스크린골프장 자판기 설치 가이드 총정리","볼링장 자판기 설치 시 확인할 점","당구장 자판기 추천 모델 정리","PC방 자판기 설치 방법","만화카페 자판기 설치비용 얼마일까","캠핑장 자판기 설치 방법","글램핑장 자판기 설치 방법","키즈카페 자판기 설치 방법","대형키즈카페 자판기 설치 후기","애견호텔 자판기 수익 구조 분석","애견카페 자판기 추천 모델 정리","헬스장 자판기 설치 가이드 총정리","휘트니스센터 자판기 수익 구조 분석","아파트커뮤니티 자판기 추천 모델 정리","주상복합 자판기 비용 총정리","오피스텔 자판기 추천 모델 정리","미용실 자판기 도입 비용 비교","네일샵 자판기 도입 비용 비교","무인매장 자판기 도입 이유","무인세차장 자판기 설치 가이드 총정리","스마트자판기 수익 구조 분석","스마트밴딩머신 비용 총정리","디지털자판기 설치 시 확인할 점","터치스크린자판기 수익 구조 분석","멀티자판기 수익 구조 분석","키오스크자판기 설치 시 확인할 점","카드결제 자판기 설치 시 확인할 점","카드자판기 설치 방법","사원증결제 자판기 도입 비용 비교","회원카드 자판기 설치 시 확인할 점","커스터마이징 자판기 도입 이유","DIY 자판기 설치 시 확인할 점","주문제작 자판기 도입 비용 비교","맞춤제작 자판기 비용 총정리","커스텀 자판기 설치 시 확인할 점","자판기 래핑 설치 가이드 총정리","광고판 자판기 도입 비용 비교","자판기 광고판 설치 가이드 총정리","광고용 자판기 설치 시 확인할 점","광고수익 자판기 수익 구조 분석","럭셔리 자판기 도입 이유","고급 자판기 도입 이유","원격관리 자판기 도입 이유","재고관리 자판기 설치 방법","냉장 자판기 설치 방법","상온 자판기 설치 후기","샐러드 자판기 설치비용 얼마일까","밀키트 자판기 설치비용 얼마일까","신선식품 자판기 도입 이유","반찬 자판기 추천 모델 정리","냉장식품 자판기 비용 총정리","프로틴 자판기 수익 구조 분석","건강음료 자판기 설치 후기","화장품 자판기 비용 총정리","뷰티 자판기 설치 방법","생필품 자판기 도입 이유","반려동물간식 자판기 추천 모델 정리","애견용품 자판기 도입 비용 비교","굿즈 자판기 비용 총정리","문구 자판기 수익 구조 분석","보드게임 자판기 설치 시 확인할 점","호텔어메니티 자판기 설치 방법"];
 const VEND_SLUGS=['biz-vending-001','biz-vending-002','biz-vending-003','biz-vending-004','biz-vending-005','biz-vending-006','biz-vending-007','biz-vending-008','biz-vending-009','biz-vending-010','biz-vending-011','biz-vending-012','biz-vending-013','biz-vending-014','biz-vending-015','biz-vending-016','biz-vending-017','biz-vending-018','biz-vending-019','biz-vending-020','biz-vending-021','biz-vending-022','biz-vending-023','biz-vending-024','biz-vending-025','biz-vending-026','biz-vending-027','biz-vending-028','biz-vending-029','biz-vending-030','biz-vending-031','biz-vending-032','biz-vending-033','biz-vending-034','biz-vending-035','biz-vending-036','biz-vending-037','biz-vending-038','biz-vending-039','biz-vending-040','biz-vending-041','biz-vending-042','biz-vending-043','biz-vending-044','biz-vending-045','biz-vending-046','biz-vending-047','biz-vending-048','biz-vending-049','biz-vending-050','biz-vending-051','biz-vending-052','biz-vending-053','biz-vending-054','biz-vending-055','biz-vending-056','biz-vending-057','biz-vending-058','biz-vending-059','biz-vending-060','biz-vending-061','biz-vending-062','biz-vending-063','biz-vending-064','biz-vending-065','biz-vending-066','biz-vending-067','biz-vending-068','biz-vending-069','biz-vending-070','biz-vending-071','biz-vending-072','biz-vending-073','biz-vending-074','biz-vending-075','biz-vending-076','biz-vending-077'];
 const VEND_CAT_MAP=['edu','edu','edu','edu','edu','edu','medical','medical','medical','office','office','office','office','office','leisure','leisure','leisure','leisure','leisure','leisure','leisure','leisure','kids','kids','kids','kids','fitness','fitness','residence','residence','residence','beauty','beauty','unmanned','unmanned','smart','smart','smart','smart','smart','smart','payment','payment','payment','payment','custom','custom','custom','custom','custom','custom','advert','advert','advert','advert','premium','premium','manage','manage','manage','manage','food','food','food','food','food','food','food','goods','goods','goods','goods','goods','goods','goods','goods','goods'];
 const VEND_CATS={edu:'교육·학습',medical:'의료·건강',office:'오피스·관공서',leisure:'숙박·레저',kids:'키즈·반려',fitness:'피트니스',residence:'주거·생활',beauty:'뷰티',unmanned:'무인',smart:'스마트·디지털',payment:'결제방식',custom:'맞춤·주문제작',advert:'광고·수익',premium:'프리미엄',manage:'관리·운영',food:'식품',goods:'생활·굿즈'};
@@ -121,30 +121,30 @@ unmanned:['무인매장','무인카페','무인아이스크림할인점','셀프
 mobile:['배달전문점','포장전문점','푸드트럭','이동식매장','시장상인','플리마켓','행사부스','소형매장']
 };
 const BIZ_TMPLS=[
-'{b} 카드단말기 설치 가이드 — 비용·수수료·추천 총정리'
-];
+// (BIZ_TMPLS replaced below)
+function titleHash(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0;}return Math.abs(h);}
+const TITLE_SFXS={
+card:['카드단말기 설치비용 얼마일까','카드단말기 추천 모델 총정리','카드단말기 수수료 비교 가이드','카드단말기 설치 시 확인할 점','카드단말기 도입 후기','카드단말기 설치 방법 정리','카드단말기 비용 총정리','카드단말기 추천 이유','카드단말기 무선 vs 유선 비교','카드단말기 필수 기능 정리'],
+pos:['포스기 설치비용 현실 얼마일까','포스기 추천 모델 총정리','포스기 설치 시 꼭 확인할 점','포스기 추천 이유','포스기 설치 후기','포스기 도입 비용 비교','포스기 도입 가이드','포스기 필수 기능 정리','포스기 비용 총정리','포스기 추천 시스템','포스기 설치 방법','포스기 회원관리 연동 방법','포스기 무인결제 구축','포스기 통합관리 시스템'],
+kiosk:['키오스크 설치비용 총정리','키오스크 추천 기종 정리','키오스크 도입 후기','키오스크 설치 가이드','키오스크 비용 비교','키오스크 도입 이유','키오스크 무인주문 구축','키오스크 설치 시 확인할 점','키오스크 설치 방법','키오스크 도입 효과'],
+table:['테이블오더 설치비용 얼마일까','테이블오더 추천 모델','테이블오더 도입 후기','테이블오더 설치 가이드','테이블오더 비용 비교','테이블오더 도입 이유','테이블오더 QR주문 구축','테이블오더 설치 시 확인할 점'],
+cctv:['CCTV 설치비용 얼마일까','CCTV 추천 구성 정리','CCTV 설치 후기','CCTV 도입 가이드','CCTV 설치 시 확인할 점','CCTV 비용 비교','CCTV 화질 비교','CCTV 추천 이유','CCTV 설치 방법','CCTV 무인관제 구축']
+};
 const BIZ_TITLES=[];const BIZ_CAT_MAP={};
 Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
  types.forEach(b=>{
-  BIZ_TMPLS.forEach(tmpl=>{
-   const title=tmpl.replace('{b}',b);
-   BIZ_CAT_MAP[BIZ_TITLES.length]=cat;
-   BIZ_TITLES.push(title);
-  });
+  const sfxArr=TITLE_SFXS.card;
+  BIZ_CAT_MAP[BIZ_TITLES.length]=cat;
+  BIZ_TITLES.push(b+' '+sfxArr[titleHash(b)%sfxArr.length]);
  });
 });
 const BIZ_SLUGS=BIZ_TITLES.map((_,i)=>'biz-'+(i+1).toString().padStart(3,'0'));
-const CCTV_TMPLS=[
-'{b} CCTV 설치 가이드 — 비용·화질·구성 총정리'
-];
 const CCTV_TITLES=[];const CCTV_CAT_MAP={};
 Object.entries(BIZ_TYPES).forEach(([cat,types])=>{
  types.forEach(b=>{
-  CCTV_TMPLS.forEach(tmpl=>{
-   const title=tmpl.replace('{b}',b);
-   CCTV_CAT_MAP[CCTV_TITLES.length]=cat;
-   CCTV_TITLES.push(title);
-  });
+  const sfxArr=TITLE_SFXS.cctv;
+  CCTV_CAT_MAP[CCTV_TITLES.length]=cat;
+  CCTV_TITLES.push(b+' '+sfxArr[titleHash(b)%sfxArr.length]);
  });
 });
 const CCTV_SLUGS=CCTV_TITLES.map((_,i)=>'biz-cctv-'+(i+1).toString().padStart(3,'0'));
@@ -350,10 +350,11 @@ const PROD_PHOTOS={vending:['https://raw.githubusercontent.com/dandylsk80/allpay
  table:['https://picsum.photos/seed/table1/800/420','https://picsum.photos/seed/table2/800/420','https://picsum.photos/seed/table3/800/420','https://picsum.photos/seed/table4/800/420']
 };
 
-function getBizCat(title){
- const idx=BIZ_TITLES.indexOf(title);
- const cat=idx>=0?BIZ_CAT_MAP[idx]:'retail';
+function getBizCat(titleOrCat){
  const info={cafe:{cat:'cafe',pay:'카드·간편결제',peak:'오전~오후',avg:'5,000~15,000원',cust:'테이크아웃+매장 이용 고객'},food:{cat:'food',pay:'카드·배달앱 연동',peak:'점심·저녁 피크타임',avg:'8,000~30,000원',cust:'식사 고객+배달 주문'},bar:{cat:'bar',pay:'카드·테이블 분할결제',peak:'저녁~심야',avg:'20,000~50,000원',cust:'단체 모임 고객'},leisure:{cat:'leisure',pay:'카드·시간제 결제',peak:'저녁·주말',avg:'10,000~30,000원',cust:'시간제 이용 고객'},edu:{cat:'edu',pay:'카드·정기결제',peak:'월초 수강료 결제',avg:'100,000~300,000원',cust:'학부모·수강생'},beauty:{cat:'beauty',pay:'카드·예약금 결제',peak:'주말·공휴일',avg:'30,000~100,000원',cust:'예약 고객'},medical:{cat:'medical',pay:'카드·보험 연동',peak:'오전~오후',avg:'10,000~500,000원',cust:'환자·보호자'},retail:{cat:'retail',pay:'카드·간편결제·현금',peak:'주말·세일 기간',avg:'5,000~200,000원',cust:'쇼핑 고객'},service:{cat:'service',pay:'카드·무인결제',peak:'주말',avg:'3,000~15,000원',cust:'이용 고객'},auto:{cat:'auto',pay:'카드·간편결제',peak:'주말·출퇴근',avg:'10,000~300,000원',cust:'차량 소유 고객'},office:{cat:'office',pay:'카드·계좌이체',peak:'비정기',avg:'고액 거래',cust:'계약 고객'},stay:{cat:'stay',pay:'카드·온라인 예약',peak:'주말·성수기',avg:'50,000~300,000원',cust:'숙박 고객'},unmanned:{cat:'unmanned',pay:'카드·간편결제 전용',peak:'24시간',avg:'3,000~20,000원',cust:'무인 이용 고객'},mobile:{cat:'mobile',pay:'무선단말기·간편결제',peak:'유동적',avg:'5,000~20,000원',cust:'현장 구매 고객'}};
+ if(info[titleOrCat])return info[titleOrCat];
+ const idx=BIZ_TITLES.indexOf(titleOrCat);
+ const cat=idx>=0?BIZ_CAT_MAP[idx]:'retail';
  return info[cat]||info.retail;
 }
 function makeBizPage(idx){
@@ -1742,7 +1743,9 @@ function buildProdTitles(prodName,cats,exclude){
   types.forEach(b=>{
    if(exclude&&exclude.includes(b))return;
    catMap[titles.length]=cat;
-   titles.push(b+' '+(prodName==='pos'?'포스기 도입 가이드 — 메뉴·정산·매출관리':prodName==='kiosk'?'키오스크 설치 가이드 — 무인주문·인건비 절감':'테이블오더 도입 가이드 — QR주문·서빙효율'));
+   const sfxArr=TITLE_SFXS[prodName]||[];
+   const sfx=sfxArr.length>0?sfxArr[titleHash(b)%sfxArr.length]:'';
+   titles.push(b+(sfx?' '+sfx:''));
   });
  });
  const slugs=titles.map((_,i)=>slugPrefix+'-'+(i+1).toString().padStart(3,'0'));
@@ -1759,11 +1762,12 @@ const TABLE_TITLES=TABLE_DATA.titles,TABLE_CAT_MAP=TABLE_DATA.catMap,TABLE_SLUGS
 function makeProdBizPage(prodKey,titles,catMap,slugs,idx){
  const title=titles[idx];if(!title)return null;
  const slug=slugs[idx];const catKey=catMap[idx];
- const biz=prodKey==='vending'?title.split(' 설치 가이드')[0]:title.split(prodKey==='pos'?' 포스기':prodKey==='kiosk'?' 키오스크':' 테이블오더')[0];
+ const vendSfxArr=['설치비용 얼마일까','설치 가이드 총정리','추천 모델 정리','설치 후기','수익 구조 분석','도입 비용 비교','설치 시 확인할 점','도입 이유','설치 방법','비용 총정리'];
+ const biz=prodKey==='vending'?vendSfxArr.reduce((b,s)=>title.endsWith(s)?title.slice(0,-s.length-1):b,title):title.split(prodKey==='pos'?' 포스기':prodKey==='kiosk'?' 키오스크':' 테이블오더')[0];
  const _ps=["설치비용 얼마일까","추천 모델 총정리","도입 전 꼭 알아야 할 점","추천 이유","설치 후기","도입 비용 비교","설치하면 매출 오를까","추천 모델 비교","설치 가이드","비용 총정리","필수 기능 정리","도입 효과 분석","매출분석 시스템 추천","설치 방법","배달앱 연동 가이드","정산 자동화 방법","메뉴관리 시스템 비교","설치 팁 정리","도입 장단점 분석","업종별 추천 총정리","설치 비용 현실","추천 시스템 구축","비용 아끼는 법","도입 효과 후기","설치 사례 분석","추천 가이드","도입 전 체크사항","비용 비교 가이드","설치 장점 총정리","추천 모델 순위","도입 비용 안내","설치 추천 이유","비용 절감 방법","추천 설치법","도입 가이드 총정리","설치 방법 총정리","추천 이유 정리","비용 가이드","설치 효과 분석","추천 TOP5","도입 사례 모음","설치 전 확인사항","비용 현실 분석","추천 비교 분석","도입 추천 이유","설치 완벽 가이드","추천 모델 안내","비용 총정리 가이드","설치 추천 모델","도입 효과 정리","비용 안내 가이드","설치 비용 가이드","추천 가이드 정리","도입 장점 정리","설치 후기와 비용","추천 단말기 비교","비용 절약 팁","설치 사례 후기","추천 시스템 안내","도입 비용 현실","설치 전 필수 확인","추천 브랜드 비교","비용 비교 분석","설치 추천 가이드","도입 체크리스트","설치 비용 절약법","추천 이유 총정리","도입 후기 모음","설치 추천 TOP3","비용 현실 가이드","설치 가이드 총정리","추천 설치 사례","도입 가이드 안내","설치 비용 현실 안내","추천 모델 후기","비용 절감 가이드","설치 효과 후기","추천 포스 비교","도입 효과 총정리","재고관리 연동 추천","직원관리 시스템 추천","결제 시스템 비교","매출 리포트 활용법","설치 방법과 비용","업종별 비교 분석","도입 전 알아야 할 점 정리","설치 완벽 정리","추천 모델 가이드","비용과 효과 비교","설치 장점 분석","도입 추천 총정리","설치 비용 비교 분석","설치 필수 가이드","추천 총정리 가이드"];const _ks=["설치비용 얼마일까 사장님 필독","추천 모델 총정리 실패 없는 선택","설치 전 꼭 알아야 할 5가지","왜 필수일까 매출 차이 공개","설치 후기 실제 만족도는","도입하면 인건비 얼마나 줄까","추천 모델 비교해봤습니다","설치 전 체크포인트","꼭 필요할까 장단점 분석","주문 빨라질까 효과 검증","도입 비용과 효과 정리","추천 테이블오더와 뭐가 다를까","설치 시 주의사항","도입 사례 운영 효율 분석","설치비용 비교 분석","추천 이유와 실제 후기","도입하면 좋은 이유","필수 기능 총정리","설치하면 좋은 이유 5가지","무인주문 시스템 추천","접수 시스템 추천 모델","회원관리 시스템 가이드","설치비용 아끼는 법","운영 효율 높이는 방법","설치 장점 총정리","예약 시스템 구축 비용","구축 비용 총정리","추천 순위 정리","활용법 정리","설치 비용 가이드","추천 모델 가이드","결제 시스템 추천","출결관리 시스템 비교","설치하면 좋은 이유 정리","운영 효율화 방법","티켓발권 시스템 구축법","렌탈 비용 총정리","설치 사례 분석","추천 모델 안내","도입 효과 분석","안내 시스템 구축 가이드","설치비용 총정리 가이드","활용 사례 분석","통합 구축 방법","설치비용 아끼는 팁","추천 업종 TOP5","업종별 비교 분석","지원사업 신청 방법","설치 전략 공개","도입 전 체크사항 정리","추천 완벽 가이드","설치 효과와 비용 분석","도입 장점 총정리"];const _tbs=["도입하면 매출 얼마나 오를까","추천 모델 총정리","도입 전 꼭 확인할 점","설치 이유와 효과 분석","도입 후기 실제 만족도","비용 비교 분석 가이드","서빙 인건비 절감 효과","추천 시스템 비교 분석","설치 가이드 총정리","비용 총정리 가이드","필수 기능 정리","도입 사례와 매출 변화","주문 시스템 추천 가이드","설치 방법 완벽 안내","객단가 올리는 비결","홀 운영 효율화 방법","메뉴판 시스템 비교 분석","설치 팁 모음","다국어 지원 시스템 추천","도입 장단점 완벽 정리"];const _vs=["설치비용 총정리","추천 모델 비교","설치 전 알아야 할 점","수익 얼마일까 현실 공개","도입 후기 모음","비용 비교 분석","설치하면 좋은 이유","추천 모델 정리","설치 가이드 완벽판","수익 모델 분석","필수 기능 정리","도입 사례 공개","구축 비용 총정리","설치 방법 안내","운영 효율 높이는 법","결제 시스템 추천","창업 전 체크사항","설치비용 아끼는 법","추천 순위 정리","활용 사례 분석","상품구성 전략 공개","월 수익 현실 분석","설치 장소 추천","도입 장단점 비교","설치 효과 분석","추천 가이드 정리","비용 현실 안내","도입 전 필수 확인","설치 추천 이유","수익 극대화 방법","운영 팁 총정리","설치 사례와 후기","추천 시스템 비교","비용 절약 가이드","도입 효과 총정리","설치 완벽 가이드","추천 모델 안내","비용 가이드 정리","도입 추천 이유","설치 비용 현실","수익 분석 가이드","상품 소싱 방법","설치 전 체크사항","추천 브랜드 비교","도입 비용 안내","운영 효율 분석","설치 방법 총정리","추천 이유 정리","비용 안내 가이드","도입 사례 정리","설치 장점 총정리","추천 비교 분석","수익 모델 비교","설치 효과 후기","도입 가이드 총정리","비용 비교 가이드","추천 모델 후기","설치 추천 가이드","도입 효과 분석 가이드","비용 총정리 가이드","수익 현실 공개","운영 노하우 정리","설치 추천 TOP3","추천 총정리 가이드","도입 비용 현실","설치 가이드 안내","추천 설치 사례","비용 절감 방법","도입 장점 정리","설치 비용 비교 분석","수익 극대화 전략","상품 트렌드 분석","설치 필수 가이드","추천 이유 총정리","도입 전 알아야 할 모든 것","설치 방법과 비용 안내","비용과 수익 완벽 비교"];const _sufArr=prodKey==='pos'?_ps:prodKey==='kiosk'?_ks:prodKey==='vending'?_vs:_tbs;const dispTitle=biz+(prodKey==='vending'?' ':' '+(prodKey==='pos'?'포스기':prodKey==='kiosk'?'키오스크':'테이블오더')+' ')+_sufArr[idx%_sufArr.length];
  const h=title.split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
  const s=(arr,seed)=>arr[Math.abs((h>>>seed)^arr.length)%arr.length];
- const bc=getBizCat(biz+' 카드단말기 설치 가이드 — 비용·수수료·추천 총정리');
+ const bc=getBizCat(catKey);
  const cols={cafe:['#B45309','#FFF7ED'],food:['#DC2626','#FEF2F2'],bar:['#D97706','#FFFBEB'],leisure:['#7C3AED','#F5F3FF'],edu:['#2563EB','#EFF6FF'],beauty:['#DB2777','#FDF2F8'],medical:['#059669','#ECFDF5'],retail:['#EA580C','#FFF7ED'],service:['#4F46E5','#EEF2FF'],auto:['#0D9488','#F0FDFA'],office:['#475569','#F8FAFC'],stay:['#9333EA','#FAF5FF'],unmanned:['#0EA5E9','#F0F9FF'],mobile:['#65A30D','#F7FEE7']};
  const [mc,bg]=cols[catKey]||cols.retail;
  const cn={cafe:'카페·베이커리',food:'음식점',bar:'주점',leisure:'레저·스포츠',edu:'학원·교육',beauty:'뷰티·미용',medical:'의료·건강',retail:'소매·판매',service:'생활서비스',auto:'자동차',office:'사무실·전문직',stay:'숙박',unmanned:'무인매장',mobile:'이동·시장'}[catKey]||'';
