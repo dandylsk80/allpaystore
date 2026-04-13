@@ -321,7 +321,7 @@ const BU={
  const related=CCTV_TITLES.filter((t,i)=>i!==idx&&CCTV_CAT_MAP[i]===catKey).slice(0,6);
  const rl=related.map(t=>{const ri=CCTV_TITLES.indexOf(t);return '<a href="/biz-cctv/'+CCTV_SLUGS[ri]+'/" style="display:block;padding:10px 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:14px">'+t+'</a>';}).join('');
  const cn={cafe:'카페·베이커리',food:'음식점',bar:'주점',leisure:'레저·스포츠',edu:'학원·교육',beauty:'뷰티·미용',medical:'의료·건강',retail:'소매·판매',service:'생활서비스',auto:'자동차',office:'사무실·전문직',stay:'숙박',unmanned:'무인매장',mobile:'이동·시장'}[catKey]||'';
- return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>'+dispTitle+' | 올페이스토어</title><meta name="description" content="'+md+'"><meta property="og:title" content="'+dispTitle+'"><meta property="og:type" content="article"><link rel="canonical" href="https://allpaystore.com/biz-cctv/'+slug+'/">'+CSS+'</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:24px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz-cctv/" style="color:#888;text-decoration:none">업종별 CCTV</a> &gt; <a href="/biz-cctv/'+catKey+'/" style="color:#888;text-decoration:none">'+cn+'</a></p><h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">'+dispTitle+'</h1><div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><div style="font-size:64px;text-align:center;padding:20px 0">📹</div><div style="text-align:center;font-size:18px;font-weight:700;color:'+mc+'">'+biz+' CCTV 설치 가이드</div></div>'+body+'<div class="cta" style="background:linear-gradient(135deg,'+mc+','+mc+'dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">📹 '+biz+' CCTV 무료 견적</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">'+cc.cam+' · HD~4K · 원격 모니터링</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:'+mc+'">📞 010-9876-8282</a> <a href="/contact/?product=cctv" class="cta-sub" style="border-color:rgba(255,255,255,.5);color:#fff">💬 상담문의</a></div>'+(rl?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+rl+'</div>':'')+'</div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product=cctv" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>';
+ return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>'+dispTitle+' | 올페이스토어</title><meta name="description" content="'+md+'"><meta property="og:title" content="'+dispTitle+'"><meta property="og:type" content="article"><link rel="canonical" href="https://allpaystore.com/biz-cctv/'+slug+'/">'+CSS+'</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:24px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz-cctv/" style="color:#888;text-decoration:none">업종별 CCTV</a> &gt; <a href="/biz-cctv/'+catKey+'/" style="color:#888;text-decoration:none">'+cn+'</a></p><h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">'+dispTitle+'</h1><div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><img src="'+ getBizImg(biz,catKey) +'" alt="'+ biz +' CCTV 가이드" width="800" height="400" loading="eager" style="width:100%;height:220px;object-fit:cover;display:block"><div style="text-align:center;font-size:18px;font-weight:700;color:'+mc+'">'+biz+' CCTV 설치 가이드</div></div>'+body+'<div class="cta" style="background:linear-gradient(135deg,'+mc+','+mc+'dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">📹 '+biz+' CCTV 무료 견적</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">'+cc.cam+' · HD~4K · 원격 모니터링</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:'+mc+'">📞 010-9876-8282</a> <a href="/contact/?product=cctv" class="cta-sub" style="background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff">💬 상담문의</a></div>'+(rl?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+rl+'</div>':'')+'</div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product=cctv" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>';
 }
 
 const BIZ_PHOTOS={
@@ -354,6 +354,158 @@ function getBizCat(titleOrCat){
  const idx=BIZ_TITLES.indexOf(titleOrCat);
  const cat=idx>=0?BIZ_CAT_MAP[idx]:'retail';
  return info[cat]||info.retail;
+}
+function getBizImg(biz,catKey){
+ const B={
+  '카페':'1554118811-1e67bef8b96b',
+  '커피숍':'1495474472287-4d71bcdd2085',
+  '디저트카페':'1499195333224-b73b274b567b',
+  '베이커리':'1509440159596-0249088772ff',
+  '빵집':'1509440159596-0249088772ff',
+  '브런치카페':'1550547660-d9450f859349',
+  '개인카페':'1514190051997-0f6f39ca5cde',
+  '프랜차이즈카페':'1514190051997-0f6f39ca5cde',
+  '음식점':'1504674900247-0877df9cc836',
+  '한식집':'1544025162-d76538ac7a8e',
+  '중식당':'1563245372-f21724e3856d',
+  '일식집':'1579871494447-9811cf80d66c',
+  '분식집':'1517190184510-b44b1c6e8e6d',
+  '치킨집':'1527477396000-e27163b481c2',
+  '피자집':'1513104890138-7c749659a591',
+  '고깃집':'1558030006-36ca44074e58',
+  '삼겹살집':'1558030006-36ca44074e58',
+  '족발집':'1617196034183-421b4518977d',
+  '국밥집':'1568901346375-23c9450c58cd',
+  '곱창집':'1558030006-36ca44074e58',
+  '술집':'1566417985558-b77ddaf52e0b',
+  '호프집':'1510812431401-41d2bd2722f3',
+  '포차':'1414235077428-338989a2e8c0',
+  '이자카야':'1574612850285-f8b9f91a6ceb',
+  '와인바':'1510812431401-41d2bd2722f3',
+  '칵테일바':'1527489377706-5bf571be1d36',
+  '감성주점':'1514190051997-0f6f39ca5cde',
+  '노래방':'1598488035139-bdbb2231ce04',
+  'PC방':'1542751371-adc38448a05e',
+  '당구장':'1591839084481-b78b3f61f22f',
+  '스크린골프장':'1535131323489-f37e5c12e918',
+  '헬스장':'1534438327610-26a3d2af07dc',
+  '필라테스':'1518611012118-696fe9b21b3c',
+  '볼링장':'1610374792793-f016b77ca51a',
+  '찜질방':'1571019613454-1cb2f99b2d8b',
+  '요가학원':'1544367567-0f2fcb009e0b',
+  '태권도장':'1590874103328-eac38a683ce7',
+  '피아노학원':'1520523839897-bd0b52f945a0',
+  '미술학원':'1513475382585-d06e58bcb0e0',
+  '영어학원':'1580582932707-520aed937b7b',
+  '수학학원':'1580582932707-520aed937b7b',
+  '공부방':'1481627834876-b7833e8f84c6',
+  '독서실':'1481627834876-b7833e8f84c6',
+  '보습학원':'1580582932707-520aed937b7b',
+  '코딩학원':'1542831371-29b0f74f9713',
+  '댄스학원':'1508700115892-45ecd05ae2ad',
+  '미용실':'1521590832167-7bcbfaa6381f',
+  '네일샵':'1604654894610-df63bc536371',
+  '속눈썹샵':'1616394584738-fc6e85dd28cc',
+  '왁싱샵':'1570172619644-dfd03ed5d881',
+  '피부관리실':'1620916566398-39f74f3af67a',
+  '마사지샵':'1544161515-4ab6ce6db874',
+  '에스테틱':'1570172619644-dfd03ed5d881',
+  '반영구샵':'1616394584738-fc6e85dd28cc',
+  '바버샵':'1503951914875-452162b0f3f1',
+  '애견미용실':'1587300003488-0886dc473a27',
+  '동물병원':'1612531385149-0ce9a47b0d06',
+  '병원':'1519494026892-476e1d26a5d6',
+  '치과':'1606811971618-4f446dccb948',
+  '한의원':'1544367567-0f2fcb009e0b',
+  '약국':'1584308666744-24d5f0e0e0e6',
+  '안경점':'1574258495973-c1cf07a4f818',
+  '피부과':'1629909613654-28e02e5d0f49',
+  '정형외과':'1519494026892-476e1d26a5d6',
+  '옷가게':'1441986300917-64674bd600d8',
+  '의류매장':'1441986300917-64674bd600d8',
+  '신발가게':'1542291026-7eec264c27ff',
+  '편의점':'1474366521628-b6c31b68d2c4',
+  '마트':'1534452203293-dd4e50e59033',
+  '과일가게':'1546548928-48aacffecd65',
+  '정육점':'1529692236671-f1f6cf9683ba',
+  '꽃집':'1487530811015-57fcf1cda56d',
+  '문구점':'1546410531-bb4caa6379c2',
+  '서점':'1481627834876-b7833e8f84c6',
+  '화장품매장':'1596462502278-27bfdc403348',
+  '철물점':'1572981779307-38b8cabb2407',
+  '세탁소':'1545173168-9f1947eebb7a',
+  '빨래방':'1545173168-9f1947eebb7a',
+  '수선집':'1558171813-320f8b5eb8d1',
+  '열쇠집':'1558591710-4b6b92b34491',
+  '인테리어업체':'1560185007-cde436f6cb91',
+  '이사업체':'1600585154340-be6161a56a0c',
+  '청소업체':'1584820927498-cad076eae652',
+  '세차장':'1503376780353-7e6692767b70',
+  '카센터':'1492144534655-ae79c964c9d7',
+  '자동차정비소':'1492144534655-ae79c964c9d7',
+  '타이어샵':'1580974511812-6a2e9feee8cf',
+  '주유소':'1545262810-77515befe149',
+  '중고차매장':'1549317661-3a6e2a6b2a37',
+  '오토바이샵':'1558618047-3c8c76e4b0fc',
+  '부동산':'1560518883-ce09059eeffa',
+  '공인중개사사무소':'1560518883-ce09059eeffa',
+  '여행사':'1488085061851-03462de8a86a',
+  '사진관':'1519741497674-45a5b64cf34c',
+  '인쇄소':'1598488035139-bdbb2231ce04',
+  '세무사사무실':'1454165804606-c3d57bc86b40',
+  '사무실':'1497366216548-37526070297c',
+  '법률사무소':'1589391886645-d51941080932',
+  '펜션':'1571003123894-1ead6c2f437b',
+  '호텔':'1445019980597-93fa8acb246c',
+  '게스트하우스':'1555854400-07e234c96b00',
+  '모텔':'1520250697855-c1149849978d',
+  '글램핑':'1504280390367-361c6d9f38f4',
+  '캠핑장':'1537905569824-f89f14a09b8c',
+  '민박':'1517660029921-0cbea2d4033f',
+  '무인매장':'1556742049-0cfed4f6a45d',
+  '무인카페':'1514190051997-0f6f39ca5cde',
+  '무인아이스크림할인점':'1567306226416-28f0efdc88ce',
+  '셀프사진관':'1516035069371-29a1b244cc32',
+  '코인세탁소':'1545173168-9f1947eebb7a',
+  '무인편의점':'1556742049-0cfed4f6a45d',
+  '무인밀키트매장':'1506368249639-73a05d6f2488',
+  '배달전문점':'1526367790999-0150786686a2',
+  '포장전문점':'1526367790999-0150786686a2',
+  '푸드트럭':'1565299624846-eb5c14eb7a87',
+  '이동식매장':'1565299624846-eb5c14eb7a87',
+  '시장상인':'1488459716781-0b73e4f0af62',
+  '플리마켓':'1544761091-7f7e5fba7a47',
+  '행사부스':'1540575467063-5d2dfcab64f0',
+  '소형매장':'1472851294608-062f824d29cc'
+ };
+ const C={
+  cafe:'1554118811-1e67bef8b96b',
+  food:'1504674900247-0877df9cc836',
+  bar:'1414235077428-338989a2e8c0',
+  leisure:'1534438327610-26a3d2af07dc',
+  edu:'1580582932707-520aed937b7b',
+  beauty:'1522337360788-8b13dee7a37e',
+  medical:'1519494026892-476e1d26a5d6',
+  retail:'1441986300917-64674bd600d8',
+  service:'1545173168-9f1947eebb7a',
+  auto:'1503376780353-7e6692767b70',
+  office:'1497366216548-37526070297c',
+  stay:'1445019980597-93fa8acb246c',
+  unmanned:'1556742049-0cfed4f6a45d',
+  mobile:'1488459716781-0b73e4f0af62',
+  kids:'1503454537195-1dcabb73ffb9',
+  fitness:'1534438327610-26a3d2af07dc',
+  residence:'1560518883-ce09059eeffa',
+  premium:'1445019980597-93fa8acb246c',
+  smart:'1542751371-adc38448a05e',
+  payment:'1556742049-0cfed4f6a45d',
+  manage:'1497366216548-37526070297c',
+  custom:'1560185007-cde436f6cb91',
+  advert:'1598488035139-bdbb2231ce04',
+  goods:'1472851294608-062f824d29cc'
+ };
+ const id=B[biz]||C[catKey]||C.retail;
+ return 'https://images.unsplash.com/photo-'+id+'?w=800&h=400&auto=format&fit=crop&q=80';
 }
 function makeBizPage(idx){
  const title=BIZ_TITLES[idx];if(!title)return null;
@@ -405,7 +557,7 @@ function makeBizPage(idx){
  body+='<h2 style="color:'+mc+'">'+s(['🎯 '+biz+' 사장님께 드리는 조언','💡 '+biz+' 운영 노하우','📌 '+biz+' 전문가 팁'],15)+'</h2><p>'+s([biz+' 업종은 '+bc.peak+'에 매출이 집중되므로, 피크 직전에 단말기 상태와 용지를 미리 점검하는 습관이 중요합니다. 결제 장애로 1건의 거래를 놓치면 해당 고객의 재방문 확률이 크게 떨어집니다. 올페이스토어는 원격 모니터링으로 장비 상태를 사전에 감지하여 장애를 예방합니다.',biz+' 매출을 높이려면 결제 데이터를 활용하세요. 요일별·시간대별 매출 패턴을 분석하면 프로모션 타이밍을 정확히 잡을 수 있고, 인기 메뉴와 비인기 메뉴를 구분하여 메뉴 구성을 최적화할 수 있습니다. 이 모든 분석이 단말기 매출 리포트에서 자동으로 제공됩니다.','신규 '+biz+' 오픈을 준비 중이라면 카드단말기 선택을 마지막에 하지 마세요. 결제 시스템은 매장 운영의 중심이므로 인테리어 설계 단계에서 카운터 위치, 전원 배치, 통신 환경을 함께 계획해야 합니다. 올페이스토어는 오픈 전 사전 세팅으로 첫 영업일부터 바로 결제가 가능하도록 지원합니다.',biz+js(biz,'은','는')+' 계절·시즌에 따라 매출 변동이 있는 업종입니다. 비수기에는 수수료 부담을 최소화하고, 성수기에는 결제 처리 속도를 극대화하는 전략이 필요합니다. VAN사별 수수료 구조를 비교하고, '+biz+' 연간 매출 패턴에 맞는 최적의 요금제를 선택하세요.',bc.cust+js(bc.cust,'이','가')+' 주 고객인 '+biz+'에서는 결제 경험이 곧 매장의 첫인상입니다. 결제가 빠르고 매끄러우면 고객 만족도가 올라가고, 온라인 리뷰에도 긍정적 영향을 줍니다. 올페이스토어는 '+biz+' 고객 특성에 맞게 결제 화면과 영수증 디자인까지 맞춤 세팅해 드립니다.'],16)+'</p>'+'<p>'+s(['올페이스토어는 전국 5,000개 읍면동에서 '+biz+' 업종 전문 설치 서비스를 제공합니다. 매장 방문부터 설치, 사용법 교육, 사후 관리까지 원스톱으로 진행되어 사장님이 따로 신경 쓸 것이 없습니다. 지금 바로 무료 상담을 받아보세요.','결제 장비는 매장 운영의 핵심 인프라입니다. '+biz+' 특성에 맞지 않는 장비를 사용하면 피크타임마다 스트레스를 받게 됩니다. 올페이스토어의 업종 전문 상담사가 '+biz+' 매장에 최적화된 솔루션을 제안합니다.','카드단말기 교체를 미루는 '+biz+' 사장님이 많지만, 교체 후 수수료 절감액만으로도 충분히 의미 있는 투자입니다. 설치비·월 이용료 무료에 약정도 없으니 부담 없이 시작할 수 있습니다.',''+biz+' 매출의 시작과 끝은 결제입니다. 고객이 원하는 방식으로 빠르게 결제할 수 있으면 그것이 최고의 서비스입니다. 올페이스토어는 '+biz+' 고객의 결제 편의를 최우선으로 설계합니다.','사장님이 매장에 계시지 않아도 앱에서 실시간 매출을 확인하고, 이상 거래 알림을 받을 수 있습니다. '+biz+' 운영의 자유도를 높여주는 스마트한 결제 시스템을 올페이스토어에서 만나보세요.'],18)+'</p>';
  const related=BIZ_TITLES.filter((t,i)=>i!==idx&&BIZ_CAT_MAP[i]===catKey).slice(0,6);
  const rl=related.map(t=>{const ri=BIZ_TITLES.indexOf(t);return '<a href="/biz/'+BIZ_SLUGS[ri]+'/" style="display:block;padding:10px 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:14px">'+t+'</a>';}).join('');
- return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>'+dispTitle+' | 올페이스토어</title><meta name="description" content="'+md+'"><meta property="og:title" content="'+dispTitle+'"><meta property="og:type" content="article"><link rel="canonical" href="https://allpaystore.com/biz/'+slug+'/">'+CSS+'</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:24px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz/" style="color:#888;text-decoration:none">업종별</a> &gt; <a href="/biz/'+catKey+'/" style="color:#888;text-decoration:none">'+cn+'</a></p><h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">'+dispTitle+'</h1><div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><div style="font-size:64px;text-align:center;padding:20px 0">'+s(["💳","🏪","📱","🛒","✨"],0)+'</div><div style="text-align:center;font-size:18px;font-weight:700;color:'+mc+'">'+biz+' 카드단말기 가이드</div></div>'+body+'<div class="cta" style="background:linear-gradient(135deg,'+mc+','+mc+'dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">'+biz+' 카드단말기 무료 설치</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">설치비 0원 · 업종 맞춤 · 당일 세팅</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:'+mc+'">📞 010-9876-8282</a> <a href="/contact/?product=card" class="cta-sub" style="border-color:rgba(255,255,255,.5);color:#fff">💬 상담문의</a></div>'+(rl?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+rl+'</div>':'')+'</div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product=card" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>';
+ return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>'+dispTitle+' | 올페이스토어</title><meta name="description" content="'+md+'"><meta property="og:title" content="'+dispTitle+'"><meta property="og:type" content="article"><link rel="canonical" href="https://allpaystore.com/biz/'+slug+'/">'+CSS+'</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:24px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/biz/" style="color:#888;text-decoration:none">업종별</a> &gt; <a href="/biz/'+catKey+'/" style="color:#888;text-decoration:none">'+cn+'</a></p><h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">'+dispTitle+'</h1><div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><img src="'+ getBizImg(biz,catKey) +'" alt="'+ biz +' 카드단말기 가이드" width="800" height="400" loading="eager" style="width:100%;height:220px;object-fit:cover;display:block"><div style="text-align:center;font-size:18px;font-weight:700;color:'+mc+'">'+biz+' 카드단말기 가이드</div></div>'+body+'<div class="cta" style="background:linear-gradient(135deg,'+mc+','+mc+'dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">'+biz+' 카드단말기 무료 설치</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">설치비 0원 · 업종 맞춤 · 당일 세팅</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:'+mc+'">📞 010-9876-8282</a> <a href="/contact/?product=card" class="cta-sub" style="background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff">💬 상담문의</a></div>'+(rl?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+rl+'</div>':'')+'</div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product=card" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>';
 }
 function makeProductSVG(sido,sigungu,emd,prd){
  const sub=`${sido} ${sigungu}`;
@@ -1895,7 +2047,7 @@ body+='<h2 style="color:'+mc+'">'+s(['❓ '+biz+' '+prodLabel+' Q&A','💬 '+biz
  const related=titles.filter((t,i)=>i!==idx&&catMap[i]===catKey).slice(0,6);
  const rl=related.map(t=>{const ri=titles.indexOf(t);return '<a href="/'+urlPrefix+'/'+slugs[ri]+'/" style="display:block;padding:10px 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:14px">'+t+'</a>';}).join('');
 
- return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>'+dispTitle+' | 올페이스토어</title><meta name="description" content="'+md+'"><meta property="og:title" content="'+dispTitle+'"><meta property="og:type" content="article"><link rel="canonical" href="https://allpaystore.com/'+urlPrefix+'/'+slug+'/">'+CSS+'</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:24px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/'+urlPrefix+'/" style="color:#888;text-decoration:none">업종별 '+prodLabel+'</a> &gt; <a href="/'+urlPrefix+'/'+catKey+'/" style="color:#888;text-decoration:none">'+cn+'</a></p><h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">'+dispTitle+'</h1><div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><div style="font-size:64px;text-align:center;padding:20px 0">'+({pos:"🖥️",kiosk:"🤖",table:"📋",vending:"🏭"}[prodKey]||"📱")+'</div><div style="text-align:center;font-size:18px;font-weight:700;color:'+mc+'">'+biz+' '+prodLabel+' 가이드</div></div>'+body+'<div class="cta" style="background:linear-gradient(135deg,'+mc+','+mc+'dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">'+biz+' '+prodLabel+' 도입 상담</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">업종 맞춤 · 무료 설치 · 현장 세팅</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:'+mc+'">📞 010-9876-8282</a> <a href="/contact/?product='+prodParam+'" class="cta-sub" style="border-color:rgba(255,255,255,.5);color:#fff">💬 상담문의</a></div>'+(rl?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+rl+'</div>':'')+'</div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product='+prodParam+'" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>';
+ return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><title>'+dispTitle+' | 올페이스토어</title><meta name="description" content="'+md+'"><meta property="og:title" content="'+dispTitle+'"><meta property="og:type" content="article"><link rel="canonical" href="https://allpaystore.com/'+urlPrefix+'/'+slug+'/">'+CSS+'</head><body><nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav><div class="wrap" style="padding-top:24px"><p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/'+urlPrefix+'/" style="color:#888;text-decoration:none">업종별 '+prodLabel+'</a> &gt; <a href="/'+urlPrefix+'/'+catKey+'/" style="color:#888;text-decoration:none">'+cn+'</a></p><h1 style="font-size:24px;font-weight:900;color:#111;margin-bottom:16px;line-height:1.4">'+dispTitle+'</h1><div style="border-radius:12px;overflow:hidden;margin-bottom:24px"><img src="'+ getBizImg(biz,catKey) +'" alt="'+ biz +' '+ prodLabel +' 가이드" width="800" height="400" loading="eager" style="width:100%;height:220px;object-fit:cover;display:block"><div style="text-align:center;font-size:18px;font-weight:700;color:'+mc+'">'+biz+' '+prodLabel+' 가이드</div></div>'+body+'<div class="cta" style="background:linear-gradient(135deg,'+mc+','+mc+'dd);color:#fff;border-radius:16px;padding:32px 24px;margin:32px 0;text-align:center"><h3 style="color:#fff;margin:0 0 8px">'+biz+' '+prodLabel+' 도입 상담</h3><p style="color:rgba(255,255,255,.85);margin:0 0 20px;font-size:14px">업종 맞춤 · 무료 설치 · 현장 세팅</p><a href="tel:010-9876-8282" class="cta-main" style="background:#fff;color:'+mc+'">📞 010-9876-8282</a> <a href="/contact/?product='+prodParam+'" class="cta-sub" style="background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff">💬 상담문의</a></div>'+(rl?'<div style="margin-top:24px"><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">📖 관련 가이드</h3>'+rl+'</div>':'')+'</div><div class="fl-wrap"><a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="/contact/?product='+prodParam+'" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a></div></body></html>';
 }
 
 
