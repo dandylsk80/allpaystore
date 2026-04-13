@@ -1168,12 +1168,14 @@ function makeProductLandingPage(prodKey){
  if(!prd)return null;
  const isR=prodKey==='removal';
  const suf=isR?'전문':'설치';
+ const aka=prodKey==='vending'?'(자동판매기·자판기)':'';
  const PDESC={
  card:{t:'모든 결제를 한 대로',d:'IC칩·NFC·QR코드·간편결제를 모두 지원하는 최신 카드단말기를 매장 업종에 맞게 설치합니다. VAN사 수수료 비교를 통해 가장 유리한 조건을 찾아드리며, 설치비 무료·월 이용료 무료 혜택을 제공합니다. 자동커팅단말기, 유선카드단말기, 토스단말기, 무선단말기, 블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 기존 단말기 교체도 무료 견적 후 빠르게 진행됩니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대의 단말기로 처리할 수 있습니다.'},
  pos:{t:'매장 운영의 두뇌',d:'주문·결제·매출·재고·직원 관리를 하나의 시스템으로 통합합니다. 배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 테이블오더 연결, 실시간 매출 분석 대시보드까지 매장 운영에 필요한 모든 기능을 제공합니다. 업종별(음식점·카페·편의점·미용실) 최적화된 포스기를 추천하며, 설치비 무료·월 이용료 무료·직원 교육까지 무상으로 진행됩니다. 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화할 수 있습니다.'},
  kiosk:{t:'무인 주문·결제 솔루션',d:'인건비 월 200만원 이상 절감, 주문 정확도 100%, 피크타임 대기시간 단축. 스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천합니다. 포스기와 자동 연동되어 주문 즉시 주방 전달이 되며, 메뉴 사진 촬영·등록까지 무료로 대행합니다. 음식점·카페·베이커리·패스트푸드점에서 도입이 급증하고 있으며, 설치비 무료·월 이용료 무료로 진행됩니다.'},
  cctv:{t:'매장 보안의 완성',d:'HD~4K 고화질 촬영, 스마트폰 원격 모니터링, AI 움직임 감지, 야간 컬러 촬영까지 지원합니다. 포스기와 연동하면 결제 시점과 영상을 자동 매칭하여 정산 검증이 가능합니다. CCTV 설치 매장은 화재·도난 보험료 할인 혜택도 받을 수 있습니다. 30일 이상 영상 저장을 보장합니다. 매장 규모에 맞게 합리적인 비용으로 설치합니다. 4채널·8채널·16채널 등 매장 규모에 맞게 설계합니다.'},
  tableorder:{t:'홀 인건비 절감의 핵심',d:'QR코드·태블릿으로 테이블에서 바로 주문·결제. 직원 호출 대기 제로, 추가 주문 유도로 객단가 20~35% 상승. 주방 자동 연동까지. 홀 직원 1~2명을 감축하여 월 150~200만원 인건비를 절감할 수 있습니다. 메뉴 사진 촬영·등록 무료 대행, 다국어 지원(한국어·영어·중국어·일본어), 매출 데이터 분석까지 제공합니다. 설치비 무료·월 이용료 무료로 진행됩니다.'},
+  vending:{t:'자동판매기(자판기) 설치·임대',d:'밴딩머신·자동판매기·자판기 설치 및 임대 전문. 음료 자판기, 과자 자판기, 커피 자판기, 컵밥 자판기, 아이스크림 자판기 등 다양한 자동판매기를 전국에 설치합니다. 무인 매장, 오피스, 학교, 병원, 공장, 아파트 로비 등 유동인구가 있는 곳이면 어디든 설치 가능합니다. 설치비 무료·수익 쉐어 모델·완전 임대 등 사업 목적에 맞는 운영 방식을 제안합니다. 올페이스토어가 입지 분석부터 설치, 상품 보충, 유지보수까지 원스톱으로 지원합니다.'},
   removal:{t:'매장·사무실·가게 전문 철거',d:'정밀 현장 분석, 정찰제 견적, 원상복구, 폐기물 적법 처리까지. 전문 엔지니어팀이 안전하고 신속하게 사장님의 다음 시작을 도와드립니다. 음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 소상공인진흥공단 희망리턴패키지를 통해 철거비 보조금을 지원받을 수 있으며, 올페이스토어에서 신청 절차까지 안내합니다.'}
  };
  const pd=PDESC[prodKey]||{t:'전문 설치',d:'올페이스토어가 책임지고 설치합니다.'};
@@ -1193,8 +1195,8 @@ function makeProductLandingPage(prodKey){
  return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
-<title>${prd.ko} ${suf} | 전국 ${prd.ko} ${suf} 전문 - 올페이스토어</title>
-<meta name="description" content="전국 ${prd.ko} ${suf} 전문. ${pd.d} 무료 견적 ☎ 010-9876-8282">
+<title>${prd.ko}${aka} ${suf} | 전국 ${prd.ko}${aka} ${suf} 전문 - 올페이스토어</title>
+<meta name="description" content="전국 ${prd.ko}${aka} ${suf} 전문. ${pd.d} 무료 견적 ☎ 010-9876-8282">
 ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#fff;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞 010-9876-8282</a></div></nav>
@@ -1213,7 +1215,7 @@ ${CSS}
  <div class="card"><div class="ic">🔧</div><div class="lb">A/S 지원</div><div class="vl">전화 한 통</div></div>
  </div>
  <h2>${prd.emoji} ${prd.ko} ${suf}가 필요한 이유</h2>
- <p>${isR?'매장·사무실·가게를 폐업하거나 이전할 때 전문 철거 업체를 통해 체계적으로 진행해야 보증금을 지키고, 폐기물 적법 처리 문제를 예방할 수 있습니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 매장 철거를 전문 엔지니어팀이 직접 시공합니다. 정밀 현장 분석 후 정찰제 견적을 확정하며, 추가 비용이 발생하지 않습니다. 바닥·벽면·천장 원상복구, 폐기물 적법 처리, 시공 보증서 발급까지 원스톱으로 처리합니다.':'최신 ${prd.ko}는 매장 운영 효율을 획기적으로 개선합니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 ${prd.ko}를 직접 방문 설치합니다. 업종별 특성을 분석하여 가장 적합한 장비를 추천하며, 설치비 무료로 진행됩니다. 기존 장비 교체도 무료 견적 후 빠르게 진행됩니다.'}</p>
+ <p>${isR?'매장·사무실·가게를 폐업하거나 이전할 때 전문 철거 업체를 통해 체계적으로 진행해야 보증금을 지키고, 폐기물 적법 처리 문제를 예방할 수 있습니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 매장 철거를 전문 엔지니어팀이 직접 시공합니다. 정밀 현장 분석 후 정찰제 견적을 확정하며, 추가 비용이 발생하지 않습니다. 바닥·벽면·천장 원상복구, 폐기물 적법 처리, 시공 보증서 발급까지 원스톱으로 처리합니다.':'최신 '+prd.ko+'는 매장 운영 효율을 획기적으로 개선합니다. 올페이스토어는 전국 5,000개 이상의 읍면동에서 '+prd.ko+'를 직접 방문 설치합니다. 업종별 특성을 분석하여 가장 적합한 장비를 추천하며, 설치비 무료로 진행됩니다. 기존 장비 교체도 무료 견적 후 빠르게 진행됩니다.'}</p>
  <h2>⚡ ${prd.ko} ${suf} 프로세스</h2>
  <ul class="ck">
  <li><strong>1단계 무료 상담</strong> — 전화 또는 온라인으로 매장 업종, 규모, 필요 사항을 상담합니다</li>
@@ -1258,14 +1260,14 @@ ${CSS}
  <li><strong>350+ 설치 실적:</strong> 전국 350건 이상의 ${suf} 실적을 보유하고 있으며, 98% 이상의 고객 만족도를 기록하고 있습니다.</li>
  </ul>
  <h2>📋 ${prd.ko} 상세 기능 안내</h2>
- <p>${isR?'올페이스토어의 매장 철거 서비스는 단순 해체가 아닙니다. 구조물 안전 분석을 먼저 진행하고, 전기·가스·수도를 안전하게 차단한 후 체계적으로 시공합니다. 인테리어 해체, 설비 제거, 구조물 철거를 순서대로 진행하며, 작업 중 실시간 사진·영상을 공유합니다. 철거 후에는 바닥·벽면·천장을 임대차 계약서 기준으로 원상복구하고, 폐기물을 종류별로 분류하여 관련 법규에 맞게 수거·운반·처리합니다. 최종 점검 후 시공 보증서와 폐기물 처리 확인증을 발급합니다.':'올페이스토어에서 설치하는 ${prd.ko}는 최신 기술이 적용된 프리미엄 장비입니다. IC칩·NFC·QR코드·바코드 등 모든 결제 방식을 지원하며, 삼성페이·카카오페이·네이버페이·제로페이 등 간편결제도 한 대로 처리할 수 있습니다. 매장 포스기와 자동 연동되어 매출 데이터가 실시간으로 통합 관리되며, 배달 앱 주문도 자동으로 연동됩니다. 장비 장애 발생 시 원격 지원으로 대부분 즉시 해결되며, 원격으로 안 되면 전국 어디든 현장 출동 서비스를 제공합니다.'}</p>
+ <p>${isR?'올페이스토어의 매장 철거 서비스는 단순 해체가 아닙니다. 구조물 안전 분석을 먼저 진행하고, 전기·가스·수도를 안전하게 차단한 후 체계적으로 시공합니다. 인테리어 해체, 설비 제거, 구조물 철거를 순서대로 진행하며, 작업 중 실시간 사진·영상을 공유합니다. 철거 후에는 바닥·벽면·천장을 임대차 계약서 기준으로 원상복구하고, 폐기물을 종류별로 분류하여 관련 법규에 맞게 수거·운반·처리합니다. 최종 점검 후 시공 보증서와 폐기물 처리 확인증을 발급합니다.':'올페이스토어에서 설치하는 '+prd.ko+'는 최신 기술이 적용된 프리미엄 장비입니다. IC칩·NFC·QR코드·바코드 등 모든 결제 방식을 지원하며, 삼성페이·카카오페이·네이버페이·제로페이 등 간편결제도 한 대로 처리할 수 있습니다. 매장 포스기와 자동 연동되어 매출 데이터가 실시간으로 통합 관리되며, 배달 앱 주문도 자동으로 연동됩니다. 장비 장애 발생 시 원격 지원으로 대부분 즉시 해결되며, 원격으로 안 되면 전국 어디든 현장 출동 서비스를 제공합니다.'}</p>
  <h2>🏢 ${prd.ko} ${suf} 대상 업종별 가이드</h2>
  <p><strong>음식점·식당:</strong> ${isR?'주방 설비(후드·배기·가스배관), 인테리어(바닥·벽면·천장), 카운터·좌석·조명까지 전체 철거. 가스배관은 반드시 전문가가 안전하게 차단해야 합니다.':'포스기+카드단말기가 기본이며, 피크타임 대기가 긴 매장은 키오스크·테이블오더 추가를 권장합니다. 배달 3사 연동, 주방 프린터 연결로 주문 누락을 방지합니다.'}</p>
  <p><strong>카페·베이커리:</strong> ${isR?'커피머신·제빵기 철거, 배수관·전기설비 정리, 카운터·진열대 해체까지. 특수 장비는 재판매 가능 여부를 함께 확인합니다.':'음료·디저트 메뉴가 많은 카페는 키오스크로 주문 대기를 줄이고, QR 테이블오더로 추가 주문을 유도할 수 있습니다.'}</p>
  <p><strong>편의점·마트:</strong> ${isR?'진열대·간판·냉장고·POS 장비 일체 철거. 간판은 관할 구청 허가 확인 후 철거합니다.':'카드단말기+포스기로 재고 자동 관리, 자동 발주 시스템 연동이 가능합니다. CCTV 설치로 도난 방지와 보험료 할인 혜택도 받을 수 있습니다.'}</p>
  <p><strong>무인매장(스터디카페·코인세탁소):</strong> ${isR?'파티션·좌석·세탁기·건조기 등 장비 일체 철거. 배수관·전기설비 안전 정리까지 포함합니다.':'CCTV 패키지로 24시간 무인 운영이 가능합니다. 직원 0명으로 운영하여 인건비를 100% 절감합니다.'}</p>
  <h2>🔍 ${prd.ko} ${suf} 전 알아야 할 핵심 정보</h2>
- <p>${isR?'매장 철거를 진행할 때 가장 중요한 것은 적법한 절차를 따르는 것입니다. 불법 폐기물 투기는 100만원 이상의 과태료가 부과되며, 원상복구가 부실하면 보증금을 돌려받지 못할 수 있습니다. 반드시 폐기물 처리 확인증과 시공 보증서를 발급하는 전문 업체를 선택하세요. 또한 소상공인진흥공단의 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있으며, 지자체별 별도 지원 사업도 확인할 필요가 있습니다. 올페이스토어에 문의하시면 현재 신청 가능한 보조금 현황과 절차를 안내해드립니다.':'${prd.ko}를 도입할 때 가장 중요한 것은 매장 업종에 맞는 장비를 선택하는 것입니다. 음식점과 카페는 주문·결제 처리 속도가 중요하고, 편의점·마트는 재고 관리 연동이 핵심이며, 미용실·네일샵은 예약 관리 기능이 필요합니다. 또한 VAN사마다 카드 수수료율이 다르므로 반드시 비교한 후 결정해야 합니다. 올페이스토어는 업종별 특성을 분석하여 가장 적합한 장비와 가장 유리한 VAN사 조건을 찾아드립니다. 설치 후에도 VAN사 수수료를 정기적으로 재검토하여 더 유리한 조건이 나오면 무료로 전환해드립니다.'}</p>
+ <p>${isR?'매장 철거를 진행할 때 가장 중요한 것은 적법한 절차를 따르는 것입니다. 불법 폐기물 투기는 100만원 이상의 과태료가 부과되며, 원상복구가 부실하면 보증금을 돌려받지 못할 수 있습니다. 반드시 폐기물 처리 확인증과 시공 보증서를 발급하는 전문 업체를 선택하세요. 또한 소상공인진흥공단의 희망리턴패키지를 통해 철거비 최대 200만원을 지원받을 수 있으며, 지자체별 별도 지원 사업도 확인할 필요가 있습니다. 올페이스토어에 문의하시면 현재 신청 가능한 보조금 현황과 절차를 안내해드립니다.':''+prd.ko+'를 도입할 때 가장 중요한 것은 매장 업종에 맞는 장비를 선택하는 것입니다. 음식점과 카페는 주문·결제 처리 속도가 중요하고, 편의점·마트는 재고 관리 연동이 핵심이며, 미용실·네일샵은 예약 관리 기능이 필요합니다. 또한 VAN사마다 카드 수수료율이 다르므로 반드시 비교한 후 결정해야 합니다. 올페이스토어는 업종별 특성을 분석하여 가장 적합한 장비와 가장 유리한 VAN사 조건을 찾아드립니다. 설치 후에도 VAN사 수수료를 정기적으로 재검토하여 더 유리한 조건이 나오면 무료로 전환해드립니다.'}</p>
  <h2>✅ ${prd.ko} ${suf} 시 꼭 확인할 사항</h2>
  <ul class="ck">
  <li><strong>${isR?'현장 분석 여부':'설치비 무료 여부'}</strong> — ${isR?'정밀 현장 분석 없이 견적만 제시하는 업체는 추가 비용이 발생할 수 있습니다. 정확한 견적을 확정하는 업체를 선택하세요.':'설치비와 월 이용료가 정말 무료인지 확인하세요. 올페이스토어는 VAN사 제휴를 통해 설치비 전액을 지원합니다.'}</li>
@@ -1280,7 +1282,7 @@ ${CSS}
  <div class="faq"><div class="faq-q">Q. 다른 장비와 함께 ${isR?'철거':'설치'}할 수 있나요?</div><div class="faq-a">${isR?'네, 카드단말기·포스기·키오스크·CCTV 등 기존 장비를 한번에 철거할 수 있습니다. 신규 장비 교체도 동시에 가능합니다.':'네, 올페이스토어는 원스톱 통합 설치를 제공합니다. 카드단말기·포스기·키오스크·CCTV·테이블오더를 한번에 설치하면 패키지 할인이 적용됩니다.'}</div></div>
  <div class="faq"><div class="faq-q">Q. A/S는 어떻게 받나요?</div><div class="faq-a">${isR?'시공 완료 후 보증서를 발급합니다. 하자 발견 시 무상으로 보수합니다.':'장비 장애 시 원격 지원으로 빠르게 해결합니다. 필요 시 현장 출동 서비스를 제공합니다.'}</div></div>
  <h2>📈 ${prd.ko} 도입 후 기대 효과</h2>
- <p>${isR?'매장 철거를 올페이스토어에 맡기면 보증금 분쟁 예방, 적법한 폐기물 처리, 완벽한 원상복구가 보장됩니다. 정찰제 운영으로 예산 초과 걱정이 없으며, 정부 보조금을 활용하면 실질 부담을 크게 줄일 수 있습니다. 철거 후 재창업을 계획하시는 분은 신규 매장 장비(카드단말기·포스기·키오스크·CCTV) 설치까지 올페이스토어에서 원스톱으로 진행할 수 있습니다.':'${prd.ko}를 도입한 매장은 평균적으로 매출 15~25% 증가, 인건비 20~50% 절감, 고객 만족도 30% 이상 상승을 경험합니다. 특히 키오스크·테이블오더를 함께 도입하면 피크타임 처리량이 2배 이상 늘어나고, CCTV 연동으로 보안과 정산 검증까지 가능합니다. 올페이스토어의 패키지 설치를 활용하면 모든 장비를 한번에 도입하여 시너지 효과를 극대화할 수 있습니다.'}</p>
+ <p>${isR?'매장 철거를 올페이스토어에 맡기면 보증금 분쟁 예방, 적법한 폐기물 처리, 완벽한 원상복구가 보장됩니다. 정찰제 운영으로 예산 초과 걱정이 없으며, 정부 보조금을 활용하면 실질 부담을 크게 줄일 수 있습니다. 철거 후 재창업을 계획하시는 분은 신규 매장 장비(카드단말기·포스기·키오스크·CCTV) 설치까지 올페이스토어에서 원스톱으로 진행할 수 있습니다.':''+prd.ko+'를 도입한 매장은 평균적으로 매출 15~25% 증가, 인건비 20~50% 절감, 고객 만족도 30% 이상 상승을 경험합니다. 특히 키오스크·테이블오더를 함께 도입하면 피크타임 처리량이 2배 이상 늘어나고, CCTV 연동으로 보안과 정산 검증까지 가능합니다. 올페이스토어의 패키지 설치를 활용하면 모든 장비를 한번에 도입하여 시너지 효과를 극대화할 수 있습니다.'}</p>
  <h2>📍 ${prd.ko} ${suf} 지역 선택</h2>
  <p style="font-size:14px;color:#888;margin-bottom:16px">지역을 선택하면 상세 ${suf} 가이드를 확인할 수 있습니다.</p>
  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px">${regionBtns}</div>
@@ -1311,7 +1313,7 @@ function makeProductSidoPage(prodKey,sidoSlug){
  const top=sgs.filter(sg=>{if(seen[sg[0]])return false;seen[sg[0]]=1;const n=sg[0];const isSubDist=names.some(other=>other!==n && n.startsWith(other));return !isSubDist;});
  const dongCount=RK().filter(k=>k.startsWith(sidoSlug+'/')).length;
  const sgCards=top.map(sg=>`<a href="/product/${prodKey}/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
- const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 실시간 매출 분석 대시보드, 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료로 대행합니다.',cctv:'4채널·8채널·16채널 등 매장 규모에 맞게 설계하며, 30일 이상 영상 저장을 보장합니다. 화재·도난 보험료 할인 혜택도 받을 수 있습니다.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록까지 무료로 대행합니다. 한국어·영어·중국어·일본어 다국어를 지원하며, 주방 자동 연동으로 주문 누락이 없습니다.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 폐기물 처리 확인증과 시공 보증서를 발급합니다.'};
+ const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 실시간 매출 분석 대시보드, 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료로 대행합니다.',cctv:'4채널·8채널·16채널 등 매장 규모에 맞게 설계하며, 30일 이상 영상 저장을 보장합니다. 화재·도난 보험료 할인 혜택도 받을 수 있습니다.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록까지 무료로 대행합니다. 한국어·영어·중국어·일본어 다국어를 지원하며, 주방 자동 연동으로 주문 누락이 없습니다.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 폐기물 처리 확인증과 시공 보증서를 발급합니다.',vending:'음료·과자·커피·컵밥·아이스크림 등 다양한 자동판매기(자판기)를 설치합니다. 무인 매장, 오피스, 학교, 병원, 공장 등 유동인구가 있는 곳이면 전국 어디든 설치 가능합니다.'};
  const pd2=PDESC2[prodKey]||'';
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
@@ -1420,7 +1422,7 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
  if(!dongs.length){const subSgs=(SIGUNGU[sidoSlug]||[]).filter(s=>s[1]!==sgKey&&s[1].startsWith(sidoSlug+'/'+sigunguSlug));if(subSgs.length){subSgs.forEach(ss=>{const sk=ss[1];RK().filter(k=>k.startsWith(sk+'/')).forEach(k=>{const p=lk(k);if(p)dongs.push({name:p[2],slug:k});});});}if(!dongs.length)return null;}
  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="sg-card">${d.name} ${prd.ko}</a>`).join('');
- const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사 자동 연동, 실시간 매출 분석, 요일별·시간대별 매출 패턴 분석으로 매장 운영을 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료 대행합니다.',cctv:'4채널~16채널 매장 규모에 맞게 설계, 30일 이상 영상 저장, 화재·도난 보험료 할인 혜택.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록 무료 대행, 다국어 지원, 주방 자동 연동.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대 등 모든 업종 철거. 폐기물 처리 확인증·시공 보증서 발급.'};
+ const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사 자동 연동, 실시간 매출 분석, 요일별·시간대별 매출 패턴 분석으로 매장 운영을 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료 대행합니다.',cctv:'4채널~16채널 매장 규모에 맞게 설계, 30일 이상 영상 저장, 화재·도난 보험료 할인 혜택.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록 무료 대행, 다국어 지원, 주방 자동 연동.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대 등 모든 업종 철거. 폐기물 처리 확인증·시공 보증서 발급.',vending:'음료·과자·커피·컵밥·아이스크림 자동판매기(자판기) 전국 설치. 입지 분석부터 상품 보충까지 원스톱 지원.'};
  const pd2=PDESC2[prodKey]||'';
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
@@ -1922,7 +1924,7 @@ function getHTML() {
  const prodList=[
  {emoji:'💳',name:'카드단말기',key:'card'},{emoji:'🖥️',name:'포스기(POS)',key:'pos'},
  {emoji:'🤖',name:'키오스크',key:'kiosk'},{emoji:'📋',name:'테이블오더',key:'tableorder'},
- {emoji:'📷',name:'CCTV',key:'cctv'},{emoji:'🏭',name:'밴딩머신',key:'vending'},
+ {emoji:'📷',name:'CCTV',key:'cctv'},{emoji:'🏭',name:'밴딩머신(자판기)',key:'vending'},
  {emoji:'🔨',name:'건축(철거)',key:'removal'}
  ];
  const sidoBtns=sidoList.map(s=>`<a href="/blog/${s.slug}/" class="rb">${s.emoji} ${s.name}</a>`).join('');
@@ -2370,12 +2372,12 @@ a{text-decoration:none;color:inherit}
 <section class="showcase" style="background:#F8FAFF">
  <div class="sc-in" style="flex-direction:row-reverse">
  <div class="sc-left" style="flex:0 0 520px;border-radius:20px;overflow:hidden;position:relative;min-height:650px;background:#f0f2f5;padding:0!important">
- <img src="/images/m1.jpg" alt="LK 밴딩머신" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
- <img src="/images/m2.png" alt="밴딩머신 설치" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
- <img src="/images/m3.jpg" alt="밴딩머신 매장" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
- <img src="/images/m4.jpg" alt="밴딩머신 운영" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
- <img src="/images/m5.png" alt="밴딩머신 관리" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
- <img src="/images/m6.png" alt="밴딩머신 결제" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+ <img src="/images/m1.jpg" alt="밴딩머신 자동판매기 자판기" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .8s">
+ <img src="/images/m2.png" alt="자동판매기 설치 자판기 설치" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+ <img src="/images/m3.jpg" alt="자동판매기 자판기 매장 설치" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+ <img src="/images/m4.jpg" alt="밴딩머신 자판기 운영" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+ <img src="/images/m5.png" alt="자동판매기 원격 관리" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
+ <img src="/images/m6.png" alt="자판기 무인결제 시스템" class="vend-slide" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s">
  <div style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2">
  <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:1;transition:opacity .3s;cursor:pointer"></span>
  <span class="vend-dot" style="width:10px;height:10px;border-radius:50%;background:#fff;opacity:.4;transition:opacity .3s;cursor:pointer"></span>
