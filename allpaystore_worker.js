@@ -1049,7 +1049,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
  const sidoName=SK[sidoSlug];
  const sgKey=sidoSlug+'/'+sigunguSlug;
  let dongs=RK().filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
- if(!dongs.length)return null;
+ if(!dongs.length){const subSgs=(SIGUNGU[sidoSlug]||[]).filter(s=>s[1]!==sgKey&&s[1].startsWith(sidoSlug+'/'+sigunguSlug));if(subSgs.length){subSgs.forEach(ss=>{const sk=ss[1];RK().filter(k=>k.startsWith(sk+'/')).forEach(k=>{const p=lk(k);if(p)dongs.push({name:ss[0].replace(sigunguSlug.replace(/si$/,'시'),'').replace(/gu$/,'구')+' '+p[2],slug:k});});});}if(!dongs.length)return null;}
  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
  const profile=getProfile(sidoName,sgName,dongs[0]?.name||'');
  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/" class="sg-card">${d.name}</a>`).join('');
@@ -1417,7 +1417,7 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
  const suf=isR?'전문':'설치';
  const sgKey=sidoSlug+'/'+sigunguSlug;
  let dongs=RK().filter(k=>k.startsWith(sgKey+'/')).map(k=>{const p=lk(k);return p?{name:p[2],slug:k}:null;}).filter(Boolean);
- if(!dongs.length)return null;
+ if(!dongs.length){const subSgs=(SIGUNGU[sidoSlug]||[]).filter(s=>s[1]!==sgKey&&s[1].startsWith(sidoSlug+'/'+sigunguSlug));if(subSgs.length){subSgs.forEach(ss=>{const sk=ss[1];RK().filter(k=>k.startsWith(sk+'/')).forEach(k=>{const p=lk(k);if(p)dongs.push({name:p[2],slug:k});});});}if(!dongs.length)return null;}
  const sgs=SIGUNGU[sidoSlug]||[];const sgInfo=sgs.find(s=>s[1]===sgKey);const sgName=sgInfo?sgInfo[0]:sigunguSlug;
  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="sg-card">${d.name} ${prd.ko}</a>`).join('');
  const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사 자동 연동, 실시간 매출 분석, 요일별·시간대별 매출 패턴 분석으로 매장 운영을 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료 대행합니다.',cctv:'4채널~16채널 매장 규모에 맞게 설계, 30일 이상 영상 저장, 화재·도난 보험료 할인 혜택.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록 무료 대행, 다국어 지원, 주방 자동 연동.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대 등 모든 업종 철거. 폐기물 처리 확인증·시공 보증서 발급.'};
