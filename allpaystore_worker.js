@@ -2970,6 +2970,7 @@ textarea.ct-input{height:120px;resize:vertical}
  <option>🤖 키오스크</option>
  <option>📷 CCTV</option>
  <option>📋 테이블오더</option>
+ <option>🏭 자판기(밴딩머신)</option>
   <option>🔨 매장 철거</option>
  <option>📦 패키지 (여러 장비)</option>
  <option>기타</option>
@@ -3023,7 +3024,7 @@ textarea.ct-input{height:120px;resize:vertical}
 (function(){
  var p=new URLSearchParams(location.search).get('product');
  if(p){
- var map={card:'💳 카드단말기',pos:'🖥️ 포스기(POS)',kiosk:'🤖 키오스크',cctv:'📷 CCTV',tableorder:'📋 테이블오더',removal:'🔨 매장 철거',package:'📦 패키지 (여러 장비)'};
+ var map={card:'💳 카드단말기',pos:'🖥️ 포스기(POS)',kiosk:'🤖 키오스크',cctv:'📷 CCTV',tableorder:'📋 테이블오더',vending:'🏭 자판기(밴딩머신)',removal:'🔨 매장 철거',package:'📦 패키지 (여러 장비)'};
  var v=map[p];
  if(v){var sel=document.getElementById('ct-product');for(var i=0;i<sel.options.length;i++){if(sel.options[i].text===v){sel.selectedIndex=i;break;}}}
  }
