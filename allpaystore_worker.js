@@ -2935,12 +2935,11 @@ const posMatch=path.match(/^\/biz-pos\/(biz-pos-\d+)$/);
 
   if(path==='/biz-pos'){return new Response(makeProdListPage('pos',POS_TITLES,POS_CAT_MAP,POS_SLUGS),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
   if(path==='/biz-kiosk'){return new Response(makeProdListPage('kiosk',KIOSK_TITLES,KIOSK_CAT_MAP,KIOSK_SLUGS),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
-  if(
- if(path==='/biz-vending'){
+  if(path==='/biz-vending'){
   const h=makeProdListPage('vending',VEND_TITLES,VEND_CAT_MAP,VEND_SLUGS);
   if(h)return new Response(h,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});
  }
-path==='/biz-table'){return new Response(makeProdListPage('table',TABLE_TITLES,TABLE_CAT_MAP,TABLE_SLUGS),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
+ if(path==='/biz-table'){return new Response(makeProdListPage('table',TABLE_TITLES,TABLE_CAT_MAP,TABLE_SLUGS),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
 if(path==='/biz-cctv'){
   return new Response(makeProdListPage('cctv',CCTV_TITLES,CCTV_CAT_MAP,CCTV_SLUGS),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});
  }
