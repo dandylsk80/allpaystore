@@ -1509,7 +1509,7 @@ a{text-decoration:none;color:inherit}
 .sms-btn{background:#3B82F6;color:#fff;padding:9px 16px;border-radius:6px;font-size:14px;font-weight:700;white-space:nowrap;margin-right:6px}
 .gnb-in .tel-btn{margin-left:0}
 .sms-btn .btn-tx,.tel-btn .btn-tx{display:inline}
-@media(max-width:768px){.sms-btn,.tel-btn{padding:9px 12px;font-size:16px}.sms-btn .btn-tx,.tel-btn .btn-tx{display:none}}
+@media(max-width:768px){.sms-btn,.tel-btn{padding:9px 12px;font-size:16px}.sms-btn .btn-tx,.tel-btn .btn-tx{display:none}.sms-btn{margin-right:8px}}
 .wrap{max-width:780px;margin:0 auto;padding:0 18px 80px}
 .thumb{width:100%;border-radius:16px;overflow:hidden;margin:28px 0 22px;box-shadow:0 6px 28px rgba(13,46,110,.16)}
 .thumb img{width:100%;height:auto;display:block}
@@ -1571,6 +1571,8 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .cta-sms{display:inline-block;background:#3B82F6!important;color:#fff!important;padding:14px 28px;border-radius:12px;font-size:16px;font-weight:700;white-space:nowrap;margin:4px;border:none}
 @media(max-width:768px){
  .gnb-nav{display:none}
+ .gnb-in{justify-content:flex-end;gap:0}
+ .gnb-in>.logo{margin-right:auto}
  .gnb{padding:14px 0}
  .wrap{display:flex;flex-direction:column}
  .side-nav{float:none!important;width:100%!important;margin:24px 0 0 0!important;order:99;padding-left:0!important;border-left:none!important}
