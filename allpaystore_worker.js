@@ -3032,7 +3032,7 @@ a{text-decoration:none;color:inherit}
 .cta-in{max-width:700px;margin:0 auto}
 .cta-h{font-size:28px;font-weight:900;color:#fff;margin-bottom:8px}
 .cta-p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:24px;line-height:1.7}
-.cta-tel{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#fff;color:#111;border-radius:14px;font-size:18px;font-weight:800;transition:all .2s}
+.cta-tel{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#fff;color:#111;border-radius:14px;font-size:18px;font-weight:800;transition:all .2s;white-space:nowrap}
 .cta-tel:hover{background:#eee;transform:translateY(-2px)}
 .cta-sub{display:block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.5)}
 /* FOOTER */
@@ -3401,8 +3401,8 @@ a{text-decoration:none;color:inherit}
  <p class="cta-p">카드단말기·포스기·키오스크·테이블오더·CCTV·밴딩머신·건축(철거)<br>매장에 필요한 모든 장비, 한 통화로 해결하세요</p>
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
  <a href="tel:010-9876-8282" class="cta-tel">📞 010-9876-8282</a>
- <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-tel" style="background:#3B82F6">📱 문자상담</a>
- <a href="/contact/" class="cta-tel" style="background:#111">💬 상담문의</a>
+ <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-tel" style="background:#3B82F6;color:#fff">📱 문자상담</a>
+ <a href="/contact/" class="cta-tel" style="background:#111;color:#fff">💬 상담문의</a>
  </div>
  </div>
 </section>
