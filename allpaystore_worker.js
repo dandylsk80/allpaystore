@@ -3294,7 +3294,7 @@ a{text-decoration:none;color:inherit}
  </div>
  <div style="display:flex;gap:12px;margin-top:24px;align-items:center;flex-wrap:wrap">
  <a href="/contact/?product=cctv" class="sc-btn" style="background:#7C3AED">📷 CCTV 무료 견적 받기</a>
- <span style="font-size:12px;color:#999">설치비 무료 · 월 이용료 무료</span>
+ 
  </div>
  </div>
  </div>
@@ -3881,7 +3881,7 @@ if(path==='/biz/card'){
  const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png"><title>제품 안내 | 올페이스토어</title>${CSS}</head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/" style="color:#111;font-weight:800">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
-<div class="wrap" style="padding-top:28px"><h1 style="font-size:28px;font-weight:900;color:#111;margin-bottom:24px">📦 제품 안내</h1><p style="font-size:15px;color:#666;margin-bottom:32px">매장에 필요한 장비를 선택하세요. 설치비 무료 · 월 이용료 무료 · 빠른 설치</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${prodLinks}</div>
+<div class="wrap" style="padding-top:28px"><h1 style="font-size:28px;font-weight:900;color:#111;margin-bottom:24px">📦 제품 안내</h1><p style="font-size:15px;color:#666;margin-bottom:32px">매장에 필요한 장비를 선택하세요</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px">${prodLinks}</div>
 <div class="cta"><h3>📞 무료 견적 받기</h3><p>매장에 딱 맞는 장비를 전문가가 직접 추천해 드립니다.</p><a href="tel:010-9876-8282" class="cta-main">📞 010-9876-8282</a> <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a> <a href="/contact/" class="cta-sub">💬 상담 문의</a></div></div><div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
