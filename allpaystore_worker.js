@@ -3402,7 +3402,7 @@ a{text-decoration:none;color:inherit}
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
  <a href="tel:010-9876-8282" class="cta-tel">📞 010-9876-8282</a>
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-tel" style="background:#3B82F6;color:#fff">📱 문자상담</a>
- <a href="/contact/" class="cta-tel" style="background:#111;color:#fff">💬 상담문의</a>
+ <a href="/contact/" class="cta-tel" style="background:#6B7280;color:#fff">💬 상담문의</a>
  </div>
  </div>
 </section>
