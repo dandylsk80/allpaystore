@@ -3951,7 +3951,10 @@ if(path==='/biz/card'){
 </div>
 
 <h2 style="font-size:22px;font-weight:900;color:#111;margin:32px 0 16px">🔥 운영 중인 브랜드</h2>
-<a href="/franchise/dakgalbi/" style="display:block;background:linear-gradient(135deg,#DC2626,#EF4444);color:#fff;border-radius:16px;padding:24px;margin-bottom:24px;text-decoration:none;text-align:center"><div style="font-size:40px;margin-bottom:8px">🔥</div><div style="font-size:20px;font-weight:900;margin-bottom:4px">오늘도닭갈비</div><div style="font-size:13px;color:rgba(255,255,255,.9)">부부창업·은퇴후창업·청년창업·소자본창업 모두 환영</div></a>
+<a href="/franchise/dakgalbi/" style="display:block;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);text-decoration:none;margin-bottom:24px">
+<div style="position:relative;height:240px;background:#111"><img src="${DAKGALBI_IMG_BASE}ch1.jpg" alt="오늘도닭갈비" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"><div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 50%,transparent 100%)"></div><div style="position:absolute;left:20px;bottom:16px;right:20px"><div style="display:inline-block;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;margin-bottom:8px">🔥 NEW · 가맹 모집 중</div><div style="font-size:24px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:4px">오늘도닭갈비</div><div style="font-size:13px;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.5)">20년 노하우 · 검증된 레시피 · 전국 운영</div></div></div>
+<div style="padding:18px 20px;background:#fff"><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px"><span style="font-size:11px;color:#DC2626;background:#FEE2E2;padding:3px 8px;border-radius:6px;font-weight:700">부부창업</span><span style="font-size:11px;color:#D97706;background:#FEF3C7;padding:3px 8px;border-radius:6px;font-weight:700">은퇴후창업</span><span style="font-size:11px;color:#1D4ED8;background:#DBEAFE;padding:3px 8px;border-radius:6px;font-weight:700">청년창업</span><span style="font-size:11px;color:#059669;background:#D1FAE5;padding:3px 8px;border-radius:6px;font-weight:700">소자본창업</span></div><div style="font-size:13px;color:#555;line-height:1.6">모든 창업 유형 환영 · 본사 지원 · 가맹 상담 무료 →</div></div>
+</a>
 
 <h2 style="font-size:22px;font-weight:900;color:#111;margin:32px 0 16px">💡 올페이스토어 프랜차이즈의 강점</h2>
 <div style="display:grid;gap:16px;margin-bottom:32px">
@@ -3961,6 +3964,8 @@ if(path==='/biz/card'){
 <div style="background:#F9FAFB;border-radius:12px;padding:20px;border-left:4px solid #F59E0B"><div style="font-size:16px;font-weight:800;color:#111;margin-bottom:6px">📈 매출 안정성</div><p style="font-size:14px;color:#555;line-height:1.7;margin:0">기존 가맹점 운영 데이터를 기반으로 예상 매출과 손익분기점을 명확하게 안내해드립니다.</p></div>
 <div style="background:#F9FAFB;border-radius:12px;padding:20px;border-left:4px solid #F59E0B"><div style="font-size:16px;font-weight:800;color:#111;margin-bottom:6px">🤝 사후 관리</div><p style="font-size:14px;color:#555;line-height:1.7;margin:0">오픈 후에도 매장 운영, 추가 교육, 프로모션 지원까지 본사와 지속적으로 협력합니다.</p></div>
 </div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:24px 0 32px"><div style="border-radius:12px;overflow:hidden;aspect-ratio:1;background:#f3f4f6"><img src="${DAKGALBI_IMG_BASE}ch2.jpg" alt="오늘도닭갈비 매장" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="border-radius:12px;overflow:hidden;aspect-ratio:1;background:#f3f4f6"><img src="${DAKGALBI_IMG_BASE}ch5.jpg" alt="오늘도닭갈비 메뉴" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="border-radius:12px;overflow:hidden;aspect-ratio:1;background:#f3f4f6"><img src="${DAKGALBI_IMG_BASE}ch9.jpg" alt="오늘도닭갈비 운영" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div></div>
 
 <h2 style="font-size:22px;font-weight:900;color:#111;margin:32px 0 16px">📋 가맹 신청 절차</h2>
 <div style="display:grid;gap:12px;margin-bottom:32px">
