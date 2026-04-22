@@ -2922,7 +2922,7 @@ function getHTML() {
 <meta property="og:url" content="https://allpaystore.com/">
 <meta property="og:image" content="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png">
 <link rel="canonical" href="https://allpaystore.com/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","telephone":"010-9876-8282","url":"https://allpaystore.com","description":"전국 카드단말기·포스기·키오스크·CCTV 설치 전문","address":{"@type":"PostalAddress","addressCountry":"KR"},"areaServed":"대한민국"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"올페이스토어","url":"https://allpaystore.com","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","sameAs":["https://allpaystore.com"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://allpaystore.com/#business","name":"올페이스토어","url":"https://allpaystore.com/","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","telephone":"010-9876-8282","description":"전국 카드단말기·포스기·키오스크·CCTV 설치 전문","address":{"@type":"PostalAddress","addressCountry":"KR"},"areaServed":"대한민국"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
