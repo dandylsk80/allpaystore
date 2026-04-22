@@ -3297,6 +3297,10 @@ a{text-decoration:none;color:inherit}
 .fl-sms{background:linear-gradient(135deg,#3B82F6,#2563EB)}
 .fl-chat{background:#111}
 .cta-sms{display:inline-block;background:#3B82F6!important;color:#fff!important;padding:14px 28px;border-radius:12px;font-size:16px;font-weight:700;white-space:nowrap;margin:4px;border:none}
+.cta-copy{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
+.cta-brand{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:8px;line-height:1.6}
+.cta-brand span{font-weight:700;color:rgba(255,255,255,.85)}
+.cta-rights{font-size:11px;color:rgba(255,255,255,.35)}
 /* MOBILE */
 @media(max-width:768px){
  .gnb-nav{display:none}
@@ -3645,24 +3649,12 @@ a{text-decoration:none;color:inherit}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/" class="cta-sub">💬 상담문의</a>
  </div>
+ <div class="cta-copy">
+ <div class="cta-brand"><img src="/images/logo.png" alt="올페이스토어" style="height:18px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"><span>올페이스토어</span> · 1인 매장부터 대형 프랜차이즈까지</div>
+ <div class="cta-rights">© 2025 올페이스토어. All rights reserved.</div>
+ </div>
  </div>
 </section>
-<footer class="ft">
- <div class="ft-in">
- <div class="ft-top">
- <div>
- <div class="ft-logo" style="display:flex;align-items:center;gap:8px"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span style="font-size:16px;font-weight:900;color:#111">올페이스토어</span></div>
- <p class="ft-desc">1인 매장부터 대형 프랜차이즈까지<br>매장 운영에 필요한 설비를 한곳에서</p>
- </div>
- <div class="ft-tel">
- <div style="font-size:10px;color:#999;margin-bottom:4px">📞 무료 상담 전화</div>
- <div class="ft-tel-num">010-9876-8282</div>
- <a href="tel:010-9876-8282" class="ft-tel-btn">전화 상담</a>
- </div>
- </div>
- <div class="ft-bottom">© 2025 올페이스토어. All rights reserved.</div>
- </div>
-</footer>
 <div class="float">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
