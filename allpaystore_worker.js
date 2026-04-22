@@ -1678,13 +1678,12 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .int-link:hover{background:#111;color:#fff}
 .int-pill{display:inline-flex;align-items:center;gap:4px;padding:7px 12px;font-size:12.5px;color:#555;background:#f0f2f7;border-radius:18px;margin:3px 2px;text-decoration:none;transition:all .15s}
 .int-pill:hover{background:#111;color:#fff}
-.gf{margin-top:48px;padding:32px 0 8px;border-top:1px solid #e5e7eb;background:#fafbfd;border-radius:14px 14px 0 0}
-.gf-in{max-width:780px;margin:0 auto;padding:0 18px}
-.gf-col{margin-bottom:22px}
-.gf-col h5{font-size:12.5px;font-weight:800;color:#111;margin:0 0 10px;letter-spacing:.2px}
-.gf-col a{display:inline-block;font-size:12px;color:#666;margin:3px 8px 3px 0;text-decoration:none}
-.gf-col a:hover{color:#111;text-decoration:underline}
-.gf-bot{margin-top:14px;padding:14px 0;border-top:1px solid #e5e7eb;font-size:11.5px;color:#999;text-align:center}
+.gf{margin-top:48px;padding:24px 0 16px;border-top:1px solid #e5e7eb;background:#fafbfd;border-radius:14px 14px 0 0}
+.gf-in{max-width:780px;margin:0 auto;padding:0 18px;text-align:center}
+.gf-mini{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-bottom:12px}
+.gf-mini a{font-size:13px;color:#444;text-decoration:none;font-weight:600}
+.gf-mini a:hover{color:#111;text-decoration:underline}
+.gf-bot{padding-top:12px;border-top:1px solid #e5e7eb;font-size:11.5px;color:#999}
 </style>`;
 const SIDO_SHORT={'seoul':'서울','busan':'부산','daegu':'대구','incheon':'인천','gwangju':'광주','daejeon':'대전','ulsan':'울산','sejong':'세종','gyeonggi':'경기','gangwon':'강원','chungbuk':'충북','chungnam':'충남','jeonbuk':'전북','jeonnam':'전남','gyeongbuk':'경북','gyeongnam':'경남','jeju':'제주'};
 // 빵크럼 네비게이션 (시각 + JSON-LD 동시 생성)
@@ -1713,15 +1712,9 @@ function makeInternalLinks(blocks){
 }
 // 전역 푸터 (모든 페이지에 들어가는 사이트 허브)
 function makeSiteFooter(){
-  const sidoList=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
-  const sidoLinks=sidoList.map(s=>`<a href="/blog/${s}/">${SIDO_SHORT[s]}</a>`).join('');
-  const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/">${v.emoji} ${v.ko}</a>`).join('');
-  const hubLinks='<a href="/">홈</a><a href="/product/">제품 전체</a><a href="/biz/">업종별</a><a href="/biz-cctv/">CCTV 업종</a><a href="/franchise/">프랜차이즈</a><a href="/blog/">지역 전체</a><a href="/contact/">문의하기</a>';
   return `<footer class="gf"><div class="gf-in">
-<div class="gf-col"><h5>🌏 지역별 설치 (17개 시·도)</h5>${sidoLinks}</div>
-<div class="gf-col"><h5>🛒 제품 카테고리</h5>${prodLinks}</div>
-<div class="gf-col"><h5>📄 사이트 주요 메뉴</h5>${hubLinks}</div>
-<div class="gf-bot">올페이스토어 · 전국 카드단말기·포스기·키오스크·CCTV 설치 전문 · ☎ 010-9876-8282</div>
+<div class="gf-mini"><a href="/">홈</a><a href="/contact/">문의하기</a><a href="tel:010-9876-8282">📞 010-9876-8282</a></div>
+<div class="gf-bot">올페이스토어 · 전국 카드단말기·포스기·키오스크·CCTV 설치 전문</div>
 </div></footer>`;
 }
 function makeSidoPage(sidoSlug){
