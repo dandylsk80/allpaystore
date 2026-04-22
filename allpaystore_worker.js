@@ -3945,7 +3945,7 @@ if(path==='/biz/card'){
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<style>.franchise-title{font-family:'Nanum Pen Script',cursive!important;font-weight:400;color:#111;margin:0;line-height:1.1;letter-spacing:-1px;white-space:nowrap;font-size:clamp(48px,11vw,120px)}</style>
+<style>.franchise-title{font-family:'Nanum Pen Script',cursive!important;font-weight:400;color:#111;margin:0;line-height:1.15;letter-spacing:-1px;word-break:keep-all;overflow-wrap:break-word;font-size:clamp(44px,9vw,92px)}</style>
 <div style="text-align:center;padding:56px 12px 40px;overflow:hidden">
 <h1 class="franchise-title">프랜차이즈 가맹점 모집</h1>
 </div>
