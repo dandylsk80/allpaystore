@@ -2043,7 +2043,7 @@ ${CSS}
  <h1 style="font-size:26px;font-weight:900;color:#111;margin-bottom:16px">${prd.ko} — ${pd.t}</h1>
  <p style="font-size:15px;color:#555;line-height:1.8;margin-bottom:32px">${pd.d}</p>
  <div class="g4" style="margin-bottom:32px">
- <div class="card"><div class="ic">🏆</div><div class="lb">전국 누적</div><div class="vl">350+건</div></div>
+ <div class="card"><div class="ic">🏆</div><div class="lb">전국 누적</div><div class="vl">15,000+건</div></div>
  <div class="card"><div class="ic">⚡</div><div class="lb">빠른 설치</div><div class="vl">신속 완료</div></div>
  <div class="card"><div class="ic">💰</div><div class="lb">설치비</div><div class="vl">무료</div></div>
  <div class="card"><div class="ic">🔧</div><div class="lb">A/S 지원</div><div class="vl">전화 한 통</div></div>
@@ -2091,7 +2091,7 @@ ${CSS}
  <li><strong>${isR?'원상복구 보장':'월 이용료 무료'}:</strong> ${isR?'바닥·벽면·천장을 임대차 계약서 기준으로 완벽하게 복구합니다.':'장비 유지에 별도 월정액이 발생하지 않습니다.'}</li>
  <li><strong>${isR?'폐기물 적법 처리':'업종별 맞춤 추천'}:</strong> ${isR?'관련 법규에 맞게 분류·수거·처리하고 확인증을 발급합니다.':'음식점·카페·편의점·미용실 등 업종 특성에 맞는 장비만 추천합니다.'}</li>
  <li><strong>${isR?'보조금 연계':'통합 장비 연동'}:</strong> ${isR?'소상공인 대상 정부 보조금(희망리턴패키지 등) 신청을 안내합니다.':'카드단말기·포스기·키오스크·CCTV·테이블오더 전 장비 통합 연동을 지원합니다.'}</li>
- <li><strong>350+ 설치 실적:</strong> 전국 350건 이상의 ${suf} 실적을 보유하고 있으며, 98% 이상의 고객 만족도를 기록하고 있습니다.</li>
+ <li><strong>15,000+ 설치 실적:</strong> 전국 15,000건 이상의 ${suf} 실적을 보유하고 있으며, 98% 이상의 고객 만족도를 기록하고 있습니다.</li>
  </ul>
  <h2>📋 ${prd.ko} 상세 기능 안내</h2>
  <p>${isR?'올페이스토어의 매장 철거 서비스는 단순 해체가 아닙니다. 구조물 안전 분석을 먼저 진행하고, 전기·가스·수도를 안전하게 차단한 후 체계적으로 시공합니다. 인테리어 해체, 설비 제거, 구조물 철거를 순서대로 진행하며, 작업 중 실시간 사진·영상을 공유합니다. 철거 후에는 바닥·벽면·천장을 임대차 계약서 기준으로 원상복구하고, 폐기물을 종류별로 분류하여 관련 법규에 맞게 수거·운반·처리합니다. 최종 점검 후 시공 보증서와 폐기물 처리 확인증을 발급합니다.':'올페이스토어에서 설치하는 '+prd.ko+'는 최신 기술이 적용된 프리미엄 장비입니다. IC칩·NFC·QR코드·바코드 등 모든 결제 방식을 지원하며, 삼성페이·카카오페이·네이버페이·제로페이 등 간편결제도 한 대로 처리할 수 있습니다. 매장 포스기와 자동 연동되어 매출 데이터가 실시간으로 통합 관리되며, 배달 앱 주문도 자동으로 연동됩니다. 장비 장애 발생 시 원격 지원으로 대부분 즉시 해결되며, 원격으로 안 되면 전국 어디든 현장 출동 서비스를 제공합니다.'}</p>
@@ -2187,7 +2187,7 @@ ${CSS}
  <h1 style="font-size:26px;font-weight:900;color:#111;margin-bottom:16px">${sidoName} ${prd.ko} ${suf}</h1>
  <p style="font-size:15px;color:#555;line-height:1.8;margin-bottom:24px">${sidoName} 전 지역(${top.length}개 시군구, ${dongCount}개 읍면동)에 ${prd.ko} ${suf}를 전문으로 합니다. ${isR?'전문 엔지니어팀이 정밀 현장 분석 후 정찰제 견적을 확정하며, 원상복구·폐기물 적법 처리까지 원스톱으로 처리합니다.':'설치비 무료, 월 이용료 무료로 진행되며, A/S를 지원합니다.'} ${pd2} 아래에서 ${short} 시군구를 선택하시면 읍면동별 ${prd.ko} ${suf} 가이드를 확인할 수 있습니다.</p>
  <div class="g4" style="margin-bottom:32px">
- <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적</div><div class="vl">350+건</div></div>
+ <div class="card"><div class="ic">🏆</div><div class="lb">${short} 누적</div><div class="vl">15,000+건</div></div>
  <div class="card"><div class="ic">⚡</div><div class="lb">빠른 ${suf}</div><div class="vl">신속 완료</div></div>
  <div class="card"><div class="ic">💰</div><div class="lb">${suf}비</div><div class="vl">무료</div></div>
  <div class="card"><div class="ic">🔧</div><div class="lb">A/S</div><div class="vl">빠른 대응</div></div>
@@ -2346,7 +2346,7 @@ ${CSS}
  <li><strong>${isR?'정찰제 운영':'설치비·월 이용료 무료'}:</strong> ${isR?'추가 비용 없는 정찰제 견적':'VAN사 제휴 설치비 전액 지원, 월정액 없음'}</li>
  <li><strong>${isR?'원상복구 보장':'A/S 지원'}:</strong> ${isR?'바닥·벽면·천장 완벽 복구, 시공 보증서 발급':'장애 시 원격 지원 또는 현장 출동'}</li>
  <li><strong>${isR?'폐기물 적법 처리':'통합 장비 연동'}:</strong> ${isR?'관련 법규 준수, 처리 확인증 발급':'전 장비 연동으로 매장 통합 관리'}</li>
- <li><strong>전국 350+ 실적:</strong> 98% 고객 만족도. ${sgName} 주변 다수 설치 사례 보유</li>
+ <li><strong>전국 15,000+ 실적:</strong> 98% 고객 만족도. ${sgName} 주변 다수 설치 사례 보유</li>
  </ul>
  <h2>📋 ${sgName} ${prd.ko} 상세 안내</h2>
  <p>${isR?`${sgName} 지역 매장 철거는 구조물 안전 분석부터 시작합니다. 전기·가스·수도 차단, 주변 매장 사전 안내, 분진·소음 차단 가림막 설치 후 체계적으로 시공합니다. 인테리어 해체 → 설비 제거 → 원상복구 → 폐기물 처리 순서로 진행하며, 모든 과정을 사진·영상으로 실시간 보고합니다. ${sgName} ${dongs.length}개 읍면동 어디든 직접 방문합니다.`:`${sgName}에 ${prd.ko}를 도입하면 매장 운영이 근본적으로 달라집니다. ${pd2} 올페이스토어는 ${sgName} ${dongs.length}개 읍면동 전 지역에 직접 방문하여 매장 환경을 분석하고, 업종에 맞는 최적의 장비를 추천합니다. 설치 시 장비 세팅·테스트·직원 교육까지 완료하며, 설치 후에도 VAN사 수수료 재검토와 장비 업그레이드 안내를 제공합니다.`}</p>
@@ -3172,19 +3172,62 @@ a{text-decoration:none;color:inherit}
 .hc-bar-bg{height:5px;background:#eee;border-radius:3px}
 .hc-bar-fill{height:5px;background:linear-gradient(90deg,#111,#555);border-radius:3px;transition:width .5s ease}
 /* STRENGTH */
-.str{padding:56px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB}
+.str{padding:44px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB;overflow:hidden}
 .str-in{max-width:1100px;margin:0 auto}
-.sec-hd{text-align:center;margin-bottom:36px}
+.sec-hd{text-align:center;margin-bottom:28px}
 .sec-tag{font-size:12px;font-weight:700;color:var(--primary);letter-spacing:3px;margin-bottom:8px}
 .sec-tit{font-size:28px;font-weight:900;color:var(--dark);line-height:1.35}
 .sec-tit b{color:var(--primary)}
-.str-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.str-card{background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.04);border:1px solid #E5E7EB;transition:transform .3s}
-.str-card:hover{transform:translateY(-4px)}
-.str-ic{font-size:34px;margin-bottom:8px}
-.str-num{font-size:28px;font-weight:900;color:var(--primary)}
-.str-lbl{font-size:13px;font-weight:700;color:var(--dark);margin-top:6px}
-.str-desc{font-size:11px;color:#6B7280;margin-top:2px}
+/* ZIGZAG TIMELINE */
+.zz-wrap{position:relative;max-width:640px;margin:0 auto;padding:12px 0}
+.zz-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(to bottom,transparent,#1D4ED8 15%,#1D4ED8 85%,transparent);transform:translateX(-1px);z-index:1}
+.zz-line::before,.zz-line::after{content:'';position:absolute;left:50%;width:6px;height:6px;border-radius:50%;background:#1D4ED8;transform:translateX(-50%);box-shadow:0 0 0 2px rgba(29,78,216,.15)}
+.zz-line::before{top:0}
+.zz-line::after{bottom:0}
+.zz-row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin-bottom:16px;position:relative;z-index:2}
+.zz-row:last-child{margin-bottom:0}
+.zz-spacer{min-height:1px}
+.zz-card{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 10px rgba(13,46,110,.05);border:1px solid rgba(29,78,216,.08);position:relative;transition:all .3s cubic-bezier(.4,0,.2,1);animation:zzFadeIn .7s ease-out backwards}
+.zz-row:nth-child(2) .zz-card{animation-delay:.1s}
+.zz-row:nth-child(3) .zz-card{animation-delay:.2s}
+.zz-row:nth-child(4) .zz-card{animation-delay:.3s}
+.zz-row:nth-child(5) .zz-card{animation-delay:.4s}
+@keyframes zzFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.zz-left .zz-card{text-align:right}
+.zz-left .zz-card::after{content:'';position:absolute;top:50%;right:-7px;transform:translateY(-50%) rotate(45deg);width:11px;height:11px;background:#fff;border-right:1px solid rgba(29,78,216,.08);border-top:1px solid rgba(29,78,216,.08)}
+.zz-right .zz-card{text-align:left}
+.zz-right .zz-card::before{content:'';position:absolute;top:50%;left:-7px;transform:translateY(-50%) rotate(-135deg);width:11px;height:11px;background:#fff;border-right:1px solid rgba(29,78,216,.08);border-top:1px solid rgba(29,78,216,.08)}
+.zz-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(29,78,216,.1);border-color:rgba(29,78,216,.25)}
+.zz-num-big{font-size:24px;font-weight:900;color:#111;line-height:1;letter-spacing:-.5px;margin-bottom:3px;background:linear-gradient(135deg,#1D4ED8,#4F46E5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.zz-plus{font-size:16px;color:#4F46E5;margin-left:2px}
+.zz-won{font-size:13px;color:#6B7280;-webkit-text-fill-color:#6B7280;font-weight:700;margin-left:2px}
+.zz-slash{color:#9CA3AF;-webkit-text-fill-color:#9CA3AF;font-weight:400;margin:0 1px}
+.zz-fast{background:linear-gradient(135deg,#F97316,#F59E0B);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.zz-free{background:linear-gradient(135deg,#059669,#10B981);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.zz-as{background:linear-gradient(135deg,#7C3AED,#EC4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.zz-label{font-size:12px;font-weight:800;color:#111;margin-bottom:4px}
+.zz-desc{font-size:10.5px;color:#6B7280;margin-top:5px;line-height:1.5}
+.zz-bar{height:4px;background:#F3F4F6;border-radius:2px;overflow:hidden;margin-top:4px}
+.zz-fill{height:100%;width:var(--p);background:linear-gradient(90deg,#1D4ED8,#60A5FA);border-radius:2px;animation:zzBar 1.5s cubic-bezier(.4,0,.2,1) forwards;transform-origin:left}
+.zz-left .zz-fill{background:linear-gradient(-90deg,#1D4ED8,#60A5FA)}
+@keyframes zzBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.zz-ping{display:inline-flex;gap:3px;align-items:center;margin-top:3px}
+.zz-ping span{width:5px;height:5px;border-radius:50%;background:#F97316;animation:zzPing 1.4s ease-in-out infinite}
+.zz-ping span:nth-child(2){animation-delay:.2s}
+.zz-ping span:nth-child(3){animation-delay:.4s}
+@keyframes zzPing{0%,100%{transform:scale(.8);opacity:.4}50%{transform:scale(1.15);opacity:1}}
+.zz-left .zz-ping{justify-content:flex-end}
+.zz-badges{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
+.zz-left .zz-badges{justify-content:flex-end}
+.zz-chip{display:inline-block;padding:2px 7px;background:#D1FAE5;color:#059669;border-radius:999px;font-size:9.5px;font-weight:700;border:1px solid #A7F3D0}
+.zz-pulse{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;color:#7C3AED;font-weight:700;margin-top:3px}
+.zz-pulse-dot{width:5px;height:5px;border-radius:50%;background:#7C3AED;position:relative}
+.zz-pulse-dot::before{content:'';position:absolute;inset:0;border-radius:50%;background:#7C3AED;animation:zzPulseRing 1.8s cubic-bezier(0,0,.2,1) infinite}
+@keyframes zzPulseRing{0%{transform:scale(1);opacity:.6}100%{transform:scale(3);opacity:0}}
+.zz-dot{width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(29,78,216,.16);border:2px solid #fff;position:relative;z-index:3}
+.zz-dot::before{content:'';position:absolute;inset:-2px;border-radius:50%;border:1.5px solid rgba(29,78,216,.2);animation:zzDotRing 2.5s ease-in-out infinite}
+@keyframes zzDotRing{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.12);opacity:.8}}
+.zz-dot-ic{font-size:16px}
 /* FIND */
 .find{padding:56px 24px;background:#fff;border-bottom:1px solid #E5E7EB}
 .find-in{max-width:1100px;margin:0 auto}
@@ -3196,21 +3239,41 @@ a{text-decoration:none;color:inherit}
 .rb{display:inline-flex;align-items:center;gap:4px;padding:9px 14px;background:var(--bg);border:1.5px solid #E5E7EB;border-radius:10px;font-size:13px;font-weight:700;color:var(--dark);transition:all .15s}
 .rb:hover{border-color:#111;color:#111;background:#f0f0f0;transform:translateY(-1px)}
 /* PRODUCTS */
-.prods{padding:56px 24px;background:#fff;border-bottom:1px solid #E5E7EB}
+.prods{padding:56px 24px;background:#fff;border-bottom:1px solid #E5E7EB;overflow:hidden}
 .prods-in{max-width:1100px;margin:0 auto}
-.prods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.prod-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1;border:1px solid #e0e0e0;transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);background:#fff}
-.prod-card:hover{border-color:#e05050;transform:translateY(-6px) scale(1.02);box-shadow:0 16px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06)}
-.prod-ic{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#ffffff,#f5f5f5);padding:24px}
-.prod-ic img{width:75%;height:75%;object-fit:contain;transition:transform .3s;filter:drop-shadow(0 4px 8px rgba(0,0,0,.1))}
-.prod-card:hover .prod-ic img{transform:scale(1.08)}
-.prod-card:hover .prod-ic{background:linear-gradient(145deg,#ffffff,#f0f0f0)}
-.prod-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(200,40,40,.9);padding:16px;transform:translateY(100%);transition:transform .25s;pointer-events:none}
-.prod-card:hover .prod-overlay{transform:translateY(0)}
-.prod-name{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
-.prod-desc{font-size:11px;color:rgba(255,255,255,.85);line-height:1.5}
-.prod-label{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:10px;font-size:14px;font-weight:800;color:#111;background:linear-gradient(transparent,rgba(255,255,255,.95));transition:opacity .25s}
-.prod-card:hover .prod-label{opacity:0}
+/* CATALOG BOOK */
+.cat-book{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;background:#fff;border-radius:20px;padding:28px;box-shadow:0 8px 40px rgba(13,46,110,.08);border:1px solid #eef1f7;position:relative;overflow:hidden}
+.cat-book::before{content:'';position:absolute;top:0;bottom:0;left:calc((1.3/2.3)*100% + 2px);width:1px;background:linear-gradient(to bottom,transparent,#E5E7EB,transparent);pointer-events:none}
+.cat-left{display:flex;flex-direction:column;gap:16px;min-height:420px}
+.cat-stage{position:relative;flex:1;background:linear-gradient(145deg,#F8FAFF,#EEF1F9);border-radius:14px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cat-stage::before{content:'';position:absolute;top:-20%;right:-20%;width:60%;height:60%;background:radial-gradient(circle,rgba(29,78,216,.08),transparent 70%);pointer-events:none}
+.cat-view{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.92);transition:all .5s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.cat-view.cat-view-on{opacity:1;transform:scale(1);pointer-events:auto}
+.cat-view img{max-width:70%;max-height:70%;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.15))}
+.cat-info{position:relative;padding:4px 4px 0}
+.cat-info-in{display:none;animation:catFade .5s ease-out}
+.cat-info-in.cat-info-on{display:block}
+@keyframes catFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.cat-num{font-size:10px;font-weight:800;color:#1D4ED8;letter-spacing:2px;margin-bottom:6px}
+.cat-name{font-size:22px;font-weight:900;color:#111;margin-bottom:8px;line-height:1.3;letter-spacing:-.3px}
+.cat-desc{font-size:13px;color:#6B7280;line-height:1.65}
+.cat-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 18px;background:#111;color:#fff;border-radius:999px;font-size:12px;font-weight:800;text-decoration:none;transition:all .2s}
+.cat-cta:hover{background:#1D4ED8;transform:translateX(2px)}
+.cat-cta span{transition:transform .2s}
+.cat-cta:hover span{transform:translateX(3px)}
+.cat-right{display:flex;flex-direction:column}
+.cat-list-label{font-size:10px;font-weight:800;color:#9CA3AF;letter-spacing:3px;margin-bottom:12px;padding:0 8px}
+.cat-list{display:flex;flex-direction:column;gap:2px}
+.cat-item{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;padding:10px 14px;border:none;background:transparent;border-radius:10px;cursor:pointer;text-align:left;font-family:inherit;transition:all .2s;position:relative}
+.cat-item:hover{background:#F8FAFF}
+.cat-item.cat-on{background:linear-gradient(90deg,#1D4ED8,#4F46E5);color:#fff;box-shadow:0 3px 12px rgba(29,78,216,.25)}
+.cat-item.cat-on .cat-idx{color:rgba(255,255,255,.55)}
+.cat-item.cat-on .cat-tit{color:#fff}
+.cat-item.cat-on .cat-arr{color:#fff;transform:translateX(3px)}
+.cat-idx{font-size:10px;font-weight:900;color:#9CA3AF;letter-spacing:1px;transition:color .2s}
+.cat-tit{font-size:13px;font-weight:800;color:#111;transition:color .2s}
+.cat-arr{font-size:14px;color:#D1D5DB;transition:all .2s}
+.cat-item:hover .cat-arr{color:#1D4ED8}
 /* SIDO/SIGUNGU CARDS */
 .sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
 .sg-card:hover{background:#ddd;color:#111}
@@ -3240,35 +3303,124 @@ a{text-decoration:none;color:inherit}
 .rm-item.open .rm-a{display:block}
 .rm-item.open .rm-q span{transform:rotate(45deg)}
 /* FEATURES */
-.feat{padding:56px 24px;background:#fff;border-bottom:1px solid #E5E7EB}
+.feat{padding:56px 24px;background:#fff;border-bottom:1px solid #E5E7EB;overflow:hidden}
 .feat-in{max-width:1100px;margin:0 auto}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.feat-card{background:var(--bg);border-radius:18px;padding:28px 24px;border:1px solid #E5E7EB;transition:transform .2s}
-.feat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(29,78,216,.06)}
-.feat-ic{font-size:32px;margin-bottom:14px}
-.feat-name{font-size:17px;font-weight:800;color:var(--dark);margin-bottom:8px}
-.feat-desc{font-size:13px;color:#6B7280;line-height:1.7}
-/* REVIEWS */
-.rev{padding:56px 0;background:#fff;border-bottom:1px solid #E5E7EB;overflow:hidden}
-.rev-in{max-width:1100px;margin:0 auto;padding:0 24px}
-.rev-scroll{display:flex;gap:16px;overflow:hidden;padding:24px 24px 8px}
-.rev-track{display:flex;gap:16px;animation:scroll 35s linear infinite;width:max-content}
-@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.rev-card{min-width:300px;background:#fff;border-radius:16px;padding:22px;border:1px solid #E5E7EB;box-shadow:0 2px 8px rgba(0,0,0,.04);flex-shrink:0}
-.rev-badge{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:800;color:#fff;margin-bottom:10px}
-.rev-star{color:#F59E0B;font-size:12px;margin-bottom:8px}
-.rev-title{font-size:15px;font-weight:800;color:var(--dark);margin-bottom:8px;line-height:1.3}
-.rev-text{font-size:12px;color:#6B7280;line-height:1.6;margin-bottom:10px}
-.rev-name{font-size:11px;color:#9CA3AF}
+/* BENTO GRID */
+.bn-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:auto auto auto;gap:12px}
+.bn{background:#fff;border:1px solid #E5E7EB;border-radius:18px;padding:20px;position:relative;transition:all .3s cubic-bezier(.4,0,.2,1);overflow:hidden;display:flex;flex-direction:column;min-height:160px}
+.bn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(29,78,216,.08);border-color:rgba(29,78,216,.2)}
+.bn-1{grid-column:span 2;grid-row:span 2;background:linear-gradient(135deg,#FFF7ED,#FFEDD5)}
+.bn-2{grid-column:span 4;background:#0F172A;color:#fff;border-color:#1E293B}
+.bn-3{grid-column:span 2;background:linear-gradient(135deg,#FDF2F8,#FCE7F3)}
+.bn-4{grid-column:span 2;background:linear-gradient(135deg,#FEFCE8,#FEF9C3)}
+.bn-5{grid-column:span 4;background:linear-gradient(135deg,#F5F3FF,#EDE9FE)}
+.bn-6{grid-column:span 2;background:linear-gradient(135deg,#ECFDF5,#D1FAE5)}
+.bn-tag{display:inline-block;padding:3px 8px;background:rgba(0,0,0,.06);color:#111;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:1px;margin-bottom:10px;align-self:flex-start}
+.bn-tag-dark{background:rgba(255,255,255,.1);color:#fff}
+.bn-tag-ai{background:linear-gradient(90deg,#F59E0B,#EF4444);color:#fff}
+.bn-body{margin-top:auto}
+.bn-title{font-size:15px;font-weight:900;color:#111;margin-bottom:4px;line-height:1.3}
+.bn-desc{font-size:11px;color:#6B7280;line-height:1.6}
+/* 1: UI 비주얼 */
+.bn-visual{flex:1;position:relative;min-height:90px;margin-bottom:12px}
+.bn-chip{position:absolute;padding:5px 10px;border-radius:8px;font-size:10px;font-weight:800;color:#fff;animation:bnFloat 4s ease-in-out infinite}
+.bn-chip-a{background:#1D4ED8;top:10%;left:15%;animation-delay:0s}
+.bn-chip-b{background:#F97316;top:40%;left:45%;animation-delay:1.2s}
+.bn-chip-c{background:#059669;top:15%;left:70%;animation-delay:2.4s}
+@keyframes bnFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.bn-cursor{position:absolute;top:55%;left:30%;font-size:22px;animation:bnCursor 3s ease-in-out infinite}
+@keyframes bnCursor{0%,100%{transform:translate(0,0) rotate(-10deg)}33%{transform:translate(20px,-8px) rotate(-10deg)}66%{transform:translate(-10px,5px) rotate(-10deg)}}
+/* 2: 매출 대시보드 */
+.bn-2-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:12px}
+.bn-2-row .bn-body{margin-top:0;flex:1}
+.bn-big-num{font-size:26px;font-weight:900;color:#60A5FA;line-height:1;text-align:right;white-space:nowrap}
+.bn-big-num span{display:block;font-size:9px;color:rgba(255,255,255,.5);letter-spacing:2px;margin-top:5px;font-weight:700}
+.bn-sparkline{margin-top:auto;opacity:.9}
+/* 3: 원격 지원 LIVE */
+.bn-live{position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:#EF4444;color:#fff;border-radius:999px;font-size:9px;font-weight:900;letter-spacing:1px}
+.bn-live-dot{width:5px;height:5px;border-radius:50%;background:#fff;animation:bnPulse 1s ease-in-out infinite}
+@keyframes bnPulse{0%,100%{opacity:1}50%{opacity:.3}}
+/* 4: AI 히트맵 */
+.bn-heatmap{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin-top:10px;height:24px}
+.bn-heat{background:#CA8A04;opacity:calc(.15 + var(--v) * .7);border-radius:2px}
+/* 5: 테이블오더 파이프라인 */
+.bn-pipe{display:flex;align-items:center;justify-content:center;gap:0;margin-top:14px}
+.bn-pipe-n{width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 8px rgba(124,58,237,.15);z-index:2;position:relative;animation:bnPipe 2s ease-in-out infinite}
+.bn-pipe-n:nth-child(3){animation-delay:.3s}
+.bn-pipe-n:nth-child(5){animation-delay:.6s}
+@keyframes bnPipe{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.bn-pipe-l{flex:1;height:2px;background:linear-gradient(90deg,#7C3AED,#A78BFA);position:relative;max-width:60px}
+.bn-pipe-l::after{content:'';position:absolute;top:50%;right:-3px;width:6px;height:6px;background:#7C3AED;border-radius:50%;transform:translateY(-50%)}
+/* 6: 스마트 리뷰 */
+.bn-stars{position:absolute;top:16px;right:16px;color:#F59E0B;font-size:13px;letter-spacing:-1px}
+.bn-sources{display:flex;gap:5px;align-items:center;margin-top:12px}
+.bn-src{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:900}
+.bn-src-plus{font-size:10px;color:#6B7280;font-weight:800;margin-left:4px}
+/* REVIEWS - CHAT FEED */
+.rev{padding:56px 24px;background:linear-gradient(180deg,#F8FAFF 0%,#fff 100%);border-bottom:1px solid #E5E7EB;overflow:hidden}
+.rev-in{max-width:1100px;margin:0 auto}
+.rv-stage{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start}
+.rv-phone{position:relative;background:#fff;border-radius:20px;box-shadow:0 12px 40px rgba(13,46,110,.1),0 2px 8px rgba(13,46,110,.05);border:1px solid #E5E7EB;overflow:hidden;max-width:580px;margin:0 auto;width:100%}
+.rv-phone-top{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#fafbfd;border-bottom:1px solid #eef1f7}
+.rv-phone-l{display:flex;align-items:center;gap:8px}
+.rv-phone-dot{width:8px;height:8px;border-radius:50%;background:#10B981;animation:rvPulse 2s ease-in-out infinite;box-shadow:0 0 0 3px rgba(16,185,129,.2)}
+@keyframes rvPulse{0%,100%{opacity:1}50%{opacity:.5}}
+.rv-phone-nm{font-size:11.5px;font-weight:800;color:#111}
+.rv-phone-r{font-size:11px;color:#9CA3AF;letter-spacing:2px}
+.rv-feed{position:relative;padding:16px 14px 32px;max-height:560px;overflow:hidden}
+.rv-fade{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to top,#fff,transparent);pointer-events:none;z-index:3}
+.rv-date{text-align:center;font-size:10px;color:#9CA3AF;background:#F3F4F6;padding:4px 12px;border-radius:999px;width:fit-content;margin:0 auto 12px;font-weight:700}
+.rv-bubble{display:flex;gap:8px;margin-bottom:14px;align-items:flex-start;opacity:0;animation:rvPop .6s ease-out forwards}
+.rv-in1{animation-delay:0s}
+.rv-in2{animation-delay:.15s}
+.rv-in3{animation-delay:.3s}
+.rv-in4{animation-delay:.45s}
+.rv-in5{animation-delay:.6s}
+.rv-in6{animation-delay:.75s}
+@keyframes rvPop{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.rv-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.rv-body{flex:1;min-width:0}
+.rv-meta{font-size:10.5px;color:#6B7280;margin-bottom:4px;padding-left:2px}
+.rv-meta b{color:#111;font-weight:800;margin-right:4px}
+.rv-balloon{background:#fff;border:1px solid #E5E7EB;border-radius:4px 14px 14px 14px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.6;box-shadow:0 1px 3px rgba(0,0,0,.03);position:relative}
+.rv-tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:9.5px;font-weight:800;margin-right:6px;vertical-align:2px}
+.rv-side{display:flex;flex-direction:column;gap:10px;position:sticky;top:80px}
+.rv-side-card{background:#fff;border:1px solid #eef1f7;border-radius:14px;padding:16px 14px;text-align:center;box-shadow:0 2px 10px rgba(13,46,110,.04);transition:all .2s}
+.rv-side-card:hover{transform:translateY(-2px);border-color:rgba(29,78,216,.2)}
+.rv-side-num{font-size:22px;font-weight:900;color:#F59E0B;line-height:1}
+.rv-side-num-b{color:#1D4ED8}
+.rv-side-num-g{color:#059669}
+.rv-side-lbl{font-size:10.5px;color:#6B7280;margin-top:4px;font-weight:700}
+.rv-side-note{font-size:10px;color:#9CA3AF;line-height:1.6;padding:10px 12px;background:#F9FAFB;border-radius:10px;border:1px solid #F3F4F6}
 /* SPECIAL */
-.spc{padding:56px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB}
-.spc-in{max-width:1100px;margin:0 auto}
-.spc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.spc-card{display:flex;gap:16px;background:#fff;border-radius:16px;padding:24px;border:1px solid #E5E7EB;transition:transform .2s}
-.spc-card:hover{transform:translateY(-2px)}
-.spc-ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-.spc-tit{font-size:15px;font-weight:800;color:var(--dark);margin-bottom:6px}
-.spc-desc{font-size:12px;color:#6B7280;line-height:1.6}
+.spc{padding:56px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB;overflow:hidden}
+.spc-in{max-width:1000px;margin:0 auto}
+/* VS COMPARISON */
+.vs-board{background:#fff;border-radius:18px;padding:8px;box-shadow:0 4px 30px rgba(13,46,110,.06);border:1px solid #eef1f7;overflow:hidden}
+.vs-head{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:4px}
+.vs-col-others,.vs-col-ours{padding:16px 20px;text-align:center}
+.vs-col-others{background:#F9FAFB;border-radius:12px 0 0 12px;border-right:1px solid #E5E7EB}
+.vs-col-ours{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-radius:0 12px 12px 0}
+.vs-col-tag{font-size:13px;font-weight:900;color:#111;margin-bottom:3px}
+.vs-col-ours .vs-col-tag{color:#1D4ED8}
+.vs-col-sub{font-size:10.5px;color:#6B7280}
+.vs-col-divider{position:relative;display:flex;align-items:center;justify-content:center}
+.vs-col-divider::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(to bottom,transparent,#E5E7EB,transparent);transform:translateX(-50%)}
+.vs-vs{position:relative;z-index:2;width:34px;height:34px;border-radius:50%;background:#111;color:#fff;font-size:11px;font-weight:900;letter-spacing:.5px;display:flex;align-items:center;justify-content:center}
+.vs-row{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:stretch;position:relative;transition:all .3s}
+.vs-row:hover{background:#FAFBFF}
+.vs-row + .vs-row{border-top:1px solid #F3F4F6}
+.vs-cell{padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+.vs-bad{color:#9CA3AF}
+.vs-bad .vs-cell-text{font-size:12px;line-height:1.6;font-style:italic;padding-top:2px}
+.vs-good{background:linear-gradient(135deg,rgba(239,246,255,.4),rgba(219,234,254,.2))}
+.vs-good .vs-cell-text{font-size:12px;color:#6B7280;line-height:1.6;padding-top:2px}
+.vs-good .vs-cell-text b{font-size:14px;color:#111;font-weight:900;display:inline-block;margin-bottom:4px}
+.vs-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0}
+.vs-icon-x{background:#FEE2E2;color:#DC2626}
+.vs-icon-o{background:#1D4ED8;color:#fff;box-shadow:0 2px 8px rgba(29,78,216,.3)}
+.vs-num{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#CBD5E1;letter-spacing:1px;position:relative;z-index:2}
+.vs-num::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(to bottom,transparent,#E5E7EB,transparent);transform:translateX(-50%)}
 /* CTA */
 .cta-sec{padding:56px 24px;background:#111;text-align:center}
 .cta-in{max-width:700px;margin:0 auto}
@@ -3315,10 +3467,36 @@ a{text-decoration:none;color:inherit}
  .hero-btns{justify-content:center}
  .hero-bg{object-position:center center!important}
  .hero-overlay{background:rgba(255,255,255,.5)!important}
- .str-grid{grid-template-columns:repeat(2,1fr)}
- .prods-grid{grid-template-columns:repeat(2,1fr)}
+ .cat-book{grid-template-columns:1fr;gap:20px;padding:18px}
+ .cat-book::before{display:none}
+ .cat-left{min-height:auto}
+ .cat-stage{min-height:220px}
+ .cat-name{font-size:18px}
+ .cat-desc{font-size:12px}
  .spc-grid{grid-template-columns:1fr}
+ /* VS 모바일: 세로 스택 */
+ .vs-head{grid-template-columns:1fr 40px 1fr}
+ .vs-col-others,.vs-col-ours{padding:12px 10px}
+ .vs-col-tag{font-size:11.5px}
+ .vs-col-sub{font-size:10px}
+ .vs-vs{width:28px;height:28px;font-size:10px}
+ .vs-row{grid-template-columns:1fr 40px 1fr}
+ .vs-cell{padding:14px 12px;gap:8px}
+ .vs-bad .vs-cell-text{font-size:11px}
+ .vs-good .vs-cell-text{font-size:11px}
+ .vs-good .vs-cell-text b{font-size:12.5px}
+ .vs-icon{width:20px;height:20px;font-size:11px}
+ .vs-num{font-size:9.5px}
  .feat-grid{grid-template-columns:1fr}
+ .sf-split{grid-template-columns:1fr;padding:10px}
+ .sf-preview{padding:20px;min-height:auto}
+ .bn-grid{grid-template-columns:repeat(2,1fr)}
+ .bn-1{grid-column:span 2;grid-row:auto}
+ .bn-2{grid-column:span 2}
+ .bn-3{grid-column:span 1}
+ .bn-4{grid-column:span 1}
+ .bn-5{grid-column:span 2}
+ .bn-6{grid-column:span 2}
  .sc-in{flex-direction:column!important;gap:24px;padding:0 16px}
  .sc-left{flex:none!important;width:100%!important;padding:28px!important;border-radius:16px!important}
  .sc-left[style*="min-height"]{padding:0!important;min-height:300px!important}
@@ -3329,8 +3507,12 @@ a{text-decoration:none;color:inherit}
  .sc-right h2{font-size:20px!important}
  .sc-feat{font-size:13px}
  .sc-btn{width:100%;justify-content:center;padding:12px 20px;font-size:14px}
- .rev-card{min-width:260px;padding:18px}
- .rev-title{font-size:14px}
+ .rv-stage{grid-template-columns:1fr;gap:18px}
+ .rv-side{position:static;flex-direction:row;flex-wrap:wrap;gap:8px}
+ .rv-side-card{flex:1;min-width:0;padding:12px 8px}
+ .rv-side-num{font-size:18px}
+ .rv-side-lbl{font-size:9.5px}
+ .rv-side-note{flex-basis:100%;font-size:9.5px;padding:8px 10px}
  .ft-top{flex-direction:column;text-align:center}
  .ft-tel{text-align:center}
  .showcase{padding:40px 0!important}
@@ -3345,17 +3527,35 @@ a{text-decoration:none;color:inherit}
  .hero-btns{flex-direction:column;gap:8px}
  .hero-btns a,.hero-btns button{width:100%}
  .hero-overlay{background:rgba(255,255,255,.55)!important}
- .str-grid{grid-template-columns:1fr 1fr;gap:10px}
- .prods-grid{grid-template-columns:1fr 1fr;gap:10px}
- .prod-card{aspect-ratio:1}
+ /* 지그재그 모바일: 세로 1열, 좌우 정렬 해제 */
+ .zz-wrap{padding:10px 0}
+ .zz-line{left:22px;transform:none}
+ .zz-line::before,.zz-line::after{left:22px}
+ .zz-row{grid-template-columns:44px 1fr!important;gap:12px;margin-bottom:14px}
+ .zz-row .zz-spacer{display:none}
+ .zz-dot{width:40px;height:40px;grid-column:1}
+ .zz-dot-ic{font-size:18px}
+ .zz-card{grid-column:2;padding:13px 15px!important;text-align:left!important}
+ .zz-left .zz-card,.zz-right .zz-card{text-align:left!important}
+ .zz-left .zz-card::after,.zz-right .zz-card::before{left:-9px!important;right:auto!important;top:22px!important;transform:rotate(-135deg)!important}
+ .zz-left .zz-ping,.zz-left .zz-badges{justify-content:flex-start}
+ .zz-num-big{font-size:22px}
+ .zz-plus{font-size:15px}
+ .cat-stage{min-height:180px}
+ .cat-name{font-size:16px}
+ .cat-item{padding:8px 10px}
+ .cat-tit{font-size:12px}
  .sc-left[style*="min-height"]{min-height:250px!important}
  .sc-left[style*="min-height"] img{object-fit:contain!important;background:#f0f2f5}
  .sc-left{padding:20px!important}
  .sc-left h3{font-size:18px!important}
  .sc-right h2{font-size:18px!important}
- .rev-card{min-width:230px;padding:16px}
- .rev-title{font-size:13px}
- .rev-text{font-size:11px}
+ .rv-phone{border-radius:16px}
+ .rv-feed{padding:12px 10px 28px;max-height:520px}
+ .rv-avatar{width:30px;height:30px;font-size:12px}
+ .rv-meta{font-size:10px}
+ .rv-balloon{font-size:11.5px;padding:9px 12px}
+ .rv-tag{font-size:9px;padding:2px 7px}
  .cta-main{font-size:14px;padding:12px 28px}
  .cta-sub{font-size:14px;padding:12px 28px;margin-left:0;margin-top:10px}
  .cta{padding:28px 18px}
@@ -3406,7 +3606,7 @@ a{text-decoration:none;color:inherit}
  <div class="hero-card">
  <div class="hc-top"><div class="hc-ic">📍</div><div><div class="hc-tit" id="hc-area">강남구 카드단말기 설치</div><div class="hc-sub">오늘 기준 · 실시간</div></div></div>
  <div class="hc-stats">
- <div class="hc-stat"><div class="hc-num" id="hc-cnt">350+</div><div class="hc-lbl">누적 설치</div></div>
+ <div class="hc-stat"><div class="hc-num" id="hc-cnt">15,000+</div><div class="hc-lbl">누적 설치</div></div>
  <div class="hc-stat"><div class="hc-num" id="hc-sat">98%</div><div class="hc-lbl">만족도</div></div>
  </div>
  <div class="hc-bar"><div class="hc-bar-top"><span>빠른 설치율</span><b id="hc-speed">94%</b></div><div class="hc-bar-bg"><div class="hc-bar-fill" id="hc-bar1" style="width:94%"></div></div></div>
@@ -3420,11 +3620,48 @@ a{text-decoration:none;color:inherit}
  <div class="sec-tag">OUR STRENGTH</div>
  <h2 class="sec-tit">전국 사장님이 선택한<br><b>올페이스토어가 다릅니다</b></h2>
  </div>
- <div class="str-grid">
- <div class="str-card"><div class="str-ic">🏆</div><div class="str-num">350+</div><div class="str-lbl">누적 설치 건수</div><div class="str-desc">전국 직접 출장 설치</div></div>
- <div class="str-card"><div class="str-ic">⚡</div><div class="str-num">빠른</div><div class="str-lbl">신속 설치 완료</div><div class="str-desc">상담 후 빠른 설치</div></div>
- <div class="str-card"><div class="str-ic">💰</div><div class="str-num">무료</div><div class="str-lbl">무료 견적·상담</div><div class="str-desc">부담 없이 비교하세요</div></div>
- <div class="str-card"><div class="str-ic">🔧</div><div class="str-num">A/S</div><div class="str-lbl">빠른 사후 지원</div><div class="str-desc">장애 시 빠른 출동</div></div>
+ <div class="zz-wrap">
+ <div class="zz-line"></div>
+ <div class="zz-row zz-left">
+  <div class="zz-card">
+   <div class="zz-num-big">15,000<span class="zz-plus">+</span></div>
+   <div class="zz-label">누적 설치 건수</div>
+   <div class="zz-bar"><div class="zz-fill" style="--p:92%"></div></div>
+   <div class="zz-desc">전국 직접 출장 설치 실적</div>
+  </div>
+  <div class="zz-dot"><div class="zz-dot-ic">🏆</div></div>
+  <div class="zz-spacer"></div>
+ </div>
+ <div class="zz-row zz-right">
+  <div class="zz-spacer"></div>
+  <div class="zz-dot"><div class="zz-dot-ic">⚡</div></div>
+  <div class="zz-card">
+   <div class="zz-num-big zz-fast">빠른</div>
+   <div class="zz-label">신속 설치 완료</div>
+   <div class="zz-ping"><span></span><span></span><span></span></div>
+   <div class="zz-desc">상담 후 빠른 일정으로 방문</div>
+  </div>
+ </div>
+ <div class="zz-row zz-left">
+  <div class="zz-card">
+   <div class="zz-num-big zz-free">0<span class="zz-won">원</span></div>
+   <div class="zz-label">무료 견적·상담</div>
+   <div class="zz-badges"><span class="zz-chip">전화</span><span class="zz-chip">문자</span><span class="zz-chip">카톡</span></div>
+   <div class="zz-desc">부담 없이 비교하세요</div>
+  </div>
+  <div class="zz-dot"><div class="zz-dot-ic">💰</div></div>
+  <div class="zz-spacer"></div>
+ </div>
+ <div class="zz-row zz-right">
+  <div class="zz-spacer"></div>
+  <div class="zz-dot"><div class="zz-dot-ic">🔧</div></div>
+  <div class="zz-card">
+   <div class="zz-num-big zz-as">A<span class="zz-slash">/</span>S</div>
+   <div class="zz-label">빠른 사후 지원</div>
+   <div class="zz-pulse"><span class="zz-pulse-dot"></span>실시간 원격·현장 대응</div>
+   <div class="zz-desc">장애 발생 시 즉시 출동</div>
+  </div>
+ </div>
  </div>
  </div>
 </section>
@@ -3449,56 +3686,228 @@ a{text-decoration:none;color:inherit}
  <div class="sec-tag">ALL-IN-ONE SOLUTION</div>
  <h2 class="sec-tit">매장에 필요한 모든 장비<br><b>한번에 설치합니다</b></h2>
  </div>
- <div class="prods-grid">
- <div class="prod-card"><div class="prod-ic"><img src="/images/a1.png" alt="포스기"></div><div class="prod-label">포스기(POS)</div><div class="prod-overlay"><div class="prod-name">포스기(POS)</div><div class="prod-desc">주문·결제·매출·재고<br>통합 관리 시스템</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a2.png" alt="자동커팅단말기"></div><div class="prod-label">자동커팅단말기</div><div class="prod-overlay"><div class="prod-name">자동커팅단말기</div><div class="prod-desc">영수증 자동 커팅<br>빠른 결제 처리</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a3.png" alt="유선카드단말기"></div><div class="prod-label">유선카드단말기</div><div class="prod-overlay"><div class="prod-name">유선카드단말기</div><div class="prod-desc">고정 카운터 전용<br>안정적 유선 결제</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a4.png" alt="토스단말기"></div><div class="prod-label">토스단말기</div><div class="prod-overlay"><div class="prod-name">토스단말기</div><div class="prod-desc">토스페이먼츠 연동<br>간편결제 특화</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a5.png" alt="무선단말기"></div><div class="prod-label">무선단말기</div><div class="prod-overlay"><div class="prod-name">무선단말기</div><div class="prod-desc">이동 결제·배달·테이블<br>어디서든 결제</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a6.png" alt="블루투스단말기"></div><div class="prod-label">블루투스단말기</div><div class="prod-overlay"><div class="prod-name">블루투스단말기</div><div class="prod-desc">스마트폰 연동<br>초소형 휴대 결제</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a7.png" alt="테이블오더"></div><div class="prod-label">테이블오더</div><div class="prod-overlay"><div class="prod-name">테이블오더</div><div class="prod-desc">QR·태블릿 주문<br>홀 인건비 절감</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a8.png" alt="미니키오스크"></div><div class="prod-label">미니키오스크</div><div class="prod-overlay"><div class="prod-name">미니키오스크</div><div class="prod-desc">소형 매장 전용<br>공간 절약형 무인 주문</div></div></div>
- <div class="prod-card"><div class="prod-ic"><img src="/images/a9.png" alt="키오스크"></div><div class="prod-label">키오스크</div><div class="prod-overlay"><div class="prod-name">키오스크</div><div class="prod-desc">대형 무인 주문·결제<br>인건비 월 200만원 절감</div></div></div>
+ <div class="cat-book">
+  <div class="cat-left">
+   <div class="cat-stage">
+    <div class="cat-view cat-view-on" data-cv="1">
+     <img src="/images/a1.png" alt="포스기(POS)">
+    </div>
+    <div class="cat-view" data-cv="2"><img src="/images/a2.png" alt="자동커팅단말기"></div>
+    <div class="cat-view" data-cv="3"><img src="/images/a3.png" alt="유선카드단말기"></div>
+    <div class="cat-view" data-cv="4"><img src="/images/a4.png" alt="토스단말기"></div>
+    <div class="cat-view" data-cv="5"><img src="/images/a5.png" alt="무선단말기"></div>
+    <div class="cat-view" data-cv="6"><img src="/images/a6.png" alt="블루투스단말기"></div>
+    <div class="cat-view" data-cv="7"><img src="/images/a7.png" alt="테이블오더"></div>
+    <div class="cat-view" data-cv="8"><img src="/images/a8.png" alt="미니키오스크"></div>
+    <div class="cat-view" data-cv="9"><img src="/images/a9.png" alt="키오스크"></div>
+   </div>
+   <div class="cat-info">
+    <div class="cat-info-in cat-info-on" data-ci="1">
+     <div class="cat-num">01 / 09</div>
+     <div class="cat-name">포스기(POS)</div>
+     <div class="cat-desc">주문·결제·매출·재고를 하나로 관리하는 통합 시스템. 매장 운영의 두뇌 역할을 합니다.</div>
+    </div>
+    <div class="cat-info-in" data-ci="2">
+     <div class="cat-num">02 / 09</div>
+     <div class="cat-name">자동커팅단말기</div>
+     <div class="cat-desc">영수증 자동 커팅으로 빠른 결제 처리. 고객 응대 속도가 달라집니다.</div>
+    </div>
+    <div class="cat-info-in" data-ci="3">
+     <div class="cat-num">03 / 09</div>
+     <div class="cat-name">유선카드단말기</div>
+     <div class="cat-desc">고정 카운터 전용 안정적 유선 결제. 끊김 없는 결제 환경을 구축합니다.</div>
+    </div>
+    <div class="cat-info-in" data-ci="4">
+     <div class="cat-num">04 / 09</div>
+     <div class="cat-name">토스단말기</div>
+     <div class="cat-desc">토스페이먼츠 연동 간편결제 특화. 젊은 층 고객이 많은 매장에 최적입니다.</div>
+    </div>
+    <div class="cat-info-in" data-ci="5">
+     <div class="cat-num">05 / 09</div>
+     <div class="cat-name">무선단말기</div>
+     <div class="cat-desc">이동 결제·배달·테이블 어디서든 결제. 홀·매장 밖에서도 자유로운 결제.</div>
+    </div>
+    <div class="cat-info-in" data-ci="6">
+     <div class="cat-num">06 / 09</div>
+     <div class="cat-name">블루투스단말기</div>
+     <div class="cat-desc">스마트폰 연동 초소형 휴대 결제. 1인 사장님·출장 서비스에 적합합니다.</div>
+    </div>
+    <div class="cat-info-in" data-ci="7">
+     <div class="cat-num">07 / 09</div>
+     <div class="cat-name">테이블오더</div>
+     <div class="cat-desc">QR·태블릿 주문으로 홀 인건비 절감. 고객이 직접 주문·결제까지 처리합니다.</div>
+    </div>
+    <div class="cat-info-in" data-ci="8">
+     <div class="cat-num">08 / 09</div>
+     <div class="cat-name">미니키오스크</div>
+     <div class="cat-desc">소형 매장 전용 공간 절약형 무인 주문. 좁은 공간에도 도입 가능합니다.</div>
+    </div>
+    <div class="cat-info-in" data-ci="9">
+     <div class="cat-num">09 / 09</div>
+     <div class="cat-name">키오스크</div>
+     <div class="cat-desc">대형 무인 주문·결제 시스템. 인건비 월 200만원 이상 절감 효과.</div>
+    </div>
+    <a href="/contact/" class="cat-cta">💬 상담 문의 <span>→</span></a>
+   </div>
+  </div>
+  <div class="cat-right">
+   <div class="cat-list-label">PRODUCT INDEX</div>
+   <div class="cat-list">
+    <button class="cat-item cat-on" data-c="1" onclick="catPick(this)">
+     <span class="cat-idx">01</span>
+     <span class="cat-tit">포스기(POS)</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="2" onclick="catPick(this)">
+     <span class="cat-idx">02</span>
+     <span class="cat-tit">자동커팅단말기</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="3" onclick="catPick(this)">
+     <span class="cat-idx">03</span>
+     <span class="cat-tit">유선카드단말기</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="4" onclick="catPick(this)">
+     <span class="cat-idx">04</span>
+     <span class="cat-tit">토스단말기</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="5" onclick="catPick(this)">
+     <span class="cat-idx">05</span>
+     <span class="cat-tit">무선단말기</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="6" onclick="catPick(this)">
+     <span class="cat-idx">06</span>
+     <span class="cat-tit">블루투스단말기</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="7" onclick="catPick(this)">
+     <span class="cat-idx">07</span>
+     <span class="cat-tit">테이블오더</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="8" onclick="catPick(this)">
+     <span class="cat-idx">08</span>
+     <span class="cat-tit">미니키오스크</span>
+     <span class="cat-arr">→</span>
+    </button>
+    <button class="cat-item" data-c="9" onclick="catPick(this)">
+     <span class="cat-idx">09</span>
+     <span class="cat-tit">키오스크</span>
+     <span class="cat-arr">→</span>
+    </button>
+   </div>
+  </div>
  </div>
  </div>
 </section>
+<script>
+function catPick(b){
+ document.querySelectorAll('.cat-item').forEach(function(e){e.classList.remove('cat-on')});
+ b.classList.add('cat-on');
+ var n=b.getAttribute('data-c');
+ document.querySelectorAll('.cat-view').forEach(function(e){e.classList.toggle('cat-view-on',e.getAttribute('data-cv')===n);});
+ document.querySelectorAll('.cat-info-in').forEach(function(e){e.classList.toggle('cat-info-on',e.getAttribute('data-ci')===n);});
+}
+</script>
 <section class="feat">
  <div class="feat-in">
  <div class="sec-hd">
  <div class="sec-tag">SMART FEATURES</div>
  <h2 class="sec-tit">설치만 하는 게 아닙니다<br><b>매장 운영이 달라집니다</b></h2>
  </div>
- <div class="feat-grid">
- <div class="feat-card">
- <div class="feat-ic">✏️</div>
- <div class="feat-name">맞춤형 UI 설정</div>
- <div class="feat-desc">우리 매장에 딱 맞는 메뉴 배치와 결제 동선을 직접 설계하여 계산 시간을 단축하세요.</div>
- </div>
- <div class="feat-card">
- <div class="feat-ic">📊</div>
- <div class="feat-name">통합 매출 관리</div>
- <div class="feat-desc">배달 앱, 오프라인 결제 데이터를 하나로 모아 실시간 매출 추이를 한눈에 파악합니다.</div>
- </div>
- <div class="feat-card">
- <div class="feat-ic">🔌</div>
- <div class="feat-name">원격 지원</div>
- <div class="feat-desc">기기 장애 발생 시, 기다릴 필요 없이 즉시 원격 지원을 통해 문제를 해결해 드립니다.</div>
- </div>
- <div class="feat-card">
- <div class="feat-ic">💡</div>
- <div class="feat-name">AI 매출 분석 리포트</div>
- <div class="feat-desc">단순히 매출액만 보여주는 것이 아니라, 요일별·시간대별 방문 패턴을 분석하여 최적의 운영 시간을 제안합니다.</div>
- </div>
- <div class="feat-card">
- <div class="feat-ic">🍽️</div>
- <div class="feat-name">테이블 오더 연동</div>
- <div class="feat-desc">인건비 고민을 덜어드립니다. 자리에 앉아 주문부터 결제까지 한 번에 끝내는 테이블 오더 시스템과 완벽하게 연동됩니다.</div>
- </div>
- <div class="feat-card">
- <div class="feat-ic">⭐</div>
- <div class="feat-name">스마트 리뷰 연동</div>
- <div class="feat-desc">매장 리뷰와 SNS 피드백을 실시간으로 확인하며 고객 소통을 강화할 수 있습니다.</div>
- </div>
+ <div class="bn-grid">
+  <!-- 1: 맞춤형 UI 설정 (세로 큰 카드, 왼쪽) -->
+  <div class="bn bn-1">
+   <div class="bn-tag">01</div>
+   <div class="bn-visual bn-visual-ui">
+    <div class="bn-chip bn-chip-a">결제</div>
+    <div class="bn-chip bn-chip-b">메뉴</div>
+    <div class="bn-chip bn-chip-c">할인</div>
+    <div class="bn-cursor">✋</div>
+   </div>
+   <div class="bn-body">
+    <div class="bn-title">맞춤형 UI 설정</div>
+    <div class="bn-desc">우리 매장에 딱 맞는 메뉴 배치와 결제 동선을 직접 설계하여 계산 시간을 단축하세요.</div>
+   </div>
+  </div>
+  <!-- 2: 통합 매출 관리 (가로 카드, 상단 우측) -->
+  <div class="bn bn-2">
+   <div class="bn-tag bn-tag-dark">02</div>
+   <div class="bn-2-row">
+    <div class="bn-body">
+     <div class="bn-title" style="color:#fff">통합 매출 관리</div>
+     <div class="bn-desc" style="color:rgba(255,255,255,.65)">배달 앱, 오프라인 결제 데이터를 하나로 모아 실시간 매출 추이를 한눈에 파악합니다.</div>
+    </div>
+    <div class="bn-big-num">₩1.28M<span>TODAY</span></div>
+   </div>
+   <div class="bn-sparkline">
+    <svg viewBox="0 0 200 40" preserveAspectRatio="none" style="width:100%;height:40px"><path d="M0,30 L25,22 L50,26 L75,14 L100,18 L125,8 L150,12 L175,4 L200,8" stroke="#60A5FA" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M0,30 L25,22 L50,26 L75,14 L100,18 L125,8 L150,12 L175,4 L200,8 L200,40 L0,40 Z" fill="url(#bnGrad)"/><defs><linearGradient id="bnGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60A5FA" stop-opacity=".3"/><stop offset="100%" stop-color="#60A5FA" stop-opacity="0"/></linearGradient></defs></svg>
+   </div>
+  </div>
+  <!-- 3: 원격 지원 (작은 카드, 우측 중앙) -->
+  <div class="bn bn-3">
+   <div class="bn-tag">03</div>
+   <div class="bn-live"><span class="bn-live-dot"></span>LIVE</div>
+   <div class="bn-body">
+    <div class="bn-title">원격 지원</div>
+    <div class="bn-desc">기기 장애 발생 시, 기다릴 필요 없이 즉시 원격 지원을 통해 문제를 해결해 드립니다.</div>
+   </div>
+  </div>
+  <!-- 4: AI 매출 분석 리포트 (가로 카드, 중앙) -->
+  <div class="bn bn-4">
+   <div class="bn-tag bn-tag-ai">AI · 04</div>
+   <div class="bn-body">
+    <div class="bn-title">AI 매출 분석 리포트</div>
+    <div class="bn-desc">단순히 매출액만 보여주는 것이 아니라, 요일별·시간대별 방문 패턴을 분석하여 최적의 운영 시간을 제안합니다.</div>
+   </div>
+   <div class="bn-heatmap">
+    <div class="bn-heat" style="--v:.2"></div>
+    <div class="bn-heat" style="--v:.3"></div>
+    <div class="bn-heat" style="--v:.5"></div>
+    <div class="bn-heat" style="--v:.4"></div>
+    <div class="bn-heat" style="--v:.7"></div>
+    <div class="bn-heat" style="--v:.9"></div>
+    <div class="bn-heat" style="--v:.6"></div>
+    <div class="bn-heat" style="--v:.3"></div>
+    <div class="bn-heat" style="--v:.5"></div>
+    <div class="bn-heat" style="--v:.8"></div>
+    <div class="bn-heat" style="--v:1"></div>
+    <div class="bn-heat" style="--v:.7"></div>
+   </div>
+  </div>
+  <!-- 5: 테이블 오더 연동 (세로 카드, 하단 좌측) -->
+  <div class="bn bn-5">
+   <div class="bn-tag">05</div>
+   <div class="bn-body">
+    <div class="bn-title">테이블 오더 연동</div>
+    <div class="bn-desc">인건비 고민을 덜어드립니다. 자리에 앉아 주문부터 결제까지 한 번에 끝내는 테이블 오더 시스템과 완벽하게 연동됩니다.</div>
+   </div>
+   <div class="bn-pipe">
+    <div class="bn-pipe-n">📱</div>
+    <div class="bn-pipe-l"></div>
+    <div class="bn-pipe-n">🖥️</div>
+    <div class="bn-pipe-l"></div>
+    <div class="bn-pipe-n">🍳</div>
+   </div>
+  </div>
+  <!-- 6: 스마트 리뷰 연동 (작은 카드, 하단 우측) -->
+  <div class="bn bn-6">
+   <div class="bn-tag">06</div>
+   <div class="bn-stars">★★★★★</div>
+   <div class="bn-body">
+    <div class="bn-title">스마트 리뷰 연동</div>
+    <div class="bn-desc">매장 리뷰와 SNS 피드백을 실시간으로 확인하며 고객 소통을 강화할 수 있습니다.</div>
+   </div>
+   <div class="bn-sources">
+    <span class="bn-src" style="background:#03C75A">N</span>
+    <span class="bn-src" style="background:#E4405F">I</span>
+    <span class="bn-src" style="background:#4285F4">G</span>
+    <span class="bn-src-plus">+3</span>
+   </div>
+  </div>
  </div>
  </div>
 </section>
@@ -3607,22 +4016,78 @@ a{text-decoration:none;color:inherit}
  <h2 class="sec-tit">전국 사장님들의<br><b>생생한 설치 후기</b></h2>
  </div>
  </div>
- <div class="rev-scroll">
- <div class="rev-track">
- <div class="rev-card"><div class="rev-badge" style="background:#333">매출 40%↑</div><div class="rev-star">★★★★★</div><div class="rev-title">카드단말기 교체 후 카드매출 급증</div><div class="rev-text">수수료 비교까지 해주셔서 연간 60만원 절약하고 매출도 올랐어요.</div><div class="rev-name">서울 강남구 카페 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#059669">인건비 50%↓</div><div class="rev-star">★★★★★</div><div class="rev-title">키오스크 설치 후 홀 인건비 반으로</div><div class="rev-text">테이블오더+키오스크로 홀 직원 2명→1명. 서비스 품질도 유지됩니다.</div><div class="rev-name">부산 해운대구 음식점 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#7C3AED">수수료 절감</div><div class="rev-star">★★★★★</div><div class="rev-title">VAN사 변경으로 연 40만원 절약</div><div class="rev-text">기존보다 수수료 저렴한 VAN사로 바꿔주셔서 매년 절약 중입니다.</div><div class="rev-name">경기 수원시 소매점 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#DC2626">빠른 설치</div><div class="rev-star">★★★★★</div><div class="rev-title">전화 한 통으로 빠른 설치 완료!</div><div class="rev-text">급하게 필요했는데 빠르게 설치해주셨어요. 바로 영업 시작할 수 있었습니다.</div><div class="rev-name">대전 유성구 음식점 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#0891B2">무인화 성공</div><div class="rev-star">★★★★★</div><div class="rev-title">24시간 무인매장 전환 완료</div><div class="rev-text">CCTV 설치. 월 매출 30% 증가!</div><div class="rev-name">인천 연수구 스터디카페 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#EA580C">A/S 최고</div><div class="rev-star">★★★★★</div><div class="rev-title">포스기 장애 빠르게 해결</div><div class="rev-text">전화하니 빠르게 해결해주셨어요. 이런 A/S는 처음입니다.</div><div class="rev-name">광주 서구 미용실 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#6D28D9">CCTV 만족</div><div class="rev-star">★★★★★</div><div class="rev-title">스마트폰으로 매장 실시간 확인</div><div class="rev-text">매장에 없어도 스마트폰으로 확인 가능. CCTV 화질도 선명합니다.</div><div class="rev-name">서울 마포구 음식점 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#059669">매출 증가</div><div class="rev-star">★★★★★</div><div class="rev-title">테이블오더 도입 후 객단가 25% 상승</div><div class="rev-text">메뉴 사진 보고 추가 주문이 늘었어요. 직원 호출도 줄어서 편해요.</div><div class="rev-name">경기 분당구 치킨집 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#B45309">포스기 추천</div><div class="rev-star">★★★★★</div><div class="rev-title">매출 관리가 이렇게 쉬울 줄이야</div><div class="rev-text">일별·월별 매출 자동 리포트! 세무사한테 보내기도 편해요.</div><div class="rev-name">서울 송파구 베이커리 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#DC2626">깔끔 철거</div><div class="rev-star">★★★★★</div><div class="rev-title">보증금 100% 돌려받았습니다</div><div class="rev-text">원상복구 깔끔하게 해주셔서 임대인과 분쟁 없이 보증금 전액 반환.</div><div class="rev-name">서울 종로구 옷가게 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#0891B2">패키지 할인</div><div class="rev-star">★★★★★</div><div class="rev-title">카드단말기+포스기+테이블오더 한번에</div><div class="rev-text">신규 매장 오픈할 때 패키지로 한번에 설치. 시간과 비용 모두 절약!</div><div class="rev-name">대구 수성구 카페 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#333">친절 상담</div><div class="rev-star">★★★★★</div><div class="rev-title">어떤 장비가 맞는지 꼼꼼히 안내</div><div class="rev-text">우리 매장 업종에 맞는 장비를 추천해주셔서 불필요한 비용 없었어요.</div><div class="rev-name">울산 남구 분식집 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#333">매출 40%↑</div><div class="rev-star">★★★★★</div><div class="rev-title">카드단말기 교체 후 카드매출 급증</div><div class="rev-text">수수료 비교까지 해주셔서 연간 60만원 절약하고 매출도 올랐어요.</div><div class="rev-name">서울 강남구 카페 사장님</div></div>
- <div class="rev-card"><div class="rev-badge" style="background:#059669">인건비 50%↓</div><div class="rev-star">★★★★★</div><div class="rev-title">키오스크 설치 후 홀 인건비 반으로</div><div class="rev-text">테이블오더+키오스크로 홀 직원 2명→1명. 서비스 품질도 유지됩니다.</div><div class="rev-name">부산 해운대구 음식점 사장님</div></div>
+ <div class="rv-stage">
+ <div class="rv-phone">
+  <div class="rv-phone-top">
+   <div class="rv-phone-l">
+    <span class="rv-phone-dot"></span>
+    <span class="rv-phone-nm">올페이스토어 · 후기 피드</span>
+   </div>
+   <div class="rv-phone-r">●●●</div>
+  </div>
+  <div class="rv-feed">
+   <div class="rv-date">오늘 · 실시간 고객 후기</div>
+   <div class="rv-bubble rv-in1">
+    <div class="rv-avatar" style="background:linear-gradient(135deg,#1D4ED8,#60A5FA)">강</div>
+    <div class="rv-body">
+     <div class="rv-meta"><b>서울 강남구 카페 사장님</b> · ★★★★★</div>
+     <div class="rv-balloon"><div class="rv-tag" style="background:#111;color:#fff">매출 40%↑</div>카드단말기 교체 후 카드매출 급증! 수수료 비교까지 해주셔서 연간 60만원 절약하고 매출도 올랐어요.</div>
+    </div>
+   </div>
+   <div class="rv-bubble rv-in2">
+    <div class="rv-avatar" style="background:linear-gradient(135deg,#059669,#34D399)">해</div>
+    <div class="rv-body">
+     <div class="rv-meta"><b>부산 해운대구 음식점 사장님</b> · ★★★★★</div>
+     <div class="rv-balloon"><div class="rv-tag" style="background:#059669;color:#fff">인건비 50%↓</div>키오스크 설치 후 홀 인건비 반으로. 테이블오더+키오스크로 홀 직원 2명→1명. 서비스 품질도 유지됩니다.</div>
+    </div>
+   </div>
+   <div class="rv-bubble rv-in3">
+    <div class="rv-avatar" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">수</div>
+    <div class="rv-body">
+     <div class="rv-meta"><b>경기 수원시 소매점 사장님</b> · ★★★★★</div>
+     <div class="rv-balloon"><div class="rv-tag" style="background:#7C3AED;color:#fff">수수료 절감</div>VAN사 변경으로 연 40만원 절약. 기존보다 수수료 저렴한 VAN사로 바꿔주셔서 매년 절약 중입니다.</div>
+    </div>
+   </div>
+   <div class="rv-bubble rv-in4">
+    <div class="rv-avatar" style="background:linear-gradient(135deg,#DC2626,#F87171)">대</div>
+    <div class="rv-body">
+     <div class="rv-meta"><b>대전 유성구 음식점 사장님</b> · ★★★★★</div>
+     <div class="rv-balloon"><div class="rv-tag" style="background:#DC2626;color:#fff">빠른 설치</div>전화 한 통으로 빠른 설치 완료! 급하게 필요했는데 빠르게 설치해주셨어요. 바로 영업 시작할 수 있었습니다.</div>
+    </div>
+   </div>
+   <div class="rv-bubble rv-in5">
+    <div class="rv-avatar" style="background:linear-gradient(135deg,#0891B2,#22D3EE)">연</div>
+    <div class="rv-body">
+     <div class="rv-meta"><b>인천 연수구 스터디카페 사장님</b> · ★★★★★</div>
+     <div class="rv-balloon"><div class="rv-tag" style="background:#0891B2;color:#fff">무인화 성공</div>24시간 무인매장 전환 완료. CCTV 설치 후 월 매출 30% 증가!</div>
+    </div>
+   </div>
+   <div class="rv-bubble rv-in6">
+    <div class="rv-avatar" style="background:linear-gradient(135deg,#EA580C,#FB923C)">광</div>
+    <div class="rv-body">
+     <div class="rv-meta"><b>광주 서구 미용실 사장님</b> · ★★★★★</div>
+     <div class="rv-balloon"><div class="rv-tag" style="background:#EA580C;color:#fff">A/S 최고</div>포스기 장애 빠르게 해결. 전화하니 빠르게 해결해주셨어요. 이런 A/S는 처음입니다.</div>
+    </div>
+   </div>
+  </div>
+  <div class="rv-fade"></div>
+ </div>
+ <div class="rv-side">
+  <div class="rv-side-card">
+   <div class="rv-side-num">★ 4.9</div>
+   <div class="rv-side-lbl">평균 평점</div>
+  </div>
+  <div class="rv-side-card">
+   <div class="rv-side-num rv-side-num-b">15,000+</div>
+   <div class="rv-side-lbl">누적 설치 건수</div>
+  </div>
+  <div class="rv-side-card">
+   <div class="rv-side-num rv-side-num-g">98%</div>
+   <div class="rv-side-lbl">고객 만족도</div>
+  </div>
+  <div class="rv-side-note">
+   실제 설치 후 작성된 후기 중 일부입니다. 업종별 · 지역별 사례는 상담 시 더 많이 안내해 드립니다.
+  </div>
  </div>
  </div>
 </section>
@@ -3632,11 +4097,62 @@ a{text-decoration:none;color:inherit}
  <div class="sec-tag">WHY ALLPAYSTORE</div>
  <h2 class="sec-tit">단순 장비 판매가 아닙니다<br><b>왜 올페이스토어인가요?</b></h2>
  </div>
- <div class="spc-grid">
- <div class="spc-card"><div class="spc-ic" style="background:#f0f0f0">🎯</div><div><div class="spc-tit">업종별 1:1 맞춤 설치</div><div class="spc-desc">음식점·카페·편의점·미용실 등 업종 특성에 맞는 최적 장비를 분석해 추천합니다.</div></div></div>
- <div class="spc-card"><div class="spc-ic" style="background:#ECFDF5">📦</div><div><div class="spc-tit">전 제품 원스톱 통합 설치</div><div class="spc-desc">카드단말기부터 CCTV까지 매장에 필요한 모든 장비를 한번에 설치합니다.</div></div></div>
- <div class="spc-card"><div class="spc-ic" style="background:#F5F3FF">💰</div><div><div class="spc-tit">VAN사 수수료 비교·절감</div><div class="spc-desc">VAN사별 수수료를 비교 분석해 가장 유리한 조건을 찾아드립니다. 연 수십만원 절약.</div></div></div>
- <div class="spc-card"><div class="spc-ic" style="background:#FFFBEB">🔧</div><div><div class="spc-tit">설치 후 A/S·유지보수 보장</div><div class="spc-desc">장애 발생 시 원격 지원으로 빠르게 해결하며, 필요 시 현장 출동합니다.</div></div></div>
+ <div class="vs-board">
+  <div class="vs-head">
+   <div class="vs-col-others">
+    <div class="vs-col-tag">다른 업체</div>
+    <div class="vs-col-sub">💭 흔한 경험담</div>
+   </div>
+   <div class="vs-col-divider"><span class="vs-vs">VS</span></div>
+   <div class="vs-col-ours">
+    <div class="vs-col-tag">올페이스토어</div>
+    <div class="vs-col-sub">✨ 차별화 방식</div>
+   </div>
+  </div>
+  <div class="vs-row">
+   <div class="vs-cell vs-bad">
+    <div class="vs-icon vs-icon-x">✕</div>
+    <div class="vs-cell-text">"업종 상관없이 똑같은 기본 세팅으로 설치해드려요"</div>
+   </div>
+   <div class="vs-num">01</div>
+   <div class="vs-cell vs-good">
+    <div class="vs-icon vs-icon-o">✓</div>
+    <div class="vs-cell-text"><b>업종별 1:1 맞춤 설치</b><br>음식점·카페·편의점·미용실 등 업종 특성에 맞는 최적 장비를 분석해 추천합니다.</div>
+   </div>
+  </div>
+  <div class="vs-row">
+   <div class="vs-cell vs-bad">
+    <div class="vs-icon vs-icon-x">✕</div>
+    <div class="vs-cell-text">"카드단말기는 A업체, CCTV는 B업체 따로 알아보셔야 해요"</div>
+   </div>
+   <div class="vs-num">02</div>
+   <div class="vs-cell vs-good">
+    <div class="vs-icon vs-icon-o">✓</div>
+    <div class="vs-cell-text"><b>전 제품 원스톱 통합 설치</b><br>카드단말기부터 CCTV까지 매장에 필요한 모든 장비를 한번에 설치합니다.</div>
+   </div>
+  </div>
+  <div class="vs-row">
+   <div class="vs-cell vs-bad">
+    <div class="vs-icon vs-icon-x">✕</div>
+    <div class="vs-cell-text">"VAN사는 저희가 정해드리는 곳으로 하시면 돼요"</div>
+   </div>
+   <div class="vs-num">03</div>
+   <div class="vs-cell vs-good">
+    <div class="vs-icon vs-icon-o">✓</div>
+    <div class="vs-cell-text"><b>VAN사 수수료 비교·절감</b><br>VAN사별 수수료를 비교 분석해 가장 유리한 조건을 찾아드립니다. 연 수십만원 절약.</div>
+   </div>
+  </div>
+  <div class="vs-row">
+   <div class="vs-cell vs-bad">
+    <div class="vs-icon vs-icon-x">✕</div>
+    <div class="vs-cell-text">"A/S 신청하면 며칠 기다리셔야 해요"</div>
+   </div>
+   <div class="vs-num">04</div>
+   <div class="vs-cell vs-good">
+    <div class="vs-icon vs-icon-o">✓</div>
+    <div class="vs-cell-text"><b>설치 후 A/S·유지보수 보장</b><br>장애 발생 시 원격 지원으로 빠르게 해결하며, 필요 시 현장 출동합니다.</div>
+   </div>
+  </div>
  </div>
  </div>
 </section>
