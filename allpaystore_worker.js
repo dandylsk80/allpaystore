@@ -3398,6 +3398,20 @@ a{text-decoration:none;color:inherit}
 .rv-side-num-g{color:#059669}
 .rv-side-lbl{font-size:10.5px;color:#6B7280;margin-top:4px;font-weight:700}
 .rv-side-note{font-size:10px;color:#9CA3AF;line-height:1.6;padding:10px 12px;background:#F9FAFB;border-radius:10px;border:1px solid #F3F4F6}
+.rv-side-dist{background:#fff;border:1px solid #eef1f7;border-radius:14px;padding:14px 14px 12px;box-shadow:0 2px 10px rgba(13,46,110,.04)}
+.rv-dist-hd{font-size:11px;font-weight:800;color:#111;margin-bottom:10px;letter-spacing:-.2px}
+.rv-dist-row{display:grid;grid-template-columns:60px 1fr 30px;align-items:center;gap:8px;margin-bottom:7px}
+.rv-dist-row:last-child{margin-bottom:0}
+.rv-dist-lbl{font-size:10px;font-weight:700;color:#6B7280;white-space:nowrap}
+.rv-dist-bar{height:6px;background:#F3F4F6;border-radius:999px;overflow:hidden;position:relative}
+.rv-dist-fill{position:absolute;top:0;left:0;bottom:0;border-radius:999px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.rv-dist-pct{font-size:10px;font-weight:800;color:#111;text-align:right}
+.rv-side-cta{display:block;background:linear-gradient(135deg,#111,#1F2937);color:#fff;border-radius:14px;padding:16px 14px;text-decoration:none;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.18);transition:all .25s;position:relative;overflow:hidden}
+.rv-side-cta::before{content:'';position:absolute;top:-30%;right:-20%;width:80%;height:160%;background:radial-gradient(circle,rgba(29,78,216,.35),transparent 70%);pointer-events:none}
+.rv-side-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(29,78,216,.3)}
+.rv-cta-tit{position:relative;font-size:13px;font-weight:900;color:#fff;margin-bottom:3px;letter-spacing:-.3px}
+.rv-cta-sub{position:relative;font-size:10px;color:rgba(255,255,255,.65);margin-bottom:10px}
+.rv-cta-arr{position:relative;display:inline-block;font-size:11px;font-weight:800;color:#fff;padding:6px 14px;background:rgba(255,255,255,.15);border-radius:999px;backdrop-filter:blur(6px)}
 /* SPECIAL */
 .spc{padding:56px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB;overflow:hidden}
 .spc-in{max-width:1000px;margin:0 auto}
@@ -3522,6 +3536,8 @@ a{text-decoration:none;color:inherit}
  .rv-side-num{font-size:18px}
  .rv-side-lbl{font-size:9.5px}
  .rv-side-note{flex-basis:100%;font-size:9.5px;padding:8px 10px}
+ .rv-side-dist{flex-basis:100%;padding:12px}
+ .rv-side-cta{flex-basis:100%}
  .ft-top{flex-direction:column;text-align:center}
  .ft-tel{text-align:center}
  .showcase{padding:40px 0!important}
@@ -4108,6 +4124,18 @@ function catPick(b){
   <div class="rv-side-note">
    실제 설치 후 작성된 후기 중 일부입니다. 업종별 · 지역별 사례는 상담 시 더 많이 안내해 드립니다.
   </div>
+  <div class="rv-side-dist">
+   <div class="rv-dist-hd">📊 설치 업종 분포</div>
+   <div class="rv-dist-row"><span class="rv-dist-lbl">음식점·카페</span><span class="rv-dist-bar"><span class="rv-dist-fill" style="width:42%;background:#1D4ED8"></span></span><span class="rv-dist-pct">42%</span></div>
+   <div class="rv-dist-row"><span class="rv-dist-lbl">소매·편의점</span><span class="rv-dist-bar"><span class="rv-dist-fill" style="width:24%;background:#059669"></span></span><span class="rv-dist-pct">24%</span></div>
+   <div class="rv-dist-row"><span class="rv-dist-lbl">미용·서비스</span><span class="rv-dist-bar"><span class="rv-dist-fill" style="width:18%;background:#7C3AED"></span></span><span class="rv-dist-pct">18%</span></div>
+   <div class="rv-dist-row"><span class="rv-dist-lbl">기타 업종</span><span class="rv-dist-bar"><span class="rv-dist-fill" style="width:16%;background:#EA580C"></span></span><span class="rv-dist-pct">16%</span></div>
+  </div>
+  <a href="/contact/" class="rv-side-cta">
+   <div class="rv-cta-tit">내 매장도 상담받기</div>
+   <div class="rv-cta-sub">무료 견적 · 업종 맞춤 제안</div>
+   <div class="rv-cta-arr">상담 문의 →</div>
+  </a>
  </div>
  </div>
 </section>
