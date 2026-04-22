@@ -3140,37 +3140,61 @@ a{text-decoration:none;color:inherit}
 .hd-mob-in a:last-child{border-bottom:none}
 .hd-mob-tel{display:block;margin-top:20px;padding:14px;background:#111;color:#fff;border-radius:10px;text-align:center;font-size:15px;font-weight:700;text-decoration:none}
 /* HERO */
-.hero{padding:72px 24px 64px;position:relative;overflow:hidden;border-bottom:1px solid #eee}
-.hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;object-fit:cover;object-position:center 20%;width:100%;height:100%;z-index:0}
-.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,.5) 40%,rgba(255,255,255,.05) 70%,transparent 100%);z-index:0}
-.hero-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:48px;position:relative;z-index:1}
-.hero-txt{flex:1}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border:1px solid #ddd;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;color:#555;margin-bottom:18px}
-.hero-badge i{width:7px;height:7px;border-radius:50%;background:#111;display:block;animation:pulse 2s infinite}
+/* HERO - Modern redesign */
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero-cap{font-size:14px;color:#888;margin-bottom:8px}
-.hero-h1{font-size:38px;font-weight:900;color:#000;line-height:1.25;margin-bottom:16px;text-shadow:0 1px 8px rgba(255,255,255,.8)}
-.hero-h1 b{color:#111}
-.hero-desc{font-size:15px;color:#333;line-height:1.7;margin-bottom:24px;text-shadow:0 1px 4px rgba(255,255,255,.6)}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn-main{padding:14px 28px;background:#111;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
-.btn-main:hover{background:#333;transform:translateY(-1px)}
-.btn-sub{padding:14px 28px;background:transparent;color:#555;border:1px solid #ccc;border-radius:12px;font-size:15px;cursor:pointer;font-family:inherit;transition:all .2s}
-.btn-sub:hover{background:#f0f0f0}
-.hero-card{flex:0 0 280px;background:#fff;border:1px solid #e5e5e5;box-shadow:0 4px 20px rgba(0,0,0,.06);border-radius:20px;padding:22px;backdrop-filter:blur(8px);transition:opacity .3s,transform .3s}
-.hc-top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.hc-ic{width:40px;height:40px;background:#f5f5f5;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.hc-tit{font-size:14px;font-weight:800;color:#111}
-.hc-sub{font-size:10px;color:#999}
-.hc-stats{display:flex;gap:12px;margin-bottom:16px}
-.hc-stat{flex:1;text-align:center}
-.hc-num{font-size:22px;font-weight:900;color:#111}
-.hc-lbl{font-size:10px;color:#999}
-.hc-bar{margin-bottom:8px}
-.hc-bar-top{display:flex;justify-content:space-between;font-size:10px;color:#999;margin-bottom:3px}
-.hc-bar-top b{color:#111}
-.hc-bar-bg{height:5px;background:#eee;border-radius:3px}
-.hc-bar-fill{height:5px;background:linear-gradient(90deg,#111,#555);border-radius:3px;transition:width .5s ease}
+.hero{padding:80px 24px 72px;position:relative;overflow:hidden;border-bottom:1px solid #eee;background:linear-gradient(180deg,#F8FAFF 0%,#fff 60%,#F5F7FC 100%)}
+.hero::before{content:'';position:absolute;top:-120px;left:-120px;width:400px;height:400px;background:radial-gradient(circle,rgba(29,78,216,.18),transparent 70%);border-radius:50%;animation:heroOrb 12s ease-in-out infinite;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-150px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.14),transparent 70%);border-radius:50%;animation:heroOrb 14s ease-in-out infinite reverse;pointer-events:none}
+@keyframes heroOrb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,20px) scale(1.1)}}
+.hero-grid{position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 1px 1px,rgba(17,24,39,.06) 1px,transparent 0);background-size:28px 28px;opacity:.5;pointer-events:none;z-index:0}
+.hero-bg{display:none}
+.hero-overlay{display:none}
+.hero-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;position:relative;z-index:1}
+.hero-txt{position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E5E7EB;border-radius:999px;padding:7px 16px 7px 12px;font-size:12px;font-weight:800;color:#111;margin-bottom:22px;box-shadow:0 4px 14px rgba(13,46,110,.06)}
+.hero-badge i{width:8px;height:8px;border-radius:50%;background:#10B981;display:block;position:relative;box-shadow:0 0 0 3px rgba(16,185,129,.25)}
+.hero-badge i::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:#10B981;animation:heroDot 2s ease-in-out infinite;opacity:.6}
+@keyframes heroDot{0%,100%{transform:scale(.8);opacity:.6}50%{transform:scale(1.6);opacity:0}}
+.hero-badge b{color:#1D4ED8;font-weight:900}
+.hero-cap{font-size:14px;color:#6B7280;margin-bottom:10px;font-weight:600;letter-spacing:-.2px}
+.hero-h1{font-size:52px;font-weight:900;color:#0F172A;line-height:1.12;margin-bottom:20px;letter-spacing:-1.5px}
+.hero-h1 b{background:linear-gradient(135deg,#1D4ED8 0%,#4F46E5 50%,#7C3AED 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:900;display:inline-block}
+.hero-desc{font-size:15.5px;color:#4B5563;line-height:1.75;margin-bottom:14px;font-weight:500}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.hero-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:#374151;background:#fff;border:1px solid #E5E7EB;border-radius:999px;padding:6px 12px;box-shadow:0 2px 6px rgba(13,46,110,.04);transition:all .2s}
+.hero-chip:hover{border-color:#1D4ED8;color:#1D4ED8;transform:translateY(-1px)}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.btn-main{padding:16px 28px;background:linear-gradient(135deg,#0F172A,#1F2937);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;transition:all .25s;font-family:inherit;box-shadow:0 8px 24px rgba(15,23,42,.25);display:inline-flex;align-items:center;gap:8px}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(29,78,216,.35);background:linear-gradient(135deg,#1D4ED8,#4F46E5)}
+.btn-sub{padding:16px 24px;background:#fff;color:#111;border:1.5px solid #E5E7EB;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.btn-sub:hover{background:#F8FAFF;border-color:#1D4ED8;color:#1D4ED8}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-top:24px;border-top:1px solid #E5E7EB;max-width:560px}
+.hero-stat{text-align:left;padding:0 16px;border-right:1px solid #E5E7EB;position:relative}
+.hero-stat:first-child{padding-left:0}
+.hero-stat:last-child{border-right:none;padding-right:0}
+.hero-stat-num{font-size:22px;font-weight:900;color:#0F172A;line-height:1;margin-bottom:4px;letter-spacing:-.5px}
+.hero-stat-num b{background:linear-gradient(135deg,#1D4ED8,#7C3AED);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat-lbl{font-size:11px;color:#6B7280;font-weight:600}
+.hero-card{background:rgba(255,255,255,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);box-shadow:0 20px 60px rgba(13,46,110,.12),0 4px 16px rgba(13,46,110,.06);border-radius:24px;padding:24px;position:relative;overflow:hidden;transition:all .3s}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(135deg,rgba(29,78,216,.08),rgba(124,58,237,.08));pointer-events:none;border-radius:24px 24px 0 0}
+.hero-card-live{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:900;color:#DC2626;background:#FEF2F2;padding:4px 10px;border-radius:999px;margin-bottom:12px;position:relative;z-index:1;letter-spacing:.5px}
+.hero-card-live i{width:6px;height:6px;border-radius:50%;background:#DC2626;animation:pulse 1.5s infinite}
+.hc-top{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative;z-index:1}
+.hc-ic{width:44px;height:44px;background:linear-gradient(135deg,#1D4ED8,#7C3AED);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 16px rgba(29,78,216,.25)}
+.hc-tit{font-size:15px;font-weight:900;color:#0F172A;letter-spacing:-.3px}
+.hc-sub{font-size:10.5px;color:#6B7280;font-weight:600;margin-top:2px}
+.hc-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;position:relative;z-index:1}
+.hc-stat{text-align:center;padding:14px 8px;background:linear-gradient(135deg,#F8FAFF,#fff);border:1px solid #EEF1F7;border-radius:12px}
+.hc-num{font-size:24px;font-weight:900;color:#0F172A;line-height:1;letter-spacing:-.5px}
+.hc-stat:first-child .hc-num{background:linear-gradient(135deg,#1D4ED8,#4F46E5);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hc-stat:last-child .hc-num{background:linear-gradient(135deg,#059669,#10B981);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hc-lbl{font-size:10.5px;color:#6B7280;margin-top:5px;font-weight:700}
+.hc-bar{margin-bottom:12px;position:relative;z-index:1}
+.hc-bar:last-child{margin-bottom:0}
+.hc-bar-top{display:flex;justify-content:space-between;font-size:11px;color:#6B7280;margin-bottom:5px;font-weight:700}
+.hc-bar-top b{color:#0F172A;font-weight:900;font-size:12px}
+.hc-bar-bg{height:6px;background:#F3F4F6;border-radius:999px;overflow:hidden}
+.hc-bar-fill{height:6px;background:linear-gradient(90deg,#1D4ED8,#7C3AED);border-radius:999px;transition:width 1s cubic-bezier(.4,0,.2,1);box-shadow:0 0 12px rgba(29,78,216,.3)}
 /* STRENGTH */
 .str{padding:44px 24px;background:var(--bg);border-bottom:1px solid #E5E7EB;overflow:hidden}
 .str-in{max-width:1100px;margin:0 auto}
@@ -3481,12 +3505,16 @@ a{text-decoration:none;color:inherit}
  .hd-tel{display:none}
  .hd-burger{display:block}
  .hd-in{padding:6px 16px}
- .hero-in{flex-direction:column;gap:28px;text-align:center}
- .hero-h1{font-size:26px}
+ .hero-in{grid-template-columns:1fr;gap:32px;text-align:left}
+ .hero-h1{font-size:34px;letter-spacing:-1px}
  .hero-card{width:100%}
- .hero-btns{justify-content:center}
- .hero-bg{object-position:center center!important}
- .hero-overlay{background:rgba(255,255,255,.5)!important}
+ .hero-btns{justify-content:flex-start}
+ .hero-chips{gap:6px}
+ .hero-chip{font-size:11px;padding:5px 10px}
+ .hero-stats{grid-template-columns:repeat(4,1fr);max-width:100%}
+ .hero-stat{padding:0 8px}
+ .hero-stat-num{font-size:17px}
+ .hero-stat-lbl{font-size:10px}
  .cat-book{grid-template-columns:1fr;gap:20px;padding:18px}
  .cat-book::before{display:none}
  .cat-left{min-height:auto}
@@ -3547,11 +3575,16 @@ a{text-decoration:none;color:inherit}
 }
 @media(max-width:480px){
  .hero{padding:48px 16px 40px!important}
- .hero-h1{font-size:22px}
- .hero-desc{font-size:13px}
+ .hero-h1{font-size:28px;letter-spacing:-.5px}
+ .hero-desc{font-size:13.5px}
  .hero-btns{flex-direction:column;gap:8px}
- .hero-btns a,.hero-btns button{width:100%}
- .hero-overlay{background:rgba(255,255,255,.55)!important}
+ .hero-btns a,.hero-btns button{width:100%;justify-content:center}
+ .hero-stats{gap:0}
+ .hero-stat{padding:0 6px}
+ .hero-stat-num{font-size:15px}
+ .hero-stat-lbl{font-size:9.5px}
+ .hero-badge{font-size:11px}
+ .hero-chip{font-size:10.5px;padding:4px 9px}
  /* 지그재그 모바일: 세로 1열, 좌우 정렬 해제 */
  .zz-wrap{padding:10px 0;max-width:none}
  .zz-line{left:20px;transform:none}
@@ -3616,21 +3649,34 @@ a{text-decoration:none;color:inherit}
  </div>
 </div>
 <section class="hero">
- <img src="/images/t1.png" alt="" class="hero-bg">
- <div class="hero-overlay"></div>
+ <div class="hero-grid"></div>
  <div class="hero-in">
  <div class="hero-txt">
- <div class="hero-badge"><i></i> No.1 매장설비 설치 플랫폼</div>
- <p class="hero-cap">우리 매장에 딱 맞는 장비를 설치해드립니다</p>
- <h1 class="hero-h1">전국 어디서든<br><b>카드단말기·포스기·키오스크</b><br>빠른 설치</h1>
- <p class="hero-desc">전국 5,000+ 읍면동 직접 방문<br>무료 견적 · 빠른 설치 · A/S 지원</p>
+ <div class="hero-badge"><i></i> <span>🟢 실시간 상담 진행중</span> · <b>올페이스토어</b></div>
+ <h1 class="hero-h1">복잡한 매장 설비,<br><b>한 번에 설치됩니다</b></h1>
+ <p class="hero-desc">카드단말기 · 포스기 · 키오스크 · 테이블오더 · CCTV · 밴딩머신<br>전국 5,000+ 읍면동 직접 방문 · 무료 견적 · A/S 지원</p>
+ <div class="hero-chips">
+  <span class="hero-chip">💳 카드단말기</span>
+  <span class="hero-chip">🖥️ 포스기</span>
+  <span class="hero-chip">🤖 키오스크</span>
+  <span class="hero-chip">📱 테이블오더</span>
+  <span class="hero-chip">📹 CCTV</span>
+  <span class="hero-chip">🥤 밴딩머신</span>
+ </div>
  <div class="hero-btns">
- <a href="#find-sec"><button class="btn-main">지역별 설치 찾기 →</button></a>
+ <a href="#find-sec"><button class="btn-main">지역별 설치 찾기 <span>→</span></button></a>
  <a href="tel:010-9876-8282"><button class="btn-sub">📞 무료 상담</button></a>
+ </div>
+ <div class="hero-stats">
+  <div class="hero-stat"><div class="hero-stat-num"><b>15,000+</b></div><div class="hero-stat-lbl">누적 설치</div></div>
+  <div class="hero-stat"><div class="hero-stat-num">98<span style="font-size:14px">%</span></div><div class="hero-stat-lbl">만족도</div></div>
+  <div class="hero-stat"><div class="hero-stat-num">★ 4.9</div><div class="hero-stat-lbl">평균 평점</div></div>
+  <div class="hero-stat"><div class="hero-stat-num">87<span style="font-size:14px">%</span></div><div class="hero-stat-lbl">재계약률</div></div>
  </div>
  </div>
  <div class="hero-card">
- <div class="hc-top"><div class="hc-ic">📍</div><div><div class="hc-tit" id="hc-area">강남구 카드단말기 설치</div><div class="hc-sub">오늘 기준 · 실시간</div></div></div>
+ <div class="hero-card-live"><i></i> LIVE · 오늘 실시간</div>
+ <div class="hc-top"><div class="hc-ic">📍</div><div><div class="hc-tit" id="hc-area">강남구 카드단말기 설치</div><div class="hc-sub">방금 설치 문의 접수됨</div></div></div>
  <div class="hc-stats">
  <div class="hc-stat"><div class="hc-num" id="hc-cnt">15,000+</div><div class="hc-lbl">누적 설치</div></div>
  <div class="hc-stat"><div class="hc-num" id="hc-sat">98%</div><div class="hc-lbl">만족도</div></div>
