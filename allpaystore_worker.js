@@ -3242,14 +3242,14 @@ a{text-decoration:none;color:inherit}
 .prods{padding:56px 24px;background:#fff;border-bottom:1px solid #E5E7EB;overflow:hidden}
 .prods-in{max-width:1100px;margin:0 auto}
 /* CATALOG BOOK */
-.cat-book{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;background:#fff;border-radius:20px;padding:28px;box-shadow:0 8px 40px rgba(13,46,110,.08);border:1px solid #eef1f7;position:relative;overflow:hidden}
-.cat-book::before{content:'';position:absolute;top:0;bottom:0;left:calc((1.3/2.3)*100% + 2px);width:1px;background:linear-gradient(to bottom,transparent,#E5E7EB,transparent);pointer-events:none}
+.cat-book{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;background:#fff;border-radius:20px;padding:24px;box-shadow:0 8px 40px rgba(13,46,110,.08);border:1px solid #eef1f7;position:relative;overflow:hidden}
+.cat-book::before{content:'';position:absolute;top:0;bottom:0;left:calc((1.15/2.15)*100% + 2px);width:1px;background:linear-gradient(to bottom,transparent,#E5E7EB,transparent);pointer-events:none}
 .cat-left{display:flex;flex-direction:column;gap:16px;min-height:420px}
-.cat-stage{position:relative;flex:1;background:linear-gradient(145deg,#F8FAFF,#EEF1F9);border-radius:14px;min-height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cat-stage{position:relative;flex:1;background:linear-gradient(145deg,#F8FAFF,#EEF1F9);border-radius:14px;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .cat-stage::before{content:'';position:absolute;top:-20%;right:-20%;width:60%;height:60%;background:radial-gradient(circle,rgba(29,78,216,.08),transparent 70%);pointer-events:none}
-.cat-view{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.92);transition:all .5s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.cat-view{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transform:scale(.92);transition:all .5s cubic-bezier(.4,0,.2,1);pointer-events:none}
 .cat-view.cat-view-on{opacity:1;transform:scale(1);pointer-events:auto}
-.cat-view img{max-width:70%;max-height:70%;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.15))}
+.cat-view img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(0,0,0,.18))}
 .cat-info{position:relative;padding:4px 4px 0}
 .cat-info-in{display:none;animation:catFade .5s ease-out}
 .cat-info-in.cat-info-on{display:block}
@@ -3261,18 +3261,24 @@ a{text-decoration:none;color:inherit}
 .cat-cta:hover{background:#1D4ED8;transform:translateX(2px)}
 .cat-cta span{transition:transform .2s}
 .cat-cta:hover span{transform:translateX(3px)}
-.cat-right{display:flex;flex-direction:column}
+.cat-right{display:flex;flex-direction:column;flex:1}
 .cat-list-label{font-size:10px;font-weight:800;color:#9CA3AF;letter-spacing:3px;margin-bottom:12px;padding:0 8px}
-.cat-list{display:flex;flex-direction:column;gap:2px}
-.cat-item{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;padding:10px 14px;border:none;background:transparent;border-radius:10px;cursor:pointer;text-align:left;font-family:inherit;transition:all .2s;position:relative}
-.cat-item:hover{background:#F8FAFF}
-.cat-item.cat-on{background:linear-gradient(90deg,#1D4ED8,#4F46E5);color:#fff;box-shadow:0 3px 12px rgba(29,78,216,.25)}
-.cat-item.cat-on .cat-idx{color:rgba(255,255,255,.55)}
+.cat-list{display:flex;flex-direction:column;gap:2px;flex:1;justify-content:space-between}
+.cat-item{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:none;background:transparent;border-radius:12px;cursor:pointer;text-align:left;font-family:inherit;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative}
+.cat-item:not(:last-child)::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:1px;background:#F3F4F6}
+.cat-item.cat-on::after,.cat-item:hover::after{display:none}
+.cat-item:hover{background:#F8FAFF;transform:translateX(2px)}
+.cat-item.cat-on{background:linear-gradient(90deg,#1D4ED8,#4F46E5);color:#fff;box-shadow:0 6px 20px rgba(29,78,216,.3);transform:translateX(0)}
+.cat-item.cat-on .cat-idx{background:rgba(255,255,255,.2);color:#fff}
 .cat-item.cat-on .cat-tit{color:#fff}
-.cat-item.cat-on .cat-arr{color:#fff;transform:translateX(3px)}
-.cat-idx{font-size:10px;font-weight:900;color:#9CA3AF;letter-spacing:1px;transition:color .2s}
-.cat-tit{font-size:13px;font-weight:800;color:#111;transition:color .2s}
-.cat-arr{font-size:14px;color:#D1D5DB;transition:all .2s}
+.cat-item.cat-on .cat-sub{color:rgba(255,255,255,.8)}
+.cat-item.cat-on .cat-arr{color:#fff;transform:translateX(4px)}
+.cat-idx{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#6B7280;background:#F3F4F6;border-radius:8px;letter-spacing:.5px;transition:all .25s}
+.cat-item:hover .cat-idx{background:#E0E7FF;color:#1D4ED8}
+.cat-tit-wrap{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cat-tit{font-size:14px;font-weight:800;color:#111;transition:color .2s;line-height:1.3}
+.cat-sub{font-size:11px;color:#9CA3AF;font-weight:500;transition:color .2s;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat-arr{font-size:16px;color:#D1D5DB;transition:all .25s;font-weight:300}
 .cat-item:hover .cat-arr{color:#1D4ED8}
 /* SIDO/SIGUNGU CARDS */
 .sg-card{display:inline-flex;align-items:center;justify-content:center;padding:10px 22px;background:#f0f0f0;border:none;border-radius:999px;font-size:13px;font-weight:700;color:#333;transition:all .15s;text-decoration:none}
@@ -3470,7 +3476,8 @@ a{text-decoration:none;color:inherit}
  .cat-book{grid-template-columns:1fr;gap:20px;padding:18px}
  .cat-book::before{display:none}
  .cat-left{min-height:auto}
- .cat-stage{min-height:220px}
+ .cat-stage{min-height:300px}
+ .cat-list{justify-content:flex-start;gap:4px}
  .cat-name{font-size:18px}
  .cat-desc{font-size:12px}
  .spc-grid{grid-template-columns:1fr}
@@ -3544,7 +3551,7 @@ a{text-decoration:none;color:inherit}
  .zz-left .zz-ping,.zz-left .zz-badges{justify-content:flex-start!important}
  .zz-num-big{font-size:22px}
  .zz-plus{font-size:15px}
- .cat-stage{min-height:180px}
+ .cat-stage{min-height:240px}
  .cat-name{font-size:16px}
  .cat-item{padding:8px 10px}
  .cat-tit{font-size:12px}
@@ -3768,47 +3775,47 @@ a{text-decoration:none;color:inherit}
    <div class="cat-list">
     <button class="cat-item cat-on" data-c="1" onclick="catPick(this)">
      <span class="cat-idx">01</span>
-     <span class="cat-tit">포스기(POS)</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">포스기(POS)</span><span class="cat-sub">주문·결제·매출 통합</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="2" onclick="catPick(this)">
      <span class="cat-idx">02</span>
-     <span class="cat-tit">자동커팅단말기</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">자동커팅단말기</span><span class="cat-sub">영수증 자동 커팅</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="3" onclick="catPick(this)">
      <span class="cat-idx">03</span>
-     <span class="cat-tit">유선카드단말기</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">유선카드단말기</span><span class="cat-sub">고정 카운터 전용</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="4" onclick="catPick(this)">
      <span class="cat-idx">04</span>
-     <span class="cat-tit">토스단말기</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">토스단말기</span><span class="cat-sub">간편결제 특화</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="5" onclick="catPick(this)">
      <span class="cat-idx">05</span>
-     <span class="cat-tit">무선단말기</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">무선단말기</span><span class="cat-sub">이동 결제·배달·테이블</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="6" onclick="catPick(this)">
      <span class="cat-idx">06</span>
-     <span class="cat-tit">블루투스단말기</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">블루투스단말기</span><span class="cat-sub">스마트폰 연동 결제</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="7" onclick="catPick(this)">
      <span class="cat-idx">07</span>
-     <span class="cat-tit">테이블오더</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">테이블오더</span><span class="cat-sub">QR·태블릿 주문</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="8" onclick="catPick(this)">
      <span class="cat-idx">08</span>
-     <span class="cat-tit">미니키오스크</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">미니키오스크</span><span class="cat-sub">컴팩트 셀프 주문</span></span>
      <span class="cat-arr">→</span>
     </button>
     <button class="cat-item" data-c="9" onclick="catPick(this)">
      <span class="cat-idx">09</span>
-     <span class="cat-tit">키오스크</span>
+     <span class="cat-tit-wrap"><span class="cat-tit">키오스크</span><span class="cat-sub">대형 무인 주문기</span></span>
      <span class="cat-arr">→</span>
     </button>
    </div>
@@ -4292,10 +4299,6 @@ document.querySelectorAll('.rm-q').forEach(q=>{
  },3000);
 })();
 </script>
-<div class="fl-wrap">
- <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
- <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
-</div>
 </body></html>`;
 }
 function makeContactPage(){
