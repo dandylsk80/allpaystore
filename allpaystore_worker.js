@@ -3146,10 +3146,53 @@ a{text-decoration:none;color:inherit}
 .hero::before{content:'';position:absolute;top:-200px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.45),transparent 65%);border-radius:50%;animation:heroOrb 14s ease-in-out infinite;pointer-events:none;filter:blur(20px)}
 .hero::after{content:'';position:absolute;bottom:-200px;right:-150px;width:700px;height:700px;background:radial-gradient(circle,rgba(147,51,234,.4),transparent 65%);border-radius:50%;animation:heroOrb 16s ease-in-out infinite reverse;pointer-events:none;filter:blur(20px)}
 @keyframes heroOrb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,40px) scale(1.15)}}
-.hero-glow{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(34,211,238,.25),transparent 60%);border-radius:50%;pointer-events:none;filter:blur(30px);animation:heroGlow 10s ease-in-out infinite}
+.hero-glow{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(34,211,238,.25),transparent 60%);border-radius:50%;pointer-events:none;filter:blur(30px);animation:heroGlow 10s ease-in-out infinite;z-index:0}
 @keyframes heroGlow{0%,100%{opacity:.6}50%{opacity:1}}
+/* Nebula cloud */
+.hero-nebula{position:absolute;top:10%;right:10%;width:450px;height:300px;background:radial-gradient(ellipse,rgba(236,72,153,.25),rgba(147,51,234,.15) 40%,transparent 70%);filter:blur(40px);pointer-events:none;z-index:0;animation:nebulaFloat 20s ease-in-out infinite}
+@keyframes nebulaFloat{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(-40px,30px) rotate(5deg)}66%{transform:translate(30px,-20px) rotate(-3deg)}}
+/* Star field using box-shadow trick */
+.hero-stars,.hero-stars2,.hero-stars3{position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none;z-index:0}
+.hero-stars{background:#fff;border-radius:50%;box-shadow:
+ 120px 80px #fff,240px 150px #fff,380px 40px #E0E7FF,520px 220px #fff,680px 90px #fff,
+ 820px 180px #C7D2FE,960px 60px #fff,1100px 200px #fff,1240px 120px #fff,1380px 30px #E0E7FF,
+ 80px 300px #fff,220px 380px #fff,360px 440px #C7D2FE,500px 340px #fff,640px 460px #fff,
+ 780px 360px #fff,920px 420px #E0E7FF,1060px 320px #fff,1200px 480px #fff,1340px 380px #fff,
+ 160px 520px #fff,300px 580px #C7D2FE,440px 640px #fff,580px 560px #fff,720px 620px #fff,
+ 860px 540px #E0E7FF,1000px 600px #fff,1140px 660px #fff,1280px 540px #fff,1420px 620px #C7D2FE,
+ 50px 680px #fff,200px 720px #fff,340px 780px #E0E7FF,480px 740px #fff,620px 800px #fff;
+ animation:twinkle 4s ease-in-out infinite}
+.hero-stars2{background:#fff;border-radius:50%;width:2px;height:2px;box-shadow:
+ 180px 130px #A5F3FC,340px 240px #fff,460px 60px #fff,620px 340px #DDD6FE,780px 80px #fff,
+ 940px 280px #A5F3FC,1080px 160px #fff,1220px 380px #fff,1360px 100px #DDD6FE,
+ 140px 420px #fff,280px 500px #A5F3FC,420px 360px #fff,540px 560px #fff,700px 440px #DDD6FE,
+ 820px 640px #fff,960px 500px #A5F3FC,1100px 620px #fff,1240px 440px #fff,1380px 580px #DDD6FE,
+ 110px 640px #fff,260px 760px #fff;
+ animation:twinkle 3s ease-in-out infinite .8s}
+.hero-stars3{background:#fff;border-radius:50%;width:3px;height:3px;box-shadow:
+ 260px 190px #F9A8D4,580px 130px #fff,900px 240px #93C5FD,1180px 70px #fff,1420px 260px #F9A8D4,
+ 380px 540px #fff,720px 500px #93C5FD,1040px 420px #F9A8D4,1340px 680px #fff,
+ 90px 760px #93C5FD,520px 720px #fff;
+ animation:twinkle 5s ease-in-out infinite 1.5s;filter:drop-shadow(0 0 4px currentColor)}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.3}}
+/* Shooting star */
+.hero-shoot{position:absolute;top:15%;left:-10%;width:120px;height:1px;background:linear-gradient(90deg,transparent,#fff,#A78BFA,transparent);pointer-events:none;z-index:0;transform:rotate(-18deg);animation:shoot 8s ease-out infinite;opacity:0;box-shadow:0 0 6px rgba(167,139,250,.8)}
+.hero-shoot2{top:50%;left:-10%;animation-delay:3.5s;transform:rotate(-12deg);background:linear-gradient(90deg,transparent,#fff,#60A5FA,transparent)}
+.hero-shoot3{top:78%;left:-10%;animation-delay:6s;transform:rotate(-22deg);background:linear-gradient(90deg,transparent,#fff,#F472B6,transparent);width:100px}
+@keyframes shoot{0%{transform:translateX(0) rotate(-18deg);opacity:0}10%{opacity:1}50%{transform:translateX(1400px) rotate(-18deg);opacity:1}60%,100%{transform:translateX(1800px) rotate(-18deg);opacity:0}}
+/* Orbital ring */
+.hero-orbit{position:absolute;top:50%;left:50%;width:900px;height:900px;transform:translate(-50%,-50%);border:1px solid rgba(139,92,246,.08);border-radius:50%;pointer-events:none;z-index:0}
+.hero-orbit::before{content:'';position:absolute;top:50%;left:50%;width:650px;height:650px;transform:translate(-50%,-50%);border:1px solid rgba(59,130,246,.06);border-radius:50%}
+.hero-orbit::after{content:'';position:absolute;top:50%;left:50%;width:1150px;height:1150px;transform:translate(-50%,-50%);border:1px solid rgba(236,72,153,.05);border-radius:50%}
+/* Orbit planet dots */
+.hero-planet{position:absolute;top:50%;left:50%;width:6px;height:6px;background:#A78BFA;border-radius:50%;box-shadow:0 0 12px #A78BFA,0 0 24px rgba(167,139,250,.6);pointer-events:none;z-index:0;transform-origin:0 0;animation:orbit1 20s linear infinite}
+.hero-planet2{background:#60A5FA;box-shadow:0 0 12px #60A5FA,0 0 24px rgba(96,165,250,.6);animation:orbit2 30s linear infinite reverse;width:4px;height:4px}
+.hero-planet3{background:#F472B6;box-shadow:0 0 12px #F472B6,0 0 24px rgba(244,114,182,.6);animation:orbit3 45s linear infinite;width:5px;height:5px}
+@keyframes orbit1{0%{transform:rotate(0deg) translate(450px) rotate(0deg)}100%{transform:rotate(360deg) translate(450px) rotate(-360deg)}}
+@keyframes orbit2{0%{transform:rotate(0deg) translate(325px) rotate(0deg)}100%{transform:rotate(360deg) translate(325px) rotate(-360deg)}}
+@keyframes orbit3{0%{transform:rotate(0deg) translate(575px) rotate(0deg)}100%{transform:rotate(360deg) translate(575px) rotate(-360deg)}}
 .hero-grid{position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.08) 1px,transparent 0);background-size:32px 32px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse at center,black 40%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse at center,black 40%,transparent 85%)}
-.hero-beam{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(147,51,234,.5) 20%,rgba(59,130,246,.5) 50%,transparent);pointer-events:none;transform:translateX(-50%)}
+.hero-beam{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(147,51,234,.5) 20%,rgba(59,130,246,.5) 50%,transparent);pointer-events:none;transform:translateX(-50%);z-index:0}
 .hero-beam::before{content:'';position:absolute;top:0;left:-30px;width:60px;height:100%;background:linear-gradient(to bottom,transparent,rgba(147,51,234,.08) 40%,rgba(59,130,246,.08) 60%,transparent);filter:blur(8px)}
 .hero-bg{display:none}
 .hero-overlay{display:none}
@@ -3655,9 +3698,20 @@ a{text-decoration:none;color:inherit}
  </div>
 </div>
 <section class="hero">
+ <div class="hero-nebula"></div>
  <div class="hero-glow"></div>
  <div class="hero-beam"></div>
+ <div class="hero-orbit"></div>
+ <div class="hero-planet"></div>
+ <div class="hero-planet hero-planet2"></div>
+ <div class="hero-planet hero-planet3"></div>
  <div class="hero-grid"></div>
+ <div class="hero-stars"></div>
+ <div class="hero-stars2"></div>
+ <div class="hero-stars3"></div>
+ <div class="hero-shoot"></div>
+ <div class="hero-shoot hero-shoot2"></div>
+ <div class="hero-shoot hero-shoot3"></div>
  <div class="hero-in">
  <div class="hero-txt">
  <div class="hero-badge"><i></i> <span>🟢 실시간 상담 진행중</span> · <b>올페이스토어</b></div>
