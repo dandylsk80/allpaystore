@@ -1128,6 +1128,29 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
  const sgPrefix=slugParts.slice(0,2).join('/');
  const nearbyDongs=RK().filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,5);
  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${d.name}</a>`).join('');
+ // 빵크럼 & 내부링크용 데이터
+ const sidoSlugP=slugParts[0];
+ const sigunguSlugP=slugParts[1];
+ const crumbHtmlP=makeBreadcrumb([
+   {name:'홈',href:'/'},
+   {name:'제품 안내',href:'/product/'},
+   {name:prd.ko,href:`/product/${prodKey}/`},
+   {name:sido,href:`/product/${prodKey}/${sidoSlugP}/`},
+   {name:sigungu,href:`/product/${prodKey}/${sidoSlugP}/${sigunguSlugP}/`},
+   {name:emd}
+ ]);
+ const nearbySameProd=nearbyDongs.map(d=>({name:d.name,href:`/blog/${d.slug}/${prodKey}/`}));
+ const otherProdSameDong=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/blog/${slug}/${k}/`}));
+ const internalLinksHtmlP=makeInternalLinks([
+   {title:`📍 ${sigungu}의 다른 ${emd.slice(0,2)}에서 ${prd.ko} 설치`,links:nearbySameProd},
+   {title:`🛒 ${emd}의 다른 제품 설치 가이드`,links:otherProdSameDong},
+   {title:`🌏 상위 지역 페이지`,links:[
+     {name:`${emd} 전체 장비`,href:parentUrl.replace('https://allpaystore.com','')},
+     {name:`${sigungu} ${prd.ko}`,href:`/product/${prodKey}/${sidoSlugP}/${sigunguSlugP}/`},
+     {name:`${sido} ${prd.ko}`,href:`/product/${prodKey}/${sidoSlugP}/`},
+     {name:`${prd.ko} 전체 안내`,href:`/product/${prodKey}/`}
+   ]}
+ ]);
  const H=s=>{let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))&0x7fffffff;return h;};
  const pk=(a,h)=>a[h%a.length];
  const h=H(slug);
@@ -1469,6 +1492,7 @@ ${CSS}
  <a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a>
 </div></nav>
 <div class="wrap" style="padding-top:28px">
+ ${crumbHtmlP}
  <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="${photoUrl}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">${prd.emoji} ${prd.ko} ${suf}</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} ${prd.ko} ${isRemoval?'철거':'설치'}</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 견적 · ☎ 010-9876-8282</span></div></div>
  <div class="meta"><span class="badge" style="background:${prd.color}">${prd.emoji} ${prd.ko} ${suf}</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
  <h1>${pk([
@@ -1512,12 +1536,14 @@ ${CSS}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
  </div>
+ ${internalLinksHtmlP}
  <div class="foot-nav">
  <a href="${parentUrl}">← ${emd} 전체 가이드</a> &nbsp;|&nbsp;
  <a href="/blog/">전체 지역 보기</a> &nbsp;|&nbsp;
  <span>📍 ${full} ${prd.ko} ${suf}</span>
  </div>
 </div>
+${makeSiteFooter()}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","telephone":"010-9876-8282","description":"${emd} ${prd.ko} ${suf}"}</script>
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
@@ -1633,7 +1659,64 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
  .cta-sub{margin-left:0;margin-top:10px}
  .cta{padding:28px 18px}
 }
+.crumb{font-size:12.5px;color:#888;margin:14px 0 10px;line-height:1.7;word-break:keep-all}
+.crumb a{color:#666;text-decoration:none}
+.crumb a:hover{color:#111;text-decoration:underline}
+.crumb .sep{color:#ccc;margin:0 5px}
+.crumb .cur{color:#111;font-weight:700}
+.int-sec{background:#fff;border:1px solid #eee;border-radius:12px;padding:18px 20px;margin:22px 0}
+.int-sec h4{font-size:14px;font-weight:800;color:#111;margin:0 0 10px;padding:0;border-left:none}
+.int-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px}
+.int-link{display:block;padding:8px 10px;font-size:12.5px;color:#444;background:#f7f8fc;border-radius:6px;text-align:center;transition:all .15s;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.int-link:hover{background:#111;color:#fff}
+.int-pill{display:inline-flex;align-items:center;gap:4px;padding:7px 12px;font-size:12.5px;color:#555;background:#f0f2f7;border-radius:18px;margin:3px 2px;text-decoration:none;transition:all .15s}
+.int-pill:hover{background:#111;color:#fff}
+.gf{margin-top:48px;padding:32px 0 8px;border-top:1px solid #e5e7eb;background:#fafbfd;border-radius:14px 14px 0 0}
+.gf-in{max-width:780px;margin:0 auto;padding:0 18px}
+.gf-col{margin-bottom:22px}
+.gf-col h5{font-size:12.5px;font-weight:800;color:#111;margin:0 0 10px;letter-spacing:.2px}
+.gf-col a{display:inline-block;font-size:12px;color:#666;margin:3px 8px 3px 0;text-decoration:none}
+.gf-col a:hover{color:#111;text-decoration:underline}
+.gf-bot{margin-top:14px;padding:14px 0;border-top:1px solid #e5e7eb;font-size:11.5px;color:#999;text-align:center}
 </style>`;
+const SIDO_SHORT={'seoul':'서울','busan':'부산','daegu':'대구','incheon':'인천','gwangju':'광주','daejeon':'대전','ulsan':'울산','sejong':'세종','gyeonggi':'경기','gangwon':'강원','chungbuk':'충북','chungnam':'충남','jeonbuk':'전북','jeonnam':'전남','gyeongbuk':'경북','gyeongnam':'경남','jeju':'제주'};
+// 빵크럼 네비게이션 (시각 + JSON-LD 동시 생성)
+function makeBreadcrumb(items){
+  // items: [{name,href}] - 마지막은 href 없음이 현재 페이지
+  const visible=items.map((it,i)=>{
+    const sep=i<items.length-1?'<span class="sep">›</span>':'';
+    if(it.href)return `<a href="${it.href}">${it.name}</a>${sep}`;
+    return `<span class="cur">${it.name}</span>${sep}`;
+  }).join('');
+  const jsonItems=items.map((it,i)=>{
+    const obj={"@type":"ListItem","position":i+1,"name":it.name};
+    if(it.href)obj.item="https://allpaystore.com"+it.href;
+    return obj;
+  });
+  const jsonLd=`<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":jsonItems})}</script>`;
+  return `<div class="crumb">${visible}</div>${jsonLd}`;
+}
+// 관련 페이지 링크 섹션 생성
+function makeInternalLinks(blocks){
+  // blocks: [{title, links:[{name,href}]}]
+  return blocks.filter(b=>b.links&&b.links.length>0).map(b=>{
+    const items=b.links.map(l=>`<a href="${l.href}" class="int-link">${l.name}</a>`).join('');
+    return `<div class="int-sec"><h4>${b.title}</h4><div class="int-grid">${items}</div></div>`;
+  }).join('');
+}
+// 전역 푸터 (모든 페이지에 들어가는 사이트 허브)
+function makeSiteFooter(){
+  const sidoList=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
+  const sidoLinks=sidoList.map(s=>`<a href="/blog/${s}/">${SIDO_SHORT[s]}</a>`).join('');
+  const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/">${v.emoji} ${v.ko}</a>`).join('');
+  const hubLinks='<a href="/">홈</a><a href="/product/">제품 전체</a><a href="/biz/">업종별</a><a href="/biz-cctv/">CCTV 업종</a><a href="/guide/">철거 가이드</a><a href="/franchise/">프랜차이즈</a><a href="/blog/">지역 전체</a><a href="/contact/">문의하기</a>';
+  return `<footer class="gf"><div class="gf-in">
+<div class="gf-col"><h5>🌏 지역별 설치 (17개 시·도)</h5>${sidoLinks}</div>
+<div class="gf-col"><h5>🛒 제품 카테고리</h5>${prodLinks}</div>
+<div class="gf-col"><h5>📄 사이트 주요 메뉴</h5>${hubLinks}</div>
+<div class="gf-bot">올페이스토어 · 전국 카드단말기·포스기·키오스크·CCTV 설치 전문 · ☎ 010-9876-8282</div>
+</div></footer>`;
+}
 function makeSidoPage(sidoSlug){
  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
  const SHORT={'seoul':'서울','busan':'부산','daegu':'대구','incheon':'인천','gwangju':'광주','daejeon':'대전','ulsan':'울산','sejong':'세종','gyeonggi':'경기','gangwon':'강원','chungbuk':'충북','chungnam':'충남','jeonbuk':'전북','jeonnam':'전남','gyeongbuk':'경북','gyeongnam':'경남','jeju':'제주'};
@@ -1654,6 +1737,17 @@ function makeSidoPage(sidoSlug){
  const prodCards=Object.entries(PRODUCTS).map(([k,v])=>{
  return `<a href="/product/${k}/${sidoSlug}/" class="pd-card"><span class="pd-ic">${v.emoji}</span><span class="pd-name">${v.ko}</span></a>`;
  }).join('');
+ // 빵크럼 + 내부링크
+ const crumbHtmlS=makeBreadcrumb([
+   {name:'홈',href:'/'},
+   {name:'지역별 설치',href:'/blog/'},
+   {name:sidoName}
+ ]);
+ const allOtherSidos=[{s:'seoul',n:'서울'},{s:'gyeonggi',n:'경기'},{s:'busan',n:'부산'},{s:'incheon',n:'인천'},{s:'daegu',n:'대구'},{s:'daejeon',n:'대전'},{s:'gwangju',n:'광주'},{s:'ulsan',n:'울산'},{s:'sejong',n:'세종'},{s:'gangwon',n:'강원'},{s:'chungbuk',n:'충북'},{s:'chungnam',n:'충남'},{s:'jeonbuk',n:'전북'},{s:'jeonnam',n:'전남'},{s:'gyeongbuk',n:'경북'},{s:'gyeongnam',n:'경남'},{s:'jeju',n:'제주'}].filter(x=>x.s!==sidoSlug);
+ const internalLinksHtmlS=makeInternalLinks([
+   {title:`🌏 다른 시·도 지역별 설치`,links:allOtherSidos.map(x=>({name:x.n,href:`/blog/${x.s}/`}))},
+   {title:`🛒 ${short} 제품별 전문 페이지`,links:Object.entries(PRODUCTS).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/product/${k}/${sidoSlug}/`}))}
+ ]);
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1666,6 +1760,7 @@ ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
+ ${crumbHtmlS}
  <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
  <img src="https://picsum.photos/seed/img648p/800/420" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
@@ -1744,7 +1839,9 @@ ${CSS}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/" class="cta-sub">💬 상담 문의</a>
  </div>
+ ${internalLinksHtmlS}
 </div>
+${makeSiteFooter()}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","telephone":"010-9876-8282","description":"${sidoName} 카드단말기·포스기·키오스크 설치 전문"}</script>
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
@@ -1767,6 +1864,18 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
  const sgSideLinks=siblingsSgs.map(sg2=>`<a href="/blog/${sg2[1]}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${sg2[0]}</a>`).join('');
  const prodSideLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sgKey}/" class="side-link">${v.emoji} ${sgName} ${v.ko}</a>`).join('');
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ // 빵크럼 + 내부링크
+ const crumbHtmlSG=makeBreadcrumb([
+   {name:'홈',href:'/'},
+   {name:'지역별 설치',href:'/blog/'},
+   {name:sidoName,href:`/blog/${sidoSlug}/`},
+   {name:sgName}
+ ]);
+ const internalLinksHtmlSG=makeInternalLinks([
+   {title:`🏘 ${sgName}의 읍면동 (${dongs.length}개)`,links:dongs.slice(0,24).map(d=>({name:d.name,href:`/blog/${d.slug}/`}))},
+   {title:`📍 ${sidoName}의 다른 시·군·구`,links:siblingsSgs.map(sg2=>({name:sg2[0],href:`/blog/${sg2[1]}/`}))},
+   {title:`🛒 ${sgName} 제품별 전문 페이지`,links:Object.entries(PRODUCTS).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/product/${k}/${sgKey}/`}))}
+ ]);
  return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
@@ -1778,6 +1887,7 @@ ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
+ ${crumbHtmlSG}
  <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
  <img src="https://picsum.photos/seed/img6cuz/800/420" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
@@ -1864,7 +1974,9 @@ ${CSS}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/" class="cta-sub">💬 상담 문의</a>
  </div>
+ ${internalLinksHtmlSG}
 </div>
+${makeSiteFooter()}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","telephone":"010-9876-8282","description":"${sgName} 카드단말기·포스기·키오스크 설치 전문"}</script>
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
@@ -1901,6 +2013,18 @@ function makeProductLandingPage(prodKey){
  const PHOTO={card:'https://picsum.photos/seed/img6l9m/800/420',pos:'https://picsum.photos/seed/img6lc7/800/420',kiosk:'https://picsum.photos/seed/img6ler/800/420',cctv:'https://picsum.photos/seed/img6lha/800/420',tableorder:'https://picsum.photos/seed/img6ljz/800/420',removal:'https://picsum.photos/seed/img6lmo/800/420'};
  const photo=PHOTO[prodKey]||PHOTO.card;
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ // 빵크럼 + 내부링크
+ const crumbHtmlPL=makeBreadcrumb([
+   {name:'홈',href:'/'},
+   {name:'제품 안내',href:'/product/'},
+   {name:prd.ko}
+ ]);
+ const otherProdsPL=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/product/${k}/`}));
+ const sidoForPL=sidoList.filter(s=>RK().some(k=>k.startsWith(s.s+'/'))).map(s=>({name:`${s.e} ${s.n}`,href:`/product/${prodKey}/${s.s}/`}));
+ const internalLinksHtmlPL=makeInternalLinks([
+   {title:`🌏 ${prd.ko} 지역별 전문 페이지`,links:sidoForPL},
+   {title:`🛒 다른 제품 전문 페이지`,links:otherProdsPL}
+ ]);
  return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
@@ -1910,6 +2034,7 @@ ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
+ ${crumbHtmlPL}
  <div style="width:100%;height:240px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('${photo}') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:24px">
  <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · 전국 5,000+ 읍면동</div>
  <div style="font-size:32px;font-weight:900;color:#fff">${prd.emoji} ${prd.ko} ${suf}</div>
@@ -2003,7 +2128,9 @@ ${CSS}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
  </div>
+ ${internalLinksHtmlPL}
 </div>
+${makeSiteFooter()}
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
@@ -2026,6 +2153,20 @@ function makeProductSidoPage(prodKey,sidoSlug){
  const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 실시간 매출 분석 대시보드, 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료로 대행합니다.',cctv:'4채널·8채널·16채널 등 매장 규모에 맞게 설계하며, 30일 이상 영상 저장을 보장합니다. 화재·도난 보험료 할인 혜택도 받을 수 있습니다.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록까지 무료로 대행합니다. 한국어·영어·중국어·일본어 다국어를 지원하며, 주방 자동 연동으로 주문 누락이 없습니다.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 폐기물 처리 확인증과 시공 보증서를 발급합니다.',vending:'음료·과자·커피·컵밥·아이스크림 등 다양한 자동판매기(자판기)를 설치합니다. 무인 매장, 오피스, 학교, 병원, 공장 등 유동인구가 있는 곳이면 전국 어디든 설치 가능합니다.'};
  const pd2=PDESC2[prodKey]||'';
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ // 빵크럼 + 내부링크 (ProductSido)
+ const crumbHtmlPS=makeBreadcrumb([
+   {name:'홈',href:'/'},
+   {name:'제품 안내',href:'/product/'},
+   {name:prd.ko,href:`/product/${prodKey}/`},
+   {name:sidoName}
+ ]);
+ const otherProdsPS=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/product/${k}/${sidoSlug}/`}));
+ const otherSidosPS=[{s:'seoul',n:'서울'},{s:'gyeonggi',n:'경기'},{s:'busan',n:'부산'},{s:'incheon',n:'인천'},{s:'daegu',n:'대구'},{s:'daejeon',n:'대전'},{s:'gwangju',n:'광주'},{s:'ulsan',n:'울산'},{s:'sejong',n:'세종'},{s:'gangwon',n:'강원'},{s:'chungbuk',n:'충북'},{s:'chungnam',n:'충남'},{s:'jeonbuk',n:'전북'},{s:'jeonnam',n:'전남'},{s:'gyeongbuk',n:'경북'},{s:'gyeongnam',n:'경남'},{s:'jeju',n:'제주'}].filter(x=>x.s!==sidoSlug);
+ const internalLinksHtmlPS=makeInternalLinks([
+   {title:`🌏 다른 시·도의 ${prd.ko} ${suf}`,links:otherSidosPS.map(x=>({name:x.n,href:`/product/${prodKey}/${x.s}/`}))},
+   {title:`🛒 ${short}의 다른 제품 전문`,links:otherProdsPS},
+   {title:`📍 ${short} 지역 일반 페이지로`,links:[{name:`${sidoName} 전체 안내`,href:`/blog/${sidoSlug}/`},{name:`${prd.ko} 전국 안내`,href:`/product/${prodKey}/`}]}
+ ]);
  return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
@@ -2035,6 +2176,7 @@ ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/${prodKey}/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
+ ${crumbHtmlPS}
  <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
  <img src="https://picsum.photos/seed/img6xpn/800/420" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
@@ -2115,7 +2257,9 @@ ${CSS}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
  </div>
+ ${internalLinksHtmlPS}
 </div>
+${makeSiteFooter()}
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
@@ -2136,6 +2280,22 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
  const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사 자동 연동, 실시간 매출 분석, 요일별·시간대별 매출 패턴 분석으로 매장 운영을 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료 대행합니다.',cctv:'4채널~16채널 매장 규모에 맞게 설계, 30일 이상 영상 저장, 화재·도난 보험료 할인 혜택.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록 무료 대행, 다국어 지원, 주방 자동 연동.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대 등 모든 업종 철거. 폐기물 처리 확인증·시공 보증서 발급.',vending:'음료·과자·커피·컵밥·아이스크림 자동판매기(자판기) 전국 설치. 입지 분석부터 상품 보충까지 원스톱 지원.'};
  const pd2=PDESC2[prodKey]||'';
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ // 빵크럼 + 내부링크 (ProductSigungu)
+ const crumbHtmlPSG=makeBreadcrumb([
+   {name:'홈',href:'/'},
+   {name:'제품 안내',href:'/product/'},
+   {name:prd.ko,href:`/product/${prodKey}/`},
+   {name:sidoName,href:`/product/${prodKey}/${sidoSlug}/`},
+   {name:sgName}
+ ]);
+ const seenSgPSG={};const namesPSG=sgs.map(s2=>s2[0]);
+ const siblingsSgsPSG=sgs.filter(sg2=>{if(seenSgPSG[sg2[0]])return false;seenSgPSG[sg2[0]]=1;if(sg2[1]===sgKey)return false;const n2=sg2[0];return !namesPSG.some(o=>o!==n2 && n2.startsWith(o));}).slice(0,10);
+ const otherProdsPSG=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/product/${k}/${sgKey}/`}));
+ const internalLinksHtmlPSG=makeInternalLinks([
+   {title:`🏘 ${sgName} 읍면동별 ${prd.ko} 설치`,links:dongs.slice(0,20).map(d=>({name:d.name,href:`/blog/${d.slug}/${prodKey}/`}))},
+   {title:`📍 ${sidoName} 다른 시·군·구의 ${prd.ko}`,links:siblingsSgsPSG.map(sg2=>({name:sg2[0],href:`/product/${prodKey}/${sg2[1]}/`}))},
+   {title:`🛒 ${sgName}의 다른 제품 전문`,links:otherProdsPSG}
+ ]);
  return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png">
@@ -2145,6 +2305,7 @@ ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/product/${prodKey}/${sidoSlug}/">지역별</a><a href="/product/${prodKey}/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
+ ${crumbHtmlPSG}
  <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
  <img src="https://picsum.photos/seed/img774n/800/420" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
@@ -2219,7 +2380,9 @@ ${CSS}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/?product=${prodKey}" class="cta-sub">💬 상담 문의</a>
  </div>
+ ${internalLinksHtmlPSG}
 </div>
+${makeSiteFooter()}
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
@@ -2239,6 +2402,27 @@ function makeBlog(sido,sigungu,emd,slug){
  const nearbyDongs=RK().filter(k=>k.startsWith(sgPrefix+'/') && k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,5);
  const nearbyLinks=nearbyDongs.map(d=>`<a href="/blog/${d.slug}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${d.name}</a>`).join('');
  const productLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/blog/${slug}/${k}/" class="side-link">${v.emoji} ${emd} ${v.ko}</a>`).join('');
+ // 빵크럼 & 내부 링크용 데이터
+ const sidoSlug=slugParts[0];
+ const sigunguSlug=slugParts[1];
+ const crumbHtml=makeBreadcrumb([
+   {name:'홈',href:'/'},
+   {name:'지역별 설치',href:'/blog/'},
+   {name:sido,href:`/blog/${sidoSlug}/`},
+   {name:sigungu,href:`/blog/${sidoSlug}/${sigunguSlug}/`},
+   {name:emd}
+ ]);
+ const nearbyMoreLinks=nearbyDongs.map(d=>({name:d.name,href:`/blog/${d.slug}/`}));
+ const prodRegionLinks=Object.entries(PRODUCTS).slice(0,7).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/blog/${slug}/${k}/`}));
+ const internalLinksHtml=makeInternalLinks([
+   {title:`📍 ${sigungu}의 다른 지역`,links:nearbyMoreLinks},
+   {title:`🛒 ${emd}의 제품별 설치 가이드`,links:prodRegionLinks},
+   {title:`🌏 상위 지역 페이지`,links:[
+     {name:`${sido} 전체`,href:`/blog/${sidoSlug}/`},
+     {name:`${sigungu} 전체`,href:`/blog/${sidoSlug}/${sigunguSlug}/`},
+     {name:'전체 지역 목록',href:'/blog/'}
+   ]}
+ ]);
  return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -2263,6 +2447,7 @@ ${CSS}
  <a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a>
 </div></nav>
 <div class="wrap" style="padding-top:28px">
+ ${crumbHtml}
  <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop" alt="${emd} 카드단말기 설치 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">💳 카드단말기 설치</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} 카드단말기 · 포스기 · 키오스크 · CCTV</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 설치 · ☎ 010-9876-8282</span></div></div>
  <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
  <h1>${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크·CCTV 연동까지 한번에</h1>
@@ -2351,12 +2536,14 @@ ${CSS}
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
  <a href="/contact/" class="cta-sub">💬 상담 문의</a>
  </div>
+ ${internalLinksHtml}
  <div class="foot-nav">
  <a href="/">← 올페이스토어 홈</a> &nbsp;|&nbsp;
  <a href="/blog/">전체 지역 보기</a> &nbsp;|&nbsp;
  <span>📍 ${full} 카드단말기 설치 전문</span>
  </div>
 </div>
+${makeSiteFooter()}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","telephone":"010-9876-8282"}</script>
 <div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
