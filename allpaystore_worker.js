@@ -3425,9 +3425,9 @@ a{text-decoration:none;color:inherit}
 .cta-sec{padding:56px 24px;background:#111;text-align:center}
 .cta-in{max-width:700px;margin:0 auto}
 .cta-h{font-size:28px;font-weight:900;color:#fff;margin-bottom:8px}
-.cta-p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:24px;line-height:1.7}
-.cta-tel{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#111;color:#fff;border-radius:12px;font-size:16px;font-weight:700;transition:all .2s;white-space:nowrap;margin:4px}
-.cta-tel:hover{transform:translateY(-2px);opacity:.9}
+.cta-p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:24px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
+.cta-tel{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#fff;color:#111;border-radius:12px;font-size:16px;font-weight:800;transition:all .2s;white-space:nowrap;margin:4px;box-shadow:0 4px 16px rgba(255,255,255,.15)}
+.cta-tel:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,255,255,.25)}
 .cta-sub{display:inline-block;background:#6B7280;color:#fff;padding:14px 28px;border-radius:12px;font-size:16px;font-weight:700;white-space:nowrap;margin:4px}
 /* FOOTER */
 .ft{background:#f5f5f5;padding:40px 24px 24px;border-top:1px solid #eee}
@@ -3475,18 +3475,20 @@ a{text-decoration:none;color:inherit}
  .cat-desc{font-size:12px}
  .spc-grid{grid-template-columns:1fr}
  /* VS 모바일: 세로 스택 */
- .vs-head{grid-template-columns:1fr 40px 1fr}
- .vs-col-others,.vs-col-ours{padding:12px 10px}
+ .vs-head{grid-template-columns:.85fr 32px 1.3fr}
+ .vs-col-others,.vs-col-ours{padding:12px 8px}
  .vs-col-tag{font-size:11.5px}
  .vs-col-sub{font-size:10px}
- .vs-vs{width:28px;height:28px;font-size:10px}
- .vs-row{grid-template-columns:1fr 40px 1fr}
- .vs-cell{padding:14px 12px;gap:8px}
- .vs-bad .vs-cell-text{font-size:11px}
- .vs-good .vs-cell-text{font-size:11px}
- .vs-good .vs-cell-text b{font-size:12.5px}
+ .vs-vs{width:26px;height:26px;font-size:9.5px}
+ .vs-row{grid-template-columns:.85fr 32px 1.3fr}
+ .vs-cell{padding:14px 10px;gap:7px}
+ .vs-bad{padding-left:10px;padding-right:6px}
+ .vs-good{padding-left:12px;padding-right:12px}
+ .vs-bad .vs-cell-text{font-size:10.5px;line-height:1.55}
+ .vs-good .vs-cell-text{font-size:11.5px;line-height:1.6}
+ .vs-good .vs-cell-text b{font-size:13px}
  .vs-icon{width:20px;height:20px;font-size:11px}
- .vs-num{font-size:9.5px}
+ .vs-num{font-size:9px}
  .feat-grid{grid-template-columns:1fr}
  .sf-split{grid-template-columns:1fr;padding:10px}
  .sf-preview{padding:20px;min-height:auto}
@@ -3528,17 +3530,18 @@ a{text-decoration:none;color:inherit}
  .hero-btns a,.hero-btns button{width:100%}
  .hero-overlay{background:rgba(255,255,255,.55)!important}
  /* 지그재그 모바일: 세로 1열, 좌우 정렬 해제 */
- .zz-wrap{padding:10px 0}
- .zz-line{left:22px;transform:none}
- .zz-line::before,.zz-line::after{left:22px}
- .zz-row{grid-template-columns:44px 1fr!important;gap:12px;margin-bottom:14px}
- .zz-row .zz-spacer{display:none}
- .zz-dot{width:40px;height:40px;grid-column:1}
+ .zz-wrap{padding:10px 0;max-width:none}
+ .zz-line{left:20px;transform:none}
+ .zz-line::before,.zz-line::after{left:20px}
+ .zz-row{display:flex!important;flex-direction:row;align-items:center;gap:14px;margin-bottom:14px;grid-template-columns:none!important}
+ .zz-spacer{display:none!important}
+ .zz-dot{width:40px;height:40px;flex-shrink:0;order:-1}
  .zz-dot-ic{font-size:18px}
- .zz-card{grid-column:2;padding:13px 15px!important;text-align:left!important}
+ .zz-card{flex:1;padding:13px 15px!important;text-align:left!important;order:0}
  .zz-left .zz-card,.zz-right .zz-card{text-align:left!important}
- .zz-left .zz-card::after,.zz-right .zz-card::before{left:-9px!important;right:auto!important;top:22px!important;transform:rotate(-135deg)!important}
- .zz-left .zz-ping,.zz-left .zz-badges{justify-content:flex-start}
+ .zz-left .zz-card::after{display:none!important}
+ .zz-right .zz-card::before,.zz-left .zz-card::before{content:'';position:absolute;top:50%!important;left:-8px!important;right:auto!important;transform:translateY(-50%) rotate(-135deg)!important;width:12px!important;height:12px!important;background:#fff;border-right:1px solid rgba(29,78,216,.08);border-top:1px solid rgba(29,78,216,.08);display:block!important}
+ .zz-left .zz-ping,.zz-left .zz-badges{justify-content:flex-start!important}
  .zz-num-big{font-size:22px}
  .zz-plus{font-size:15px}
  .cat-stage{min-height:180px}
@@ -3674,10 +3677,20 @@ a{text-decoration:none;color:inherit}
  <div class="tabs">
  <button class="tab on" onclick="switchTab('region')">📍 지역별 설치</button>
  <button class="tab" onclick="switchTab('product')">📦 제품별 안내</button>
+ <button class="tab" onclick="switchTab('biz')">🏪 업종별</button>
  <a href="tel:010-9876-8282"><button class="tab" style="border-color:#111;color:#111;font-weight:800">📞 무료 상담</button></a>
  </div>
  <div class="panel on" id="p-region"><div class="rb-wrap">${sidoBtns}</div></div>
  <div class="panel" id="p-product"><div class="rb-wrap">${prodBtns}</div></div>
+ <div class="panel" id="p-biz"><div class="rb-wrap">
+ <a href="/biz/" class="rb">💳 카드단말기 가이드</a>
+ <a href="/biz-cctv/" class="rb">📹 CCTV 가이드</a>
+ <a href="/biz/" class="rb">🖥️ 포스기 가이드</a>
+ <a href="/biz/" class="rb">🤖 키오스크 가이드</a>
+ <a href="/biz/" class="rb">🍽️ 테이블오더 가이드</a>
+ <a href="/biz/" class="rb">🏭 밴딩머신 가이드</a>
+ <a href="/biz/" class="rb">📋 전체 업종별 가이드 →</a>
+ </div></div>
  </div>
 </section>
 <section class="prods" id="prod-sec">
@@ -4159,7 +4172,7 @@ function catPick(b){
 <section class="cta-sec">
  <div class="cta-in">
  <h2 class="cta-h">📞 무료 견적 · 빠른 설치</h2>
- <p class="cta-p">카드단말기·포스기·키오스크·테이블오더·CCTV·밴딩머신·건축(철거)<br>매장에 필요한 모든 장비, 한 통화로 해결하세요</p>
+ <p class="cta-p">카드단말기·포스기·키오스크·테이블오더·CCTV·밴딩머신·건축(철거)·프랜차이즈<br>매장에 필요한 모든 장비, 한 통화로 해결하세요</p>
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
  <a href="tel:010-9876-8282" class="cta-tel">📞 010-9876-8282</a>
  <a href="sms:010-9876-8282?body=%5B%EC%83%81%EB%8B%B4%5D%20" class="cta-sms">📱 문자상담</a>
@@ -4177,9 +4190,11 @@ function catPick(b){
 </div>
 <script>
 function switchTab(t){
- document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',i===(t==='region'?0:1))});
+ const idx={region:0,product:1,biz:2}[t]||0;
+ document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',i===idx)});
  document.getElementById('p-region').classList.toggle('on',t==='region');
  document.getElementById('p-product').classList.toggle('on',t==='product');
+ document.getElementById('p-biz').classList.toggle('on',t==='biz');
 }
 document.querySelectorAll('.rm-q').forEach(q=>{
  q.addEventListener('click',function(){
