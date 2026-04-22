@@ -1493,7 +1493,7 @@ ${CSS}
 </div></nav>
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlP}
- <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="${photoUrl}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">${prd.emoji} ${prd.ko} ${suf}</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} ${prd.ko} ${isRemoval?'철거':'설치'}</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 견적 · ☎ 010-9876-8282</span></div></div>
+ <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="${photoUrl}" alt="${emd} ${prd.ko} ${suf} 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">${prd.emoji} ${prd.ko} ${suf}</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} ${prd.ko} ${isRemoval?'철거':'설치'}</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 견적 · <span class="tel-no">☎ 010-9876-8282</span></span></div></div>
  <div class="meta"><span class="badge" style="background:${prd.color}">${prd.emoji} ${prd.ko} ${suf}</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
  <h1>${pk([
  `${emd} ${prd.ko} 완벽 가이드 — 무료 견적·${isRemoval?'정찰제·원상복구 보장':'빠른 설치·A/S 보장'}`,
@@ -1653,6 +1653,13 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
  .wrap{display:flex;flex-direction:column}
  .side-nav{float:none!important;width:100%!important;margin:24px 0 0 0!important;order:99;padding-left:0!important;border-left:none!important}
  .g4{grid-template-columns:1fr 1fr!important;gap:8px!important}
+ /* 모바일 썸네일: 세로 1.5배 확대 + 오버레이 텍스트 숨쉬기 */
+ .thumb{aspect-ratio:3/2!important}
+ .thumb img{width:100%!important;height:100%!important;object-fit:cover!important}
+ .thumb>div:last-child{padding:16px 18px!important}
+ .thumb>div:last-child>span:first-child{font-size:18px!important;line-height:1.35!important;margin-bottom:8px!important}
+ .thumb>div:last-child>span:last-child{font-size:12px!important;line-height:1.7!important;white-space:normal!important;word-break:keep-all!important}
+ .thumb .tel-no{display:block!important;margin-top:2px}
 }
 @media(max-width:480px){
  .cta-main{font-size:14px;padding:12px 28px}
@@ -2448,7 +2455,7 @@ ${CSS}
 </div></nav>
 <div class="wrap" style="padding-top:28px">
  ${crumbHtml}
- <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop" alt="${emd} 카드단말기 설치 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">💳 카드단말기 설치</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} 카드단말기 · 포스기 · 키오스크 · CCTV</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 설치 · ☎ 010-9876-8282</span></div></div>
+ <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop" alt="${emd} 카드단말기 설치 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">💳 카드단말기 설치</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} 카드단말기 · 포스기 · 키오스크 · CCTV</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 설치 · <span class="tel-no">☎ 010-9876-8282</span></span></div></div>
  <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
  <h1>${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크·CCTV 연동까지 한번에</h1>
  <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적 · 빠른 설치 · A/S까지 책임집니다. 카드단말기·포스기·키오스크·테이블오더는 설치비 무료입니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크·CCTV 연동 혜택을 빠짐없이 안내드립니다.</div>
