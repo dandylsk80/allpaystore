@@ -3944,11 +3944,10 @@ if(path==='/biz/card'){
  const h=`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/images/logo.png"><link rel="apple-touch-icon" href="/images/logo.png"><title>프랜차이즈 가맹점 모집 | 올페이스토어</title><meta name="description" content="검증된 브랜드로 창업하세요. 본사 지원, 초기 투자 최소화, 매출 보장. 프랜차이즈 가맹 상담 010-9876-8282"><meta property="og:title" content="프랜차이즈 가맹점 모집 | 올페이스토어"><meta property="og:description" content="검증된 브랜드로 창업하세요. 본사 지원, 초기 투자 최소화, 매출 보장"><meta property="og:type" content="website"><meta property="og:url" content="https://allpaystore.com/franchise/"><link rel="canonical" href="https://allpaystore.com/franchise/">${CSS}</head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
-<p style="font-size:13px;color:#888;margin-bottom:12px"><a href="/" style="color:#888;text-decoration:none">홈</a> &gt; <a href="/product/" style="color:#888;text-decoration:none">제품 안내</a> &gt; 프랜차이즈</p>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<style>.franchise-title{font-family:'Nanum Pen Script',cursive!important;font-size:80px;font-weight:400;color:#111;margin:0;line-height:1.15;letter-spacing:-1px}@media(max-width:600px){.franchise-title{font-size:52px}}</style>
-<div style="text-align:center;padding:48px 20px 32px">
-<h1 class="franchise-title">프랜차이즈<br>가맹점 모집</h1>
+<style>.franchise-title{font-family:'Nanum Pen Script',cursive!important;font-weight:400;color:#111;margin:0;line-height:1.1;letter-spacing:-1px;white-space:nowrap;font-size:clamp(48px,11vw,120px)}</style>
+<div style="text-align:center;padding:56px 12px 40px;overflow:hidden">
+<h1 class="franchise-title">프랜차이즈 가맹점 모집</h1>
 </div>
 
 <h2 style="font-size:22px;font-weight:900;color:#111;margin:32px 0 16px">🔥 운영 중인 브랜드</h2>
