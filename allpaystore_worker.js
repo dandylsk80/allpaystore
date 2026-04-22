@@ -1709,7 +1709,7 @@ function makeSiteFooter(){
   const sidoList=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
   const sidoLinks=sidoList.map(s=>`<a href="/blog/${s}/">${SIDO_SHORT[s]}</a>`).join('');
   const prodLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/">${v.emoji} ${v.ko}</a>`).join('');
-  const hubLinks='<a href="/">홈</a><a href="/product/">제품 전체</a><a href="/biz/">업종별</a><a href="/biz-cctv/">CCTV 업종</a><a href="/guide/">철거 가이드</a><a href="/franchise/">프랜차이즈</a><a href="/blog/">지역 전체</a><a href="/contact/">문의하기</a>';
+  const hubLinks='<a href="/">홈</a><a href="/product/">제품 전체</a><a href="/biz/">업종별</a><a href="/biz-cctv/">CCTV 업종</a><a href="/franchise/">프랜차이즈</a><a href="/blog/">지역 전체</a><a href="/contact/">문의하기</a>';
   return `<footer class="gf"><div class="gf-in">
 <div class="gf-col"><h5>🌏 지역별 설치 (17개 시·도)</h5>${sidoLinks}</div>
 <div class="gf-col"><h5>🛒 제품 카테고리</h5>${prodLinks}</div>
@@ -3381,7 +3381,6 @@ a{text-decoration:none;color:inherit}
   <a href="#find-sec" onclick="document.getElementById('mobMenu').classList.remove('open')">📍 지역별 설치</a>
   <a href="/product/" onclick="document.getElementById('mobMenu').classList.remove('open')">📦 제품 안내</a>
   <a href="/biz/">💳 업종별</a>
-  <a href="/guide/">🔨 철거 가이드</a>
   <a href="/contact/">💬 문의하기</a>
   <a href="tel:010-9876-8282" class="hd-mob-tel">📞 010-9876-8282</a>
  </div>
