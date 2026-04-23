@@ -898,12 +898,30 @@ function toRoman(text) {
 
 
 function fromRoman(sidoEn, guEn, roman) {
+  // 로마자 정규화: g↔k, b↔p, d↔t 같은 음 변형 허용 + 끝 dong 접미사 유무
+  const normalize = s => s.toLowerCase()
+    .replace(/ae/g,'E').replace(/ai/g,'E')
+    .replace(/oe/g,'O').replace(/oi/g,'O')
+    .replace(/eo/g,'U').replace(/eu/g,'U')
+    .replace(/g/g,'K').replace(/k/g,'K')
+    .replace(/b/g,'P').replace(/p/g,'P')
+    .replace(/d/g,'T').replace(/t/g,'T')
+    .replace(/r/g,'L').replace(/l/g,'L');
+  const stripDong = s => s.replace(/(dong|myeon|ri|eup)$/,'');
+  const target = normalize(roman);
+  const targetNoSuffix = normalize(stripDong(roman));
+  
   for (const [sido, reg] of Object.entries(REGIONS)) {
     if ((SIDO_EN[sido]||sido) !== sidoEn) continue;
     for (const [ak, area] of Object.entries(reg.areas)) {
       if ((DISTRICT_EN[ak]||ak) !== guEn) continue;
       for (const dong of (area.dongs||[])) {
-        if (toRoman(dong) === roman) return dong;
+        const dRoman = toRoman(dong);
+        if (dRoman === roman) return dong;
+        // 정규화 일치 (정확히)
+        if (normalize(dRoman) === target) return dong;
+        // 입력에서 접미사 제거한 것이 DB의 '접미사 뺀 버전'과 일치
+        if (normalize(stripDong(dRoman)) === targetNoSuffix) return dong;
       }
     }
   }
@@ -9482,8 +9500,10 @@ if (path === '/robots.txt') return new Response('User-agent: *\nAllow: /\n\nUser
           const kr5 = toKr(parts[0], parts[1], null, gradeEn, subjectEn);
           const canonicalSido = SIDO_EN[kr5.sido] || kr5.sido;
           const canonicalDist = DISTRICT_EN[kr5.district] || kr5.district;
-          if (parts[0] !== canonicalSido || parts[1] !== canonicalDist) {
-            const canonical5 = `/${canonicalSido}/${canonicalDist}/${dongEn}/${gradeEn}/${subjectEn}`;
+          const canonicalDong = toRoman(dongName);
+          // 시도/구군/동 중 하나라도 정식 URL과 다르면 301
+          if (parts[0] !== canonicalSido || parts[1] !== canonicalDist || dongEn !== canonicalDong) {
+            const canonical5 = `/${canonicalSido}/${canonicalDist}/${canonicalDong}/${gradeEn}/${subjectEn}`;
             return new Response(null, { status: 301, headers: { 'Location': canonical5, 'Cache-Control': 'no-cache' } });
           }
           const page = makeDongPageByName(parts[0], parts[1], dongName, subjectEn, gradeEn);
@@ -9511,6 +9531,11 @@ if (path === '/robots.txt') return new Response('User-agent: *\nAllow: /\n\nUser
       
       const dongName3 = fromRoman(parts[0], parts[1], parts[2]);
       if (dongName3) {
+        // 짧은 URL이면 정식 URL로 301
+        const canonicalDong3 = toRoman(dongName3);
+        if (parts[2] !== canonicalDong3) {
+          return new Response(null, { status: 301, headers: { 'Location': `/${parts[0]}/${parts[1]}/${canonicalDong3}`, 'Cache-Control': 'no-cache' } });
+        }
         const page = makeDongMainPage(parts[0], parts[1], dongName3);
         if (page) return new Response(page, { headers: h });
       }
