@@ -3438,8 +3438,8 @@ a{text-decoration:none;color:inherit}
 /* REVIEWS - CHAT FEED */
 .rev{padding:56px 24px;background:linear-gradient(180deg,#F8FAFF 0%,#fff 100%);border-bottom:1px solid #E5E7EB;overflow:hidden}
 .rev-in{max-width:1100px;margin:0 auto}
-.rv-stage{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start}
-.rv-phone{position:relative;background:#fff;border-radius:20px;box-shadow:0 12px 40px rgba(13,46,110,.1),0 2px 8px rgba(13,46,110,.05);border:1px solid #E5E7EB;overflow:hidden;max-width:580px;margin:0 auto;width:100%}
+.rv-stage{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 260px;gap:32px;align-items:start}
+.rv-phone{position:relative;background:#fff;border-radius:20px;box-shadow:0 12px 40px rgba(13,46,110,.1),0 2px 8px rgba(13,46,110,.05);border:1px solid #E5E7EB;overflow:hidden;margin:0 auto;width:100%}
 .rv-phone-top{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#fafbfd;border-bottom:1px solid #eef1f7}
 .rv-phone-l{display:flex;align-items:center;gap:8px}
 .rv-phone-dot{width:8px;height:8px;border-radius:50%;background:#10B981;animation:rvPulse 2s ease-in-out infinite;box-shadow:0 0 0 3px rgba(16,185,129,.2)}
