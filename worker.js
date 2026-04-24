@@ -696,7 +696,27 @@ function wrap(title, desc, canonical, body, breadcrumbs){
   const canonicalUrl = `https://allcarestudy.com${canonical}`;
   
   const descShort = desc.length > 150 ? desc.slice(0, 147) + '...' : desc;
-  const isoDate = new Date().toISOString().slice(0,10);
+  
+  // 발행일: canonical 해시 기반 고정 (2025-01-15 ~ 2025-09-30 사이 분산)
+  let pubHash = 0;
+  for (let i = 0; i < canonical.length; i++) pubHash = (pubHash * 31 + canonical.charCodeAt(i)) >>> 0;
+  const pubStart = new Date('2025-01-15').getTime();
+  const pubEnd = new Date('2025-09-30').getTime();
+  const pubDate = new Date(pubStart + (pubHash % (pubEnd - pubStart)));
+  const pubIso = pubDate.toISOString().slice(0,10);
+  const pubFmt = `${pubDate.getFullYear()}.${String(pubDate.getMonth()+1).padStart(2,'0')}.${String(pubDate.getDate()).padStart(2,'0')}`;
+
+  // 수정일: 이번 주 월요일 (매주 자동 갱신)
+  const now = new Date();
+  const dow = now.getDay(); // 0=일, 1=월
+  const offset = dow === 0 ? -6 : 1 - dow;
+  const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + offset);
+  const modIso = monday.toISOString().slice(0,10);
+  const modFmt = `${monday.getFullYear()}.${String(monday.getMonth()+1).padStart(2,'0')}.${String(monday.getDate()).padStart(2,'0')}`;
+
+  // 본문에 날짜 메타 주입 (breadcrumb 다음 or 맨 앞에 삽입)
+  const dateMeta = `<div style="max-width:1200px;margin:0 auto;padding:8px 24px;font-size:12px;color:#9CA3AF;display:flex;gap:16px;flex-wrap:wrap"><span>📅 발행일: ${pubFmt}</span><span>🔄 수정일: ${modFmt}</span></div>`;
+  const bodyWithDate = dateMeta + body;
 
   
   let bcSchema = '';
@@ -724,13 +744,15 @@ function wrap(title, desc, canonical, body, breadcrumbs){
 <meta property="og:image" content="https://allcarestudy.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="article:published_time" content="${pubIso}">
+<meta property="article:modified_time" content="${modIso}">
 <meta name="naver-site-verification" content="a1c57425042478220780bb530f8511e3eec2a1fd">
 <meta name="google-site-verification" content="st8_MGU2mfnaomGNCLUGBmiQsZD50WNTWEUxzfmJ47E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${descShort}","url":"${canonicalUrl}","publisher":{"@type":"Organization","name":"올케어스터디","url":"https://allcarestudy.com","telephone":"010-6834-8080","logo":{"@type":"ImageObject","url":"https://allcarestudy.com/logo.png","width":200,"height":60}},"datePublished":"${isoDate}","dateModified":"${isoDate}","inLanguage":"ko-KR"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${descShort}","url":"${canonicalUrl}","publisher":{"@type":"Organization","name":"올케어스터디","url":"https://allcarestudy.com","telephone":"010-6834-8080","logo":{"@type":"ImageObject","url":"https://allcarestudy.com/logo.png","width":200,"height":60}},"datePublished":"${pubIso}","dateModified":"${modIso}","inLanguage":"ko-KR"}</script>
 ${bcSchema}<link rel="alternate" type="application/rss+xml" title="올케어스터디 RSS" href="https://allcarestudy.com/rss.xml">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
 <style>${CSS}</style>
-</head><body>${HEADER}${body}${FOOTER}</body></html>`;
+</head><body>${HEADER}${bodyWithDate}${FOOTER}</body></html>`;
 }
 
 function wrapDark(title,desc,canonical,body){
