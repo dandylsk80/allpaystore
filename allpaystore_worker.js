@@ -3108,6 +3108,7 @@ function getHTML() {
 <meta name="description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 견적, 빠른 설치, A/S 지원. 전국 5,000+ 읍면동 직접 출장. ☎ 010-9876-8282">
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac">
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045">
+<meta name="DaumWebMasterTool" content="a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==">
 <meta property="og:title" content="올페이스토어 | 카드단말기·포스기·키오스크·CCTV 전국 설치 전문">
 <meta property="og:description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 견적, 빠른 설치. 전국 5,000+ 읍면동 직접 출장.">
 <meta property="og:type" content="website">
