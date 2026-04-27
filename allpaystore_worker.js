@@ -4889,7 +4889,7 @@ if(path==='/biz/card'){
   h2.set('Cache-Control','public,max-age=604800,s-maxage=604800');
   return new Response(imgResp.body,{headers:h2});
  }
- if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\nDaum-Webmaster-Tool: aa-9895718\n',{headers:{'Content-Type':'text/plain'}});
+ if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain'}});
  const INDEXNOW_KEY='822a08bd2bba4c3cb62c6fba162a9cb3';
  if(path==='/'+INDEXNOW_KEY+'.txt')return new Response(INDEXNOW_KEY,{headers:{'Content-Type':'text/plain'}});
  if(path==='/api/indexnow'){
