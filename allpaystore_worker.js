@@ -4903,19 +4903,40 @@ if(path==='/biz/card'){
    BIZ_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz/'+s+'/');});
    urls.push('https://allpaystore.com/biz-cctv/');
    CCTV_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz-cctv/'+s+'/');});
+   // 요일별 1/7 분산 발송: 같은 URL은 7일에 한 번씩만 발송 (IndexNow 권장)
+   // ?force=1 파라미터로 전체 발송 가능 (수동 트리거용)
+   const force=url.searchParams.get('force')==='1';
+   const customN=parseInt(url.searchParams.get('n')||'0',10);
+   const dayIdx=Math.floor(Date.now()/86400000)%7;
+   const todayUrls=force?urls:urls.filter((_,i)=>i%7===dayIdx);
+   const finalUrls=customN>0?todayUrls.slice(0,customN):todayUrls;
+   // 한 번에 너무 많이 보내지 않도록 1000개씩 배치 (네이버 권장)
+   const results=[];
    let submitted=0;
-   for(let i=0;i<urls.length;i+=10000){
-    const batch=urls.slice(i,i+10000);
+   for(let i=0;i<finalUrls.length;i+=1000){
+    const batch=finalUrls.slice(i,i+1000);
     const body=JSON.stringify({host:'allpaystore.com',key:INDEXNOW_KEY,keyLocation:'https://allpaystore.com/'+INDEXNOW_KEY+'.txt',urlList:batch});
-    await Promise.allSettled([
+    const [naverR,bingR]=await Promise.allSettled([
      fetch('https://searchadvisor.naver.com/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body}),
      fetch('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body})
     ]);
+    results.push({batch:i/1000+1,size:batch.length,naver:naverR.status==='fulfilled'?naverR.value.status:'ERR',bing:bingR.status==='fulfilled'?bingR.value.status:'ERR'});
     submitted+=batch.length;
    }
-   return new Response(JSON.stringify({ok:true,totalUrls:urls.length,submitted}),{headers:{'Content-Type':'application/json'}});
+   return new Response(JSON.stringify({ok:true,totalUrls:urls.length,todayDayIdx:dayIdx,submitted,force,results},null,2),{headers:{'Content-Type':'application/json'}});
   }catch(e){return new Response(JSON.stringify({ok:false,error:e.message}),{headers:{'Content-Type':'application/json'}});}
  }
  return new Response('Not Found',{status:404});
+ },
+ // 매일 자동 IndexNow 발송 (Cloudflare Cron Trigger)
+ // wrangler.toml 또는 대시보드에서 cron 스케줄 설정 필요 (예: "0 18 * * *" = UTC 18:00 = KST 03:00)
+ async scheduled(event,env,ctx){
+  ctx.waitUntil((async()=>{
+   try{
+    const r=await fetch('https://allpaystore.com/api/indexnow');
+    const txt=await r.text();
+    console.log('[CRON IndexNow]',new Date().toISOString(),'status:',r.status,'body:',txt.slice(0,500));
+   }catch(e){console.log('[CRON IndexNow] ERROR:',e.message);}
+  })());
  }
 };
