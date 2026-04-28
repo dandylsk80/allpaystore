@@ -1124,8 +1124,61 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
  const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  const canon=`https://allpaystore.com/blog/${slug}/${prodKey}/`;
  const parentUrl=`https://allpaystore.com/blog/${slug}/`;
- const PHOTO_URL={card:'https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',pos:'https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',kiosk:'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',cctv:'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',tableorder:'https://images.pexels.com/photos/5920743/pexels-photo-5920743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',removal:'https://images.pexels.com/photos/3828888/pexels-photo-3828888.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'};
- const photoUrl=PHOTO_URL[prodKey]||PHOTO_URL.card;
+ const PHOTO_POOL={
+   card:[
+     'https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+   ],
+   pos:[
+     'https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+   ],
+   kiosk:[
+     'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3884440/pexels-photo-3884440.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6169057/pexels-photo-6169057.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+   ],
+   cctv:[
+     'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2516143/pexels-photo-2516143.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/371924/pexels-photo-371924.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/277574/pexels-photo-277574.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+   ],
+   tableorder:[
+     'https://images.pexels.com/photos/5920743/pexels-photo-5920743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6650825/pexels-photo-6650825.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+   ],
+   vending:[
+     'https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2531545/pexels-photo-2531545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/7969119/pexels-photo-7969119.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+   ],
+   removal:[
+     'https://images.pexels.com/photos/3828888/pexels-photo-3828888.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/8487409/pexels-photo-8487409.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/5691660/pexels-photo-5691660.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3990589/pexels-photo-3990589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+   ]
+ };
+ const pool=PHOTO_POOL[prodKey]||PHOTO_POOL.card;
+ let photoHash=0;
+ for(let i=0;i<emd.length;i++){photoHash=((photoHash<<5)-photoHash+emd.charCodeAt(i))|0;}
+ const photoUrl=pool[Math.abs(photoHash)%pool.length];
  const iso=today.toISOString().split('T')[0];
  const otherProducts=Object.entries(PRODUCTS).filter(([k])=>k!==prodKey).map(([k,v])=>`<a href="/blog/${slug}/${k}/" class="side-link">${v.emoji} ${emd} ${v.ko}</a>`).join('');
  const slugParts=slug.split('/');
