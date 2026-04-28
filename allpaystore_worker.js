@@ -1789,6 +1789,13 @@ function makeSidoPage(sidoSlug){
 <title>${sidoName} 카드단말기·포스기·키오스크 설치 | ${short} 전 지역 빠른 설치 - 올페이스토어</title>
 <meta name="description" content="${sidoName} 카드단말기·포스기·키오스크·CCTV·테이블오더 설치 전문. ${short} 전 지역 ${dongCount}개 읍면동 직접 방문, 무료 견적, 빠른 설치. ☎ 010-9876-8282">
 <meta name="keywords" content="${short} 카드단말기 설치,${short} 포스기,${short} 키오스크,${short} CCTV,${short} 테이블오더,${short} 매장 철거">
+<meta property="og:title" content="${sidoName} 카드단말기·포스기·키오스크 설치 - 올페이스토어">
+<meta property="og:description" content="${sidoName} 전 지역 ${dongCount}개 읍면동 직접 방문, 무료 견적, 빠른 설치">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://allpaystore.com/og/card/${encodeURIComponent(sidoName+' 카드단말기 설치')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://allpaystore.com/blog/${sidoSlug}/">
 <link rel="canonical" href="https://allpaystore.com/blog/${sidoSlug}/">
 ${CSS}
 </head><body>
@@ -1916,6 +1923,13 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
 <title>${sgName} 카드단말기·포스기·키오스크 설치 | ${sgName} 전 지역 빠른 설치 - 올페이스토어</title>
 <meta name="description" content="${sidoName} ${sgName} 카드단말기·포스기·키오스크·CCTV 설치 전문. ${sgName} ${dongs.length}개 읍면동 직접 방문, 무료 견적, 빠른 설치. ☎ 010-9876-8282">
 <meta name="keywords" content="${sgName} 카드단말기 설치,${sgName} 포스기,${sgName} 키오스크,${sgName} CCTV,${sgName} 매장 철거">
+<meta property="og:title" content="${sgName} 카드단말기·포스기·키오스크 설치 - 올페이스토어">
+<meta property="og:description" content="${sidoName} ${sgName} 전 지역 ${dongs.length}개 읍면동 직접 방문, 무료 견적, 빠른 설치">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://allpaystore.com/og/card/${encodeURIComponent(sgName+' 카드단말기 설치')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://allpaystore.com/blog/${sgKey}/">
 <link rel="canonical" href="https://allpaystore.com/blog/${sgKey}/">
 ${CSS}
 </head><body>
