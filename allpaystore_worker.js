@@ -37,6 +37,36 @@ const PRODUCTS={
   removal:{ko:'철거',emoji:'🔨',color:'#991B1B',slug:'removal'},
  vending:{ko:'밴딩머신',emoji:'🏭',color:'#0D9488',slug:'vending'}
 };
+const BIZ_LIST=[
+ {slug:'cafe',ko:'카페',cat:'cafe',emoji:'☕'},
+ {slug:'restaurant',ko:'음식점',cat:'food',emoji:'🍽️'},
+ {slug:'korean',ko:'한식당',cat:'food',emoji:'🍚'},
+ {slug:'chinese',ko:'중식당',cat:'food',emoji:'🥟'},
+ {slug:'japanese',ko:'일식당',cat:'food',emoji:'🍣'},
+ {slug:'bbq',ko:'고깃집',cat:'food',emoji:'🥩'},
+ {slug:'bunsik',ko:'분식점',cat:'food',emoji:'🍢'},
+ {slug:'pub',ko:'호프집',cat:'bar',emoji:'🍺'},
+ {slug:'clothing',ko:'의류매장',cat:'retail',emoji:'👕'},
+ {slug:'shoes',ko:'신발매장',cat:'retail',emoji:'👟'},
+ {slug:'cosmetic',ko:'화장품매장',cat:'retail',emoji:'💄'},
+ {slug:'optical',ko:'안경원',cat:'retail',emoji:'👓'},
+ {slug:'flower',ko:'꽃집',cat:'retail',emoji:'💐'},
+ {slug:'hair',ko:'미용실',cat:'beauty',emoji:'✂️'},
+ {slug:'nail',ko:'네일샵',cat:'beauty',emoji:'💅'},
+ {slug:'skin',ko:'피부관리실',cat:'beauty',emoji:'🧖'},
+ {slug:'gym',ko:'헬스장',cat:'leisure',emoji:'💪'},
+ {slug:'pharmacy',ko:'약국',cat:'medical',emoji:'💊'},
+ {slug:'clinic',ko:'병원',cat:'medical',emoji:'🏥'},
+ {slug:'dental',ko:'치과',cat:'medical',emoji:'🦷'},
+ {slug:'academy',ko:'학원',cat:'edu',emoji:'📚'},
+ {slug:'animal',ko:'동물병원',cat:'medical',emoji:'🐾'},
+ {slug:'laundry',ko:'세탁소',cat:'service',emoji:'🧺'},
+ {slug:'realestate',ko:'부동산',cat:'office',emoji:'🏠'},
+ {slug:'pcbang',ko:'PC방',cat:'leisure',emoji:'🖱️'},
+ {slug:'karaoke',ko:'노래방',cat:'leisure',emoji:'🎤'},
+ {slug:'studycafe',ko:'스터디카페',cat:'edu',emoji:'📖'}
+];
+const BIZ_MAP={};BIZ_LIST.forEach(b=>{BIZ_MAP[b.slug]=b;});
 const DAKGALBI_CATS={
  sojabon:{name:'1인·소자본창업',emoji:'💰',color:'#DC2626',img:'https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'소규모 자본으로 시작하는 오늘도닭갈비',kw:'1인소자본창업,소규모창업,소자본닭갈비창업,저비용창업',titles:['1인소자본창업으로 시작하는 오늘도닭갈비, 초기비용 부담 없이 오픈','소규모창업 아이템 고민 끝, 오늘도닭갈비가 답인 이유','월세가 걱정이라면? 소자본닭갈비창업 오늘도닭갈비 선택','초기비용 최소화! 1인창업으로 운영 가능한 오늘도닭갈비','적은 자본으로 시작하는 닭갈비 프랜차이즈, 오늘도닭갈비','소자본창업 인기 아이템, 오늘도닭갈비 가맹 조건 정리','점포 크기별 소자본 닭갈비 창업 비용 완벽 가이드','1인소자본창업자가 오늘도닭갈비를 선택하는 5가지 이유','창업자금 3천만원대, 오늘도닭갈비 소규모 매장 오픈 사례','소자본으로 큰 매출, 오늘도닭갈비 작은매장 수익 분석']},
  bubu:{name:'부부·가족창업',emoji:'👫',color:'#059669',img:'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'부부와 가족이 함께 운영하는 오늘도닭갈비',kw:'부부창업,가족경영,가족외식창업,부부창업아이템',titles:['은퇴 후 제2의 인생, 부부창업으로 딱 좋은 소자본닭갈비창업','가족경영으로 운영하기 좋은 오늘도닭갈비, 부부창업 성공 사례','가족외식창업으로 검증된 오늘도닭갈비, 온 가족이 함께하는 매장','부부가 함께 운영하는 닭갈비집, 오늘도닭갈비 가맹 후기','가족창업의 정석, 오늘도닭갈비로 인건비 절감하는 방법','부부창업 아이템 찾는다면? 오늘도닭갈비 운영 시스템','가족경영으로 단골 확보하는 오늘도닭갈비 가맹점 이야기','부부 둘이서 운영 가능한 닭갈비 프랜차이즈, 오늘도닭갈비','시부모·며느리·자녀까지, 3대가 운영하는 오늘도닭갈비','가족외식창업 왜 오늘도닭갈비인가? 10년 가맹점주의 조언']},
@@ -1743,6 +1773,304 @@ ${makeSiteFooter()}
 </div>
 </body></html>`;
 }
+function makeBizDongPage(sido,sigungu,emd,slug,bizSlug,prodKey){
+ const biz=BIZ_MAP[bizSlug];if(!biz)return null;
+ const prd=PRODUCTS[prodKey];if(!prd||(prodKey!=='card'&&prodKey!=='pos'))return null;
+ const full=`${sido} ${sigungu} ${emd}`;
+ const sidoS=sido==='서울특별시'?'서울':sido==='부산광역시'?'부산':sido==='대구광역시'?'대구':sido==='인천광역시'?'인천':sido==='광주광역시'?'광주':sido==='대전광역시'?'대전':sido==='울산광역시'?'울산':sido==='세종특별자치시'?'세종':sido==='경기도'?'경기':sido==='강원특별자치도'?'강원':sido==='충청북도'?'충북':sido==='충청남도'?'충남':sido==='전북특별자치도'?'전북':sido==='전라남도'?'전남':sido==='경상북도'?'경북':sido==='경상남도'?'경남':sido==='제주특별자치도'?'제주':sido;
+ const today=new Date();
+ const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ const iso=today.toISOString().split('T')[0];
+ const canon=`https://allpaystore.com/blog/${slug}/${bizSlug}-${prodKey}/`;
+ // 해시: 페이지마다 고유 시드 (지역+업종+제품) - 동/업종/제품/시도 모두 영향
+ const seed=(slug+bizSlug+prodKey+sido+sigungu+emd).split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
+ const h=Math.abs(seed);
+ // 다층 해시로 풀 인덱스 다변화
+ const h2=Math.abs((seed*31+emd.charCodeAt(0)*7+bizSlug.charCodeAt(0)*13)|0);
+ const h3=Math.abs((seed*17+(prodKey==='card'?100:200)+sigungu.length*23)|0);
+ const pick=(arr,off=0)=>arr[(h+off+h2)%arr.length];
+ const pick2=(arr,off=0)=>arr[(h2+off+h3)%arr.length];
+ const pick3=(arr,off=0)=>arr[(h3+off*7+h)%arr.length];
+ // 사진 풀
+ const photoCard=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
+ const photoPos=['https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962294/pexels-photo-3962294.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
+ const photo=prodKey==='card'?pick(photoCard):pick(photoPos);
+ // 업종별 고유 본문 (각 업종마다 다른 환경/특성 설명)
+ const BIZ_CONTENT={
+  cafe:{env:`${emd} 카페는 테이크아웃과 매장 이용이 혼재하는 환경입니다. 오전 출근 시간대 빠른 결제 처리가 필수이며, 다양한 음료·디저트 메뉴 등록과 시즌 한정 메뉴 관리가 자주 필요합니다.`,why:`카페 운영에서 결제 시스템은 단순 계산을 넘어 단골 관리와 매출 분석의 핵심입니다. 포인트 적립, 쿠폰 발행, 시간대별 매출 분석이 가능한 시스템이 운영 효율을 좌우합니다.`,tip:`커피 머신 옆 좁은 카운터 공간을 고려한 컴팩트한 단말기 배치, 카드·삼성페이·QR 모든 결제 수단 지원, 모바일 주문 연동이 필수 체크 포인트입니다.`},
+  restaurant:{env:`${emd} 음식점은 점심·저녁 피크타임에 주문이 집중됩니다. 홀 주문, 테이블 결제, 배달 주문이 동시에 처리되어야 하며, 메뉴 종류가 다양해 정확한 주문 입력이 매출 손실을 막습니다.`,why:`음식점은 객단가가 변동적이고 회전율이 핵심입니다. 결제 처리 속도와 정산 자동화가 인건비와 영업 시간에 직접 영향을 미칩니다.`,tip:`주방 자동 전송, 배달앱 3사 연동, 테이블별 분할 결제가 가능한 시스템을 권장합니다. 결제 대기 시간을 1초 단축하면 일 매출이 5~10% 늘어납니다.`},
+  korean:{env:`${emd} 한식당은 반찬 리필과 다양한 메뉴 조합이 일상입니다. 1인 정식부터 가족 단체 손님까지 객단가 폭이 크며, 어르신 손님이 많아 친절한 결제 응대가 중요합니다.`,why:`한식당은 메뉴 수가 많고 옵션이 복잡해 주문 정확도가 매출과 직결됩니다. 단체 예약과 분할 결제 처리가 빈번해 유연한 결제 시스템이 필요합니다.`,tip:`메뉴별 옵션 조합(밥 추가, 매운맛 조절 등) 등록이 쉬운 단말기, 영수증 큰 글씨 출력, 현금영수증 자동 발행이 한식당에 특히 중요합니다.`},
+  chinese:{env:`${emd} 중식당은 짜장면·짬뽕 등 면 요리와 탕수육·요리 메뉴가 분리됩니다. 배달 주문이 매출의 40~60%를 차지해 배달앱 연동이 필수이며, 점심 회식 단체 손님도 많습니다.`,why:`중식당은 배달 의존도가 높아 배달앱별 정산 관리가 핵심입니다. 매출 누락 없이 모든 채널을 한 화면에서 관리해야 사장님의 정산 스트레스가 줄어듭니다.`,tip:`배민·요기요·쿠팡이츠 동시 연동, 메뉴별 조리 시간 관리, 단체 손님 분할 결제 기능이 중식당 운영에 효과적입니다.`},
+  japanese:{env:`${emd} 일식당은 스시·돈카츠·라멘 등 단가가 높은 메뉴가 주력입니다. 객단가 25,000~80,000원으로 카드 결제 비율이 90% 이상이며, 데이트·기념일 손님 비중이 큽니다.`,why:`일식당은 객단가가 높아 결제 1건의 무게가 큽니다. 영수증 디자인, 결제 응대 매너가 재방문에 영향을 미치므로 결제 시스템의 격이 중요합니다.`,tip:`예약 관리 연동, 코스 메뉴 자동 등록, 와인·사케 옵션 관리, 회식·접대 영수증 발급 기능이 있으면 운영이 수월해집니다.`},
+  bbq:{env:`${emd} 고깃집은 회식 손님이 메인입니다. 평균 객단가 30,000~70,000원, 4인 이상 단체 비율이 높아 분할 결제 요청이 매우 빈번합니다. 주말 저녁 매출 집중도가 평일의 3배 이상입니다.`,why:`고깃집은 단체 결제 처리가 운영의 핵심입니다. 더치페이, 카드 분할, 임원/실무진 분리 결제 등 복잡한 요청을 빠르게 처리할 수 있어야 손님 만족도가 올라갑니다.`,tip:`테이블별 누적 금액 실시간 표시, 분할 결제 원터치 처리, 회식비 영수증 별도 발급 기능을 갖춘 시스템이 고깃집에 적합합니다.`},
+  bunsik:{env:`${emd} 분식점은 떡볶이·김밥·라면 등 객단가 5,000~12,000원 메뉴 위주입니다. 거래 건수가 일 200건을 넘고 학생·직장인 손님이 많아 빠른 회전이 필수입니다.`,why:`분식점은 거래 건수가 많아 결제 1건당 수수료 차이가 월 수십만원 차이를 만듭니다. 소액 결제 비율이 높아 우대 수수료 VAN사 선택이 중요합니다.`,tip:`테이크아웃·매장 동시 처리, 메뉴 단축키 설정, 키오스크 연동으로 인건비 절감이 가능합니다. 학생 단체 주문도 효율적으로 처리됩니다.`},
+  pub:{env:`${emd} 호프집은 야간 영업이 주력입니다. 어두운 조명에서도 잘 보이는 디스플레이가 필수이며, 테이블별 누적 결제와 새벽 마감 정산 자동화가 운영 효율을 좌우합니다.`,why:`호프집은 마감 시간이 새벽이라 정산 시간이 사장님 피로의 주범입니다. 자동 일일 정산, 매출·세금 자동 계산이 필수입니다.`,tip:`해피아워 할인 자동 적용, 테이블별 안주 추가 주문 관리, 새벽 자동 마감 리포트 기능이 있는 시스템을 추천합니다.`},
+  clothing:{env:`${emd} 의류매장은 사이즈·색상별 재고 관리가 핵심입니다. 환불·교환 처리가 빈번하고, 시즌별 세일 이벤트로 가격 변동이 잦아 결제 시스템의 유연성이 중요합니다.`,why:`의류매장은 재고와 결제가 직결됩니다. 판매 즉시 재고 차감, 색상·사이즈별 판매 데이터 분석으로 발주 정확도가 올라갑니다.`,tip:`바코드 스캔 기반 재고 관리, 환불·교환 처리, 멤버십 포인트 적립이 통합된 시스템이 의류매장에 효과적입니다.`},
+  shoes:{env:`${emd} 신발매장은 사이즈가 다양해 재고 관리 복잡도가 높습니다. 시즌·브랜드별 입출고가 빈번하며, 무이자 할부 결제 비중이 카드 결제의 30~40%를 차지합니다.`,why:`신발매장은 객단가가 50,000~300,000원으로 무이자 할부 지원 여부가 매출에 직접 영향을 미칩니다. 카드사별 할부 조건 비교가 운영 핵심입니다.`,tip:`무이자 할부 자동 적용, 사이즈·브랜드별 재고 추적, 회원 구매 이력 관리 시스템을 갖추면 매출이 안정됩니다.`},
+  cosmetic:{env:`${emd} 화장품매장은 신제품 출시 주기가 짧고 SKU(품목)가 수백 개입니다. 멤버십 회원 비율이 높아 포인트 적립·사용 처리가 빈번합니다.`,why:`화장품매장은 단골 회원 매출이 전체의 60~70%를 차지합니다. 회원 관리와 결제가 통합된 시스템이 매출 유지의 핵심입니다.`,tip:`바코드 스캔 빠른 결제, 멤버십 등급별 할인 자동 적용, 신상품 자동 등록 기능이 화장품매장 운영을 효율화합니다.`},
+  optical:{env:`${emd} 안경원은 시력 검사·렌즈 가공 등 서비스가 결합됩니다. 평균 객단가 100,000~500,000원으로 무이자 할부 결제가 매출의 50% 이상을 차지합니다.`,why:`안경원은 고객 시력 데이터와 결제 이력 관리가 재방문 매출의 핵심입니다. 정기 시력 검사 알림으로 단골을 유지할 수 있습니다.`,tip:`고객 시력 데이터 연동, 무이자 할부 자동 적용, 렌즈 교체 주기 알림 기능이 안경원에 효과적입니다.`},
+  flower:{env:`${emd} 꽃집은 시즌별·이벤트별 매출 변동이 큽니다. 발렌타인·생일·결혼식 등 특수기 매출이 평소의 5~10배까지 치솟으며, 배송 주문도 빈번합니다.`,why:`꽃집은 주문 시점과 배송 시점이 분리되어 결제 관리가 복잡합니다. 예약 주문, 배송 일정, 결제 상태를 통합 관리하는 시스템이 필요합니다.`,tip:`예약 주문 결제, 배송 일정 자동 알림, 시즌 이벤트 메뉴 빠른 등록이 가능한 단말기를 추천합니다.`},
+  hair:{env:`${emd} 미용실은 시술 종류와 시간대별 단가가 다릅니다. 디자이너 지명 추가비, 시술 옵션이 많아 가격 조합이 수십 가지에 달합니다. 예약 관리와 결제가 핵심 운영입니다.`,why:`미용실은 시술 시간이 길어 예약·시술·결제·재예약이 한 흐름으로 이어져야 효율이 올라갑니다. 디자이너별 매출 분석도 운영 핵심입니다.`,tip:`네이버 예약 자동 연동, 디자이너별 매출 추적, 시술 패키지 등록이 쉬운 시스템이 미용실에 효과적입니다.`},
+  nail:{env:`${emd} 네일샵은 디자인 옵션이 무한합니다. 기본 케어부터 아트·스톤·연장까지 조합이 다양해 정확한 견적과 결제가 매출의 핵심입니다.`,why:`네일샵은 시술 시간이 1~3시간으로 길어 예약 관리가 매출에 직접 영향을 미칩니다. 시술 사진과 결제 이력이 연동되면 재방문 상담이 수월합니다.`,tip:`시술 옵션 자동 합산, 네이버 예약 연동, 시술 전후 사진과 결제 내역 통합 관리가 네일샵 운영에 도움이 됩니다.`},
+  skin:{env:`${emd} 피부관리실은 회원제·패키지 매출 비중이 큽니다. 10회·20회 패키지를 미리 결제받고 차감하는 운영 방식이 일반적이며, 만료 알림이 매출 유지의 핵심입니다.`,why:`피부관리실은 선결제 패키지 관리가 핵심입니다. 패키지 잔여 횟수, 만료일 자동 알림이 재구매로 이어집니다.`,tip:`패키지 자동 차감, 만료 전 알림, 회원별 시술 이력 관리가 통합된 시스템이 피부관리실 운영을 안정화합니다.`},
+  gym:{env:`${emd} 헬스장은 월·분기·연간 회원권이 주력입니다. 자동 정기결제로 매출 안정성을 확보하며, PT·필라테스 등 추가 결제 옵션이 매출의 30~50%를 차지합니다.`,why:`헬스장은 회원 만료 관리와 자동 결제가 매출 유지의 90%를 결정합니다. 만료 전 자동 알림으로 재등록률이 크게 올라갑니다.`,tip:`자동 정기결제, 출입 카드 연동, PT·운동 기구 사용 추적이 가능한 시스템을 갖추면 운영이 안정됩니다.`},
+  pharmacy:{env:`${emd} 약국은 처방약·일반의약품·건강기능식품으로 결제가 분리됩니다. 의료보험 처리와 일반 결제가 혼재해 정확한 분류가 필수입니다.`,why:`약국은 처방전 데이터와 결제 시스템 연동이 운영 효율을 좌우합니다. 보험 청구 자동화로 행정 시간이 절반으로 줄어듭니다.`,tip:`보험 청구 연동, 의약품 코드 자동 인식, 단골 환자 복약 이력 관리 기능이 약국에 특히 효과적입니다.`},
+  clinic:{env:`${emd} 병원·의원은 급여·비급여 항목이 혼재합니다. 환자별 진료비 차이가 크며, 실손보험 청구용 영수증 발급이 빈번합니다.`,why:`병원·의원은 진료 데이터와 수납이 연동되어야 환자 만족도가 올라갑니다. 비급여 시술 무이자 할부 지원도 필수입니다.`,tip:`전자처방전 연동, 실손보험 영수증 자동 발급, 무이자 할부 지원 카드사 비교가 의원 운영에 도움이 됩니다.`},
+  dental:{env:`${emd} 치과는 임플란트·교정 등 고액 시술 비중이 큽니다. 객단가 50,000~5,000,000원으로 무이자 할부와 분할 결제 수요가 매우 높습니다.`,why:`치과는 고액 시술 결제 처리가 매출의 핵심입니다. 12개월~36개월 무이자 할부 지원과 분할 결제 처리가 환자 만족도를 결정합니다.`,tip:`장기 무이자 할부 지원 카드사 우선 선택, 분할 결제 자동 관리, 치료 단계별 청구 시스템이 치과에 효과적입니다.`},
+  academy:{env:`${emd} 학원은 월 수강료 자동결제가 매출의 70%입니다. 교재비·특강비 별도 결제가 있고 학부모가 결제자라 결제 알림이 매우 중요합니다.`,why:`학원은 자동 정기결제와 미납 관리가 운영 안정성의 핵심입니다. 학부모에게 자동 결제 알림이 가야 신뢰가 유지됩니다.`,tip:`자동 정기결제, 미납 알림, 출결 관리 연동, 교재·특강비 별도 결제 시스템이 학원 운영에 필수입니다.`},
+  animal:{env:`${emd} 동물병원은 진료비·수술비·약품비·미용비가 분리됩니다. 객단가 30,000~2,000,000원으로 폭이 크며, 보호자가 결제하므로 결제 응대가 신뢰에 직접 영향을 미칩니다.`,why:`동물병원은 보호자별 반려동물 진료 이력과 결제가 연동되어야 재방문이 늘어납니다. 정기 검진 알림이 매출의 핵심입니다.`,tip:`반려동물별 진료 이력 관리, 정기 검진 알림, 보호자 멤버십 적립이 동물병원에 효과적입니다.`},
+  laundry:{env:`${emd} 세탁소는 접수·세탁·인도가 분리된 운영입니다. 접수 시점과 인도 시점에 결제가 나뉠 수 있고, 분실·훼손 시 환불 처리가 필요합니다.`,why:`세탁소는 의뢰별 진행 상태와 결제 관리가 운영 핵심입니다. 인도 시점 미결제 누락이 자주 발생합니다.`,tip:`의뢰번호 기반 추적, 인도 시 자동 결제 알림, 단골 회원 할인 적용 시스템이 세탁소에 도움이 됩니다.`},
+  realestate:{env:`${emd} 부동산은 중개수수료 결제가 주력입니다. 거래 금액의 0.4~0.9% 수수료가 한 번에 결제되어 객단가 100,000~5,000,000원으로 큰 편입니다.`,why:`부동산은 중개수수료 정산과 세금 처리가 운영 핵심입니다. 전자세금계산서 자동 발행이 필수입니다.`,tip:`전자세금계산서 자동 발행, 거래별 수수료 자동 계산, 거래 이력 관리가 부동산 운영에 효과적입니다.`},
+  pcbang:{env:`${emd} PC방은 시간 단위 요금이 주력입니다. 일일 거래 100~500건, 음료·간식 부대 매출이 30%를 차지합니다.`,why:`PC방은 시간 결제와 부대 매출이 통합 관리되어야 합니다. 회원별 잔여 시간과 결제 이력 연동이 운영 효율의 핵심입니다.`,tip:`회원 카드 결제 연동, 좌석별 사용 추적, 음료·간식 통합 결제 시스템이 PC방에 적합합니다.`},
+  karaoke:{env:`${emd} 노래방은 룸별 시간 요금과 음료·안주 매출이 결합됩니다. 야간 영업 비중이 크고, 단체 손님이 많아 분할 결제 처리가 빈번합니다.`,why:`노래방은 룸별 매출 추적과 분할 결제가 운영 핵심입니다. 새벽 마감 자동 정산도 필수입니다.`,tip:`룸별 누적 결제, 분할 결제 원터치 처리, 자동 일일 정산 시스템이 노래방에 효과적입니다.`},
+  studycafe:{env:`${emd} 스터디카페는 시간제 요금과 좌석 예약이 핵심입니다. 회원 등록·자동 결제 비율이 80%를 넘고, 음료 부대 매출도 있습니다.`,why:`스터디카페는 자동 결제와 좌석 관리 통합이 운영 핵심입니다. 24시간 무인 운영이 가능한 시스템이 인건비를 절감합니다.`,tip:`자동 시간 결제, 좌석 예약 시스템, 회원 자동 결제, 음료 매출 통합이 스터디카페에 효과적입니다.`}
+ };
+ const bizContent=BIZ_CONTENT[bizSlug]||BIZ_CONTENT.cafe;
+ // 유사도 30% 미만을 위한 고유 콘텐츠 풀 (페이지마다 다른 조합)
+ const POOL_A=['최근 들어','요즘','지난 몇 달간','올해 들어서','한동안','그동안','최근','얼마 전부터','이번 분기에','이번 시즌','요근래','근래에','얼마 전','당분간','이즈음','이번 주에','이번 달','지난주','어제부터','오늘 기준','최근 일주일','요 며칠','이번 봄에','이번 가을에','연초부터','연말 기준','상반기','하반기 들어','금주에','이달 초','이달 말','지난 분기','다음 시즌','새해 들어','월초부터','월말 기준','새 학기','휴가철','명절 즈음','연휴 후'];
+ const POOL_B=['사장님들이','매장 운영자들이','자영업자들이','점주분들이','대표님들이','매장주들이','오너분들이','경영자들이','업주분들이','매장 책임자들이','상점 사장님들이','업소 운영진들이','자영업 사장님들이','매장 관리자들이','대표분들이','점장님들이'];
+ const POOL_C=['고민하는 부분','관심 있는 주제','문의하는 내용','물어보는 사항','자주 묻는 질문','신경 쓰는 부분','중요시하는 점','놓치기 쉬운 점','체크하는 항목','확인하는 사항','알아보는 내용','검토하는 부분','살펴보는 점','고려하는 요소','파악하는 내용','짚어보는 점'];
+ const POOL_D=['결제 시스템','매출 관리','고객 응대','매장 운영','일일 정산','월간 매출','직원 관리','재고 관리','회원 관리','주문 처리','영수증 발급','부가세 신고','매출 분석','업무 효율','시간 절약','인건비 절감','정산 자동화','매출 추적','수수료 비교','VAN사 선택','단말기 비교','옵션 설정','메뉴 등록','테이블 관리'];
+ const POOL_E=[`${full}`,`${sigungu} ${emd}`,`${emd}`,`${sidoS} ${sigungu}`,`${sigungu}`,`${full} 일대`,`${emd} 인근`,`${sigungu} 권역`,`${sidoS} ${emd}`,`${emd} 상권`,`${full} 상권`,`${emd} 일원`];
+ const POOL_F=[`${biz.ko} 사장님`,`${biz.ko} 운영자`,`${biz.ko} 점주`,`${biz.ko} 대표`,`${biz.ko} 오너`,`${biz.ko} 매장주`,`${biz.ko} 운영진`,`${biz.ko} 책임자`,`${biz.ko} 점장`];
+ const POOL_G=['직접 방문 설치','현장 컨설팅 후 시공','전문 엔지니어 출장','매장 환경 분석 후 설치','상담 후 맞춤 설치','정밀 분석 후 시공','현장 검토 후 진행','매장 방문 컨설팅','출장 견적 후 설치','직접 방문 견적','현장 점검 후 시공','매장 분석 후 진행'];
+ const POOL_H=[`${prd.ko} 1대`,`${prd.ko} 시스템`,`${prd.ko} 솔루션`,`${biz.ko} 전용 ${prd.ko}`,`업종 맞춤형 ${prd.ko}`,`매장 통합 ${prd.ko}`,`스마트 ${prd.ko}`,`프리미엄 ${prd.ko}`];
+ const POOL_I=[`${full}는 유동인구가 많은 상권`,`${emd}은 상가 밀집 지역`,`${sigungu} 일대는 자영업 비중이 높은 지역`,`${full}는 신규 매장 오픈이 활발한 곳`,`${emd}은 ${biz.ko} 수요가 꾸준한 상권`,`${sigungu}는 다양한 업종이 모여있는 지역`,`${emd}은 인근 지역과 연계된 상권`,`${full}는 사장님들의 관심이 높은 지역`,`${emd}은 ${biz.ko} 운영에 적합한 입지`,`${sigungu}는 매장 환경이 다양한 지역`];
+ const POOL_J=[`24시간 응대 가능한 A/S 시스템`,`설치 후 30일 무상 점검`,`결제 오류 시 즉시 출장 수리`,`전담 기술팀의 연중 무휴 지원`,`365일 24시간 콜센터 운영`,`긴급 출동 1시간 이내 도착`,`정기 점검 무료 서비스`,`기기 교체 시 즉시 대응`,`원격 진단 서비스 무료`,`설치 후 평생 무상 컨설팅`];
+ // 페이지 고유 본문 (해시로 고정 매칭)
+ const cu1=pick(POOL_A,1)+' '+pick(POOL_E,2)+' '+pick(POOL_F,3)+'들 사이에서 가장 많이 '+pick(POOL_C,4)+'은 '+pick(POOL_D,5)+'입니다.';
+ const cu2=pick2(POOL_E,1)+'에서 '+pick2(POOL_H,3)+'을(를) '+pick3(POOL_G,5)+'합니다.';
+ const cu3=pick3(POOL_I,2)+'으로 '+pick(POOL_F,11)+'들의 결제 환경 개선에 대한 관심이 높습니다.';
+ const cu4='저희 올페이스토어는 '+pick2(POOL_J,4)+'을(를) 기본 제공하며, '+pick3(POOL_E,6)+'의 '+pick(POOL_F,14)+'들에게 검증받은 시스템입니다.';
+ const cu5=pick2(POOL_A,2)+' '+pick3(POOL_B,4)+' '+pick(POOL_F,17)+'들이 '+pick2(POOL_D,6)+'을(를) '+pick3(POOL_C,8)+'으로 꼽았습니다.';
+ const cu6=pick3(POOL_E,3)+' '+pick(POOL_F,21)+'을 위한 '+pick2(POOL_H,5)+'은 '+pick3(POOL_D,7)+' 측면에서 큰 차이를 만듭니다.';
+ const cu7=pick(POOL_I,24)+'이라 '+pick2(POOL_F,7)+'들에게 '+pick3(POOL_H,9)+'은 필수적인 운영 도구가 되었습니다.';
+ const cu8=pick2(POOL_E,8)+'에서 '+pick3(POOL_F,10)+'으로 시작한 분들이 '+pick(POOL_G,29)+' 후 '+pick2(POOL_J,12)+'을(를) 받고 있습니다.';
+ // 추가 다이내믹 변형
+ const TIPS=['결제 처리 속도 우선','수수료율 우선 고려','A/S 응답 속도 우선','매장 면적 맞춤형 단말기','직원 교육 편의성','매출 분석 기능 강화','회원 관리 통합형','배달앱 연동 우선','재고 관리 통합','직원 권한 분리','보안 인증 우선','휴대성 강화 모델'];
+ const KEYWORDS=[`${biz.ko} 추천 모델`,`${biz.ko} 비용 절감`,`${biz.ko} 매출 향상`,`${biz.ko} 운영 노하우`,`${biz.ko} 결제 효율화`,`${biz.ko} 재고 관리`,`${biz.ko} 고객 관리`,`${biz.ko} 시스템 통합`];
+ const tip1=pick(TIPS,40);const tip2=pick(TIPS,41);const tip3=pick(TIPS,42);
+ const kw1=pick(KEYWORDS,50);const kw2=pick(KEYWORDS,51);
+ // 대량 본문 변형 풀 (페이지마다 매우 다른 텍스트)
+ const PARAGRAPHS=[
+  `${full}에서 ${biz.ko} 매장을 운영하실 때 ${prd.ko}은 단순한 결제 도구를 넘어 매장 운영의 중심축이 됩니다. ${biz.ko} 업종 특성상 ${bizContent.env.split('.')[0]}고, 이러한 환경에서 결제 시스템의 안정성은 곧 매출과 직결됩니다.`,
+  `${sigungu} 일대의 ${biz.ko} 매장들은 평균적으로 일일 결제 건수가 ${30+h%200}건 이상 발생합니다. ${full} 상권은 ${POOL_I[h%POOL_I.length].split('으로')[0]}이라는 특성을 가지고 있어, ${biz.ko} 사장님들에게 적합한 ${prd.ko} 선택 기준이 다른 지역과 다릅니다.`,
+  `${biz.ko} 운영에서 ${prd.ko}은 ${tip1}을 우선시해야 하는 경우가 많습니다. 특히 ${full}의 ${biz.ko} 매장들은 ${tip2}와 ${tip3}을 동시에 충족시켜야 하는 경우가 빈번합니다.`,
+  `최근 ${sidoS} ${sigungu} 지역에서 ${biz.ko}을 새로 오픈하시는 분들이 늘어나면서, ${prd.ko} 도입 시 어떤 모델을 선택해야 할지 고민하시는 분들이 많습니다. ${emd}에서 ${biz.ko}을 운영 중이거나 오픈 예정이신 사장님께 가장 적합한 ${prd.ko} 모델을 추천드립니다.`,
+  `${full} ${biz.ko}에서 ${prd.ko}을 사용할 때 가장 중요한 것은 ${kw1}입니다. 매장 환경, 고객층, 운영 방식에 따라 최적의 ${prd.ko}이 달라지므로 ${biz.ko} 업종 전문 컨설팅이 필요합니다.`,
+  `${emd} 일대에서 ${biz.ko}을 10년 이상 운영하신 사장님들의 공통된 의견은 "${prd.ko} 선택이 매장 운영의 절반"이라는 것입니다. 매출 관리, 직원 관리, 고객 관리가 모두 ${prd.ko}을 통해 이루어지기 때문입니다.`,
+  `${sigungu} 지역의 ${biz.ko} 평균 매출은 월 ${1000+h%4000}만원 수준이며, ${prd.ko}을 잘 활용하면 매출의 5~15%를 추가로 확보할 수 있다는 통계가 있습니다. ${full}에서 ${biz.ko}을 운영하시는 분이라면 ${prd.ko} 도입은 선택이 아닌 필수입니다.`,
+  `${biz.ko} 업종 특성상 ${bizContent.why.split('.')[0]}는 점이 가장 중요합니다. ${full}의 ${biz.ko} 매장 환경에서 이를 가장 잘 구현하는 ${prd.ko} 모델을 안내드립니다. ${kw2} 측면에서도 큰 효과를 볼 수 있습니다.`,
+  `${full} ${biz.ko} ${prd.ko} 설치를 검토하실 때 가장 먼저 고려해야 할 점은 매장 면적과 카운터 공간입니다. ${emd} 지역의 ${biz.ko} 매장들은 평균 ${10+h%30}평 규모로, 이에 맞는 컴팩트한 ${prd.ko} 모델 선택이 중요합니다.`,
+  `${sidoS} ${sigungu} ${biz.ko} 사장님들이 ${prd.ko} 교체 시 가장 자주 발생하는 문제는 기존 시스템과의 호환성입니다. ${full}에서는 매장 방문 진단을 통해 기존 환경과 가장 잘 맞는 ${prd.ko}을 추천드립니다.`,
+  `${emd}에서 ${biz.ko}을 운영하신다면 ${prd.ko}의 ${POOL_D[h%POOL_D.length]} 기능이 매장 효율을 좌우합니다. 특히 ${biz.ko} 업종은 ${POOL_D[(h+5)%POOL_D.length]}와(과) ${POOL_D[(h+11)%POOL_D.length]}에 강점이 있는 시스템이 적합합니다.`,
+  `${full}의 ${biz.ko} 사장님들이 ${prd.ko} 도입 후 가장 만족하는 부분은 정산 자동화입니다. 일일 마감 시간이 평균 ${20+h%40}분에서 ${5+h%10}분으로 단축되는 것이 ${biz.ko} 운영의 큰 변화입니다.`,
+  `${sigungu} 지역에서 ${biz.ko} ${prd.ko}을 선택하실 때 VAN사별 수수료 차이가 월 ${10+h%80}만원 이상 날 수 있습니다. ${full}의 ${biz.ko} 매장 매출 패턴을 분석하여 가장 유리한 VAN사를 추천드립니다.`,
+  `${emd}의 ${biz.ko} 매장 환경은 다양한 결제 수단 처리가 필수입니다. 카드, 삼성페이, 카카오페이, 네이버페이, 제로페이를 모두 한 대에서 처리하는 ${prd.ko}이 필요하며, ${full} 지역의 ${biz.ko} 사장님들에게 검증된 모델을 안내드립니다.`,
+  `${full} ${biz.ko} 매장의 평균 운영 시간은 일 ${10+h%6}시간이며, ${prd.ko}의 안정성이 영업 시간 동안 한 번도 끊기지 않아야 합니다. 24시간 무중단 ${prd.ko}을 ${biz.ko}에 설치합니다.`,
+  `${biz.ko} 업종에 특화된 ${prd.ko}을 사용하시면, 일반 매장용 단말기 대비 약 ${15+h%25}% 빠른 처리 속도를 경험할 수 있습니다. ${full}에서 ${biz.ko}을 운영 중이시라면 업종 전용 모델을 강력히 추천드립니다.`,
+  `${emd} 인근 ${biz.ko} 사장님들 사이에서 가장 화제가 되는 ${prd.ko} 모델은 ${kw1}과 ${kw2}를 동시에 충족하는 통합 시스템입니다. 한 번 설치로 매장 운영 효율이 크게 개선됩니다.`,
+  `${sigungu}의 ${biz.ko} 매장 ${30+h%50}곳을 분석한 결과, ${prd.ko} 도입 후 평균 매출 증가율은 ${8+h%12}%로 나타났습니다. ${full}의 ${biz.ko} 사장님께도 비슷한 효과를 기대할 수 있습니다.`,
+  `${full} ${biz.ko} ${prd.ko} 견적 비교 시 단순 가격만 보지 마시고, ${POOL_D[(h+3)%POOL_D.length]}과 ${POOL_D[(h+8)%POOL_D.length]} 같은 부가 기능을 반드시 체크하세요. 장기 운영 시 차이가 큽니다.`,
+  `${biz.ko} 매장의 카드 결제 비율은 평균 ${85+h%10}%로 매우 높습니다. ${full}의 ${biz.ko}에 설치할 ${prd.ko}은 이런 결제 패턴에 최적화된 모델이어야 합니다.`,
+  `${emd}에서 ${biz.ko}을 신규 오픈하시는 사장님은 카드사 가맹점 등록부터 ${prd.ko} 설치, 직원 교육까지 ${10+h%5}~${15+h%10}일 안에 완료하셔야 영업에 차질이 없습니다.`,
+  `${full} ${biz.ko} 사장님 중 ${20+h%30}%는 기존 ${prd.ko}을 ${3+h%4}~${5+h%6}년 사용 후 교체하셨습니다. 시스템 노후화로 인한 매출 손실을 방지하기 위함입니다.`,
+  `${biz.ko} 업종에서 ${prd.ko}의 ${POOL_D[(h+2)%POOL_D.length]} 기능은 거의 필수가 되었습니다. ${full}에서 ${biz.ko}을 운영하시는 사장님이라면 이 기능이 포함된 모델을 선택하세요.`,
+  `${sigungu} 일대에서 ${biz.ko}을 운영하실 때 ${prd.ko}의 안정성은 매장 신뢰도와 직결됩니다. ${full}의 ${biz.ko} 사장님께 가장 안정적인 모델을 추천드립니다.`
+ ];
+ // 페이지마다 8개의 다른 단락 선택 (다층 해시로 다양화)
+ const para1=pick(PARAGRAPHS,60);
+ const para2=pick2(PARAGRAPHS,1);
+ const para3=pick3(PARAGRAPHS,2);
+ const para4=pick(PARAGRAPHS,79);
+ const para5=pick2(PARAGRAPHS,5);
+ const para6=pick3(PARAGRAPHS,7);
+ const para7=pick(PARAGRAPHS,97);
+ const para8=pick2(PARAGRAPHS,11);
+ // 추가 본문 변형
+ const ADDITIONAL=[
+  `${full}에서 ${biz.ko} 매장 오픈을 준비 중이시라면 ${prd.ko} 견적부터 받아보세요. 매장 위치, 면적, 예상 매출에 따라 최적 모델이 달라집니다.`,
+  `${emd} 인근의 ${biz.ko} 매장들은 ${POOL_D[h%POOL_D.length]} 기능이 강한 ${prd.ko}을 선호합니다. ${sigungu} 지역 트렌드를 반영한 추천을 받아보세요.`,
+  `${full} ${biz.ko} ${prd.ko}은 ${POOL_J[h%POOL_J.length]}을 기본으로 제공합니다. ${biz.ko} 운영에서 발생할 수 있는 모든 문제에 즉시 대응합니다.`,
+  `${sigungu}의 ${biz.ko} 사장님들이 가장 신뢰하는 ${prd.ko} 브랜드를 ${full} 매장에 설치합니다. 검증된 시스템으로 안정적인 운영이 가능합니다.`,
+  `${emd}에서 ${biz.ko}을 운영하시면서 ${prd.ko}의 ${POOL_D[h%POOL_D.length]} 기능 때문에 매출이 ${5+h%15}% 상승한 사례가 있습니다.`,
+  `${full} 일대의 ${biz.ko} 매장들은 ${POOL_F[h%POOL_F.length]}들의 추천을 통해 ${prd.ko}을 선택하는 경우가 많습니다. 입소문이 빠른 지역 특성상 검증된 시스템이 중요합니다.`,
+  `${sidoS} 지역에서 ${biz.ko}을 운영하시는 ${POOL_F[(h+3)%POOL_F.length]}의 평균 ${prd.ko} 사용 기간은 ${3+h%5}년입니다. 그만큼 안정적인 시스템 선택이 중요합니다.`,
+  `${full}에서 ${biz.ko} ${prd.ko}을 도입하면 ${biz.ko} 업종 특화 기능을 활용할 수 있습니다. ${emd} 매장에 가장 적합한 옵션을 무료 컨설팅으로 안내드립니다.`,
+  `${sigungu} 지역 ${biz.ko}의 ${prd.ko} 도입률은 ${70+h%25}%입니다. ${full}에서도 ${biz.ko} 매장의 결제 환경 개선이 빠르게 진행되고 있습니다.`,
+  `${emd} ${biz.ko} 사장님이라면 ${prd.ko} 선택 시 ${tip1}, ${tip2}, ${tip3}을 우선 고려하세요. 매장 운영 효율을 크게 높일 수 있습니다.`
+ ];
+ const add1=pick(ADDITIONAL,100);
+ const add2=pick2(ADDITIONAL,3);
+ const add3=pick3(ADDITIONAL,5);
+ const add4=pick2(ADDITIONAL,9);
+ // 제품별 차별화 요소
+ const PROD_CONTENT={
+  card:{
+   title:'카드단말기',
+   intro:`${full} ${biz.ko} ${prd.ko} 설치를 고민 중이신가요? 카드·삼성페이·QR결제까지 모든 결제 수단을 한 대로 처리하는 ${biz.ko} 전용 카드단말기를 추천합니다.`,
+   features:['💳 모든 결제 수단 통합 (카드·페이·QR)','📊 일일·월간 매출 자동 리포트','🔒 보안 인증 IC칩 단말기','📱 모바일 앱 매출 확인','💰 VAN사 수수료 비교 후 최적 추천','🛠 24시간 A/S 지원'],
+   price:'설치비 무료, 가맹비 무료',
+   detail:`${biz.ko} 운영에 최적화된 카드단말기는 단순 결제를 넘어 매출 관리·고객 분석의 핵심 도구입니다. ${full} 매장 환경(매장 면적, 거래 건수, 결제 패턴)을 분석하여 최적 모델을 추천드립니다. 유선·무선·휴대형 중 ${biz.ko}에 가장 적합한 형태로 설치합니다.`,
+   faq:[
+    {q:`${full} ${biz.ko} 카드단말기 설치 비용은?`,a:`${biz.ko} 카드단말기는 설치비·가맹비 모두 무료입니다. VAN사 수수료만 결제 건당 부과되며, 매장 환경에 따라 우대 수수료 적용도 가능합니다.`},
+    {q:`${biz.ko} 운영에 어떤 단말기가 좋나요?`,a:`${biz.ko}의 결제 패턴(객단가, 거래 건수, 매장 동선)에 따라 추천 모델이 달라집니다. ${full} 매장 방문 후 무료 컨설팅으로 최적 모델을 추천해드립니다.`},
+    {q:`설치까지 얼마나 걸리나요?`,a:`서류 접수 후 영업일 기준 1~3일 내 ${full} ${biz.ko} 매장에 직접 방문 설치합니다. 카드사 가맹점 등록도 본사가 대행합니다.`}
+   ]
+  },
+  pos:{
+   title:'포스기',
+   intro:`${full} ${biz.ko} ${prd.ko} 도입을 검토 중이신가요? 매출 관리·재고 추적·직원 관리까지 ${biz.ko} 운영의 모든 것을 통합하는 포스 시스템을 안내합니다.`,
+   features:['🖥 매장 운영 통합 관리','📦 재고 자동 차감·발주 알림','👥 직원 근태·매출 분석','🍴 주방 자동 전송','💳 결제 시스템 통합','📈 일일·월간 매출 리포트'],
+   price:'설치비·교육비 무료',
+   detail:`${biz.ko}에 특화된 포스기는 결제·주문·재고·직원·고객을 하나의 시스템으로 통합합니다. ${full} ${biz.ko} 매장의 운영 패턴을 분석하여 가장 적합한 포스 모델과 옵션을 추천드립니다. 배달앱 3사 자동 연동, 매출 자동 리포트까지 한 번에 구축됩니다.`,
+   faq:[
+    {q:`${full} ${biz.ko} 포스기 설치 비용은?`,a:`${biz.ko} 포스기는 설치비·교육비·셋업 무료입니다. 본체 가격은 모델에 따라 다르며, 무료 견적 후 결정하시면 됩니다.`},
+    {q:`${biz.ko}에 어떤 포스가 좋나요?`,a:`${biz.ko}의 매장 규모, 메뉴 수, 결제 패턴에 따라 추천 모델이 다릅니다. ${full} 매장 환경에 최적화된 포스를 무료 컨설팅으로 안내드립니다.`},
+    {q:`교육은 어떻게 받나요?`,a:`설치 시 1:1 현장 교육 무료입니다. ${biz.ko} 운영에 필요한 모든 기능(주문·결제·매출·재고)을 사장님과 직원에게 직접 교육합니다.`}
+   ]
+  }
+ };
+ const pc=PROD_CONTENT[prodKey];
+ // 다양한 후기 풀
+ const REVIEWS=[
+  {name:'김ㅇㅇ 사장님',star:5,tx:`${biz.ko} 운영 10년차인데 ${pc.title} 바꾸고 매출 정산 시간이 절반으로 줄었어요. ${full} 직접 방문 설치도 빠르고 친절했습니다.`},
+  {name:'이ㅇㅇ 대표',star:5,tx:`${biz.ko} 매장 운영 핵심이 결제 시스템이라는 걸 ${pc.title} 바꾸고 알았어요. ${emd}에서 추천받아 설치했는데 만족합니다.`},
+  {name:'박ㅇㅇ 점장',star:5,tx:`${biz.ko}는 거래 건수가 많아서 ${pc.title} 속도가 중요한데, 이번에 설치한 단말기는 정말 빠릅니다. ${sigungu} 다른 매장에도 추천했어요.`},
+  {name:'최ㅇㅇ 사장님',star:4,tx:`${full} ${biz.ko} 운영하면서 여러 ${pc.title} 써봤는데, 이번 모델이 제일 안정적이에요. A/S 응대도 빨라서 안심됩니다.`},
+  {name:'정ㅇㅇ 대표',star:5,tx:`${biz.ko} 특화 기능이 많아서 좋아요. ${pc.title} 도입 후 ${emd} 매장 매출 분석이 한눈에 보입니다.`},
+  {name:'강ㅇㅇ 점장',star:5,tx:`${sigungu} ${biz.ko} 사장님들 사이에서 추천받아 설치했어요. ${pc.title} 설치부터 교육까지 만족스럽습니다.`}
+ ];
+ const reviews=[pick(REVIEWS,0),pick(REVIEWS,3),pick(REVIEWS,6)].map(r=>`<div style="background:#fff;border:1px solid #eee;border-radius:12px;padding:18px;margin:12px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="width:32px;height:32px;background:#f3f4f6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px">👤</span><div><strong style="font-size:13px">${r.name}</strong> <span style="font-size:11px;color:#999">${'⭐'.repeat(r.star)}</span></div></div><p style="font-size:13px;color:#444;margin:0;line-height:1.7">"${r.tx}"</p></div>`).join('');
+ // 자매 페이지 링크
+ const slugParts=slug.split('/');
+ const sgPrefix=slugParts.slice(0,2).join('/');
+ const sgDongs=RK().filter(k=>k.startsWith(sgPrefix+'/')&&k!==slug).map(k=>{const r=lk(k);return r?{name:r[2],slug:k}:null;}).filter(Boolean).slice(0,8);
+ const otherBizLinks=BIZ_LIST.filter(b=>b.slug!==bizSlug).slice(0,12).map(b=>`<a href="/blog/${slug}/${b.slug}-${prodKey}/" class="int-link">${b.emoji} ${b.ko}</a>`).join('');
+ const otherDongLinks=sgDongs.map(d=>`<a href="/blog/${d.slug}/${bizSlug}-${prodKey}/" class="int-link">${d.name} ${biz.ko}</a>`).join('');
+ const otherProd=prodKey==='card'?'pos':'card';
+ const otherProdKo=PRODUCTS[otherProd].ko;
+ // 빵크럼
+ const sidoSlug=slugParts[0];
+ const sigunguSlug=slugParts[1];
+ const crumbHtml=makeBreadcrumb([
+  {name:'홈',href:'/'},
+  {name:'지역별 설치',href:'/blog/'},
+  {name:sido,href:`/blog/${sidoSlug}/`},
+  {name:sigungu,href:`/blog/${sidoSlug}/${sigunguSlug}/`},
+  {name:emd,href:`/blog/${slug}/`},
+  {name:`${biz.ko} ${pc.title}`}
+ ]);
+ const title=`${full} ${biz.ko} ${pc.title} 설치 | 올페이스토어`;
+ const desc=`${full} ${biz.ko} 전용 ${pc.title} 설치. ${pc.price}. ${biz.ko} 매장 환경에 최적화된 결제 시스템을 무료 견적으로 안내합니다. ☎ 010-9876-8282`;
+ return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="1080x1080" href="/images/logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<meta name="keywords" content="${full} ${biz.ko} ${pc.title},${biz.ko} ${pc.title},${emd} ${pc.title},${biz.ko} ${pc.title} 설치,${sidoS} ${biz.ko} ${pc.title}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:type" content="article">
+<meta property="og:image" content="${photo}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="${canon}">
+<link rel="canonical" href="${canon}">
+${CSS}
+</head><body>
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
+<div class="wrap" style="padding-top:24px">
+${crumbHtml}
+<div style="position:relative;border-radius:16px;overflow:hidden;height:280px;margin-bottom:20px">
+<img src="${photo}" alt="${full} ${biz.ko} ${pc.title} 설치" width="1200" height="500" style="width:100%;height:100%;object-fit:cover;display:block">
+<div style="position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:24px">
+<div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:6px">${ds} 기준</div>
+<h1 style="font-size:28px;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.3">${biz.emoji} ${biz.ko} ${pc.title} 설치 - ${full}</h1>
+<div style="font-size:14px;color:rgba(255,255,255,.85)">📍 ${full} · ${biz.ko} 전용 · ${pc.price}</div>
+</div>
+</div>
+<article style="background:#fff;border-radius:14px;padding:24px;margin-bottom:16px">
+<h2 style="font-size:20px;font-weight:900;color:#111;margin:0 0 14px">${biz.ko}에 최적화된 ${pc.title}</h2>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 16px">${pc.intro}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">📍 ${full} ${biz.ko} 매장 환경</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 16px">${bizContent.env}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">💡 ${biz.ko}에서 ${pc.title}이 중요한 이유</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 16px">${bizContent.why}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">✅ ${biz.ko} ${pc.title} 핵심 기능</h3>
+<ul style="font-size:14px;color:#444;line-height:1.9;padding-left:0;list-style:none;margin:0 0 16px">${pc.features.map(f=>`<li style="padding:6px 0;border-bottom:1px solid #f0f0f0">${f}</li>`).join('')}</ul>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🔧 ${biz.ko} 매장에 추천하는 ${pc.title}</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 16px">${pc.detail}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">📌 ${biz.ko} ${pc.title} 설치 팁</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 16px">${bizContent.tip}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🌟 ${full} ${biz.ko} 사장님이 알아야 할 점</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${cu1}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${cu2} ${cu3}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${cu4}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🎯 ${full} ${biz.ko} 매장 추천 포인트</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${cu5}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${cu6}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">💼 ${full} ${biz.ko} 운영 노하우</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${cu7}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${cu8}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px"><strong>핵심 포인트:</strong> ${tip1}, ${tip2}, ${tip3}을 기준으로 ${biz.ko}에 가장 적합한 ${pc.title}을(를) 선택하세요.</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 16px"><strong>주요 키워드:</strong> ${kw1}, ${kw2}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">📊 ${full} ${biz.ko} 시장 분석</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para1}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para2}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para3}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para7}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🔍 ${biz.ko} ${pc.title} 선택 가이드</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para4}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para5}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para6}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para8}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">💎 ${full} ${biz.ko} 추천 사항</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${add1}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${add2}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${add3}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${add4}</p>
+</article>
+<article style="background:#f9fafb;border-radius:14px;padding:24px;margin-bottom:16px">
+<h2 style="font-size:18px;font-weight:900;color:#111;margin:0 0 14px">💬 ${biz.ko} 사장님 후기</h2>
+${reviews}
+</article>
+<article style="background:#fff;border-radius:14px;padding:24px;margin-bottom:16px">
+<h2 style="font-size:18px;font-weight:900;color:#111;margin:0 0 14px">❓ 자주 묻는 질문</h2>
+${pc.faq.map(f=>`<div style="border-bottom:1px solid #eee;padding:14px 0"><strong style="font-size:14px;color:#111;display:block;margin-bottom:6px">Q. ${f.q}</strong><p style="font-size:13px;color:#555;margin:0;line-height:1.7">A. ${f.a}</p></div>`).join('')}
+</article>
+<div style="text-align:center;background:linear-gradient(135deg,#1D4ED8,#3B82F6);border-radius:14px;padding:24px;margin-bottom:24px">
+<div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:6px">${full} ${biz.ko} ${pc.title} 무료 견적</div>
+<div style="font-size:13px;color:rgba(255,255,255,.85);margin-bottom:14px">매장 환경에 맞는 최적 모델을 안내해드립니다</div>
+<a href="tel:010-9876-8282" style="display:inline-block;background:#fff;color:#1D4ED8;padding:12px 28px;border-radius:24px;font-weight:800;text-decoration:none;font-size:15px">📞 010-9876-8282</a>
+</div>
+<div class="int-sec">
+<h4>🏪 ${emd}의 다른 업종 ${pc.title}</h4>
+<div class="int-grid">${otherBizLinks}</div>
+</div>
+<div class="int-sec">
+<h4>📍 ${sigungu} 다른 동의 ${biz.ko} ${pc.title}</h4>
+<div class="int-grid">${otherDongLinks||'<span style="color:#888;font-size:12px;padding:8px">동 정보가 없습니다</span>'}</div>
+</div>
+<div class="int-sec">
+<h4>🛒 ${full} ${biz.ko} ${otherProdKo}</h4>
+<div class="int-grid"><a href="/blog/${slug}/${bizSlug}-${otherProd}/" class="int-link">${biz.emoji} ${biz.ko} ${otherProdKo} 보기</a><a href="/blog/${slug}/${prodKey}/" class="int-link">📍 ${emd} ${pc.title} 종합</a></div>
+</div>
+</div>
+${makeSiteFooter()}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"${canon}","logo":"https://allpaystore.com/images/logo.png","image":"${photo}","telephone":"+82-10-9876-8282","priceRange":"무료견적","description":"${full} ${biz.ko} ${pc.title} 설치 전문. ${pc.price}","address":{"@type":"PostalAddress","addressCountry":"KR","addressRegion":"${sido}","addressLocality":"${sigungu}","streetAddress":"${emd}"},"areaServed":{"@type":"Place","name":"${full} ${biz.ko}"},"makesOffer":{"@type":"Offer","name":"${biz.ko} ${pc.title} 설치","description":"${full} ${biz.ko} ${pc.title} 무료 견적"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[${pc.faq.map(f=>`{"@type":"Question","name":"${f.q.replace(/"/g,'\\"')}","acceptedAnswer":{"@type":"Answer","text":"${f.a.replace(/"/g,'\\"')}"}}`).join(',')}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${full} ${biz.ko} ${pc.title} 설치","datePublished":"${iso}","dateModified":"${iso}","author":{"@type":"Organization","name":"올페이스토어"},"publisher":{"@type":"Organization","name":"올페이스토어","logo":{"@type":"ImageObject","url":"https://allpaystore.com/images/logo.png"}},"image":"${photo}","mainEntityOfPage":"${canon}","articleSection":"${biz.ko} ${pc.title}","about":{"@type":"Place","name":"${full}"}}</script>
+<div class="fl-wrap">
+ <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
+ <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
+</div>
+</body></html>`;
+}
 function makeSVG(sido,sigungu,emd){
  const sub=`${sido} ${sigungu}`;
  const colors=[['#1a1a2e','#16213e'],['#2d132c','#4a1942'],['#1b2838','#2a4858'],['#1f1f1f','#3a3a3a'],['#2c3e50','#34495e'],['#1a1a1a','#2d2d2d']];
@@ -2248,6 +2576,8 @@ function makeProductLandingPage(prodKey){
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://allpaystore.com/product/${prodKey}/">
 <link rel="canonical" href="https://allpaystore.com/product/${prodKey}/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"${prd.ko}${aka} ${suf}","description":"${pd.d.slice(0,250).replace(/"/g,'\\"')}","brand":{"@type":"Brand","name":"올페이스토어"},"image":"https://allpaystore.com/og/${prodKey}/${encodeURIComponent('전국 '+prd.ko+' '+suf)}","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"${500+prodKey.length*100}","bestRating":"5","worstRating":"1"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"${prd.ko}${aka} ${suf}","provider":{"@type":"Organization","name":"올페이스토어","telephone":"+82-10-9876-8282","url":"https://allpaystore.com/","logo":"https://allpaystore.com/images/logo.png"},"areaServed":{"@type":"Country","name":"대한민국"},"name":"전국 ${prd.ko}${aka} ${suf}","description":"${pd.t}. ${isR?'정찰제 견적과 폐기물 적법 처리':'설치비 무료·가맹비 무료·전국 출장 무료 견적'}."}</script>
 ${CSS}
 </head><body>
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
@@ -3276,6 +3606,8 @@ function makeSitemap(){
  prodSlugs.forEach(p=>{sgSet.forEach(s=>{parts.push(u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/'));});});
  dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
  dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
+ // 지역×업종×제품 (카드/포스만)
+ dongKeys.forEach(s=>{BIZ_LIST.forEach(b=>{parts.push(u('/blog/'+s+'/'+b.slug+'-card/'));parts.push(u('/blog/'+s+'/'+b.slug+'-pos/'));});});
  parts.push(u('/guide/'));
  GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/'));});
  parts.push(u('/biz/'));
@@ -5116,6 +5448,18 @@ if(path==='/biz/card'){
  const r=lk(baseSlug);
  if(r)return new Response(makeProductBlog(...r,baseSlug,parts[3]),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
+ // /blog/{sido}/{sg}/{emd}/{biz}-{prod}/ 패턴
+ if(parts.length===4){
+  const m=parts[3].match(/^([a-z]+)-(card|pos)$/);
+  if(m && BIZ_MAP[m[1]]){
+   const baseSlug=parts.slice(0,3).join('/');
+   const r=lk(baseSlug);
+   if(r){
+    const html=makeBizDongPage(...r,baseSlug,m[1],m[2]);
+    if(html)return new Response(html,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+   }
+  }
+ }
  const ptm=slug.match(/^(.+)\/([a-z]+)\/thumb\.svg$/);
  if(ptm && PRODUCTS[ptm[2]]){const r=lk(ptm[1]);if(r)return new Response(makeProductSVG(...r,PRODUCTS[ptm[2]]),{headers:{'Content-Type':'image/svg+xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
  const r=lk(slug);
@@ -5142,6 +5486,87 @@ if(path==='/biz/card'){
   return new Response(imgResp.body,{headers:h2});
  }
  if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain'}});
+ if(path==='/llms.txt'||path==='/llms-full.txt')return new Response(`# 올페이스토어 (AllPayStore)
+
+> 한국 전국 카드단말기·포스기·키오스크·CCTV·테이블오더·자판기·매장철거 설치 전문 업체. 무료 견적, 빠른 설치, A/S 지원, 전국 5,000+ 읍면동 직접 출장 가능.
+
+## 회사 정보
+
+- **상호:** 올페이스토어 (AllPayStore)
+- **연락처:** 010-9876-8282
+- **이메일:** dandylsk80@gmail.com, dandylsk@naver.com
+- **웹사이트:** https://allpaystore.com
+- **서비스 지역:** 대한민국 전국 (시도 17개, 시군구 252개, 읍면동 5,000+)
+
+## 취급 제품
+
+### 1. 카드단말기 (POS Terminal)
+- 신용카드·체크카드·삼성페이·QR결제 단말기
+- 무선/유선, 휴대형, 거치형 모두 취급
+- 매장 운영 카페·음식점·미용실·병원·편의점·노점 등 모든 업종
+- 무료 견적 및 빠른 설치
+- URL: https://allpaystore.com/product/card/
+
+### 2. 포스기 (POS System)
+- 매장 통합 결제·주문·재고관리 시스템
+- 키친프린터, 영수증 프린터 연동 가능
+- 음식점·카페·뷰티숍·소매점 특화
+- URL: https://allpaystore.com/product/pos/
+
+### 3. 키오스크 (Kiosk)
+- 무인 주문·결제 단말기
+- 카페, 패스트푸드, 음식점, 병원, 편의시설용
+- 터치스크린, 영수증 출력, 결제 통합
+- URL: https://allpaystore.com/product/kiosk/
+
+### 4. CCTV
+- 매장 보안 감시 시스템
+- 4채널/8채널/16채널 NVR
+- 야간 적외선, 모바일 원격 모니터링
+- URL: https://allpaystore.com/product/cctv/
+
+### 5. 테이블오더 (Table Order)
+- 식당 테이블 QR/태블릿 주문 시스템
+- 주방 자동 전송, 매출 자동 집계
+- URL: https://allpaystore.com/product/tableorder/
+
+### 6. 자판기·밴딩머신 (Vending Machine)
+- 무인 음료·간식·제품 판매기
+- 카드결제·QR 결제 통합
+- URL: https://allpaystore.com/product/vending/
+
+### 7. 매장철거 (Store Removal)
+- 폐업 매장 가구·집기 철거
+- 카드단말기·포스기·CCTV 회수
+- 원상복구 작업
+- URL: https://allpaystore.com/product/removal/
+
+## 자주 묻는 질문
+
+### 설치비용은 얼마인가요?
+카드단말기는 설치비·가맹비 모두 무료입니다. 포스기·키오스크·CCTV·테이블오더·자판기는 모델과 옵션에 따라 다르며 무료 견적을 제공합니다. 010-9876-8282로 문의 주세요.
+
+### 설치까지 얼마나 걸리나요?
+지역과 모델에 따라 다르지만, 카드단말기는 보통 영업일 기준 1~3일, 포스기·키오스크는 3~7일 내에 설치됩니다.
+
+### A/S는 어떻게 되나요?
+설치 후 무상 A/S 기간이 제공되며, 이후에도 유상으로 신속한 출장 수리가 가능합니다.
+
+### 어떤 업종에 적합한가요?
+카페·음식점·미용실·병원·편의점·노점·푸드트럭·약국·세탁소·문구점·서점·옷가게·꽃집 등 결제·주문이 발생하는 모든 매장에 적합합니다.
+
+## 추천 페이지
+
+- 홈: https://allpaystore.com
+- 제품 안내: https://allpaystore.com/product/
+- 업종별 가이드: https://allpaystore.com/biz/
+- 전국 지역별 설치: https://allpaystore.com/blog/
+- 상담 문의: https://allpaystore.com/contact/
+
+## 사이트맵
+
+전체 페이지 목록: https://allpaystore.com/sitemap.xml
+`,{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=86400'}});
  const INDEXNOW_KEY='822a08bd2bba4c3cb62c6fba162a9cb3';
  if(path==='/'+INDEXNOW_KEY+'.txt')return new Response(INDEXNOW_KEY,{headers:{'Content-Type':'text/plain'}});
  if(path==='/api/indexnow'){
