@@ -1130,49 +1130,154 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
      'https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4968637/pexels-photo-4968637.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/5868722/pexels-photo-5868722.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3943723/pexels-photo-3943723.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3943746/pexels-photo-3943746.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3943728/pexels-photo-3943728.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/8927648/pexels-photo-8927648.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4968388/pexels-photo-4968388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4968398/pexels-photo-4968398.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
    ],
    pos:[
      'https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3962294/pexels-photo-3962294.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6469978/pexels-photo-6469978.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4350071/pexels-photo-4350071.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4350099/pexels-photo-4350099.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4350124/pexels-photo-4350124.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6169665/pexels-photo-6169665.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2611817/pexels-photo-2611817.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4350183/pexels-photo-4350183.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4350082/pexels-photo-4350082.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
    ],
    kiosk:[
      'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/3884440/pexels-photo-3884440.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6169057/pexels-photo-6169057.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://images.pexels.com/photos/6169057/pexels-photo-6169057.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4968396/pexels-photo-4968396.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2988234/pexels-photo-2988234.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3962091/pexels-photo-3962091.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3962090/pexels-photo-3962090.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2068975/pexels-photo-2068975.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2467565/pexels-photo-2467565.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2079246/pexels-photo-2079246.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2079250/pexels-photo-2079250.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3737617/pexels-photo-3737617.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2467558/pexels-photo-2467558.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4253694/pexels-photo-4253694.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3784324/pexels-photo-3784324.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2199290/pexels-photo-2199290.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2068472/pexels-photo-2068472.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
    ],
    cctv:[
      'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/2516143/pexels-photo-2516143.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/371924/pexels-photo-371924.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/277574/pexels-photo-277574.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://images.pexels.com/photos/277574/pexels-photo-277574.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/96627/pexels-photo-96627.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2853432/pexels-photo-2853432.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/207574/pexels-photo-207574.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop&auto=2',
+     'https://images.pexels.com/photos/2386044/pexels-photo-2386044.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3137067/pexels-photo-3137067.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/97050/pexels-photo-97050.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2611783/pexels-photo-2611783.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4665064/pexels-photo-4665064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/57690/cctv-camera-security-monitoring-57690.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop&v=2'
    ],
    tableorder:[
      'https://images.pexels.com/photos/5920743/pexels-photo-5920743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6650825/pexels-photo-6650825.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://images.pexels.com/photos/6650825/pexels-photo-6650825.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/776538/pexels-photo-776538.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1267697/pexels-photo-1267697.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/776654/pexels-photo-776654.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2403392/pexels-photo-2403392.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
    ],
    vending:[
      'https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/2531545/pexels-photo-2531545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/7969119/pexels-photo-7969119.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2533092/pexels-photo-2533092.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2532462/pexels-photo-2532462.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2479057/pexels-photo-2479057.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3771834/pexels-photo-3771834.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3735149/pexels-photo-3735149.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3987066/pexels-photo-3987066.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4393437/pexels-photo-4393437.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3535400/pexels-photo-3535400.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2532436/pexels-photo-2532436.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3771119/pexels-photo-3771119.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2479056/pexels-photo-2479056.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3735206/pexels-photo-3735206.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/2532290/pexels-photo-2532290.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3771118/pexels-photo-3771118.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
    ],
    removal:[
      'https://images.pexels.com/photos/3828888/pexels-photo-3828888.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/8487409/pexels-photo-8487409.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/5691660/pexels-photo-5691660.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
      'https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3990589/pexels-photo-3990589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://images.pexels.com/photos/3990589/pexels-photo-3990589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/8061523/pexels-photo-8061523.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/7464706/pexels-photo-7464706.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/5691623/pexels-photo-5691623.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4246224/pexels-photo-4246224.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6474470/pexels-photo-6474470.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/3990369/pexels-photo-3990369.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4246221/pexels-photo-4246221.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/6474453/pexels-photo-6474453.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/4246119/pexels-photo-4246119.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+     'https://images.pexels.com/photos/5691618/pexels-photo-5691618.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
    ]
  };
  const pool=PHOTO_POOL[prodKey]||PHOTO_POOL.card;
@@ -1860,7 +1965,7 @@ ${CSS}
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlS}
  <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="https://picsum.photos/seed/img648p/800/420" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
+ <img src="${(()=>{const pool=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968637/pexels-photo-4968637.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5868722/pexels-photo-5868722.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943723/pexels-photo-3943723.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943746/pexels-photo-3943746.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943728/pexels-photo-3943728.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927648/pexels-photo-8927648.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968388/pexels-photo-4968388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968398/pexels-photo-4968398.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];let h=0;for(let i=0;i<sidoName.length;i++)h=((h<<5)-h+sidoName.charCodeAt(i))|0;return pool[Math.abs(h)%pool.length];})()}" alt="${sidoName} 카드단말기 설치" width="1200" height="500" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} 설치 전문</div>
@@ -1994,7 +2099,7 @@ ${CSS}
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlSG}
  <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="https://picsum.photos/seed/img6cuz/800/420" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
+ <img src="${(()=>{const pool=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968637/pexels-photo-4968637.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5868722/pexels-photo-5868722.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943723/pexels-photo-3943723.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943746/pexels-photo-3943746.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943728/pexels-photo-3943728.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927648/pexels-photo-8927648.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968388/pexels-photo-4968388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968398/pexels-photo-4968398.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];let h=0;for(let i=0;i<sgName.length;i++)h=((h<<5)-h+sgName.charCodeAt(i))|0;return pool[Math.abs(h)%pool.length];})()}" alt="${sgName} 카드단말기 설치" width="1200" height="500" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
@@ -2115,7 +2220,7 @@ function makeProductLandingPage(prodKey){
  const firstDong=RK().find(k=>k.startsWith(s.s+'/'));
  return firstDong?`<a href="/product/${prodKey}/${s.s}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
  }).join('');
- const PHOTO={card:'https://picsum.photos/seed/img6l9m/800/420',pos:'https://picsum.photos/seed/img6lc7/800/420',kiosk:'https://picsum.photos/seed/img6ler/800/420',cctv:'https://picsum.photos/seed/img6lha/800/420',tableorder:'https://picsum.photos/seed/img6ljz/800/420',removal:'https://picsum.photos/seed/img6lmo/800/420'};
+ const PHOTO={card:'https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',pos:'https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',kiosk:'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',cctv:'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',tableorder:'https://images.pexels.com/photos/5920743/pexels-photo-5920743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',vending:'https://images.pexels.com/photos/2531545/pexels-photo-2531545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',removal:'https://images.pexels.com/photos/3828888/pexels-photo-3828888.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'};
  const photo=PHOTO[prodKey]||PHOTO.card;
  const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  // 빵크럼 + 내부링크
@@ -2148,10 +2253,13 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlPL}
- <div style="width:100%;height:240px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6)),url('${photo}') center/cover;border-radius:16px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;margin-bottom:24px">
+ <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:24px">
+ <img src="${photo}" alt="${prd.ko} ${suf}" width="1200" height="500" style="width:100%;height:100%;object-fit:cover;display:block">
+ <div style="position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.6));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">${ds} 기준 · 전국 5,000+ 읍면동</div>
  <div style="font-size:32px;font-weight:900;color:#fff">${prd.emoji} ${prd.ko} ${suf}</div>
  <div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:4px">${pd.t}</div>
+ </div>
  </div>
  <h1 style="font-size:26px;font-weight:900;color:#111;margin-bottom:16px">${prd.ko} — ${pd.t}</h1>
  <p style="font-size:15px;color:#555;line-height:1.8;margin-bottom:32px">${pd.d}</p>
@@ -3243,6 +3351,8 @@ function getHTML() {
 <meta name="google-site-verification" content="Fh8LXWmgn1Wirb4wpZK9z0mPVAXz-h3IH60Y0tcm6ac">
 <meta name="naver-site-verification" content="b57157dc5a153e127c9d7286fb2c6dd70ac19045">
 <meta name="DaumWebMasterTool" content="a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"올페이스토어","alternateName":"AllPayStore","url":"https://allpaystore.com/","logo":"https://allpaystore.com/images/logo.png","image":"https://allpaystore.com/images/logo.png","telephone":"+82-10-9876-8282","email":"dandylsk80@gmail.com","description":"전국 카드단말기·포스기·키오스크·CCTV·테이블오더·매장 철거 설치 전문","address":{"@type":"PostalAddress","addressCountry":"KR"},"sameAs":["https://allpaystore.com/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"올페이스토어","url":"https://allpaystore.com/","potentialAction":{"@type":"SearchAction","target":"https://allpaystore.com/blog/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <meta property="og:title" content="올페이스토어 | 카드단말기·포스기·키오스크·CCTV 전국 설치 전문">
 <meta property="og:description" content="전국 카드단말기·포스기·키오스크·CCTV 설치 전문. 무료 견적, 빠른 설치. 전국 5,000+ 읍면동 직접 출장.">
 <meta property="og:type" content="website">
