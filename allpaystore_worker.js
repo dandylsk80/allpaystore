@@ -5346,22 +5346,80 @@ if(path==='/biz-cctv'){
    const biz=BIZ_MAP[m[1]];const prodKey=m[2];const prdKo=PRODUCTS[prodKey].ko;
    const sgList=Object.keys(SG_MAP).filter(k=>k.startsWith(sidoSlug+'/'));
    const sgLinks=sgList.map(k=>{const sgSlug=k.split('/')[1];const sgName=SG[SG_MAP[k]];return `<a href="/biz-region/${sidoSlug}/${sgSlug}/${biz.slug}-${prodKey}/" class="int-link">${sgName}</a>`;}).join('');
-   // 콘텐츠 풀 (해시 기반)
+   // 다층 해시
    const seed=(sidoSlug+biz.slug+prodKey).split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
    const h=Math.abs(seed);
+   const h2=Math.abs((seed*31+biz.slug.charCodeAt(0)*7+(prodKey==='card'?100:200))|0);
+   const h3=Math.abs((seed*17+sidoSlug.length*23+biz.ko.length*13)|0);
+   const pick=(arr,off)=>arr[(h+off+h2)%arr.length];
+   const pick2=(arr,off)=>arr[(h2+off+h3)%arr.length];
+   const pick3=(arr,off)=>arr[(h3+off*7+h)%arr.length];
    const photoCard=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
    const photoPos=['https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
    const photo=(prodKey==='card'?photoCard:photoPos)[h%5];
-   // 본문 단락 풀 (시도 단위)
+   // 본문 단락 풀 (시도 단위) - 32개로 대폭 확장
    const PA_SI=[
-    `${sidoName}는 대한민국에서 ${biz.ko} 업종이 활발하게 운영되는 지역입니다. ${sgList.length}개의 시군구가 각자의 특색 있는 상권을 가지고 있으며, ${biz.ko} 매장 운영자들에게 ${prdKo}은 매장 효율의 핵심 도구입니다.`,
-    `${sidoName} 전 지역에서 ${biz.ko} 매장을 운영하시는 사장님들이 가장 신경 쓰는 부분은 결제 시스템의 안정성과 매출 관리입니다. ${sidoName} ${biz.ko} 시장은 매년 꾸준히 성장하고 있으며, 효율적인 ${prdKo} 도입이 매출 증대의 핵심으로 떠오르고 있습니다.`,
-    `${sidoName}의 ${biz.ko} 매장은 평균적으로 일일 결제 건수가 다른 업종 대비 ${20+h%50}% 더 많은 편입니다. 이런 환경에서 ${prdKo}은 거래 처리 속도와 정확성을 동시에 충족시켜야 하며, 매장 환경에 맞춤형으로 설치되어야 합니다.`,
-    `${sidoName} ${biz.ko} 사장님이라면 ${prdKo} 도입 시 단순 가격만 보지 마시고, 매장 면적, 고객 회전율, 결제 패턴을 종합적으로 고려해야 합니다. 올페이스토어는 ${sidoName} 전 지역 ${biz.ko} 매장에 직접 방문하여 무료 컨설팅을 제공합니다.`
+    `${sidoName}는 대한민국에서 ${biz.ko} 업종이 활발하게 운영되는 지역 중 하나입니다. ${sgList.length}개의 시군구가 각자의 특색 있는 상권을 가지고 있으며, ${biz.ko} 매장 운영자들에게 ${prdKo}은 매장 효율의 핵심 도구입니다. 매출 관리, 고객 응대, 직원 관리, 재고 관리, 정산 자동화까지 ${prdKo}을 통해 통합 운영이 가능하며, 사장님의 운영 부담을 크게 줄여드립니다. 특히 ${sidoName} 지역은 매장 회전율이 높고 결제 패턴이 다양해 안정적인 시스템 선택이 필수입니다.`,
+    `${sidoName} 전 지역에서 ${biz.ko} 매장을 운영하시는 사장님들이 가장 신경 쓰는 부분은 결제 시스템의 안정성과 매출 관리입니다. ${sidoName} ${biz.ko} 시장은 매년 꾸준히 성장하고 있으며, 효율적인 ${prdKo} 도입이 매출 증대의 핵심으로 떠오르고 있습니다. 단순 결제 처리만이 아니라 매출 분석, 고객 관리, 직원 권한 관리까지 한 시스템에서 처리할 수 있는 통합형 솔루션이 ${biz.ko} 매장 사장님들 사이에서 인기를 얻고 있습니다.`,
+    `${sidoName}의 ${biz.ko} 매장은 평균적으로 일일 결제 건수가 다른 업종 대비 ${20+h%50}% 더 많은 편입니다. 이런 환경에서 ${prdKo}은 거래 처리 속도와 정확성을 동시에 충족시켜야 하며, 매장 환경에 맞춤형으로 설치되어야 합니다. 특히 피크 시간대 거래 집중 처리 능력, 결제 오류 발생 시 즉각 대응, 매출 데이터 백업 등이 ${biz.ko} 매장 ${prdKo} 선택의 핵심 기준입니다. 검증된 시스템으로 매장 운영의 안정성을 확보하세요.`,
+    `${sidoName} ${biz.ko} 사장님이라면 ${prdKo} 도입 시 단순 가격만 보지 마시고, 매장 면적, 고객 회전율, 결제 패턴, 직원 수, 영업 시간을 종합적으로 고려해야 합니다. 올페이스토어는 ${sidoName} 전 지역 ${biz.ko} 매장에 직접 방문하여 무료 컨설팅을 제공하며, 매장 환경에 가장 적합한 ${prdKo} 모델을 추천드립니다. ${prodKey==='card'?'VAN사 수수료':'시스템 옵션'} 비교까지 모두 무료로 진행됩니다.`,
+    `${sidoName} ${biz.ko} 시장 동향을 분석해보면, 최근 ${3+h%5}년간 ${prdKo} 교체 수요가 매년 ${10+h%20}%씩 증가하고 있습니다. 이는 결제 환경이 빠르게 변화하면서 ${biz.ko} 매장 운영자들이 더 효율적인 시스템을 찾고 있기 때문입니다. 특히 모바일 페이, QR 결제, 비접촉 결제 등 신규 결제 수단이 빠르게 보급되면서 기존 ${prdKo}으로는 처리가 어려운 상황이 자주 발생하고 있어, 통합 결제 시스템 도입 수요가 크게 늘고 있습니다.`,
+    `${sidoName} 지역 ${biz.ko} 매장의 ${prdKo} 교체 주기는 평균 ${3+h%4}년입니다. 이 시기에 맞춰 시스템을 업그레이드하면 매장 운영 효율이 크게 개선되며, 신규 결제 수단(QR결제, 모바일 페이, 비접촉 결제) 대응도 원활해집니다. 또한 보안 인증 강화, 매출 데이터 클라우드 백업, 모바일 매출 확인 등 최신 기능을 활용하실 수 있어 매장 관리의 디지털 전환을 가속화할 수 있습니다.`,
+    `${sidoName} ${biz.ko} 매장에서 ${prdKo}을 선택할 때 가장 중요한 기준은 안정성, 처리 속도, A/S 응답 속도입니다. ${sidoName} 전 지역에 24시간 출장 가능한 시스템을 설치하시면 영업 차질을 최소화할 수 있습니다. 특히 ${biz.ko} 업종은 영업 시간 중 시스템 다운이 매출 손실로 직결되므로, 99.9% 이상의 안정성을 보장하고 1시간 이내 출동 가능한 A/S 시스템이 필수적입니다.`,
+    `${sidoName} 지역 ${biz.ko} 사장님들은 ${prdKo}의 ${prodKey==='card'?'VAN사 수수료':'매장 운영 통합 기능'}에 가장 많은 관심을 보입니다. 매장 매출 패턴에 따라 최적의 옵션이 다르므로, 무료 컨설팅을 통해 매장에 맞는 시스템을 선택하시는 것이 중요합니다. 일일 거래 건수, 평균 객단가, 카드 결제 비율 등 매장 데이터를 분석해 가장 유리한 조건을 찾아드리며, 월 수십만원의 비용 절감 효과를 기대할 수 있습니다.`,
+    `${sidoName}는 한국에서 ${biz.ko} 매장 밀도가 높은 지역 중 하나입니다. 그만큼 경쟁이 치열하며, ${prdKo}을 활용한 차별화된 고객 경험이 매장 성공의 열쇠가 됩니다. 단순 결제 도구가 아닌 매장 마케팅 도구로 활용하세요. 멤버십 적립, 할인 쿠폰 발행, 재방문 유도 메시지 발송 등 ${prdKo}이 제공하는 다양한 기능을 활용하면 단골 고객 비율을 ${10+h%20}% 이상 높일 수 있습니다.`,
+    `${sidoName} ${biz.ko} 매장 운영의 디지털 전환이 빠르게 진행되고 있습니다. ${prdKo}은 이러한 변화의 중심에 있으며, 매장 데이터를 자산으로 만드는 핵심 인프라입니다. 매출 분석, 고객 패턴 추적, 재고 관리, 직원 근태 관리, 세금 신고 자동화까지 모두 가능합니다. 특히 ${biz.ko} 업종은 데이터 기반 의사결정이 매출에 직접 영향을 미치므로, 정확한 데이터 수집이 운영의 핵심입니다.`,
+    `${sidoName} ${biz.ko} 사장님께서 ${prdKo}을 신규 도입하시거나 교체 검토 중이시라면, 먼저 매장 환경을 정확히 진단받으시는 것이 중요합니다. 면적, 카운터 위치, 고객 동선, 일일 거래량, 결제 수단 비율, 직원 수, 영업 시간을 종합적으로 고려해 최적 모델을 추천해드립니다. 매장 방문 진단은 무료이며, 1시간 정도면 정확한 견적과 추천 모델을 받아보실 수 있습니다.`,
+    `${sidoName} 전 지역 ${biz.ko} ${prdKo} 시장에서 검증된 모델은 안정성과 확장성을 동시에 갖춘 시스템입니다. 매장 규모가 커지거나 운영 방식이 변화해도 시스템 변경 없이 옵션 추가로 대응 가능합니다. 또한 클라우드 기반 매출 관리로 여러 매장을 한 번에 관리할 수 있고, 모바일에서 실시간 매출을 확인할 수 있어 사장님이 매장에 없을 때도 운영 상황을 정확히 파악할 수 있습니다.`,
+    `${sidoName} ${biz.ko} 매장의 평균 운영 시간은 일 ${10+h%6}~${12+h%6}시간이며, 이 시간 동안 ${prdKo}이 안정적으로 작동해야 합니다. 단 한 번의 시스템 다운도 매출 손실로 직결되므로, 99.9% 이상의 안정성을 보장하는 시스템 선택이 필수입니다. 또한 영업 시간 외에도 데이터 백업, 시스템 점검 등이 자동으로 이루어져야 매장 운영의 연속성을 보장할 수 있습니다.`,
+    `${sidoName} 지역 ${biz.ko} 사장님들이 ${prdKo} 도입 후 가장 만족하는 부분은 정산 자동화입니다. 일일 마감 시간이 평균 ${20+h%40}분에서 ${5+h%10}분으로 단축되며, 매출 분석 리포트 자동 생성으로 운영 효율이 크게 개선됩니다. 또한 세무 신고 자동화, 카드사 정산 내역 자동 매칭, 직원 인센티브 자동 계산까지 가능해 사장님의 행정 업무 부담이 대폭 줄어듭니다.`,
+    `${sidoName}에서 ${biz.ko}을 새로 오픈하시는 분들이 매년 늘어나고 있습니다. 신규 매장의 경우 카드사 가맹점 등록부터 ${prdKo} 설치, 직원 교육까지 ${10+h%5}~${15+h%10}일 안에 완료하셔야 영업에 차질이 없습니다. 본사가 모든 행정 절차를 대행해드리며, 사장님은 매장 인테리어와 영업 준비에만 집중하실 수 있습니다. 오픈 후 1개월간 무료 운영 지원도 제공됩니다.`,
+    `생각해보면, ${sidoName}는 어느 도시든 ${biz.ko} 분야의 새로운 시도가 끊이지 않는 곳입니다. 변화하는 트렌드 속에서 ${prdKo}이라는 도구는 사장님의 든든한 파트너 역할을 합니다. 빠르게 변하는 소비자 결제 습관을 따라가지 못하면 매장 입장에서는 손해가 누적되기 마련입니다. 새로운 결제 방식을 받아들일 준비가 되어있는 시스템이 ${sidoName} 매장에 어울립니다.`,
+    `한 가지 흥미로운 사실은, ${sidoName} 지역의 ${biz.ko} 매장 점주들이 다른 지역보다 신기술 수용도가 ${15+h%20}% 정도 빠르다는 점입니다. 이는 ${prdKo}을 단순 도구가 아닌 매장 경쟁력의 핵심으로 인식하고 있다는 뜻이며, 이런 흐름 속에서 도태되지 않으려면 동등하거나 더 우수한 시스템 도입이 필요합니다. 사장님 매장도 이 흐름에 동참하시기를 권합니다.`,
+    `자, 솔직히 말씀드리면 ${sidoName} ${biz.ko} 시장은 결제 시스템 하나만으로 매출이 갈리는 시대가 됐습니다. 옆 매장보다 결제가 빠르고, 영수증이 깔끔하고, 멤버십 적립이 매끄러운 곳에 손님이 다시 옵니다. ${prdKo}은 이 모든 것을 결정하는 인프라이며, 그래서 처음부터 제대로 된 시스템을 갖추는 것이 시간과 비용을 아끼는 길입니다.`,
+    `${sidoName} ${biz.ko} 운영 환경의 또 다른 특징은 직원 회전율이 비교적 높다는 점입니다. 새 직원이 들어올 때마다 ${prdKo} 사용법을 가르치는 부담이 있는데, 직관적인 UI와 빠른 학습 곡선을 가진 시스템을 선택하면 이 부담이 크게 줄어듭니다. 교육 시간을 단축하면 그만큼 영업에 집중할 수 있어 매출에도 도움이 됩니다.`,
+    `매장을 운영하다 보면 예상치 못한 상황이 자주 발생합니다. 갑작스러운 결제 오류, 카드사 통신 두절, 영수증 프린터 고장 등 작은 문제가 큰 매출 손실로 이어질 수 있습니다. ${sidoName}의 ${biz.ko} 사장님들이 ${prdKo}을 선택하실 때 응급 상황 대응력을 우선 고려하시는 이유가 여기에 있습니다. 24시간 콜센터, 원격 진단, 1시간 이내 출동이 모두 갖춰진 시스템이 안전합니다.`,
+    `이번 ${biz.ko} ${prdKo} 가이드는 ${sidoName} 지역에 특화된 정보입니다. 다른 지역과 다르게 ${sidoName}는 ${biz.ko} 매장의 평균 매출 규모, 객단가, 결제 방식 비율 등이 독특한 패턴을 보이며, 그래서 같은 ${prdKo}이라도 ${sidoName}에 맞춘 설정이 필요합니다. 기본 옵션을 그대로 사용하기보다는 매장에 맞춤화된 셋업이 효과적입니다.`,
+    `요즘 ${sidoName} ${biz.ko} 사장님들 사이에서 화제가 되는 ${prdKo} 기능은 매출 자동 분석 리포트입니다. 일일·주간·월간 매출 변화, 베스트 상품, 회전율 높은 시간대 등이 자동으로 정리되어 매장 운영 의사결정을 도와줍니다. 사장님이 굳이 데이터를 가공하지 않아도 시스템이 모든 인사이트를 제공하는 시대가 왔습니다.`,
+    `${sidoName} ${biz.ko} 매장에 ${prdKo}을 도입할 때 의외로 간과하기 쉬운 부분은 인터넷 환경입니다. 매장 인터넷이 불안정하면 시스템 성능이 저하되어 결제 지연이 발생할 수 있습니다. 그래서 인터넷 환경 점검과 백업 회선 구성도 ${prdKo} 설치 시 함께 진행해드립니다. 매장 환경 전체를 종합적으로 진단해 안정적인 운영을 보장합니다.`,
+    `놓치기 쉬운 사실 하나가 더 있습니다. ${sidoName} ${biz.ko} 매장의 ${prdKo} 운영 비용은 단순 단말기 가격뿐만 아니라 월 통신료, 카드사 수수료, A/S 비용까지 포함됩니다. 종합적으로 봤을 때 가장 합리적인 선택을 하시려면 5년 총 비용 기준으로 비교해보시는 것을 권합니다. 단기 비용보다 장기 운영비가 더 중요할 수 있습니다.`,
+    `${sidoName} 지역에서 ${biz.ko} 매장을 ${10+h%10}년 이상 운영하신 사장님들 인터뷰를 보면 공통적으로 "${prdKo} 잘 고른 게 운영의 절반"이라는 말씀을 하십니다. 시스템 한 번 잘 고르면 5~10년은 안정적으로 매장을 운영할 수 있고, 잘못 고르면 매년 골치 아픈 일이 반복되기 때문입니다. 처음부터 검증된 시스템을 선택하세요.`,
+    `${sidoName} ${biz.ko} 시장의 미래 트렌드를 보면 AI 기반 매출 예측, 자동 발주, 무인 결제 등이 핵심 키워드로 떠오르고 있습니다. ${prdKo}은 이러한 변화의 출발점이며, 미래 확장 가능한 시스템을 선택하시면 5년 후에도 경쟁력을 유지할 수 있습니다. 그저 지금 결제 처리만 잘 되는 시스템이 아니라 미래 대응 가능한 플랫폼을 골라야 합니다.`,
+    `만약 ${sidoName}에서 ${biz.ko}을 처음 시작하시는 분이라면 첫 ${prdKo} 선택이 매장의 성장 곡선을 결정합니다. 매장이 작다고 단순한 시스템부터 시작하면 매장이 커진 후 다시 교체해야 하는데, 그 비용과 시간이 만만치 않습니다. 처음부터 확장 가능한 시스템으로 시작하는 것이 결국은 비용 절감이 됩니다.`,
+    `${sidoName}의 ${biz.ko} 시장에서 살아남으려면 결제 환경 외에도 매장 운영 효율을 높이는 것이 중요합니다. ${prdKo}을 통한 자동화는 인건비 절감, 매출 향상, 고객 만족도 개선 등 다양한 측면에서 도움이 됩니다. 특히 직원 교육 시간 단축, 직원 실수 방지, 정산 오류 감소 등 인적 비용을 크게 줄일 수 있습니다.`,
+    `한 ${biz.ko} 사장님 사례를 소개하자면, ${sidoName}에서 ${5+h%10}년간 ${prdKo} 없이 수기로 매출을 관리하다가 도입 후 첫 달부터 매출 누락이 ${10+h%15}만원 줄었다고 합니다. 시스템이 누락 없이 모든 거래를 기록하고, 카드사 정산과 자동 매칭되어 차이가 없는지 자동 확인하기 때문입니다. 작은 실수가 모이면 큰 손실이 되는 것을 시스템이 막아줍니다.`,
+    `${sidoName} ${biz.ko} 업계 선배들의 조언을 정리하면, ${prdKo} 선택 시 첫째는 안정성, 둘째는 A/S 응답속도, 셋째는 확장성이라고 합니다. 가격은 그 다음입니다. 매장이 안정적으로 운영되어야 매출이 나오고, 시스템 문제가 빠르게 해결되어야 영업 차질이 없으며, 매장 성장에 맞춰 시스템도 함께 커야 합니다.`,
+    `만일 ${sidoName} 지역 ${biz.ko} 매장에 어울리는 ${prdKo}을 찾고 계신다면 단순 추천 받기보다 매장 방문 진단을 권합니다. 매장 환경, 운영 패턴, 직원 구성, 매출 규모 등을 직접 보고 추천받는 것이 가장 정확합니다. 무료 진단이며, 1시간 정도면 정확한 추천과 견적을 받아보실 수 있습니다. 010-9876-8282로 연락주세요.`,
+    `${sidoName} ${biz.ko} 매장이라면 ${prdKo} 도입 시 카드사·VAN사·통신사·A/S 업체와의 관계 정리가 중요합니다. 각각 따로 계약하면 문제 발생 시 서로 책임 떠넘기기로 해결이 늦어질 수 있습니다. 통합 관리 가능한 업체를 통해 도입하시면 한 번의 연락으로 모든 문제가 해결되어 시간과 스트레스가 절약됩니다.`
    ];
-   const para1=PA_SI[h%PA_SI.length];
-   const para2=PA_SI[(h+1)%PA_SI.length];
-   const para3=PA_SI[(h+2)%PA_SI.length];
+   // 페이지마다 다른 단락 12개 선택 (다층 해시로 다양화)
+   const para1=pick(PA_SI,0);
+   const para2=pick2(PA_SI,1);
+   const para3=pick3(PA_SI,2);
+   const para4=pick(PA_SI,5);
+   const para5=pick2(PA_SI,4);
+   const para6=pick3(PA_SI,7);
+   const para7=pick(PA_SI,9);
+   const para8=pick2(PA_SI,3);
+   const para9=pick3(PA_SI,11);
+   const para10=pick(PA_SI,13);
+   const para11=pick2(PA_SI,6);
+   const para12=pick3(PA_SI,8);
+   // 추가 다양화 풀
+   const POOL_X=[
+    `${sidoName}는 한국 ${biz.ko} 시장에서 독특한 위치를 차지합니다. 인구 밀도, 상권 분포, 소비 패턴이 다른 지역과 차별화되며, 이런 환경에서 ${prdKo}을 선택할 때는 지역 특성을 정확히 반영한 솔루션이 필요합니다.`,
+    `${sidoName} 지역 자영업자들 사이에서 ${prdKo}은 매장 운영의 핵심 인프라로 자리잡았습니다. 단순 결제 도구를 넘어 매장 운영 데이터의 허브가 되며, 사장님이 매장 밖에서도 모든 운영 정보를 실시간으로 확인할 수 있게 해줍니다.`,
+    `${sidoName} ${biz.ko} 업계는 최근 몇 년간 디지털 전환 속도가 빨라지고 있습니다. 카드 결제 비율이 ${85+h%10}%에 달하고, 모바일 결제도 매년 ${15+h%15}%씩 증가하면서 통합 결제 시스템의 중요성이 커지고 있습니다.`,
+    `${sidoName}에서 ${biz.ko}을 운영하시는 분들은 ${prdKo}을 통해 매장 운영의 자동화를 추구하고 있습니다. 인건비 부담이 커지는 시대에 시스템의 도움을 받아 효율을 높이는 것이 매장 생존의 필수 조건입니다.`,
+    `${sidoName} ${biz.ko} 시장의 미래를 보면, ${prdKo}의 역할은 더욱 확대될 전망입니다. AI 기반 매출 예측, 고객 패턴 자동 분석, 자동 발주 시스템까지 ${prdKo}이 통합 플랫폼으로 진화하고 있습니다.`,
+    `${sidoName} 지역 ${biz.ko} 사장님이라면 ${prdKo} 선택 시 5년 후를 내다보고 결정하셔야 합니다. 지금 도입한 시스템이 미래 결제 환경 변화에 대응 가능한지, 확장성과 호환성이 있는지가 중요한 판단 기준입니다.`,
+    `${sidoName} ${biz.ko} 업계에서 ${prdKo}은 더 이상 선택이 아닌 필수입니다. 시스템 없이 매장을 운영하는 것은 거의 불가능하며, 어떤 시스템을 선택하느냐가 매장 운영의 모든 부분에 영향을 미칩니다. 신중한 선택이 필요합니다.`,
+    `${sidoName}의 ${biz.ko} 매장 평균 운영 데이터를 보면, ${prdKo} 도입 매장과 미도입 매장의 매출 차이가 ${20+h%30}% 이상 나타납니다. 단순 결제 처리 차이가 아니라 매출 분석, 마케팅 자동화, 고객 관리 등 종합적인 효과 때문입니다.`
+   ];
+   const px1=pick(POOL_X,0);
+   const px2=pick2(POOL_X,2);
+   const px3=pick3(POOL_X,5);
+   const px4=pick(POOL_X,7);
    const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
    const iso=today.toISOString().split('T')[0];
    const canon=`https://allpaystore.com/biz-region/${sidoSlug}/${biz.slug}-${prodKey}/`;
@@ -5376,6 +5434,26 @@ ${makeBreadcrumb([{name:'홈',href:'/'},{name:'지역×업종',href:'/biz-region
 <p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para1}</p>
 <p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para2}</p>
 <p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para3}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">📊 ${sidoName} ${biz.ko} 시장 분석</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para4}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para5}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para6}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">💼 ${sidoName} ${biz.ko} 운영 노하우</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para7}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para8}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🎯 ${sidoName} ${biz.ko} 매장 추천 사항</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para9}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para10}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🌟 ${sidoName} ${biz.ko} 사장님이 알아야 할 점</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para11}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para12}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">📌 ${sidoName} ${biz.ko} ${prdKo} 정리</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px1}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px2}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px3}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px4}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${sidoName} ${biz.ko} 매장에 가장 적합한 ${prdKo}을 선택하시려면 매장 환경 진단이 우선입니다. 면적, 위치, 거래량, 결제 패턴 등 다양한 요소를 종합적으로 고려해야 매장에 딱 맞는 시스템을 도입할 수 있습니다. 올페이스토어는 ${sidoName} 전 지역 ${biz.ko} 매장에 ${prodKey==='card'?'설치비·가맹비 무료':'설치비·교육비 무료'}로 ${prdKo}을 설치해드리며, 시스템 도입 후 1개월간 무료 운영 지원과 평생 A/S를 보장합니다.</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${sidoName} 지역 ${biz.ko} 사장님이라면 지금 010-9876-8282로 연락주세요. 매장 환경에 가장 적합한 ${prdKo} 모델을 무료로 안내해드리며, ${prodKey==='card'?'VAN사 수수료':'시스템 옵션'} 비교까지 모두 무료로 진행됩니다. 검증된 시스템으로 매장 운영 효율을 한 단계 높이세요.</p>
 <h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">✅ ${biz.ko} 전용 ${prdKo} 핵심 기능</h3>
 <ul style="font-size:14px;color:#444;line-height:1.9;padding-left:0;list-style:none;margin:0">
 <li style="padding:6px 0;border-bottom:1px solid #f0f0f0">${prodKey==='card'?'💳 모든 결제 수단 통합 (카드·삼성페이·QR)':'🖥 매장 운영 통합 관리 시스템'}</li>
@@ -5406,22 +5484,79 @@ ${makeSiteFooter()}
    const biz=BIZ_MAP[m[1]];const prodKey=m[2];const prdKo=PRODUCTS[prodKey].ko;
    const dongs=Object.keys(R[sidoSlug][sgSlug]||{});
    const dongLinks=dongs.map(d=>{const dongName=E[R[sidoSlug][sgSlug][d]];return `<a href="/blog/${sidoSlug}/${sgSlug}/${d}/${biz.slug}-${prodKey}/" class="int-link">${dongName}</a>`;}).join('');
-   // 콘텐츠 (해시 기반)
+   // 다층 해시 (콘텐츠)
    const seed=(sidoSlug+sgSlug+biz.slug+prodKey).split('').reduce((a,c)=>((a<<5)-a+c.charCodeAt(0))|0,0);
    const h=Math.abs(seed);
+   const h2=Math.abs((seed*31+biz.slug.charCodeAt(0)*7+sgSlug.length*13+(prodKey==='card'?100:200))|0);
+   const h3=Math.abs((seed*17+sidoSlug.length*23+biz.ko.length*11+sgSlug.charCodeAt(0)*5)|0);
+   const pick=(arr,off)=>arr[(h+off+h2)%arr.length];
+   const pick2=(arr,off)=>arr[(h2+off+h3)%arr.length];
+   const pick3=(arr,off)=>arr[(h3+off*7+h)%arr.length];
    const photoCard=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
    const photoPos=['https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962294/pexels-photo-3962294.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
    const photo=(prodKey==='card'?photoCard:photoPos)[h%6];
-   // 본문 단락 풀 (시군구 단위)
+   // 본문 단락 풀 (시군구 단위) - 32개로 대폭 확장
    const PA_SG=[
-    `${sidoName} ${sgName}는 ${biz.ko} 매장이 활발히 운영되는 지역입니다. ${dongs.length}개의 동·읍·면이 각각 특색 있는 상권을 형성하고 있으며, ${biz.ko} 사장님들에게 ${prdKo}은 매장 운영의 필수 도구입니다.`,
-    `${sgName} ${biz.ko} 매장의 평균 운영 환경을 분석해보면, 일일 결제 건수가 ${30+h%150}건 정도이고 ${prdKo}의 안정성이 매출에 직접적인 영향을 미칩니다. ${sgName} 지역 ${biz.ko} 사장님께 검증된 시스템을 추천드립니다.`,
-    `${sgName}에서 ${biz.ko}을 새로 오픈하시거나 ${prdKo}을 교체 검토 중이시라면, 매장 환경 진단부터 시작하세요. 올페이스토어는 ${sgName} 전 지역을 직접 방문하여 무료 컨설팅을 제공합니다.`,
-    `${sidoName} ${sgName}의 ${biz.ko} 운영 노하우는 시간이 갈수록 변화하고 있습니다. 효율적인 ${prdKo} 도입은 매출 정산 시간 단축, 직원 관리, 고객 응대까지 매장 운영 전반에 긍정적 영향을 줍니다.`
+    `${sidoName} ${sgName}는 ${biz.ko} 매장이 활발히 운영되는 지역입니다. ${dongs.length}개의 동·읍·면이 각각 특색 있는 상권을 형성하고 있으며, ${biz.ko} 사장님들에게 ${prdKo}은 매장 운영의 필수 도구입니다. 매출 관리부터 직원 관리까지 통합 운영이 가능하며, 특히 ${sgName} 지역의 매장 환경 특성에 맞춘 시스템 선택이 매장 성공의 핵심입니다. 올페이스토어는 ${sgName} 전 지역 ${biz.ko} 매장에 검증된 시스템을 제공합니다.`,
+    `${sgName} ${biz.ko} 매장의 평균 운영 환경을 분석해보면, 일일 결제 건수가 ${30+h%150}건 정도이고 ${prdKo}의 안정성이 매출에 직접적인 영향을 미칩니다. ${sgName} 지역 ${biz.ko} 사장님께 검증된 시스템을 추천드립니다. 특히 피크 시간대 거래 처리 능력, 결제 오류 발생 시 즉각 대응, 매출 데이터 자동 백업 등이 ${biz.ko} 매장 운영에 필수적인 기능입니다.`,
+    `${sgName}에서 ${biz.ko}을 새로 오픈하시거나 ${prdKo}을 교체 검토 중이시라면, 매장 환경 진단부터 시작하세요. 올페이스토어는 ${sgName} 전 지역을 직접 방문하여 무료 컨설팅을 제공합니다. 매장 면적, 카운터 위치, 고객 동선, 일일 거래량을 종합적으로 분석한 후 가장 적합한 ${prdKo} 모델을 추천해드리며, ${prodKey==='card'?'VAN사 수수료':'시스템 옵션'} 비교까지 무료로 진행됩니다.`,
+    `${sidoName} ${sgName}의 ${biz.ko} 운영 노하우는 시간이 갈수록 변화하고 있습니다. 효율적인 ${prdKo} 도입은 매출 정산 시간 단축, 직원 관리, 고객 응대까지 매장 운영 전반에 긍정적 영향을 줍니다. 특히 ${sgName} 지역은 매장 회전율이 높은 편이라 빠른 처리 속도와 안정성이 매장 운영의 핵심이 되며, 이런 환경에 맞춤화된 시스템 선택이 매출에 직접 영향을 미칩니다.`,
+    `${sgName}는 ${dongs.length}개의 동·읍·면으로 구성되어 있으며, 각 동마다 상권 특성이 다릅니다. ${biz.ko} 매장의 위치, 면적, 고객층에 따라 ${prdKo}의 최적 모델이 달라지므로 매장 방문 컨설팅을 권장드립니다. ${sgName} 지역에서 검증된 시스템과 매장 환경별 추천 옵션을 무료로 안내해드리며, 카드사 가맹점 등록부터 직원 교육까지 모든 절차를 본사가 대행합니다.`,
+    `${sgName} ${biz.ko} 매장의 ${prdKo} 교체 주기를 분석하면 평균 ${3+h%4}년입니다. 이 시기에 시스템을 업그레이드하면 신규 결제 수단(QR, 모바일 페이, 비접촉 결제) 대응이 원활해지고 매장 매출 분석도 정확해집니다. 또한 보안 인증 강화, 매출 데이터 클라우드 백업, 모바일 매출 확인 등 최신 기능을 활용하실 수 있어 매장 관리의 디지털 전환을 가속화할 수 있습니다.`,
+    `${sgName} 지역 ${biz.ko} 매장에서 ${prdKo}을 선택할 때 가장 중요한 기준은 안정성과 A/S 응답 속도입니다. ${sgName} 지역 직접 방문 가능한 시스템을 설치하시면 영업 차질을 최소화할 수 있습니다. 특히 ${biz.ko} 업종은 영업 시간 중 시스템 다운이 매출 손실로 직결되므로, 99.9% 이상의 안정성을 보장하고 1시간 이내 출동 가능한 A/S 시스템이 필수적입니다.`,
+    `${sidoName} ${sgName}는 ${biz.ko} 업종 경쟁이 치열한 지역입니다. ${prdKo}을 활용한 차별화된 고객 경험이 매장 성공의 열쇠가 되며, 단순 결제 도구가 아닌 매장 마케팅 도구로 활용하시면 매출이 ${5+h%15}% 향상됩니다. 멤버십 적립, 할인 쿠폰 발행, 재방문 유도 메시지 발송 등 ${prdKo}이 제공하는 다양한 기능을 활용해 단골 고객 비율을 높이세요.`,
+    `${sgName} ${biz.ko} 사장님들이 ${prdKo} 도입 후 가장 만족하는 부분은 정산 자동화입니다. 일일 마감 시간이 평균 ${20+h%40}분에서 ${5+h%10}분으로 단축되며, 매출 분석 리포트 자동 생성으로 운영 효율이 크게 개선됩니다. 또한 세무 신고 자동화, 카드사 정산 내역 자동 매칭, 직원 인센티브 자동 계산까지 가능해 사장님의 행정 업무 부담이 대폭 줄어듭니다.`,
+    `${sgName}의 ${biz.ko} 매장 평균 운영 시간은 일 ${10+h%6}시간이며, 이 시간 동안 ${prdKo}이 안정적으로 작동해야 합니다. 99.9% 이상의 안정성을 보장하는 시스템 선택이 필수이며, 단 한 번의 시스템 다운도 매출 손실로 직결됩니다. 또한 영업 시간 외에도 데이터 백업, 시스템 점검 등이 자동으로 이루어져야 매장 운영의 연속성을 보장할 수 있습니다.`,
+    `${sgName}에서 ${biz.ko}을 새로 오픈하시는 사장님이라면 카드사 가맹점 등록부터 ${prdKo} 설치, 직원 교육까지 ${10+h%5}~${15+h%10}일 안에 완료하셔야 영업에 차질이 없습니다. 본사가 모든 행정 절차를 대행해드리며, 사장님은 매장 인테리어와 영업 준비에만 집중하실 수 있습니다. 오픈 후 1개월간 무료 운영 지원도 제공됩니다.`,
+    `${sgName} ${biz.ko} ${prdKo}은 ${prodKey==='card'?'VAN사별 수수료 비교가 매장 매출에 큰 영향을 미칩니다. 매장 매출 패턴 분석 후 가장 유리한 VAN사를 선택하시면 월 ${10+h%80}만원 이상의 비용 절감 효과':'매장 운영 통합 관리가 핵심입니다. 결제·재고·직원·고객 관리를 하나의 시스템에서 처리하시면 인건비 절감과 매출 향상 효과'}를 동시에 얻을 수 있습니다. 매장 데이터 분석 후 최적 옵션을 추천해드립니다.`,
+    `${sidoName} ${sgName} 지역의 ${biz.ko} 매장 ${30+h%50}곳을 분석한 결과, ${prdKo} 도입 후 평균 매출 증가율이 ${8+h%12}%로 나타났습니다. ${sgName}의 ${biz.ko} 사장님께도 비슷한 효과를 기대할 수 있으며, 무료 컨설팅으로 시작하실 수 있습니다. 검증된 시스템 도입은 매장 운영 효율 개선과 매출 증대를 동시에 가져다줍니다.`,
+    `${sgName} ${biz.ko} 매장에서 ${prdKo}의 ${prodKey==='card'?'결제 처리 속도':'주문 처리 효율'}는 고객 만족도에 직접 영향을 미칩니다. 빠르고 정확한 시스템은 재방문율을 높이고 입소문을 통한 신규 고객 유입에도 도움이 됩니다. 특히 SNS와 검색 결과로 매장이 노출되는 시대에 결제 경험이 좋지 않으면 부정적 리뷰로 이어질 수 있어 시스템 선택이 더욱 중요합니다.`,
+    `${sgName} 지역에서 ${biz.ko}을 ${5+h%10}년 이상 운영하신 사장님들의 공통된 의견은 "${prdKo} 선택이 매장 운영의 절반"이라는 것입니다. 검증된 시스템을 선택하시면 장기 운영에서 큰 차이를 만들 수 있습니다. 매출 관리, 직원 관리, 고객 관리, 세무 신고까지 모든 운영 요소가 ${prdKo}을 통해 통합되므로, 시스템 선택이 매장 성공에 직결됩니다.`,
+    `자, 솔직히 말씀드리면 ${sgName}의 ${biz.ko} 매장 환경은 다른 시군구와 다른 점이 있습니다. 인근 동의 인구 분포, 유동인구, 평균 객단가가 매장 운영에 영향을 미치며, 이런 지역 특성을 반영한 ${prdKo} 설정이 매출에 직결됩니다. 단순히 가격 비교만으로 시스템을 선택하면 매장에 맞지 않을 수 있어 주의가 필요합니다.`,
+    `요즘 ${sgName} ${biz.ko} 사장님들이 가장 많이 묻는 질문은 "${prodKey==='card'?'어떤 VAN사가 우리 매장에 유리한가':'어떤 포스가 우리 업종에 가장 적합한가'}"입니다. 답은 매장마다 다르며, 매장 환경 진단을 통해서만 정확한 추천이 가능합니다. 무료 진단 후 매장에 가장 유리한 옵션을 안내해드립니다. 010-9876-8282로 문의주세요.`,
+    `${sgName} ${biz.ko} 매장 한 곳을 사례로 들면, ${prdKo} 교체 후 일일 마감 시간이 ${30+h%30}분 단축되어 사장님이 가족과의 시간이 늘었다고 하십니다. 자동화 시스템이 단순 매출 향상뿐만 아니라 사장님의 삶의 질까지 개선해주는 셈입니다. 매장 운영의 진정한 효율은 결국 사장님의 시간 확보에 있습니다.`,
+    `${sgName}의 ${biz.ko} 매장이 ${prdKo} 도입을 검토할 때 의외로 많이 놓치는 부분이 정산 시 카드사별 입금일입니다. 카드사마다 입금 주기가 달라 매장 자금 운영에 영향을 미치는데, 통합 관리 시스템이면 이런 정보를 자동으로 추적해 자금 운영을 도와줍니다. 단순 결제만 처리하는 단말기와는 차원이 다른 효율을 제공합니다.`,
+    `${sgName} ${biz.ko} 사장님들이 자주 빠지는 함정은 "지금 단말기로 충분하다"는 안일한 생각입니다. 결제 환경은 매년 빠르게 변화하고, 신규 결제 수단(QR, 페이, 코인 등)이 계속 등장합니다. 5년 전 시스템으로 지금을 운영하면 손님을 놓치는 경우가 많아지므로, 정기적인 시스템 점검과 업그레이드가 필요합니다.`,
+    `한 가지 ${sgName} ${biz.ko} 사장님들에게 꼭 강조드리고 싶은 점은, ${prdKo} 도입 시 단순 가격이 아닌 5년 총 비용 기준 비교입니다. 초기 가격이 저렴해도 월 통신료, 수수료, A/S 비용을 합치면 더 비싸질 수 있습니다. 5년 총비용 기준으로 비교하시면 진짜 합리적인 선택을 할 수 있습니다.`,
+    `${sgName}의 ${biz.ko} 시장 규모를 보면 매년 ${5+h%10}% 정도 성장하고 있는 것으로 추정됩니다. 그만큼 신규 매장도 늘고 있고, 기존 매장의 시스템 교체 수요도 증가하고 있습니다. ${prdKo} 시장이 커지면서 옵션도 다양해졌으니 매장에 가장 적합한 시스템을 신중히 선택하시기 바랍니다.`,
+    `놓치기 쉬운 사실 하나, ${sgName} ${biz.ko} 매장의 ${prdKo}은 단순 결제 도구가 아니라 세무 자료 생성기 역할도 합니다. 자동으로 매출 자료가 정리되어 부가세 신고, 종합소득세 신고가 훨씬 수월해집니다. 시스템 도입 후 세무사 비용까지 줄었다는 사장님들이 많은 이유가 여기 있습니다.`,
+    `${sgName} 지역에서 ${biz.ko}을 운영하실 때 가장 큰 변수는 임대료, 인건비, 시스템 비용입니다. 이 중 시스템 비용은 한 번 잘 갖추면 5~10년 안정적이며, 다른 비용 절감 효과까지 만들어냅니다. 인건비 부담이 큰 시대에 ${prdKo}을 통한 자동화는 매장 생존을 위한 필수 조건입니다.`,
+    `${sgName} ${biz.ko} 매장의 ${prdKo} 사용자 후기를 종합하면, 도입 첫 달부터 운영 효율이 체감된다는 의견이 ${70+h%20}% 이상입니다. 일일 마감 시간 단축, 매출 분석 자동화, 직원 실수 감소 등이 즉각 나타나며, 시간이 갈수록 효과가 커진다고 합니다. 검증된 시스템을 선택하세요.`,
+    `만약 ${sgName}에서 ${biz.ko}을 처음 시작하시는 사장님이라면 첫 시스템 선택이 매장 성장의 토대가 됩니다. 처음부터 확장 가능한 시스템을 선택하시면 매장이 커져도 시스템을 교체할 필요가 없어 큰 비용 절감 효과를 볼 수 있습니다. 단기 비용보다 장기 가치를 보세요.`,
+    `${sgName}의 ${biz.ko} 시장에서 살아남으려면 결제 환경 외에도 매장 운영 효율이 중요합니다. ${prdKo}을 통한 자동화는 인건비 절감, 매출 향상, 고객 만족도 개선 등 다양한 측면에서 도움이 되며, 특히 직원 교육 시간 단축, 직원 실수 방지, 정산 오류 감소 등 인적 비용을 크게 줄일 수 있습니다.`,
+    `한 ${biz.ko} 사장님 사례를 소개하자면, ${sgName}에서 ${5+h%10}년간 ${prdKo} 없이 수기로 매출을 관리하다가 도입 후 첫 달부터 매출 누락이 ${10+h%15}만원 줄었다고 합니다. 시스템이 누락 없이 모든 거래를 기록하고, 카드사 정산과 자동 매칭되어 차이가 없는지 자동 확인하기 때문입니다.`,
+    `${sgName} ${biz.ko} 업계 선배들의 조언을 정리하면, ${prdKo} 선택 시 첫째는 안정성, 둘째는 A/S 응답속도, 셋째는 확장성이라고 합니다. 가격은 그 다음입니다. 매장이 안정적으로 운영되어야 매출이 나오고, 시스템 문제가 빠르게 해결되어야 영업 차질이 없으며, 매장 성장에 맞춰 시스템도 함께 커야 합니다.`,
+    `${sgName}는 ${biz.ko} 업종이 자리잡은 지역으로, 시간이 갈수록 매장 간 차별화가 중요해지고 있습니다. ${prdKo}을 통한 고객 관리, 멤버십 운영, 마케팅 자동화 등이 매장 차별화의 핵심 도구가 되며, 단순 결제 처리만 하는 시스템으로는 한계가 있습니다.`,
+    `${sgName} ${biz.ko} 매장의 ${prdKo} 운영 효율을 극대화하려면 매장 직원이 시스템을 100% 활용할 수 있어야 합니다. 직관적인 UI와 빠른 학습 곡선을 가진 시스템을 선택하시고, 본사 교육을 충분히 받으시면 시스템 효과를 모두 누릴 수 있습니다.`,
+    `만일 ${sgName}에서 ${biz.ko} 매장을 ${prdKo} 없이 운영하고 계신다면 지금이 도입 시점입니다. 결제 환경 변화 속도가 빨라 신규 결제 수단을 처리할 수 없으면 손님을 놓치게 되고, 정확한 매출 데이터 없이는 매장 의사결정이 어렵습니다. 작은 투자로 큰 효율을 얻으세요.`
    ];
-   const para1=PA_SG[h%PA_SG.length];
-   const para2=PA_SG[(h+1)%PA_SG.length];
-   const para3=PA_SG[(h+2)%PA_SG.length];
+   const para1=pick(PA_SG,0);
+   const para2=pick2(PA_SG,1);
+   const para3=pick3(PA_SG,2);
+   const para4=pick(PA_SG,5);
+   const para5=pick2(PA_SG,4);
+   const para6=pick3(PA_SG,7);
+   const para7=pick(PA_SG,9);
+   const para8=pick2(PA_SG,3);
+   const para9=pick3(PA_SG,11);
+   const para10=pick(PA_SG,13);
+   const para11=pick2(PA_SG,6);
+   const para12=pick3(PA_SG,8);
+   // 추가 다양화 풀 (시군구)
+   const POOL_X=[
+    `${sgName}는 ${sidoName}에서 ${biz.ko} 매장 운영에 적합한 환경을 갖춘 지역 중 하나입니다. 인근 동·읍·면의 인구 분포와 상권 특성이 ${biz.ko} 사장님의 매출에 직접 영향을 미치며, 이런 환경에 맞춘 ${prdKo} 선택이 중요합니다.`,
+    `${sgName} 지역 ${biz.ko} 매장의 디지털 전환은 빠르게 진행되고 있습니다. 카드·페이·QR 등 다양한 결제 수단을 통합 처리하는 ${prdKo}이 매장 운영의 표준이 되어가고 있으며, 결제 시스템이 매장 운영의 모든 영역에 영향을 미칩니다.`,
+    `${sgName}에서 ${biz.ko}을 ${5+h%10}년 이상 운영하신 베테랑 사장님들은 ${prdKo} 선택의 중요성을 잘 알고 계십니다. 한 번 잘못 선택하면 교체 비용과 운영 손실이 크기 때문에, 처음부터 검증된 시스템을 도입하는 것이 현명합니다.`,
+    `${sgName}의 ${biz.ko} 시장은 매년 경쟁이 심화되고 있습니다. ${prdKo}을 활용한 효율적인 매장 운영이 경쟁력의 핵심이 되며, 단순 결제 처리를 넘어 매장 데이터 기반 의사결정이 매장 성공을 좌우합니다.`,
+    `${sgName} 지역 ${biz.ko} 매장의 평균 영업 시간은 일 ${10+h%6}~${12+h%4}시간입니다. 이 시간 동안 ${prdKo}이 안정적으로 작동해야 하며, 매장 환경에 맞는 적절한 시스템 사양 선택이 중요합니다.`,
+    `${sgName} ${biz.ko} 매장의 ${prdKo} 사용자 만족도 조사 결과, ${prodKey==='card'?'결제 처리 속도':'주문 관리 효율'}와 A/S 응답 속도가 가장 중요한 만족도 요인으로 나타났습니다. 매장 운영의 핵심 도구이므로 신중한 선택이 필요합니다.`,
+    `${sgName}에서 ${biz.ko}을 운영하시면서 ${prdKo} 교체를 검토 중이시라면, 단순 가격 비교가 아닌 종합적인 운영 효율 분석이 필요합니다. 무료 매장 컨설팅을 통해 매장에 가장 적합한 시스템을 추천받으세요.`,
+    `${sgName} ${biz.ko} 사장님들 사이에서 ${prdKo} 추천 모델은 시간이 갈수록 변화하고 있습니다. 최근 트렌드는 클라우드 기반 통합 매출 관리, 모바일 매출 확인, 자동 정산 등이며, 이런 기능이 표준이 되고 있습니다.`
+   ];
+   const px1=pick(POOL_X,0);
+   const px2=pick2(POOL_X,2);
+   const px3=pick3(POOL_X,5);
+   const px4=pick(POOL_X,7);
    const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
    const iso=today.toISOString().split('T')[0];
    const canon=`https://allpaystore.com/biz-region/${sidoSlug}/${sgSlug}/${biz.slug}-${prodKey}/`;
@@ -5436,6 +5571,26 @@ ${makeBreadcrumb([{name:'홈',href:'/'},{name:'지역×업종',href:'/biz-region
 <p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para1}</p>
 <p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para2}</p>
 <p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para3}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">📊 ${sgName} ${biz.ko} 시장 분석</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para4}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para5}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para6}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">💼 ${sgName} ${biz.ko} 운영 노하우</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para7}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para8}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🎯 ${sgName} ${biz.ko} 매장 추천 사항</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para9}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para10}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">🌟 ${sgName} ${biz.ko} 사장님이 알아야 할 점</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para11}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${para12}</p>
+<h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">📌 ${sgName} ${biz.ko} ${prdKo} 정리</h3>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px1}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px2}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px3}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${px4}</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${sgName} ${biz.ko} 매장에 가장 적합한 ${prdKo}을 선택하시려면 매장 환경 진단이 우선입니다. 면적, 위치, 거래량, 결제 패턴 등 다양한 요소를 종합적으로 고려해야 매장에 딱 맞는 시스템을 도입할 수 있습니다. 올페이스토어는 ${sgName} 전 지역 ${biz.ko} 매장에 ${prodKey==='card'?'설치비·가맹비 무료':'설치비·교육비 무료'}로 ${prdKo}을 설치해드리며, 시스템 도입 후 1개월간 무료 운영 지원과 평생 A/S를 보장합니다.</p>
+<p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 12px">${sgName} 지역 ${biz.ko} 사장님이라면 지금 010-9876-8282로 연락주세요. 매장 환경에 가장 적합한 ${prdKo} 모델을 무료로 안내해드리며, ${prodKey==='card'?'VAN사 수수료':'시스템 옵션'} 비교까지 모두 무료로 진행됩니다. 검증된 시스템으로 매장 운영 효율을 한 단계 높이세요.</p>
 <h3 style="font-size:17px;font-weight:800;color:#111;margin:20px 0 12px">✅ ${sgName} ${biz.ko} ${prdKo} 핵심 기능</h3>
 <ul style="font-size:14px;color:#444;line-height:1.9;padding-left:0;list-style:none;margin:0">
 <li style="padding:6px 0;border-bottom:1px solid #f0f0f0">${prodKey==='card'?'💳 모든 결제 수단 통합 (카드·페이·QR)':'🖥 매장 통합 운영 시스템'}</li>
