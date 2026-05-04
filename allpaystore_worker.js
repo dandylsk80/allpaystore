@@ -3602,6 +3602,25 @@ function makeProdCatPage(prodKey,catKey,titles,catMap,slugs){
 }
 
 function makeSitemap(){
+ // /sitemap.xml = 인덱스 사이트맵 (분할된 사이트맵들의 링크)
+ const base='https://allpaystore.com';
+ const today=new Date().toISOString().split('T')[0];
+ const sitemaps=[
+  '/sitemap-main.xml',
+  '/sitemap-dong.xml',
+  '/sitemap-biz-region.xml',
+  '/sitemap-bizdong-card-1.xml',
+  '/sitemap-bizdong-card-2.xml',
+  '/sitemap-bizdong-card-3.xml',
+  '/sitemap-bizdong-pos-1.xml',
+  '/sitemap-bizdong-pos-2.xml',
+  '/sitemap-bizdong-pos-3.xml'
+ ];
+ const items=sitemaps.map(s=>`<sitemap><loc>${base}${s}</loc><lastmod>${today}</lastmod></sitemap>`).join('');
+ return '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+items+'</sitemapindex>';
+}
+function makeSitemapMain(){
+ // 메인: 홈, 제품, 시도, 시군구, /biz/, /biz-cctv/, /biz-pos/ 등 정적 페이지
  const base='https://allpaystore.com';
  const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
@@ -3615,38 +3634,69 @@ function makeSitemap(){
  dongKeys.forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
  sgSet.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
  prodSlugs.forEach(p=>{sgSet.forEach(s=>{parts.push(u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/'));});});
- dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
- dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
- // 지역×업종×제품 (카드/포스만)
- dongKeys.forEach(s=>{BIZ_LIST.forEach(b=>{parts.push(u('/blog/'+s+'/'+b.slug+'-card/'));parts.push(u('/blog/'+s+'/'+b.slug+'-pos/'));});});
  parts.push(u('/guide/'));
  GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/'));});
- parts.push(u('/biz/'));
- parts.push(u('/biz/card/'));
- 
-  POS_SLUGS.forEach(s=>{parts.push(u('/biz-pos/'+s+'/'));});
-  KIOSK_SLUGS.forEach(s=>{parts.push(u('/biz-kiosk/'+s+'/'));});
-  TABLE_SLUGS.forEach(s=>{parts.push(u('/biz-table/'+s+'/'));});
-
-  ['biz-pos','biz-kiosk','biz-table'].forEach(prefix=>{
-    parts.push(u('/'+prefix+'/'));
-    ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{
-      const t=prefix==='biz-pos'?POS_TITLES:prefix==='biz-kiosk'?KIOSK_TITLES:TABLE_TITLES;
-      const m=prefix==='biz-pos'?POS_CAT_MAP:prefix==='biz-kiosk'?KIOSK_CAT_MAP:TABLE_CAT_MAP;
-      if(t.some((_,i)=>m[i]===c)) parts.push(u('/'+prefix+'/'+c+'/'));
-    });
+ parts.push(u('/biz/'));parts.push(u('/biz/card/'));
+ POS_SLUGS.forEach(s=>{parts.push(u('/biz-pos/'+s+'/'));});
+ KIOSK_SLUGS.forEach(s=>{parts.push(u('/biz-kiosk/'+s+'/'));});
+ TABLE_SLUGS.forEach(s=>{parts.push(u('/biz-table/'+s+'/'));});
+ ['biz-pos','biz-kiosk','biz-table'].forEach(prefix=>{
+  parts.push(u('/'+prefix+'/'));
+  ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{
+   const t=prefix==='biz-pos'?POS_TITLES:prefix==='biz-kiosk'?KIOSK_TITLES:TABLE_TITLES;
+   const m=prefix==='biz-pos'?POS_CAT_MAP:prefix==='biz-kiosk'?KIOSK_CAT_MAP:TABLE_CAT_MAP;
+   if(t.some((_,i)=>m[i]===c)) parts.push(u('/'+prefix+'/'+c+'/'));
   });
-
-  parts.push(u('/biz-vending/'));
-  VEND_SLUGS.forEach(s=>{parts.push(u('/biz-vending/'+s+'/'));});
-  Object.keys(VEND_CATS).forEach(c=>{
-    if(VEND_TITLES.some((_,i)=>VEND_CAT_MAP[i]===c)) parts.push(u('/biz-vending/'+c+'/'));
-  });
-BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/'));});
+ });
+ parts.push(u('/biz-vending/'));
+ VEND_SLUGS.forEach(s=>{parts.push(u('/biz-vending/'+s+'/'));});
+ Object.keys(VEND_CATS).forEach(c=>{if(VEND_TITLES.some((_,i)=>VEND_CAT_MAP[i]===c)) parts.push(u('/biz-vending/'+c+'/'));});
+ BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/'));});
  parts.push(u('/biz-cctv/'));
  ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{parts.push(u('/biz-cctv/'+c+'/'));});
  CCTV_SLUGS.forEach(s=>{parts.push(u('/biz-cctv/'+s+'/'));});
  Object.keys(BIZ_TYPES).forEach(c=>{parts.push(u('/biz/'+c+'/'));});
+ return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
+}
+function makeSitemapDong(){
+ // 동 페이지 + 동×제품
+ const base='https://allpaystore.com';
+ const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
+ const prodSlugs=Object.keys(PRODUCTS);
+ const dongKeys=RK().filter(k=>k.split('/').length===3);
+ const parts=[];
+ dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
+ dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
+ return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
+}
+function makeSitemapBizRegion(){
+ // /biz-region/ 4단계 페이지들
+ const base='https://allpaystore.com';
+ const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
+ const sidoSlugs=Object.keys(SI_MAP);
+ const parts=[u('/biz-region/')];
+ sidoSlugs.forEach(s=>{parts.push(u('/biz-region/'+s+'/'));});
+ // 시도×업종-제품
+ sidoSlugs.forEach(s=>{BIZ_LIST.forEach(b=>{parts.push(u('/biz-region/'+s+'/'+b.slug+'-card/'));parts.push(u('/biz-region/'+s+'/'+b.slug+'-pos/'));});});
+ // 시군구×업종-제품
+ const sgKeys=Object.keys(SG_MAP);
+ sgKeys.forEach(sg=>{const[si,sgs]=sg.split('/');BIZ_LIST.forEach(b=>{parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-card/'));parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-pos/'));});});
+ return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
+}
+function makeSitemapBizDong(prodKey,partIdx){
+ // 동×업종-card 또는 -pos를 3등분
+ const base='https://allpaystore.com';
+ const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
+ const dongKeys=RK().filter(k=>k.split('/').length===3);
+ const parts=[];
+ // 27 업종 × 5,066 동 = 136,782 / 3 = 45,594개씩
+ const all=[];
+ dongKeys.forEach(s=>{BIZ_LIST.forEach(b=>{all.push('/blog/'+s+'/'+b.slug+'-'+prodKey+'/');});});
+ const total=all.length;
+ const chunk=Math.ceil(total/3);
+ const start=partIdx*chunk;
+ const end=Math.min(start+chunk,total);
+ for(let i=start;i<end;i++)parts.push(u(all[i]));
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function getRSS() {
@@ -5775,6 +5825,15 @@ if(path==='/biz/card'){
  }
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
  if(path==='/sitemap.xml'){const xml=makeSitemap();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-main.xml'){const xml=makeSitemapMain();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-dong.xml'){const xml=makeSitemapDong();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-biz-region.xml'){const xml=makeSitemapBizRegion();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-bizdong-card-1.xml'){const xml=makeSitemapBizDong('card',0);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-bizdong-card-2.xml'){const xml=makeSitemapBizDong('card',1);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-bizdong-card-3.xml'){const xml=makeSitemapBizDong('card',2);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-bizdong-pos-1.xml'){const xml=makeSitemapBizDong('pos',0);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-bizdong-pos-2.xml'){const xml=makeSitemapBizDong('pos',1);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path==='/sitemap-bizdong-pos-3.xml'){const xml=makeSitemapBizDong('pos',2);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
  if(path==='/favicon.ico'){
   const fResp=await fetch('https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png');
   const fh=new Headers(fResp.headers);
