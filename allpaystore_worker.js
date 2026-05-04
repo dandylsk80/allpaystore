@@ -4274,6 +4274,7 @@ a{text-decoration:none;color:inherit}
  <a href="#find-sec">지역별 설치</a>
  <a href="/product/">제품 안내</a>
  <a href="/biz/">업종별</a>
+ <a href="/biz-region/">지역×업종</a>
  <a href="/contact/" style="color:#111;font-weight:800">문의하기</a>
  </nav>
  <a href="tel:010-9876-8282" class="hd-tel">📞 010-9876-8282</a>
@@ -4287,6 +4288,7 @@ a{text-decoration:none;color:inherit}
   <a href="#find-sec" onclick="document.getElementById('mobMenu').classList.remove('open')">📍 지역별 설치</a>
   <a href="/product/" onclick="document.getElementById('mobMenu').classList.remove('open')">📦 제품 안내</a>
   <a href="/biz/">💳 업종별</a>
+  <a href="/biz-region/">📍 지역×업종</a>
   <a href="/contact/">💬 문의하기</a>
   <a href="tel:010-9876-8282" class="hd-mob-tel">📞 010-9876-8282</a>
  </div>
