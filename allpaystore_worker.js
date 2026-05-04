@@ -3684,18 +3684,20 @@ function makeSitemapBizRegion(){
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapBizDong(prodKey,partIdx){
- // 동×업종-card 또는 -pos를 3등분 (크기 최적화)
+ // 동×업종-card 또는 -pos를 3등분 (필요 슬라이스만 직접 생성)
  const base='https://allpaystore.com';
- const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
  const dongKeys=RK().filter(k=>k.split('/').length===3);
- const parts=[];
- const all=[];
- dongKeys.forEach(s=>{BIZ_LIST.forEach(b=>{all.push('/blog/'+s+'/'+b.slug+'-'+prodKey+'/');});});
- const total=all.length;
+ const bizN=BIZ_LIST.length;
+ const total=dongKeys.length*bizN;
  const chunk=Math.ceil(total/3);
  const start=partIdx*chunk;
  const end=Math.min(start+chunk,total);
- for(let i=start;i<end;i++)parts.push(u(all[i]));
+ const parts=[];
+ for(let i=start;i<end;i++){
+  const d=dongKeys[Math.floor(i/bizN)];
+  const b=BIZ_LIST[i%bizN].slug;
+  parts.push('<url><loc>'+base+'/blog/'+d+'/'+b+'-'+prodKey+'/</loc></url>');
+ }
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function getRSS() {
@@ -5253,7 +5255,7 @@ function submitForm(){
 </body></html>`;
 }
 export default {
- async fetch(request){
+ async fetch(request,env,ctx){
  const url=new URL(request.url);
  const path=decodeURIComponent(url.pathname).replace(/\/+$/,'')||'/';
  if(path==='/'){
@@ -5825,16 +5827,24 @@ if(path==='/biz/card'){
 </body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
  }
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
- if(path==='/sitemap.xml'){const xml=makeSitemap();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-main.xml'){const xml=makeSitemapMain();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-dong.xml'){const xml=makeSitemapDong();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-biz-region.xml'){const xml=makeSitemapBizRegion();return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-bizdong-card-1.xml'){const xml=makeSitemapBizDong('card',0);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-bizdong-card-2.xml'){const xml=makeSitemapBizDong('card',1);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-bizdong-card-3.xml'){const xml=makeSitemapBizDong('card',2);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-bizdong-pos-1.xml'){const xml=makeSitemapBizDong('pos',0);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-bizdong-pos-2.xml'){const xml=makeSitemapBizDong('pos',1);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
- if(path==='/sitemap-bizdong-pos-3.xml'){const xml=makeSitemapBizDong('pos',2);return new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});}
+ if(path.match(/^\/sitemap(-main|-dong|-biz-region|-bizdong-(card|pos)-[1-3])?\.xml$/)){
+  const cache=caches.default;
+  const cacheKey=new Request('https://allpaystore.com'+path,{method:'GET'});
+  let cached=await cache.match(cacheKey);
+  if(cached) return cached;
+  let xml;
+  if(path==='/sitemap.xml') xml=makeSitemap();
+  else if(path==='/sitemap-main.xml') xml=makeSitemapMain();
+  else if(path==='/sitemap-dong.xml') xml=makeSitemapDong();
+  else if(path==='/sitemap-biz-region.xml') xml=makeSitemapBizRegion();
+  else {
+   const m=path.match(/^\/sitemap-bizdong-(card|pos)-([1-3])\.xml$/);
+   xml=makeSitemapBizDong(m[1],parseInt(m[2])-1);
+  }
+  const resp=new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+  if(ctx&&ctx.waitUntil) ctx.waitUntil(cache.put(cacheKey,resp.clone()));
+  return resp;
+ }
  if(path==='/favicon.ico'){
   const fResp=await fetch('https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png');
   const fh=new Headers(fResp.headers);
