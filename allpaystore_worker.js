@@ -3622,74 +3622,75 @@ function makeSitemap(){
 function makeSitemapMain(){
  // 메인: 홈, 제품, 시도, 시군구, /biz/, /biz-cctv/, /biz-pos/ 등 정적 페이지
  const base='https://allpaystore.com';
- const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
+ const today=new Date().toISOString().split('T')[0];
+ const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri||'0.7'}</priority></url>`;
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
  const prodSlugs=Object.keys(PRODUCTS);
- const parts=[u('/'),u('/contact/'),u('/product/')];
- prodSlugs.forEach(p=>{parts.push(u('/product/'+p+'/'));});
- prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{parts.push(u('/product/'+p+'/'+s+'/'));});});
- sidoSlugs.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
+ const parts=[u('/','1.0'),u('/contact/','0.8'),u('/product/','0.9')];
+ prodSlugs.forEach(p=>{parts.push(u('/product/'+p+'/','0.8'));});
+ prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{parts.push(u('/product/'+p+'/'+s+'/','0.7'));});});
+ sidoSlugs.forEach(s=>{parts.push(u('/blog/'+s+'/','0.8'));});
  const sgSet=new Set();
  const dongKeys=RK().filter(k=>k.split('/').length===3);
  dongKeys.forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
- sgSet.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
- prodSlugs.forEach(p=>{sgSet.forEach(s=>{parts.push(u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/'));});});
- parts.push(u('/guide/'));
- GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/'));});
- parts.push(u('/biz/'));parts.push(u('/biz/card/'));
- POS_SLUGS.forEach(s=>{parts.push(u('/biz-pos/'+s+'/'));});
- KIOSK_SLUGS.forEach(s=>{parts.push(u('/biz-kiosk/'+s+'/'));});
- TABLE_SLUGS.forEach(s=>{parts.push(u('/biz-table/'+s+'/'));});
+ sgSet.forEach(s=>{parts.push(u('/blog/'+s+'/','0.7'));});
+ prodSlugs.forEach(p=>{sgSet.forEach(s=>{parts.push(u('/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/','0.6'));});});
+ parts.push(u('/guide/','0.7'));
+ GUIDE_KW.forEach(k=>{parts.push(u('/guide/'+encodeURIComponent(k)+'/','0.6'));});
+ parts.push(u('/biz/','0.8'));parts.push(u('/biz/card/','0.8'));
+ POS_SLUGS.forEach(s=>{parts.push(u('/biz-pos/'+s+'/','0.6'));});
+ KIOSK_SLUGS.forEach(s=>{parts.push(u('/biz-kiosk/'+s+'/','0.6'));});
+ TABLE_SLUGS.forEach(s=>{parts.push(u('/biz-table/'+s+'/','0.6'));});
  ['biz-pos','biz-kiosk','biz-table'].forEach(prefix=>{
-  parts.push(u('/'+prefix+'/'));
+  parts.push(u('/'+prefix+'/','0.7'));
   ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{
    const t=prefix==='biz-pos'?POS_TITLES:prefix==='biz-kiosk'?KIOSK_TITLES:TABLE_TITLES;
    const m=prefix==='biz-pos'?POS_CAT_MAP:prefix==='biz-kiosk'?KIOSK_CAT_MAP:TABLE_CAT_MAP;
-   if(t.some((_,i)=>m[i]===c)) parts.push(u('/'+prefix+'/'+c+'/'));
+   if(t.some((_,i)=>m[i]===c)) parts.push(u('/'+prefix+'/'+c+'/','0.6'));
   });
  });
- parts.push(u('/biz-vending/'));
- VEND_SLUGS.forEach(s=>{parts.push(u('/biz-vending/'+s+'/'));});
- Object.keys(VEND_CATS).forEach(c=>{if(VEND_TITLES.some((_,i)=>VEND_CAT_MAP[i]===c)) parts.push(u('/biz-vending/'+c+'/'));});
- BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/'));});
- parts.push(u('/biz-cctv/'));
- ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{parts.push(u('/biz-cctv/'+c+'/'));});
- CCTV_SLUGS.forEach(s=>{parts.push(u('/biz-cctv/'+s+'/'));});
- Object.keys(BIZ_TYPES).forEach(c=>{parts.push(u('/biz/'+c+'/'));});
+ parts.push(u('/biz-vending/','0.7'));
+ VEND_SLUGS.forEach(s=>{parts.push(u('/biz-vending/'+s+'/','0.6'));});
+ Object.keys(VEND_CATS).forEach(c=>{if(VEND_TITLES.some((_,i)=>VEND_CAT_MAP[i]===c)) parts.push(u('/biz-vending/'+c+'/','0.6'));});
+ BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/','0.6'));});
+ parts.push(u('/biz-cctv/','0.7'));
+ ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{parts.push(u('/biz-cctv/'+c+'/','0.6'));});
+ CCTV_SLUGS.forEach(s=>{parts.push(u('/biz-cctv/'+s+'/','0.6'));});
+ Object.keys(BIZ_TYPES).forEach(c=>{parts.push(u('/biz/'+c+'/','0.6'));});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapDong(){
  // 동 페이지 + 동×제품
  const base='https://allpaystore.com';
- const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
+ const today=new Date().toISOString().split('T')[0];
+ const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri}</priority></url>`;
  const prodSlugs=Object.keys(PRODUCTS);
  const dongKeys=RK().filter(k=>k.split('/').length===3);
  const parts=[];
- dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
- dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
+ dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/','0.7'));});
+ dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/','0.6'));});});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapBizRegion(){
  // /biz-region/ 4단계 페이지들
  const base='https://allpaystore.com';
- const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
+ const today=new Date().toISOString().split('T')[0];
+ const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri||'0.6'}</priority></url>`;
  const sidoSlugs=Object.keys(SI_MAP);
- const parts=[u('/biz-region/')];
- sidoSlugs.forEach(s=>{parts.push(u('/biz-region/'+s+'/'));});
- // 시도×업종-제품
- sidoSlugs.forEach(s=>{BIZ_LIST.forEach(b=>{parts.push(u('/biz-region/'+s+'/'+b.slug+'-card/'));parts.push(u('/biz-region/'+s+'/'+b.slug+'-pos/'));});});
- // 시군구×업종-제품
+ const parts=[u('/biz-region/','0.8')];
+ sidoSlugs.forEach(s=>{parts.push(u('/biz-region/'+s+'/','0.7'));});
+ sidoSlugs.forEach(s=>{BIZ_LIST.forEach(b=>{parts.push(u('/biz-region/'+s+'/'+b.slug+'-card/','0.6'));parts.push(u('/biz-region/'+s+'/'+b.slug+'-pos/','0.6'));});});
  const sgKeys=Object.keys(SG_MAP);
- sgKeys.forEach(sg=>{const[si,sgs]=sg.split('/');BIZ_LIST.forEach(b=>{parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-card/'));parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-pos/'));});});
+ sgKeys.forEach(sg=>{const[si,sgs]=sg.split('/');BIZ_LIST.forEach(b=>{parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-card/','0.5'));parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-pos/','0.5'));});});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapBizDong(prodKey,partIdx){
  // 동×업종-card 또는 -pos를 3등분
  const base='https://allpaystore.com';
- const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
+ const today=new Date().toISOString().split('T')[0];
+ const u=(p)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>`;
  const dongKeys=RK().filter(k=>k.split('/').length===3);
  const parts=[];
- // 27 업종 × 5,066 동 = 136,782 / 3 = 45,594개씩
  const all=[];
  dongKeys.forEach(s=>{BIZ_LIST.forEach(b=>{all.push('/blog/'+s+'/'+b.slug+'-'+prodKey+'/');});});
  const total=all.length;
@@ -5288,6 +5289,8 @@ export default {
  return new Response(JSON.stringify({ok:true}),{headers:{'Content-Type':'application/json'}});
  }
  if(path==='/contact'){
+ // 파라미터가 있으면 깨끗한 /contact/로 301 redirect (SEO 중복 방지)
+ if(url.search){return Response.redirect('https://allpaystore.com/contact/',301);}
  return new Response(makeContactPage(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  const guideMatch=path.match(/^\/guide\/(.+)$/);
@@ -5847,7 +5850,7 @@ if(path==='/biz/card'){
   h2.set('Cache-Control','public,max-age=604800,s-maxage=604800');
   return new Response(imgResp.body,{headers:h2});
  }
- if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nSitemap: https://allpaystore.com/sitemap.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain'}});
+ if(path==='/robots.txt')return new Response('User-agent: *\nAllow: /\nDisallow: /contact/?\nSitemap: https://allpaystore.com/sitemap.xml\nSitemap: https://allpaystore.com/sitemap-main.xml\nSitemap: https://allpaystore.com/sitemap-dong.xml\nSitemap: https://allpaystore.com/sitemap-biz-region.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-card-1.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-card-2.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-card-3.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-pos-1.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-pos-2.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-pos-3.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain'}});
  if(path==='/llms.txt'||path==='/llms-full.txt')return new Response(`# 올페이스토어 (AllPayStore)
 
 > 한국 전국 카드단말기·포스기·키오스크·CCTV·테이블오더·자판기·매장철거 설치 전문 업체. 무료 견적, 빠른 설치, A/S 지원, 전국 5,000+ 읍면동 직접 출장 가능.
@@ -5942,6 +5945,12 @@ if(path==='/biz/card'){
    const sgSet=new Set();allSlugs.forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
    sgSet.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/');});});
    allSlugs.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/blog/'+s+'/'+p+'/');});});
+   // 동×업종-제품 (273,564 페이지)
+   allSlugs.forEach(s=>{BIZ_LIST.forEach(b=>{urls.push('https://allpaystore.com/blog/'+s+'/'+b.slug+'-card/');urls.push('https://allpaystore.com/blog/'+s+'/'+b.slug+'-pos/');});});
+   // /biz-region/ 4단계
+   urls.push('https://allpaystore.com/biz-region/');
+   sidos.forEach(s=>{urls.push('https://allpaystore.com/biz-region/'+s+'/');BIZ_LIST.forEach(b=>{urls.push('https://allpaystore.com/biz-region/'+s+'/'+b.slug+'-card/');urls.push('https://allpaystore.com/biz-region/'+s+'/'+b.slug+'-pos/');});});
+   sgSet.forEach(s=>{const[si,sg]=s.split('/');BIZ_LIST.forEach(b=>{urls.push('https://allpaystore.com/biz-region/'+si+'/'+sg+'/'+b.slug+'-card/');urls.push('https://allpaystore.com/biz-region/'+si+'/'+sg+'/'+b.slug+'-pos/');});});
    GUIDE_KW.forEach(k=>{urls.push('https://allpaystore.com/guide/'+encodeURIComponent(k)+'/');});
    BIZ_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz/'+s+'/');});
    urls.push('https://allpaystore.com/biz-cctv/');
