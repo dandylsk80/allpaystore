@@ -3660,15 +3660,14 @@ function makeSitemapMain(){
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapDong(){
- // 동 페이지 + 동×제품
+ // 동 페이지 + 동×제품 (크기 최적화)
  const base='https://allpaystore.com';
- const today=new Date().toISOString().split('T')[0];
- const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri}</priority></url>`;
+ const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
  const prodSlugs=Object.keys(PRODUCTS);
  const dongKeys=RK().filter(k=>k.split('/').length===3);
  const parts=[];
- dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/','0.7'));});
- dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/','0.6'));});});
+ dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
+ dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapBizRegion(){
@@ -3685,10 +3684,9 @@ function makeSitemapBizRegion(){
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapBizDong(prodKey,partIdx){
- // 동×업종-card 또는 -pos를 3등분
+ // 동×업종-card 또는 -pos를 3등분 (크기 최적화)
  const base='https://allpaystore.com';
- const today=new Date().toISOString().split('T')[0];
- const u=(p)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>`;
+ const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
  const dongKeys=RK().filter(k=>k.split('/').length===3);
  const parts=[];
  const all=[];
