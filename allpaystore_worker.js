@@ -1665,10 +1665,10 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" sizes="1080x1080" href="/images/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
-<title>${emd} ${prd.ko} ${suf} | ${sigungu} ${prd.ko} ${suf} 올페이스토어</title>
+<title>${sigungu} ${emd} ${prd.ko} ${suf} | ${sido.replace(/(특별시|광역시|특별자치시|특별자치도|도)$/,'')} ${sigungu} ${prd.ko} 전문 올페이스토어</title>
 <meta name="description" content="${full} ${prd.ko} ${suf}. ${emd} 매장·사무실·가게 ${prd.ko} 무료 견적, 빠른 ${act} 가능. ☎ 010-9876-8282">
 <meta name="keywords" content="${emd} ${prd.ko},${emd} 매장 ${prd.ko},${sigungu} ${prd.ko},${emd} ${prd.ko} 비용,${emd} ${prd.ko} 업체,${emd} 인테리어 철거,${emd} 원상복구">
-<meta property="og:title" content="${emd} ${prd.ko} ${suf} | 올페이스토어">
+<meta property="og:title" content="${sigungu} ${emd} ${prd.ko} ${suf} | 올페이스토어">
 <meta property="og:description" content="${full} ${prd.ko} ${suf}. 무료 견적 010-9876-8282">
 <meta property="og:image" content="https://allpaystore.com/og/${prodKey}/${encodeURIComponent(emd+' '+prd.ko)}">
 <meta property="og:image:width" content="1200">
@@ -3000,10 +3000,10 @@ function makeBlog(sido,sigungu,emd,slug){
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" sizes="1080x1080" href="/images/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
-<title>${sidoS} ${sigungu} ${emd} 카드단말기 설치 | 포스기·키오스크·CCTV 전문 올페이스토어</title>
+<title>${sigungu} ${emd} 카드단말기 설치 | ${sidoS} ${sigungu} 포스기·키오스크·CCTV 전문 올페이스토어</title>
 <meta name="description" content="${full} 카드단말기 설치 전문. ${sidoS} ${sigungu} ${emd} 포스기·키오스크·CCTV 원스톱 설치, 무료 견적, 빠른 설치 가능. ☎ 010-9876-8282">
 <meta name="keywords" content="${sidoS} ${sigungu} ${emd} 카드단말기 설치,${emd} 포스기,${sidoS} ${emd} 카드단말기,${sigungu} 카드단말기,${emd} 키오스크,${emd} CCTV,${sigungu} 포스기 설치">
-<meta property="og:title" content="${sidoS} ${sigungu} ${emd} 카드단말기 설치 | 올페이스토어">
+<meta property="og:title" content="${sigungu} ${emd} 카드단말기 설치 | ${sidoS} 올페이스토어">
 <meta property="og:description" content="${full} 카드단말기·포스기·키오스크·CCTV 전문. 무료 견적 010-9876-8282">
 <meta property="og:image" content="https://allpaystore.com/og/card/${encodeURIComponent(sidoS+' '+sigungu+' '+emd+' 카드단말기')}">
 <meta property="og:image:width" content="1200">
