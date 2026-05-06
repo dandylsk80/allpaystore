@@ -5836,18 +5836,20 @@ ${makeSiteFooter()}</body></html>`;
 </body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
  }
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
- if(path.match(/^\/sitemap(-main|-dong|-biz-region|-bizdong-(card|pos)-[1-3])?\.xml$/)){
+ if(path.match(/^\/sitemap(-v2)?(-main|-dong|-biz-region|-bizdong-(card|pos)-[1-3])?\.xml$/)){
   const cache=caches.default;
   const cacheKey=new Request('https://allpaystore.com'+path,{method:'GET'});
   let cached=await cache.match(cacheKey);
   if(cached) return cached;
   let xml;
-  if(path==='/sitemap.xml') xml=makeSitemap();
-  else if(path==='/sitemap-main.xml') xml=makeSitemapMain();
-  else if(path==='/sitemap-dong.xml') xml=makeSitemapDong();
-  else if(path==='/sitemap-biz-region.xml') xml=makeSitemapBizRegion();
+  // Strip v2 from path for handler resolution
+  const realPath=path.replace('-v2','');
+  if(realPath==='/sitemap.xml') xml=makeSitemap();
+  else if(realPath==='/sitemap-main.xml') xml=makeSitemapMain();
+  else if(realPath==='/sitemap-dong.xml') xml=makeSitemapDong();
+  else if(realPath==='/sitemap-biz-region.xml') xml=makeSitemapBizRegion();
   else {
-   const m=path.match(/^\/sitemap-bizdong-(card|pos)-([1-3])\.xml$/);
+   const m=realPath.match(/^\/sitemap-bizdong-(card|pos)-([1-3])\.xml$/);
    xml=makeSitemapBizDong(m[1],parseInt(m[2])-1);
   }
   const resp=new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
