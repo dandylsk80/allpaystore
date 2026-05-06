@@ -3606,19 +3606,33 @@ function makeProdCatPage(prodKey,catKey,titles,catMap,slugs){
 }
 
 function makeSitemap(){
- // /sitemap.xml = 인덱스 사이트맵 (분할된 사이트맵들의 링크)
+ // /sitemap.xml = 인덱스 사이트맵 (v3 분할: 응답 크기 줄여 GSC fetch 안정성 향상)
  const base='https://allpaystore.com';
  const today=get15dDate().toISOString().split('T')[0];
  const sitemaps=[
-  '/sitemap-main.xml',
-  '/sitemap-dong.xml',
-  '/sitemap-biz-region.xml',
-  '/sitemap-bizdong-card-1.xml',
-  '/sitemap-bizdong-card-2.xml',
-  '/sitemap-bizdong-card-3.xml',
-  '/sitemap-bizdong-pos-1.xml',
-  '/sitemap-bizdong-pos-2.xml',
-  '/sitemap-bizdong-pos-3.xml'
+  '/sitemap-v3-main.xml',
+  '/sitemap-v3-dong.xml',
+  '/sitemap-v3-biz-region-1.xml',
+  '/sitemap-v3-biz-region-2.xml',
+  '/sitemap-v3-biz-region-3.xml',
+  '/sitemap-v3-bizdong-card-1.xml',
+  '/sitemap-v3-bizdong-card-2.xml',
+  '/sitemap-v3-bizdong-card-3.xml',
+  '/sitemap-v3-bizdong-card-4.xml',
+  '/sitemap-v3-bizdong-card-5.xml',
+  '/sitemap-v3-bizdong-card-6.xml',
+  '/sitemap-v3-bizdong-card-7.xml',
+  '/sitemap-v3-bizdong-card-8.xml',
+  '/sitemap-v3-bizdong-card-9.xml',
+  '/sitemap-v3-bizdong-pos-1.xml',
+  '/sitemap-v3-bizdong-pos-2.xml',
+  '/sitemap-v3-bizdong-pos-3.xml',
+  '/sitemap-v3-bizdong-pos-4.xml',
+  '/sitemap-v3-bizdong-pos-5.xml',
+  '/sitemap-v3-bizdong-pos-6.xml',
+  '/sitemap-v3-bizdong-pos-7.xml',
+  '/sitemap-v3-bizdong-pos-8.xml',
+  '/sitemap-v3-bizdong-pos-9.xml'
  ];
  const items=sitemaps.map(s=>`<sitemap><loc>${base}${s}</loc><lastmod>${today}</lastmod></sitemap>`).join('');
  return '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+items+'</sitemapindex>';
@@ -3687,13 +3701,14 @@ function makeSitemapBizRegion(){
  sgKeys.forEach(sg=>{const[si,sgs]=sg.split('/');BIZ_LIST.forEach(b=>{parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-card/','0.5'));parts.push(u('/biz-region/'+si+'/'+sgs+'/'+b.slug+'-pos/','0.5'));});});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
-function makeSitemapBizDong(prodKey,partIdx){
- // 동×업종-card 또는 -pos를 3등분 (필요 슬라이스만 직접 생성)
+function makeSitemapBizDong(prodKey,partIdx,totalParts){
+ // 동×업종-card 또는 -pos를 N등분 (totalParts=3 기본, v3는 9등분)
+ totalParts=totalParts||3;
  const base='https://allpaystore.com';
  const dongKeys=RK().filter(k=>k.split('/').length===3);
  const bizN=BIZ_LIST.length;
  const total=dongKeys.length*bizN;
- const chunk=Math.ceil(total/3);
+ const chunk=Math.ceil(total/totalParts);
  const start=partIdx*chunk;
  const end=Math.min(start+chunk,total);
  const parts=[];
@@ -3702,6 +3717,29 @@ function makeSitemapBizDong(prodKey,partIdx){
   const b=BIZ_LIST[i%bizN].slug;
   parts.push('<url><loc>'+base+'/blog/'+d+'/'+b+'-'+prodKey+'/</loc></url>');
  }
+ return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
+}
+function makeSitemapBizRegionV3(partIdx){
+ // biz-region을 3등분
+ const base='https://allpaystore.com';
+ const today=get15dDate().toISOString().split('T')[0];
+ const u=(p,pri)=>'<url><loc>'+base+p+'</loc><lastmod>'+today+'</lastmod><changefreq>weekly</changefreq><priority>'+(pri||'0.7')+'</priority></url>';
+ const all=[];
+ const SIDO_KEYS=Object.keys(SIGUNGU);
+ SIDO_KEYS.forEach(sido=>{
+  all.push('/biz-region/'+sido+'/');
+  SIGUNGU[sido].forEach(sg=>{
+   BIZ_LIST.forEach(b=>{
+    all.push('/biz-region/'+sg[1]+'/'+b.slug+'-card/');
+    all.push('/biz-region/'+sg[1]+'/'+b.slug+'-pos/');
+   });
+  });
+ });
+ const chunk=Math.ceil(all.length/3);
+ const start=partIdx*chunk;
+ const end=Math.min(start+chunk,all.length);
+ const parts=[];
+ for(let i=start;i<end;i++) parts.push(u(all[i]));
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function getRSS() {
@@ -5836,21 +5874,27 @@ ${makeSiteFooter()}</body></html>`;
 </body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
  }
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
- if(path.match(/^\/sitemap(-v2)?(-main|-dong|-biz-region|-bizdong-(card|pos)-[1-3])?\.xml$/)){
+ if(path.match(/^\/sitemap(-v2|-v3)?(-main|-dong|-biz-region(-[1-3])?|-bizdong-(card|pos)-([1-9]))?\.xml$/)){
   const cache=caches.default;
   const cacheKey=new Request('https://allpaystore.com'+path,{method:'GET'});
   let cached=await cache.match(cacheKey);
   if(cached) return cached;
   let xml;
-  // Strip v2 from path for handler resolution
-  const realPath=path.replace('-v2','');
+  // v3 = 9분할 bizdong + 3분할 biz-region. v2/legacy = 3분할 bizdong, 1개 biz-region.
+  const isV3=path.includes('-v3-');
+  const realPath=path.replace('-v3','').replace('-v2','');
   if(realPath==='/sitemap.xml') xml=makeSitemap();
   else if(realPath==='/sitemap-main.xml') xml=makeSitemapMain();
   else if(realPath==='/sitemap-dong.xml') xml=makeSitemapDong();
   else if(realPath==='/sitemap-biz-region.xml') xml=makeSitemapBizRegion();
+  else if(realPath.match(/^\/sitemap-biz-region-([1-3])\.xml$/)){
+   const m=realPath.match(/^\/sitemap-biz-region-([1-3])\.xml$/);
+   xml=makeSitemapBizRegionV3(parseInt(m[1])-1);
+  }
   else {
-   const m=realPath.match(/^\/sitemap-bizdong-(card|pos)-([1-3])\.xml$/);
-   xml=makeSitemapBizDong(m[1],parseInt(m[2])-1);
+   const m=realPath.match(/^\/sitemap-bizdong-(card|pos)-([1-9])\.xml$/);
+   const totalParts=isV3?9:3;
+   xml=makeSitemapBizDong(m[1],parseInt(m[2])-1,totalParts);
   }
   const resp=new Response(xml,{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
   if(ctx&&ctx.waitUntil) ctx.waitUntil(cache.put(cacheKey,resp.clone()));
@@ -5870,7 +5914,7 @@ ${makeSiteFooter()}</body></html>`;
   return new Response(imgResp.body,{headers:h2});
  }
  if(path==='/BingSiteAuth.xml')return new Response('<?xml version="1.0"?>\n<users>\n\t<user>76CD7730D8D678F6A94139ED4D8A344D</user>\n</users>',{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});
- if(path==='/robots.txt')return new Response('User-agent: Googlebot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Yeti\nAllow: /\nDisallow: /contact/?\n\nUser-agent: NaverBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Daumoa\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Bingbot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: *\nAllow: /\nDisallow: /contact/?\n\nSitemap: https://allpaystore.com/sitemap.xml\nSitemap: https://allpaystore.com/sitemap-main.xml\nSitemap: https://allpaystore.com/sitemap-dong.xml\nSitemap: https://allpaystore.com/sitemap-biz-region.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-card-1.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-card-2.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-card-3.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-pos-1.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-pos-2.xml\nSitemap: https://allpaystore.com/sitemap-bizdong-pos-3.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(path==='/robots.txt')return new Response('User-agent: Googlebot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Yeti\nAllow: /\nDisallow: /contact/?\n\nUser-agent: NaverBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Daumoa\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Bingbot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: *\nAllow: /\nDisallow: /contact/?\n\nSitemap: https://allpaystore.com/sitemap.xml\nSitemap: https://allpaystore.com/sitemap-v3-main.xml\nSitemap: https://allpaystore.com/sitemap-v3-dong.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-9.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-9.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=3600'}});
  if(path==='/llms.txt'||path==='/llms-full.txt')return new Response(`# 올페이스토어 (AllPayStore)
 
 > 한국 전국 카드단말기·포스기·키오스크·CCTV·테이블오더·자판기·매장철거 설치 전문 업체. 무료 견적, 빠른 설치, A/S 지원, 전국 5,000+ 읍면동 직접 출장 가능.
