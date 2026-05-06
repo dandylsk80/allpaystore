@@ -19,6 +19,8 @@ function lk(slug){const p=slug.split("/");if(p.length!==3)return null;let ei=R[p
 const SIGUNGU={"seoul":[["종로구","seoul/jongrogu"],["중구","seoul/junggu"],["용산구","seoul/yongsangu"],["성동구","seoul/seongdonggu"],["광진구","seoul/gwangjingu"],["동대문구","seoul/dongdaemungu"],["중랑구","seoul/jungranggu"],["성북구","seoul/seongbuggu"],["강북구","seoul/gangbuggu"],["도봉구","seoul/dobonggu"],["노원구","seoul/nowongu"],["은평구","seoul/eunpyeonggu"],["서대문구","seoul/seodaemungu"],["마포구","seoul/mapogu"],["양천구","seoul/yangcheongu"],["강서구","seoul/gangseogu"],["구로구","seoul/gurogu"],["금천구","seoul/geumcheongu"],["영등포구","seoul/yeongdeungpogu"],["동작구","seoul/dongjaggu"],["관악구","seoul/gwanaggu"],["서초구","seoul/seochogu"],["강남구","seoul/gangnamgu"],["송파구","seoul/songpagu"],["강동구","seoul/gangdonggu"]],"busan":[["중구","busan/junggu"],["서구","busan/seogu"],["동구","busan/donggu"],["영도구","busan/yeongdogu"],["부산진구","busan/busanjingu"],["동래구","busan/dongraegu"],["남구","busan/namgu"],["북구","busan/buggu"],["해운대구","busan/haeundaegu"],["사하구","busan/sahagu"],["금정구","busan/geumjeonggu"],["강서구","busan/gangseogu"],["연제구","busan/yeonjegu"],["수영구","busan/suyeonggu"],["사상구","busan/sasanggu"],["기장군","busan/gijanggun"]],"daegu":[["중구","daegu/junggu"],["동구","daegu/donggu"],["서구","daegu/seogu"],["남구","daegu/namgu"],["북구","daegu/buggu"],["수성구","daegu/suseonggu"],["달서구","daegu/darseogu"],["달성군","daegu/darseonggun"],["군위군","daegu/gunwigun"]],"incheon":[["중구","incheon/junggu"],["동구","incheon/donggu"],["미추홀구","incheon/michuhorgu"],["연수구","incheon/yeonsugu"],["남동구","incheon/namdonggu"],["부평구","incheon/bupyeonggu"],["계양구","incheon/gyeyanggu"],["서구","incheon/seogu"],["강화군","incheon/ganghwagun"],["옹진군","incheon/ongjingun"]],"gwangju":[["동구","gwangju/donggu"],["서구","gwangju/seogu"],["남구","gwangju/namgu"],["북구","gwangju/buggu"],["광산구","gwangju/gwangsangu"]],"daejeon":[["동구","daejeon/donggu"],["중구","daejeon/junggu"],["서구","daejeon/seogu"],["유성구","daejeon/yuseonggu"],["대덕구","daejeon/daedeoggu"]],"ulsan":[["중구","ulsan/junggu"],["남구","ulsan/namgu"],["동구","ulsan/donggu"],["북구","ulsan/buggu"],["울주군","ulsan/urjugun"]],"sejong":[["세종시","sejong/sejongsi"]],"gyeonggi":[["수원시","gyeonggi/suwonsi"],["수원시장안구","gyeonggi/suwonsijangangu"],["수원시권선구","gyeonggi/suwonsigwonseongu"],["수원시팔달구","gyeonggi/suwonsipardargu"],["수원시영통구","gyeonggi/suwonsiyeongtonggu"],["성남시","gyeonggi/seongnamsi"],["성남시수정구","gyeonggi/seongnamsisujeonggu"],["성남시중원구","gyeonggi/seongnamsijungwongu"],["성남시분당구","gyeonggi/seongnamsibundanggu"],["의정부시","gyeonggi/euijeongbusi"],["안양시","gyeonggi/anyangsi"],["안양시만안구","gyeonggi/anyangsimanangu"],["안양시동안구","gyeonggi/anyangsidongangu"],["부천시","gyeonggi/bucheonsi"],["부천시원미구","gyeonggi/bucheonsiwonmigu"],["부천시소사구","gyeonggi/bucheonsisosagu"],["부천시오정구","gyeonggi/bucheonsiojeonggu"],["광명시","gyeonggi/gwangmyeongsi"],["평택시","gyeonggi/pyeongtaegsi"],["동두천시","gyeonggi/dongducheonsi"],["안산시","gyeonggi/ansansi"],["안산시상록구","gyeonggi/ansansisangroggu"],["안산시단원구","gyeonggi/ansansidanwongu"],["고양시","gyeonggi/goyangsi"],["고양시덕양구","gyeonggi/goyangsideogyanggu"],["고양시일산동구","gyeonggi/goyangsiirsandonggu"],["고양시일산서구","gyeonggi/goyangsiirsanseogu"],["과천시","gyeonggi/gwacheonsi"],["구리시","gyeonggi/gurisi"],["남양주시","gyeonggi/namyangjusi"],["오산시","gyeonggi/osansi"],["시흥시","gyeonggi/siheungsi"],["군포시","gyeonggi/gunposi"],["의왕시","gyeonggi/euiwangsi"],["하남시","gyeonggi/hanamsi"],["용인시","gyeonggi/yonginsi"],["용인시처인구","gyeonggi/yonginsicheoingu"],["용인시기흥구","gyeonggi/yonginsigiheunggu"],["용인시수지구","gyeonggi/yonginsisujigu"],["파주시","gyeonggi/pajusi"],["이천시","gyeonggi/icheonsi"],["안성시","gyeonggi/anseongsi"],["김포시","gyeonggi/gimposi"],["화성시","gyeonggi/hwaseongsi"],["광주시","gyeonggi/gwangjusi"],["양주시","gyeonggi/yangjusi"],["포천시","gyeonggi/pocheonsi"],["여주시","gyeonggi/yeojusi"],["연천군","gyeonggi/yeoncheongun"],["가평군","gyeonggi/gapyeonggun"],["양평군","gyeonggi/yangpyeonggun"]],"gangwon":[["춘천시","gangwon/chuncheonsi"],["원주시","gangwon/wonjusi"],["강릉시","gangwon/gangreungsi"],["동해시","gangwon/donghaesi"],["태백시","gangwon/taebaegsi"],["속초시","gangwon/sogchosi"],["삼척시","gangwon/samcheogsi"],["홍천군","gangwon/hongcheongun"],["횡성군","gangwon/hoengseonggun"],["영월군","gangwon/yeongworgun"],["평창군","gangwon/pyeongchanggun"],["정선군","gangwon/jeongseongun"],["철원군","gangwon/cheorwongun"],["화천군","gangwon/hwacheongun"],["양구군","gangwon/yanggugun"],["인제군","gangwon/injegun"],["고성군","gangwon/goseonggun"],["양양군","gangwon/yangyanggun"]],"chungbuk":[["청주시","chungbuk/cheongjusi"],["청주시상당구","chungbuk/cheongjusisangdanggu"],["청주시서원구","chungbuk/cheongjusiseowongu"],["청주시흥덕구","chungbuk/cheongjusiheungdeoggu"],["청주시청원구","chungbuk/cheongjusicheongwongu"],["충주시","chungbuk/chungjusi"],["제천시","chungbuk/jecheonsi"],["보은군","chungbuk/boeungun"],["옥천군","chungbuk/ogcheongun"],["영동군","chungbuk/yeongdonggun"],["증평군","chungbuk/jeungpyeonggun"],["진천군","chungbuk/jincheongun"],["괴산군","chungbuk/goesangun"],["음성군","chungbuk/eumseonggun"],["단양군","chungbuk/danyanggun"]],"chungnam":[["천안시","chungnam/cheonansi"],["천안시동남구","chungnam/cheonansidongnamgu"],["천안시서북구","chungnam/cheonansiseobuggu"],["공주시","chungnam/gongjusi"],["보령시","chungnam/boryeongsi"],["아산시","chungnam/asansi"],["서산시","chungnam/seosansi"],["논산시","chungnam/nonsansi"],["계룡시","chungnam/gyeryongsi"],["당진시","chungnam/dangjinsi"],["금산군","chungnam/geumsangun"],["부여군","chungnam/buyeogun"],["서천군","chungnam/seocheongun"],["청양군","chungnam/cheongyanggun"],["홍성군","chungnam/hongseonggun"],["예산군","chungnam/yesangun"],["태안군","chungnam/taeangun"]],"jeonbuk":[["전주시","jeonbuk/jeonjusi"],["전주시완산구","jeonbuk/jeonjusiwansangu"],["전주시덕진구","jeonbuk/jeonjusideogjingu"],["군산시","jeonbuk/gunsansi"],["익산시","jeonbuk/igsansi"],["정읍시","jeonbuk/jeongeubsi"],["남원시","jeonbuk/namwonsi"],["김제시","jeonbuk/gimjesi"],["완주군","jeonbuk/wanjugun"],["진안군","jeonbuk/jinangun"],["무주군","jeonbuk/mujugun"],["장수군","jeonbuk/jangsugun"],["임실군","jeonbuk/imsirgun"],["순창군","jeonbuk/sunchanggun"],["고창군","jeonbuk/gochanggun"],["부안군","jeonbuk/buangun"]],"jeonnam":[["목포시","jeonnam/mogposi"],["여수시","jeonnam/yeosusi"],["순천시","jeonnam/suncheonsi"],["나주시","jeonnam/najusi"],["광양시","jeonnam/gwangyangsi"],["담양군","jeonnam/damyanggun"],["곡성군","jeonnam/gogseonggun"],["구례군","jeonnam/guryegun"],["고흥군","jeonnam/goheunggun"],["보성군","jeonnam/boseonggun"],["화순군","jeonnam/hwasungun"],["장흥군","jeonnam/jangheunggun"],["강진군","jeonnam/gangjingun"],["해남군","jeonnam/haenamgun"],["영암군","jeonnam/yeongamgun"],["무안군","jeonnam/muangun"],["함평군","jeonnam/hampyeonggun"],["영광군","jeonnam/yeonggwanggun"],["장성군","jeonnam/jangseonggun"],["완도군","jeonnam/wandogun"],["진도군","jeonnam/jindogun"],["신안군","jeonnam/sinangun"]],"gyeongbuk":[["포항시","gyeongbuk/pohangsi"],["포항시남구","gyeongbuk/pohangsinamgu"],["포항시북구","gyeongbuk/pohangsibuggu"],["경주시","gyeongbuk/gyeongjusi"],["김천시","gyeongbuk/gimcheonsi"],["안동시","gyeongbuk/andongsi"],["구미시","gyeongbuk/gumisi"],["영주시","gyeongbuk/yeongjusi"],["영천시","gyeongbuk/yeongcheonsi"],["상주시","gyeongbuk/sangjusi"],["문경시","gyeongbuk/mungyeongsi"],["경산시","gyeongbuk/gyeongsansi"],["의성군","gyeongbuk/euiseonggun"],["청송군","gyeongbuk/cheongsonggun"],["영양군","gyeongbuk/yeongyanggun"],["영덕군","gyeongbuk/yeongdeoggun"],["청도군","gyeongbuk/cheongdogun"],["고령군","gyeongbuk/goryeonggun"],["성주군","gyeongbuk/seongjugun"],["칠곡군","gyeongbuk/chirgoggun"],["예천군","gyeongbuk/yecheongun"],["봉화군","gyeongbuk/bonghwagun"],["울진군","gyeongbuk/urjingun"],["울릉군","gyeongbuk/urreunggun"]],"gyeongnam":[["창원시","gyeongnam/changwonsi"],["창원시의창구","gyeongnam/changwonsieuichanggu"],["창원시성산구","gyeongnam/changwonsiseongsangu"],["창원시마산합포구","gyeongnam/changwonsimasanhabpogu"],["창원시마산회원구","gyeongnam/changwonsimasanhoewongu"],["창원시진해구","gyeongnam/changwonsijinhaegu"],["진주시","gyeongnam/jinjusi"],["통영시","gyeongnam/tongyeongsi"],["사천시","gyeongnam/sacheonsi"],["김해시","gyeongnam/gimhaesi"],["밀양시","gyeongnam/miryangsi"],["거제시","gyeongnam/geojesi"],["양산시","gyeongnam/yangsansi"],["의령군","gyeongnam/euiryeonggun"],["함안군","gyeongnam/hamangun"],["창녕군","gyeongnam/changnyeonggun"],["고성군","gyeongnam/goseonggun"],["남해군","gyeongnam/namhaegun"],["하동군","gyeongnam/hadonggun"],["산청군","gyeongnam/sancheonggun"],["함양군","gyeongnam/hamyanggun"],["거창군","gyeongnam/geochanggun"],["합천군","gyeongnam/habcheongun"]],"jeju":[["제주시","jeju/jejusi"],["서귀포시","jeju/seogwiposi"]]};
 const SIDO_NAMES={seoul:"서울특별시",busan:"부산광역시",daegu:"대구광역시",incheon:"인천광역시",gwangju:"광주광역시",daejeon:"대전광역시",ulsan:"울산광역시",sejong:"세종특별자치시",gyeonggi:"경기도",gangwon:"강원특별자치도",chungbuk:"충청북도",chungnam:"충청남도",jeonbuk:"전북특별자치도",jeonnam:"전라남도",gyeongbuk:"경상북도",gyeongnam:"경상남도",jeju:"제주특별자치도"};
 const _RK=[];Object.keys(R).forEach(a=>{if(R[a]&&typeof R[a]==='object')Object.keys(R[a]).forEach(b=>{if(R[a][b]&&typeof R[a][b]==='object')Object.keys(R[a][b]).forEach(c=>_RK.push(a+"/"+b+"/"+c));});});function RK(){return _RK;}
+// 15일 간격 날짜 (1-15일은 1일, 16-말일은 16일로 고정)
+function get15dDate(){const d=new Date();d.setUTCDate(d.getUTCDate()<=15?1:16);d.setUTCHours(0,0,0,0);return d;}
 function getProfile(sido,sigungu,emd){
  const NOTE={'서울특별시':'서울 도심 상권으로 유동 인구가 많고 경쟁이 치열한 지역입니다.','경기도':'수도권 주거·상업 복합 지역으로 다양한 업종이 밀집해 있습니다.','부산광역시':'해양·관광 상권과 전통시장이 공존하는 항구 도시입니다.','대구광역시':'섬유·패션 산업 기반의 전통 상업 도시입니다.','인천광역시':'항만·물류·공항 배후 상권이 발달한 복합 도시입니다.','광주광역시':'호남 문화·상업 중심지로 외식업과 소매업이 활발합니다.','대전광역시':'충청권 교통·행정 중심지로 오피스 및 상업 상권이 발달했습니다.','울산광역시':'자동차·조선 산업 배후 도시로 근로자 대상 외식·서비스업이 많습니다.','세종특별자치시':'신도시 행정도시로 공무원·기업 종사자 대상 상권이 성장 중입니다.','강원특별자치도':'관광·농업 기반으로 계절적 수요 변동이 큰 상권입니다.','충청북도':'내륙 농업·제조업 기반의 전통 상권이 유지되는 지역입니다.','충청남도':'농업·해양 복합 지역으로 지역 밀착형 소상공인이 많습니다.','전북특별자치도':'농식품 및 전통 산업 기반 상권이 발달한 지역입니다.','전라남도':'풍부한 농수산자원을 기반으로 한 지역 밀착형 상권입니다.','경상북도':'농업·제조업 기반의 전통 소상공인이 다수인 지역입니다.','경상남도':'제조업·농업 기반의 실속형 소비가 특징인 상권입니다.','제주특별자치도':'관광 특수를 누리는 외식·숙박업 비중이 높은 지역입니다.'};
  const DENSITY={'서울특별시':'high','부산광역시':'high','대구광역시':'mid','인천광역시':'mid','광주광역시':'mid','대전광역시':'mid','울산광역시':'mid','세종특별자치시':'mid','경기도':'mid','강원특별자치도':'low','충청북도':'low','충청남도':'low','전북특별자치도':'low','전라남도':'low','경상북도':'low','경상남도':'low','제주특별자치도':'mid'};
@@ -1150,7 +1152,7 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
  if(!prd)return null;
  const full=`${sido} ${sigungu} ${emd}`;
  const p=getProfile(sido,sigungu,emd);
- const today=new Date();
+ const today=get15dDate();
  const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  const canon=`https://allpaystore.com/blog/${slug}/${prodKey}/`;
  const parentUrl=`https://allpaystore.com/blog/${slug}/`;
@@ -1782,7 +1784,7 @@ function makeBizDongPage(sido,sigungu,emd,slug,bizSlug,prodKey){
  const prd=PRODUCTS[prodKey];if(!prd||(prodKey!=='card'&&prodKey!=='pos'))return null;
  const full=`${sido} ${sigungu} ${emd}`;
  const sidoS=sido==='서울특별시'?'서울':sido==='부산광역시'?'부산':sido==='대구광역시'?'대구':sido==='인천광역시'?'인천':sido==='광주광역시'?'광주':sido==='대전광역시'?'대전':sido==='울산광역시'?'울산':sido==='세종특별자치시'?'세종':sido==='경기도'?'경기':sido==='강원특별자치도'?'강원':sido==='충청북도'?'충북':sido==='충청남도'?'충남':sido==='전북특별자치도'?'전북':sido==='전라남도'?'전남':sido==='경상북도'?'경북':sido==='경상남도'?'경남':sido==='제주특별자치도'?'제주':sido;
- const today=new Date();
+ const today=get15dDate();
  const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  const iso=today.toISOString().split('T')[0];
  const canon=`https://allpaystore.com/blog/${slug}/${bizSlug}-${prodKey}/`;
@@ -2275,7 +2277,7 @@ function makeSidoPage(sidoSlug){
    {title:`🌏 다른 시·도 지역별 설치`,links:allOtherSidos.map(x=>({name:x.n,href:`/blog/${x.s}/`}))},
    {title:`🛒 ${short} 제품별 전문 페이지`,links:Object.entries(PRODUCTS).map(([k,v])=>({name:`${v.emoji} ${v.ko}`,href:`/product/${k}/${sidoSlug}/`}))}
  ]);
- const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" sizes="1080x1080" href="/images/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
@@ -2397,7 +2399,7 @@ function makeSigunguPage(sidoSlug,sigunguSlug){
  const siblingsSgs=sgs.filter(sg2=>{if(seen2[sg2[0]])return false;seen2[sg2[0]]=1;if(sg2[1]===sgKey)return false;const n2=sg2[0];return !names2.some(o=>o!==n2 && n2.startsWith(o));}).slice(0,5);
  const sgSideLinks=siblingsSgs.map(sg2=>`<a href="/blog/${sg2[1]}/" class="side-link"><span style="width:5px;height:5px;border-radius:50%;background:#aaa;flex-shrink:0"></span>${sg2[0]}</a>`).join('');
  const prodSideLinks=Object.entries(PRODUCTS).map(([k,v])=>`<a href="/product/${k}/${sgKey}/" class="side-link">${v.emoji} ${sgName} ${v.ko}</a>`).join('');
- const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  // 빵크럼 + 내부링크
  const crumbHtmlSG=makeBreadcrumb([
    {name:'홈',href:'/'},
@@ -2553,7 +2555,7 @@ function makeProductLandingPage(prodKey){
  }).join('');
  const PHOTO={card:'https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',pos:'https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',kiosk:'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',cctv:'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',tableorder:'https://images.pexels.com/photos/5920743/pexels-photo-5920743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',vending:'https://images.pexels.com/photos/2531545/pexels-photo-2531545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',removal:'https://images.pexels.com/photos/3828888/pexels-photo-3828888.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'};
  const photo=PHOTO[prodKey]||PHOTO.card;
- const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  // 빵크럼 + 내부링크
  const crumbHtmlPL=makeBreadcrumb([
    {name:'홈',href:'/'},
@@ -2706,7 +2708,7 @@ function makeProductSidoPage(prodKey,sidoSlug){
  const sgCards=top.map(sg=>`<a href="/product/${prodKey}/${sg[1]}/" class="sg-card">${sg[0]}</a>`).join('');
  const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 카드·삼성페이·카카오페이·네이버페이·제로페이 등 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사(배민·요기요·쿠팡이츠) 자동 연동, 실시간 매출 분석 대시보드, 요일별·시간대별 매출 패턴 분석으로 피크타임 인력 배치와 재고 관리를 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장 면적과 동선에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료로 대행합니다.',cctv:'4채널·8채널·16채널 등 매장 규모에 맞게 설계하며, 30일 이상 영상 저장을 보장합니다. 화재·도난 보험료 할인 혜택도 받을 수 있습니다.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록까지 무료로 대행합니다. 한국어·영어·중국어·일본어 다국어를 지원하며, 주방 자동 연동으로 주문 누락이 없습니다.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대, 미용실 시설물 등 모든 업종의 철거를 전문적으로 시공합니다. 폐기물 처리 확인증과 시공 보증서를 발급합니다.',vending:'음료·과자·커피·컵밥·아이스크림 등 다양한 자동판매기(자판기)를 설치합니다. 무인 매장, 오피스, 학교, 병원, 공장 등 유동인구가 있는 곳이면 전국 어디든 설치 가능합니다.'};
  const pd2=PDESC2[prodKey]||'';
- const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  // 빵크럼 + 내부링크 (ProductSido)
  const crumbHtmlPS=makeBreadcrumb([
    {name:'홈',href:'/'},
@@ -2841,7 +2843,7 @@ function makeProductSigunguPage(prodKey,sidoSlug,sigunguSlug){
  const dongCards=dongs.map(d=>`<a href="/blog/${d.slug}/${prodKey}/" class="sg-card">${d.name} ${prd.ko}</a>`).join('');
  const PDESC2={card:'자동커팅단말기·유선카드단말기·토스단말기·무선단말기·블루투스단말기 등 매장 환경에 맞는 단말기를 추천합니다. 모든 간편결제를 한 대로 처리합니다.',pos:'배달 3사 자동 연동, 실시간 매출 분석, 요일별·시간대별 매출 패턴 분석으로 매장 운영을 최적화합니다.',kiosk:'스탠드형·벽걸이형·테이블형 등 매장에 맞는 키오스크를 추천하며, 메뉴 사진 촬영·등록까지 무료 대행합니다.',cctv:'4채널~16채널 매장 규모에 맞게 설계, 30일 이상 영상 저장, 화재·도난 보험료 할인 혜택.',tableorder:'QR코드 발급·메뉴 사진 촬영·등록 무료 대행, 다국어 지원, 주방 자동 연동.',removal:'음식점 주방 설비, 사무실 파티션, 소매점 진열대 등 모든 업종 철거. 폐기물 처리 확인증·시공 보증서 발급.',vending:'음료·과자·커피·컵밥·아이스크림 자동판매기(자판기) 전국 설치. 입지 분석부터 상품 보충까지 원스톱 지원.'};
  const pd2=PDESC2[prodKey]||'';
- const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+ const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  // 빵크럼 + 내부링크 (ProductSigungu)
  const crumbHtmlPSG=makeBreadcrumb([
    {name:'홈',href:'/'},
@@ -2965,7 +2967,7 @@ function makeBlog(sido,sigungu,emd,slug){
  const sidoS=sido==='서울특별시'?'서울':sido==='부산광역시'?'부산':sido==='대구광역시'?'대구':sido==='인천광역시'?'인천':sido==='광주광역시'?'광주':sido==='대전광역시'?'대전':sido==='울산광역시'?'울산':sido==='세종특별자치시'?'세종':sido==='경기도'?'경기':sido==='강원특별자치도'?'강원':sido==='충청북도'?'충북':sido==='충청남도'?'충남':sido==='전북특별자치도'?'전북':sido==='전라남도'?'전남':sido==='경상북도'?'경북':sido==='경상남도'?'경남':sido==='제주특별자치도'?'제주':sido;
  const p=getProfile(sido,sigungu,emd);
  const tags=p.biz.map(b=>`<span class="tag">${b}</span>`).join('');
- const today=new Date();
+ const today=get15dDate();
  const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  const canon=`https://allpaystore.com/blog/${slug}/`;
  const iso=today.toISOString().split('T')[0];
@@ -3606,7 +3608,7 @@ function makeProdCatPage(prodKey,catKey,titles,catMap,slugs){
 function makeSitemap(){
  // /sitemap.xml = 인덱스 사이트맵 (분할된 사이트맵들의 링크)
  const base='https://allpaystore.com';
- const today=new Date().toISOString().split('T')[0];
+ const today=get15dDate().toISOString().split('T')[0];
  const sitemaps=[
   '/sitemap-main.xml',
   '/sitemap-dong.xml',
@@ -3624,7 +3626,7 @@ function makeSitemap(){
 function makeSitemapMain(){
  // 메인: 홈, 제품, 시도, 시군구, /biz/, /biz-cctv/, /biz-pos/ 등 정적 페이지
  const base='https://allpaystore.com';
- const today=new Date().toISOString().split('T')[0];
+ const today=get15dDate().toISOString().split('T')[0];
  const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri||'0.7'}</priority></url>`;
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
  const prodSlugs=Object.keys(PRODUCTS);
@@ -3675,7 +3677,7 @@ function makeSitemapDong(){
 function makeSitemapBizRegion(){
  // /biz-region/ 4단계 페이지들
  const base='https://allpaystore.com';
- const today=new Date().toISOString().split('T')[0];
+ const today=get15dDate().toISOString().split('T')[0];
  const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri||'0.6'}</priority></url>`;
  const sidoSlugs=Object.keys(SI_MAP);
  const parts=[u('/biz-region/','0.8')];
@@ -5480,7 +5482,7 @@ if(path==='/biz-cctv'){
    const px2=pick2(POOL_X,2);
    const px3=pick3(POOL_X,5);
    const px4=pick(POOL_X,7);
-   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+   const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
    const iso=today.toISOString().split('T')[0];
    const canon=`https://allpaystore.com/biz-region/${sidoSlug}/${biz.slug}-${prodKey}/`;
    const title=`${sidoName} ${biz.ko} ${prdKo} 설치 가이드 | 올페이스토어`;
@@ -5617,7 +5619,7 @@ ${makeSiteFooter()}
    const px2=pick2(POOL_X,2);
    const px3=pick3(POOL_X,5);
    const px4=pick(POOL_X,7);
-   const today=new Date();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
+   const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
    const iso=today.toISOString().split('T')[0];
    const canon=`https://allpaystore.com/biz-region/${sidoSlug}/${sgSlug}/${biz.slug}-${prodKey}/`;
    const title=`${sgName} ${biz.ko} ${prdKo} 설치 가이드 | 올페이스토어`;
@@ -5826,7 +5828,7 @@ ${makeSiteFooter()}</body></html>`;
  const ptm=slug.match(/^(.+)\/([a-z]+)\/thumb\.svg$/);
  if(ptm && PRODUCTS[ptm[2]]){const r=lk(ptm[1]);if(r)return new Response(makeProductSVG(...r,PRODUCTS[ptm[2]]),{headers:{'Content-Type':'image/svg+xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});}
  const r=lk(slug);
- if(r)return new Response(makeBlog(...r,slug),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400','Last-Modified':(()=>{const d=new Date();d.setUTCDate(d.getUTCDate()-d.getUTCDay()+(d.getUTCDay()===0?-6:1));d.setUTCHours(0,0,0,0);return d.toUTCString();})()}});
+ if(r)return new Response(makeBlog(...r,slug),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400','Last-Modified':get15dDate().toUTCString()}});
  return new Response(`<html><body style="font-family:sans-serif;padding:40px;text-align:center"><h2>페이지를 찾을 수 없습니다</h2><p>${slug}</p><a href="/blog" style="color:#555">← 전체 지역 목록</a><div class="fl-wrap">
  <a href="tel:010-9876-8282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:010-9876-8282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
