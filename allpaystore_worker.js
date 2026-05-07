@@ -2246,6 +2246,46 @@ function makeSiteFooter(){
 <div class="gf-bot">올페이스토어 · 전국 카드단말기·포스기·키오스크·CCTV 설치 전문</div>
 </div></footer>`;
 }
+// CCTV 서비스 임시 비공개 페이지 (noindex)
+function makeCCTVDisabledPage(){
+ return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>CCTV 서비스 준비 중 | 올페이스토어</title>
+<meta name="description" content="CCTV 서비스를 준비 중입니다. 카드단말기·포스기·키오스크·테이블오더 서비스는 정상 운영 중입니다.">
+<link rel="icon" type="image/png" sizes="1080x1080" href="/images/logo.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Pretendard',sans-serif;background:#f9fafb;color:#111;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.box{max-width:520px;width:100%;background:#fff;border-radius:20px;padding:48px 32px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.ic{font-size:64px;margin-bottom:20px}
+h1{font-size:24px;font-weight:900;margin-bottom:14px;color:#111;letter-spacing:-.5px}
+.sub{font-size:15px;color:#666;line-height:1.6;margin-bottom:8px}
+.note{font-size:13px;color:#888;margin-bottom:32px;line-height:1.6}
+.btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.btn{display:inline-block;padding:14px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-pri{background:#111;color:#fff}
+.btn-sec{background:#f3f4f6;color:#111}
+.tel{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;background:#fef3c7;border-radius:10px;font-weight:700;color:#111;text-decoration:none;font-size:14px}
+.logo{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:32px}
+.logo img{height:24px}
+.logo span{font-size:16px;font-weight:900}
+</style></head><body>
+<div class="box">
+ <div class="logo"><img src="/images/logo.png" alt=""><span>올페이스토어</span></div>
+ <div class="ic">🔧</div>
+ <h1>CCTV 서비스 준비 중</h1>
+ <p class="sub">현재 CCTV 서비스를 일시적으로 점검 중입니다.<br>곧 더 좋은 서비스로 다시 찾아뵙겠습니다.</p>
+ <p class="note">카드단말기 · 포스기 · 키오스크 · 테이블오더 서비스는 정상 운영 중입니다.</p>
+ <div class="btns">
+  <a href="/" class="btn btn-pri">메인으로 가기</a>
+  <a href="/product/" class="btn btn-sec">제품 안내</a>
+ </div>
+ <a href="tel:010-9876-8282" class="tel">📞 010-9876-8282 문의</a>
+</div>
+</body></html>`;
+}
 function makeSidoPage(sidoSlug){
  const SK={'seoul':'서울특별시','busan':'부산광역시','daegu':'대구광역시','incheon':'인천광역시','gwangju':'광주광역시','daejeon':'대전광역시','ulsan':'울산광역시','sejong':'세종특별자치시','gyeonggi':'경기도','gangwon':'강원특별자치도','chungbuk':'충청북도','chungnam':'충청남도','jeonbuk':'전북특별자치도','jeonnam':'전라남도','gyeongbuk':'경상북도','gyeongnam':'경상남도','jeju':'제주특별자치도'};
  const SHORT={'seoul':'서울','busan':'부산','daegu':'대구','incheon':'인천','gwangju':'광주','daejeon':'대전','ulsan':'울산','sejong':'세종','gyeonggi':'경기','gangwon':'강원','chungbuk':'충북','chungnam':'충남','jeonbuk':'전북','jeonnam':'전남','gyeongbuk':'경북','gyeongnam':'경남','jeju':'제주'};
@@ -3643,7 +3683,8 @@ function makeSitemapMain(){
  const today=get15dDate().toISOString().split('T')[0];
  const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri||'0.7'}</priority></url>`;
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
- const prodSlugs=Object.keys(PRODUCTS);
+ // [CCTV 임시 비공개] cctv 제외
+ const prodSlugs=Object.keys(PRODUCTS).filter(p=>p!=='cctv');
  const parts=[u('/','1.0'),u('/contact/','0.8'),u('/product/','0.9')];
  prodSlugs.forEach(p=>{parts.push(u('/product/'+p+'/','0.8'));});
  prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{parts.push(u('/product/'+p+'/'+s+'/','0.7'));});});
@@ -3671,17 +3712,15 @@ function makeSitemapMain(){
  VEND_SLUGS.forEach(s=>{parts.push(u('/biz-vending/'+s+'/','0.6'));});
  Object.keys(VEND_CATS).forEach(c=>{if(VEND_TITLES.some((_,i)=>VEND_CAT_MAP[i]===c)) parts.push(u('/biz-vending/'+c+'/','0.6'));});
  BIZ_SLUGS.forEach(s=>{parts.push(u('/biz/'+s+'/','0.6'));});
- parts.push(u('/biz-cctv/','0.7'));
- ['cafe','food','bar','leisure','edu','beauty','medical','retail','service','auto','office','stay','unmanned','mobile'].forEach(c=>{parts.push(u('/biz-cctv/'+c+'/','0.6'));});
- CCTV_SLUGS.forEach(s=>{parts.push(u('/biz-cctv/'+s+'/','0.6'));});
+ // [CCTV 임시 비공개] /biz-cctv/* 제외
  Object.keys(BIZ_TYPES).forEach(c=>{parts.push(u('/biz/'+c+'/','0.6'));});
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
 function makeSitemapDong(){
- // 동 페이지 + 동×제품 (크기 최적화)
+ // 동 페이지 + 동×제품 (크기 최적화) — [CCTV 임시 비공개] cctv 제외
  const base='https://allpaystore.com';
  const u=(p)=>`<url><loc>${base}${p}</loc></url>`;
- const prodSlugs=Object.keys(PRODUCTS);
+ const prodSlugs=Object.keys(PRODUCTS).filter(p=>p!=='cctv');
  const dongKeys=RK().filter(k=>k.split('/').length===3);
  const parts=[];
  dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
@@ -5305,6 +5344,15 @@ export default {
  async fetch(request,env,ctx){
  const url=new URL(request.url);
  const path=decodeURIComponent(url.pathname).replace(/\/+$/,'')||'/';
+ // [CCTV 임시 비공개] CCTV_DISABLED=true 시 모든 CCTV 페이지가 noindex 임시 페이지로 응답
+ // 다시 공개하려면 CCTV_DISABLED=false로만 변경
+ const CCTV_DISABLED=true;
+ if(CCTV_DISABLED){
+  const isCCTVPath=path==='/biz-cctv'||path.startsWith('/biz-cctv/')||path==='/product/cctv'||path.startsWith('/product/cctv/')||/^\/blog\/[^/]+\/[^/]+\/[^/]+\/cctv$/.test(path);
+  if(isCCTVPath){
+   return new Response(makeCCTVDisabledPage(),{status:200,headers:{'Content-Type':'text/html;charset=utf-8','X-Robots-Tag':'noindex,nofollow','Cache-Control':'public,max-age=3600'}});
+  }
+ }
  if(path==='/'){
  return new Response(getHTML(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
