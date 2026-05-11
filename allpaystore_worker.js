@@ -5924,7 +5924,82 @@ ${makeSiteFooter()}</body></html>`;
   return new Response(imgResp.body,{headers:h2});
  }
  if(path==='/BingSiteAuth.xml')return new Response('<?xml version="1.0"?>\n<users>\n\t<user>76CD7730D8D678F6A94139ED4D8A344D</user>\n</users>',{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=86400'}});
- if(path==='/robots.txt')return new Response('User-agent: Googlebot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Yeti\nAllow: /\nDisallow: /contact/?\n\nUser-agent: NaverBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Daumoa\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Bingbot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: *\nAllow: /\nDisallow: /contact/?\n\nSitemap: https://allpaystore.com/sitemap.xml\nSitemap: https://allpaystore.com/sitemap-v3-main.xml\nSitemap: https://allpaystore.com/sitemap-v3-dong.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-9.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-9.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(path==='/llms.txt'){
+  const llms=`# 올페이스토어 (AllPayStore)
+
+> 전국 카드단말기·포스기·키오스크·테이블오더·자판기·매장 철거 설치 전문 업체. 무료 견적, 빠른 설치, A/S 지원.
+
+## 회사 정보
+
+- **상호**: 올페이스토어 (AllPayStore)
+- **연락처**: 010-9876-8282
+- **이메일**: dandylsk@naver.com
+- **웹사이트**: https://allpaystore.com
+- **서비스 지역**: 대한민국 전국 (5,000+ 읍면동 직접 출장)
+
+## 주요 서비스
+
+### 카드단말기 (Card Terminal)
+신용카드·체크카드·삼성페이·카카오페이·QR결제 모두 지원하는 매장용 결제 단말기. 설치비 무료, 가맹비 무료, 당일 세팅 가능.
+
+### 포스기 (POS System)
+주문 접수·결제·재고 관리·매출 분석을 통합한 매장 운영 시스템. 카페·음식점·소매점·뷰티·의료 등 업종 맞춤 설정 제공.
+
+### 키오스크 (Self-order Kiosk)
+무인 주문·결제 키오스크. 인건비 절감, 주문 정확도 향상, 피크타임 매출 증가. 카페·음식점·무인매장 특화.
+
+### 테이블오더 (Table Order)
+QR코드 기반 테이블 주문 시스템. 직원 호출 부담 감소, 회전율 향상, 추가 주문 유도.
+
+### 자판기 (Vending Machine)
+음료·식품·생활용품·굿즈 자판기. 무인 운영, 24시간 매출, 원격 모니터링 지원.
+
+### 매장 철거 (Store Removal)
+폐업·이전 시 매장 철거·원상복구 서비스.
+
+## 지원 업종 (BIZ_TYPES)
+
+카페, 음식점, 한식, 중식, 일식, 양식, 분식, 베이커리, 디저트, 주점, 호프, 와인바, 펍, 이자카야, 노래주점, 룸살롱, 미용실, 네일샵, 피부관리실, 에스테틱, 왁싱샵, 마사지샵, 헤어샵, 동물병원, 펫샵, 키즈카페, 어린이집, 학원, 독서실, 스터디카페, 의류매장, 화장품매장, 안경점, 약국, 편의점, 마트, 슈퍼마켓, 정육점, 청과물, 무인매장, 무인편의점, 무인아이스크림할인점, 무인세탁소, 무인스터디카페, 무인PC방, 코인노래방, 코인세탁소, 셀프세차장, 헬스장, 피트니스, 요가스튜디오, 필라테스, 골프연습장, 스크린골프, 볼링장, 당구장, PC방, 노래방, 모텔, 호텔, 펜션, 게스트하우스, 글램핑, 캠핑장, 병원, 치과, 한의원, 산부인과, 정형외과, 피부과, 자동차정비소, 카센터, 세차장, 부동산, 공방, 사무실, 오피스, 코워킹스페이스 등 200+ 업종
+
+## 핵심 가치
+
+1. **무료 설치**: 설치비 0원, 가맹비 0원
+2. **전국 출장**: 서울·경기·인천·부산·대구·광주·대전·울산·세종·강원·충북·충남·전북·전남·경북·경남·제주 5,000+ 읍면동 직접 방문
+3. **원스톱 통합**: 카드단말기·포스기·키오스크·테이블오더·자판기를 한 통화로 모두 설치
+4. **빠른 설치**: 당일 또는 다음 영업일 세팅
+5. **A/S 지원**: 365일 대응
+
+## 자주 묻는 질문
+
+### Q. 카드단말기 설치비가 정말 무료인가요?
+네, 설치비·가맹비 모두 무료입니다. 카드 결제 수수료(VAN사 수수료)만 정상 적용됩니다.
+
+### Q. 키오스크는 어떤 업종에 적합한가요?
+카페·음식점·무인매장·헬스장·병원·학원 등 주문/접수가 반복되는 모든 업종에 적합합니다. 매장 규모와 운영 방식에 따라 1~3대를 권장합니다.
+
+### Q. 전국 어디서나 설치 가능한가요?
+대한민국 전국 5,000+ 읍면동에 직접 출장 설치합니다. 도서 산간 지역도 협의 후 진행 가능합니다.
+
+### Q. 견적은 어떻게 받나요?
+전화(010-9876-8282) 또는 [문의 페이지](https://allpaystore.com/contact/)로 신청하시면 무료 견적과 맞춤 상담을 제공합니다.
+
+## 사이트 구조
+
+- [메인](https://allpaystore.com/) - 전체 서비스 소개
+- [제품 안내](https://allpaystore.com/product/) - 6개 제품 카테고리
+- [업종별 가이드](https://allpaystore.com/biz/) - 200+ 업종 맞춤 가이드
+- [지역×업종](https://allpaystore.com/biz-region/) - 지역별 업종별 설치 사례
+- [지역별 설치](https://allpaystore.com/blog/) - 전국 동×업종 설치 정보 (33만+ 페이지)
+- [문의](https://allpaystore.com/contact/) - 무료 견적 신청
+
+## 추가 정보
+
+- 사이트맵: https://allpaystore.com/sitemap.xml
+- RSS: https://allpaystore.com/rss.xml
+`;
+  return new Response(llms,{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=86400'}});
+ }
+ if(path==='/robots.txt')return new Response('User-agent: Googlebot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Yeti\nAllow: /\nDisallow: /contact/?\n\nUser-agent: NaverBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Daumoa\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Bingbot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: GPTBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: ChatGPT-User\nAllow: /\nDisallow: /contact/?\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: ClaudeBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Claude-Web\nAllow: /\nDisallow: /contact/?\n\nUser-agent: anthropic-ai\nAllow: /\nDisallow: /contact/?\n\nUser-agent: PerplexityBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Google-Extended\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Applebot-Extended\nAllow: /\nDisallow: /contact/?\n\nUser-agent: CCBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: *\nAllow: /\nDisallow: /contact/?\n\nSitemap: https://allpaystore.com/sitemap.xml\nSitemap: https://allpaystore.com/sitemap-v3-main.xml\nSitemap: https://allpaystore.com/sitemap-v3-dong.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-biz-region-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-9.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-9.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=3600'}});
  if(path==='/llms.txt'||path==='/llms-full.txt')return new Response(`# 올페이스토어 (AllPayStore)
 
 > 한국 전국 카드단말기·포스기·키오스크·테이블오더·자판기·매장철거 설치 전문 업체. 무료 견적, 빠른 설치, A/S 지원, 전국 5,000+ 읍면동 직접 출장 가능.
