@@ -5301,7 +5301,7 @@ export default {
  // [biz-region 삭제] /biz-region/* 모든 경로 → 404 Not Found
  // 다시 사용하려면 BIZ_REGION_DISABLED=false로만 변경
  const BIZ_REGION_DISABLED=true;
- if(BIZ_REGION_DISABLED && (path==='/biz-region'||path.startsWith('/biz-region/'))){
+ if(BIZ_REGION_DISABLED && (path==='/biz-region'||path.startsWith('/biz-region/')||path.startsWith('/sitemap-v3-biz-region'))){
   return new Response('Not Found',{status:404,headers:{'Content-Type':'text/plain;charset=utf-8','X-Robots-Tag':'noindex,nofollow'}});
  }
  if(path==='/'){
