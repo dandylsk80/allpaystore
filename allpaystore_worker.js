@@ -69,14 +69,17 @@ const BIZ_LIST=[
 ];
 const BIZ_MAP={};BIZ_LIST.forEach(b=>{BIZ_MAP[b.slug]=b;});
 const DAKGALBI_CATS={
- sojabon:{name:'1인·소자본창업',emoji:'💰',color:'#DC2626',img:'https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'소규모 자본으로 시작하는 오늘도닭갈비',kw:'1인소자본창업,소규모창업,소자본닭갈비창업,저비용창업',titles:['1인소자본창업으로 시작하는 오늘도닭갈비, 초기비용 부담 없이 오픈','소규모창업 아이템 고민 끝, 오늘도닭갈비가 답인 이유','월세가 걱정이라면? 소자본닭갈비창업 오늘도닭갈비 선택','초기비용 최소화! 1인창업으로 운영 가능한 오늘도닭갈비','적은 자본으로 시작하는 닭갈비 프랜차이즈, 오늘도닭갈비','소자본창업 인기 아이템, 오늘도닭갈비 가맹 조건 정리','점포 크기별 소자본 닭갈비 창업 비용 완벽 가이드','1인소자본창업자가 오늘도닭갈비를 선택하는 5가지 이유','창업자금 3천만원대, 오늘도닭갈비 소규모 매장 오픈 사례','소자본으로 큰 매출, 오늘도닭갈비 작은매장 수익 분석']},
- bubu:{name:'부부·가족창업',emoji:'👫',color:'#059669',img:'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'부부와 가족이 함께 운영하는 오늘도닭갈비',kw:'부부창업,가족경영,가족외식창업,부부창업아이템',titles:['은퇴 후 제2의 인생, 부부창업으로 딱 좋은 소자본닭갈비창업','가족경영으로 운영하기 좋은 오늘도닭갈비, 부부창업 성공 사례','가족외식창업으로 검증된 오늘도닭갈비, 온 가족이 함께하는 매장','부부가 함께 운영하는 닭갈비집, 오늘도닭갈비 가맹 후기','가족창업의 정석, 오늘도닭갈비로 인건비 절감하는 방법','부부창업 아이템 찾는다면? 오늘도닭갈비 운영 시스템','가족경영으로 단골 확보하는 오늘도닭갈비 가맹점 이야기','부부 둘이서 운영 가능한 닭갈비 프랜차이즈, 오늘도닭갈비','시부모·며느리·자녀까지, 3대가 운영하는 오늘도닭갈비','가족외식창업 왜 오늘도닭갈비인가? 10년 가맹점주의 조언']},
- retire:{name:'은퇴후창업',emoji:'🌱',color:'#D97706',img:'https://images.pexels.com/photos/1793035/pexels-photo-1793035.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'은퇴 후 제2의 인생, 안정적인 창업',kw:'은퇴후창업,퇴직후창업,노후창업,50대창업',titles:['은퇴후창업 No.1 선택, 오늘도닭갈비 가맹 안내','퇴직금으로 시작하는 은퇴후창업, 오늘도닭갈비가 정답인 이유','50대·60대 은퇴후창업, 부담 없이 시작하는 오늘도닭갈비','은퇴 후 안정적인 노후 준비, 오늘도닭갈비 프랜차이즈','정년퇴직 후 인생 2막, 오늘도닭갈비로 시작하는 창업','은퇴후창업 실패 없이, 오늘도닭갈비 본사 지원 시스템','퇴직자를 위한 창업 아이템, 오늘도닭갈비의 5가지 장점','60대 은퇴후창업 성공 스토리, 오늘도닭갈비 가맹점주','은퇴 후 소일거리 아닌 진짜 사업, 오늘도닭갈비','퇴직금 활용 창업, 오늘도닭갈비 투자 회수 기간 분석']},
- youth:{name:'청년창업',emoji:'🧑‍🎓',color:'#1D4ED8',img:'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'2030 청년창업을 위한 오늘도닭갈비',kw:'청년창업,청년창업아이템,2030창업,20대창업',titles:['청년창업 첫 아이템, 오늘도닭갈비로 시작하세요','2030 청년창업 성공 공식, 오늘도닭갈비 프랜차이즈','20대 청년창업, 왜 오늘도닭갈비를 선택하는가','청년창업 지원금으로 시작하는 오늘도닭갈비 가맹','MZ 세대 청년 사장님들의 오늘도닭갈비 오픈 후기','취업 대신 창업, 청년이 선택한 오늘도닭갈비 이야기','청년창업자금 활용법, 오늘도닭갈비 창업 로드맵','경험 없는 청년이 오늘도닭갈비로 성공한 비결','30대 직장인의 청년창업, 오늘도닭갈비 투잡 사례','청년창업 성공률 높이는 오늘도닭갈비 본사 시스템']},
- beginner:{name:'초보·간편조리창업',emoji:'🍳',color:'#7C3AED',img:'https://images.pexels.com/photos/2544829/pexels-photo-2544829.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'요리 경험 없어도 가능한 간편 조리 시스템',kw:'초보창업아이템,간편조리창업,초보창업,조리경험없이창업',titles:['요리에 재능이 없어도 맛집 가능! 초보창업 맞춤형 닭갈비프렌차이즈','초보창업아이템 찾는다면? 간편조리 시스템의 오늘도닭갈비','조리 경험 없어도 OK, 간편조리창업 오늘도닭갈비 본사 레시피','초보 사장님도 쉽게 운영하는 오늘도닭갈비 시스템','요리 못해도 닭갈비집? 오늘도닭갈비 가맹점 운영 방식','간편조리 매뉴얼 제공, 초보창업자 환영 오늘도닭갈비','창업 초보자를 위한 오늘도닭갈비 본사 교육 프로그램','주방 경험 Zero, 오늘도닭갈비로 프랜차이즈 시작하기','레시피 걱정 NO, 간편조리 오늘도닭갈비 창업 가이드','초보창업 아이템 비교, 오늘도닭갈비가 쉬운 이유']},
- reopen:{name:'업종변경·리뉴얼',emoji:'🔄',color:'#0D9488',img:'https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&w=600',desc:'기존 매장 리뉴얼 및 업종전환',kw:'업종변경창업,기존매장리뉴얼,식당업종전환,업종전환',titles:['기존매장리뉴얼, 업종변경으로 매출 반등시킨 오늘도닭갈비','식당업종전환 고민 중이라면? 오늘도닭갈비가 해답','장사 안되는 매장, 업종변경창업으로 오늘도닭갈비 전환 후기','매출 하락 식당, 오늘도닭갈비 리뉴얼 후 200% 매출 상승','업종변경창업 트렌드, 왜 닭갈비로 바꾸는가','폐업 위기 매장, 오늘도닭갈비 업종변경 성공 사례','인테리어 리뉴얼 없이 업종변경, 오늘도닭갈비 가능한 이유','기존 식당에서 오늘도닭갈비로 전환하는 절차와 비용','업종변경 3개월 만에 매출 회복, 오늘도닭갈비 가맹','리뉴얼 창업 고민 해결, 오늘도닭갈비 본사 컨설팅']}
+ sojabon:{name:'1인·소자본창업',emoji:'💰',color:'#DC2626',img:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg',desc:'소규모 자본으로 시작하는 오늘도닭갈비',kw:'1인소자본창업,소규모창업,소자본닭갈비창업,저비용창업',titles:['1인소자본창업으로 시작하는 오늘도닭갈비, 초기비용 부담 없이 오픈','소규모창업 아이템 고민 끝, 오늘도닭갈비가 답인 이유','월세가 걱정이라면? 소자본닭갈비창업 오늘도닭갈비 선택','초기비용 최소화! 1인창업으로 운영 가능한 오늘도닭갈비','적은 자본으로 시작하는 닭갈비 프랜차이즈, 오늘도닭갈비','소자본창업 인기 아이템, 오늘도닭갈비 가맹 조건 정리','점포 크기별 소자본 닭갈비 창업 비용 완벽 가이드','1인소자본창업자가 오늘도닭갈비를 선택하는 5가지 이유','창업자금 3천만원대, 오늘도닭갈비 소규모 매장 오픈 사례','소자본으로 큰 매출, 오늘도닭갈비 작은매장 수익 분석']},
+ bubu:{name:'부부·가족창업',emoji:'👫',color:'#059669',img:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg',desc:'부부와 가족이 함께 운영하는 오늘도닭갈비',kw:'부부창업,가족경영,가족외식창업,부부창업아이템',titles:['은퇴 후 제2의 인생, 부부창업으로 딱 좋은 소자본닭갈비창업','가족경영으로 운영하기 좋은 오늘도닭갈비, 부부창업 성공 사례','가족외식창업으로 검증된 오늘도닭갈비, 온 가족이 함께하는 매장','부부가 함께 운영하는 닭갈비집, 오늘도닭갈비 가맹 후기','가족창업의 정석, 오늘도닭갈비로 인건비 절감하는 방법','부부창업 아이템 찾는다면? 오늘도닭갈비 운영 시스템','가족경영으로 단골 확보하는 오늘도닭갈비 가맹점 이야기','부부 둘이서 운영 가능한 닭갈비 프랜차이즈, 오늘도닭갈비','시부모·며느리·자녀까지, 3대가 운영하는 오늘도닭갈비','가족외식창업 왜 오늘도닭갈비인가? 10년 가맹점주의 조언']},
+ retire:{name:'은퇴후창업',emoji:'🌱',color:'#D97706',img:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg',desc:'은퇴 후 제2의 인생, 안정적인 창업',kw:'은퇴후창업,퇴직후창업,노후창업,50대창업',titles:['은퇴후창업 No.1 선택, 오늘도닭갈비 가맹 안내','퇴직금으로 시작하는 은퇴후창업, 오늘도닭갈비가 정답인 이유','50대·60대 은퇴후창업, 부담 없이 시작하는 오늘도닭갈비','은퇴 후 안정적인 노후 준비, 오늘도닭갈비 프랜차이즈','정년퇴직 후 인생 2막, 오늘도닭갈비로 시작하는 창업','은퇴후창업 실패 없이, 오늘도닭갈비 본사 지원 시스템','퇴직자를 위한 창업 아이템, 오늘도닭갈비의 5가지 장점','60대 은퇴후창업 성공 스토리, 오늘도닭갈비 가맹점주','은퇴 후 소일거리 아닌 진짜 사업, 오늘도닭갈비','퇴직금 활용 창업, 오늘도닭갈비 투자 회수 기간 분석']},
+ youth:{name:'청년창업',emoji:'🧑‍🎓',color:'#1D4ED8',img:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',desc:'2030 청년창업을 위한 오늘도닭갈비',kw:'청년창업,청년창업아이템,2030창업,20대창업',titles:['청년창업 첫 아이템, 오늘도닭갈비로 시작하세요','2030 청년창업 성공 공식, 오늘도닭갈비 프랜차이즈','20대 청년창업, 왜 오늘도닭갈비를 선택하는가','청년창업 지원금으로 시작하는 오늘도닭갈비 가맹','MZ 세대 청년 사장님들의 오늘도닭갈비 오픈 후기','취업 대신 창업, 청년이 선택한 오늘도닭갈비 이야기','청년창업자금 활용법, 오늘도닭갈비 창업 로드맵','경험 없는 청년이 오늘도닭갈비로 성공한 비결','30대 직장인의 청년창업, 오늘도닭갈비 투잡 사례','청년창업 성공률 높이는 오늘도닭갈비 본사 시스템']},
+ beginner:{name:'초보·간편조리창업',emoji:'🍳',color:'#7C3AED',img:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',desc:'요리 경험 없어도 가능한 간편 조리 시스템',kw:'초보창업아이템,간편조리창업,초보창업,조리경험없이창업',titles:['요리에 재능이 없어도 맛집 가능! 초보창업 맞춤형 닭갈비프렌차이즈','초보창업아이템 찾는다면? 간편조리 시스템의 오늘도닭갈비','조리 경험 없어도 OK, 간편조리창업 오늘도닭갈비 본사 레시피','초보 사장님도 쉽게 운영하는 오늘도닭갈비 시스템','요리 못해도 닭갈비집? 오늘도닭갈비 가맹점 운영 방식','간편조리 매뉴얼 제공, 초보창업자 환영 오늘도닭갈비','창업 초보자를 위한 오늘도닭갈비 본사 교육 프로그램','주방 경험 Zero, 오늘도닭갈비로 프랜차이즈 시작하기','레시피 걱정 NO, 간편조리 오늘도닭갈비 창업 가이드','초보창업 아이템 비교, 오늘도닭갈비가 쉬운 이유']},
+ reopen:{name:'업종변경·리뉴얼',emoji:'🔄',color:'#0D9488',img:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg',desc:'기존 매장 리뉴얼 및 업종전환',kw:'업종변경창업,기존매장리뉴얼,식당업종전환,업종전환',titles:['기존매장리뉴얼, 업종변경으로 매출 반등시킨 오늘도닭갈비','식당업종전환 고민 중이라면? 오늘도닭갈비가 해답','장사 안되는 매장, 업종변경창업으로 오늘도닭갈비 전환 후기','매출 하락 식당, 오늘도닭갈비 리뉴얼 후 200% 매출 상승','업종변경창업 트렌드, 왜 닭갈비로 바꾸는가','폐업 위기 매장, 오늘도닭갈비 업종변경 성공 사례','인테리어 리뉴얼 없이 업종변경, 오늘도닭갈비 가능한 이유','기존 식당에서 오늘도닭갈비로 전환하는 절차와 비용','업종변경 3개월 만에 매출 회복, 오늘도닭갈비 가맹','리뉴얼 창업 고민 해결, 오늘도닭갈비 본사 컨설팅']}
 };
 const DAKGALBI_IMG_BASE='https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/';
+const HERO_BASE='https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/';
+const HERO_PHOTOS=['pexels-alexeydemidov-10992853.jpg','pexels-anntarazevich-5242822.jpg','pexels-beyzahzah-89810429-20310531.jpg','pexels-chipi1189-34056737.jpg','pexels-japanese-girl-in-europe-1054693504-20559504.jpg','pexels-mai-in-may-570133374-30183083.jpg','pexels-mtyutina-5091144.jpg','pexels-nam-quan-nguy-n-459228913-15893689.jpg','pexels-negativespace-34577.jpg','pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg','pexels-nguyen1502-37263769.jpg','pexels-rainier-narboneta-806273574-19193795.jpg','pexels-roopsarkar-32550034.jpg','pexels-roopsarkar-34517070.jpg','pexels-sara-er-734725946-18425419.jpg','pexels-soc-nang-d-ng-2150345854-36248217.jpg','pexels-spotwizardlee-35777904-7515220.jpg','pexels-tima-miroshnichenko-4841691.jpg','pexels-towfiqu-barbhuiya-3440682-11363562.jpg','pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg','pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg','pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg','pexels-voltfather-18235143.jpg','pexels-voltfather-18235146.jpg','pexels-voltfather-18235152.jpg','pexels-wecare-media-123880473-10020090.jpg','pexels-zehra-k-710717493-26964659.jpg'];
+function heroPhoto(seed){const n=Math.abs(parseInt(seed,10)||0)%HERO_PHOTOS.length;return HERO_BASE+HERO_PHOTOS[n];}
 function hashStrDk(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0;}return Math.abs(h);}
 function makeDakBody(catKey,idx,title){
  const cat=DAKGALBI_CATS[catKey];
@@ -1060,7 +1063,7 @@ function getBizImages(biz,catKey){
 function getBizThumb(biz,catKey,sz,seed){
  const ids=getBizImages(biz,catKey);
  const id=ids[Math.abs(seed||0)%ids.length];
- const imgUrl='https://images.pexels.com/photos/'+id+'/pexels-photo-'+id+'.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop';
+ const imgUrl=heroPhoto(id);
  const size=sz||72;
  const emoji=getBizEmoji(biz,catKey);
  return '<div style="position:relative;width:'+size+'px;height:'+size+'px;flex-shrink:0;border-radius:10px;overflow:hidden;background:#f3f4f6"><img src="'+imgUrl+'" alt="'+biz+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" referrerpolicy="no-referrer"><div style="display:none;width:100%;height:100%;background:#f3f4f6;align-items:center;justify-content:center;position:absolute;top:0;left:0;font-size:'+Math.round(size*0.44)+'px">'+emoji+'</div></div>';
@@ -1068,13 +1071,13 @@ function getBizThumb(biz,catKey,sz,seed){
 function getBizHeroImg(biz,catKey,seed){
  const ids=getBizImages(biz,catKey);
  const id=ids[Math.abs(seed||0)%ids.length];
- return 'https://images.pexels.com/photos/'+id+'/pexels-photo-'+id+'.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop';
+ return heroPhoto(id);
 }
 // OG 이미지용 1200x630 (네이버/구글 검색 썸네일 규격)
 function getBizOgImg(biz,catKey,seed){
  const ids=getBizImages(biz,catKey);
  const id=ids[Math.abs(seed||0)%ids.length];
- return 'https://images.pexels.com/photos/'+id+'/pexels-photo-'+id+'.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop';
+ return heroPhoto(id);
 }
 function makeBizPage(idx){
  const title=BIZ_TITLES[idx];if(!title)return null;
@@ -1157,158 +1160,158 @@ function makeProductBlog(sido,sigungu,emd,slug,prodKey){
  const parentUrl=`https://allpaystore.com/blog/${slug}/`;
  const PHOTO_POOL={
    card:[
-     'https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4968637/pexels-photo-4968637.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/5868722/pexels-photo-5868722.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3943723/pexels-photo-3943723.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3943746/pexels-photo-3943746.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3943728/pexels-photo-3943728.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/8927648/pexels-photo-8927648.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4968388/pexels-photo-4968388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4968398/pexels-photo-4968398.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguyen1502-37263769.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg'
    ],
    pos:[
-     'https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3962294/pexels-photo-3962294.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6469978/pexels-photo-6469978.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4350071/pexels-photo-4350071.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4350099/pexels-photo-4350099.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4350124/pexels-photo-4350124.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1855214/pexels-photo-1855214.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6169665/pexels-photo-6169665.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2611817/pexels-photo-2611817.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4350183/pexels-photo-4350183.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4350082/pexels-photo-4350082.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-negativespace-34577.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-soc-nang-d-ng-2150345854-36248217.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-chipi1189-34056737.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-zehra-k-710717493-26964659.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235152.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg'
    ],
    kiosk:[
-     'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3884440/pexels-photo-3884440.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6169057/pexels-photo-6169057.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4968396/pexels-photo-4968396.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2988234/pexels-photo-2988234.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3962091/pexels-photo-3962091.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3962090/pexels-photo-3962090.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2068975/pexels-photo-2068975.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2467565/pexels-photo-2467565.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2079246/pexels-photo-2079246.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2079250/pexels-photo-2079250.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3737617/pexels-photo-3737617.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2467558/pexels-photo-2467558.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4253694/pexels-photo-4253694.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3784324/pexels-photo-3784324.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2199290/pexels-photo-2199290.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2068472/pexels-photo-2068472.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-chipi1189-34056737.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-negativespace-34577.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-chipi1189-34056737.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-anntarazevich-5242822.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mai-in-may-570133374-30183083.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg'
    ],
    cctv:[
-     'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2516143/pexels-photo-2516143.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/371924/pexels-photo-371924.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/277574/pexels-photo-277574.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/96627/pexels-photo-96627.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2853432/pexels-photo-2853432.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/207574/pexels-photo-207574.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop&auto=2',
-     'https://images.pexels.com/photos/2386044/pexels-photo-2386044.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3137067/pexels-photo-3137067.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/97050/pexels-photo-97050.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2611783/pexels-photo-2611783.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4665064/pexels-photo-4665064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/57690/cctv-camera-security-monitoring-57690.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop&v=2'
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-zehra-k-710717493-26964659.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-sara-er-734725946-18425419.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-32550034.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-negativespace-34577.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-chipi1189-34056737.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-soc-nang-d-ng-2150345854-36248217.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg'
    ],
    tableorder:[
-     'https://images.pexels.com/photos/5920743/pexels-photo-5920743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6650825/pexels-photo-6650825.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/776538/pexels-photo-776538.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1267697/pexels-photo-1267697.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/776654/pexels-photo-776654.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2403392/pexels-photo-2403392.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235146.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235146.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235146.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-zehra-k-710717493-26964659.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-sara-er-734725946-18425419.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg'
    ],
    vending:[
-     'https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2531545/pexels-photo-2531545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/7969119/pexels-photo-7969119.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2533092/pexels-photo-2533092.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2532462/pexels-photo-2532462.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2479057/pexels-photo-2479057.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3771834/pexels-photo-3771834.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3735149/pexels-photo-3735149.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3987066/pexels-photo-3987066.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4393437/pexels-photo-4393437.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3535400/pexels-photo-3535400.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2532436/pexels-photo-2532436.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3771119/pexels-photo-3771119.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2479056/pexels-photo-2479056.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3735206/pexels-photo-3735206.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/2532290/pexels-photo-2532290.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3771118/pexels-photo-3771118.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-soc-nang-d-ng-2150345854-36248217.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-32550034.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235152.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-soc-nang-d-ng-2150345854-36248217.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235146.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-chipi1189-34056737.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235152.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235152.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-zehra-k-710717493-26964659.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-sara-er-734725946-18425419.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-anntarazevich-5242822.jpg'
    ],
    removal:[
-     'https://images.pexels.com/photos/3828888/pexels-photo-3828888.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/8487409/pexels-photo-8487409.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/5691660/pexels-photo-5691660.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3990589/pexels-photo-3990589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/8061523/pexels-photo-8061523.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/7464706/pexels-photo-7464706.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/5691623/pexels-photo-5691623.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4246224/pexels-photo-4246224.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6474470/pexels-photo-6474470.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/3990369/pexels-photo-3990369.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4246221/pexels-photo-4246221.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/6474453/pexels-photo-6474453.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/4246119/pexels-photo-4246119.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-     'https://images.pexels.com/photos/5691618/pexels-photo-5691618.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-negativespace-34577.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235146.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-soc-nang-d-ng-2150345854-36248217.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mai-in-may-570133374-30183083.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-32550034.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-32550034.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-soc-nang-d-ng-2150345854-36248217.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg',
+     'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg'
    ]
  };
  const pool=PHOTO_POOL[prodKey]||PHOTO_POOL.card;
@@ -1797,8 +1800,8 @@ function makeBizDongPage(sido,sigungu,emd,slug,bizSlug,prodKey){
  const pick2=(arr,off=0)=>arr[(h2+off+h3)%arr.length];
  const pick3=(arr,off=0)=>arr[(h3+off*7+h)%arr.length];
  // 사진 풀
- const photoCard=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
- const photoPos=['https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962294/pexels-photo-3962294.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
+ const photoCard=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg'];
+ const photoPos=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-negativespace-34577.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-soc-nang-d-ng-2150345854-36248217.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg'];
  const photo=prodKey==='card'?pick(photoCard):pick(photoPos);
  // 업종별 고유 본문 (각 업종마다 다른 환경/특성 설명)
  const BIZ_CONTENT={
@@ -2337,7 +2340,7 @@ ${CSS}
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlS}
  <div style="width:100%;height:220px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="${(()=>{const pool=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968637/pexels-photo-4968637.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5868722/pexels-photo-5868722.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943723/pexels-photo-3943723.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943746/pexels-photo-3943746.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943728/pexels-photo-3943728.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927648/pexels-photo-8927648.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968388/pexels-photo-4968388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968398/pexels-photo-4968398.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];let h=0;for(let i=0;i<sidoName.length;i++)h=((h<<5)-h+sidoName.charCodeAt(i))|0;return pool[Math.abs(h)%pool.length];})()}" alt="${sidoName} 카드단말기 설치" width="1200" height="500" style="width:100%;height:100%;object-fit:cover">
+ <img src="${(()=>{const pool=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguyen1502-37263769.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg'];let h=0;for(let i=0;i<sidoName.length;i++)h=((h<<5)-h+sidoName.charCodeAt(i))|0;return pool[Math.abs(h)%pool.length];})()}" alt="${sidoName} 카드단말기 설치" width="1200" height="500" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sidoName} 설치 전문</div>
@@ -2469,7 +2472,7 @@ ${CSS}
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlSG}
  <div style="width:100%;height:240px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
- <img src="${(()=>{const pool=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5717423/pexels-photo-5717423.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968637/pexels-photo-4968637.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/5868722/pexels-photo-5868722.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943723/pexels-photo-3943723.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943746/pexels-photo-3943746.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3943728/pexels-photo-3943728.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927648/pexels-photo-8927648.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968388/pexels-photo-4968388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968398/pexels-photo-4968398.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];let h=0;for(let i=0;i<sgName.length;i++)h=((h<<5)-h+sgName.charCodeAt(i))|0;return pool[Math.abs(h)%pool.length];})()}" alt="${sgName} 카드단말기 설치" width="1200" height="500" style="width:100%;height:100%;object-fit:cover">
+ <img src="${(()=>{const pool=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-rainier-narboneta-806273574-19193795.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-beyzahzah-89810429-20310531.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-voltfather-18235143.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguyen1502-37263769.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31168386.jpg'];let h=0;for(let i=0;i<sgName.length;i++)h=((h<<5)-h+sgName.charCodeAt(i))|0;return pool[Math.abs(h)%pool.length];})()}" alt="${sgName} 카드단말기 설치" width="1200" height="500" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
  <div style="font-size:28px;font-weight:900;color:#fff">${sgName} 설치 전문</div>
@@ -2588,7 +2591,7 @@ function makeProductLandingPage(prodKey){
  const firstDong=RK().find(k=>k.startsWith(s.s+'/'));
  return firstDong?`<a href="/product/${prodKey}/${s.s}/" class="sg-card">${s.e} ${s.n}</a>`:`<span class="sg-card">${s.e} ${s.n}</span>`;
  }).join('');
- const PHOTO={card:'https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',pos:'https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',kiosk:'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',cctv:'https://images.pexels.com/photos/96612/pexels-photo-96612.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',tableorder:'https://images.pexels.com/photos/5920743/pexels-photo-5920743.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',vending:'https://images.pexels.com/photos/2531545/pexels-photo-2531545.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',removal:'https://images.pexels.com/photos/3828888/pexels-photo-3828888.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'};
+ const PHOTO={card:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',pos:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg',kiosk:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',cctv:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg',tableorder:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-32265889.jpg',vending:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg',removal:'https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg'};
  const photo=PHOTO[prodKey]||PHOTO.card;
  const today=get15dDate();const ds=`${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일`;
  // 빵크럼 + 내부링크
@@ -3058,7 +3061,7 @@ ${CSS}
 </div></nav>
 <div class="wrap" style="padding-top:28px">
  ${crumbHtml}
- <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop" alt="${emd} 카드단말기 설치 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">💳 카드단말기 설치</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} 카드단말기 · 포스기 · 키오스크</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 설치 · <span class="tel-no">☎ 010-9876-8282</span></span></div></div>
+ <div class="thumb" style="position:relative;border-radius:12px;overflow:hidden;background:#f3f4f6"><img src="https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg" alt="${emd} 카드단말기 설치 올페이스토어" width="1200" height="500" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block" referrerpolicy="no-referrer"><div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.95);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:#1D4ED8;box-shadow:0 2px 8px rgba(0,0,0,.25)">💳 카드단말기 설치</div><div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)"><span style="font-size:22px;font-weight:800;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.5);display:block;line-height:1.3">${emd} 카드단말기 · 포스기 · 키오스크</span><span style="font-size:13px;color:rgba(255,255,255,.9);margin-top:4px;display:block">📍 ${full} · 무료 설치 · <span class="tel-no">☎ 010-9876-8282</span></span></div></div>
  <div class="meta"><span class="badge">카드단말기 설치</span><span>${ds} 기준</span><span>📍 ${full}</span></div>
  <h1>${sidoS} ${sigungu} ${emd} 카드단말기 설치 완벽 가이드 — 포스기·키오스크 연동까지 한번에</h1>
  <div class="intro"><strong>${full}</strong>에서 카드단말기·포스기 설치를 고민하고 계신가요? 올페이스토어는 ${emd} 전 지역을 직접 방문해 무료 견적 · 빠른 설치 · A/S까지 책임집니다. 카드단말기·포스기·키오스크·테이블오더는 설치비 무료입니다. ${p.note} 이 글에서는 <strong>${emd} 사장님들이 꼭 알아야 할</strong> 카드단말기·포스기 선택 기준, 비용 절감 방법, 키오스크 연동 혜택을 빠짐없이 안내드립니다.</div>
@@ -5315,7 +5318,7 @@ export default {
   const line1=txt.substring(0,lineLen);
   const line2=txt.substring(lineLen);
   const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${prodInfo.color}" stop-opacity="0.7"/><stop offset="1" stop-color="#000" stop-opacity="0.85"/></linearGradient></defs><image href="https://images.pexels.com/photos/${prodInfo.bg}/pexels-photo-${prodInfo.bg}.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;h=630&amp;fit=crop" x="0" y="0" width="1200" height="630" preserveAspectRatio="xMidYMid slice"/><rect x="0" y="0" width="1200" height="630" fill="url(#g)"/><text x="60" y="240" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="72" font-weight="900" fill="#fff">${esc(line1)}</text>${line2?`<text x="60" y="330" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="72" font-weight="900" fill="#fff">${esc(line2)}</text>`:''}<text x="60" y="430" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="36" font-weight="700" fill="rgba(255,255,255,0.95)">${prodInfo.emoji} ${prodInfo.label} · 무료 설치 · A/S</text><text x="60" y="500" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="600" fill="rgba(255,255,255,0.85)">올페이스토어 ☎ 010-9876-8282</text><text x="60" y="570" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="26" font-weight="500" fill="rgba(255,255,255,0.7)">allpaystore.com</text></svg>`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${prodInfo.color}" stop-opacity="0.7"/><stop offset="1" stop-color="#000" stop-opacity="0.85"/></linearGradient></defs><image href="${heroPhoto(prodInfo.bg)}" x="0" y="0" width="1200" height="630" preserveAspectRatio="xMidYMid slice"/><rect x="0" y="0" width="1200" height="630" fill="url(#g)"/><text x="60" y="240" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="72" font-weight="900" fill="#fff">${esc(line1)}</text>${line2?`<text x="60" y="330" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="72" font-weight="900" fill="#fff">${esc(line2)}</text>`:''}<text x="60" y="430" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="36" font-weight="700" fill="rgba(255,255,255,0.95)">${prodInfo.emoji} ${prodInfo.label} · 무료 설치 · A/S</text><text x="60" y="500" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="30" font-weight="600" fill="rgba(255,255,255,0.85)">올페이스토어 ☎ 010-9876-8282</text><text x="60" y="570" font-family="Pretendard, 'Noto Sans KR', sans-serif" font-size="26" font-weight="500" fill="rgba(255,255,255,0.7)">allpaystore.com</text></svg>`;
   return new Response(svg,{headers:{'Content-Type':'image/svg+xml; charset=utf-8','Cache-Control':'public,max-age=604800,s-maxage=604800'}});
  }
  if(path==='/blog')
@@ -5449,8 +5452,8 @@ if(path==='/biz-cctv'){
    const pick=(arr,off)=>arr[(h+off+h2)%arr.length];
    const pick2=(arr,off)=>arr[(h2+off+h3)%arr.length];
    const pick3=(arr,off)=>arr[(h3+off*7+h)%arr.length];
-   const photoCard=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
-   const photoPos=['https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
+   const photoCard=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg'];
+   const photoPos=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-negativespace-34577.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg'];
    const photo=(prodKey==='card'?photoCard:photoPos)[h%5];
    // 본문 단락 풀 (시도 단위) - 32개로 대폭 확장
    const PA_SI=[
@@ -5587,8 +5590,8 @@ ${makeSiteFooter()}
    const pick=(arr,off)=>arr[(h+off+h2)%arr.length];
    const pick2=(arr,off)=>arr[(h2+off+h3)%arr.length];
    const pick3=(arr,off)=>arr[(h3+off*7+h)%arr.length];
-   const photoCard=['https://images.pexels.com/photos/164571/pexels-photo-164571.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/259200/pexels-photo-259200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
-   const photoPos=['https://images.pexels.com/photos/4968382/pexels-photo-4968382.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/4350103/pexels-photo-4350103.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/8927647/pexels-photo-8927647.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop','https://images.pexels.com/photos/3962294/pexels-photo-3962294.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'];
+   const photoCard=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-mtyutina-5091144.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nguy-n-ti-n-th-nh-2150376175-37981004.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-nam-quan-nguy-n-459228913-15893689.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-towfiqu-barbhuiya-3440682-11363562.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-alexeydemidov-10992853.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-roopsarkar-34517070.jpg'];
+   const photoPos=['https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-japanese-girl-in-europe-1054693504-20559504.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-negativespace-34577.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-vi-t-anh-nguy-n-2150409023-31133774.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-wecare-media-123880473-10020090.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-spotwizardlee-35777904-7515220.jpg','https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/hero/pexels-tima-miroshnichenko-4841691.jpg'];
    const photo=(prodKey==='card'?photoCard:photoPos)[h%6];
    // 본문 단락 풀 (시군구 단위) - 32개로 대폭 확장
    const PA_SG=[
