@@ -2775,7 +2775,7 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/${prodKey}/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlPS}
- <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
+ <div style="width:100%;aspect-ratio:2/1;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
  <img src="${heroPhoto(sidoName)}" alt="${sidoName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${short} ${top.length}개 시군구 · ${dongCount}개 읍면동</div>
@@ -2912,7 +2912,7 @@ ${CSS}
 <nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/product/${prodKey}/${sidoSlug}/">지역별</a><a href="/product/${prodKey}/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:010-9876-8282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
 <div class="wrap" style="padding-top:28px">
  ${crumbHtmlPSG}
- <div style="width:100%;height:200px;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
+ <div style="width:100%;aspect-ratio:2/1;border-radius:16px;position:relative;overflow:hidden;margin-bottom:20px">
  <img src="${heroPhoto(sgName)}" alt="${sgName}" style="width:100%;height:100%;object-fit:cover">
  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:flex-end;padding:28px">
  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">${ds} 기준 · ${sgName} ${dongs.length}개 읍면동</div>
