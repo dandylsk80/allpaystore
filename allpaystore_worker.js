@@ -1765,10 +1765,6 @@ ${(()=>{
  <div class="int-grid">${allProdLinks}</div>
 </div>`;
 })()}
-${(prodKey==='card'||prodKey==='pos')?`<div class="int-sec">
- <h4>🏪 ${emd} 업종별 ${prd.ko} 설치 가이드</h4>
- <div class="int-grid">${BIZ_LIST.map(b=>`<a href="/blog/${slug}/${b.slug}-${prodKey}/" class="int-link">${b.emoji} ${b.ko}</a>`).join('')}</div>
-</div>`:''}
 </div>
 ${makeSiteFooter()}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"${canon}","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"${photoUrl}","telephone":"+82-10-9876-8282","priceRange":"무료견적","description":"${full} ${prd.ko} ${suf} 전문업체. ${isRemoval?'정찰제·원상복구·폐기물 적법처리':'설치비 무료·빠른 설치·A/S 지원'}","address":{"@type":"PostalAddress","addressCountry":"KR","addressRegion":"${sido}","addressLocality":"${sigungu}","streetAddress":"${emd}"},"areaServed":{"@type":"Place","name":"${full}"},"makesOffer":{"@type":"Offer","name":"${emd} ${prd.ko} ${suf}","description":"${full} ${prd.ko} ${suf}, 무료 견적 010-9876-8282"}}</script>
@@ -3143,14 +3139,6 @@ ${CSS}
  <span>📍 ${full} 카드단말기 설치 전문</span>
  </div>
 </div>
-<div class="int-sec">
- <h4>🏪 ${emd} 업종별 카드단말기 설치</h4>
- <div class="int-grid">${BIZ_LIST.map(b=>`<a href="/blog/${slug}/${b.slug}-card/" class="int-link">${b.emoji} ${b.ko}</a>`).join('')}</div>
-</div>
-<div class="int-sec">
- <h4>🏪 ${emd} 업종별 포스기 설치</h4>
- <div class="int-grid">${BIZ_LIST.map(b=>`<a href="/blog/${slug}/${b.slug}-pos/" class="int-link">${b.emoji} ${b.ko}</a>`).join('')}</div>
-</div>
 ${makeSiteFooter()}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"올페이스토어","url":"https://allpaystore.com","logo":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","image":"https://raw.githubusercontent.com/dandylsk80/allpaystore/main/images/logo.png","telephone":"010-9876-8282"}</script>
 <div class="fl-wrap">
@@ -3636,25 +3624,7 @@ function makeSitemap(){
  const today=get15dDate().toISOString().split('T')[0];
  const sitemaps=[
   '/sitemap-v3-main.xml',
-  '/sitemap-v3-dong.xml',
-  '/sitemap-v3-bizdong-card-1.xml',
-  '/sitemap-v3-bizdong-card-2.xml',
-  '/sitemap-v3-bizdong-card-3.xml',
-  '/sitemap-v3-bizdong-card-4.xml',
-  '/sitemap-v3-bizdong-card-5.xml',
-  '/sitemap-v3-bizdong-card-6.xml',
-  '/sitemap-v3-bizdong-card-7.xml',
-  '/sitemap-v3-bizdong-card-8.xml',
-  '/sitemap-v3-bizdong-card-9.xml',
-  '/sitemap-v3-bizdong-pos-1.xml',
-  '/sitemap-v3-bizdong-pos-2.xml',
-  '/sitemap-v3-bizdong-pos-3.xml',
-  '/sitemap-v3-bizdong-pos-4.xml',
-  '/sitemap-v3-bizdong-pos-5.xml',
-  '/sitemap-v3-bizdong-pos-6.xml',
-  '/sitemap-v3-bizdong-pos-7.xml',
-  '/sitemap-v3-bizdong-pos-8.xml',
-  '/sitemap-v3-bizdong-pos-9.xml'
+  '/sitemap-v3-dong.xml'
  ];
  const items=sitemaps.map(s=>`<sitemap><loc>${base}${s}</loc><lastmod>${today}</lastmod></sitemap>`).join('');
  return '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+items+'</sitemapindex>';
@@ -5303,6 +5273,10 @@ export default {
  if(BIZ_REGION_DISABLED && (path==='/biz-region'||path.startsWith('/biz-region/')||path.startsWith('/sitemap-v3-biz-region'))){
   return new Response('Not Found',{status:404,headers:{'Content-Type':'text/plain;charset=utf-8','X-Robots-Tag':'noindex,nofollow'}});
  }
+ // [동×업종×제품 사이트맵 삭제] /sitemap-v3-bizdong-* → 404
+ if(path.startsWith('/sitemap-v3-bizdong')){
+  return new Response('Not Found',{status:404,headers:{'Content-Type':'text/plain;charset=utf-8','X-Robots-Tag':'noindex,nofollow'}});
+ }
  if(path==='/'){
  return new Response(getHTML(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
@@ -5849,10 +5823,15 @@ ${makeSiteFooter()}</body></html>`;
  const r=lk(baseSlug);
  if(r)return new Response(makeProductBlog(...r,baseSlug,parts[3]),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
- // /blog/{sido}/{sg}/{emd}/{biz}-{prod}/ 패턴
+ // /blog/{sido}/{sg}/{emd}/{biz}-{prod}/ 패턴 [동×업종×제품 삭제 - 404]
+ // 재활성화: 아래 BIZDONG_DISABLED=false + makeBizDongPage 호출 복원
+ const BIZDONG_DISABLED=true;
  if(parts.length===4){
   const m=parts[3].match(/^([a-z]+)-(card|pos)$/);
   if(m && BIZ_MAP[m[1]]){
+   if(BIZDONG_DISABLED){
+    return new Response('Not Found',{status:404,headers:{'Content-Type':'text/plain;charset=utf-8','X-Robots-Tag':'noindex,nofollow'}});
+   }
    const baseSlug=parts.slice(0,3).join('/');
    const r=lk(baseSlug);
    if(r){
@@ -5987,7 +5966,7 @@ QR코드 기반 테이블 주문 시스템. 직원 호출 부담 감소, 회전�
 `;
   return new Response(llms,{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=86400'}});
  }
- if(path==='/robots.txt')return new Response('User-agent: Googlebot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Yeti\nAllow: /\nDisallow: /contact/?\n\nUser-agent: NaverBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Daumoa\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Bingbot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: GPTBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: ChatGPT-User\nAllow: /\nDisallow: /contact/?\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: ClaudeBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Claude-Web\nAllow: /\nDisallow: /contact/?\n\nUser-agent: anthropic-ai\nAllow: /\nDisallow: /contact/?\n\nUser-agent: PerplexityBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Google-Extended\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Applebot-Extended\nAllow: /\nDisallow: /contact/?\n\nUser-agent: CCBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: *\nAllow: /\nDisallow: /contact/?\n\nSitemap: https://allpaystore.com/sitemap.xml\nSitemap: https://allpaystore.com/sitemap-v3-main.xml\nSitemap: https://allpaystore.com/sitemap-v3-dong.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-card-9.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-1.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-2.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-3.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-4.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-5.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-6.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-7.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-8.xml\nSitemap: https://allpaystore.com/sitemap-v3-bizdong-pos-9.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+ if(path==='/robots.txt')return new Response('User-agent: Googlebot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Yeti\nAllow: /\nDisallow: /contact/?\n\nUser-agent: NaverBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Daumoa\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Bingbot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: GPTBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: ChatGPT-User\nAllow: /\nDisallow: /contact/?\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: ClaudeBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Claude-Web\nAllow: /\nDisallow: /contact/?\n\nUser-agent: anthropic-ai\nAllow: /\nDisallow: /contact/?\n\nUser-agent: PerplexityBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Google-Extended\nAllow: /\nDisallow: /contact/?\n\nUser-agent: Applebot-Extended\nAllow: /\nDisallow: /contact/?\n\nUser-agent: CCBot\nAllow: /\nDisallow: /contact/?\n\nUser-agent: *\nAllow: /\nDisallow: /contact/?\n\nSitemap: https://allpaystore.com/sitemap.xml\nSitemap: https://allpaystore.com/sitemap-v3-main.xml\nSitemap: https://allpaystore.com/sitemap-v3-dong.xml\n#DaumWebMasterTool:a084aba0d0bddc25d1d86ae9ead70dfa9b7b4af22de6f33824e0076f23899298:mnbfnUfBcH3+tkC3lYI3ZA==\n',{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=3600'}});
  if(path==='/llms.txt'||path==='/llms-full.txt')return new Response(`# 올페이스토어 (AllPayStore)
 
 > 한국 전국 카드단말기·포스기·키오스크·테이블오더·자판기·매장철거 설치 전문 업체. 무료 견적, 빠른 설치, A/S 지원, 전국 5,000+ 읍면동 직접 출장 가능.
