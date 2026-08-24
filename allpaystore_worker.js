@@ -1,3 +1,77 @@
+const TG_TOKEN='8101954996:AAGNV225WaNL8Zqh9OxtmP1WNzlbquNaq9s';
+const TG_CHAT='8649422714';
+const TG_LABEL={tel:'전화 버튼 클릭',contact:'상담 버튼 클릭'};
+const TG_SITE='올페이스토어';
+const TG_DOMAIN='allpaystore.com';
+const TG_ORIGIN='https://allpaystore.com';
+function tgDescribe(path){
+  var seg=String(path||'').split('?')[0].split('/').filter(Boolean);
+  if(!seg.length)return '메인';
+  var p0=seg[0];
+  if(p0==='contact')return '상담 문의 페이지';
+  if(p0==='guide')return '가이드 페이지';
+  if(p0==='product'){var pk=seg[1];return (pk&&PRODUCTS[pk])?('제품 · '+PRODUCTS[pk].ko):'제품 안내';}
+  if(p0==='franchise')return '오늘도닭갈비 가맹';
+  if(p0==='biz'||p0.indexOf('biz-')===0){
+    var BM={'biz':'카드단말기','biz-cctv':'CCTV','biz-pos':'포스기','biz-kiosk':'키오스크','biz-vending':'자동판매기','biz-table':'테이블오더','biz-region':''};
+    var pn=(BM[p0]!==undefined)?BM[p0]:'';
+    if(!seg[1])return '업종별'+(pn?(' '+pn):'');
+    var bk=(BIZ_MAP[seg[1]]&&BIZ_MAP[seg[1]].ko)||seg[1];
+    return '업종 · '+bk+(pn?(' · '+pn):'');
+  }
+  if(p0==='blog'){
+    if(seg.length>=4){
+      var r=lk(seg[1]+'/'+seg[2]+'/'+seg[3]);
+      if(r){var s=r.join(' ');if(seg[4]&&PRODUCTS[seg[4]])s+=(' · '+PRODUCTS[seg[4]].ko);return s;}
+    }
+    if(seg.length===3){var sd=(S[SI_MAP[seg[1]]])||seg[1];var sgi=SG_MAP[seg[1]+'/'+seg[2]];var sgn=(sgi!==undefined&&SG[sgi])||seg[2];return sd+' '+sgn;}
+    if(seg.length===2)return (S[SI_MAP[seg[1]]])||seg[1];
+    return '지역 페이지';
+  }
+  return '일반 페이지';
+}
+function tgRef(ref){
+  if(!ref)return '직접 방문 또는 알 수 없음';
+  try{
+    var h=new URL(ref).hostname.replace(/^www\./,'');
+    if(h===TG_DOMAIN||h.endsWith('.'+TG_DOMAIN))return '사이트 내부 이동';
+    if(h.includes('naver'))return '네이버';
+    if(h.includes('google'))return '구글';
+    if(h.includes('daum'))return '다음';
+    if(h.includes('bing'))return 'Bing';
+    if(h.includes('kakao'))return '카카오';
+    if(h.includes('instagram'))return '인스타그램';
+    if(h.includes('facebook'))return '페이스북';
+    if(h.includes('youtube'))return '유튜브';
+    if(h.includes('tiktok'))return '틱톡';
+    if(h.includes('zum'))return '줌';
+    return h;
+  }catch(e){return '알 수 없음';}
+}
+function tgTime(){
+  var d=new Date(Date.now()+9*3600000);
+  var z=function(n){return String(n).padStart(2,'0');};
+  return d.getUTCFullYear()+'-'+z(d.getUTCMonth()+1)+'-'+z(d.getUTCDate())+' '+z(d.getUTCHours())+':'+z(d.getUTCMinutes());
+}
+const TG_BOT_RE=/bot|crawl|spider|slurp|facebookexternalhit|curl|wget|python|axios|headless|lighthouse|pagespeed|semrush|ahrefs|bytespider|applebot|monitor|uptime|scan/i;
+async function tgNotify(type,page,ref,ua){
+  if(!TG_TOKEN||TG_TOKEN.indexOf('PASTE_')===0)return;
+  if(!TG_CHAT||TG_CHAT.indexOf('PASTE_')===0)return;
+  var label=TG_LABEL[type];
+  if(!label)return;
+  var L=[];
+  L.push((type==='tel'?'\U0001F4DE ':'\U0001F4DD ')+label);
+  L.push('');
+  L.push('사이트: '+TG_SITE+' ('+TG_DOMAIN+')');
+  L.push('페이지: '+TG_ORIGIN+page);
+  L.push('한글: '+tgDescribe(page));
+  L.push('유입: '+tgRef(ref));
+  L.push('기기: '+(/Mobile|Android|iPhone|iPad/i.test(ua||'')?'모바일':'PC'));
+  L.push('시각: '+tgTime()+' (KST)');
+  try{
+    await fetch('https://api.telegram.org/bot'+TG_TOKEN+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text:L.join('\n'),disable_web_page_preview:true})});
+  }catch(e){}
+}
 const S=["서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시","울산광역시","세종특별자치시","경기도","충청북도","충청남도","전라남도","경상북도","경상남도","제주특별자치도","강원특별자치도","전북특별자치도"];
 
 const VEND_TITLES=["학교 자판기 도입 비용 비교","고등학교 자판기 추천 모델 정리","대학교 자판기 도입 비용 비교","독서실 자판기 도입 이유","스터디카페 자판기 추천 모델 정리","기숙사 자판기 설치 후기","병원 자판기 비용 총정리","병실 자판기 도입 비용 비교","동물병원 자판기 수익 구조 분석","사내 자판기 설치비용 얼마일까","회사복지 자판기 비용 총정리","구내식당 자판기 설치 방법","공유오피스 자판기 도입 비용 비교","관공서 자판기 설치 후기","호텔 자판기 설치비용 얼마일까","스크린골프장 자판기 설치 가이드 총정리","볼링장 자판기 설치 시 확인할 점","당구장 자판기 추천 모델 정리","PC방 자판기 설치 방법","만화카페 자판기 설치비용 얼마일까","캠핑장 자판기 설치 방법","글램핑장 자판기 설치 방법","키즈카페 자판기 설치 방법","대형키즈카페 자판기 설치 후기","애견호텔 자판기 수익 구조 분석","애견카페 자판기 추천 모델 정리","헬스장 자판기 설치 가이드 총정리","휘트니스센터 자판기 수익 구조 분석","아파트커뮤니티 자판기 추천 모델 정리","주상복합 자판기 비용 총정리","오피스텔 자판기 추천 모델 정리","미용실 자판기 도입 비용 비교","네일샵 자판기 도입 비용 비교","무인매장 자판기 도입 이유","무인세차장 자판기 설치 가이드 총정리","스마트자판기 수익 구조 분석","스마트자동판매기 비용 총정리","디지털자판기 설치 시 확인할 점","터치스크린자판기 수익 구조 분석","멀티자판기 수익 구조 분석","키오스크자판기 설치 시 확인할 점","카드결제 자판기 설치 시 확인할 점","카드자판기 설치 방법","사원증결제 자판기 도입 비용 비교","회원카드 자판기 설치 시 확인할 점","커스터마이징 자판기 도입 이유","DIY 자판기 설치 시 확인할 점","주문제작 자판기 도입 비용 비교","맞춤제작 자판기 비용 총정리","커스텀 자판기 설치 시 확인할 점","자판기 래핑 설치 가이드 총정리","광고판 자판기 도입 비용 비교","자판기 광고판 설치 가이드 총정리","광고용 자판기 설치 시 확인할 점","광고수익 자판기 수익 구조 분석","럭셔리 자판기 도입 이유","고급 자판기 도입 이유","원격관리 자판기 도입 이유","재고관리 자판기 설치 방법","냉장 자판기 설치 방법","상온 자판기 설치 후기","샐러드 자판기 설치비용 얼마일까","밀키트 자판기 설치비용 얼마일까","신선식품 자판기 도입 이유","반찬 자판기 추천 모델 정리","냉장식품 자판기 비용 총정리","프로틴 자판기 수익 구조 분석","건강음료 자판기 설치 후기","화장품 자판기 비용 총정리","뷰티 자판기 설치 방법","생필품 자판기 도입 이유","반려동물간식 자판기 추천 모델 정리","애견용품 자판기 도입 비용 비교","굿즈 자판기 비용 총정리","문구 자판기 수익 구조 분석","보드게임 자판기 설치 시 확인할 점","호텔어메니티 자판기 설치 방법"];
@@ -5249,7 +5323,7 @@ export default {
  async fetch(request,env,ctx){
  const url=new URL(request.url);
  const path=decodeURIComponent(url.pathname).replace(/\/+$/,'')||'/';
- if(path==="/api/track"&&request.method==="POST"){try{const b=await request.json();const ip=request.headers.get("CF-Connecting-IP")||"";const ua=request.headers.get("User-Agent")||"";const isBot=/bot|crawl|spider|slurp|mediapartners|googlebot|bingbot|yandex|baidu|duckduckbot|facebookexternalhit|semrush|ahrefs|mj12bot|dotbot|petalbot|bytespider|headlesschrome|python-requests|curl|wget/i.test(ua);const ts=new Date().toISOString();if(env&&env.DB&&!(b.type==="view"&&isBot)&&(b.type==="tel"||b.type==="sms"||b.type==="contact"||b.type==="view")){await env.DB.prepare("INSERT INTO events (site,type,page,ref,ip,ts) VALUES (?,?,?,?,?,?)").bind("allpaystore",b.type,(b.page||"").slice(0,300),(b.ref||"").slice(0,120),ip,ts).run();}}catch(e){}return new Response(JSON.stringify({ok:true}),{headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});}
+ if(path==="/api/track"&&request.method==="POST"){try{const b=await request.json();const ip=request.headers.get("CF-Connecting-IP")||"";const ts=new Date().toISOString();if(env&&env.DB&&(b.type==="tel"||b.type==="sms"||b.type==="contact"||b.type==="view")){await env.DB.prepare("INSERT INTO events (site,type,page,ref,ip,ts) VALUES (?,?,?,?,?,?)").bind("allpaystore",b.type,(b.page||"").slice(0,300),(b.ref||"").slice(0,120),ip,ts).run();}var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABEL[b.type]){var __tgp=tgNotify(b.type,(b.page||"/").slice(0,300),b.ref||"",__ua);if(ctx&&ctx.waitUntil)ctx.waitUntil(__tgp);else await __tgp;}}catch(e){}return new Response(JSON.stringify({ok:true}),{headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});}
  if(path==="/api/track"&&request.method==="OPTIONS")return new Response(null,{headers:{"Access-Control-Allow-Origin":"*","Access-Control-Allow-Methods":"POST,OPTIONS","Access-Control-Allow-Headers":"Content-Type"}});
  // [CCTV 임시 비공개] CCTV_DISABLED=true 시 모든 CCTV 페이지가 noindex 임시 페이지로 응답
  // 다시 공개하려면 CCTV_DISABLED=false로만 변경
