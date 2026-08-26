@@ -1,5 +1,3 @@
-const TG_TOKEN='8101954996:AAGNV225WaNL8Zqh9OxtmP1WNzlbquNaq9s';
-const TG_CHAT='8649422714';
 const TG_LABEL={tel:'전화 버튼 클릭',sms:'문자 버튼 클릭',contact:'상담 버튼 클릭'};
 const TG_SITE='올페이스토어';
 const TG_DOMAIN='allpaystore.com';
@@ -54,9 +52,10 @@ function tgTime(){
   return d.getUTCFullYear()+'-'+z(d.getUTCMonth()+1)+'-'+z(d.getUTCDate())+' '+z(d.getUTCHours())+':'+z(d.getUTCMinutes());
 }
 const TG_BOT_RE=/bot|crawl|spider|slurp|facebookexternalhit|curl|wget|python|axios|headless|lighthouse|pagespeed|semrush|ahrefs|bytespider|applebot|monitor|uptime|scan/i;
-async function tgNotify(type,page,ref,ua){
-  if(!TG_TOKEN||TG_TOKEN.indexOf('PASTE_')===0)return;
-  if(!TG_CHAT||TG_CHAT.indexOf('PASTE_')===0)return;
+async function tgNotify(env, type,page,ref,ua){
+  const TG_TOKEN = env && env.TG_TOKEN;
+  const TG_CHAT = env && env.TG_CHAT;
+  if (!TG_TOKEN || !TG_CHAT) return;
   var label=TG_LABEL[type];
   if(!label)return;
   var L=[];
@@ -5323,7 +5322,7 @@ export default {
  async fetch(request,env,ctx){
  const url=new URL(request.url);
  const path=decodeURIComponent(url.pathname).replace(/\/+$/,'')||'/';
- if(path==="/api/track"&&request.method==="POST"){try{const b=await request.json();const ip=request.headers.get("CF-Connecting-IP")||"";const ts=new Date().toISOString();if(env&&env.DB&&(b.type==="tel"||b.type==="sms"||b.type==="contact"||b.type==="view")){await env.DB.prepare("INSERT INTO events (site,type,page,ref,ip,ts) VALUES (?,?,?,?,?,?)").bind("allpaystore",b.type,(b.page||"").slice(0,300),(b.ref||"").slice(0,120),ip,ts).run();}var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABEL[b.type]){var __tgp=tgNotify(b.type,(b.page||"/").slice(0,300),b.ref||"",__ua);if(ctx&&ctx.waitUntil)ctx.waitUntil(__tgp);else await __tgp;}}catch(e){}return new Response(JSON.stringify({ok:true}),{headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});}
+ if(path==="/api/track"&&request.method==="POST"){try{const b=await request.json();const ip=request.headers.get("CF-Connecting-IP")||"";const ts=new Date().toISOString();if(env&&env.DB&&(b.type==="tel"||b.type==="sms"||b.type==="contact"||b.type==="view")){await env.DB.prepare("INSERT INTO events (site,type,page,ref,ip,ts) VALUES (?,?,?,?,?,?)").bind("allpaystore",b.type,(b.page||"").slice(0,300),(b.ref||"").slice(0,120),ip,ts).run();}var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABEL[b.type]){var __tgp=tgNotify(env, b.type,(b.page||"/").slice(0,300),b.ref||"",__ua);if(ctx&&ctx.waitUntil)ctx.waitUntil(__tgp);else await __tgp;}}catch(e){}return new Response(JSON.stringify({ok:true}),{headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});}
  if(path==="/api/track"&&request.method==="OPTIONS")return new Response(null,{headers:{"Access-Control-Allow-Origin":"*","Access-Control-Allow-Methods":"POST,OPTIONS","Access-Control-Allow-Headers":"Content-Type"}});
  // [CCTV 임시 비공개] CCTV_DISABLED=true 시 모든 CCTV 페이지가 noindex 임시 페이지로 응답
  // 다시 공개하려면 CCTV_DISABLED=false로만 변경
