@@ -20,10 +20,10 @@ function tgDescribe(path){
   if(p0==='blog'){
     if(seg.length>=4){
       var r=lk(seg[1]+'/'+seg[2]+'/'+seg[3]);
-      if(r){var s=r.join(' ');if(seg[4]&&PRODUCTS[seg[4]])s+=(' · '+PRODUCTS[seg[4]].ko);return s;}
+      if(r){var s=r.join(' ');s+=((seg[4]&&PRODUCTS[seg[4]])?(' '+PRODUCTS[seg[4]].ko):' 카드단말기');return s;}
     }
-    if(seg.length===3){var sd=(S[SI_MAP[seg[1]]])||seg[1];var sgi=SG_MAP[seg[1]+'/'+seg[2]];var sgn=(sgi!==undefined&&SG[sgi])||seg[2];return sd+' '+sgn;}
-    if(seg.length===2)return (S[SI_MAP[seg[1]]])||seg[1];
+    if(seg.length===3){var sd=(S[SI_MAP[seg[1]]])||seg[1];var sgi=SG_MAP[seg[1]+'/'+seg[2]];var sgn=(sgi!==undefined&&SG[sgi])||seg[2];return sd+' '+sgn+' 카드단말기';}
+    if(seg.length===2)return ((S[SI_MAP[seg[1]]])||seg[1])+' 카드단말기';
     return '지역 페이지';
   }
   return '일반 페이지';
@@ -63,7 +63,7 @@ async function tgNotify(env, type,page,ref,ua){
   L.push('');
   L.push('사이트: '+TG_SITE+' ('+TG_DOMAIN+')');
   L.push('페이지: '+TG_ORIGIN+page);
-  L.push('한글: '+tgDescribe(page));
+  L.push('검색 키워드: '+tgDescribe(page));
   L.push('유입: '+tgRef(ref));
   L.push('기기: '+(/Mobile|Android|iPhone|iPad/i.test(ua||'')?'모바일':'PC'));
   L.push('시각: '+tgTime()+' (KST)');
