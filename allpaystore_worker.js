@@ -1,3 +1,19 @@
+/* IndexNow 폴백: api.indexnow.org / www.bing.com 은 Cloudflare Workers 의 공용
+   아웃바운드 IP 에 429(TooManyRequests)를 반환하는 경우가 많다. IndexNow 는 참여
+   엔드포인트 한 곳만 성공하면 나머지 엔진으로 전파되므로 순차 폴백한다. */
+const INDEXNOW_FALLBACK_EPS = ["https://api.indexnow.org/indexnow","https://yandex.com/indexnow","https://search.seznam.cz/indexnow"];
+async function indexnowFetch(opt){
+  let last=null;
+  for(const ep of INDEXNOW_FALLBACK_EPS){
+    try{
+      const r=await fetch(ep,opt);
+      if(r.status>=200&&r.status<300) return r;
+      last=r;
+    }catch(e){}
+  }
+  return last||{status:0};
+}
+
 /* 대시보드 방문자 집계용 봇 UA 필터 (크롤러를 방문자로 세지 않기 위함) */
 const BOT_UA_RE = /bot|crawl|spider|slurp|mediapartners|googlebot|bingbot|yandex|baidu|duckduckbot|facebookexternalhit|semrush|ahrefs|mj12bot|dotbot|petalbot|bytespider|headlesschrome|python-requests|curl|wget|yeti|daumoa|lighthouse|pagespeed|inspectiontool|googleother|applebot|amazonbot|archiver|scrapy|node-fetch|okhttp|go-http|libwww|httpclient|dataforseo|serpstat|zoominfo|bubing|linkdex/i;
 const TG_LABEL={tel:'전화 버튼 클릭',sms:'문자 버튼 클릭',contact:'상담 버튼 클릭'};
@@ -6154,7 +6170,7 @@ QR코드 기반 테이블 주문 시스템. 직원 호출 부담 감소, 회전�
     const body=JSON.stringify({host:'allpaystore.com',key:INDEXNOW_KEY,keyLocation:'https://allpaystore.com/'+INDEXNOW_KEY+'.txt',urlList:batch});
     const [naverR,bingR]=await Promise.allSettled([
      fetch('https://searchadvisor.naver.com/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body}),
-     fetch('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body})
+     indexnowFetch({method:'POST',headers:{'Content-Type':'application/json'},body})
     ]);
     results.push({batch:i/1000+1,size:batch.length,naver:naverR.status==='fulfilled'?naverR.value.status:'ERR',bing:bingR.status==='fulfilled'?bingR.value.status:'ERR'});
     submitted+=batch.length;
