@@ -3885,6 +3885,28 @@ function makeSitemapBizRegionV3(partIdx){
  for(let i=start;i<end;i++) parts.push(u(all[i]));
  return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
 }
+/* 기존 RSS 를 Atom 으로 변환한다 (피드 항목 로직을 중복 구현하지 않기 위함) */
+function atomFromRss(xml, selfUrl){
+  const one=function(s,t){ const m=s.match(new RegExp("<"+t+"(?:\\s[^>]*)?>([\\s\\S]*?)<\\/"+t+">")); return m?m[1]:""; };
+  const head=xml.split("<item>")[0];
+  const chTitle=one(head,"title"), chLink=one(head,"link"), chDesc=one(head,"description");
+  const items=xml.match(/<item>[\s\S]*?<\/item>/g)||[];
+  const now=new Date().toISOString();
+  let x='<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko">';
+  x+="<title>"+chTitle+"</title>";
+  if(chDesc) x+="<subtitle>"+chDesc+"</subtitle>";
+  x+='<link href="'+chLink+'"/><link rel="self" href="'+selfUrl+'"/>';
+  x+="<id>"+(chLink||selfUrl)+"</id><updated>"+now+"</updated>";
+  for(const it of items){
+    const t=one(it,"title"), l=one(it,"link")||one(it,"guid"), d=one(it,"description"), pd=one(it,"pubDate");
+    let up=now; if(pd){ const dt=new Date(pd); if(!isNaN(dt.getTime())) up=dt.toISOString(); }
+    x+="<entry><title>"+t+"</title>";
+    x+='<link href="'+l+'"/><id>'+l+"</id><updated>"+up+"</updated>";
+    if(d) x+="<summary>"+d+"</summary>";
+    x+="</entry>";
+  }
+  return x+"</feed>";
+}
 function getRSS() {
  const now=new Date().toUTCString();
  const base='https://allpaystore.com';
@@ -6005,6 +6027,8 @@ ${makeSiteFooter()}<script>(function(){function t(ty){try{fetch("/api/track",{me
 </div>
 <script>(function(){function t(ty){try{fetch("/api/track",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:ty,page:location.pathname,ref:document.referrer}),keepalive:true});}catch(e){}}if(location.pathname.indexOf("/api/")!==0)t("view");document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a,button");if(!a)return;var h=(a.getAttribute&&a.getAttribute("href"))||"";var cl=(""+(a.className||""));if(h.indexOf("tel:")===0)t("tel");else if(h.indexOf("sms:")===0)t("sms");else if(cl.indexOf("ct-submit")>=0)t("contact");},true);})();</script></body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
  }
+ if(path==="/og.svg") return new Response(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B3D2E"/><stop offset="1" stop-color="#1D4ED8"/></linearGradient></defs><rect width="1200" height="630" fill="url(#g)"/><rect x="60" y="60" width="1080" height="510" rx="28" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><text x="600" y="300" text-anchor="middle" font-family="Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" font-size="86" font-weight="800" fill="#ffffff">올페이스토어</text><text x="600" y="378" text-anchor="middle" font-family="Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" font-size="34" font-weight="500" fill="rgba(255,255,255,.88)">카드단말기·포스기·키오스크 전국 설치</text><text x="600" y="530" text-anchor="middle" font-family="Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" font-size="28" font-weight="600" fill="rgba(255,255,255,.72)">allpaystore.com</text></svg>`,{headers:{"content-type":"image/svg+xml; charset=UTF-8","cache-control":"public, max-age=86400"}});
+ if(path==="/atom.xml"||path==="/atom") return new Response(atomFromRss(getRSS(), TG_ORIGIN+"/atom.xml"),{headers:{"content-type":"application/atom+xml; charset=UTF-8","cache-control":"public, max-age=3600"}});
  if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
  if(path.match(/^\/sitemap(-v2|-v3)?(-main|-dong|-biz-region(-[1-3])?|-bizdong-(card|pos)-([1-9]))?\.xml$/)){
   const cache=caches.default;
