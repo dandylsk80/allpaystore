@@ -85,7 +85,7 @@ async function indexnowFetch(opt){
 }
 
 /* 대시보드 방문자 집계용 봇 UA 필터 (크롤러를 방문자로 세지 않기 위함) */
-const BOT_UA_RE = /bot|crawl|spider|slurp|mediapartners|googlebot|bingbot|yandex|baidu|duckduckbot|facebookexternalhit|semrush|ahrefs|mj12bot|dotbot|petalbot|bytespider|headlesschrome|python-requests|curl|wget|yeti|daumoa|lighthouse|pagespeed|inspectiontool|googleother|applebot|amazonbot|archiver|scrapy|node-fetch|okhttp|go-http|libwww|httpclient|dataforseo|serpstat|zoominfo|bubing|linkdex/i;
+const BOT_UA_RE = /bot|crawl|spider|slurp|mediapartners|googlebot|bingbot|yandex|baidu|duckduckbot|facebookexternalhit|semrush|ahrefs|mj12bot|dotbot|petalbot|bytespider|headlesschrome|python-requests|curl|wget|yeti|daumoa|cs\.daum\.net|compatible;\s*daum\/|lighthouse|pagespeed|inspectiontool|googleother|applebot|amazonbot|archiver|scrapy|node-fetch|okhttp|go-http|libwww|httpclient|dataforseo|serpstat|zoominfo|bubing|linkdex/i;
 const TG_LABEL={tel:'전화 버튼 클릭',sms:'문자 버튼 클릭',contact:'상담 버튼 클릭'};
 const TG_SITE='올페이스토어';
 const TG_DOMAIN='allpaystore.com';
