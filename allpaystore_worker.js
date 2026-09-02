@@ -3867,6 +3867,13 @@ function smLastmod(key){
   const periods = Math.floor((Date.now()/SM_DAY - off)/SM_PERIOD);
   return new Date((periods*SM_PERIOD + off)*SM_DAY).toISOString().slice(0,10);
 }
+/* RSS 정렬용 날짜: URL 마다 60일 주기로 밀린다. 매일 다른 1/60 묶음이 최신이 되어
+   "최근 항목 위주"를 유지하면서 피드가 날마다 바뀐다. */
+function rssRankDate(u){
+  const off = smHash(u) % 60;
+  const periods = Math.floor((Date.now()/SM_DAY - off)/60);
+  return new Date((periods*60 + off)*SM_DAY);
+}
 /* <loc> 뒤에 lastmod 가 없으면 채워 넣는다 (loc → lastmod → changefreq → priority 순서 유지) */
 function smAddLastmod(xml){
   return String(xml).replace(/<loc>([^<]+)<\/loc>(?!<lastmod>)/g, function(m, l){
@@ -4009,7 +4016,9 @@ function getRSS() {
  prodSlugs.forEach(p=>{items+=`<item><title>${PRODUCTS[p].ko} 설치 안내 | 올페이스토어</title><link>${base}/product/${p}/</link><description>${PRODUCTS[p].ko} 전국 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;});
  sidoSlugs.forEach(s=>{const n=SIDO_NAMES[S.indexOf(s)]||s;items+=`<item><title>${n} ${Object.values(PRODUCTS).map(v=>v.ko).slice(0,3).join('·')} 설치 | 올페이스토어</title><link>${base}/blog/${s}/</link><description>${n} 전 지역 카드단말기·포스기·키오스크 직접 방문 설치</description><pubDate>${now}</pubDate></item>`;});
  const sgSet=new Set();RK().filter(k=>k.split('/').length===3).forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
- [...sgSet].slice(0,50).forEach(sg=>{const parts=sg.split('/');const r=lk(RK().find(k=>k.startsWith(sg+'/'))||'');if(r)items+=`<item><title>${r[1]} 카드단말기·포스기 설치 | 올페이스토어</title><link>${base}/blog/${sg}/</link><description>${r[1]} 전 지역 직접 방문 설치. 무료 견적.</description><pubDate>${now}</pubDate></item>`;});
+ /* 매일 도는 갱신일 기준으로 최근 50개만 — 예전에는 앞에서부터 고정 50개였다 */
+ const sgArr=[...sgSet].sort((a,b)=>rssRankDate(base+'/'+b)-rssRankDate(base+'/'+a));
+ sgArr.slice(0,50).forEach(sg=>{const parts=sg.split('/');const r=lk(RK().find(k=>k.startsWith(sg+'/'))||'');if(r)items+=`<item><title>${r[1]} 카드단말기·포스기 설치 | 올페이스토어</title><link>${base}/blog/${sg}/</link><description>${r[1]} 전 지역 직접 방문 설치. 무료 견적.</description><pubDate>${now}</pubDate></item>`;});
  return `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>올페이스토어 | 카드단말기·포스기·키오스크 전국 설치</title><link>${base}/</link><description>전국 5,000개 읍면동 카드단말기·포스기·키오스크·테이블오더 설치 전문</description><language>ko</language><lastBuildDate>${now}</lastBuildDate>${items}</channel></rss>`;
 }
 function getHTML() {
