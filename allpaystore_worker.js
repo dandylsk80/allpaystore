@@ -4077,7 +4077,7 @@ a{text-decoration:none;color:inherit}
 .logo-ic svg{width:17px;height:17px}
 .logo-tx{font-size:18px;font-weight:900;color:#111;letter-spacing:1px}
 .logo-tx em{font-style:normal;color:#111}
-.logo-sub{font-size:9px;color:#999;display:block;letter-spacing:2px}
+.logo-sub{font-size:10px;color:#999;display:block;letter-spacing:2px}
 .hd-tel{display:flex;align-items:center;gap:8px;padding:8px 18px;background:#f5f5f5;border:1px solid #ddd;border-radius:999px;color:#111;font-size:13px;font-weight:700}
 .hd-nav{display:flex;gap:24px;font-size:13px}
 .hd-nav a{color:#555;font-weight:500;transition:color .15s;white-space:nowrap}
