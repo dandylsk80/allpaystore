@@ -3857,11 +3857,27 @@ function makeSitemap(){
  const items=sitemaps.map(s=>`<sitemap><loc>${base}${s}</loc><lastmod>${today}</lastmod></sitemap>`).join('');
  return '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+items+'</sitemapindex>';
 }
+/* ── sitemap lastmod ────────────────────────────────────────
+   URL 마다 다른 날짜를 주고 18일 주기로 갱신한다.
+   전 URL 을 매일 오늘로 찍으면 검색엔진이 신뢰하지 않는다(danmalgi 방식). */
+const SM_DAY = 86400000, SM_PERIOD = 18;
+function smHash(str){ let h=5381; const s=String(str); for(let i=0;i<s.length;i++) h=((h<<5)+h+s.charCodeAt(i))>>>0; return h; }
+function smLastmod(key){
+  const off = smHash(key) % SM_PERIOD;
+  const periods = Math.floor((Date.now()/SM_DAY - off)/SM_PERIOD);
+  return new Date((periods*SM_PERIOD + off)*SM_DAY).toISOString().slice(0,10);
+}
+/* <loc> 뒤에 lastmod 가 없으면 채워 넣는다 (loc → lastmod → changefreq → priority 순서 유지) */
+function smAddLastmod(xml){
+  return String(xml).replace(/<loc>([^<]+)<\/loc>(?!<lastmod>)/g, function(m, l){
+    return "<loc>" + l + "</loc><lastmod>" + smLastmod(l) + "</lastmod>";
+  });
+}
 function makeSitemapMain(){
  // 메인: 홈, 제품, 시도, 시군구, /biz/, /biz-cctv/, /biz-pos/ 등 정적 페이지
  const base='https://allpaystore.com';
  const today=get15dDate().toISOString().split('T')[0];
- const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${pri||'0.7'}</priority></url>`;
+ const u=(p,pri)=>`<url><loc>${base}${p}</loc><lastmod>${smLastmod(base+p)}</lastmod><changefreq>weekly</changefreq><priority>${pri||'0.7'}</priority></url>`;
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
  // [CCTV 임시 비공개] cctv 제외
  const prodSlugs=Object.keys(PRODUCTS).filter(p=>p!=='cctv');
