@@ -172,7 +172,18 @@ function tgDescribe(path){
   var p0=seg[0];
   if(p0==='contact')return '상담 문의 페이지';
   if(p0==='guide')return '가이드 페이지';
-  if(p0==='product'){var pk=seg[1];return (pk&&PRODUCTS[pk])?('제품 · '+PRODUCTS[pk].ko):'제품 안내';}
+  if(p0==='product'){
+    /* /product/{제품}/{시도}/{시군구} — 예전에는 제품만 읽고 지역을 버렸다 */
+    var pk=seg[1];
+    var pn=(pk&&PRODUCTS[pk])?PRODUCTS[pk].ko:'';
+    if(seg[2]){
+      var psd=(S[SI_MAP[seg[2]]])||seg[2];
+      var ploc=psd;
+      if(seg[3]){var psgi=SG_MAP[seg[2]+'/'+seg[3]];ploc=psd+' '+((psgi!==undefined&&SG[psgi])||seg[3]);}
+      return ploc+' '+(pn||'제품');
+    }
+    return pn?('제품 · '+pn):'제품 안내';
+  }
   if(p0==='franchise')return '오늘도닭갈비 가맹';
   if(p0==='biz'||p0.indexOf('biz-')===0){
     var BM={'biz':'카드단말기','biz-cctv':'CCTV','biz-pos':'포스기','biz-kiosk':'키오스크','biz-vending':'자동판매기','biz-table':'테이블오더','biz-region':''};
@@ -223,11 +234,14 @@ async function tgNotify(env, type,page,ref,ua){
   var label=TG_LABEL[type];
   if(!label)return;
   var L=[];
-  L.push((type==='tel'?'\U0001F4DE ':'\U0001F4DD ')+label);
+  L.push((type==='tel'?'📞 ':'📝 ')+label);
   L.push('');
   L.push('사이트: '+TG_SITE+' ('+TG_DOMAIN+')');
-  L.push('페이지: '+TG_ORIGIN+page);
-  L.push('검색 키워드: '+tgDescribe(page));
+  L.push('주소: '+TG_ORIGIN+page);
+  L.push('페이지: ' + tgDescribe(page));
+  /* ref 에서 뽑은 진짜 검색어 — 없으면 줄 자체를 넣지 않는다 */
+  const __kw = tkKeyword(ref);
+  if (__kw) L.push('검색어: ' + __kw);
   L.push('유입: '+tgRef(ref));
   L.push('기기: '+(/Mobile|Android|iPhone|iPad/i.test(ua||'')?'모바일':'PC'));
   L.push('시각: '+tgTime()+' (KST)');
