@@ -3180,6 +3180,43 @@ function apPickN(seed, arr, n){
 }
 const AP_DEVICE=['카드단말기','포스기','키오스크','테이블오더'];
 const AP_BIZ=['음식점','카페','편의점','미용실','스터디카페','베이커리','무인매장'];
+
+/* ===== 본문 렌더링 헬퍼 =====
+   문장 풀에서 뽑은 문장을 한 줄씩 <p> 로 내보내면 나열처럼 읽힌다.
+   3~4문장을 한 문단으로 묶고, 섹션마다 가독성 요소를 2~3개 섞는다.
+   묶는 조합과 연결어를 시드로 고르므로 페이지 간 다양성은 그대로 유지된다. */
+const RD_CONN=["다만 ","여기에 ","실제로 ","그래서 ","무엇보다 ","특히 ","이때 ","한편 ","반대로 ","덧붙이면 "];
+function rdParas(list, h){
+  let out="", i=0, k=0;
+  while(i<list.length){
+    const n = 3 + ((h(k*7+3))%2);
+    const chunk=list.slice(i,i+n); i+=n; k++;
+    if(!chunk.length) break;
+    const body=chunk.map((t,idx)=> idx===0 ? t : (RD_CONN[h(k*31+idx)%RD_CONN.length]+t)).join(" ");
+    out+=`<p>${body}</p>`;
+  }
+  return out;
+}
+function rdBullets(list){
+  if(!list.length) return "";
+  return `<ul class="ck">${list.map(t=>`<li>▸ ${t}</li>`).join("")}</ul>`;
+}
+function rdCheck(title, list){
+  if(!list.length) return "";
+  return `<div class="box"><strong>✅ ${title}</strong><ul class="ck">${list.map(t=>`<li>${t}</li>`).join("")}</ul></div>`;
+}
+function rdTip(who, text){
+  return `<div class="box yellow">💡 <strong>${who} Tip:</strong> ${text}</div>`;
+}
+function rdSteps(items){
+  return `<ul class="ck">${items.map((x,i)=>`<li><strong>${i+1}단계 ${x.t}</strong> — ${x.d}</li>`).join("")}</ul>`;
+}
+function rdTable(head, rows){
+  return `<table class="tbl"><thead><tr>${head.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>`
+    + rows.map(r=>`<tr>${r.map((c,i)=>`<td${i===r.length-1?' class="hi"':''}>${c}</td>`).join("")}</tr>`).join("")
+    + `</tbody></table>`;
+}
+
 function buildSggContent(sgName, sidoName, seed){
   const H2B={
     intro:["{지역} {장비} 설치, 무엇부터 볼까요","{시도} {지역} {장비} 설치 안내","{지역} 매장 개업과 {장비}","{지역} {업종} 매장 {장비} 준비","{시도} {지역} 결제 장비 안내","{지역}에서 {장비}를 알아보신다면","{지역} {장비} 도입 정리","{시도} {지역} 매장 장비 안내"],
@@ -3207,10 +3244,23 @@ function buildSggContent(sgName, sidoName, seed){
   const pick1=(arr,salt)=>arr[apSeedHash(seed+salt)%arr.length];
   const mid=apPickN(h,['need','product','install','cost','industry','operate','support','compare'],8);
   const order=['intro',...mid,'closing'];
-  let html='';
+  const hsh=(x)=>apSeedHash(seed+"r"+x);
+  let html='', si=0;
   for(const sec of order){
     html+=`<h2>${sub(pick1(H2B[sec],sec))}</h2>`;
-    for(const q of apPickN(apSeedHash(seed+sec),BPOOL[sec],7)) html+=`<p>${sub(q)}</p>`;
+    const picked=apPickN(apSeedHash(seed+sec),BPOOL[sec],11).map(sub);
+    /* 앞 7문장은 3~4문장 문단으로, 나머지는 가독성 요소로 쓴다 */
+    html+=rdParas(picked.slice(0,7), hsh);
+    const kind=(apSeedHash(seed+sec+"v")+si)%3;
+    if(kind===0) html+=rdBullets(picked.slice(7,10));
+    else if(kind===1) html+=rdCheck(sub("{지역} {업종} 매장에서 이런 경우"), picked.slice(7,11));
+    else html+=rdTip(sub("{지역} 사장님"), picked[7]) + rdBullets(picked.slice(8,11));
+    if(si===1) html+=rdTable(["구분", sub("{업종} 매장"), sub("{지역} 추천")],
+      [["결제 방식", sub("카드·간편결제"), sub("{장비}")],
+       ["설치 위치", sub("계산대 고정"), sub("{지역} 매장 동선에 맞춰")],
+       ["추가 구성", sub("{장비2}"), sub("{업종} 회전율에 따라")]]);
+    if(si===4) html+=rdSteps([{t:"무료 상담",d:sub("{지역} 매장 업종과 규모 확인")},{t:"무료 견적",d:sub("{구} 방문 또는 전화로 조건 안내")},{t:"장비 선정·설치",d:sub("{장비} 사양 결정 후 방문 설치")},{t:"교육·A/S",d:sub("사용법 안내와 이후 지원")}]);
+    si++;
   }
   const faqs=apPickN(apSeedHash(seed+'faq'),BFAQ,8).map(q=>({q:sub(q[0])+'?',a:sub(q[1])}));
   html+=`<h2>${sub('{지역} {장비} 설치 자주 묻는 질문')}</h2>`;
@@ -3830,6 +3880,12 @@ function makeBlog(sido,sigungu,emd,slug){
    ]}
  ]);
   const {html:_dart, ld:_dld} = buildSggContent(emd, sido, sido+"/"+sigungu+"/"+emd);
+  const _artLd=`<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"Article",
+    headline:`${emd} 카드단말기·포스기 설치`, description:`${sido} ${sigungu} ${emd} 결제 장비 설치 안내.`,
+    about:`${emd} 카드단말기`, inLanguage:"ko-KR",
+    mainEntityOfPage:{"@type":"WebPage","@id":`https://allpaystore.com/blog/${slug}/`},
+    author:{"@type":"Organization",name:"올페이스토어"}, publisher:{"@type":"Organization",name:"올페이스토어"},
+    speakable:{"@type":"SpeakableSpecification",cssSelector:["h1","h2","p"]}})}<\/script>`;
  return `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -3895,7 +3951,7 @@ ${makeSiteFooter()}
  <a href="tel:01098768282" class="fl-tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.22 2.84 2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.41-1.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a><a href="sms:01098768282" class="fl-sms"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/></svg></a>
  <a href="/contact/" class="fl-chat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></a>
 </div>
-${_dld}${TRACK_JS}</body></html>`;
+${_dld}${_artLd}${TRACK_JS}</body></html>`;
 }
 function makeBlogList(){
  const SIDO_ORDER=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
