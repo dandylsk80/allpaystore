@@ -2561,7 +2561,7 @@ const TRACK_JS = '<script>(function(){var U="/api/track",S={},W=30000;function K
 
 function makeSiteFooter(){
   return `<footer class="gf"><div class="gf-in">
-<div class="gf-mini"><a href="/">홈</a><a href="/list">📑 전체목록</a><a href="/blog/">🌏 전체지역</a><a href="/product/">제품안내</a><a href="/contact/">문의하기</a><a href="tel:01098768282">📞 010-9876-8282</a></div>
+<div class="gf-mini"><a href="/">홈</a><a href="/post/">📰 단말기 정보</a><a href="/list">📑 전체목록</a><a href="/blog/">🌏 전체지역</a><a href="/product/">제품안내</a><a href="/contact/">문의하기</a><a href="tel:01098768282">📞 010-9876-8282</a></div>
 <div class="gf-bot">올페이스토어 · 전국 카드단말기·포스기·키오스크 설치 전문</div>
 </div></footer>`;
 }
@@ -3973,6 +3973,7 @@ function makeSitemapMain(){
  // [CCTV 임시 비공개] cctv 제외
  const prodSlugs=Object.keys(PRODUCTS).filter(p=>p!=='cctv');
  const parts=[u('/','1.0'),u('/list','0.8'),u('/contact/','0.8'),u('/product/','0.9')];
+ parts.push(postSitemapXml());   /* 정보성 글 — lastmod 는 실제 발행일 */
  prodSlugs.forEach(p=>{parts.push(u('/product/'+p+'/','0.8'));});
  prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{parts.push(u('/product/'+p+'/'+s+'/','0.7'));});});
  sidoSlugs.forEach(s=>{parts.push(u('/blog/'+s+'/','0.8'));});
@@ -4090,12 +4091,141 @@ function atomFromRss(xml, selfUrl){
   }
   return x+"</feed>";
 }
+
+/* ===================== 정보성 글 (/post) =====================
+   글은 공용 D1 posts 테이블에 있고 이 사이트는 자기 글(published)만 읽는다.
+   발행 전환은 allcarestudy 워커의 크론 한 곳에서만 한다.
+
+   목록은 메모리에 5분 캐시한다 — 사이트맵·RSS·목록이 매 요청 D1 을 치면
+   응답이 느려지고 D1 읽기도 낭비된다. 본문은 상세 요청에서만 읽는다.
+   사이트맵·RSS 생성 함수는 동기라 인자로 넘기지 않고 이 캐시를 직접 읽는다.
+   (라우터가 응답을 만들기 직전 await loadPosts(env) 로 채워 준다) */
+const POST_SITE = "allpaystore";
+const POST_ORIGIN = "https://allpaystore.com";
+const POST_TTL = 300000;
+let POSTS_CACHE = { at: 0, rows: [] };
+async function loadPosts(env) {
+  if (Date.now() - POSTS_CACHE.at < POST_TTL) return POSTS_CACHE.rows;
+  if (!env || !env.DB) return POSTS_CACHE.rows;
+  try {
+    const r = await env.DB.prepare(
+      "SELECT slug,title,summary,published_at FROM posts WHERE site=? AND status='published' ORDER BY published_at DESC LIMIT 200"
+    ).bind(POST_SITE).all();
+    POSTS_CACHE = { at: Date.now(), rows: r.results || [] };
+  } catch (e) { POSTS_CACHE = { at: Date.now(), rows: POSTS_CACHE.rows }; }
+  return POSTS_CACHE.rows;
+}
+async function getPost(env, slug) {
+  if (!env || !env.DB) return null;
+  try {
+    return await env.DB.prepare(
+      "SELECT slug,title,summary,body_html,published_at FROM posts WHERE site=? AND slug=? AND status='published'"
+    ).bind(POST_SITE, slug).first();
+  } catch (e) { return null; }
+}
+const postEsc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g,
+  (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const postDate = (p) => String((p && p.published_at) || "").slice(0, 10);
+
+/* 목록·상세 본문 — 사이트 CSS 에 의존하지 않도록 인라인 스타일만 쓴다.
+   바깥 컨테이너만 그 사이트의 클래스를 그대로 빌린다(고정 헤더 여백 때문). */
+function postCards(posts) {
+  if (!posts.length) return '<p style="color:#666">아직 등록된 글이 없습니다.</p>';
+  return posts.map((p) =>
+    '<a href="/post/' + postEsc(p.slug) + '/" style="display:block;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px 22px;margin-bottom:12px">'
+    + '<div style="font-size:17px;font-weight:800;line-height:1.4">' + postEsc(p.title) + '</div>'
+    + '<p style="font-size:14px;color:#555;line-height:1.7;margin:8px 0 0">' + postEsc(p.summary || "") + '</p>'
+    + '<div style="font-size:12px;color:#999;margin-top:8px">' + postEsc(postDate(p)) + '</div></a>').join("");
+}
+function postArticle(p) {
+  return '<div style="font-size:12px;color:#999;margin-bottom:18px">' + postEsc(postDate(p)) + ' · 올페이스토어</div>'
+    + '<div class="post-body" style="font-size:15px;line-height:1.85;color:#333">' + p.body_html + '</div>'
+    + '<style>.post-body h2{font-size:19px;font-weight:800;line-height:1.4;margin:32px 0 12px;color:#111}'
+    + '.post-body h3{font-size:16px;font-weight:700;margin:22px 0 8px;color:#111}'
+    + '.post-body p{margin:0 0 14px}</style>';
+}
+
+/* 사이트맵·RSS 조각 — lastmod·pubDate 는 실제 발행일을 쓴다
+   (지역 페이지처럼 해시로 돌리면 글의 신선도 신호가 사라진다) */
+function postSitemapXml() {
+  const ps = POSTS_CACHE.rows || [];
+  const top = ps.length ? postDate(ps[0]) : new Date().toISOString().slice(0, 10);
+  return '<url><loc>' + POST_ORIGIN + '/post/</loc><lastmod>' + top + '</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>'
+    + ps.map((p) => '<url><loc>' + POST_ORIGIN + '/post/' + p.slug + '/</loc><lastmod>' + postDate(p)
+      + '</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>').join("");
+}
+function postRssXml() {
+  return (POSTS_CACHE.rows || []).map((p) => {
+    const dt = p.published_at ? new Date(p.published_at) : new Date();
+    const u = POST_ORIGIN + '/post/' + postEsc(p.slug) + '/';
+    return '<item><title>' + postEsc(p.title) + '</title><link>' + u + '</link>'
+      + '<guid isPermaLink="true">' + u + '</guid><pubDate>' + dt.toUTCString() + '</pubDate>'
+      + '<description>' + postEsc(p.summary || p.title) + '</description></item>';
+  }).join("");
+}
+/* 캐시 무효화 토큰 — 사이트맵을 Cache API 에 넣는 사이트는 키에 이 값을 붙인다.
+   글이 늘거나 새로 발행되면 값이 바뀌어 하루짜리 캐시를 기다리지 않아도 된다. */
+function postVer() {
+  const ps = POSTS_CACHE.rows || [];
+  return ps.length ? ps.length + "-" + postDate(ps[0]) : "0";
+}
+/* IndexNow — 최근 7일 안에 발행된 글은 배치 앞에 실어 색인을 앞당긴다 */
+function postFreshUrls() {
+  const fresh = (POSTS_CACHE.rows || [])
+    .filter((p) => p.published_at && Date.now() - Date.parse(p.published_at) < 7 * 86400000)
+    .map((p) => POST_ORIGIN + '/post/' + p.slug + '/');
+  return fresh.length ? fresh.concat([POST_ORIGIN + '/post/']) : [];
+}
+
+/* 목록·상세 — 다른 페이지와 같은 뼈대(CSS·GNB·플로팅·푸터·TRACK_JS)를 쓴다 */
+function postWrap(title, desc, canonical, inner) {
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://allpaystore.com${canonical}">
+<link rel="canonical" href="https://allpaystore.com${canonical}">
+${CSS}
+<nav class="gnb"><div class="gnb-in"><a href="/" class="logo"><img src="/images/logo.png" alt="올페이스토어" style="height:24px"><span>올페이스토어</span></a><div class="gnb-nav"><a href="/#find-sec">지역별 설치</a><a href="/product/">제품 안내</a><a href="/biz/">업종별</a><a href="/contact/" style="color:#111;font-weight:800">문의하기</a></div><a href="tel:01098768282" class="tel-btn">📞<span class="btn-tx"> 010-9876-8282</span></a></div></nav>
+<div class="wrap" style="padding-top:28px">${inner}</div>
+<div class="fl-wrap">
+ <a href="tel:01098768282" class="fl-tel" aria-label="전화상담">📞</a>
+ <a href="/contact/" class="fl-chat" aria-label="상담문의">💬</a>
+</div>
+${makeSiteFooter()}
+${TRACK_JS}</body></html>`;
+}
+function pagePostList(posts) {
+  const inner = '<div style="font-size:12px;color:#999;margin-bottom:10px"><a href="/">홈</a> › 단말기 정보</div>'
+    + '<h1 style="font-size:26px;font-weight:900;color:#111;line-height:1.35">단말기 정보</h1>'
+    + '<p style="color:#555;font-size:15px;line-height:1.85;margin:10px 0 26px">카드단말기·포스기·키오스크를 들일 때 사장님들이 실제로 묻는 것들을 정리해 올립니다. 수수료 구조, 설치 절차, 업종별 장비 고르는 법을 다룹니다.</p>'
+    + postCards(posts);
+  return postWrap('단말기 정보 | 올페이스토어',
+    '카드단말기·포스기·키오스크 도입에 필요한 정보를 정리했습니다. 수수료 구조, 설치 절차, 업종별 장비 선택까지 올페이스토어가 한 편씩 올리는 매장 결제 가이드입니다.',
+    '/post/', inner);
+}
+function pagePost(p) {
+  const t = postEsc(p.title);
+  const inner = '<div style="font-size:12px;color:#999;margin-bottom:10px"><a href="/">홈</a> › <a href="/post/">단말기 정보</a> › ' + t + '</div>'
+    + '<h1 style="font-size:26px;font-weight:900;color:#111;line-height:1.35">' + t + '</h1>'
+    + postArticle(p)
+    + '<div class="cta" style="margin-top:32px"><h3>📞 무료 견적 받기</h3><p>매장에 맞는 장비를 전문가가 직접 추천해 드립니다.</p>'
+    + '<a href="tel:01098768282" class="cta-main">📞 010-9876-8282</a> <a href="sms:01098768282" class="cta-sms">📱 문자상담</a> <a href="/contact/" class="cta-sub">💬 상담 문의</a></div>'
+    + '<p style="margin-top:24px;font-size:13px"><a href="/post/" style="color:#1D4ED8;font-weight:700">단말기 정보 전체 보기</a></p>';
+  return postWrap(t + ' | 올페이스토어', postEsc(p.summary || p.title), '/post/' + p.slug + '/', inner);
+}
+
 function getRSS() {
  const now=new Date().toUTCString();
  const base='https://allpaystore.com';
  const prodSlugs=Object.keys(PRODUCTS);
  const sidoSlugs=['seoul','gyeonggi','busan','incheon','daegu','daejeon','gwangju','ulsan','sejong','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
- let items=`<item><title>올페이스토어 — 카드단말기·포스기·키오스크 전국 설치</title><link>${base}/</link><description>전국 5,000개 읍면동 매장 설비 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;
+ let items=postRssXml();
+ items+=`<item><title>올페이스토어 — 카드단말기·포스기·키오스크 전국 설치</title><link>${base}/</link><description>전국 5,000개 읍면동 매장 설비 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;
  items+=`<item><title>상담 문의 | 올페이스토어</title><link>${base}/contact/</link><description>카드단말기·포스기·키오스크·테이블오더·매장 철거 무료 견적 문의</description><pubDate>${now}</pubDate></item>`;
  prodSlugs.forEach(p=>{items+=`<item><title>${PRODUCTS[p].ko} 설치 안내 | 올페이스토어</title><link>${base}/product/${p}/</link><description>${PRODUCTS[p].ko} 전국 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;});
  sidoSlugs.forEach(s=>{const n=SIDO_NAMES[S.indexOf(s)]||s;items+=`<item><title>${n} ${Object.values(PRODUCTS).map(v=>v.ko).slice(0,3).join('·')} 설치 | 올페이스토어</title><link>${base}/blog/${s}/</link><description>${n} 전 지역 카드단말기·포스기·키오스크 직접 방문 설치</description><pubDate>${now}</pubDate></item>`;});
@@ -5319,7 +5449,7 @@ function catPick(b){
  <a href="sms:01098768282" class="cta-sms">📱 문자상담</a>
  <a href="/contact/" class="cta-sub">💬 상담문의</a>
  </div>
- <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);text-align:center"><a href="/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">홈</a><a href="/blog/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">🌏 전체지역</a><a href="/list" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">📑 전체목록</a><a href="/product/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">제품안내</a><a href="/biz/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">업종별</a><a href="/contact/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">문의하기</a></div>
+ <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);text-align:center"><a href="/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">홈</a><a href="/blog/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">🌏 전체지역</a><a href="/post/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">📰 단말기 정보</a><a href="/list" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">📑 전체목록</a><a href="/product/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">제품안내</a><a href="/biz/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">업종별</a><a href="/contact/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">문의하기</a></div>
  <div class="cta-copy">
  <div class="cta-brand"><img src="/images/logo.png" alt="올페이스토어" style="height:18px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"><span>올페이스토어</span> · 1인 매장부터 대형 프랜차이즈까지</div>
  <div class="cta-rights">© 2025 올페이스토어. All rights reserved.</div>
@@ -5686,6 +5816,18 @@ var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABE
  }
  if(path==='/blog')
  return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+ /* 정보성 글 — 지역 슬러그 판정보다 앞에 둔다. 목록 캐시는 POSTS_CACHE 와 같은 5분 */
+ if(path==='/post')
+ return new Response(pagePostList(await loadPosts(env)),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=300'}});
+ if(path.startsWith('/post/')){
+  const __slug=path.slice(6);
+  if(__slug && __slug.indexOf('/')<0){
+   const __po=await getPost(env,__slug);
+   if(__po) return new Response(pagePost(__po),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=3600'}});
+  }
+  return new Response(postWrap('페이지를 찾을 수 없습니다 | 올페이스토어','요청하신 글이 없거나 이동되었습니다. 단말기 정보 목록에서 다시 찾아보세요.','/post/','<h1 style="font-size:24px;font-weight:900;color:#111">페이지를 찾을 수 없습니다</h1><p style="margin-top:12px;color:#555">요청하신 글이 없거나 이동되었습니다.</p><p style="margin-top:20px"><a href="/post/" style="color:#1D4ED8;font-weight:700">단말기 정보 목록으로</a></p>'),
+   {status:404,headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store'}});
+ }
  if(path==='/api/contact' && request.method==='POST'){
  try{
   const data=await request.json();
@@ -6258,11 +6400,13 @@ ${makeSiteFooter()}${TRACK_JS}</body></html>`;
 ${TRACK_JS}</body></html>`,{status:404,headers:{'Content-Type':'text/html;charset=utf-8'}});
  }
  if(path==="/og.svg") return new Response(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B3D2E"/><stop offset="1" stop-color="#1D4ED8"/></linearGradient></defs><rect width="1200" height="630" fill="url(#g)"/><rect x="60" y="60" width="1080" height="510" rx="28" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/><text x="600" y="300" text-anchor="middle" font-family="Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" font-size="86" font-weight="800" fill="#ffffff">올페이스토어</text><text x="600" y="378" text-anchor="middle" font-family="Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" font-size="34" font-weight="500" fill="rgba(255,255,255,.88)">카드단말기·포스기·키오스크 전국 설치</text><text x="600" y="530" text-anchor="middle" font-family="Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif" font-size="28" font-weight="600" fill="rgba(255,255,255,.72)">allpaystore.com</text></svg>`,{headers:{"content-type":"image/svg+xml; charset=UTF-8","cache-control":"public, max-age=86400"}});
- if(path==="/atom.xml"||path==="/atom") return new Response(atomFromRss(getRSS(), TG_ORIGIN+"/atom.xml"),{headers:{"content-type":"application/atom+xml; charset=UTF-8","cache-control":"public, max-age=3600"}});
- if(path==='/rss.xml')return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});
+ if(path==="/atom.xml"||path==="/atom") { await loadPosts(env); return new Response(atomFromRss(getRSS(), TG_ORIGIN+"/atom.xml"),{headers:{"content-type":"application/atom+xml; charset=UTF-8","cache-control":"public, max-age=3600"}}); }
+ if(path==='/rss.xml'){await loadPosts(env);return new Response(getRSS(),{headers:{'Content-Type':'application/rss+xml;charset=utf-8'}});}
  if(path.match(/^\/sitemap(-v2|-v3)?(-main|-dong|-biz-region(-[1-3])?|-bizdong-(card|pos)-([1-9]))?\.xml$/)){
+  await loadPosts(env);   /* 사이트맵 생성 함수는 동기라 POSTS_CACHE 를 먼저 채운다 */
   const cache=caches.default;
-  const cacheKey=new Request('https://allpaystore.com'+path,{method:'GET'});
+  /* 캐시 키에 글 버전을 붙인다 — 안 그러면 새 글이 하루짜리 캐시에 막힌다 */
+  const cacheKey=new Request('https://allpaystore.com'+path+'?pv='+postVer(),{method:'GET'});
   let cached=await cache.match(cacheKey);
   if(cached) return cached;
   let xml;
@@ -6485,7 +6629,9 @@ QR코드 기반 테이블 주문 시스템. 직원 호출 부담 감소, 회전�
    const customN=parseInt(url.searchParams.get('n')||'0',10);
    const dayIdx=Math.floor(Date.now()/86400000)%7;
    const todayUrls=force?urls:urls.filter((_,i)=>i%7===dayIdx);
-   const finalUrls=customN>0?todayUrls.slice(0,customN):todayUrls;
+   /* 최근 7일 안에 발행된 정보성 글은 요일 분산과 무관하게 매일 앞에 싣는다 */
+   await loadPosts(env);
+   const finalUrls=postFreshUrls().concat(customN>0?todayUrls.slice(0,customN):todayUrls);
    // 한 번에 너무 많이 보내지 않도록 1000개씩 배치 (네이버 권장)
    const results=[];
    let submitted=0;
