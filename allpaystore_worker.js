@@ -2488,6 +2488,8 @@ ul.ck li::before{content:'✅';position:absolute;left:0}
 .side-link{display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:12px;color:#555;text-decoration:none;border-radius:6px;transition:background .15s}
 .side-link:hover{background:#eee;color:#111}
 .fl-wrap{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:999}
+/* 모바일: 하단 우측은 브라우저 툴바·홈 인디케이터·스크롤 동선과 겹쳐 오터치가 난다 → 화면 세로 중앙 우측으로 */
+@media(max-width:768px){.fl-wrap{top:50%;bottom:auto;transform:translateY(-50%);gap:12px}}
 .fl-wrap a{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:transform .2s}
 .fl-wrap a:hover{transform:scale(1.1)}
 .fl-tel{background:linear-gradient(135deg,#10B981,#059669)}
@@ -4713,6 +4715,8 @@ a{text-decoration:none;color:inherit}
 .ft-bottom{padding-top:28px;font-size:10px;color:#bbb}
 /* FLOAT */
 .float{position:fixed;right:20px;bottom:60px;display:flex;flex-direction:column;gap:10px;z-index:90}
+/* 모바일: 하단 우측은 브라우저 툴바·홈 인디케이터·스크롤 동선과 겹쳐 오터치가 난다 → 화면 세로 중앙 우측으로 */
+@media(max-width:768px){.float{top:50%;bottom:auto;transform:translateY(-50%);gap:12px}}
 .float a{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .2s}
 .float a:hover{transform:scale(1.1)}
 .fl-tel{background:linear-gradient(135deg,#10B981,#059669)}
