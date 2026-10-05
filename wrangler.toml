@@ -1,5 +1,8 @@
 name = "allpaystore-worker"
 main = "allpaystore_worker.js"
+# deploy --no-bundle 은 기본으로 저장소 아래 *.wasm·*.txt·*.html 을 추가 모듈로 붙인다.
+# CI 의 wrangler 설치(node_modules)가 딸려 올라가 업로드가 9~10MB 로 커지고 콜드 스타트가 늘어난다. 워커는 단일 파일이다.
+find_additional_modules = false
 compatibility_date = "2024-01-01"
 workers_dev = true
 
