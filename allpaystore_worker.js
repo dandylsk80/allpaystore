@@ -4253,6 +4253,9 @@ function postRssXml() {
 }
 /* 캐시 무효화 토큰 — 사이트맵을 Cache API 에 넣는 사이트는 키에 이 값을 붙인다.
    글이 늘거나 새로 발행되면 값이 바뀌어 하루짜리 캐시를 기다리지 않아도 된다. */
+/* 사이트맵 캐시 키용 버전 — 글(postVer) 외에 모든 URL 유형의 개수를 섞는다. 새 유형(결제 가이드 등)이 배포되면 키가 바뀌어 하루짜리 캐시가 즉시 무효 (2026-10-15) */
+function smVer(){ const L=function(x){ try{ return (typeof x==='function'?x():x).length; }catch(e){ return 0; } };
+ return postVer()+'-'+[L(typeof GUIDE_KW!=='undefined'?GUIDE_KW:[]),L(typeof GUIDES2!=='undefined'?GUIDES2:[]),L(typeof BIZ_LIST!=='undefined'?BIZ_LIST:[]),L(typeof BIZ_SLUGS!=='undefined'?BIZ_SLUGS:[]),L(typeof POS_SLUGS!=='undefined'?POS_SLUGS:[]),L(typeof KIOSK_SLUGS!=='undefined'?KIOSK_SLUGS:[]),L(typeof TABLE_SLUGS!=='undefined'?TABLE_SLUGS:[]),L(typeof VEND_SLUGS!=='undefined'?VEND_SLUGS:[]),L(typeof RK==='function'?RK:[]),L(typeof PRODUCTS!=='undefined'?Object.keys(PRODUCTS):[])].join('.'); }
 function postVer() {
   const ps = POSTS_CACHE.rows || [];
   return ps.length ? ps.length + "-" + postDate(ps[0]) : "0";
@@ -5895,8 +5898,8 @@ export default {
     if (await tkDup(env, 'allpaystore', b.type, (b.page || '').slice(0, 300), request.headers.get('CF-Connecting-IP') || '')) {
       return new Response(JSON.stringify({ ok: true, dup: 1 }), { headers: { 'content-type': 'application/json', 'access-control-allow-origin': '*' } });
     }
-var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABEL[b.type]){var __tgp=tgNotify(env, b.type,(b.page||"/").slice(0,300),b.ref||"",__ua, String(b.b || "").slice(0, 40), b.q||"");if(ctx&&ctx.waitUntil)ctx.waitUntil(__tgp);else await __tgp;}const ip=request.headers.get("CF-Connecting-IP")||"";const ts=new Date().toISOString();if(env&&env.DB&&!(b.type==="view"&&BOT_UA_RE.test(request.headers.get("User-Agent")||"")||(b.type==="view"&&skipViewCf(request, request.headers.get("CF-Connecting-IP")||"")))&&(b.type==="tel"||b.type==="sms"||b.type==="contact"||b.type==="view")){await env.DB.prepare('INSERT INTO events (site,type,page,ref,ip,ts,ua,device,source,keyword) VALUES (?,?,?,?,?,?,?,?,?,?)')
-            .bind('allpaystore', b.type, (b.page||'').slice(0,300), (b.ref||'').slice(0,120), ip, ts, ...tkMeta(request.headers.get('User-Agent')||'', b.ref||'', 'allpaystore.com', b.q||"")).run();}}catch(e){}return new Response(JSON.stringify({ok:true}),{headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});}
+var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABEL[b.type]){var __tgp=tgNotify(env, b.type,(b.page||"/").slice(0,300),b.ref||"",__ua, String(b.b || "").slice(0, 40), b.q||"");if(ctx&&ctx.waitUntil)ctx.waitUntil(__tgp);else await __tgp;}const ip=request.headers.get("CF-Connecting-IP")||"";const ts=new Date().toISOString();if(env&&env.DB&&!(b.type==="view"&&BOT_UA_RE.test(request.headers.get("User-Agent")||"")||(b.type==="view"&&skipViewCf(request, request.headers.get("CF-Connecting-IP")||"")))&&(b.type==="tel"||b.type==="sms"||b.type==="contact"||b.type==="view")){const __ev=env.DB.prepare('INSERT INTO events (site,type,page,ref,ip,ts,ua,device,source,keyword) VALUES (?,?,?,?,?,?,?,?,?,?)')
+            .bind('allpaystore', b.type, (b.page||'').slice(0,300), (b.ref||'').slice(0,120), ip, ts, ...tkMeta(request.headers.get('User-Agent')||'', b.ref||'', 'allpaystore.com', b.q||"")).run().catch(function(e){ console.log('[track] D1 insert fail', e&&e.message); }); if(ctx&&ctx.waitUntil) ctx.waitUntil(__ev); else await __ev;}}catch(e){}return new Response(JSON.stringify({ok:true}),{headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});}
  if(path==="/api/track"&&request.method==="OPTIONS")return new Response(null,{headers:{"Access-Control-Allow-Origin":"*","Access-Control-Allow-Methods":"POST,OPTIONS","Access-Control-Allow-Headers":"Content-Type"}});
  // [CCTV 임시 비공개] CCTV_DISABLED=true 시 모든 CCTV 페이지가 noindex 임시 페이지로 응답
  // 다시 공개하려면 CCTV_DISABLED=false로만 변경
@@ -6528,7 +6531,7 @@ ${TRACK_JS}</body></html>`,{status:404,headers:{'Content-Type':'text/html;charse
   await loadPosts(env);   /* 사이트맵 생성 함수는 동기라 POSTS_CACHE 를 먼저 채운다 */
   const cache=caches.default;
   /* 캐시 키에 글 버전을 붙인다 — 안 그러면 새 글이 하루짜리 캐시에 막힌다 */
-  const cacheKey=new Request('https://allpaystore.com'+path+'?pv='+postVer(),{method:'GET'});
+  const cacheKey=new Request('https://allpaystore.com'+path+'?pv='+smVer(),{method:'GET'});
   let cached=await cache.match(cacheKey);
   if(cached) return cached;
   let xml;
