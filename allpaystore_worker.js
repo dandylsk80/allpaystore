@@ -4323,7 +4323,29 @@ function getRSS() {
  sgArr.slice(0,50).forEach(sg=>{const parts=sg.split('/');const r=lk(RK().find(k=>k.startsWith(sg+'/'))||'');if(r)items+=`<item><title>${r[1]} 카드단말기·포스기 설치 | 올페이스토어</title><link>${base}/blog/${sg}/</link><description>${r[1]} 전 지역 직접 방문 설치. 무료 견적.</description><pubDate>${now}</pubDate></item>`;});
  return `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>올페이스토어 | 카드단말기·포스기·키오스크 전국 설치</title><link>${base}/</link><description>전국 5,000개 읍면동 카드단말기·포스기·키오스크·테이블오더 설치 전문</description><language>ko</language><lastBuildDate>${now}</lastBuildDate>${items}</channel></rss>`;
 }
-function getHTML() {
+/* ---------- 새로 올라온 페이지 — 공용 D1 url_seen (2026-10-15). cron 이 사이트맵 diff 로 적재, 홈 블록·/api/new-urls 가 읽는다 ---------- */
+const NEW_CACHE={at:0,rows:[]};
+const URLSEEN_SYNC_KEY='822a08bd2bba4c3cb62c6fba162a9cb3';   /* = INDEXNOW_KEY (fetch 핸들러 안에서 선언돼 그 앞 라우트에서는 TDZ) */
+function urlTypeAps(u){ let p='/'; try{ p=new URL(u).pathname; }catch(e){} const seg=p.split('/').filter(Boolean); if(p==='/') return '홈';
+ if(seg[0]==='guide'){ if(!seg[1]) return '가이드 목록'; let d=seg[1]; try{ d=decodeURIComponent(d); }catch(e){} return GUIDES2_BY[d]?'결제 가이드':'철거 가이드'; }
+ if(seg[0]==='blog') return '동네 상품'; if(seg[0]==='product') return '제품'; if(seg[0]==='biz') return '업종'; if(/^biz-/.test(seg[0])) return '업종별 장비'; if(seg[0]==='post') return '정보성 글'; return '기타'; }
+async function newPages(env){ if(!env||!env.DB) return []; if(Date.now()-NEW_CACHE.at<300000) return NEW_CACHE.rows;
+ try{ const r=await env.DB.prepare("SELECT url,type,title,first_seen FROM url_seen WHERE site=? AND first_seen IS NOT NULL ORDER BY first_seen DESC, url LIMIT 10").bind('allpaystore').all(); NEW_CACHE.rows=r.results||[]; NEW_CACHE.at=Date.now(); }catch(e){ console.log('[newPages]',e&&e.message); }
+ return NEW_CACHE.rows; }
+function newPagesHtml(rows){ if(!rows||!rows.length) return ''; const e=function(x){ return String(x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); };
+ const items=rows.map(function(r){ let p=r.url; try{ p=new URL(r.url).pathname; }catch(x){} let t=String(r.title||'').replace(/\s*\|\s*올페이스토어\s*$/,''); if(!t){ try{ t=decodeURIComponent(p); }catch(x){ t=p; } }
+  return '<li style="padding:10px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a href="'+e(p)+'" style="color:#111;font-weight:700;text-decoration:none;flex:1 1 60%">'+e(t)+'</a><span style="font-size:12px;color:#888;white-space:nowrap">'+e(r.type||'')+' · '+e(String(r.first_seen||'').slice(5))+'</span></li>'; }).join('');
+ return '<section class="newp" style="padding:28px 0 8px"><div class="wrap"><h2 style="font-size:20px;font-weight:900;color:#111;margin:0 0 4px">🆕 새로 올라온 페이지</h2><p style="font-size:13px;color:#777;margin:0 0 10px">최근에 추가된 안내 페이지 '+rows.length+'개</p><ul style="list-style:none;margin:0;padding:0">'+items+'</ul></div></section>'; }
+async function syncUrlSeen(env){ if(!env||!env.DB) return {skipped:'no DB'};
+ await loadPosts(env); const xml=makeSitemapMain()+makeSitemapDong(); const urls=[...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(function(m){ return m[1]; }))];
+ const have=new Set(); let last=''; for(let i=0;i<40;i++){ const r=await env.DB.prepare("SELECT url FROM url_seen WHERE site=? AND url>? ORDER BY url LIMIT 5000").bind('allpaystore',last).all(); const rows=r.results||[]; for(const x of rows) have.add(x.url); if(rows.length<5000) break; last=rows[rows.length-1].url; }
+ const fresh=urls.filter(function(u){ return !have.has(u); }).slice(0,200); const today=new Date().toISOString().slice(0,10); const stmts=[];
+ for(const u of fresh){ let title=''; try{ const h=await (await fetch(u,{headers:{'User-Agent':'url-seen-sync'}})).text(); title=((h.match(/<title>([^<]*)/)||[])[1]||'').slice(0,200); }catch(e){}
+  stmts.push(env.DB.prepare("INSERT OR IGNORE INTO url_seen (site,url,type,title,first_seen,last_seen) VALUES (?,?,?,?,?,?)").bind('allpaystore',u,urlTypeAps(u),title,today,today)); }
+ for(let i=0;i<stmts.length;i+=50) await env.DB.batch(stmts.slice(i,i+50));
+ if(fresh.length) NEW_CACHE.at=0;
+ console.log('[url_seen]',today,'sitemap',urls.length,'known',have.size,'added',fresh.length); return {total:urls.length,known:have.size,added:fresh.length,sample:fresh.slice(0,5)}; }
+function getHTML(newRows) {
  const sidoList=[
  {emoji:'🏙',name:'서울',slug:'seoul'},{emoji:'🌿',name:'경기',slug:'gyeonggi'},
  {emoji:'✈️',name:'인천',slug:'incheon'},{emoji:'⚓',name:'부산',slug:'busan'},
@@ -5058,7 +5080,7 @@ a{text-decoration:none;color:inherit}
  </div>
  </div>
 </section>
-<section class="find" id="find-sec">
+${newPagesHtml(newRows)}<section class="find" id="find-sec">
  <div class="find-in">
  <div class="sec-hd">
  <div class="sec-tag">FIND YOUR SOLUTION</div>
@@ -5895,8 +5917,11 @@ var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABE
  if(path.startsWith('/sitemap-v3-bizdong')){
   return new Response('Not Found',{status:404,headers:{'Content-Type':'text/plain;charset=utf-8','X-Robots-Tag':'noindex,nofollow'}});
  }
+ if(path==='/api/new-urls'){ const days=Math.min(30,Math.max(1,parseInt(new URL(request.url).searchParams.get('days')||'1',10)||1)); let urls=[]; try{ const r=await env.DB.prepare("SELECT url FROM url_seen WHERE site=? AND first_seen IS NOT NULL AND first_seen>=date('now','-'||?||' days') ORDER BY first_seen DESC, url LIMIT 1000").bind('allpaystore',days).all(); urls=(r.results||[]).map(function(x){ return x.url; }); }catch(e){ console.log('[new-urls]',e&&e.message); }
+  return new Response(JSON.stringify({site:'allpaystore',days:days,n:urls.length,urls:urls}),{headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','Access-Control-Allow-Origin':'*'}}); }
+ if(path==='/api/url-seen-sync'){ if(new URL(request.url).searchParams.get('key')!==URLSEEN_SYNC_KEY) return new Response('forbidden',{status:403}); const r=await syncUrlSeen(env); return new Response(JSON.stringify(r),{headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}}); }
  if(path==='/'){
- return new Response(getHTML(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+ return new Response(getHTML(await newPages(env)),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  if(path==='/index.html')
  return Response.redirect('https://allpaystore.com/', 301);
@@ -6749,6 +6774,7 @@ QR코드 기반 테이블 주문 시스템. 직원 호출 부담 감소, 회전�
  // 매일 자동 IndexNow 발송 (Cloudflare Cron Trigger)
  // wrangler.toml 또는 대시보드에서 cron 스케줄 설정 필요 (예: "0 18 * * *" = UTC 18:00 = KST 03:00)
  async scheduled(event,env,ctx){
+  ctx.waitUntil(syncUrlSeen(env).catch(function(e){ console.log('[url_seen] ERROR',e&&e.message); }));
   ctx.waitUntil((async()=>{
    try{
     const r=await fetch('https://allpaystore.com/api/indexnow');
