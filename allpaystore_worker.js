@@ -4271,8 +4271,10 @@ function postRssXml() {
 /* 캐시 무효화 토큰 — 사이트맵을 Cache API 에 넣는 사이트는 키에 이 값을 붙인다.
    글이 늘거나 새로 발행되면 값이 바뀌어 하루짜리 캐시를 기다리지 않아도 된다. */
 /* 사이트맵 캐시 키용 버전 — 글(postVer) 외에 모든 URL 유형의 개수를 섞는다. 새 유형(결제 가이드 등)이 배포되면 키가 바뀌어 하루짜리 캐시가 즉시 무효 (2026-10-15) */
+/* 정적 페이지(홈·/list·/new/ 등)를 사이트맵에 넣거나 빼면 올린다 — 개수로 안 잡히는 변경용 (2026-10-27 /new/ 추가) */
+const SM_STATIC='s2';
 function smVer(){ const L=function(x){ try{ return (typeof x==='function'?x():x).length; }catch(e){ return 0; } };
- return postVer()+'-'+[L(typeof GUIDE_KW!=='undefined'?GUIDE_KW:[]),L(typeof GUIDES2!=='undefined'?GUIDES2:[]),L(typeof BIZ_LIST!=='undefined'?BIZ_LIST:[]),L(typeof BIZ_SLUGS!=='undefined'?BIZ_SLUGS:[]),L(typeof POS_SLUGS!=='undefined'?POS_SLUGS:[]),L(typeof KIOSK_SLUGS!=='undefined'?KIOSK_SLUGS:[]),L(typeof TABLE_SLUGS!=='undefined'?TABLE_SLUGS:[]),L(typeof VEND_SLUGS!=='undefined'?VEND_SLUGS:[]),L(typeof RK==='function'?RK:[]),L(typeof PRODUCTS!=='undefined'?Object.keys(PRODUCTS):[])].join('.'); }
+ return postVer()+'-'+SM_STATIC+'-'+[L(typeof GUIDE_KW!=='undefined'?GUIDE_KW:[]),L(typeof GUIDES2!=='undefined'?GUIDES2:[]),L(typeof BIZ_LIST!=='undefined'?BIZ_LIST:[]),L(typeof BIZ_SLUGS!=='undefined'?BIZ_SLUGS:[]),L(typeof POS_SLUGS!=='undefined'?POS_SLUGS:[]),L(typeof KIOSK_SLUGS!=='undefined'?KIOSK_SLUGS:[]),L(typeof TABLE_SLUGS!=='undefined'?TABLE_SLUGS:[]),L(typeof VEND_SLUGS!=='undefined'?VEND_SLUGS:[]),L(typeof RK==='function'?RK:[]),L(typeof PRODUCTS!=='undefined'?Object.keys(PRODUCTS):[])].join('.'); }
 function postVer() {
   const ps = POSTS_CACHE.rows || [];
   return ps.length ? ps.length + "-" + postDate(ps[0]) : "0";
