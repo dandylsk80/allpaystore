@@ -2654,7 +2654,7 @@ const TRACK_JS = '<script>(function(){var U="/api/track",S={},W=30000;function K
 
 function makeSiteFooter(){
   return `<footer class="gf"><div class="gf-in">
-<div class="gf-mini"><a href="/">홈</a><a href="/post/">📰 단말기 정보</a><a href="/list">📑 전체목록</a><a href="/blog/">🌏 전체지역</a><a href="/product/">제품안내</a><a href="/contact/">문의하기</a><a href="tel:01098768282">📞 010-9876-8282</a><span class="telt">📞 010-9876-8282</span></div>
+<div class="gf-mini"><a href="/">홈</a><a href="/post/">📰 단말기 정보</a><a href="/list">📑 전체목록</a><a href="/blog/">🌏 전체지역</a><a href="/product/">제품안내</a><a href="/contact/">문의하기</a><a href="/new/">새 소식</a><a href="tel:01098768282">📞 010-9876-8282</a><span class="telt">📞 010-9876-8282</span></div>
 <div class="gf-bot">올페이스토어 · 전국 카드단말기·포스기·키오스크 설치 전문</div>
 </div></footer>`;
 }
@@ -4076,7 +4076,7 @@ function makeSitemapMain(){
  const sidoSlugs=['seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
  // [CCTV 임시 비공개] cctv 제외
  const prodSlugs=Object.keys(PRODUCTS).filter(p=>p!=='cctv');
- const parts=[u('/','1.0'),u('/list','0.8'),u('/contact/','0.8'),u('/product/','0.9')];
+ const parts=[u('/','1.0'),u('/list','0.8'),u('/new/','0.6'),u('/contact/','0.8'),u('/product/','0.9')];
  parts.push(postSitemapXml());   /* 정보성 글 — lastmod 는 실제 발행일 */
  prodSlugs.forEach(p=>{parts.push(u('/product/'+p+'/','0.8'));});
  prodSlugs.forEach(p=>{sidoSlugs.forEach(s=>{parts.push(u('/product/'+p+'/'+s+'/','0.7'));});});
@@ -4334,6 +4334,7 @@ function getRSS() {
  const sidoSlugs=['seoul','gyeonggi','busan','incheon','daegu','daejeon','gwangju','ulsan','sejong','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
  let items=postRssXml();
  items+=`<item><title>올페이스토어 — 카드단말기·포스기·키오스크 전국 설치</title><link>${base}/</link><description>전국 5,000개 읍면동 매장 설비 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;
+ items+=`<item><title>새 소식 — 최근 추가된 안내 페이지 | 올페이스토어</title><link>${base}/new/</link><description>올페이스토어에 최근 추가된 안내 페이지와 결제 가이드 모음</description><pubDate>${now}</pubDate></item>`;
  items+=`<item><title>상담 문의 | 올페이스토어</title><link>${base}/contact/</link><description>카드단말기·포스기·키오스크·테이블오더·매장 철거 무료 견적 문의</description><pubDate>${now}</pubDate></item>`;
  prodSlugs.forEach(p=>{items+=`<item><title>${PRODUCTS[p].ko} 설치 안내 | 올페이스토어</title><link>${base}/product/${p}/</link><description>${PRODUCTS[p].ko} 전국 설치 전문. 무료 견적, 빠른 설치.</description><pubDate>${now}</pubDate></item>`;});
  sidoSlugs.forEach(s=>{const n=SIDO_NAMES[S.indexOf(s)]||s;items+=`<item><title>${n} ${Object.values(PRODUCTS).map(v=>v.ko).slice(0,3).join('·')} 설치 | 올페이스토어</title><link>${base}/blog/${s}/</link><description>${n} 전 지역 카드단말기·포스기·키오스크 직접 방문 설치</description><pubDate>${now}</pubDate></item>`;});
@@ -4350,22 +4351,33 @@ function urlTypeAps(u){ let p='/'; try{ p=new URL(u).pathname; }catch(e){} const
  if(seg[0]==='guide'){ if(!seg[1]) return '가이드 목록'; let d=seg[1]; try{ d=decodeURIComponent(d); }catch(e){} return GUIDES2_BY[d]?'결제 가이드':'철거 가이드'; }
  if(seg[0]==='blog') return '동네 상품'; if(seg[0]==='product') return '제품'; if(seg[0]==='biz') return '업종'; if(/^biz-/.test(seg[0])) return '업종별 장비'; if(seg[0]==='post') return '정보성 글'; return '기타'; }
 async function newPages(env){ if(!env||!env.DB) return []; if(Date.now()-NEW_CACHE.at<300000) return NEW_CACHE.rows;
- try{ const r=await env.DB.prepare("SELECT url,type,title,first_seen FROM url_seen WHERE site=? AND first_seen IS NOT NULL ORDER BY first_seen DESC, url LIMIT 10").bind('allpaystore').all(); NEW_CACHE.rows=r.results||[]; NEW_CACHE.at=Date.now(); }catch(e){ console.log('[newPages]',e&&e.message); }
+ try{ const r=await env.DB.prepare("SELECT url,type,title,first_seen FROM url_seen WHERE site=? AND first_seen IS NOT NULL AND url<>'https://allpaystore.com/new/' ORDER BY first_seen DESC, url LIMIT 20").bind('allpaystore').all(); NEW_CACHE.rows=r.results||[]; NEW_CACHE.at=Date.now(); }catch(e){ console.log('[newPages]',e&&e.message); }
  return NEW_CACHE.rows; }
-function newPagesHtml(rows){ if(!rows||!rows.length) return ''; const e=function(x){ return String(x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); };
- const items=rows.map(function(r){ let p=r.url; try{ p=new URL(r.url).pathname; }catch(x){} let t=String(r.title||'').replace(/\s*\|\s*올페이스토어\s*$/,''); if(!t){ try{ t=decodeURIComponent(p); }catch(x){ t=p; } }
-  return '<li style="padding:10px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a href="'+e(p)+'" style="color:#111;font-weight:700;text-decoration:none;flex:1 1 60%">'+e(t)+'</a><span style="font-size:12px;color:#888;white-space:nowrap">'+e(r.type||'')+' · '+e(String(r.first_seen||'').slice(5))+'</span></li>'; }).join('');
- return '<section class="newp" style="padding:28px 0 8px"><div class="wrap"><h2 style="font-size:20px;font-weight:900;color:#111;margin:0 0 4px">🆕 새로 올라온 페이지</h2><p style="font-size:13px;color:#777;margin:0 0 10px">최근에 추가된 안내 페이지 '+rows.length+'개</p><ul style="list-style:none;margin:0;padding:0">'+items+'</ul></div></section>'; }
+/* 제목은 원본(guides.json 의 GUIDES2·글 제목)을 먼저 본다 — 수집 때 <title> 을 못 읽으면 주소가 그대로 보였다(2026-10-27) */
+function srcTitleAps(u){ let p='/'; try{ p=decodeURIComponent(new URL(u).pathname); }catch(e){ return ''; } const seg=p.split('/').filter(Boolean);
+ if(seg[0]==='guide'&&seg[1]&&GUIDES2_BY[seg[1]]) return GUIDES2_BY[seg[1]].title;
+ if(seg[0]==='post'&&seg[1]){ const po=(POSTS_CACHE.rows||[]).find(function(x){ return x.slug===seg[1]; }); if(po) return po.title; }
+ return ''; }
+function newPageTitle(r){ return String(r.title||'').replace(/\s*\|\s*올페이스토어\s*$/,'')||srcTitleAps(r.url)||'올페이스토어 안내 페이지'; }
+function pageNew(rows){ const e=function(x){ return String(x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); };
+ const items=(rows||[]).map(function(r){ let p=r.url; try{ p=new URL(r.url).pathname; }catch(x){}
+  return '<li style="padding:12px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a href="'+e(p)+'" style="color:#111;font-weight:700;text-decoration:none;flex:1 1 60%">'+e(newPageTitle(r))+'</a><span style="font-size:12px;color:#888;white-space:nowrap">'+e(r.type||'')+' · '+e(String(r.first_seen||'').slice(5))+'</span></li>'; }).join('');
+ const inner='<div style="font-size:12px;color:#999;margin-bottom:10px"><a href="/">홈</a> › 새 소식</div>'
+  +'<h1 style="font-size:26px;font-weight:900;color:#111;line-height:1.35">새 소식</h1>'
+  +'<p style="color:#555;font-size:15px;line-height:1.85;margin:10px 0 26px">올페이스토어에 최근 추가된 안내 페이지 '+(rows||[]).length+'개입니다. 결제 가이드와 단말기 정보 글이 새로 올라오면 이곳에 먼저 보입니다.</p>'
+  +(items?'<ul style="list-style:none;margin:0;padding:0">'+items+'</ul>':'<p style="color:#777">아직 새로 올라온 페이지가 없습니다.</p>')
+  +'<p style="margin-top:24px;font-size:13px"><a href="/list" style="color:#1D4ED8;font-weight:700">전체 목록 보기</a></p>';
+ return postWrap('새 소식 — 최근 추가된 안내 페이지 | 올페이스토어','올페이스토어에 최근 추가된 카드단말기·포스기·키오스크·테이블오더 안내 페이지와 결제 가이드를 모았습니다.','/new/',inner); }
 async function syncUrlSeen(env){ if(!env||!env.DB) return {skipped:'no DB'};
  await loadPosts(env); const xml=makeSitemapMain()+makeSitemapDong(); const urls=[...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(function(m){ return m[1]; }))];
  const have=new Set(); let last=''; for(let i=0;i<40;i++){ const r=await env.DB.prepare("SELECT url FROM url_seen WHERE site=? AND url>? ORDER BY url LIMIT 5000").bind('allpaystore',last).all(); const rows=r.results||[]; for(const x of rows) have.add(x.url); if(rows.length<5000) break; last=rows[rows.length-1].url; }
- const fresh=urls.filter(function(u){ return !have.has(u); }).slice(0,200); const today=new Date().toISOString().slice(0,10); const stmts=[];
- for(const u of fresh){ let title=''; try{ const h=await (await fetch(u,{headers:{'User-Agent':'url-seen-sync'}})).text(); title=((h.match(/<title>([^<]*)/)||[])[1]||'').slice(0,200); }catch(e){}
+ const fresh=urls.filter(function(u){ return !have.has(u)&&u!=='https://allpaystore.com/new/'; }).slice(0,200); const today=new Date().toISOString().slice(0,10); const stmts=[];
+ for(const u of fresh){ let title=srcTitleAps(u); if(!title) try{ const h=await (await fetch(u,{headers:{'User-Agent':'url-seen-sync'}})).text(); title=((h.match(/<title>([^<]*)/)||[])[1]||'').slice(0,200); }catch(e){}
   stmts.push(env.DB.prepare("INSERT OR IGNORE INTO url_seen (site,url,type,title,first_seen,last_seen) VALUES (?,?,?,?,?,?)").bind('allpaystore',u,urlTypeAps(u),title,today,today)); }
  for(let i=0;i<stmts.length;i+=50) await env.DB.batch(stmts.slice(i,i+50));
  if(fresh.length) NEW_CACHE.at=0;
  console.log('[url_seen]',today,'sitemap',urls.length,'known',have.size,'added',fresh.length); return {total:urls.length,known:have.size,added:fresh.length,sample:fresh.slice(0,5)}; }
-function getHTML(newRows) {
+function getHTML() {
  const sidoList=[
  {emoji:'🏙',name:'서울',slug:'seoul'},{emoji:'🌿',name:'경기',slug:'gyeonggi'},
  {emoji:'✈️',name:'인천',slug:'incheon'},{emoji:'⚓',name:'부산',slug:'busan'},
@@ -5100,7 +5112,7 @@ a{text-decoration:none;color:inherit}
  </div>
  </div>
 </section>
-${newPagesHtml(newRows)}<section class="find" id="find-sec">
+<section class="find" id="find-sec">
  <div class="find-in">
  <div class="sec-hd">
  <div class="sec-tag">FIND YOUR SOLUTION</div>
@@ -5585,7 +5597,7 @@ function catPick(b){
  <a href="sms:01098768282" class="cta-sms">📱 문자상담</a>
  <a href="/contact/" class="cta-sub">💬 상담문의</a>
  </div>
- <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);text-align:center"><a href="/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">홈</a><a href="/blog/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">🌏 전체지역</a><a href="/post/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">📰 단말기 정보</a><a href="/list" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">📑 전체목록</a><a href="/product/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">제품안내</a><a href="/biz/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">업종별</a><a href="/contact/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">문의하기</a></div>
+ <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);text-align:center"><a href="/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">홈</a><a href="/blog/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">🌏 전체지역</a><a href="/post/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">📰 단말기 정보</a><a href="/list" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">📑 전체목록</a><a href="/new/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">새 소식</a><a href="/product/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">제품안내</a><a href="/biz/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">업종별</a><a href="/contact/" style="color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin:0 12px">문의하기</a></div>
  <div class="cta-copy">
  <div class="cta-brand"><img src="/images/logo.png" alt="올페이스토어" style="height:18px;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1)"><span>올페이스토어</span> · 1인 매장부터 대형 프랜차이즈까지</div>
  <div class="cta-rights">© 2025 올페이스토어. All rights reserved.</div>
@@ -5941,7 +5953,7 @@ var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABE
   return new Response(JSON.stringify({site:'allpaystore',days:days,n:urls.length,urls:urls}),{headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','Access-Control-Allow-Origin':'*'}}); }
  if(path==='/api/url-seen-sync'){ if(new URL(request.url).searchParams.get('key')!==URLSEEN_SYNC_KEY) return new Response('forbidden',{status:403}); const r=await syncUrlSeen(env); return new Response(JSON.stringify(r),{headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}}); }
  if(path==='/'){
- return new Response(getHTML(await newPages(env)),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
+ return new Response(getHTML(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  }
  if(path==='/index.html')
  return Response.redirect('https://allpaystore.com/', 301);
@@ -5953,6 +5965,11 @@ var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABE
  if(path==='/blog')
  return new Response(makeBlogList(),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400,s-maxage=86400'}});
  /* 정보성 글 — 지역 슬러그 판정보다 앞에 둔다. 목록 캐시는 POSTS_CACHE 와 같은 5분 */
+ if(path==='/new'){
+ if(url.pathname!=='/new/') return Response.redirect(url.origin+'/new/',301);
+ await loadPosts(env);
+ return new Response(pageNew(await newPages(env)),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=300'}});
+ }
  if(path==='/post')
  return new Response(pagePostList(await loadPosts(env)),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=300'}});
  if(path.startsWith('/post/')){
