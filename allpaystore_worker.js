@@ -4037,7 +4037,7 @@ function makeProdCatPage(prodKey,catKey,titles,catMap,slugs){
 function makeSitemap(){
  // /sitemap.xml = 인덱스 사이트맵 (v3 분할: 응답 크기 줄여 GSC fetch 안정성 향상)
  const base='https://allpaystore.com';
- const today=get15dDate().toISOString().split('T')[0];
+ const today=smMaxDate();
  const sitemaps=[
   '/sitemap-v3-main.xml',
   '/sitemap-v3-dong.xml'
@@ -4045,16 +4045,17 @@ function makeSitemap(){
  const items=sitemaps.map(s=>`<sitemap><loc>${base}${s}</loc><lastmod>${today}</lastmod></sitemap>`).join('');
  return '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+items+'</sitemapindex>';
 }
-/* ── sitemap lastmod ────────────────────────────────────────
-   URL 마다 다른 날짜를 주고 18일 주기로 갱신한다.
-   전 URL 을 매일 오늘로 찍으면 검색엔진이 신뢰하지 않는다(danmalgi 방식). */
-const SM_DAY = 86400000, SM_PERIOD = 18;
+/* ── sitemap lastmod: 유형별 실제 변경일 (2026-10-27, 24payshop 61139e5 방식) ─────────
+   예전엔 URL 마다 18일 주기로 날짜를 돌렸다(가짜 갱신). 이제 indexnowDaily 의 지문 비교가 유형별로
+   "지문이 바뀐 날"을 site_state(in_fp_date) 에 남기고 그 날짜를 쓴다. 기록이 없으면 SM_FALLBACK_DATE(이 방식 배포일). */
+const SM_DAY = 86400000, SM_FALLBACK_DATE = "2026-10-27";
 function smHash(str){ let h=5381; const s=String(str); for(let i=0;i<s.length;i++) h=((h<<5)+h+s.charCodeAt(i))>>>0; return h; }
 function smLastmod(key){
-  const off = smHash(key) % SM_PERIOD;
-  const periods = Math.floor((Date.now()/SM_DAY - off)/SM_PERIOD);
-  return new Date((periods*SM_PERIOD + off)*SM_DAY).toISOString().slice(0,10);
+  const t = inTypeOf(key);
+  const d = t && IN_DATES && IN_DATES[t];
+  return d || SM_FALLBACK_DATE;
 }
+function smMaxDate(){ let m = SM_FALLBACK_DATE; for (const k in (IN_DATES || {})) if (IN_DATES[k] > m) m = IN_DATES[k]; return m; }
 /* RSS 정렬용 날짜: URL 마다 60일 주기로 밀린다. 매일 다른 1/60 묶음이 최신이 되어
    "최근 항목 위주"를 유지하면서 피드가 날마다 바뀐다. */
 function rssRankDate(u){
@@ -4118,7 +4119,7 @@ function makeSitemapDong(){
  const parts=[];
  dongKeys.forEach(s=>{parts.push(u('/blog/'+s+'/'));});
  dongKeys.forEach(s=>{prodSlugs.forEach(p=>{parts.push(u('/blog/'+s+'/'+p+'/'));});});
- return '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>';
+ return smAddLastmod('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+parts.join('')+'</urlset>');
 }
 function makeSitemapBizRegion(){
  // /biz-region/ 4단계 페이지들
@@ -4379,6 +4380,118 @@ async function syncUrlSeen(env){ if(!env||!env.DB) return {skipped:'no DB'};
  for(let i=0;i<stmts.length;i+=50) await env.DB.batch(stmts.slice(i,i+50));
  if(fresh.length) NEW_CACHE.at=0;
  console.log('[url_seen]',today,'sitemap',urls.length,'known',have.size,'added',fresh.length); return {total:urls.length,known:have.size,added:fresh.length,sample:fresh.slice(0,5)}; }
+/* ── IndexNow: 사이트맵 URL 중 바뀐 유형만 (2026-10-27, 24payshop 61139e5 이식) ─────────
+   예전엔 /api/indexnow 가 손으로 짠 목록 32.7만 개를 요일별로 1/7씩(하루 약 4.7만) 보냈는데 그중 88% 가
+   이미 404 인 동×업종(-card/-pos)·/biz-region 주소였다. 이제:
+   ① 7일 내 새 글 ② 사이트맵(main+dong) <loc> 를 경로 모양(첫 단 + 깊이)으로 유형을 나누고, 유형별 대표 페이지 HTML
+      에서 날짜를 뗀 지문이 D1 site_state(site='allpaystore', key='in_fp') 저장값과 다르면 그 유형 URL 전부.
+   저장된 지문이 없으면(첫 실행) 전 유형 1회 전량. D1 읽기 실패면 새 글만. 바뀐 게 없으면 indexnow_log 에 'no-change'.
+   수동: /indexnow-submit?key=<KEY>[&dry=1][&all=1]  (dry 는 계획만 · all 은 지문 무시하고 전량) */
+const IN_SITE = "allpaystore", IN_KEY = "822a08bd2bba4c3cb62c6fba162a9cb3", IN_ORIGIN = "https://allpaystore.com";
+let IN_URLS = null;   /* {유형: [URL…]} — 사이트맵과 같은 함수에서 뽑는다(글은 새 글 경로로 따로) */
+function inTypeKey(u){ let p = "/"; try { p = new URL(u).pathname; } catch (e) {} const seg = p.split("/").filter(Boolean);
+  if (!seg.length) return "home"; if (seg[0] === "post") return null;
+  if (seg[0] === "guide" && seg[1]) { let d = seg[1]; try { d = decodeURIComponent(d); } catch (e) {} return GUIDES2_BY[d] ? "guide2" : "guide-kw"; }
+  return seg[0] + ":" + seg.length; }
+function inUrls(){
+  if (IN_URLS) return IN_URLS;
+  const xml = makeSitemapMain() + makeSitemapDong(), m = {};
+  for (const x of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) { const t = inTypeKey(x[1]); if (!t) continue; (m[t] = m[t] || []).push(x[1]); }
+  for (const t in m) m[t] = [...new Set(m[t])];
+  return IN_URLS = m;
+}
+let IN_TYPE_OF = null;
+function inTypeOf(url){
+  if (!IN_TYPE_OF) { IN_TYPE_OF = new Map(); const m = inUrls(); for (const t in m) for (const u of m[t]) IN_TYPE_OF.set(u, t); }
+  const k = String(url || "");
+  return IN_TYPE_OF.get(k) || IN_TYPE_OF.get(k.replace(/\/$/, "")) || IN_TYPE_OF.get(k + "/") || null;
+}
+/* 대표 페이지는 워커 자신의 fetch 핸들러를 안에서 불러 렌더한다(네트워크 왕복 없음) */
+async function inSample(env, u){
+  const r = await APS.fetch(new Request(u, { headers: { "user-agent": "Mozilla/5.0 (indexnow-fingerprint)" } }), env, { waitUntil(){}, passThroughOnException(){} });
+  return r.status + ":" + (await r.text());
+}
+/* 날짜(ISO·한국식)만 떼고 해시 — lastmod·"YYYY년 M월 D일" 같은 날짜 때문에 지문이 매일 흔들리지 않게 */
+function inFingerprint(html){
+  const t = String(html || "").replace(/\d{4}-\d{2}-\d{2}(T[0-9:.]+Z?)?/g, "D").replace(/\d{4}\s*[.년]\s*\d{1,2}\s*[.월]\s*\d{1,2}\s*일?/g, "D");
+  let h1 = 5381, h2 = 0x811c9dc5;
+  for (let i = 0; i < t.length; i++) { const c = t.charCodeAt(i); h1 = ((h1 << 5) + h1 + c) >>> 0; h2 = Math.imul(h2 ^ c, 16777619) >>> 0; }
+  return h1.toString(16) + h2.toString(16) + "-" + t.length;
+}
+function logIndexnow(env, row){
+  try {
+    if (!env || !env.DB) return Promise.resolve();
+    return env.DB.prepare("INSERT INTO indexnow_log (site,ts,source,start_idx,count,status,endpoint,attempt,note) VALUES (?,?,?,?,?,?,?,?,?)")
+      .bind(IN_SITE, new Date().toISOString(), row.source || "", row.start | 0, row.count | 0, row.status | 0, String(row.ep || "").slice(0, 80), 1, String(row.note || "").slice(0, 200))
+      .run().catch(() => {});
+  } catch (e) { return Promise.resolve(); }
+}
+/* 한 묶음(최대 10,000) 씩 네이버 + 폴백 체인(api.indexnow.org → yandex → seznam)에 보내고 indexnow_log 에 남긴다 */
+async function inSubmit(env, urls, source, note){
+  const out = []; let ok = true;
+  for (let i = 0; i < urls.length; i += 10000) {
+    const batch = urls.slice(i, i + 10000);
+    const body = JSON.stringify({ host: "allpaystore.com", key: IN_KEY, keyLocation: IN_ORIGIN + "/" + IN_KEY + ".txt", urlList: batch });
+    const opt = { method: "POST", headers: { "content-type": "application/json; charset=utf-8" }, body };
+    let naver = 0, chain = { status: 0, url: "" };
+    try { naver = (await fetch("https://searchadvisor.naver.com/indexnow", opt)).status; } catch (e) { naver = -1; }
+    try { const r = await indexnowFetch(opt); chain = { status: (r && r.status) | 0, url: (r && r.url) || "" }; } catch (e) {}
+    const good = (naver >= 200 && naver < 300) || (chain.status >= 200 && chain.status < 300);
+    if (!good) ok = false;
+    out.push({ n: batch.length, naver, chain: chain.status, ep: String(chain.url || "").replace(/^https?:\/\//, "").split("/")[0] });
+    await logIndexnow(env, { source, start: i, count: batch.length, status: chain.status, ep: chain.url, note: "naver=" + naver + " " + note });
+  }
+  return { ok, out };
+}
+/* 유형별 "지문이 바뀐 날" — 사이트맵 lastmod 가 쓴다 (site_state key='in_fp_date'). 1시간 메모 */
+let IN_DATES = null, IN_DATES_AT = 0;
+async function loadInDates(env){
+  if (IN_DATES && Date.now() - IN_DATES_AT < 3600000) return IN_DATES;
+  let d = IN_DATES || {};
+  try { const r = env && env.DB ? await env.DB.prepare("SELECT value FROM site_state WHERE site=? AND key=?").bind(IN_SITE, "in_fp_date").first() : null; if (r && r.value) d = JSON.parse(r.value); } catch (e) {}
+  IN_DATES = d; IN_DATES_AT = Date.now(); return d;
+}
+function inDatesVer(){ return smHash(JSON.stringify(IN_DATES || {})).toString(36); }
+async function indexnowDaily(env, source, dry, force){
+  try { await loadPosts(env); } catch (e) {}
+  const fresh = postFreshUrls(), types = inUrls();
+  const fp = {};
+  for (const t in types) { try { fp[t] = inFingerprint(await inSample(env, types[t][0])); } catch (e) { fp[t] = "err"; } }
+  let prev = null, dates = {};                      /* prev null = 저장된 지문 없음(첫 실행) · undefined = 읽기 실패 → 새 글만 */
+  try {
+    const r = env && env.DB ? await env.DB.prepare("SELECT value FROM site_state WHERE site=? AND key=?").bind(IN_SITE, "in_fp").first() : null;
+    if (r && r.value) prev = JSON.parse(r.value); else if (!env || !env.DB) prev = undefined;
+    const r2 = env && env.DB ? await env.DB.prepare("SELECT value FROM site_state WHERE site=? AND key=?").bind(IN_SITE, "in_fp_date").first() : null;
+    if (r2 && r2.value) dates = JSON.parse(r2.value);
+  } catch (e) { prev = undefined; }
+  let changed = [];
+  if (force) changed = Object.keys(fp).filter(t => fp[t] !== "err");
+  else if (prev !== undefined) for (const t in fp) if (fp[t] !== "err" && (!prev || prev[t] !== fp[t])) changed.push(t);
+  const plan = { site: IN_SITE, first: prev === null, force: !!force, fresh: fresh.length, changed, counts: {}, errs: Object.keys(fp).filter(t => fp[t] === "err") };
+  for (const t of changed) plan.counts[t] = types[t].length;
+  if (dry) return plan;
+  const res = [];
+  if (fresh.length) res.push(await inSubmit(env, fresh, source, "posts"));
+  const next = Object.assign({}, prev || {}), today = new Date().toISOString().slice(0, 10);
+  /* URL 이 적은 유형(100개 이하)은 한 묶음으로 합쳐 보낸다 — 루트 URL 하나만 담긴 배치는 네이버가 422 를 준다(24payshop 2026-10-13 실측). 홈만 남으면 /list 를 짝으로 */
+  const small = changed.filter(t => types[t].length <= 100), big = changed.filter(t => types[t].length > 100);
+  const mark = (ts, ok) => { if (!ok) return; for (const t of ts) { if (!prev || prev[t] !== fp[t]) dates[t] = today; next[t] = fp[t]; } };
+  if (small.length) {
+    let urls = []; for (const t of small) urls = urls.concat(types[t]);
+    if (urls.length === 1 && /^https?:\/\/[^/]+\/?$/.test(urls[0])) urls.push(IN_ORIGIN + "/list");
+    const r = await inSubmit(env, urls, source, "types=" + small.join(",")); res.push(r); mark(small, r.ok);
+  }
+  for (const t of big) { const r = await inSubmit(env, types[t], source, "type=" + t); res.push(r); mark([t], r.ok); }
+  if (!fresh.length && !changed.length) await logIndexnow(env, { source, start: 0, count: 0, status: 0, ep: "", note: "no-change" });
+  if (changed.length && env && env.DB) {
+    try {
+      const ts = new Date().toISOString(), q = "INSERT INTO site_state (site,key,value,ts) VALUES (?,?,?,?) ON CONFLICT(site,key) DO UPDATE SET value=excluded.value, ts=excluded.ts";
+      await env.DB.batch([env.DB.prepare(q).bind(IN_SITE, "in_fp", JSON.stringify(next), ts), env.DB.prepare(q).bind(IN_SITE, "in_fp_date", JSON.stringify(dates), ts)]);
+      IN_DATES = dates; IN_DATES_AT = Date.now();
+    } catch (e) {}
+  }
+  return { plan, res };
+}
 function getHTML() {
  const sidoList=[
  {emoji:'🏙',name:'서울',slug:'seoul'},{emoji:'🌿',name:'경기',slug:'gyeonggi'},
@@ -5919,10 +6032,12 @@ function blockScraper(request){
   return null;
 }
 
-export default {
+const APS = {
  async fetch(request,env,ctx){
     const __blk = blockScraper(request); if(__blk) return __blk;
  const url=new URL(request.url);
+ /* http·www 변형은 https 비www 로 301 (2026-10-27) */
+ if(/(^|\.)allpaystore\.com$/.test(url.hostname)&&(url.protocol==='http:'||url.hostname!=='allpaystore.com')) return Response.redirect('https://allpaystore.com'+url.pathname+url.search,301);
  const path=decodeURIComponent(url.pathname).replace(/\/+$/,'')||'/';
  if(path==="/api/track"&&request.method==="POST"){try{const b=await request.json(); const __task=(async()=>{ try{
     /* 같은 방문자가 같은 버튼을 반복해 눌러도 1건만 기록·발송한다 */
@@ -5944,11 +6059,11 @@ var __ua=request.headers.get("User-Agent")||"";if(!TG_BOT_RE.test(__ua)&&TG_LABE
  // [biz-region 삭제] /biz-region/* 모든 경로 → 404 Not Found
  // 다시 사용하려면 BIZ_REGION_DISABLED=false로만 변경
  const BIZ_REGION_DISABLED=true;
- if(BIZ_REGION_DISABLED && (path==='/biz-region'||path.startsWith('/biz-region/')||path.startsWith('/sitemap-v3-biz-region'))){
+ if(BIZ_REGION_DISABLED && (path==='/biz-region'||path.startsWith('/biz-region/')||/^\/sitemap(-v2|-v3)?-biz-region/.test(path))){
   return new Response('Not Found',{status:404,headers:{'Content-Type':'text/plain;charset=utf-8','X-Robots-Tag':'noindex,nofollow'}});
  }
  // [동×업종×제품 사이트맵 삭제] /sitemap-v3-bizdong-* → 404
- if(path.startsWith('/sitemap-v3-bizdong')){
+ if(/^\/sitemap(-v2|-v3)?-bizdong/.test(path)){
   return new Response('Not Found',{status:404,headers:{'Content-Type':'text/plain;charset=utf-8','X-Robots-Tag':'noindex,nofollow'}});
  }
  if(path==='/api/new-urls'){ const days=Math.min(30,Math.max(1,parseInt(new URL(request.url).searchParams.get('days')||'1',10)||1)); let urls=[]; try{ const r=await env.DB.prepare("SELECT url FROM url_seen WHERE site=? AND first_seen IS NOT NULL AND first_seen>=date('now','-'||?||' days') ORDER BY first_seen DESC, url LIMIT 1000").bind('allpaystore',days).all(); urls=(r.results||[]).map(function(x){ return x.url; }); }catch(e){ console.log('[new-urls]',e&&e.message); }
@@ -6566,9 +6681,10 @@ ${TRACK_JS}</body></html>`,{status:404,headers:{'Content-Type':'text/html;charse
  if(path==='/sitemap-guide.xml') return new Response(makeSitemapGuide(),{headers:{'Content-Type':'application/xml;charset=utf-8','Cache-Control':'public,max-age=3600'}});
  if(path.match(/^\/sitemap(-v2|-v3)?(-main|-dong|-biz-region(-[1-3])?|-bizdong-(card|pos)-([1-9]))?\.xml$/)){
   await loadPosts(env);   /* 사이트맵 생성 함수는 동기라 POSTS_CACHE 를 먼저 채운다 */
+  await loadInDates(env);  /* lastmod = 유형별 실제 변경일 */
   const cache=caches.default;
   /* 캐시 키에 글 버전을 붙인다 — 안 그러면 새 글이 하루짜리 캐시에 막힌다 */
-  const cacheKey=new Request('https://allpaystore.com'+path+'?pv='+smVer(),{method:'GET'});
+  const cacheKey=new Request('https://allpaystore.com'+path+'?pv='+smVer()+'&d='+inDatesVer(),{method:'GET'});
   let cached=await cache.match(cacheKey);
   if(cached) return cached;
   let xml;
@@ -6762,65 +6878,16 @@ QR코드 기반 테이블 주문 시스템. 직원 호출 부담 감소, 회전�
 `,{headers:{'Content-Type':'text/plain;charset=utf-8','Cache-Control':'public,max-age=86400'}});
  const INDEXNOW_KEY='822a08bd2bba4c3cb62c6fba162a9cb3';
  if(path==='/'+INDEXNOW_KEY+'.txt')return new Response(INDEXNOW_KEY,{headers:{'Content-Type':'text/plain'}});
- if(path==='/api/indexnow'){
-  try{
-   const allSlugs=RK().filter(k=>k.split('/').length===3);
-   const prods=Object.keys(PRODUCTS);
-   const urls=['https://allpaystore.com/','https://allpaystore.com/contact/','https://allpaystore.com/product/','https://allpaystore.com/guide/','https://allpaystore.com/biz/'];
-   prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/');});
-   const sidos=['seoul','gyeonggi','busan','incheon','daegu','daejeon','gwangju','ulsan','sejong','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju'];
-   sidos.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/'+s+'/');});});
-   const sgSet=new Set();allSlugs.forEach(k=>{sgSet.add(k.split('/').slice(0,2).join('/'));});
-   sgSet.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/product/'+p+'/'+s.split('/')[0]+'/'+s.split('/')[1]+'/');});});
-   allSlugs.forEach(s=>{urls.push('https://allpaystore.com/blog/'+s+'/');prods.forEach(p=>{urls.push('https://allpaystore.com/blog/'+s+'/'+p+'/');});});
-   // 동×업종-제품 (273,564 페이지)
-   allSlugs.forEach(s=>{BIZ_LIST.forEach(b=>{urls.push('https://allpaystore.com/blog/'+s+'/'+b.slug+'-card/');urls.push('https://allpaystore.com/blog/'+s+'/'+b.slug+'-pos/');});});
-   // /biz-region/ 4단계
-   urls.push('https://allpaystore.com/biz-region/');
-   sidos.forEach(s=>{urls.push('https://allpaystore.com/biz-region/'+s+'/');BIZ_LIST.forEach(b=>{urls.push('https://allpaystore.com/biz-region/'+s+'/'+b.slug+'-card/');urls.push('https://allpaystore.com/biz-region/'+s+'/'+b.slug+'-pos/');});});
-   sgSet.forEach(s=>{const[si,sg]=s.split('/');BIZ_LIST.forEach(b=>{urls.push('https://allpaystore.com/biz-region/'+si+'/'+sg+'/'+b.slug+'-card/');urls.push('https://allpaystore.com/biz-region/'+si+'/'+sg+'/'+b.slug+'-pos/');});});
-   GUIDE_KW.forEach(k=>{urls.push('https://allpaystore.com/guide/'+encodeURIComponent(k)+'/');});
-   GUIDES2.forEach(g=>{urls.push('https://allpaystore.com/guide/'+encodeURIComponent(g.slug)+'/');});
-   BIZ_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz/'+s+'/');});
-   urls.push('https://allpaystore.com/biz-cctv/');
-   CCTV_SLUGS.forEach(s=>{urls.push('https://allpaystore.com/biz-cctv/'+s+'/');});
-   // 요일별 1/7 분산 발송: 같은 URL은 7일에 한 번씩만 발송 (IndexNow 권장)
-   // ?force=1 파라미터로 전체 발송 가능 (수동 트리거용)
-   const force=url.searchParams.get('force')==='1';
-   const customN=parseInt(url.searchParams.get('n')||'0',10);
-   const dayIdx=Math.floor(Date.now()/86400000)%7;
-   const todayUrls=force?urls:urls.filter((_,i)=>i%7===dayIdx);
-   /* 최근 7일 안에 발행된 정보성 글은 요일 분산과 무관하게 매일 앞에 싣는다 */
-   await loadPosts(env);
-   const finalUrls=postFreshUrls().concat(customN>0?todayUrls.slice(0,customN):todayUrls);
-   // 한 번에 너무 많이 보내지 않도록 1000개씩 배치 (네이버 권장)
-   const results=[];
-   let submitted=0;
-   for(let i=0;i<finalUrls.length;i+=1000){
-    const batch=finalUrls.slice(i,i+1000);
-    const body=JSON.stringify({host:'allpaystore.com',key:INDEXNOW_KEY,keyLocation:'https://allpaystore.com/'+INDEXNOW_KEY+'.txt',urlList:batch});
-    const [naverR,bingR]=await Promise.allSettled([
-     fetch('https://searchadvisor.naver.com/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body}),
-     indexnowFetch({method:'POST',headers:{'Content-Type':'application/json'},body})
-    ]);
-    results.push({batch:i/1000+1,size:batch.length,naver:naverR.status==='fulfilled'?naverR.value.status:'ERR',bing:bingR.status==='fulfilled'?bingR.value.status:'ERR'});
-    submitted+=batch.length;
-   }
-   return new Response(JSON.stringify({ok:true,totalUrls:urls.length,todayDayIdx:dayIdx,submitted,force,results},null,2),{headers:{'Content-Type':'application/json'}});
-  }catch(e){return new Response(JSON.stringify({ok:false,error:e.message}),{headers:{'Content-Type':'application/json'}});}
+ if(path==='/indexnow-submit'){
+  if(url.searchParams.get('key')!==IN_KEY) return new Response('forbidden',{status:403});
+  const r=await indexnowDaily(env,'manual',url.searchParams.get('dry')==='1',url.searchParams.get('all')==='1');
+  return new Response(JSON.stringify(r,null,1),{headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}});
  }
  return new Response('Not Found',{status:404});
  },
- // 매일 자동 IndexNow 발송 (Cloudflare Cron Trigger)
- // wrangler.toml 또는 대시보드에서 cron 스케줄 설정 필요 (예: "0 18 * * *" = UTC 18:00 = KST 03:00)
+ // 매일 IndexNow — 사이트맵 URL 중 바뀐 유형 + 새 글만 (indexnowDaily)
  async scheduled(event,env,ctx){
   ctx.waitUntil(syncUrlSeen(env).catch(function(e){ console.log('[url_seen] ERROR',e&&e.message); }));
-  ctx.waitUntil((async()=>{
-   try{
-    const r=await fetch('https://allpaystore.com/api/indexnow');
-    const txt=await r.text();
-    console.log('[CRON IndexNow]',new Date().toISOString(),'status:',r.status,'body:',txt.slice(0,500));
-   }catch(e){console.log('[CRON IndexNow] ERROR:',e.message);}
-  })());
+  ctx.waitUntil(indexnowDaily(env,'cron',false,false).then(function(r){ console.log('[CRON IndexNow]',JSON.stringify(r&&r.plan)); }).catch(function(e){ console.log('[CRON IndexNow] ERROR',e&&e.message); }));
  }
-};
+}; export default APS;
