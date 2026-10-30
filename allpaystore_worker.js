@@ -4434,7 +4434,7 @@ async function inSubmit(env, urls, source, note){
     const body = JSON.stringify({ host: "allpaystore.com", key: IN_KEY, keyLocation: IN_ORIGIN + "/" + IN_KEY + ".txt", urlList: batch });
     const opt = { method: "POST", headers: { "content-type": "application/json; charset=utf-8" }, body };
     let naver = 0, chain = { status: 0, url: "" };
-    try { naver = (await fetch("https://searchadvisor.naver.com/indexnow", opt)).status; } catch (e) { naver = -1; }
+    try { naver = "off" /* 2026-10-30 네이버 IndexNow 중단 — 새 글만 allcarestudy 크론이 보낸다 */; } catch (e) { naver = -1; }
     try { const r = await indexnowFetch(opt); chain = { status: (r && r.status) | 0, url: (r && r.url) || "" }; } catch (e) {}
     const good = (naver >= 200 && naver < 300) || (chain.status >= 200 && chain.status < 300);
     if (!good) ok = false;
